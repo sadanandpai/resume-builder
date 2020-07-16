@@ -1,0 +1,35 @@
+.experience-company {
+  margin: 15px 10px 10px 20px;
+}
+
+.company {
+  position: relative;
+  margin-top: 20px;
+}
+
+.vertical-exp-bar {
+  border-right: 2px solid #007bff;
+  height: calc(100% + 5px);
+  top: 30px;
+  left: -21.5px;
+  position: absolute;
+}
+
+.exp-dot {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  border: 2px solid brown;
+  position: absolute;
+  left: -28px;
+  top: 15px;
+}
+
+.company-name {
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.company-role {
+  font-weight: 600;
+}

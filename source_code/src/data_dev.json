@@ -1,0 +1,120 @@
+{
+  "personal_details": {
+    "name": "Jane Doe",
+    "role": "Full Stack Developer",
+    "mobile": "+91 9876543210",
+    "email": "janedoe@gmail.com",
+    "location": "Bengaluru",
+    "experience": [
+      { "type": "Full Stack Experience on MERN", "years": "4 years" },
+      { "type": "Total Experience", "years": "6 years" }
+    ],
+    "linkedin": "jane-doe-11",
+    "github": "jane_doe_test_85"
+  },
+  "summary": {
+    "title": "About me",
+    "description": "I have been working with web development since 2010, the period during which I have worked in different environments, from big consultancy companies to start-ups. I am a self-motivated and self-taught professional who likes to solve problems"
+  },
+  "career": {
+    "title": "Career Objective",
+    "description": "Eager to expand my skill set through external trainings to help boost all major front desk KPIs. Hoping to leverage organizational skills to help ABC Corp introduce time-saving schemes for all executives."
+  },
+  "companyDetails": {
+    "title": "Professional Experience",
+    "companyList": [
+      {
+        "name": "Dummy Corporation 1",
+        "role": "Senior Software Developer",
+        "years": "Jan 2018 - present",
+        "expYears": "2.5 years",
+        "description": [
+          "Use my extensive experience with front end development to <u>define the structure and components</u> for the project, making sure they are reusable",
+          "Keep the code quality high reviewing code from other developers and suggesting improvements",
+          "Interact with the designer to suggest changes and to make sure the view he has about the design is translated into actual functionality"
+        ]
+      },
+      {
+        "name": "Dummy Corporation 2",
+        "role": "Software Developer",
+        "years": "Jun 2015 - Dec 2017",
+        "expYears": "2.5 years",
+        "description": [
+          "Develop web applications based on Sharepoint, Drupal 8 and Episerver",
+          "Lead a team of <strong>10 front end developers</strong>, giving support to the client's multi-cultural team, providing feedback, clarifying requirements and helping with technical questions",
+          "Keep the Project Manager and the IT Leads updated on the overall progress of the projects and manage the tasks distributed to the team",
+          "Keep the code and the features implemented by the other developers in accordance to the requirements"
+        ]
+      },
+      {
+        "name": "Dummy Corporation 3",
+        "role": "Trainee Developer",
+        "years": "Aug 2011 - May 2015",
+        "expYears": "1 years",
+        "description": [
+          "Design easy user interfaces and great user experiences for the digital platforms of small companies",
+          "Wordpress development, including themes creation or customization, custom plugins development and training",
+          "E-commerce maintenance <i>with Fastcommerce</i>, a Brazilian e-commerce platform",
+          "E-commerce development with Magento, customizing preexisting themes ",
+          "Integrate external services such as payment services, delivery, etc into Magento solutions",
+          "VPS configuration and optimization (Apache & Nginx)"
+        ]
+      }
+    ]
+  },
+  "key_projects": {
+    "title": "Key Projects / Involvements",
+    "description": [
+      "Prevented millions of dollars in state sales tax undercharges by initiating tests that revealed a bug in a new release of shopping cart software.",
+      "Isolated previously undiscovered flaw in price checking tool resulting in more competitive pricing and a 20 percent increase in revenue.",
+      "Implemented automated testing tools spawning more diligent levels of regression testing, negative testing, error/bug retests and usability."
+    ]
+  },
+  "certificates": {
+    "title": "Certificates and Awards",
+    "description": [
+      "<strong>React</strong> and redux - A complete guide 2020 from Udemy",
+      "Agile and Scrum Master Certificate from Udacity",
+      "Best performer award for consistently exceeding the performance",
+      "Certificate of exceptional bug finder by XYZ client",
+      "Recorgnition zero defect delivery"
+    ]
+  },
+  "skills": {
+    "title": "Technical Skills",
+    "description": [
+      { "name": "GoLang", "rating": 4 },
+      { "name": "Deno", "rating": 3 },
+      { "name": "React", "rating": 3 },
+      { "name": "JavaScript", "rating": 4 },
+      { "name": "CSS", "rating": 3 },
+      { "name": "HTML5", "rating": 4 }
+    ]
+  },
+  "expertise": {
+    "title": "Areas of Expertise",
+    "description": ["Algorithms", "Data Structures", "Redux", "SQL", "jQuery", "Progressive Web Apps"]
+  },
+  "methodology": {
+    "title": "Methodology / Approach",
+    "description": [
+      "Component based architecture", "Agile methodology", "Design Patterns", "Test Driven Development", "Model View Controller",  "RESTful architecture"
+    ]
+  },
+  "tools": {
+    "title": "Tools",
+    "description": ["Git", "VS Code", "Jira", "Webpack", "Eclipse"]
+  },
+  "education": {
+    "title": "Education",
+    "description": [
+      {
+        "institution": "XIV, University",
+        "years": "2010 - 2014",
+        "grade": "8.3",
+        "degree": "B.Tech",
+        "specialization": "Masters in Cloud Technology"
+      }
+    ]
+  }
+}

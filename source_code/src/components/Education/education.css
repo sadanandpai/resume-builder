@@ -1,0 +1,17 @@
+.education{
+  margin-bottom: 10px;
+}
+
+.education div{
+  margin: 5px 0px;
+}
+
+.education .degree{
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.education .specialization{
+  font-weight: 600;
+  font-size: 16px;
+}

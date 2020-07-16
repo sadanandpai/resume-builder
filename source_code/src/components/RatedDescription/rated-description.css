@@ -1,0 +1,26 @@
+.rated-data{
+    margin-top: 10px;
+}
+
+.rated-type {
+  display: inline-block;
+  width: 160px;
+  font-weight: bold;
+}
+
+.rated-rating {
+  display: inline-block;
+}
+
+.rating-tablet {
+  width: 20px;
+  height: 12px;
+  border-radius: 20%;
+  display: inline-block;
+  border: 1px solid brown;
+  margin: 0px 6px;
+}
+
+.rating-tablet.filled {
+  background-color: brown;
+}

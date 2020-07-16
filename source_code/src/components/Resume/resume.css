@@ -1,0 +1,18 @@
+.grid-container {
+  padding: 50px;
+  width: 1140px;
+  margin: auto;
+  background-color: white;
+  display: grid;
+  grid-template-columns: 66% 1fr 33%;
+}
+
+.divider {
+  height: 100%;
+  max-width: 3px;
+  background-color: #007bff;
+}
+
+.list-items{
+  margin-right: 10px;
+}
