@@ -10,3 +10,5 @@ For dev engineer, sample data can be used from data_dev.json
 
 Feel free to use the source to create your resume.
 Basic knowledge of HTML5, CSS and basic knowledge of React is sufficient to customize the resume for your requirements.
+
+## Use browser built in feature Print (ctrl + P) and use standard A4 size and no margins to save the copy as PDF
