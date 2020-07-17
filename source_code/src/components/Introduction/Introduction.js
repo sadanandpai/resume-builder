@@ -10,7 +10,9 @@ import GitHubIcon from "@material-ui/icons/GitHub";
 class Introduction extends React.Component {
   render() {
     return (
-      <div className="intro-container">
+      <div className="intro-container" onDoubleClick={() => {
+        window.document.designMode = window.document.designMode === "off" ? "on" : "off";
+      }}>
         <h1 className="name">{this.props.personalDetails.name}</h1>
         <div className="main-intro flex-container justify-content-between">
           <div className="experience flex-container-column justify-content-start">
