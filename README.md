@@ -1,3 +1,6 @@
+[![](https://img.shields.io/github/forks/sadanandpai/single-page-resume-builder?style=for-the-badge)](#forks)
+[![](https://img.shields.io/github/stars/sadanandpai/single-page-resume-builder?style=for-the-badge)](#stars)
+
 # Single Page Resume Builder
 Build a standard and professional single page resume
 
