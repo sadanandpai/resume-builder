@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { IconHolder } from "../atoms/Styles";
 
-import LinkedInIcon from "@material-ui/icons/LinkedIn";
-import GitHubIcon from "@material-ui/icons/GitHub";
+import { FaLinkedin } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
 
 const SocialDiv = styled.div`
   padding: 10px;
@@ -17,26 +17,26 @@ const SocialDiv = styled.div`
 export default function SocialBar({ linkedin, github }) {
   return (
     <SocialDiv>
-      <span className="linkedin">
-        <IconHolder>
-          <LinkedInIcon />
+      <div className="linkedin">
+        <IconHolder styles={{ "vertical-align": "middle" }}>
+          <FaLinkedin />
         </IconHolder>
         <span>
           <a target="_blank" rel="noopener noreferrer" href={"http://linkedin.com/in/" + linkedin}>
             {linkedin}
           </a>
         </span>
-      </span>
-      <span className="github">
-        <IconHolder>
-          <GitHubIcon />
+      </div>
+      <div className="github">
+        <IconHolder styles={{ "vertical-align": "middle" }}>
+          <FaGithub />
         </IconHolder>
         <span>
           <a target="_blank" rel="noopener noreferrer" href={"http://github.com/" + github}>
             {github}
           </a>
         </span>
-      </span>
+      </div>
     </SocialDiv>
   );
 }

@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+import { ItalicDiv } from "../atoms/Styles";
+
 const Header = styled.div`
   position: relative;
   margin-top: 20px;
@@ -13,10 +15,6 @@ const CompanyName = styled.div`
 
 const CompanyRole = styled.div`
   font-weight: 600;
-`;
-
-const Italic = styled.div`
-  font-style: italic;
 `;
 
 const FlexJustifiedBetween = styled.div`
@@ -37,11 +35,11 @@ export default function CompanyHeader(props) {
       <div>
         <FlexJustifiedBetween>
           <CompanyName>{props.company.name}</CompanyName>
-          <Italic>{props.company.years}</Italic>
+          <ItalicDiv>{props.company.years}</ItalicDiv>
         </FlexJustifiedBetween>
         <FlexJustifiedBetween>
           <CompanyRole>{props.company.role}</CompanyRole>
-          <Italic>{props.company.expYears}</Italic>
+          <ItalicDiv>{props.company.expYears}</ItalicDiv>
         </FlexJustifiedBetween>
       </div>
 

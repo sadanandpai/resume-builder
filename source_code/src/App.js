@@ -1,13 +1,11 @@
 import React from "react";
 import "./App.css";
-import Resume from "./components/pages/Resume/Resume";
-
-import data from "./data.json";
+import Resume from "./components/pages/Resume";
 
 export default function App() {
   return (
     <div className="App">
-      <Resume data={data}></Resume>
+      <Resume></Resume>
     </div>
   );
 }

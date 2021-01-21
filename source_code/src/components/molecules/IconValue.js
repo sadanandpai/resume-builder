@@ -8,13 +8,17 @@ const IconValueDiv = styled.div`
   height: 30px;
 `;
 
+const ValueDiv = styled.span`
+  vertical-align: middle;
+`;
+
 export default function IconValue({ Icon, value }) {
   return (
     <IconValueDiv>
       <IconHolder>
         <Icon />
       </IconHolder>
-      <span>{value}</span>
+      <ValueDiv>{value}</ValueDiv>
     </IconValueDiv>
   );
 }

@@ -1,16 +1,29 @@
 import React from "react";
 import { TitleHeader } from "../atoms/Styles";
-import VerifiedUserIcon from "@material-ui/icons/VerifiedUser";
-
 import { IconHolder } from "../atoms/Styles";
+import styled from "styled-components";
 
-export default function SectionHeader({ title, icon }) {
+import { MdEdit } from "react-icons/md";
+
+const MdEditCustom = styled(MdEdit)`
+  color: black;
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+
+  @media print {
+    display: none;
+  }
+`;
+
+export default function SectionHeader({ title, Icon }) {
   return (
     <TitleHeader>
       <IconHolder>
-        <VerifiedUserIcon />
+        <Icon />
       </IconHolder>
       <span>{title}</span>
+      <MdEditCustom />
     </TitleHeader>
   );
 }

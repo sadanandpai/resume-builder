@@ -1,11 +1,10 @@
 import React from "react";
 import styled from "styled-components";
+import { ItalicDiv } from "../atoms/Styles";
 
-import SectionHeader from "../templates/SectionHeader/SectionHeader";
+import SectionHeader from "../molecules/SectionHeader";
 
 export const EducationDiv = styled.div`
-  margin-bottom: 10px;
-
   div {
     margin: 5px 0px;
   }
@@ -26,24 +25,23 @@ export const EducationDiv = styled.div`
   }
 `;
 
-export default function Education({ title, icon, description }) {
+export default function Education({ title, Icon, description }) {
   return (
-    <>
-      <SectionHeader title={title} icon={icon} />
-      <div className="margin-bottom-10">
-        {description.map((data, index) => (
-          <EducationDiv key={index}>
-            <div className="edu-details">
-              <div className="degree">{data.degree}</div>
-              <div className="font-italic">{data.years}</div>
-            </div>
+    <div>
+      <SectionHeader title={title} Icon={Icon} />
 
-            <div className="specialization">{data.specialization}</div>
-            <div className="institution">{data.institution}</div>
-            <div className="grade">{data.grade}</div>
-          </EducationDiv>
-        ))}
-      </div>
-    </>
+      {description.map((data, index) => (
+        <EducationDiv key={index}>
+          <div className="edu-details">
+            <div className="degree">{data.degree}</div>
+            <ItalicDiv>{data.years}</ItalicDiv>
+          </div>
+
+          <div className="specialization">{data.specialization}</div>
+          <div className="institution">{data.institution}</div>
+          <div className="grade">{data.grade}</div>
+        </EducationDiv>
+      ))}
+    </div>
   );
 }

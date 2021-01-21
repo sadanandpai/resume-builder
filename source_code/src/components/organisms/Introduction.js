@@ -50,14 +50,8 @@ export default function Introduction({ personalDetails }) {
       <Intro>
         <InfoDiv>
           <Role>{personalDetails.role}</Role>
-          <LabelValue
-            label={personalDetails.experience[0].type}
-            value={personalDetails.experience[0].years}
-          />
-          <LabelValue
-            label={personalDetails.experience[1].type}
-            value={personalDetails.experience[1].years}
-          />
+          <LabelValue label={personalDetails.experience[0].type} value={personalDetails.experience[0].years} />
+          <LabelValue label={personalDetails.experience[1].type} value={personalDetails.experience[1].years} />
         </InfoDiv>
 
         <ContactDiv>

@@ -6,12 +6,24 @@ export const TitleHeader = styled.div`
   text-align: center;
   color: #007bff;
   margin-bottom: 10px;
+  position: relative;
 `;
 
 export const IconHolder = styled.span`
-  vertical-align: middle;
   margin-right: 10px;
   color: black;
   height: 28px;
   width: 28px;
+  vertical-align: middle;
+
+  svg {
+    vertical-align: top;
+    margin-right: 10px;
+    color: black;
+    font-size: 24px;
+  }
+`;
+
+export const ItalicDiv = styled.div`
+  font-style: italic;
 `;

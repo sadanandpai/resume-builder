@@ -1,15 +1,25 @@
 import React from "react";
-import SectionHeader from "../templates/SectionHeader/SectionHeader";
+import styled from "styled-components";
 
-export default function ListDescription({ title, icon, description }) {
+import SectionHeader from "../molecules/SectionHeader";
+
+export const ListItems = styled.div`
+  margin-right: 10px;
+`;
+
+export const UnorderedList = styled.ul`
+  padding-inline-start: 20px;
+`;
+
+export default function ListDescription({ title, Icon, description }) {
   return (
-    <div className="list-items">
-      <SectionHeader title={title} icon={icon} />
-      <ul className="ul-padding-20">
+    <ListItems>
+      <SectionHeader title={title} Icon={Icon} />
+      <UnorderedList>
         {description.map((data, index) => (
           <li key={index} dangerouslySetInnerHTML={{ __html: data }}></li>
         ))}
-      </ul>
-    </div>
+      </UnorderedList>
+    </ListItems>
   );
 }
