@@ -1,19 +1,13 @@
 import React from "react";
 import "./App.css";
-import Resume from "./components/Resume/Resume";
+import Resume from "./components/pages/Resume/Resume";
 
-import data from "./data.json"
+import data from "./data.json";
 
-class App extends React.Component {
-
-  render() {
-    return (
-      <div className="App">
-        <Resume data={data}></Resume>
-      </div>
-    );
-  }
+export default function App() {
+  return (
+    <div className="App">
+      <Resume data={data}></Resume>
+    </div>
+  );
 }
-
-
-export default App;
