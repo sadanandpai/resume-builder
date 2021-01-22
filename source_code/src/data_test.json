@@ -1,0 +1,127 @@
+{
+  "personal_details": {
+    "name": "John Doe",
+    "role": "Test Engineer",
+    "mobile": "+91 9876543210",
+    "email": "johndoe@gmail.com",
+    "location": "Delhi",
+    "experience": [
+      { "type": "Automation Experience", "years": "4.5 years" },
+      { "type": "Total Experience", "years": "8.5 years" }
+    ],
+    "linkedin": "john-doe-11",
+    "github": "john_doe_test_85"
+  },
+  "summary": {
+    "title": "Summary",
+    "description": "QA tester with full system development lifecycle experience, including designing, <strong>developing</strong> and implementing test plans, test cases and test processes fueling swift corrective actions, significant cost savings and fault-free audits."
+  },
+  "career": {
+    "title": "Career Goal",
+    "description": "A highly organized and hard-working individual looking for a responsible position to gain <u>practical experience</u> and to make use of my interpersonal skills to achieve goals of a company that focuses on customer satisfaction and customer experience."
+  },
+  "companyDetails": {
+    "title": "Professional Experience",
+    "companyList": [
+      {
+        "name": "Dummy Corporation 1",
+        "role": "Senior Test Engineer",
+        "years": "Jan 2018 - present",
+        "expYears": "2.2 years",
+        "description": [
+          "Identified, documented and reported bugs, errors, interoperability flaws and other issues within proprietary software applications developed for ABC Company’s global user base.",
+          "Demonstrated methodical, detail-oriented and thorough approach to all assignments while adhering to compressed timelines. Complete all assignments on or ahead of schedule.",
+          "Consistently recognized for excellent problem-solving and analytical skills",
+          "Worked collaboratively with QA, development and business groups to complete comprehensive testing on 2 major new releases"
+        ]
+      },
+      {
+        "name": "Dummy Corporation 2",
+        "role": "Senior Associate",
+        "years": "Jun 2015 - Dec 2017",
+        "expYears": "2.5 years",
+        "description": [
+          "Documented and reported bugs, errors, <u><i>interoperability flaws and other issues within proprietary</i></u> software applications developed for ABC Company’s global user base.",
+          "Demonstrated methodical approach to all assignments while adhering to compressed timelines. Complete all assignments on or ahead of schedule.",
+          "Worked collaboratively with QA, development and business groups to complete comprehensive testing on 2 major new releases"
+        ]
+      },
+      {
+        "name": "Dummy Corporation 3",
+        "role": "Test Engineer",
+        "years": "Aug 2011 - May 2015",
+        "expYears": "3.8 years",
+        "description": [
+          "Demonstrated methodical, detail-oriented and thorough approach to all assignments while adhering to compressed timelines. Complete all assignments on or ahead of schedule.",
+          "Consistently recognized for excellent problem-solving and analytical skills by programmers, project managers and supervisors",
+          "Worked collaboratively with QA, development and business groups to complete comprehensive testing on 2 major new releases"
+        ]
+      }
+    ]
+  },
+  "key_projects": {
+    "title": "Key Projects / Involvements",
+    "description": [
+      "Prevented millions of dollars in state sales tax undercharges <strong>by initiating tests that revealed a bug</strong> in a new release of shopping cart software.",
+      "Isolated previously undiscovered flaw in price checking tool resulting in more competitive pricing and a 20 percent increase in revenue and progressive technological improvements for robustness.",
+      "Implemented automated testing tools spawning more diligent levels of regression testing, negative testing, error/bug retests and usability."
+    ]
+  },
+  "certificates": {
+    "title": "Certificates and Awards",
+    "description": [
+      "ISTQB Certification Level 1 - 2018",
+      "Agile and Scrum Master Certificate from Udacity",
+      "Best performer award for <strong>consistently</strong> exceeding the performance",
+      "Certificate of exceptional bug finder by XYZ client",
+      "Recorgnition zero defect delivery"
+    ]
+  },
+  "skills": {
+    "title": "Core Skills",
+    "description": [
+      { "name": "Java", "rating": 4 },
+      { "name": "Python", "rating": 4 },
+      { "name": "Selenium", "rating": 3 },
+      { "name": "TestNG", "rating": 3 },
+      { "name": "Protractor", "rating": 4 },
+      { "name": "RestAssured", "rating": 3 }
+    ]
+  },
+  "expertise": {
+    "title": "Areas of Expertise",
+    "description": ["MySQL", "SubVersion", "Git", "Eclipse", "Jira", "Maven", "Appium", "JMeter", "UFT"]
+  },
+  "methodology": {
+    "title": "Methodology / Approach",
+    "description": [
+      "Data Driven",
+      "Keyword Driven",
+      "Behavior driven",
+      "Waterfall",
+      "Defect Life Cycle",
+      "STLC",
+      "Integration Testing",
+      "Agile",
+      "Regression Testing",
+      "SDLC",
+      "Performance Testing"
+    ]
+  },
+  "tools": {
+    "title": "Tools",
+    "description": ["Git", "SVN", "Jira", "BugZilla", "Eclipse", "Cypress", "Xpath"]
+  },
+  "education": {
+    "title": "Education",
+    "description": [
+      {
+        "institution": "XIV, University",
+        "years": "2005 - 2009",
+        "grade": "8.3",
+        "degree": "B.Tech",
+        "specialization": "Computers"
+      }
+    ]
+  }
+}
