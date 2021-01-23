@@ -36,6 +36,11 @@ jobs:
         run: |
           npm install
           npm run build
-          git add build
+          git branch dist -d
+          git checkout --orphan dist
+          git rm -rf .
+          mv -v ./build/* ./
+          rm build
+          git add *
           git commit -m "build files"
           git push
