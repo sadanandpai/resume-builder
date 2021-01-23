@@ -4,7 +4,7 @@
 # Single Page Resume Builder
 Build a standard and professional single page resume
 
-<a href="https://sadanandpai.github.io/single-page-resume-builder/index.html">Live demo</a>
+<a href="https://sadanandpai.github.io/single-page-resume-builder/build/">Live demo</a>
 
 ### Installation
 - Clone the repo
