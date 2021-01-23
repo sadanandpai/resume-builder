@@ -40,6 +40,7 @@ jobs:
           rm -r .github
           rm -r public
           rm -r src
+          rm -r node_modules
           mv -v ./build/* ./
           git add *
           git commit -m "build files"
