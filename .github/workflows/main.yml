@@ -37,8 +37,6 @@ jobs:
           npm install
           npm run build
           git checkout -B dist
-          git push --set-upstream origin dist
-          git pull
           rm -r .github
           rm -r public
           rm -r src
@@ -46,4 +44,5 @@ jobs:
           mv -v ./build/* ./
           git add *
           git commit -m "build files"
-          git push
+          git push --set-upstream origin dist
+          git push -f
