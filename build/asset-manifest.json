@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/single-page-resume-builder/static/css/main.8b3d0078.chunk.css",
+    "main.js": "/single-page-resume-builder/static/js/main.0e501218.chunk.js",
+    "main.js.map": "/single-page-resume-builder/static/js/main.0e501218.chunk.js.map",
+    "runtime-main.js": "/single-page-resume-builder/static/js/runtime-main.fbc203bd.js",
+    "runtime-main.js.map": "/single-page-resume-builder/static/js/runtime-main.fbc203bd.js.map",
+    "static/js/2.20facd8c.chunk.js": "/single-page-resume-builder/static/js/2.20facd8c.chunk.js",
+    "static/js/2.20facd8c.chunk.js.map": "/single-page-resume-builder/static/js/2.20facd8c.chunk.js.map",
+    "index.html": "/single-page-resume-builder/index.html",
+    "precache-manifest.e4a08537d86c33b6bf038fed5503272e.js": "/single-page-resume-builder/precache-manifest.e4a08537d86c33b6bf038fed5503272e.js",
+    "service-worker.js": "/single-page-resume-builder/service-worker.js",
+    "static/css/main.8b3d0078.chunk.css.map": "/single-page-resume-builder/static/css/main.8b3d0078.chunk.css.map",
+    "static/js/2.20facd8c.chunk.js.LICENSE.txt": "/single-page-resume-builder/static/js/2.20facd8c.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.fbc203bd.js",
+    "static/js/2.20facd8c.chunk.js",
+    "static/css/main.8b3d0078.chunk.css",
+    "static/js/main.0e501218.chunk.js"
+  ]
+}
