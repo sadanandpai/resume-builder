@@ -36,7 +36,7 @@ jobs:
         run: |
           npm install
           npm run build
-          git checkout dist
+          git checkout -B dist
           git rm -rf .
           mv -v ./build/* ./
           rm build
