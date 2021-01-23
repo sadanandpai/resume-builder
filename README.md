@@ -8,13 +8,13 @@ Build a standard and professional single page resume
 
 ### Installation
 - Clone the repo
-- Navigate to 'source_code'
+- Navigate to the folder
 - Run npm install
 - Run npm start
 
 ## Customize the json data present in data.json file
-For test engineer, sample data can be used from data_test.json
 For dev engineer, sample data can be used from data_dev.json
+For test engineer, sample data can be used from data_test.json
 
 ## The changes to structure if needed can be done using Resume.js file
 ## The changes to icons according to the section title can be managed in SectionHeader.js
