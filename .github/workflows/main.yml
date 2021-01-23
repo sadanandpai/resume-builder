@@ -37,7 +37,9 @@ jobs:
           npm install
           npm run build
           git checkout -B dist
-          git rm -rf .
+          rm -r .github
+          rm -r public
+          rm -r src
           mv -v ./build/* ./
           rm build
           git add *
