@@ -36,4 +36,6 @@ jobs:
         run: |
           npm install
           npm run build
-          npm run deploy
+          git add build
+          git commit -m "build files"
+          git push
