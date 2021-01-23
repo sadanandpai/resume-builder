@@ -44,4 +44,5 @@ jobs:
           mv -v ./build/* ./
           git add *
           git commit -m "build files"
+          git push --set-upstream origin dist
           git push
