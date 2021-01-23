@@ -41,7 +41,6 @@ jobs:
           rm -r public
           rm -r src
           mv -v ./build/* ./
-          rm build
           git add *
           git commit -m "build files"
           git push
