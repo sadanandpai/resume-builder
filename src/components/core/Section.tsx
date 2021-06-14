@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { Flex, FlexHVC } from "../common/styles";
 import { getIcon } from "../common/icons";
+import Color from "color";
 
 const SectionHolder = styled.div`
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: 1px solid ${(props) => Color(props.theme.fontColor).alpha(0.25).toString()};
   border-radius: 5px;
   padding: 15px 10px 10px 10px;
   position: relative;
@@ -13,10 +14,10 @@ const SectionHolder = styled.div`
     position: absolute;
     top: -10px;
     left: 8px;
-    background: white;
+    background: ${(props) => props.theme.backgroundColor};
     padding: 0 5px;
     font-weight: bold;
-    color: rgb(0, 123, 255);
+    color: ${(props) => props.theme.primaryColor};
 
     svg {
       font-size: 0.8rem;
@@ -30,15 +31,15 @@ const SectionIntroHolder = styled(SectionHolder)`
   .header {
     top: -20px;
     left: 0;
-    background: white;
+    background: ${(props) => props.theme.backgroundColor};;
     margin-left: 5px;
     padding: 0 5px;
+    background: ${(props) => props.theme.backgroundColor};
 
     .header__title {
       margin: 0;
-      color: rgb(0, 123, 255);
+      color: ${(props) => props.theme.primaryColor};
     }
-
   }
 
   .social-icons {
@@ -49,7 +50,8 @@ const SectionIntroHolder = styled(SectionHolder)`
     column-gap: 5px;
 
     svg {
-      background-color: white;
+      color: ${(props) => props.theme.primaryColor};
+      background-color: ${(props) => props.theme.backgroundColor};
     }
   }
 `;

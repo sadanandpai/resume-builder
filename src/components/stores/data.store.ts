@@ -6,7 +6,7 @@ import {
   skills,
   achievements,
   education,
-} from "./data";
+} from "../common/data";
 
 export const useIntro = create((set) => ({
   intro,

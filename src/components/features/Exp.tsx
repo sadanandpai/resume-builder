@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Steps } from "antd";
-import { getIcon } from "../common/icons";
-
-import { useExp } from "../common/store";
 import { Section } from "../core/Section";
 
 import { CompanyHeader } from "../core/Company";
@@ -35,8 +32,12 @@ const Step = styled(ExpSteps.Step)`
   .ant-steps-item-container
     > .ant-steps-item-content
     > .ant-steps-item-description {
-    color: black;
     padding-bottom: 0;
+    color: ${props => props.theme.fontColor};
+  }
+
+  .ant-steps-item-container > .ant-steps-item-content > .ant-steps-item-title{
+    color: ${(props) => props.theme.fontColor};
   }
 `;
 

@@ -1,21 +1,24 @@
-import React, { useRef, useEffect } from "react";
-import { FlexCol } from "../common/styles";
+import React from "react";
+import styled from "styled-components";
+import { Flex } from "../common/styles";
 import { Section } from "../core/Section";
-import { RatedElement } from "../core/RatedElement";
 
-export function UnratedSection({ icon, title, items }: any) {  
+const Badge = styled.span`
+  padding: 4px;
+  font-size: 98%;
+  font-weight: 500;
+  border: 1px solid ${(props: any) => props.theme.secondaryColor};
+  border-radius: 4px;
+`;
+
+export function Exposure({ icon, title, items }: any) {
   return (
     <Section title={title} icon={icon}>
-      <FlexCol rGap="8px">
-        {items.map((data: any, index: number) => (
-          <RatedElement
-            itemLabel={data.name}
-            itemRating={data.rating}
-            key={data.name}
-            index={index}
-          />
+      <Flex cGap="10px" rGap="10px" style={{ flexWrap: "wrap" }}>
+        {items.map((value: any, index: any) => (
+          <Badge key={index}>{value}</Badge>
         ))}
-      </FlexCol>
+      </Flex>
     </Section>
   );
 }

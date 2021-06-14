@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Flex, FlexCol, FlexVC } from "../common/styles";
-import { Section, SectionIntro } from "../core/Section";
+import { SectionIntro } from "../core/Section";
 import { getIcon } from "../common/icons";
+import Color from "color";
 
 const Role = styled.h3`
-  color: rgb(0, 123, 255, 0.75);
+  color: ${(props) => Color(props.theme.primaryColor).alpha(0.75).toString()};
   margin-bottom: 0;
   font-weight: 600;
 `;

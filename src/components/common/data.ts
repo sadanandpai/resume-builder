@@ -1,16 +1,16 @@
 export const intro = {
-  name: "Sadanand Pai",
-  role: "Front-end Developer",
-  mobile: "+91 8618006177",
-  email: "sadypai@gmail.com",
+  name: "John Doe",
+  role: "Frontend Developer",
+  mobile: "+91 9876543210",
+  email: "johndoe@email.com",
   location: "Bengaluru",
   experience: [
-    { type: "Front-end exp", years: "3 years" },
-    { type: "Total Experience", years: "8 years" },
+    { type: "Frontend experience", years: "4 years" },
+    { type: "Total Experience", years: "6 years" },
   ],
   social: [
-    ["linkedin", "https://www.linkedin.com/in/sadanandpai/"],
-    ["github", "https://github.com/sadanandpai/"],
+    ["linkedin", "https://www.linkedin.com/in/johndoe/"],
+    ["github", "https://github.com/johndoe/"],
   ],
 };
 
@@ -50,7 +50,7 @@ export const skills = {
   },
   tools: {
     title: "Tools",
-    items: ["Git", "VS Code", "Jira", "Webpack", "Eclipse"],
+    items: ["Git", "VS Code", "Jira", "Webpack", "Eclipse", "Bitbucket"],
   },
 };
 
@@ -58,7 +58,7 @@ export const summary = {
   about: {
     title: "About me",
     photo:
-      "https://media-exp3.licdn.com/dms/image/C5103AQF8JgMBWz6LTg/profile-displayphoto-shrink_800_800/0/1572070699000?e=1628726400&v=beta&t=bLnJL1lpC9XVBwrulI7O7F1oWlnmsMj2Xkr5FBfEIic",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZX_8ysYZc9rt-uLU-Q8i28t51DXQMIJ66-A&usqp=CAU",
     description: `I am a web developer having expertise in frontend development and exposure to back- end development. I design and develop web applications using the latest technologies to deliver the product with quality code.\nI am very good at UI fundamentals & Technologies and can adapt to most of the front-end frameworks quickly.`,
   },
   objective: {
@@ -72,7 +72,7 @@ export const experience = {
   title: "Experience",
   companies: [
     {
-      name: "CoinDCX",
+      name: "Dummy Corporation 1",
       role: "Senior Software Developer",
       years: "Apr 2021 - present",
       expYears: "2.5 years",
@@ -99,7 +99,7 @@ export const experience = {
       name: "Dummy Corporation 3",
       role: "Trainee Developer",
       years: "Aug 2011 - May 2015",
-      expYears: "1 years",
+      expYears: "1 year",
       description: [
         "Design easy user interfaces and great user experiences for the digital platforms of small companies",
         "Wordpress development, including themes creation or customization, custom plugins development and training",

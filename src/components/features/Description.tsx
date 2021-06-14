@@ -12,7 +12,7 @@ const RoundedImage = styled.img`
   shape-outside:circle();
   margin-right: 20px;
   margin-bottom: 5px;
-  border: 0.5px solid black;
+  border: 0.5px solid ${(props) => props.theme.fontColor};
 `
 
 export function Description({icon, title, description, photo}: any) {

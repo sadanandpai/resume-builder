@@ -9,13 +9,13 @@ import {
   useSkills,
   useAchievements,
   useEducation,
-} from "../common/store";
+} from "../stores/data.store";
 import { getIcon } from "../common/icons";
 
 import { Intro } from "../features/Intro";
 import { Description } from "../features/Description";
-import { UnratedSection } from "../features/UnRatedSection";
-import { Exposure } from "../features/RatedSection";
+import { UnratedSection } from "../features/RatedSection";
+import { Exposure } from "../features/UnratedSection";
 import { Exp } from "../features/Exp";
 import { EduSection } from "../features/EduSection";
 import { ListSection } from "../features/ListSection";
@@ -23,11 +23,13 @@ import { ListSection } from "../features/ListSection";
 const ResumeContainer = styled(Flex)`
   width: 210mm;
   height: 297mm;
-  border: 1px solid black;
+  border: 1px solid ${props => props.theme.fontColor};
   margin: auto;
   padding: 40px 25px;
   align-items: flex-start;
   column-gap: 10px;
+  color: ${props => props.theme.fontColor};
+  background-color: ${props => props.theme.backgroundColor};
 
   @media print {
     & {
