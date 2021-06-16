@@ -3,7 +3,9 @@ import shallow from "zustand/shallow";
 import styled from "styled-components";
 import { Flex, FlexCol } from "../common/styles";
 import { ProfessionalTemplate } from "../templates/professional-template/ProfessionalTemplate";
+import { LegacyTemplate } from "../templates/legacy-template/LegacyTemplate";
 
+LegacyTemplate;
 const ResumeContainer = styled(Flex)`
   width: 210mm;
   height: 297mm;
@@ -40,6 +42,7 @@ export function Resume() {
   return (
     <ResumeContainer className="resume">
       <ProfessionalTemplate />
+      {/* <LegacyTemplate /> */}
     </ResumeContainer>
   );
 }

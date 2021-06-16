@@ -10,9 +10,15 @@ const ExpSteps = styled(Steps)`
   justify-content: space-between;
   height: 100%;
 
-  .ant-steps-item:last-child{
-    flex-grow: 0;
+  .ant-steps-item{
+    padding-bottom: 20px;
+
+    &:last-child{
+      padding-bottom: 0;
+      flex-grow: 0;
+    }
   }
+ 
 `
 
 const Step = styled(ExpSteps.Step)`
@@ -44,7 +50,6 @@ const Step = styled(ExpSteps.Step)`
 export function Exp({icon, title, companies}: any) {
 
   return (
-    <Section icon={icon} title={title} styles={{ flexGrow: 1 }}>
       <ExpSteps
         progressDot
         current={companies.length}
@@ -58,11 +63,9 @@ export function Exp({icon, title, companies}: any) {
               title={HeaderComponent}
               description={DescriptionComponent}
               key={index}
-              style={{paddingBottom: '0px'}}
             />
           );
         })}
       </ExpSteps>
-    </Section>
   );
 }

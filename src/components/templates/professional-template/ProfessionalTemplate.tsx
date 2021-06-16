@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { FlexCol } from "../../common/styles";
 import { getIcon } from "../../common/icons";
 
+import { Section } from "./core/Section";
 import { Intro } from "./features/Intro";
 import { Description } from "./features/Description";
 import { UnratedSection } from "./features/RatedSection";
@@ -49,64 +50,74 @@ export function ProfessionalTemplate() {
     ],
     shallow
   );
+
+  const leftSections = [
+    {
+      title: experience.title,
+      component: <Exp companies={experience.companies} />,
+      styles: {flexGrow: 1}
+    },
+    {
+      title: keyProjects.title,
+      component: <ListSection items={keyProjects.items} />,
+    },
+    {
+      title: certificates.title,
+      component: <ListSection items={certificates.items} />,
+    },
+  ];
+
+  const rightSections = [
+    {
+      title: intro.about.title,
+      component: (
+        <Description
+          photo={intro.photo}
+          description={intro.about.description}
+        />
+      ),
+    },
+    {
+      title: intro.objective.title,
+      component: <Description description={intro.objective.description} />,
+    },
+    {
+      title: technical.title,
+      component: <UnratedSection items={technical.items} />,
+    },
+    { title: exposure.title, component: <Exposure items={exposure.items} /> },
+    {
+      title: methodology.title,
+      component: <Exposure items={methodology.items} />,
+    },
+    { title: tools.title, component: <Exposure items={tools.items} /> },
+    {
+      title: education.title,
+      component: <EduSection items={education.items} />,
+    },
+  ];
+
   return (
     <>
       <LeftSection>
         <Intro data={intro} />
-        <Exp
-          icon={getIcon("exp")}
-          title={experience.title}
-          companies={experience.companies}
-        />
-        <ListSection
-          icon={getIcon("key")}
-          title={keyProjects.title}
-          items={keyProjects.items}
-        />
-        <ListSection
-          icon={getIcon("certificates")}
-          title={certificates.title}
-          items={certificates.items}
-        />
+        {leftSections.map(({title, component, styles}) => {
+          return (
+            <Section icon={getIcon(title)} title={title} styles={styles}>
+              {component}
+            </Section>
+          );
+        })}
       </LeftSection>
 
       <RightSection>
-        <Description
-          icon={getIcon("about")}
-          title={intro.about.title}
-          photo={intro.photo}
-          description={intro.about.description}
-        />
-        <Description
-          icon={getIcon("objective")}
-          title={intro.objective.title}
-          description={intro.objective.description}
-        />
-        <UnratedSection
-          icon={getIcon("technical")}
-          title={technical.title}
-          items={technical.items}
-        />
-        <Exposure
-          icon={getIcon("skills")}
-          title={exposure.title}
-          items={exposure.items}
-        />
-        <Exposure
-          icon={getIcon("methodology")}
-          title={methodology.title}
-          items={methodology.items}
-        />
-        <Exposure
-          icon={getIcon("tools")}
-          title={tools.title}
-          items={tools.items}
-        />
-        <EduSection
-          icon={getIcon("education")}
-          title={education.title}
-          items={education.items}
-        />
+        {rightSections.map(({title, component}) => {
+          return (
+            <Section icon={getIcon(title)} title={title}>
+              {component}
+            </Section>
+          );
+        })}
       </RightSection>
     </>
   );

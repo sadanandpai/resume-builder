@@ -13,12 +13,10 @@ const Badge = styled.span`
 
 export function Exposure({ icon, title, items }: any) {
   return (
-    <Section title={title} icon={icon}>
-      <Flex cGap="10px" rGap="10px" style={{ flexWrap: "wrap" }}>
-        {items.map((value: any, index: any) => (
-          <Badge key={index}>{value}</Badge>
-        ))}
-      </Flex>
-    </Section>
+    <Flex cGap="10px" rGap="10px" style={{ flexWrap: "wrap" }}>
+      {items.map((value: any, index: any) => (
+        <Badge key={index}>{value}</Badge>
+      ))}
+    </Flex>
   );
 }

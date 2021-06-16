@@ -15,22 +15,18 @@ const Specialization = styled.div`
 `;
 
 export function EduSection({ icon, title, items }: any) {
-  return (
-    <Section title={title} icon={icon}>
-      {items.map((data: any, index: any) => (
-        <div key={index}>
-          <Flex jc="space-between">
-            <Degree>{data.degree}</Degree>
-            <em>{data.years}</em>
-          </Flex>
+  return items.map((data: any, index: any) => (
+    <div key={index}>
+      <Flex jc="space-between">
+        <Degree>{data.degree}</Degree>
+        <em>{data.years}</em>
+      </Flex>
 
-          <Specialization>{data.specialization}</Specialization>
-          <Flex jc="space-between">
-            <div>{data.institution}</div>
-            <em>{data.grade}</em>
-          </Flex>
-        </div>
-      ))}
-    </Section>
-  );
+      <Specialization>{data.specialization}</Specialization>
+      <Flex jc="space-between">
+        <div>{data.institution}</div>
+        <em>{data.grade}</em>
+      </Flex>
+    </div>
+  ));
 }
