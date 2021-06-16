@@ -2,7 +2,6 @@ import create from "zustand";
 import {
   intro,
   experience,
-  summary,
   skills,
   achievements,
   education,
@@ -19,11 +18,6 @@ export const useExp = create((set) => ({
 export const useAchievements = create((set) => ({
   keyProjects: achievements.keyProjects,
   certificates: achievements.certificates,
-}));
-
-export const useSummary = create((set) => ({
-  about: summary.about,
-  objective: summary.objective,
 }));
 
 export const useSkills = create((set) => ({

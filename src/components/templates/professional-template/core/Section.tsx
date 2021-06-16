@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Flex, FlexHVC } from "../common/styles";
-import { getIcon } from "../common/icons";
+import { Flex, FlexHVC } from "../../../common/styles";
+import { getIcon } from "../../../common/icons";
 import Color from "color";
 
 const SectionHolder = styled.div`

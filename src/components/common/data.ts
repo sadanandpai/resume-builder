@@ -12,6 +12,17 @@ export const intro = {
     ["linkedin", "https://www.linkedin.com/in/johndoe/"],
     ["github", "https://github.com/johndoe/"],
   ],
+  photo:
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZX_8ysYZc9rt-uLU-Q8i28t51DXQMIJ66-A&usqp=CAU",
+  about: {
+    title: "About me",
+    description: `I am a web developer having expertise in frontend development and exposure to back- end development. I design and develop web applications using the latest technologies to deliver the product with quality code.\nI am very good at UI fundamentals & Technologies and can adapt to most of the front-end frameworks quickly.`,
+  },
+  objective: {
+    title: "Career Objective",
+    description:
+      "Eager to expand my skill set through external trainings to help boost all major front desk KPIs. Hoping to leverage organizational skills to help ABC Corp introduce time-saving schemes for all executives.",
+  },
 };
 
 export const skills = {
@@ -51,20 +62,6 @@ export const skills = {
   tools: {
     title: "Tools",
     items: ["Git", "VS Code", "Jira", "Webpack", "Eclipse", "Bitbucket"],
-  },
-};
-
-export const summary = {
-  about: {
-    title: "About me",
-    photo:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZX_8ysYZc9rt-uLU-Q8i28t51DXQMIJ66-A&usqp=CAU",
-    description: `I am a web developer having expertise in frontend development and exposure to back- end development. I design and develop web applications using the latest technologies to deliver the product with quality code.\nI am very good at UI fundamentals & Technologies and can adapt to most of the front-end frameworks quickly.`,
-  },
-  objective: {
-    title: "Career Objective",
-    description:
-      "Eager to expand my skill set through external trainings to help boost all major front desk KPIs. Hoping to leverage organizational skills to help ABC Corp introduce time-saving schemes for all executives.",
   },
 };
 

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-import { Flex } from "../common/styles";
+import { Flex } from "../../../common/styles";
 
 const CompanyName = styled.div`
   font-size: 1rem;

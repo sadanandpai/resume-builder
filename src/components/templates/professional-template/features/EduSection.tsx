@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
 
-import { Flex } from "../common/styles";
+import { Flex } from "../../../common/styles";
 import { Section } from "../core/Section";
 
 const Degree = styled.div`

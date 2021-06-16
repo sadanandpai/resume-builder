@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { FlexVC } from "../common/styles";
+import { FlexVC } from "../../../common/styles";
 import { Progress } from 'antd';
 import { withTheme } from 'styled-components';
 
