@@ -101,7 +101,7 @@ export function LegacyTemplate() {
 
       <GridColumn>
         <SectionHeader
-          Icon={getIcon(intro.about.description)}
+          Icon={getIcon(intro.about.title)}
           title={intro.about.title}
         />
         <Description description={intro.about.description} />
