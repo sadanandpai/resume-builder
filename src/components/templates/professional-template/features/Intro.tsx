@@ -13,7 +13,6 @@ const Role = styled.h3`
 
 export function Intro({ data }: any) {
   return (
-    <SectionIntro title={data.name} icons={data.social}>
       <Flex jc="space-between">
         <FlexCol rGap="5px">
           <Role>{data.role}</Role>
@@ -32,7 +31,6 @@ export function Intro({ data }: any) {
           <Contact icon={getIcon('location')} value={data.location} />
         </FlexCol>
       </Flex>
-    </SectionIntro>
   );
 }
 

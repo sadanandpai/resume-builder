@@ -13,18 +13,8 @@ import { ListSection } from "../professional-template/features/ListSection";
 
 import { Separator } from "./core/Separator";
 import { SectionHeader } from "./core/SectionHeader";
+import { SocialBar } from "./core/SocialBar";
 
-import { MdWork } from "react-icons/md";
-import { MdVpnKey } from "react-icons/md";
-import { MdVerifiedUser } from "react-icons/md";
-
-import { MdPermIdentity } from "react-icons/md";
-import { AiOutlineAim } from "react-icons/ai";
-import { BsBook } from "react-icons/bs";
-import { GrStatusGood } from "react-icons/gr";
-import { IoGitBranch } from "react-icons/io5";
-import { MdBuild } from "react-icons/md";
-import { FaUniversity } from "react-icons/fa";
 import {
   useIntro,
   useExp,
@@ -37,7 +27,7 @@ const GridContainer = styled.div`
   margin: auto;
   background-color: white;
   display: grid;
-  grid-template-columns: 2fr 10px 1fr;
+  grid-template-columns: 70% 10px 1fr;
 `;
 
 const Divider = styled.div`
@@ -50,7 +40,17 @@ const GridColumn = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  &:first-child{
+    padding-right: 10px;
+  }
 `;
+
+const EmployeName = styled.div`
+  margin: 0;
+  color: ${(props) => props.theme.primaryColor};
+  font-size: 1.5rem;
+`
 
 export function LegacyTemplate() {
   const intro = useIntro((state: any) => state.intro);
@@ -73,29 +73,28 @@ export function LegacyTemplate() {
   return (
     <GridContainer>
       <GridColumn>
+        <EmployeName>{intro.name}</EmployeName>
         <Intro data={intro} />
+        <SocialBar items={intro.social} />
 
-        <Exp
-          icon={getIcon("exp")}
-          title={experience.title}
-          companies={experience.companies}
-        />
-        <Separator />
         <SectionHeader
-          Icon={getIcon("key projects / involvements")}
-          title={keyProjects.title}
+          Icon={getIcon(experience.title)}
+          title={experience.title}
         />
-        <ListSection items={keyProjects.items} />
+        <Exp companies={experience.companies} />
         <Separator />
         <SectionHeader
           Icon={getIcon(keyProjects.title)}
           title={keyProjects.title}
         />
-        <ListSection
-          icon={getIcon(certificates.title)}
+        <ListSection items={keyProjects.items} />
+
+        <Separator />
+        <SectionHeader
+          Icon={getIcon(certificates.title)}
           title={certificates.title}
-          items={certificates.items}
         />
+        <ListSection items={certificates.items} />
       </GridColumn>
 
       <Divider />
@@ -121,6 +120,8 @@ export function LegacyTemplate() {
         <Separator />
         <SectionHeader Icon={getIcon(exposure.title)} title={exposure.title} />
         <Exposure items={exposure.items} />
+
+        <Separator />
         <SectionHeader
           Icon={getIcon(methodology.title)}
           title={methodology.title}

@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { FlexCol } from "../../common/styles";
 import { getIcon } from "../../common/icons";
 
-import { Section } from "./core/Section";
+import { Section, SectionIntro } from "./core/Section";
 import { Intro } from "./features/Intro";
 import { Description } from "./features/Description";
 import { UnratedSection } from "./features/RatedSection";
@@ -50,12 +50,12 @@ export function ProfessionalTemplate() {
     ],
     shallow
   );
-
+  
   const leftSections = [
     {
       title: experience.title,
       component: <Exp companies={experience.companies} />,
-      styles: {flexGrow: 1}
+      styles: { flexGrow: 1 },
     },
     {
       title: keyProjects.title,
@@ -66,7 +66,6 @@ export function ProfessionalTemplate() {
       component: <ListSection items={certificates.items} />,
     },
   ];
-
   const rightSections = [
     {
       title: intro.about.title,
@@ -100,8 +99,11 @@ export function ProfessionalTemplate() {
   return (
     <>
       <LeftSection>
-        <Intro data={intro} />
-        {leftSections.map(({title, component, styles}) => {
+        <SectionIntro title={intro.name} icons={intro.social}>
+          <Intro data={intro} />
+        </SectionIntro>
+
+        {leftSections.map(({ title, component, styles }) => {
           return (
             <Section icon={getIcon(title)} title={title} styles={styles}>
               {component}
@@ -111,7 +113,7 @@ export function ProfessionalTemplate() {
       </LeftSection>
 
       <RightSection>
-        {rightSections.map(({title, component}) => {
+        {rightSections.map(({ title, component }) => {
           return (
             <Section icon={getIcon(title)} title={title}>
               {component}

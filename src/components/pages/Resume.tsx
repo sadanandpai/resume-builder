@@ -41,8 +41,8 @@ const RightSection = styled(FlexCol)`
 export function Resume() {
   return (
     <ResumeContainer className="resume">
-      <ProfessionalTemplate />
-      {/* <LegacyTemplate /> */}
+      {/* <ProfessionalTemplate /> */}
+      <LegacyTemplate />
     </ResumeContainer>
   );
 }

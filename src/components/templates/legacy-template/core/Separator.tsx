@@ -2,31 +2,31 @@ import styled from "styled-components";
 
 export const Separator = styled.div`
   width: 80%;
-  margin: 18px auto 18px auto;
-  height: 3px;
+  margin: 12px auto 8px auto;
+  height: 2px;
   background-color: brown;
   position: relative;
 
   &::before {
     display: inline-block;
-    width: 10px;
-    height: 10px;
+    width: 5px;
+    height: 5px;
     border-radius: 50%;
     position: absolute;
     background-color: black;
-    top: -3.5px;
+    top: -1.5px;
     left: -2px;
     content: "";
   }
 
   &::after {
     display: inline-block;
-    width: 10px;
-    height: 10px;
+    width: 5px;
+    height: 5px;
     border-radius: 50%;
     position: absolute;
     background-color: black;
-    top: -3.5px;
+    top: -1.5px;
     right: -2px;
     content: "";
   }
