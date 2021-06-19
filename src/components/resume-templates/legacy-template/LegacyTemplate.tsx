@@ -5,8 +5,8 @@ import { getIcon } from "../../common/icons";
 
 import { Intro } from "../professional-template/features/Intro";
 import { Description } from "../professional-template/features/Description";
-import { UnratedSection } from "../professional-template/features/RatedSection";
-import { Exposure } from "../professional-template/features/UnratedSection";
+import { RatingElement } from "./core/RatingElement";
+import { UnratedSection } from "../professional-template/features/UnratedSection";
 import { Exp } from "../professional-template/features/Exp";
 import { EduSection } from "../professional-template/features/EduSection";
 import { ListSection } from "../professional-template/features/ListSection";
@@ -27,12 +27,12 @@ const GridContainer = styled.div`
   margin: auto;
   background-color: white;
   display: grid;
-  grid-template-columns: 70% 10px 1fr;
+  grid-template-columns: 68% 10px 1fr;;
 `;
 
 const Divider = styled.div`
   height: 100%;
-  max-width: 3px;
+  width: 2px;
   background-color: #007bff;
 `;
 
@@ -116,20 +116,20 @@ export function LegacyTemplate() {
           Icon={getIcon(technical.title)}
           title={technical.title}
         />
-        <UnratedSection items={technical.items} />
+        <RatingElement items={technical.items} />
         <Separator />
         <SectionHeader Icon={getIcon(exposure.title)} title={exposure.title} />
-        <Exposure items={exposure.items} />
+        <UnratedSection items={exposure.items} />
 
         <Separator />
         <SectionHeader
           Icon={getIcon(methodology.title)}
           title={methodology.title}
         />
-        <Exposure items={methodology.items} />
+        <UnratedSection items={methodology.items} />
         <Separator />
         <SectionHeader Icon={getIcon(tools.title)} title={tools.title} />
-        <Exposure items={tools.items} />
+        <UnratedSection items={tools.items} />
         <Separator />
         <SectionHeader
           Icon={getIcon(education.title)}

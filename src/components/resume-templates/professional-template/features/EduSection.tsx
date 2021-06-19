@@ -14,7 +14,7 @@ const Specialization = styled.div`
   font-size: 0.7rem;
 `;
 
-export function EduSection({ icon, title, items }: any) {
+export function EduSection({ items }: any) {
   return items.map((data: any, index: any) => (
     <div key={index}>
       <Flex jc="space-between">

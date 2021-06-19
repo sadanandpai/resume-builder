@@ -11,7 +11,7 @@ const Badge = styled.span`
   border-radius: 4px;
 `;
 
-export function Exposure({ icon, title, items }: any) {
+export function UnratedSection({ items }: any) {
   return (
     <Flex cGap="10px" rGap="10px" style={{ flexWrap: "wrap" }}>
       {items.map((value: any, index: any) => (

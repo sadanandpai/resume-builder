@@ -7,8 +7,8 @@ import { getIcon } from "../../common/icons";
 import { Section, SectionIntro } from "./core/Section";
 import { Intro } from "./features/Intro";
 import { Description } from "./features/Description";
-import { UnratedSection } from "./features/RatedSection";
-import { Exposure } from "./features/UnratedSection";
+import { RatedSection } from "./features/RatedSection";
+import { UnratedSection } from "./features/UnratedSection";
 import { Exp } from "./features/Exp";
 import { EduSection } from "./features/EduSection";
 import { ListSection } from "./features/ListSection";
@@ -82,14 +82,14 @@ export function ProfessionalTemplate() {
     },
     {
       title: technical.title,
-      component: <UnratedSection items={technical.items} />,
+      component: <RatedSection items={technical.items} />,
     },
-    { title: exposure.title, component: <Exposure items={exposure.items} /> },
+    { title: exposure.title, component: <UnratedSection items={exposure.items} /> },
     {
       title: methodology.title,
-      component: <Exposure items={methodology.items} />,
+      component: <UnratedSection items={methodology.items} />,
     },
-    { title: tools.title, component: <Exposure items={tools.items} /> },
+    { title: tools.title, component: <UnratedSection items={tools.items} /> },
     {
       title: education.title,
       component: <EduSection items={education.items} />,
