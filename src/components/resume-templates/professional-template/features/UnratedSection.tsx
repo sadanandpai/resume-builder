@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { Flex } from "../../../common/styles";
-import { Section } from "../core/Section";
 
 const Badge = styled.span`
   padding: 4px;

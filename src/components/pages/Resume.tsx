@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import shallow from "zustand/shallow";
 import styled from "styled-components";
-import { Flex, FlexCol } from "../common/styles";
+import { Flex } from "../common/styles";
 import { ProfessionalTemplate } from "../resume-templates/professional-template/ProfessionalTemplate";
 import { LegacyTemplate } from "../resume-templates/legacy-template/LegacyTemplate";
 
@@ -21,8 +20,8 @@ const ResumeContainer = styled(Flex)`
 export function Resume() {
   return (
     <ResumeContainer className="resume">
-      {/* <ProfessionalTemplate /> */}
-      <LegacyTemplate />
+      <ProfessionalTemplate />
+      {/* <LegacyTemplate /> */}
     </ResumeContainer>
   );
 }

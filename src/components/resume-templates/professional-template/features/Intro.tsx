@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Flex, FlexCol, FlexVC } from "../../../common/styles";
-import { SectionIntro } from "../core/Section";
 import { getIcon } from "../../../common/icons";
 import Color from "color";
 

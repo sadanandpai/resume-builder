@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { Flex } from "../../../common/styles";
 import { getIcon } from "../../../common/icons";
 
 const SocialDiv = styled.div`

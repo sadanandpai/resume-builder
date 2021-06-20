@@ -1,6 +1,7 @@
 {
   "version": "0.0.0",
   "scripts": {
+    "start": "vite",
     "dev": "vite",
     "build": "tsc && vite build",
     "serve": "vite preview"
@@ -11,7 +12,6 @@
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "react-icons": "^4.2.0",
-    "react-markdown": "^6.0.2",
     "styled-components": "^5.3.0",
     "zustand": "^3.5.2"
   },

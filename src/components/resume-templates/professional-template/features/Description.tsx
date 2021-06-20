@@ -1,8 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import ReactMarkdown from "react-markdown";
-
-import { Section } from "../core/Section";
 
 const RoundedImage = styled.img`
   border-radius: 50%;
@@ -19,7 +16,7 @@ export function Description({ icon, title, description, photo }: any) {
   return (
     <>
       {photo && <RoundedImage src={photo} />}
-      <ReactMarkdown>{description}</ReactMarkdown>
+      {description}
     </>
   );
 }
