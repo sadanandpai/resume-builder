@@ -5,6 +5,6 @@ import reactRefresh from '@vitejs/plugin-react-refresh'
 export default defineConfig({
   plugins: [reactRefresh()],
   build: {
-    target: 'es2018'
+    target: 'es2015'
   }
 })
