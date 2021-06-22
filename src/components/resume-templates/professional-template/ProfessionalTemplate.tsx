@@ -105,7 +105,7 @@ export function ProfessionalTemplate() {
 
         {leftSections.map(({ title, component, styles }) => {
           return (
-            <Section icon={getIcon(title)} title={title} styles={styles}>
+            <Section icon={getIcon(title)} title={title} styles={styles} key={title}>
               {component}
             </Section>
           );
@@ -115,7 +115,7 @@ export function ProfessionalTemplate() {
       <RightSection>
         {rightSections.map(({ title, component }) => {
           return (
-            <Section icon={getIcon(title)} title={title}>
+            <Section icon={getIcon(title)} title={title} key={title}>
               {component}
             </Section>
           );

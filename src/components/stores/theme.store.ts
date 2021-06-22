@@ -1,22 +1,35 @@
 import create from "zustand";
+import { blue, gold, lime, magenta, red } from "@ant-design/colors";
 
-export const useThemes = create((set) => ({
-  theme: {
+const themes = [
+  {
     fontColor: "black",
     backgroundColor: "white",
-    primaryColor: "rgb(0, 123, 255)",
-    secondaryColor: "rgb(198 88 123)",
+    primaryColor: blue.primary,
+    secondaryColor: lime[6],
   },
+  {
+    fontColor: magenta[8],
+    backgroundColor: "white",
+    primaryColor: lime[9],
+    secondaryColor: gold.primary,
+  },
+  {
+    fontColor: "black",
+    backgroundColor: "white",
+    primaryColor: "green",
+    secondaryColor: red[3],
+  },
+  {
+    fontColor: "white",
+    backgroundColor: "black",
+    primaryColor: "yellow",
+    secondaryColor: "skyblue",
+  },
+];
 
-  setDarkMode: () =>
-    set(() => {
-      return {
-        theme: {
-          fontColor: "white",
-          backgroundColor: "black",
-          primaryColor: "yellow",
-          secondaryColor: "pink",
-        },
-      };
-    }),
+export const useThemes = create((set) => ({
+  theme: themes[0],
+
+  setTheme: (index: number) => set({ theme: themes[index] }),
 }));
