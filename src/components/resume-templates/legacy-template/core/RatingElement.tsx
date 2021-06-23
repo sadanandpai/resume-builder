@@ -12,7 +12,7 @@ const RatingTablet: any = styled.span`
   height: 8px;
   border-radius: 25%;
   display: inline-block;
-  border: 0.5px solid rgb(165 42 42);
+  border: 0.5px solid ${(props: any) => props.theme.secondaryColor};
   margin: 0px 4px;
   background-color: ${(props: any) => (props.filled ? props.theme.secondaryColor : "transparent")};
 `;
