@@ -75,8 +75,8 @@ export function SectionIntro(props: any) {
         <h1 className="header__title">{props.title}</h1>
       </FlexHVC>
       <Flex className="social-icons">
-        {props.icons.map((icon: any) => (
-          <a href={icon[1]}>{getIcon(icon[0])}</a>
+        {props.icons.map((icon: any, index: number) => (
+          <a href={icon[1]} key={index}>{getIcon(icon[0])}</a>
         ))}
       </Flex>
       {props.children}

@@ -1,71 +1,42 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import { Steps } from "antd";
-import { Section } from "../core/Section";
+import { Timeline } from "antd";
 
 import { CompanyHeader } from "../core/Company";
 import { List } from "../core/List";
 
-const ExpSteps = styled(Steps)`
+const FlexTimeline = styled(Timeline)`
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
   justify-content: space-between;
   height: 100%;
+  padding-top: 15px;
+  color: ${(props: any) => props.theme.fontColor};
+`;
 
-  .ant-steps-item{
-    padding-bottom: 20px;
+const TimelineItem = styled(FlexTimeline.Item)`
+  padding-bottom: 0;
+  flex-grow: 1;
+  padding-bottom: 20px;
 
-    &:last-child{
-      padding-bottom: 0;
-      flex-grow: 0;
-    }
-  }
- 
-`
-
-const Step = styled(ExpSteps.Step)`
-  .ant-steps-item-title {
-    display: block;
-    padding-right: 0;
-  }
-
-  .ant-steps-item-container > .ant-steps-item-tail {
-    top: 15px !important;
-  }
-
-  .ant-steps-item-icon {
-    margin-top: 20px !important;
-  }
-
-  .ant-steps-item-container
-    > .ant-steps-item-content
-    > .ant-steps-item-description {
+  :last-child {
+    flex-grow: 0;
     padding-bottom: 0;
-    color: ${props => props.theme.fontColor};
-  }
-
-  .ant-steps-item-container > .ant-steps-item-content > .ant-steps-item-title{
-    color: ${(props) => props.theme.fontColor};
   }
 `;
 
-export function Exp({icon, title, companies}: any) {
-
+export function Exp({ styles, companies }: any) {
   return (
-      <ExpSteps
-        progressDot
-        current={companies.length}
-        direction="vertical"
-      >
-        {companies.map((company: any, index: any) => {
-          const HeaderComponent = <CompanyHeader company={company} />;
-          const DescriptionComponent = <List items={company.description} />;
-          return (
-            <Step
-              title={HeaderComponent}
-              description={DescriptionComponent}
-              key={index}
-            />
-          );
-        })}
-      </ExpSteps>
+    <FlexTimeline style={styles}>
+      {companies.map((company: any, index: any) => {
+        return (
+          <TimelineItem key={index}>
+            <CompanyHeader company={company} />
+            <List items={company.description} />
+          </TimelineItem>
+        );
+      })}
+    </FlexTimeline>
   );
 }
