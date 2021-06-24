@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const Section = styled.div`
   font-size: 0.8rem;
   font-weight: 500;
-  color: #007bff;
+  color: ${(props) => props.theme.primaryColor};
   display: flex;
   align-items: center;
   justify-content: center;
