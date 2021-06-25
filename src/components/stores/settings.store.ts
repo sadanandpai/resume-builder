@@ -12,3 +12,9 @@ export const useTemplates = create((set) => ({
 
   setTemplate: (index: number) => set({ template: templates[index]})
 }));
+
+export const useItems = create((set) => ({
+  isPhotoDisplayed: true,
+
+  setIsPhotoDisplayed: (isPhotoDisplayed: boolean) => set({ isPhotoDisplayed})
+}));
