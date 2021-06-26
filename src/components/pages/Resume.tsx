@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Flex } from "../common/styles";
-import { ProfessionalTemplate } from "../resume-templates/professional-template/ProfessionalTemplate";
-import { LegacyTemplate } from "../resume-templates/legacy-template/LegacyTemplate";
-import { Sidebar } from "./Sidebar";
+import { useTemplates } from "../stores/settings.store";
 
-// LegacyTemplate;
 const ResumeContainer = styled(Flex)`
   width: 210mm;
   height: 297mm;
@@ -19,14 +16,11 @@ const ResumeContainer = styled(Flex)`
 `;
 
 export function Resume() {
-  return (
-    <div className="container" style={{ display: "flex" }}>
+  const Template = useTemplates((state: any) => state.template);
 
-      <ResumeContainer className="resume">
-        <ProfessionalTemplate />
-        {/* <LegacyTemplate /> */}
-      </ResumeContainer>
-      <Sidebar />
-    </div>
+  return (
+    <ResumeContainer className="resume">
+      <Template />
+    </ResumeContainer>
   );
 }

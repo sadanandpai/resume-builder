@@ -25,7 +25,6 @@ import {
 
 const GridContainer = styled.div`
   margin: auto;
-  background-color: white;
   display: grid;
   grid-template-columns: 68% 10px 1fr;;
 `;
