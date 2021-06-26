@@ -3,8 +3,9 @@ import styled from "styled-components";
 import { Flex } from "../common/styles";
 import { ProfessionalTemplate } from "../resume-templates/professional-template/ProfessionalTemplate";
 import { LegacyTemplate } from "../resume-templates/legacy-template/LegacyTemplate";
+import { Sidebar } from "./Sidebar";
 
-LegacyTemplate;
+// LegacyTemplate;
 const ResumeContainer = styled(Flex)`
   width: 210mm;
   height: 297mm;
@@ -19,9 +20,13 @@ const ResumeContainer = styled(Flex)`
 
 export function Resume() {
   return (
-    <ResumeContainer className="resume">
-      <ProfessionalTemplate />
-      {/* <LegacyTemplate /> */}
-    </ResumeContainer>
+    <div className="container" style={{ display: "flex" }}>
+
+      <ResumeContainer className="resume">
+        <ProfessionalTemplate />
+        {/* <LegacyTemplate /> */}
+      </ResumeContainer>
+      <Sidebar />
+    </div>
   );
 }
