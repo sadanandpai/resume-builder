@@ -35,14 +35,9 @@ jobs:
       - name: setup deployment
         run: |
           npm install
+          rm -r dist
           npm run build
-          git checkout -B dist
-          rm -r .github
-          rm -r public
-          rm -r src
-          rm -r node_modules
-          mv -v ./build/* ./
-          git add *
-          git commit -m "build files"
-          git push --set-upstream origin dist
-          git push -f
+          git add build -f
+          git commit -m "build files from github action"
+          git push
+          
