@@ -6,5 +6,6 @@ export default defineConfig({
   plugins: [reactRefresh()],
   build: {
     target: 'es2015'
-  }
+  },
+  base: "/single-page-resume-builder/dist/"
 })
