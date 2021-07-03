@@ -8,7 +8,7 @@ import { MdMail } from "react-icons/md";
 import { SiExpertsexchange } from "react-icons/si";
 import { MdPermIdentity } from "react-icons/md";
 import { FaUniversity } from "react-icons/fa";
-import { MdBuild } from "react-icons/md";
+import { MdBuild, MdEdit, MdColorLens, MdCloudDownload, MdLibraryBooks } from "react-icons/md";
 import { MdVpnKey } from "react-icons/md";
 import { MdVerifiedUser } from "react-icons/md";
 import { AiOutlineAim } from "react-icons/ai";
@@ -31,6 +31,10 @@ const icons = new Map([
     ["career objective", <AiOutlineAim />],
     ["methodology / approach", <IoGitBranch />],
     ["skills / expsoure", <GoVerified />],
+    ["edit", <MdEdit fill="#1890ff" />],
+    ["color", <MdColorLens fill="#1890ff" />],
+    ["download", <MdCloudDownload fill="#1890ff" />],
+    ["template", <MdLibraryBooks fill="#1890ff" />],
 ]);
 
 export function getIcon(iconName: string) {

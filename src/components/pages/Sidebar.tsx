@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import styled from "styled-components";
-import { SideDrawer } from "../widgets/SideDrawer";
+import { getIcon } from "../common/icons"
 
-import {MdEdit, MdColorLens, MdCloudDownload, MdLibraryBooks} from "react-icons/md"
+import { SideDrawer } from "../widgets/SideDrawer";
 
 
 const Sider = styled.nav`
@@ -31,9 +31,9 @@ const IconButton = styled.button`
     height: 36px;
     width: 40px;
     background: transparent;
-    border 0;
+    border: 0;
     border-radius: 2px;
-    pading: 0;
+    padding: 0;
     color: rgb(230, 230, 230);
 `;
 
@@ -52,22 +52,22 @@ export const Sidebar = () => {
             <Sider>
                 <IconWrapper>
                     <IconButton onClick={showDrawer}>
-                        <MdEdit fill="#1890ff" />
+                        {getIcon("edit")}
                     </IconButton>
                 </IconWrapper>
                 <IconWrapper>
                     <IconButton>
-                        <MdColorLens fill="#1890ff" />
+                        {getIcon("color")}
                     </IconButton>
                 </IconWrapper>
                 <IconWrapper>
                     <IconButton>
-                        <MdLibraryBooks fill="#1890ff" />
+                        {getIcon("template")}
                     </IconButton>
                 </IconWrapper>
                 <IconWrapper>
                     <IconButton>
-                        <MdCloudDownload fill="#1890ff" />
+                        {getIcon("download")}
                     </IconButton>
                 </IconWrapper>
             </Sider>
