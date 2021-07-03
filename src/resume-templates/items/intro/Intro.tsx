@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
+import Color from "color";
 import styled from "styled-components";
 import { Flex, FlexCol, FlexVC } from "../../../components/common/styles";
 import { getIcon } from "../../../components/common/icons";
-import Color from "color";
 
 const Role = styled.h3`
   color: ${(props) => Color(props.theme.primaryColor).alpha(0.75).toString()};
@@ -12,24 +12,24 @@ const Role = styled.h3`
 
 export function Intro({ data }: any) {
   return (
-      <Flex jc="space-between">
-        <FlexCol rGap="5px">
-          <Role>{data.role}</Role>
-          <div>
-            {data.experience[0].type}:&nbsp;
-            <strong>{data.experience[0].years}</strong>
-          </div>
-          <div>
-            {data.experience[1].type}:&nbsp;{data.experience[1].years}
-          </div>
-        </FlexCol>
+    <Flex jc="space-between">
+      <FlexCol rGap="5px">
+        <Role>{data.role}</Role>
+        <div>
+          {data.experience[0].type}:&nbsp;
+          <strong>{data.experience[0].years}</strong>
+        </div>
+        <div>
+          {data.experience[1].type}:&nbsp;{data.experience[1].years}
+        </div>
+      </FlexCol>
 
-        <FlexCol jc="flex-end" rGap="5px">
-          <Contact icon={getIcon('mobile')} value={data.mobile} />
-          <Contact icon={getIcon('email')} value={data.email} />
-          <Contact icon={getIcon('location')} value={data.location} />
-        </FlexCol>
-      </Flex>
+      <FlexCol jc="flex-end" rGap="5px">
+        <Contact icon={getIcon("mobile")} value={data.mobile} />
+        <Contact icon={getIcon("email")} value={data.email} />
+        <Contact icon={getIcon("location")} value={data.location} />
+      </FlexCol>
+    </Flex>
   );
 }
 
