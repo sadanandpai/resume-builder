@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { PhotoElement } from "../../../elements/PhotoElement";
 
 const RoundedImage = styled.img`
   border-radius: 50%;
@@ -12,10 +13,16 @@ const RoundedImage = styled.img`
   border: 0.5px solid ${(props) => props.theme.fontColor};
 `;
 
-export function Description({ icon, title, description, photo }: any) {
+export function Description({ description, photo }: any) {
+  const image = photo && (
+    <PhotoElement>
+      <RoundedImage src={photo} />
+    </PhotoElement>
+  );
+
   return (
     <>
-      {photo && <RoundedImage src={photo} />}
+      {image}
       {description}
     </>
   );
