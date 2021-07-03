@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { getIcon } from "../../../common/icons";
+import { getIcon } from "../../../components/common/icons";
 
 const SocialDiv = styled.div`
   padding: 10px;

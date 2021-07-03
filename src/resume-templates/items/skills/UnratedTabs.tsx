@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Flex } from "../../../common/styles";
+import { Flex } from "../../../components/common/styles";
 
 const Badge = styled.span`
   padding: 4px;
@@ -10,7 +10,7 @@ const Badge = styled.span`
   border-radius: 4px;
 `;
 
-export function UnratedSection({ items }: any) {
+export function UnratedTabs({ items }: any) {
   return (
     <Flex cGap="10px" rGap="10px" style={{ flexWrap: "wrap" }}>
       {items.map((value: any, index: any) => (

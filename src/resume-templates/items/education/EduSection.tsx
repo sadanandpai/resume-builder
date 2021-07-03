@@ -1,8 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
-
-import { Flex } from "../../../common/styles";
-import { Section } from "../core/Section";
+import { Flex } from "../../../components/common/styles";
 
 const Degree = styled.div`
   font-weight: 500;

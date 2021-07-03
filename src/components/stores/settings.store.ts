@@ -1,6 +1,6 @@
 import create from "zustand";
-import { ProfessionalTemplate } from "../resume-templates/professional-template/ProfessionalTemplate";
-import { LegacyTemplate } from "../resume-templates/legacy-template/LegacyTemplate";
+import { ProfessionalTemplate } from "../../resume-templates/layouts/ProfessionalTemplate";
+import { LegacyTemplate } from "../../resume-templates/layouts/LegacyTemplate";
 
 const templates = [
   ProfessionalTemplate,
