@@ -1,13 +1,14 @@
 import React from "react";
 import { PlusOutlined, DeleteOutlined } from "@ant-design/icons";
-import { Flex } from "../common/styles";
 import styled from "styled-components";
-import { Checkbox, Drawer } from "antd";
 import {
+  Checkbox,
+  Drawer,
   Collapse as AntCollapse,
   Input as AntInput,
   Button as AntButton,
 } from "antd";
+import { Flex } from "../common/styles";
 
 const { Panel } = AntCollapse;
 
@@ -81,7 +82,7 @@ const DeleteIcon = styled.div`
   right: 8px;
 `;
 
-export function SideDrawer({ open, onClose }) {
+export function SideDrawer({ open, onClose }: any) {
   return (
     <Drawer
       title="Edit Resume"
@@ -140,7 +141,7 @@ export function SideDrawer({ open, onClose }) {
                 <Input />
                 <SubTopic>Role</SubTopic>
                 <Input />
-                <Flex js="space-between" ai="center" rGap="10px" cGap="10px">
+                <Flex jc="space-between" ai="center" rGap="10px" cGap="10px">
                   <div>
                     <SubTopic>Start</SubTopic>
                     <Input placeholder="Start Year" />
@@ -183,7 +184,7 @@ export function SideDrawer({ open, onClose }) {
               <InputWrap>
                 <SubTopic>Label</SubTopic>
                 <Input />
-                <Flex js="space-between" ai="center" rGap="10px" cGap="10px">
+                <Flex jc="space-between" ai="center" rGap="10px" cGap="10px">
                   <div>
                     <SubTopic>Start</SubTopic>
                     <Input />
@@ -205,7 +206,7 @@ export function SideDrawer({ open, onClose }) {
               <InputWrap>
                 <SubTopic>Label</SubTopic>
                 <Input placeholder="Label" />
-                <Flex js="space-between" ai="center" rGap="10px" cGap="10px">
+                <Flex jc="space-between" ai="center" rGap="10px" cGap="10px">
                   <div>
                     <SubTopic>Start</SubTopic>
                     <Input />
