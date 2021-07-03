@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Flex, FlexHVC } from "../../../common/styles";
-import { getIcon } from "../../../common/icons";
+import { Flex, FlexHVC } from "../../../components/common/styles";
+import { getIcon } from "../../../components/common/icons";
 import Color from "color";
 
 const SectionHolder = styled.div`
@@ -56,7 +56,7 @@ const SectionIntroHolder = styled(SectionHolder)`
   }
 `;
 
-export function Section(props: any) {
+export function ModernHeader(props: any) {
   return (
     <SectionHolder style={props.styles}>
       <FlexHVC className="header" cGap="5px">
@@ -68,7 +68,7 @@ export function Section(props: any) {
   );
 }
 
-export function SectionIntro(props: any) {
+export function ModernHeaderIntro(props: any) {
   return (
     <SectionIntroHolder style={props.styles}>
       <FlexHVC className="header">

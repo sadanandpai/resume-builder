@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { FlexCol, FlexVC } from "../../../common/styles";
+import { FlexCol, FlexVC } from "../../../components/common/styles";
 
 const RatedType = styled.div`
   width: 15ch;
@@ -17,7 +17,7 @@ const RatingTablet: any = styled.span`
   background-color: ${(props: any) => (props.filled ? props.theme.secondaryColor : "transparent")};
 `;
 
-function RatedElement({ itemLabel, itemRating, index }: any) {
+function RatedPillElement({ itemLabel, itemRating, index }: any) {
   const tablets = [];
   for (let i = 1; i <= 5; i++) {
     tablets.push(
@@ -38,11 +38,11 @@ function RatedElement({ itemLabel, itemRating, index }: any) {
   );
 }
 
-export function RatingElement({ items }: any) {
+export function RatedPill({ items }: any) {
   return (
     <FlexCol rGap="8px">
       {items.map((data: any, index: number) => (
-        <RatedElement
+        <RatedPillElement
           itemLabel={data.name}
           itemRating={data.rating}
           key={data.name}

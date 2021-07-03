@@ -1,24 +1,25 @@
 import React, { useState } from "react";
 import shallow from "zustand/shallow";
 import styled from "styled-components";
-import { FlexCol } from "../../common/styles";
-import { getIcon } from "../../common/icons";
+import { FlexCol } from "../../components/common/styles";
+import { getIcon } from "../../components/common/icons";
 
-import { Section, SectionIntro } from "./core/Section";
-import { Intro } from "./features/Intro";
-import { Description } from "./features/Description";
-import { RatedSection } from "./features/RatedSection";
-import { UnratedSection } from "./features/UnratedSection";
-import { Exp } from "./features/Exp";
-import { EduSection } from "./features/EduSection";
-import { ListSection } from "./features/ListSection";
+import { ModernHeader, ModernHeaderIntro } from "../items/section-layout/ModernHeader";
+import { Intro } from "../items/intro/Intro";
+import { Description } from "../items/description/Description";
+import { RatedBars } from "../items/skills/RatedBars";
+import { UnratedTabs } from "../items/skills/UnratedTabs";
+import { Exp } from "../items/exp/Exp";
+import { EduSection } from "../items/education/EduSection";
+import { List } from "../items/list/List";
+
 import {
   useIntro,
   useExp,
   useSkills,
   useAchievements,
   useEducation,
-} from "../../stores/data.store";
+} from "../../components/stores/data.store";
 
 const LeftSection = styled(FlexCol)`
   flex-basis: 66%;
@@ -59,11 +60,11 @@ export function ProfessionalTemplate() {
     },
     {
       title: keyProjects.title,
-      component: <ListSection items={keyProjects.items} />,
+      component: <List items={keyProjects.items} />,
     },
     {
       title: certificates.title,
-      component: <ListSection items={certificates.items} />,
+      component: <List items={certificates.items} />,
     },
   ];
   const rightSections = [
@@ -82,14 +83,14 @@ export function ProfessionalTemplate() {
     },
     {
       title: technical.title,
-      component: <RatedSection items={technical.items} />,
+      component: <RatedBars items={technical.items} />,
     },
-    { title: exposure.title, component: <UnratedSection items={exposure.items} /> },
+    { title: exposure.title, component: <UnratedTabs items={exposure.items} /> },
     {
       title: methodology.title,
-      component: <UnratedSection items={methodology.items} />,
+      component: <UnratedTabs items={methodology.items} />,
     },
-    { title: tools.title, component: <UnratedSection items={tools.items} /> },
+    { title: tools.title, component: <UnratedTabs items={tools.items} /> },
     {
       title: education.title,
       component: <EduSection items={education.items} />,
@@ -99,15 +100,15 @@ export function ProfessionalTemplate() {
   return (
     <>
       <LeftSection>
-        <SectionIntro title={intro.name} icons={intro.social}>
+        <ModernHeaderIntro title={intro.name} icons={intro.social}>
           <Intro data={intro} />
-        </SectionIntro>
+        </ModernHeaderIntro>
 
         {leftSections.map(({ title, component, styles }) => {
           return (
-            <Section icon={getIcon(title)} title={title} styles={styles} key={title}>
+            <ModernHeader icon={getIcon(title)} title={title} styles={styles} key={title}>
               {component}
-            </Section>
+            </ModernHeader>
           );
         })}
       </LeftSection>
@@ -115,9 +116,9 @@ export function ProfessionalTemplate() {
       <RightSection>
         {rightSections.map(({ title, component }) => {
           return (
-            <Section icon={getIcon(title)} title={title} key={title}>
+            <ModernHeader icon={getIcon(title)} title={title} key={title}>
               {component}
-            </Section>
+            </ModernHeader>
           );
         })}
       </RightSection>

@@ -1,19 +1,19 @@
 import React from "react";
 import shallow from "zustand/shallow";
 import styled from "styled-components";
-import { getIcon } from "../../common/icons";
+import { getIcon } from "../../components/common/icons";
 
-import { Intro } from "../professional-template/features/Intro";
-import { Description } from "../professional-template/features/Description";
-import { RatingElement } from "./core/RatingElement";
-import { UnratedSection } from "../professional-template/features/UnratedSection";
-import { Exp } from "../professional-template/features/Exp";
-import { EduSection } from "../professional-template/features/EduSection";
-import { ListSection } from "../professional-template/features/ListSection";
+import { Intro } from "../items/intro/Intro";
+import { Description } from "../items/description/Description";
+import { RatedPill } from "../items/skills/RatedPills";
+import { UnratedTabs } from "../items/skills/UnratedTabs";
+import { Exp } from "../items/exp/Exp";
+import { EduSection } from "../items/education/EduSection";
+import { List } from "../items/list/List";
 
-import { Separator } from "./core/Separator";
-import { SectionHeader } from "./core/SectionHeader";
-import { SocialBar } from "./core/SocialBar";
+import { LineSeparator } from "../items/separator/LineSeparator";
+import { LegacyHeader } from "../items/section-layout/LegacyHeader";
+import { SocialBar } from "../items/social/SocialBar";
 
 import {
   useIntro,
@@ -21,7 +21,7 @@ import {
   useSkills,
   useAchievements,
   useEducation,
-} from "../../stores/data.store";
+} from "../../components/stores/data.store";
 
 const GridContainer = styled.div`
   margin: auto;
@@ -76,61 +76,61 @@ export function LegacyTemplate() {
         <Intro data={intro} />
         <SocialBar items={intro.social} />
 
-        <SectionHeader
+        <LegacyHeader
           Icon={getIcon(experience.title)}
           title={experience.title}
         />
         <Exp companies={experience.companies} />
-        <Separator />
-        <SectionHeader
+        <LineSeparator />
+        <LegacyHeader
           Icon={getIcon(keyProjects.title)}
           title={keyProjects.title}
         />
-        <ListSection items={keyProjects.items} />
+        <List items={keyProjects.items} />
 
-        <Separator />
-        <SectionHeader
+        <LineSeparator />
+        <LegacyHeader
           Icon={getIcon(certificates.title)}
           title={certificates.title}
         />
-        <ListSection items={certificates.items} />
+        <List items={certificates.items} />
       </GridColumn>
 
       <Divider />
 
       <GridColumn>
-        <SectionHeader
+        <LegacyHeader
           Icon={getIcon(intro.about.title)}
           title={intro.about.title}
         />
         <Description description={intro.about.description} />
-        <Separator />
-        <SectionHeader
+        <LineSeparator />
+        <LegacyHeader
           Icon={getIcon(intro.objective.title)}
           title={intro.objective.title}
         />
         <Description description={intro.objective.description} />
-        <Separator />
-        <SectionHeader
+        <LineSeparator />
+        <LegacyHeader
           Icon={getIcon(technical.title)}
           title={technical.title}
         />
-        <RatingElement items={technical.items} />
-        <Separator />
-        <SectionHeader Icon={getIcon(exposure.title)} title={exposure.title} />
-        <UnratedSection items={exposure.items} />
+        <RatedPill items={technical.items} />
+        <LineSeparator />
+        <LegacyHeader Icon={getIcon(exposure.title)} title={exposure.title} />
+        <UnratedTabs items={exposure.items} />
 
-        <Separator />
-        <SectionHeader
+        <LineSeparator />
+        <LegacyHeader
           Icon={getIcon(methodology.title)}
           title={methodology.title}
         />
-        <UnratedSection items={methodology.items} />
-        <Separator />
-        <SectionHeader Icon={getIcon(tools.title)} title={tools.title} />
-        <UnratedSection items={tools.items} />
-        <Separator />
-        <SectionHeader
+        <UnratedTabs items={methodology.items} />
+        <LineSeparator />
+        <LegacyHeader Icon={getIcon(tools.title)} title={tools.title} />
+        <UnratedTabs items={tools.items} />
+        <LineSeparator />
+        <LegacyHeader
           Icon={getIcon(education.title)}
           title={education.title}
         />

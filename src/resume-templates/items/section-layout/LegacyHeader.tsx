@@ -17,7 +17,7 @@ export const Section = styled.div`
   }
 `;
 
-export function SectionHeader({ title, Icon }: any) {
+export function LegacyHeader({ title, Icon }: any) {
   return (
     <Section>
       {Icon}{title}
