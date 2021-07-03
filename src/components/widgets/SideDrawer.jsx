@@ -111,7 +111,7 @@ export function SideDrawer({ open, onClose }) {
               </InputWrap>
             </Wrapper>
             <Wrapper>
-              <Topic>Text</Topic>
+              <Topic>Description</Topic>
               <Input />
             </Wrapper>
           </Panel>
@@ -140,7 +140,7 @@ export function SideDrawer({ open, onClose }) {
           </Panel>
           <Panel header="Objective" key="5">
             <Wrapper>
-              <Topic>Text</Topic>
+              <Topic>Description</Topic>
               <Input />
             </Wrapper>
           </Panel>
