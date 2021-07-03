@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { ThemeProvider } from "styled-components";
-import { SettingsHeader } from "./components/core/settings-header/SettingsHeader";
-import { Resume } from "./components/pages/Resume";
+import { Home } from "./components/pages/Home";
 import { useThemes } from "./components/stores/theme.store";
 
 export function App() {
@@ -9,9 +8,8 @@ export function App() {
 
   return (
     <>
-      <SettingsHeader />
       <ThemeProvider theme={theme}>
-        <Resume />
+        <Home />
       </ThemeProvider>
     </>
   );
