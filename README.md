@@ -23,7 +23,14 @@
 
 - Edit data.ts file with your details (/src/components/common)
 - Modify the template you want to use inside template folder
-- Once ready, use Chrome's built in feature Print (ctrl/cmd + P) with no margins to save as PDF
+- Once ready, use Chrome's or Firefox's built in feature Print (ctrl/cmd + P) with no margins to save as PDF
+- Recommended settings
+  - Orientation: Portrait
+  - Paper size: A4
+  - Scale: Fit to width
+  - Margins: None
+  - Print headers & footers: Uncheck (remove tick mark)
+  - Background/graphics: Check (add tick mark)
 
 ### Technologies
 
