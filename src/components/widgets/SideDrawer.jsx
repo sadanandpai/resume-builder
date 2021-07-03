@@ -1,5 +1,6 @@
 import React from "react";
 import { PlusOutlined, DeleteOutlined } from "@ant-design/icons";
+import { Flex } from "../common/styles";
 import styled from "styled-components";
 import { Checkbox, Drawer } from "antd";
 import {
@@ -74,13 +75,6 @@ const Collapse = styled(AntCollapse)`
   }
 `;
 
-const Flex = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-`;
-
 const DeleteIcon = styled.div`
   position: absolute;
   top: 8px;
@@ -149,7 +143,7 @@ export function SideDrawer({ open, onClose }) {
               <InputWrap>
                 <SubTopic>Label</SubTopic>
                 <Input />
-                <Flex>
+                <Flex js="space-between" ai="center" rGap="10px" cGap="10px">
                   <div>
                     <SubTopic>Start</SubTopic>
                     <Input />
@@ -171,7 +165,7 @@ export function SideDrawer({ open, onClose }) {
               <InputWrap>
                 <SubTopic>Label</SubTopic>
                 <Input placeholder="Label" />
-                <Flex>
+                <Flex js="space-between" ai="center" rGap="10px" cGap="10px">
                   <div>
                     <SubTopic>Start</SubTopic>
                     <Input />
