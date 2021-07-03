@@ -105,22 +105,62 @@ export function SideDrawer({ open, onClose }) {
               </InputWrap>
             </Wrapper>
             <Wrapper>
-              <Topic>Description</Topic>
+              <Topic>Name</Topic>
+              <Input />
+            </Wrapper>
+            <Wrapper>
+              <Topic>Role</Topic>
+              <Input />
+            </Wrapper>
+            <Wrapper>
+              <Topic>Email</Topic>
+              <Input />
+            </Wrapper>
+            <Wrapper>
+              <Topic>Location</Topic>
+              <Input />
+            </Wrapper>
+            <Wrapper>
+              <Topic>Mobile</Topic>
+              <Input />
+            </Wrapper>
+            <Wrapper>
+              <Topic>Experience</Topic>
+              <Input />
+            </Wrapper>
+            <Wrapper>
+              <Topic>Link</Topic>
               <Input />
             </Wrapper>
           </Panel>
           <Panel header="Experience" key="2">
             <Wrapper>
-              <Topic>Title</Topic>
-              <Input />
+              <InputWrap>
+                <SubTopic>Company</SubTopic>
+                <Input />
+                <SubTopic>Role</SubTopic>
+                <Input />
+                <Flex js="space-between" ai="center" rGap="10px" cGap="10px">
+                  <div>
+                    <SubTopic>Start</SubTopic>
+                    <Input placeholder="Start Year" />
+                  </div>
+                  <div>
+                    <SubTopic>End</SubTopic>
+                    <Input placeholder="Datepicker" />
+                  </div>
+                  <div>
+                    <Checkbox>Enable</Checkbox>
+                  </div>
+                </Flex>
+                <SubTopic>Description</SubTopic>
+                <Input />
+                <DeleteIcon>
+                  <DeleteOutlined />
+                </DeleteIcon>
+              </InputWrap>
             </Wrapper>
-            <Wrapper>
-              <Topic>Position</Topic>
-              <Input />
-            </Wrapper>
-            <Wrapper>
-              <Topic>Experience</Topic>
-            </Wrapper>
+            <FullButton icon={<PlusOutlined />}>Add Block</FullButton>
           </Panel>
           <Panel header="Projects" key="3">
             <Wrapper>
