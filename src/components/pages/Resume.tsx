@@ -5,6 +5,7 @@ import { useTemplates } from "../stores/settings.store";
 
 const ResumeContainer = styled(Flex)`
   width: 210mm;
+  flex: 0 0 210mm;
   height: 297mm;
   border: 1px solid ${(props) => props.theme.fontColor};
   margin: auto;
@@ -15,12 +16,20 @@ const ResumeContainer = styled(Flex)`
   background-color: ${(props) => props.theme.backgroundColor};
 `;
 
+const Wrapper = styled.div`
+  height: 100vh;
+  padding: 1.125rem;
+  overflow-y: auto;
+`;
+
 export function Resume() {
   const Template = useTemplates((state: any) => state.template);
 
   return (
-    <ResumeContainer className="resume">
-      <Template />
-    </ResumeContainer>
+    <Wrapper>
+      <ResumeContainer className="resume">
+        <Template />
+      </ResumeContainer>
+    </Wrapper>
   );
 }
