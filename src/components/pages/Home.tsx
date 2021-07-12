@@ -1,13 +1,13 @@
-import React from 'react'
-import { Resume } from './Resume'
-import { Sidebar } from './Sidebar'
-import { Flex } from "../common/styles"
+import React from "react";
+import { Resume } from "./Resume";
+import { Sidebar } from "./Sidebar";
+import { Flex } from "../common/styles";
 
 export const Home = () => {
-    return (
-        <Flex>
-            <Resume />
-            <Sidebar />
-        </Flex>
-    )
-}
+  return (
+    <Flex jc="space-between">
+      <Resume />
+      <Sidebar />
+    </Flex>
+  );
+};
