@@ -19,8 +19,8 @@ const TemplateThumbnailImg = styled.img`
 `;
 
 const TemplateThumbnail = styled.label`
-  width: 169px;
-  height: 240px;
+  /* width: 169px;
+  height: 240px; */
   object-fit: cover;
   display: flex;
   flex-direction: column;
@@ -62,6 +62,7 @@ export function TemplateSettings() {
         <TemplateThumbnailImg src={Professional} alt="Professional" />
         {/* <span>Professional</span> */}
       </TemplateThumbnail>
+
       <TemplateThumbnail>
         <TemplateRadio type="radio" id="" name="template" />
 

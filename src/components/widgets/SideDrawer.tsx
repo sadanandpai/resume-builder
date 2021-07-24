@@ -1,12 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { Drawer } from "antd";
-
-import { EditSettings } from "../core/settings-header/EditSettings";
-import { TemplateSettings } from "../core/settings-header/TemplatesSettings";
 
 const Container = styled.div`
-  background: #eff1f5;
+  background: #222;
   padding: 1.25rem;
   height: 100%;
 `;
@@ -14,26 +10,14 @@ const Container = styled.div`
 const Wrapper = styled.div`
   height: 100vh;
   overflow-y: auto;
-  width: 480px;
+  width: 380px;
+  background: #222;
 `;
 
-const menuContainerList = [
-  {
-    key: 0,
-    component: <EditSettings />,
-  },
-  {
-    key: 1,
-    component: <TemplateSettings />,
-  },
-];
-
-export function SideDrawer({ activeTab }: any) {
+export function SideDrawer({ children }: any) {
   return (
     <Wrapper>
-      <Container>
-        {menuContainerList.map((item) => (activeTab === item.key ? item.component : null))}
-      </Container>
+      <Container>{children}</Container>
     </Wrapper>
   );
 }
