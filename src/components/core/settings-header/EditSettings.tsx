@@ -66,7 +66,7 @@ const Heading = styled.h2`
   margin-bottom: 0;
 `;
 
-const fields = {
+const fields: any = {
   Input: <Input />,
   Datepicker: <DatePicker />,
   Block: (fields: any) => <InputBlock fields={fields} />,
@@ -79,7 +79,7 @@ export const EditSettings = () => {
         <>
           <Heading>{data.section}</Heading>
           <Wrapper id={data.section}>
-            {data.metadata.map((item) => (
+            {data.metadata.map((item: any) => (
               <Section size={item.size}>
                 {item.type !== "Block" ? (
                   <>

@@ -94,7 +94,7 @@ const ItemWrapper = styled.div`
   cursor: pointer;
 `;
 
-const inputList = {
+const inputList: any = {
   Input: <Input />,
   Datepicker: <DatePicker />,
 };
