@@ -31,3 +31,12 @@ export const FlexHVC = styled(Flex)`
   justify-content: center;
   align-items: center;
 `;
+
+export const Section = styled.section<{ size: string }>`
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  width: ${(props) => (props.size === "sm" ? "50%" : "")};
+  padding-right: 4px;
+  margin-bottom: 8px;
+  flex-grow: 1;
+`;

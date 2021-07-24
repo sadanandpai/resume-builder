@@ -7,6 +7,7 @@ import {
   Button as AntButton,
   DatePicker as AntDatePicker,
 } from "antd";
+import { Section } from "../common/styles";
 
 const FullButton = styled(AntButton)`
   border: 1px solid #1890ff;
@@ -34,15 +35,6 @@ const Wrapper = styled.div`
   margin: 8px 0;
   display: flex;
   flex-wrap: wrap;
-`;
-
-const Section = styled.section<{ size: string }>`
-  display: grid;
-  grid-template-columns: repeat(1, minmax(0, 1fr));
-  width: ${(props) => (props.size === "sm" ? "150px" : "")};
-  padding-right: 4px;
-  margin-bottom: 8px;
-  flex-grow: 1;
 `;
 
 const Topic = styled.p`
@@ -104,18 +96,7 @@ export const InputBlock = ({ fields }: any) => {
     <>
       <InputWrap>
         <DataWrapper>
-          <Paragraph>Dummy Corporation 1</Paragraph>
-          <Paragraph>Senior Software Developer</Paragraph>
-          <Paragraph>Apr 2021</Paragraph>
-          <Paragraph>present</Paragraph>
-          <Paragraph>
-            - Use my extensive experience with front end development to define the structure and
-            components for the project, making sure they are reusable <br /> - Keep the code quality
-            high reviewing code from other developers and suggesting improvements <br /> - Interact
-            with the designer to suggest changes and to make sure the view he has about the design
-            is translated into actual functionality <br /> - E-commerce maintenance with
-            Fastcommerce, a Brazilian e-commerce platform
-          </Paragraph>
+          <Paragraph>This list is empty.</Paragraph>
         </DataWrapper>
         <IconContainer>
           <ItemWrapper>

@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Input as AntInput, DatePicker as AntDatePicker } from "antd";
 import EditData from "../../common/inputData.json";
+import { Section } from "../../common/styles";
 import { InputBlock } from "../../widgets/InputBlock";
 
 const Topic = styled.p`
@@ -48,15 +49,6 @@ const Container = styled.div`
   gap: 1rem;
   height: 100vh;
   background: #222;
-`;
-
-const Section = styled.section<{ size: string }>`
-  display: grid;
-  grid-template-columns: repeat(1, minmax(0, 1fr));
-  width: ${(props) => (props.size === "sm" ? "50%" : "")};
-  padding-right: 4px;
-  margin-bottom: 8px;
-  flex-grow: 1;
 `;
 
 const Heading = styled.h2`
