@@ -1,7 +1,7 @@
 <div align="center">
 <h1>Single Page Resume Builder</h1>
 
-### Free and Open source fully customizable professional resume builder
+### Free and open source, fully customizable professional single page resume builder
 
 <a href="https://sadanandpai.github.io/single-page-resume-builder/dist/"><img src="covers/cover_1.png" alt="cover" height="415px" width="294px"/></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <a href="https://sadanandpai.github.io/single-page-resume-builder/dist/"><img src="covers/cover_2.png" alt="cover" height="415px" width="294px"/></a>
