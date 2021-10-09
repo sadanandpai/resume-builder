@@ -42,7 +42,7 @@ const PrimaryButton = styled(AntButton)`
 
 export function IntroEdit() {
   const intro = useIntro((state: any) => state);
-  const [setField, setExp] = useIntro((state: any) => [state.setField, state.setExp]);
+  const {setField, setExp} = useIntro((state: any) => ({setField: state.setField, setExp: state.setExp}), shallow);
 
   return (
     <>
