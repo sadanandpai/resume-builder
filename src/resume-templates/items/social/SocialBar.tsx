@@ -28,11 +28,13 @@ const SocialDiv = styled.div`
 export function SocialBar({ items }: any) {
   return (
     <SocialDiv>
-      {items.map((icon: any, index: number) => (
-        <a href={icon[1]} key={index}>
-          {getIcon(icon[0])} <span>{icon[1].split("/").slice(-2)}</span>
-        </a>
-      ))}
+      {Object.entries(items)
+        .filter((value) => typeof value[1] !== "function")
+        .map((icon: any, index: number) => (
+          <a href={icon[1]} key={index}>
+            {getIcon(icon[0])} <span>{icon[1].split("/").slice(-2)}</span>
+          </a>
+        ))}
     </SocialDiv>
   );
 }

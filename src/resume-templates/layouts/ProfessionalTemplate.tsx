@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import shallow from "zustand/shallow";
 import styled from "styled-components";
 import { FlexCol } from "../../components/common/styles";
@@ -15,6 +15,7 @@ import { List } from "../items/list/List";
 
 import {
   useIntro,
+  useSocial,
   useExp,
   useSkills,
   useAchievements,
@@ -35,7 +36,8 @@ const RightSection = styled(FlexCol)`
 `;
 
 export function ProfessionalTemplate() {
-  const intro = useIntro((state: any) => state.intro);
+  const intro = useIntro((state: any) => state);
+  const social = useSocial((state: any) => state);
   const education = useEducation((state: any) => state.education);
   const experience = useExp((state: any) => state.experience);
   const [keyProjects, certificates] = useAchievements(
@@ -100,7 +102,7 @@ export function ProfessionalTemplate() {
   return (
     <>
       <LeftSection>
-        <ModernHeaderIntro title={intro.name} icons={intro.social}>
+        <ModernHeaderIntro title={intro.name} icons={social}>
           <Intro data={intro} />
         </ModernHeaderIntro>
 

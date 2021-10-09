@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { PlusOutlined, DeleteOutlined } from "@ant-design/icons";
 import { Checkbox, Collapse as AntCollapse, Input as AntInput, Button as AntButton } from "antd";
 import { Flex } from "../../common/styles";
+import { IntroEdit } from "../edit/IntroEdit";
 
 const { Panel } = AntCollapse;
 
@@ -75,41 +76,7 @@ export const EditSettings = () => {
     <>
       <Collapse defaultActiveKey={["6"]}>
         <Panel header="About me" key="1">
-          <Wrapper>
-            <Topic>Profile</Topic>
-            <InputWrap>
-              <Input />
-              <PrimaryButton>Upload</PrimaryButton>
-            </InputWrap>
-          </Wrapper>
-          <Wrapper>
-            <Topic>Name</Topic>
-            <Input />
-          </Wrapper>
-          <Wrapper>
-            <Topic>Role</Topic>
-            <Input />
-          </Wrapper>
-          <Wrapper>
-            <Topic>Email</Topic>
-            <Input />
-          </Wrapper>
-          <Wrapper>
-            <Topic>Location</Topic>
-            <Input />
-          </Wrapper>
-          <Wrapper>
-            <Topic>Mobile</Topic>
-            <Input />
-          </Wrapper>
-          <Wrapper>
-            <Topic>Experience</Topic>
-            <Input />
-          </Wrapper>
-          <Wrapper>
-            <Topic>Link</Topic>
-            <Input />
-          </Wrapper>
+          <IntroEdit />
         </Panel>
         <Panel header="Experience" key="2">
           <Wrapper>
