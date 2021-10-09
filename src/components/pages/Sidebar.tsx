@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Tooltip } from "antd";
 import { getIcon } from "../common/icons";
 
 import { SideDrawer } from "../widgets/SideDrawer";
 import { TemplateSettings } from "../core/settings-header/TemplatesSettings";
+import { EditSettings } from "../core/settings-header/EditSettings";
+import { ThemeSettings } from "../core/settings-header/ThemeSettings";
 
 const Sider = styled.nav`
   height: 100%;
@@ -44,33 +46,46 @@ const sideBarList = [
     key: 0,
     title: "Edit",
     icon: "edit",
+    component: <EditSettings />
   },
   {
     key: 1,
     title: "Theme",
     icon: "color",
+    component: <ThemeSettings />
   },
   {
     key: 2,
     title: "Template",
     icon: "template",
+    component: <TemplateSettings />
   },
   {
     key: 3,
     title: "Download",
     icon: "download",
+    component: <TemplateSettings />
   },
 ];
 
 export const Sidebar = () => {
+  const [activeTab, setActiveTab] = useState(-1);
+
+  function clickHandler(event: any){
+    if(activeTab === event.currentTarget.dataset.id)
+      setActiveTab(-1);
+    else
+      setActiveTab(event.currentTarget.dataset.id);
+  }
+
   return (
     <Wrapper>
-      <SideDrawer>
-        <TemplateSettings />
+      <SideDrawer isShown={activeTab !== -1}>
+        {sideBarList[activeTab]?.component}
       </SideDrawer>
       <Sider>
         {sideBarList.map((item) => (
-          <IconWrapper key={item.key}>
+          <IconWrapper key={item.key} data-id={item.key} onClick={clickHandler}>
             <Tooltip placement="left" title={item.title}>
               <IconButton>{getIcon(`${item.icon}`)}</IconButton>
             </Tooltip>

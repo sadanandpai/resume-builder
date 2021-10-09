@@ -12,11 +12,15 @@ const Wrapper = styled.div`
   overflow-y: auto;
   width: 380px;
   background: #222;
+
+  &.hide {
+    display: none;
+  }
 `;
 
-export function SideDrawer({ children }: any) {
+export function SideDrawer({ isShown, children }: any) {
   return (
-    <Wrapper>
+    <Wrapper className={isShown ? "" : "hide"}>
       <Container>{children}</Container>
     </Wrapper>
   );

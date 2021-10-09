@@ -8,9 +8,10 @@ const templates = [
 ];
 
 export const useTemplates = create((set) => ({
+  index: 0,
   template: templates[0],
 
-  setTemplate: (index: number) => set({ template: templates[index]})
+  setTemplate: (index: number) => set({ index, template: templates[index] })
 }));
 
 export const useItems = create((set) => ({
