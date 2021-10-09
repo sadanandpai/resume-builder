@@ -17,6 +17,7 @@ import { SocialBar } from "../items/social/SocialBar";
 
 import {
   useIntro,
+  useSocial,
   useExp,
   useSkills,
   useAchievements,
@@ -52,7 +53,8 @@ const EmployeName = styled.div`
 `
 
 export function LegacyTemplate() {
-  const intro = useIntro((state: any) => state.intro);
+  const intro = useIntro((state: any) => state);
+  const social = useSocial((state: any) => state);
   const education = useEducation((state: any) => state.education);
   const experience = useExp((state: any) => state.experience);
   const [keyProjects, certificates] = useAchievements(
@@ -74,7 +76,7 @@ export function LegacyTemplate() {
       <GridColumn>
         <EmployeName>{intro.name}</EmployeName>
         <Intro data={intro} />
-        <SocialBar items={intro.social} />
+        <SocialBar items={social} />
 
         <LegacyHeader
           Icon={getIcon(experience.title)}

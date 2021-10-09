@@ -8,10 +8,6 @@ export const intro = {
     { type: "Frontend experience", years: "4 years" },
     { type: "Total Experience", years: "6 years" },
   ],
-  social: [
-    ["linkedin", "https://www.linkedin.com/in/johndoe/"],
-    ["github", "https://github.com/johndoe/"],
-  ],
   photo:
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZX_8ysYZc9rt-uLU-Q8i28t51DXQMIJ66-A&usqp=CAU",
   about: {
@@ -23,6 +19,11 @@ export const intro = {
     description:
       "Eager to expand my skill set through external trainings to help boost all major front desk KPIs. Hoping to leverage organizational skills to help ABC Corp introduce time-saving schemes for all executives.",
   },
+};
+
+export const social = {
+  linkedin: "https://www.linkedin.com/in/johndoe/",
+  github: "https://github.com/johndoe/"
 };
 
 export const skills = {
