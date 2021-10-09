@@ -1,16 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Tooltip } from "antd";
 import { getIcon } from "../common/icons";
 
 import { SideDrawer } from "../widgets/SideDrawer";
+import { TemplateSettings } from "../core/settings-header/TemplatesSettings";
 
 const Sider = styled.nav`
   height: 100%;
   font-size: 1.4rem;
   padding: 8px;
-  background: #eff1f5;
-  border-left: 1px solid rgba(0, 0, 0, 0.25);
+  background: #222;
 `;
 
 const IconWrapper = styled.div`
@@ -63,13 +63,14 @@ const sideBarList = [
 ];
 
 export const Sidebar = () => {
-  const [activeTab, setActiveTab] = useState(0);
   return (
     <Wrapper>
-      <SideDrawer activeTab={activeTab} />
+      <SideDrawer>
+        <TemplateSettings />
+      </SideDrawer>
       <Sider>
         {sideBarList.map((item) => (
-          <IconWrapper key={item.key} onClick={() => setActiveTab(item.key)}>
+          <IconWrapper key={item.key}>
             <Tooltip placement="left" title={item.title}>
               <IconButton>{getIcon(`${item.icon}`)}</IconButton>
             </Tooltip>
