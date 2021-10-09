@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Button as AntButton, Input as AntInput } from "antd";
 import { useIntro } from "../../stores/data.store";
+import shallow from "zustand/shallow";
 
 const Wrapper = styled.div`
   margin: 8px 0;
