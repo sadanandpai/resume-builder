@@ -14,7 +14,7 @@ const Wrapper = styled.div`
 const Topic = styled.p`
   font-size: 0.875rem;
   font-weight: 600;
-  color: #1b253e;
+  color: #fff;
   margin-bottom: 7px;
 `;
 
@@ -22,8 +22,8 @@ const InputWrap = styled.div`
   position: relative;
   border-radius: 3px;
   padding: 0.625rem;
-  border: 1px solid #e0e0e0;
-  background: #eff1f5;
+  border: 1px solid #424242;
+  background: #222;
 `;
 
 const Input = styled(AntInput)`
