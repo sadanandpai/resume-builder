@@ -16,11 +16,11 @@ export function Intro({ data }: any) {
       <FlexCol rGap="5px">
         <Role>{data.role}</Role>
         <div>
-          {data.experience[0].type}:&nbsp;
-          <strong>{data.experience[0].years}</strong>
+          {data.experience.relExpLabel}:&nbsp;
+          <strong>{data.experience.relExp}</strong>
         </div>
         <div>
-          {data.experience[1].type}:&nbsp;{data.experience[1].years}
+          {data.experience.expLabel}:&nbsp;{data.experience.exp}
         </div>
       </FlexCol>
 
