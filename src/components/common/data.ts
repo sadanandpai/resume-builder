@@ -1,19 +1,19 @@
 export const intro = {
-  name: "Jane Doe",
-  role: "Frontend Developer",
-  mobile: "+91 9876543210",
-  email: "johndoe@email.com",
-  location: "Bengaluru",
+  name: "Mahankali Sudheer Kumar",
+  role: "Automation Test Lead",
+  mobile: "+91 9032652248",
+  email: "mksudheer1@email.com",
+  location: "Hyderbad",
   experience: [
-    { type: "Frontend experience", years: "4 years" },
-    { type: "Total Experience", years: "6 years" },
+    { type: "Automation experience", years: "4 years" },
+    { type: "Total Experience", years: "8 years" },
   ],
   social: [
     ["linkedin", "https://www.linkedin.com/in/sadanandpai/"],
-    ["github", "https://github.com/sadanandpai/"],
+   
   ],
   photo:
-    "https://www.linkpicture.com/q/generated_photos_5e68893b6d3b380006f22f8b.jpg",
+    "",
   about: {
     title: "About me",
     description: `I am a web developer having expertise in frontend development and exposure to back- end development. I design and develop web applications using the latest technologies to deliver the product with quality code.\nI am very good at UI fundamentals & Technologies and can adapt to most of the front-end frameworks quickly.`,
@@ -29,23 +29,20 @@ export const skills = {
   technical: {
     title: "Technical Expertise",
     items: [
-      { name: "JavaScript", rating: 5 },
-      { name: "HTML5", rating: 5 },
-      { name: "CSS", rating: 5 },
-      { name: "React", rating: 4 },
-      { name: "Angular", rating: 4 },
+      { name: "Selenium Webdriver", rating: 5 },
+      { name: "SQL", rating: 5 },
+      { name: "Rest API", rating: 5 },
+      { name: "Java", rating: 4 },
+      
     ],
   },
   exposure: {
     title: "Skills / Expsoure",
     items: [
-      "Algorithms",
-      "Data Structures",
+      "Web Applicationo",
+      "D",
       "SQL",
-      "Progressive Web Apps",
-      "jQuery",
-      "Redux",
-      "Firebase",
+    
     ],
   },
   methodology: {
@@ -54,14 +51,13 @@ export const skills = {
       "Component based architecture",
       "Agile methodology",
       "Design Patterns",
-      "Test Driven Development",
-      "MVC",
-      "RESTful architecture",
+      "Behaviour Driven Development",
+      
     ],
   },
   tools: {
     title: "Tools",
-    items: ["Git", "VS Code", "Jira", "Webpack", "Eclipse", "Bitbucket"],
+    items: ["Git", "Microsoft SQL Server", "Jira", "Webpack", "Eclipse", "Bitbucket"],
   },
 };
 
