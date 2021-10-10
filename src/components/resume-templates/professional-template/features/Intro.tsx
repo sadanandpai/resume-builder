@@ -11,25 +11,32 @@ const Role = styled.h3`
 `;
 
 export function Intro({ data }: any) {
-  return (
-      <Flex jc="space-between">
-        <FlexCol rGap="5px">
-          <Role>{data.role}</Role>
-          <div>
-            {data.experience[0].type}:&nbsp;
-            <strong>{data.experience[0].years}</strong>
-          </div>
-          <div>
-            {data.experience[1].type}:&nbsp;{data.experience[1].years}
-          </div>
-        </FlexCol>
+  let experience = null;
 
-        <FlexCol jc="flex-end" rGap="5px">
-          <Contact icon={getIcon('mobile')} value={data.mobile} />
-          <Contact icon={getIcon('email')} value={data.email} />
-          <Contact icon={getIcon('location')} value={data.location} />
-        </FlexCol>
-      </Flex>
+  if (data.experience) {
+    experience = Object.values(data.experience)
+      .filter((v) => typeof v !== "function")
+      .map((exp: any, ind: number) => (
+        <div key={exp?.type}>
+          {exp?.type}:&nbsp;
+          <strong>{exp?.years}</strong>
+        </div>
+      ));
+  }
+
+  return (
+    <Flex jc="space-between">
+      <FlexCol rGap="5px">
+        <Role>{data.role}</Role>
+        {experience}
+      </FlexCol>
+
+      <FlexCol jc="flex-end" rGap="5px">
+        {data.mobile ? <Contact icon={getIcon("mobile")} value={data.mobile} />: null }
+        {data.email ? <Contact icon={getIcon("email")} value={data.email} />: null }
+        {data.location ? <Contact icon={getIcon("location")} value={data.location} />: null }
+      </FlexCol>
+    </Flex>
   );
 }
 

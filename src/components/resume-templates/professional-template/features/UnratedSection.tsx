@@ -11,6 +11,9 @@ const Badge = styled.span`
 `;
 
 export function UnratedSection({ items }: any) {
+  if(!items)
+    return null;
+    
   return (
     <Flex cGap="10px" rGap="10px" style={{ flexWrap: "wrap" }}>
       {items.map((value: any, index: any) => (

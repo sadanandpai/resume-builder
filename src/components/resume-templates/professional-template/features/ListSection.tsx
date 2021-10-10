@@ -3,8 +3,8 @@ import { FlexCol } from "../../../common/styles";
 import { Section } from "../core/Section";
 import { List } from "../core/List";
 
-export function ListSection({ items }: any) {  
+export function ListSection(props: any) {  
   return (
-      <List items={items} />
+      <List items={props?.items} />
   );
 }

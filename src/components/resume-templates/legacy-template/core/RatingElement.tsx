@@ -39,6 +39,10 @@ function RatedElement({ itemLabel, itemRating, index }: any) {
 }
 
 export function RatingElement({ items }: any) {
+
+  if(!items)
+    return null;
+
   return (
     <FlexCol rGap="8px">
       {items.map((data: any, index: number) => (

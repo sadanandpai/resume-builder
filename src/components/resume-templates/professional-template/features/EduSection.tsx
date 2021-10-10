@@ -15,6 +15,10 @@ const Specialization = styled.div`
 `;
 
 export function EduSection({ items }: any) {
+
+  if(!items)
+    return null;
+
   return items.map((data: any, index: any) => (
     <div key={index}>
       <Flex jc="space-between">

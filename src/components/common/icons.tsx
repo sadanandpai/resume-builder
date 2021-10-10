@@ -34,5 +34,5 @@ const icons = new Map([
 ]);
 
 export function getIcon(iconName: string) {
-  return icons.get(iconName.toLowerCase());
+  return icons.get(iconName?.toLowerCase());
 }

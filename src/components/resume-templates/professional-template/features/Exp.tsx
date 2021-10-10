@@ -29,7 +29,7 @@ const TimelineItem = styled(FlexTimeline.Item)`
 export function Exp({ styles, companies }: any) {
   return (
     <FlexTimeline style={styles}>
-      {companies.map((company: any, index: any) => {
+      {companies?.map((company: any, index: any) => {
         return (
           <TimelineItem key={index}>
             <CompanyHeader company={company} />

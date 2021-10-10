@@ -37,10 +37,12 @@ export function ProfessionalTemplate() {
   const intro = useIntro((state: any) => state.intro);
   const education = useEducation((state: any) => state.education);
   const experience = useExp((state: any) => state.experience);
-  const [keyProjects, certificates] = useAchievements(
+  const achievements = useAchievements(
     (state: any) => [state.keyProjects, state.certificates],
     shallow
   );
+
+  const [keyProjects, certificates] = achievements ?? [null, null];
   const [technical, exposure, methodology, tools] = useSkills(
     (state: any) => [
       state.technical,
@@ -53,46 +55,47 @@ export function ProfessionalTemplate() {
   
   const leftSections = [
     {
-      title: experience.title,
-      component: <Exp companies={experience.companies} />,
+      title: experience?.title,
+      component: <Exp companies={experience?.companies} />,
       styles: { flexGrow: 1 },
     },
     {
-      title: keyProjects.title,
-      component: <ListSection items={keyProjects.items} />,
+      title: keyProjects?.title,
+      component: <ListSection items={keyProjects?.items} />,
     },
     {
-      title: certificates.title,
-      component: <ListSection items={certificates.items} />,
+      title: certificates?.title,
+      component: <ListSection items={certificates?.items} />,
     },
   ];
+  
   const rightSections = [
     {
-      title: intro.about.title,
+      title: intro.about?.title,
       component: (
         <Description
           photo={intro.photo}
-          description={intro.about.description}
+          description={intro.about?.description}
         />
       ),
     },
     {
-      title: intro.objective.title,
-      component: <Description description={intro.objective.description} />,
+      title: intro.objective?.title,
+      component: <Description description={intro.objective?.description} />,
     },
     {
-      title: technical.title,
-      component: <RatedSection items={technical.items} />,
+      title: technical?.title,
+      component: <RatedSection items={technical?.items} />,
     },
-    { title: exposure.title, component: <UnratedSection items={exposure.items} /> },
+    { title: exposure?.title, component: <UnratedSection items={exposure?.items} /> },
     {
-      title: methodology.title,
-      component: <UnratedSection items={methodology.items} />,
+      title: methodology?.title,
+      component: <UnratedSection items={methodology?.items} />,
     },
-    { title: tools.title, component: <UnratedSection items={tools.items} /> },
+    { title: tools?.title, component: <UnratedSection items={tools?.items} /> },
     {
-      title: education.title,
-      component: <EduSection items={education.items} />,
+      title: education?.title,
+      component: <EduSection items={education?.items} />,
     },
   ];
 
@@ -104,6 +107,9 @@ export function ProfessionalTemplate() {
         </SectionIntro>
 
         {leftSections.map(({ title, component, styles }) => {
+          if(!title)
+            return null;
+
           return (
             <Section icon={getIcon(title)} title={title} styles={styles} key={title}>
               {component}
@@ -114,6 +120,9 @@ export function ProfessionalTemplate() {
 
       <RightSection>
         {rightSections.map(({ title, component }) => {
+          if(!title)
+            return null;
+
           return (
             <Section icon={getIcon(title)} title={title} key={title}>
               {component}

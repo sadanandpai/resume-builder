@@ -72,69 +72,69 @@ export function LegacyTemplate() {
   return (
     <GridContainer>
       <GridColumn>
-        <EmployeName>{intro.name}</EmployeName>
+        <EmployeName>{intro?.name}</EmployeName>
         <Intro data={intro} />
-        <SocialBar items={intro.social} />
+        <SocialBar items={intro?.social} />
 
         <SectionHeader
-          Icon={getIcon(experience.title)}
-          title={experience.title}
+          Icon={getIcon(experience?.title)}
+          title={experience?.title}
         />
-        <Exp companies={experience.companies} />
+        <Exp companies={experience?.companies} />
         <Separator />
         <SectionHeader
-          Icon={getIcon(keyProjects.title)}
-          title={keyProjects.title}
+          Icon={getIcon(keyProjects?.title)}
+          title={keyProjects?.title}
         />
-        <ListSection items={keyProjects.items} />
+        <ListSection items={keyProjects?.items} />
 
         <Separator />
         <SectionHeader
-          Icon={getIcon(certificates.title)}
-          title={certificates.title}
+          Icon={getIcon(certificates?.title)}
+          title={certificates?.title}
         />
-        <ListSection items={certificates.items} />
+        <ListSection items={certificates?.items} />
       </GridColumn>
 
       <Divider />
 
       <GridColumn>
         <SectionHeader
-          Icon={getIcon(intro.about.title)}
-          title={intro.about.title}
+          Icon={getIcon(intro.about?.title)}
+          title={intro.about?.title}
         />
-        <Description description={intro.about.description} />
+        <Description description={intro.about?.description} />
         <Separator />
         <SectionHeader
-          Icon={getIcon(intro.objective.title)}
-          title={intro.objective.title}
+          Icon={getIcon(intro.objective?.title)}
+          title={intro.objective?.title}
         />
-        <Description description={intro.objective.description} />
+        <Description description={intro.objective?.description} />
         <Separator />
         <SectionHeader
-          Icon={getIcon(technical.title)}
-          title={technical.title}
+          Icon={getIcon(technical?.title)}
+          title={technical?.title}
         />
-        <RatingElement items={technical.items} />
+        <RatingElement items={technical?.items} />
         <Separator />
-        <SectionHeader Icon={getIcon(exposure.title)} title={exposure.title} />
-        <UnratedSection items={exposure.items} />
+        <SectionHeader Icon={getIcon(exposure?.title)} title={exposure?.title} />
+        <UnratedSection items={exposure?.items} />
 
         <Separator />
         <SectionHeader
-          Icon={getIcon(methodology.title)}
-          title={methodology.title}
+          Icon={getIcon(methodology?.title)}
+          title={methodology?.title}
         />
-        <UnratedSection items={methodology.items} />
+        <UnratedSection items={methodology?.items} />
         <Separator />
-        <SectionHeader Icon={getIcon(tools.title)} title={tools.title} />
-        <UnratedSection items={tools.items} />
+        <SectionHeader Icon={getIcon(tools?.title)} title={tools?.title} />
+        <UnratedSection items={tools?.items} />
         <Separator />
         <SectionHeader
-          Icon={getIcon(education.title)}
-          title={education.title}
+          Icon={getIcon(education?.title)}
+          title={education?.title}
         />
-        <EduSection items={education.items} />
+        <EduSection items={education?.items} />
       </GridColumn>
     </GridContainer>
   );
