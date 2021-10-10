@@ -20,20 +20,20 @@ export const useIntro = create((set) => ({
       state[field] = (<HTMLInputElement>event.target)?.value;
     }),
 
-  setExp: (event: InputEvent) =>
+  setBlockField: (event: InputEvent) =>
     set((state: any) => {
       const field = (<HTMLElement>event.target).dataset.label;
 
       if (field === undefined) return;
-      const [label, index] = field.split("-");
+      const [label, value] = field.split("-");
       const intro = {
-        ...state
+        ...state,
       };
-      intro.experience[index][label] = (<HTMLInputElement>event.target)?.value;
+      intro[label][value] = (<HTMLInputElement>event.target)?.value;
     }),
 }));
 
-export const useSocial= create((set) => ({
+export const useSocial = create((set) => ({
   linkedin: social.linkedin,
   github: social.github,
 
