@@ -1,8 +1,11 @@
-import React from "react";
+import React, { Fragment } from "react";
 import styled from "styled-components";
 import { Button as AntButton, Input as AntInput } from "antd";
-import { useIntro } from "../../stores/data.store";
 import shallow from "zustand/shallow";
+
+import { INTRO_METADATA } from "../../common/input_metadata";
+import { BlockField } from "../../widgets/BlockField";
+import { useIntro } from "../../stores/data.store";
 
 const Wrapper = styled.div`
   margin: 8px 0;
@@ -24,12 +27,12 @@ const InputWrap = styled.div`
 `;
 
 const Input = styled(AntInput)`
-  border: 1px solid #d5d5d5;
+  border: 1px solid #222;
   height: 2.625rem;
   padding: 0.625rem;
   max-width: 100%;
-  background: #fff;
-  color: #000;
+  background: #424242;
+  color: #fff;
   border-radius: 2px;
   margin-bottom: 5px;
 `;
@@ -43,7 +46,25 @@ const PrimaryButton = styled(AntButton)`
 
 export function IntroEdit() {
   const intro = useIntro((state: any) => state);
-  const {setField, setExp} = useIntro((state: any) => ({setField: state.setField, setExp: state.setExp}), shallow);
+  const { setField, setBlockField } = useIntro(
+    (state: any) => ({ setField: state.setField, setBlockField: state.setBlockField }),
+    shallow
+  );
+
+  const fields: any = {
+    Input: ({ value, onChange }: any) => (
+      <Input value={intro[value]} data-label={value} onChange={onChange} />
+    ),
+    Block: ({ fields, label, onChange }: any) => (
+      <BlockField
+        fields={fields}
+        enableAdd={false}
+        rootLabel={label}
+        rootData={intro[label]}
+        onChange={onChange}
+      />
+    ),
+  };
 
   return (
     <>
@@ -54,42 +75,22 @@ export function IntroEdit() {
           <PrimaryButton>Upload</PrimaryButton>
         </InputWrap>
       </Wrapper>
-      <Wrapper>
-        <Topic>Name</Topic>
-        <Input value={intro.name} data-label="name" onChange={setField} />
-      </Wrapper>
-      <Wrapper>
-        <Topic>Role</Topic>
-        <Input value={intro.role} data-label="role" onChange={setField} />
-      </Wrapper>
-      <Wrapper>
-        <Topic>Email</Topic>
-        <Input value={intro.email} data-label="email" onChange={setField} />
-      </Wrapper>
-      <Wrapper>
-        <Topic>Location</Topic>
-        <Input value={intro.location} data-label="location" onChange={setField} />
-      </Wrapper>
-      <Wrapper>
-        <Topic>Mobile</Topic>
-        <Input value={intro.mobile} data-label="mobile" onChange={setField} />
-      </Wrapper>
-      <Wrapper>
-        <Topic>Relevant Exp label</Topic>
-        <Input value={intro.experience[0].type} data-label="type-0" onChange={setExp} />
-      </Wrapper>
-      <Wrapper>
-        <Topic>Relevant Exp</Topic>
-        <Input value={intro.experience[0].years} data-label="years-0" onChange={setExp} />
-      </Wrapper>
-      <Wrapper>
-        <Topic>Total Exp label</Topic>
-        <Input value={intro.experience[1].type} data-label="type-1" onChange={setExp} />
-      </Wrapper>
-      <Wrapper>
-        <Topic>Total Exp</Topic>
-        <Input value={intro.experience[1].years} data-label="years-1" onChange={setExp} />
-      </Wrapper>
+      {INTRO_METADATA?.metadata.map((metadata, indx) => {
+        return metadata?.type !== "Block" ? (
+          <Wrapper key={metadata.label}>
+            <Topic>{metadata.title}</Topic>
+            {fields[metadata.type]({ value: metadata.value, onChange: setField })}
+          </Wrapper>
+        ) : (
+          <Fragment key={indx}>
+            {fields[metadata.type]({
+              fields: metadata.fields,
+              label: metadata.value,
+              onChange: setBlockField,
+            })}
+          </Fragment>
+        );
+      })}
     </>
   );
 }

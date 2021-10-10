@@ -1,57 +1,82 @@
+export const INTRO_METADATA = {
+  section: "Profile",
+  metadata: [
+    {
+      label: "Name",
+      title: "Name",
+      type: "Input",
+      size: "sm",
+      value: "name",
+    },
+    {
+      label: "Role",
+      title: "Role",
+      type: "Input",
+      size: "lg",
+      value: "role",
+    },
+    {
+      label: "Email",
+      title: "Email",
+      type: "Input",
+      size: "sm",
+      value: "email",
+    },
+    {
+      label: "Mobile",
+      title: "Mobile",
+      type: "Input",
+      size: "sm",
+      value: "mobile",
+    },
+    {
+      label: "Location",
+      title: "Location",
+      type: "Input",
+      size: "sm",
+      value: "location",
+    },
+    {
+      label: "Experience",
+      title: "Experience",
+      type: "Block",
+      size: "lg",
+      value: "experience",
+      fields: [
+        {
+          label: "Relavant_Experience_Label",
+          title: "Relavant Experience Label",
+          type: "Input",
+          size: "lg",
+          value: "relExpLabel",
+        },
+        {
+          label: "Relavant_Experience",
+          title: "Relavant Experience",
+          type: "Input",
+          size: "lg",
+          value: "relExp",
+        },
+        {
+          label: "Total_Experience_Label",
+          title: "Total Experience Label",
+          type: "Input",
+          size: "lg",
+          value: "expLabel",
+        },
+        {
+          label: "Total_Experience",
+          title: "Total Experience",
+          type: "Input",
+          size: "lg",
+          value: "exp",
+        },
+      ],
+    },
+  ],
+};
+
 export const INPUT_METADATA = [
-  {
-    section: "Profile",
-    metadata: [
-      {
-        label: "First Name",
-        title: "First Name",
-        type: "Input",
-        size: "sm",
-      },
-      {
-        label: "Last Name",
-        title: "Last Name",
-        type: "Input",
-        size: "sm",
-      },
-      {
-        label: "Role",
-        title: "Role",
-        type: "Input",
-        size: "lg",
-      },
-      {
-        label: "Email",
-        title: "Email",
-        type: "Input",
-        size: "sm",
-      },
-      {
-        label: "Mobile",
-        title: "Mobile",
-        type: "Input",
-        size: "sm",
-      },
-      {
-        label: "Location",
-        title: "Location",
-        type: "Input",
-        size: "sm",
-      },
-      {
-        label: "Experience",
-        title: "Experience",
-        type: "Input",
-        size: "sm",
-      },
-      {
-        label: "Website",
-        title: "Website",
-        type: "Input",
-        size: "sm",
-      },
-    ],
-  },
   {
     section: "Experience",
     metadata: [

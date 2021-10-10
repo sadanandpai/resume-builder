@@ -4,10 +4,12 @@ export const intro = {
   mobile: "+91 9876543210",
   email: "johndoe@email.com",
   location: "Bengaluru",
-  experience: [
-    { type: "Frontend experience", years: "4 years" },
-    { type: "Total Experience", years: "6 years" },
-  ],
+  experience: {
+    relExpLabel: "Frontend experience",
+    relExp: "4 years",
+    expLabel: "Total Experience",
+    exp: "6 Years",
+  },
   photo:
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZX_8ysYZc9rt-uLU-Q8i28t51DXQMIJ66-A&usqp=CAU",
   about: {
@@ -23,7 +25,7 @@ export const intro = {
 
 export const social = {
   linkedin: "https://www.linkedin.com/in/johndoe/",
-  github: "https://github.com/johndoe/"
+  github: "https://github.com/johndoe/",
 };
 
 export const skills = {
