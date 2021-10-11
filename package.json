@@ -11,6 +11,7 @@
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "react-icons": "^4.2.0",
+    "react-to-print": "^2.13.0",
     "styled-components": "^5.3.0",
     "zustand": "^3.5.2"
   },

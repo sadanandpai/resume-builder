@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
+import { AppContext } from "../../App";
 import { Flex } from "../common/styles";
 import { useTemplates } from "../stores/settings.store";
 
@@ -18,8 +19,13 @@ const ResumeContainer = styled(Flex)`
 export function Resume() {
   const Template = useTemplates((state: any) => state.template);
 
+  const appContext = React.useContext(AppContext);
   return (
-    <ResumeContainer className="resume">
+    <ResumeContainer
+      className="resume"
+      id="resume-container"
+      ref={(r) => appContext?.setPdfRef(r ?? null)}
+    >
       <Template />
     </ResumeContainer>
   );

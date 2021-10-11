@@ -4,12 +4,12 @@ import { FlexHC } from "../../common/styles";
 import { ThemeSettings } from "./ThemeSettings";
 import { TemplateSettings } from "./TemplatesSettings";
 import { ItemSettings } from "./ItemSettings";
-
+import { DownloadPdf } from "./DownloadPdf";
 const Header = styled(FlexHC)`
-    @media print{
-        display: none;
-    }
-`
+  @media print {
+    display: none;
+  }
+`;
 
 export function SettingsHeader() {
   return (
@@ -17,6 +17,7 @@ export function SettingsHeader() {
       <TemplateSettings />
       <ThemeSettings />
       <ItemSettings />
+      <DownloadPdf />
     </Header>
   );
 }
