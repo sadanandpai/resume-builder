@@ -24,8 +24,8 @@
 - Edit data.ts file with your details (/src/components/common)
 - Modify the template you want to use inside resume-templates folder to fit your data well (As of now 2 templates are present)
 - Additional customizations to each section can be done at each component level
-- Once ready, use Chrome's or Firefox's built in feature Print (ctrl/cmd + P) with no margins to save as PDF
-- Recommended settings
+- Once ready, click on `Print` and save as PDF
+- In case the template is not fitting properly, follow the below recommended settings
   - Orientation: Portrait
   - Paper size: A4
   - Scale: Fit to width
