@@ -31,7 +31,7 @@ const IconButton = styled.button`
   color: rgb(230, 230, 230);
 `;
 
-export const SideMenu = ({ menuList, onClick }: any) => {
+export const SideMenu = ({ children, menuList, onClick }: any) => {
   return (
     <Sider>
       {menuList.map((item: Menu) => (
@@ -41,6 +41,7 @@ export const SideMenu = ({ menuList, onClick }: any) => {
           </Tooltip>
         </IconWrapper>
       ))}
+      {children}
     </Sider>
   );
 };

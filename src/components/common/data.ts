@@ -1,8 +1,8 @@
 export const intro = {
-  name: "John Doe",
+  name: "Jane Doe",
   role: "Frontend Developer",
   mobile: "+91 9876543210",
-  email: "johndoe@email.com",
+  email: "janedoe@email.com",
   location: "Bengaluru",
   experience: {
     relExpLabel: "Frontend experience",
@@ -10,8 +10,7 @@ export const intro = {
     expLabel: "Total Experience",
     exp: "6 Years",
   },
-  photo:
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZX_8ysYZc9rt-uLU-Q8i28t51DXQMIJ66-A&usqp=CAU",
+  photo: "https://www.linkpicture.com/q/generated_photos_5e68893b6d3b380006f22f8b.jpg",
   about: {
     title: "About me",
     description: `I am a web developer having expertise in frontend development and exposure to back- end development. I design and develop web applications using the latest technologies to deliver the product with quality code.\nI am very good at UI fundamentals & Technologies and can adapt to most of the front-end frameworks quickly.`,
@@ -72,7 +71,7 @@ export const experience = {
   title: "Experience",
   companies: [
     {
-      name: "Dummy Corporation 1",
+      name: "Company 1",
       role: "Senior Software Developer",
       years: "Apr 2021 - present",
       expYears: "2.5 years",
@@ -84,7 +83,7 @@ export const experience = {
       ],
     },
     {
-      name: "Dummy Corporation 2",
+      name: "Company 2",
       role: "Software Developer",
       years: "Jun 2015 - Dec 2017",
       expYears: "2.5 years",
@@ -96,7 +95,7 @@ export const experience = {
       ],
     },
     {
-      name: "Dummy Corporation 3",
+      name: "Company 3",
       role: "Trainee Developer",
       years: "Aug 2011 - May 2015",
       expYears: "1 year",

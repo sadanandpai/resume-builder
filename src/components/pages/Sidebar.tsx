@@ -5,10 +5,15 @@ import { SideDrawer } from "../widgets/SideDrawer";
 import { TemplateSettings } from "../core/settings-header/TemplatesSettings";
 import { ThemeSettings } from "../core/settings-header/ThemeSettings";
 import { SideMenu } from "../widgets/SideMenu";
+import { PrintSettings } from "../core/settings-header/PrintSettings";
 
 const Wrapper = styled.div`
   height: 100vh;
   display: flex;
+
+  @media print {
+    display: none;
+  }
 `;
 
 const sideBarList = [
@@ -23,13 +28,7 @@ const sideBarList = [
     title: "Template",
     icon: "template",
     component: <TemplateSettings />,
-  },
-  {
-    key: 2,
-    title: "Download",
-    icon: "download",
-    component: <TemplateSettings />,
-  },
+  }
 ];
 
 export const Sidebar = () => {
@@ -43,7 +42,7 @@ export const Sidebar = () => {
   return (
     <Wrapper>
       <SideDrawer isShown={activeTab !== -1}>{sideBarList[activeTab]?.component}</SideDrawer>
-      <SideMenu menuList={sideBarList} onClick={clickHandler} />
+      <SideMenu menuList={sideBarList} onClick={clickHandler}><PrintSettings/></SideMenu>
     </Wrapper>
   );
 };

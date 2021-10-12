@@ -14,12 +14,21 @@ const ResumeContainer = styled(Flex)`
   column-gap: 10px;
   color: ${(props) => props.theme.fontColor};
   background-color: ${(props) => props.theme.backgroundColor};
+
+  @media print {
+    border: none;
+  }
 `;
 
 const Wrapper = styled.div`
   height: 100vh;
   padding: 1.125rem;
   overflow-y: auto;
+
+  @media print {
+    height: auto;
+    padding: 0;
+  }
 `;
 
 export function Resume() {
