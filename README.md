@@ -19,7 +19,7 @@
 - `npm install` (after navigating inside the directory)
 - `npm start`
 
-### Usage
+### Usage (We recommend latest version of Chrome browser)
 
 - Edit data.ts file with your details (/src/components/common)
 - Modify the template you want to use inside resume-templates folder to fit your data well (As of now 2 templates are present)
