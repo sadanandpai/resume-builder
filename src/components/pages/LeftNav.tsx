@@ -8,6 +8,10 @@ import { SideMenu } from "../widgets/SideMenu";
 const Wrapper = styled.div`
   height: 100vh;
   display: flex;
+
+  @media print {
+    display: none;
+  }
 `;
 
 const sideBarList = [

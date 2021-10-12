@@ -7,8 +7,19 @@ body {
   background: #eff1f5;
 }
 
+@media print {
+  body *,
+  *::before,
+  *::after {
+    -webkit-print-color-adjust: exact !important; /* Chrome, Safari, Edge */
+    color-adjust: exact !important; /*Firefox*/
+  }
+}
+
+
 @page {
-  size: A4;
+  size: A4 !important;
+  margin: 0 !important;
 }
 
 ul,
