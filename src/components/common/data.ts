@@ -69,7 +69,7 @@ export const experience = {
   title: "Experience",
   companies: [
     {
-      name: "Comapny 1",
+      name: "Company 1",
       role: "Senior Software Developer",
       years: "Apr 2021 - present",
       expYears: "2.5 years",
@@ -81,7 +81,7 @@ export const experience = {
       ],
     },
     {
-      name: "Comapny 2",
+      name: "Company 2",
       role: "Software Developer",
       years: "Jun 2015 - Dec 2017",
       expYears: "2.5 years",
@@ -93,7 +93,7 @@ export const experience = {
       ],
     },
     {
-      name: "Comapny 3",
+      name: "Company 3",
       role: "Trainee Developer",
       years: "Aug 2011 - May 2015",
       expYears: "1 year",

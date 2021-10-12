@@ -6,14 +6,26 @@ body {
   font-size: 0.65rem;
 }
 
-@page {
-  size: A4;
+@media print {
+  body *,
+  *::before,
+  *::after {
+    -webkit-print-color-adjust: exact !important; /* Chrome, Safari, Edge */
+    color-adjust: exact !important; /*Firefox*/
+  }  
 }
 
-ul, li{
+
+@page {
+  size: A4;
+  margin: 0;
+}
+
+ul,
+li {
   font-size: 0.65rem;
 }
 
-p{
+p {
   margin: 0;
 }
