@@ -31,20 +31,18 @@ const IconButton = styled.button`
   color: rgb(230, 230, 230);
 `;
 
-export const SideMenu = ({ children, menuList, onClick }: any) => {
-  return (
-    <Sider>
-      {menuList.map((item: Menu) => (
-        <IconWrapper key={item.key} data-id={item.key} onClick={onClick}>
-          <Tooltip placement="left" title={item.title}>
-            <IconButton>{getIcon(`${item.icon}`)}</IconButton>
-          </Tooltip>
-        </IconWrapper>
-      ))}
-      {children}
-    </Sider>
-  );
-};
+export const SideMenu = ({ children, menuList, onClick }: any) => (
+  <Sider>
+    {menuList.map((item: Menu) => (
+      <IconWrapper key={item.key} data-id={item.key} onClick={onClick}>
+        <Tooltip placement="left" title={item.title}>
+          <IconButton>{getIcon(`${item.icon}`)}</IconButton>
+        </Tooltip>
+      </IconWrapper>
+    ))}
+    {children}
+  </Sider>
+);
 
 interface Menu {
   key: number;

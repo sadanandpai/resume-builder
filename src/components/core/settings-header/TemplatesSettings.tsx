@@ -1,5 +1,4 @@
 import React from "react";
-import { Button } from "antd";
 import styled from "styled-components";
 import { useTemplates } from "../../stores/settings.store";
 import Professional from "../../assets/professional.jpg";

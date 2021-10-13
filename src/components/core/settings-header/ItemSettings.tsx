@@ -1,6 +1,5 @@
 import React from "react";
-import { Switch } from "antd";
-import { Popover, Button } from "antd";
+import { Switch, Popover, Button } from "antd";
 import { useItems } from "../../stores/settings.store";
 
 export function ItemSettings() {

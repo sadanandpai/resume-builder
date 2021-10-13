@@ -45,15 +45,10 @@ export function ProfessionalTemplate() {
     shallow
   );
   const [technical, exposure, methodology, tools] = useSkills(
-    (state: any) => [
-      state.technical,
-      state.exposure,
-      state.methodology,
-      state.tools,
-    ],
+    (state: any) => [state.technical, state.exposure, state.methodology, state.tools],
     shallow
   );
-  
+
   const leftSections = [
     {
       title: experience.title,
@@ -72,12 +67,7 @@ export function ProfessionalTemplate() {
   const rightSections = [
     {
       title: intro.about.title,
-      component: (
-        <Description
-          photo={intro.photo}
-          description={intro.about.description}
-        />
-      ),
+      component: <Description photo={intro.photo} description={intro.about.description} />,
     },
     {
       title: intro.objective.title,
@@ -106,23 +96,19 @@ export function ProfessionalTemplate() {
           <Intro data={intro} />
         </ModernHeaderIntro>
 
-        {leftSections.map(({ title, component, styles }) => {
-          return (
-            <ModernHeader icon={getIcon(title)} title={title} styles={styles} key={title}>
-              {component}
-            </ModernHeader>
-          );
-        })}
+        {leftSections.map(({ title, component, styles }) => (
+          <ModernHeader icon={getIcon(title)} title={title} styles={styles} key={title}>
+            {component}
+          </ModernHeader>
+        ))}
       </LeftSection>
 
       <RightSection>
-        {rightSections.map(({ title, component }) => {
-          return (
-            <ModernHeader icon={getIcon(title)} title={title} key={title}>
-              {component}
-            </ModernHeader>
-          );
-        })}
+        {rightSections.map(({ title, component }) => (
+          <ModernHeader icon={getIcon(title)} title={title} key={title}>
+            {component}
+          </ModernHeader>
+        ))}
       </RightSection>
     </>
   );

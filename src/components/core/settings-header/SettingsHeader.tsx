@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { FlexHC } from "../../common/styles";
 import { ThemeSettings } from "./ThemeSettings";

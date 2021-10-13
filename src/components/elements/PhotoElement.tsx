@@ -1,4 +1,3 @@
-import React from "react";
 import { useItems } from "../stores/settings.store";
 
 export function PhotoElement({ children }: any) {

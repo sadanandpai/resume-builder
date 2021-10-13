@@ -41,16 +41,16 @@ const CompanyExp = styled.div`
   font-size: 0.6rem;
 `;
 
-export function CompanyHeader(props: any) {
+export function CompanyHeader({ company }: any) {
   return (
     <>
       <Flex jc="space-between" ai="flex-end" style={{ lineHeight: "initial" }}>
-        <CompanyName>{props.company.name}</CompanyName>
-        <CompanyExp>{props.company.years}</CompanyExp>
+        <CompanyName>{company.name}</CompanyName>
+        <CompanyExp>{company.years}</CompanyExp>
       </Flex>
       <Flex jc="space-between" ai="flex-end">
-        <CompanyRole>{props.company.role}</CompanyRole>
-        <CompanyExp>{props.company.expYears}</CompanyExp>
+        <CompanyRole>{company.role}</CompanyRole>
+        <CompanyExp>{company.expYears}</CompanyExp>
       </Flex>
     </>
   );
@@ -59,14 +59,12 @@ export function CompanyHeader(props: any) {
 export function Exp({ companies, styles }: any) {
   return (
     <FlexTimeline style={styles}>
-      {companies.map((company: any, index: any) => {
-        return (
-          <TimelineItem key={index}>
-            <CompanyHeader company={company} />
-            <List items={company.description} />
-          </TimelineItem>
-        );
-      })}
+      {companies.map((company: any) => (
+        <TimelineItem key={company.name}>
+          <CompanyHeader company={company} />
+          <List items={company.description} />
+        </TimelineItem>
+      ))}
     </FlexTimeline>
   );
 }
