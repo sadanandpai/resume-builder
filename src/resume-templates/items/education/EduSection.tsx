@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Flex } from "../../../components/common/styles";
 
@@ -13,8 +13,8 @@ const Specialization = styled.div`
 `;
 
 export function EduSection({ items }: any) {
-  return items.map((data: any, index: any) => (
-    <div key={index}>
+  return items.map((data: any) => (
+    <div key={data.degree}>
       <Flex jc="space-between">
         <Degree>{data.degree}</Degree>
         <em>{data.years}</em>

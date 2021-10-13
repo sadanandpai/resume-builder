@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
+import Color from "color";
 import { Flex, FlexHVC } from "../../../components/common/styles";
 import { getIcon } from "../../../components/common/icons";
-import Color from "color";
 
 const SectionHolder = styled.div`
   border: 1px solid ${(props) => Color(props.theme.fontColor).alpha(0.25).toString()};
@@ -31,7 +31,7 @@ const SectionIntroHolder = styled(SectionHolder)`
   .header {
     top: -20px;
     left: 0;
-    background: ${(props) => props.theme.backgroundColor};;
+    background: ${(props) => props.theme.backgroundColor};
     margin-left: 5px;
     padding: 0 5px;
     background: ${(props) => props.theme.backgroundColor};
@@ -56,30 +56,34 @@ const SectionIntroHolder = styled(SectionHolder)`
   }
 `;
 
-export function ModernHeader(props: any) {
+export function ModernHeader({ styles, title, icon, children }: any) {
   return (
-    <SectionHolder style={props.styles}>
+    <SectionHolder style={styles}>
       <FlexHVC className="header" cGap="5px">
-        {props.icon}
-        <div className="header__title">{props.title}</div>
+        {icon}
+        <div className="header__title">{title}</div>
       </FlexHVC>
-      {props.children}
+      {children}
     </SectionHolder>
   );
 }
 
-export function ModernHeaderIntro(props: any) {
+export function ModernHeaderIntro({ styles, title, icons, children }: any) {
   return (
-    <SectionIntroHolder style={props.styles}>
+    <SectionIntroHolder style={styles}>
       <FlexHVC className="header">
-        <h1 className="header__title">{props.title}</h1>
+        <h1 className="header__title">{title}</h1>
       </FlexHVC>
       <Flex className="social-icons">
-        {Object.entries(props.icons).filter(value => typeof value[1] !== 'function').map((icon: any, index: number) => (
-          <a href={icon[1]} key={index}>{getIcon(icon[0])}</a>
-        ))}
+        {Object.entries(icons)
+          .filter((value) => typeof value[1] !== "function")
+          .map((icon: any) => (
+            <a href={icon[1]} key={icon[1]}>
+              {getIcon(icon[0])}
+            </a>
+          ))}
       </Flex>
-      {props.children}
+      {children}
     </SectionIntroHolder>
   );
 }

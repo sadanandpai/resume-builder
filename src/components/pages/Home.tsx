@@ -4,12 +4,10 @@ import { Sidebar } from "./Sidebar";
 import { Flex } from "../common/styles";
 import { LeftNav } from "./LeftNav";
 
-export const Home = () => {
-  return (
-    <Flex jc="space-between">
-      <LeftNav />
-      <Resume />
-      <Sidebar />
-    </Flex>
-  );
-};
+export const Home = () => (
+  <Flex jc="space-between">
+    <LeftNav />
+    <Resume />
+    <Sidebar />
+  </Flex>
+);

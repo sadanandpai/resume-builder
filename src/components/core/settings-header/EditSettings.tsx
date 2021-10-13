@@ -21,12 +21,10 @@ const Heading = styled.h2`
   margin-bottom: 0;
 `;
 
-export const EditSettings = () => {
-  return (
-    <Container>
-      <Heading>Intro</Heading>
-      <IntroEdit />
-      <Divider />
-    </Container>
-  );
-};
+export const EditSettings = () => (
+  <Container>
+    <Heading>Intro</Heading>
+    <IntroEdit />
+    <Divider />
+  </Container>
+);

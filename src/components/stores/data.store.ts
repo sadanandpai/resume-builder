@@ -26,10 +26,10 @@ export const useIntro = create((set) => ({
 
       if (field === undefined) return;
       const [label, value] = field.split("-");
-      const intro = {
+      const introState = {
         ...state,
       };
-      intro[label][value] = (<HTMLInputElement>event.target)?.value;
+      introState[label][value] = (<HTMLInputElement>event.target)?.value;
     }),
 }));
 

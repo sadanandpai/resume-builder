@@ -75,8 +75,7 @@ export function IntroEdit() {
           <PrimaryButton>Upload</PrimaryButton>
         </InputWrap>
       </Wrapper>
-      {INTRO_METADATA?.metadata.map((metadata, indx) => {
-        return metadata?.type !== "Block" ? (
+      {INTRO_METADATA?.metadata.map((metadata, indx) => metadata?.type !== "Block" ? (
           <Wrapper key={metadata.label}>
             <Topic>{metadata.title}</Topic>
             {fields[metadata.type]({ value: metadata.value, onChange: setField })}
@@ -89,8 +88,8 @@ export function IntroEdit() {
               onChange: setBlockField,
             })}
           </Fragment>
-        );
-      })}
+        )
+      )}
     </>
   );
 }

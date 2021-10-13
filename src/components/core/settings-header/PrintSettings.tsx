@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import { Tooltip } from "antd";
 import { useIntro } from "../../stores/data.store";
 import { getIcon } from "../../common/icons";
 

@@ -101,44 +101,42 @@ const inputList: any = {
   Datepicker: <DatePicker />,
 };
 
-export const BlockField = ({ fields, rootData, rootLabel, onChange, enableAdd = true }: any) => {
-  return (
-    <Fragment>
-      {enableAdd ? (
-        <InputWrap>
-          <DataWrapper>
-            <Paragraph>This list is empty.</Paragraph>
-          </DataWrapper>
-          <IconContainer>
-            <ItemWrapper>
-              <Switch size="small" />
-            </ItemWrapper>
-            <ItemWrapper>
-              <EditOutlined style={{ color: "#1890ff", fontSize: "1rem" }} />
-            </ItemWrapper>
-            <ItemWrapper>
-              <DeleteOutlined style={{ color: "#C34A36", fontSize: "1rem" }} />
-            </ItemWrapper>
-          </IconContainer>
-        </InputWrap>
-      ) : null}
-
+export const BlockField = ({ fields, rootData, rootLabel, onChange, enableAdd = true }: any) => (
+  <>
+    {enableAdd ? (
       <InputWrap>
-        <Wrapper>
-          {fields.map((item: any) => (
-            <Section size={item.size} key={item.label}>
-              <Topic>{item.label}</Topic>
-              {inputList[item.type]({
-                data: rootData,
-                value: item.value,
-                label: rootLabel,
-                onChange: onChange,
-              })}
-            </Section>
-          ))}
-        </Wrapper>
-        {enableAdd ? <FullButton icon={<PlusOutlined />}>Add</FullButton> : null}
+        <DataWrapper>
+          <Paragraph>This list is empty.</Paragraph>
+        </DataWrapper>
+        <IconContainer>
+          <ItemWrapper>
+            <Switch size="small" />
+          </ItemWrapper>
+          <ItemWrapper>
+            <EditOutlined style={{ color: "#1890ff", fontSize: "1rem" }} />
+          </ItemWrapper>
+          <ItemWrapper>
+            <DeleteOutlined style={{ color: "#C34A36", fontSize: "1rem" }} />
+          </ItemWrapper>
+        </IconContainer>
       </InputWrap>
-    </Fragment>
-  );
-};
+    ) : null}
+
+    <InputWrap>
+      <Wrapper>
+        {fields.map((item: any) => (
+          <Section size={item.size} key={item.label}>
+            <Topic>{item.label}</Topic>
+            {inputList[item.type]({
+              data: rootData,
+              value: item.value,
+              label: rootLabel,
+              onChange,
+            })}
+          </Section>
+        ))}
+      </Wrapper>
+      {enableAdd ? <FullButton icon={<PlusOutlined />}>Add</FullButton> : null}
+    </InputWrap>
+  </>
+);

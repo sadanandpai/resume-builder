@@ -10,6 +10,13 @@ const Role = styled.h3`
   font-weight: 600;
 `;
 
+const Contact = ({ icon, value }: any) => (
+  <FlexVC jc="flex-end" cGap="8px">
+    {icon}
+    <span>{value}</span>
+  </FlexVC>
+);
+
 export function Intro({ data }: any) {
   return (
     <Flex jc="space-between">
@@ -32,12 +39,3 @@ export function Intro({ data }: any) {
     </Flex>
   );
 }
-
-const Contact = ({ icon, value }: any) => {
-  return (
-    <FlexVC jc="flex-end" cGap="8px">
-      {icon}
-      <span>{value}</span>
-    </FlexVC>
-  );
-};
