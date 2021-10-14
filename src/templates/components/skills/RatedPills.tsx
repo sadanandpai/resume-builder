@@ -18,8 +18,8 @@ const RatingTablet: any = styled.span`
 `;
 
 function RatedPillElement({ itemLabel, itemRating, index }: any) {
-  const tablets = [];
-  for (let i = 1; i <= 5; i++) {
+  const tablets: any = [];
+  for (let i = 1; i <= 5; i += 1) {
     tablets.push(
       <RatingTablet data-index={index} data-rating={i} filled={i <= itemRating} key={i} />
     );

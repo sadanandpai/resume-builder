@@ -1,31 +1,50 @@
-[![](https://img.shields.io/github/forks/sadanandpai/single-page-resume-builder?style=for-the-badge)](#forks)
+<div align="center">
+<h1>Single Page Resume Builder</h1>
+
+### Free and open source, fully customizable professional single page resume builder
+
+<a href="https://sadanandpai.github.io/single-page-resume-builder/dist/"><img src="covers/cover1.png" alt="cover" height="415px" width="294px"/></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://sadanandpai.github.io/single-page-resume-builder/dist/"><img src="covers/cover2.png" alt="cover" height="415px" width="294px"/></a>
+
 [![](https://img.shields.io/github/stars/sadanandpai/single-page-resume-builder?style=for-the-badge)](#stars)
+[![](https://img.shields.io/github/forks/sadanandpai/single-page-resume-builder?style=for-the-badge)](#forks)
 
-# Single Page Resume Builder
+<a href="https://sadanandpai.github.io/single-page-resume-builder/dist/">Live demo</a>
 
-Build a standard and professional single page resume
+</div>
 
-<a href="https://sadanandpai.github.io/single-page-resume-builder/build/">Live demo</a>
+### Running in your local
 
-### Installation
+- `git clone https://github.com/sadanandpai/single-page-resume-builder.git`
+- `npm install` (after navigating inside the directory)
+- `npm start`
 
-- Clone the repo
-- Navigate to the folder
-- Run npm install
-- Run npm start
+### Usage (We recommend latest version of Chrome browser)
 
-## Customize the json data present in data.json file
+- Edit data.ts file with your details (/src/components/common)
+- Modify the template you want to use inside resume-templates folder to fit your data well (As of now 2 templates are present)
+- Additional customizations to each section can be done at each component level
+- Once ready, click on `Print` and save as PDF
+- In case the template is not fitting properly, follow the below recommended settings
+  - Orientation: Portrait
+  - Paper size: A4
+  - Scale: Fit to width
+  - Margins: None
+  - Print headers & footers: Uncheck (remove tick mark)
+  - Background/graphics: Check (add tick mark)
 
-For dev engineer, sample data can be used from data_dev.json
-For test engineer, sample data can be used from data_test.json
+### Technologies
 
-## The changes to structure if needed can be done using Resume.js file
+- [React](https://reactjs.org/) with hooks
+- [Styled components](https://styled-components.com/) + [Antd](https://ant.design/docs/react/introduce) (css and component libraries)
+- [Zustand](https://github.com/pmndrs/zustand) (hooks based state management library)
+- [Vite](https://vitejs.dev/) (Bundler)
 
-## The changes to icons according to the section title can be managed in SectionHeader.js
+---
 
-Feel free to use the source to create your resume.
-Basic knowledge of HTML5, CSS and basic knowledge of React is sufficient to customize the resume for your requirements.
-
-## Use browser built in feature Print (ctrl + P) and use standard A4 size and no margins to save the copy as PDF
+Feel free to use the source to create your resume.<br/>
+Basic knowledge of HTML5, CSS and React is sufficient to customize the resume for your requirements.
 
 ![](https://visitor-badge.glitch.me/badge?page_id=single-page-resume-builder)
+
+<div align="center">More features coming soon</div>

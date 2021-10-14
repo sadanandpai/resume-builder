@@ -6,9 +6,9 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [master]
+    branches: [main]
   pull_request:
-    branches: [master]
+    branches: [main]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -35,14 +35,8 @@ jobs:
       - name: setup deployment
         run: |
           npm install
+          rm -rf dist
           npm run build
-          git checkout -B dist
-          rm -r .github
-          rm -r public
-          rm -r src
-          rm -r node_modules
-          mv -v ./build/* ./
-          git add *
-          git commit -m "build files"
-          git push --set-upstream origin dist
-          git push -f
+          git add dist -f
+          git commit -m "build files from github action"
+          git push
