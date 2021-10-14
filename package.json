@@ -16,10 +16,12 @@
     "react-dom": "^17.0.0",
     "react-icons": "^4.2.0",
     "styled-components": "^5.3.0",
+    "vite-tsconfig-paths": "^3.3.17",
     "zustand": "^3.5.2"
   },
   "devDependencies": {
     "@types/color": "^3.0.1",
+    "@types/node": "^16.10.9",
     "@types/react": "^17.0.0",
     "@types/react-color": "^3.0.5",
     "@types/react-dom": "^17.0.0",
