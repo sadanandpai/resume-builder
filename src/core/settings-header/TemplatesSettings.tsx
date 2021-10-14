@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { useTemplates } from "src/stores/settings.store";
-import Professional from "src/assets/images/professional.jpg";
-import Legacy from "src/assets/images/legacy.jpg";
+import { templates, useTemplates, templatesSrc, templatesName } from "src/stores/settings.store";
 
 const TemplateWrapper = styled.div`
   display: grid;
@@ -32,7 +30,7 @@ const TemplateThumbnail = styled.label`
   user-select: none;
   transition: all 0.3s;
 
-  .selected{
+  .selected {
     border: solid 2px #1890ff;
   }
 `;
@@ -43,12 +41,16 @@ export function TemplateSettings() {
 
   return (
     <TemplateWrapper>
-      <TemplateThumbnail>
-        <TemplateThumbnailImg src={Professional} alt="Professional" className={templateIndex === 0 ? 'selected' : ''} onClick={() => setTemplate(0)} />
-      </TemplateThumbnail>
-      <TemplateThumbnail>
-        <TemplateThumbnailImg src={Legacy} alt="Legacy" className={templateIndex === 1 ? 'selected' : ''} onClick={() => setTemplate(1)} />
-      </TemplateThumbnail>
+      {templates.map((_: any, ind: number) => (
+        <TemplateThumbnail key={templatesName[ind]}>
+          <TemplateThumbnailImg
+            src={templatesSrc[ind]}
+            alt="Professional"
+            className={templateIndex === ind ? "selected" : ""}
+            onClick={() => setTemplate(ind)}
+          />
+        </TemplateThumbnail>
+      ))}
     </TemplateWrapper>
   );
 }
