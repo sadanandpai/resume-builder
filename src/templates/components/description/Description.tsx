@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import { PhotoElement } from "../../../core/components/PhotoElement";
+import React from 'react';
+import styled from 'styled-components';
+import { PhotoElement } from 'src/core/widgets/PhotoElement';
 
 const RoundedImage = styled.img`
   border-radius: 50%;

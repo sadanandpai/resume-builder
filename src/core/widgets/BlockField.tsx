@@ -1,12 +1,12 @@
-import React, { Fragment } from "react";
-import styled from "styled-components";
-import { PlusOutlined, DeleteOutlined, EditOutlined } from "@ant-design/icons";
+import React, { Fragment } from 'react';
+import styled from 'styled-components';
+import { PlusOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import {
   Switch as AntSwitch,
   Input as AntInput,
   Button as AntButton,
   DatePicker as AntDatePicker,
-} from "antd";
+} from 'antd';
 
 const FullButton = styled(AntButton)`
   border: 1px solid #1890ff;
@@ -88,7 +88,7 @@ const ItemWrapper = styled.div`
 const Section = styled.section<{ size: string }>`
   display: grid;
   grid-template-columns: repeat(1, minmax(0, 1fr));
-  width: ${(props) => (props.size === "sm" ? "50%" : "")};
+  width: ${(props) => (props.size === 'sm' ? '50%' : '')};
   padding-right: 4px;
   margin-bottom: 8px;
   flex-grow: 1;
@@ -113,10 +113,10 @@ export const BlockField = ({ fields, rootData, rootLabel, onChange, enableAdd = 
             <Switch size="small" />
           </ItemWrapper>
           <ItemWrapper>
-            <EditOutlined style={{ color: "#1890ff", fontSize: "1rem" }} />
+            <EditOutlined style={{ color: '#1890ff', fontSize: '1rem' }} />
           </ItemWrapper>
           <ItemWrapper>
-            <DeleteOutlined style={{ color: "#C34A36", fontSize: "1rem" }} />
+            <DeleteOutlined style={{ color: '#C34A36', fontSize: '1rem' }} />
           </ItemWrapper>
         </IconContainer>
       </InputWrap>

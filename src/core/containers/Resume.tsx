@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import { Flex } from "src/assets/styles/styles";
-import { useTemplates } from "src/stores/settings.store";
+import React from 'react';
+import styled from 'styled-components';
+import { Flex } from 'src/assets/styles/styles';
+import { useTemplates } from 'src/stores/settings.store';
 
 const ResumeContainer = styled(Flex)`
   width: 210mm;

@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "styled-components";
-import { Timeline } from "antd";
-import { List } from "../list/List";
-import { Flex } from "../../../assets/styles/styles";
+import React from 'react';
+import styled from 'styled-components';
+import { Timeline } from 'antd';
+import { Flex } from 'src/assets/styles/styles';
+import { List } from 'src/templates/components/list/List';
 
 const FlexTimeline = styled(Timeline)`
   display: flex;
@@ -44,7 +44,7 @@ const CompanyExp = styled.div`
 export function CompanyHeader({ company }: any) {
   return (
     <>
-      <Flex jc="space-between" ai="flex-end" style={{ lineHeight: "initial" }}>
+      <Flex jc="space-between" ai="flex-end" style={{ lineHeight: 'initial' }}>
         <CompanyName>{company.name}</CompanyName>
         <CompanyExp>{company.years}</CompanyExp>
       </Flex>

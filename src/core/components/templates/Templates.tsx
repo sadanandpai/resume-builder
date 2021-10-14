@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import { templates, useTemplates, templatesSrc, templatesName } from "src/stores/settings.store";
+import React from 'react';
+import styled from 'styled-components';
+import { templates, useTemplates, templatesSrc, templatesName } from 'src/stores/settings.store';
 
 const TemplateWrapper = styled.div`
   display: grid;
@@ -35,7 +35,7 @@ const TemplateThumbnail = styled.label`
   }
 `;
 
-export function TemplateSettings() {
+export function Templates() {
   const templateIndex = useTemplates((state: any) => state.index);
   const setTemplate = useTemplates((state: any) => state.setTemplate);
 
@@ -46,7 +46,7 @@ export function TemplateSettings() {
           <TemplateThumbnailImg
             src={templatesSrc[ind]}
             alt="Professional"
-            className={templateIndex === ind ? "selected" : ""}
+            className={templateIndex === ind ? 'selected' : ''}
             onClick={() => setTemplate(ind)}
           />
         </TemplateThumbnail>

@@ -1,8 +1,8 @@
-import React from "react";
-import { Resume } from "src/containers/layouts/Resume";
-import { Sidebar } from "src/containers/layouts/Sidebar";
-import { LeftNav } from "../containers/layouts/LeftNav";
-import { Flex } from "../assets/styles/styles";
+import React from 'react';
+import { Resume } from 'src/core/containers/Resume';
+import { Sidebar } from 'src/core/containers/Sidebar';
+import { LeftNav } from 'src/core/containers/LeftNav';
+import { Flex } from 'src/assets/styles/styles';
 
 export const Home = () => (
   <Flex jc="space-between">

@@ -1,4 +1,4 @@
-@import "antd/dist/antd.css";
+@import 'antd/dist/antd.css';
 
 body {
   -webkit-font-smoothing: antialiased;
@@ -15,7 +15,6 @@ body {
     color-adjust: exact !important; /*Firefox*/
   }
 }
-
 
 @page {
   size: A4 !important;

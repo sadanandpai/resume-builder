@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import { Flex } from "../../../assets/styles/styles";
+import React from 'react';
+import styled from 'styled-components';
+import { Flex } from 'src/assets/styles/styles';
 
 const Badge = styled.span`
   padding: 4px;
@@ -12,9 +12,9 @@ const Badge = styled.span`
 
 export function UnratedTabs({ items }: any) {
   return (
-    <Flex cGap="10px" rGap="10px" style={{ flexWrap: "wrap" }}>
-      {items.map((value: any, index: any) => (
-        <Badge key={index}>{value}</Badge>
+    <Flex cGap="10px" rGap="10px" style={{ flexWrap: 'wrap' }}>
+      {items.map((value: any) => (
+        <Badge key={value}>{value}</Badge>
       ))}
     </Flex>
   );

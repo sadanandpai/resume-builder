@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 const Container = styled.div`
   background: #222;
@@ -20,7 +20,7 @@ const Wrapper = styled.div`
 
 export function SideDrawer({ isShown, children }: any) {
   return (
-    <Wrapper className={isShown ? "" : "hide"}>
+    <Wrapper className={isShown ? '' : 'hide'}>
       <Container>{children}</Container>
     </Wrapper>
   );

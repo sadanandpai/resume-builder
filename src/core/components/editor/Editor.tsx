@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import { IntroEdit } from "../../containers/components/IntroEdit";
+import React from 'react';
+import styled from 'styled-components';
+import { IntroEdit } from 'src/core/components/editor/IntroEdit';
 
 const Divider = styled.div`
   height: 1px;
@@ -21,7 +21,7 @@ const Heading = styled.h2`
   margin-bottom: 0;
 `;
 
-export const EditSettings = () => (
+export const Editor = () => (
   <Container>
     <Heading>Intro</Heading>
     <IntroEdit />

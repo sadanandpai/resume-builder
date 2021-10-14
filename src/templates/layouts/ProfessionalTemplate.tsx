@@ -1,17 +1,20 @@
-import React from "react";
-import shallow from "zustand/shallow";
-import styled from "styled-components";
-import { FlexCol } from "../../assets/styles/styles";
-import { getIcon } from "../../core/common/icons";
+import React from 'react';
+import shallow from 'zustand/shallow';
+import styled from 'styled-components';
+import { FlexCol } from 'src/assets/styles/styles';
+import { getIcon } from 'src/assets/icons';
 
-import { ModernHeader, ModernHeaderIntro } from "../components/section-layout/ModernHeader";
-import { Intro } from "../components/intro/Intro";
-import { Description } from "../components/description/Description";
-import { RatedBars } from "../components/skills/RatedBars";
-import { UnratedTabs } from "../components/skills/UnratedTabs";
-import { Exp } from "../components/exp/Exp";
-import { EduSection } from "../components/education/EduSection";
-import { List } from "../components/list/List";
+import {
+  ModernHeader,
+  ModernHeaderIntro,
+} from 'src/templates/components/section-layout/ModernHeader';
+import { Intro } from 'src/templates/components/intro/Intro';
+import { Description } from 'src/templates/components/description/Description';
+import { RatedBars } from 'src/templates/components/skills/RatedBars';
+import { UnratedTabs } from 'src/templates/components/skills/UnratedTabs';
+import { Exp } from 'src/templates/components/exp/Exp';
+import { EduSection } from 'src/templates/components/education/EduSection';
+import { List } from 'src/templates/components/list/List';
 
 import {
   useIntro,
@@ -20,7 +23,7 @@ import {
   useSkills,
   useAchievements,
   useEducation,
-} from "../../stores/data.store";
+} from 'src/stores/data.store';
 
 const LeftSection = styled(FlexCol)`
   flex-basis: 66%;

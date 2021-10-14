@@ -1,9 +1,9 @@
-import React, { useCallback, useMemo, useState } from "react";
-import shallow from "zustand/shallow";
-import styled from "styled-components";
-import { SketchPicker } from "react-color";
-import { MdColorize } from "react-icons/md";
-import { themes, useThemes } from "../../stores/theme.store";
+import React, { useCallback, useMemo, useState } from 'react';
+import shallow from 'zustand/shallow';
+import styled from 'styled-components';
+import { SketchPicker } from 'react-color';
+import { MdColorize } from 'react-icons/md';
+import { themes, useThemes } from 'src/stores/theme.store';
 
 const Item = styled.div`
   display: flex;
@@ -34,14 +34,14 @@ const Label: any = styled.div`
   font-size: 1rem;
 `;
 
-export function ThemeSettings() {
+export function Themes() {
   const customTheme = useThemes((state: any) => state.customTheme);
   const [chooseTheme, chooseCustomTheme, setCustomTheme] = useThemes(
     (state: any) => [state.chooseTheme, state.chooseCustomTheme, state.setCustomTheme],
     shallow
   );
 
-  const [type, setType] = useState("");
+  const [type, setType] = useState('');
   const [isCustomTheme, setIsCustomTheme] = useState(false);
   const color = customTheme[type];
 
@@ -83,16 +83,16 @@ export function ThemeSettings() {
   const customThemeItem = useMemo(
     () => (
       <Item onClick={onCustomTheme}>
-        <Color onClick={() => setType("backgroundColor")} themeColor={customTheme.backgroundColor}>
+        <Color onClick={() => setType('backgroundColor')} themeColor={customTheme.backgroundColor}>
           <MdColorize />
         </Color>
-        <Color onClick={() => setType("fontColor")} themeColor={customTheme.fontColor}>
+        <Color onClick={() => setType('fontColor')} themeColor={customTheme.fontColor}>
           <MdColorize />
         </Color>
-        <Color onClick={() => setType("primaryColor")} themeColor={customTheme.primaryColor}>
+        <Color onClick={() => setType('primaryColor')} themeColor={customTheme.primaryColor}>
           <MdColorize />
         </Color>
-        <Color onClick={() => setType("secondaryColor")} themeColor={customTheme.secondaryColor}>
+        <Color onClick={() => setType('secondaryColor')} themeColor={customTheme.secondaryColor}>
           <MdColorize />
         </Color>
       </Item>

@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "styled-components";
-import Color from "color";
-import { Flex, FlexHVC } from "../../../assets/styles/styles";
-import { getIcon } from "../../../core/common/icons";
+import React from 'react';
+import styled from 'styled-components';
+import Color from 'color';
+import { Flex, FlexHVC } from 'src/assets/styles/styles';
+import { getIcon } from 'src/assets/icons';
 
 const SectionHolder = styled.div`
   border: 1px solid ${(props) => Color(props.theme.fontColor).alpha(0.25).toString()};
@@ -75,7 +75,7 @@ export function ModernHeaderIntro({ styles, title, icons, children }: any) {
       </FlexHVC>
       <Flex className="social-icons">
         {Object.entries(icons)
-          .filter((value) => typeof value[1] !== "function")
+          .filter((value) => typeof value[1] !== 'function')
           .map((icon: any) => (
             <a href={icon[1]} key={icon[1]}>
               {getIcon(icon[0])}

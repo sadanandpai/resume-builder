@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 export const Section = styled.div`
   font-size: 0.8rem;
@@ -20,7 +20,8 @@ export const Section = styled.div`
 export function LegacyHeader({ title, Icon }: any) {
   return (
     <Section>
-      {Icon}{title}
+      {Icon}
+      {title}
     </Section>
   );
 }

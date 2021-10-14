@@ -1,4 +1,4 @@
-import { useItems } from "../../stores/settings.store";
+import { useItems } from 'src/stores/settings.store';
 
 export function PhotoElement({ children }: any) {
   const isPhotoDisplayed = useItems((state: any) => state.isPhotoDisplayed);

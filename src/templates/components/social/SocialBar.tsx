@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import { getIcon } from "../../../core/common/icons";
+import React from 'react';
+import styled from 'styled-components';
+import { getIcon } from 'src/assets/icons';
 
 const SocialDiv = styled.div`
   padding: 10px;
@@ -29,10 +29,10 @@ export function SocialBar({ items }: any) {
   return (
     <SocialDiv>
       {Object.entries(items)
-        .filter((value) => typeof value[1] !== "function")
+        .filter((value) => typeof value[1] !== 'function')
         .map((icon: any) => (
-          <a href={icon[1]} key={icon[1].split("/")}>
-            {getIcon(icon[0])} <span>{icon[1].split("/").slice(-2)}</span>
+          <a href={icon[1]} key={icon[1].split('/')}>
+            {getIcon(icon[0])} <span>{icon[1].split('/').slice(-2)}</span>
           </a>
         ))}
     </SocialDiv>

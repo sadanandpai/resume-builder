@@ -1,8 +1,8 @@
-import React from "react";
-import Color from "color";
-import styled from "styled-components";
-import { Flex, FlexCol, FlexVC } from "../../../assets/styles/styles";
-import { getIcon } from "../../../core/common/icons";
+import React from 'react';
+import Color from 'color';
+import styled from 'styled-components';
+import { Flex, FlexCol, FlexVC } from 'src/assets/styles/styles';
+import { getIcon } from 'src/assets/icons';
 
 const Role = styled.h3`
   color: ${(props) => Color(props.theme.primaryColor).alpha(0.75).toString()};
@@ -32,9 +32,9 @@ export function Intro({ data }: any) {
       </FlexCol>
 
       <FlexCol jc="flex-end" rGap="5px">
-        <Contact icon={getIcon("mobile")} value={data.mobile} />
-        <Contact icon={getIcon("email")} value={data.email} />
-        <Contact icon={getIcon("location")} value={data.location} />
+        <Contact icon={getIcon('mobile')} value={data.mobile} />
+        <Contact icon={getIcon('email')} value={data.email} />
+        <Contact icon={getIcon('location')} value={data.location} />
       </FlexCol>
     </Flex>
   );

@@ -1,11 +1,12 @@
-import React, { Fragment } from "react";
-import styled from "styled-components";
-import { Input as AntInput } from "antd";
-import shallow from "zustand/shallow";
+import React, { Fragment } from 'react';
+import styled from 'styled-components';
+import { Input as AntInput, Switch } from 'antd';
+import shallow from 'zustand/shallow';
 
-import { INTRO_METADATA } from "../../core/common/input_metadata";
-import { BlockField } from "../../core/widgets/BlockField";
-import { useIntro } from "../../stores/data.store";
+import { useItems } from 'src/stores/settings.store';
+import { INTRO_METADATA } from 'src/core/meta-data/input_metadata';
+import { BlockField } from 'src/core/widgets/BlockField';
+import { useIntro } from 'src/stores/data.store';
 
 const Wrapper = styled.div`
   margin: 8px 0;
@@ -36,6 +37,9 @@ export function IntroEdit() {
     shallow
   );
 
+  const isPhotoDisplayed = useItems((state: any) => state.isPhotoDisplayed);
+  const setIsPhotoDisplayed = useItems((state: any) => state.setIsPhotoDisplayed);
+
   const editFields: any = {
     Input: ({ value, onChange }: any) => (
       <Input value={intro[value]} data-label={value} onChange={onChange} />
@@ -53,8 +57,9 @@ export function IntroEdit() {
 
   return (
     <>
+      <Switch checked={isPhotoDisplayed} onChange={setIsPhotoDisplayed} size="small" />
       {INTRO_METADATA?.metadata.map((metadata, indx) =>
-        metadata?.type !== "Block" ? (
+        metadata?.type !== 'Block' ? (
           <Wrapper key={metadata.label}>
             <Topic>{metadata.title}</Topic>
             {editFields[metadata.type]({ value: metadata.value, onChange: setField })}

@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import { FlexCol, FlexVC } from "../../../assets/styles/styles";
+import React from 'react';
+import styled from 'styled-components';
+import { FlexCol, FlexVC } from 'src/assets/styles/styles';
 
 const RatedType = styled.div`
   width: 15ch;
@@ -14,19 +14,14 @@ const RatingTablet: any = styled.span`
   display: inline-block;
   border: 0.5px solid ${(props: any) => props.theme.secondaryColor};
   margin: 0px 4px;
-  background-color: ${(props: any) => (props.filled ? props.theme.secondaryColor : "transparent")};
+  background-color: ${(props: any) => (props.filled ? props.theme.secondaryColor : 'transparent')};
 `;
 
 function RatedPillElement({ itemLabel, itemRating, index }: any) {
   const tablets = [];
   for (let i = 1; i <= 5; i++) {
     tablets.push(
-      <RatingTablet
-        data-index={index}
-        data-rating={i}
-        filled={i <= itemRating}
-        key={i}
-      />
+      <RatingTablet data-index={index} data-rating={i} filled={i <= itemRating} key={i} />
     );
   }
 

@@ -1,5 +1,5 @@
-import React from "react";
-import shallow from "zustand/shallow";
+import React from 'react';
+import shallow from 'zustand/shallow';
 
 import {
   useIntro,
@@ -8,8 +8,7 @@ import {
   useSkills,
   useAchievements,
   useEducation,
-} from "../../stores/data.store";
-
+} from 'src/stores/data.store';
 
 export function Template5() {
   const intro = useIntro((state: any) => state);
@@ -21,12 +20,7 @@ export function Template5() {
     shallow
   );
   const [technical, exposure, methodology, tools] = useSkills(
-    (state: any) => [
-      state.technical,
-      state.exposure,
-      state.methodology,
-      state.tools,
-    ],
+    (state: any) => [state.technical, state.exposure, state.methodology, state.tools],
     shallow
   );
 
