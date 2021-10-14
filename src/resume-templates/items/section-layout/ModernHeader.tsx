@@ -31,7 +31,6 @@ const SectionIntroHolder = styled(SectionHolder)`
   .header {
     top: -20px;
     left: 0;
-    background: ${(props) => props.theme.backgroundColor};
     margin-left: 5px;
     padding: 0 5px;
     background: ${(props) => props.theme.backgroundColor};

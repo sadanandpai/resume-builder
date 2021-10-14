@@ -1,35 +1,63 @@
 import create from "zustand";
 import { blue, gold, lime, magenta, red } from "@ant-design/colors";
 
-const themes = [
+interface Theme {
+  id?: number;
+  fontColor: string;
+  backgroundColor: string;
+  primaryColor: string;
+  secondaryColor: string;
+}
+
+interface State {
+  theme: Theme;
+  customTheme: Theme;
+}
+
+export const themes: Theme[] = [
   {
+    id: 0,
     fontColor: "black",
     backgroundColor: "white",
-    primaryColor: blue.primary,
-    secondaryColor: lime[6],
+    primaryColor: "#1890ff",
+    secondaryColor: "yellowgreen",
   },
   {
+    id: 1,
     fontColor: magenta[8],
     backgroundColor: "white",
     primaryColor: lime[9],
-    secondaryColor: gold.primary,
+    secondaryColor: "burlywood",
   },
   {
+    id: 2,
     fontColor: "black",
     backgroundColor: "white",
     primaryColor: "green",
     secondaryColor: red[3],
   },
-  {
-    fontColor: "white",
-    backgroundColor: "black",
-    primaryColor: "yellow",
-    secondaryColor: "skyblue",
-  },
 ];
+
+export const customTheme: Theme = {
+  fontColor: "white",
+  backgroundColor: "black",
+  primaryColor: "yellow",
+  secondaryColor: lime[6],
+};
 
 export const useThemes = create((set) => ({
   theme: themes[0],
+  customTheme: customTheme,
 
-  setTheme: (index: number) => set({ theme: themes[index] }),
+  chooseTheme: (index: number) => set({ theme: themes[index] }),
+  chooseCustomTheme: () =>
+    set((state: State) => ({
+      theme: state.customTheme,
+    })),
+
+  setCustomTheme: (color: string, type: string) =>
+    set((state: State) => {
+      const userTheme = { ...state.customTheme, [type]: color };
+      return { theme: userTheme, customTheme: userTheme };
+    }),
 }));
