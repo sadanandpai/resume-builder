@@ -1,9 +1,8 @@
 import React from 'react';
 import shallow from 'zustand/shallow';
 import styled from 'styled-components';
-import { FlexCol } from 'src/assets/styles/styles';
+import { Flex, FlexCol } from 'src/assets/styles/styles';
 import { getIcon } from 'src/assets/icons';
-
 import {
   ModernHeader,
   ModernHeaderIntro,
@@ -15,7 +14,6 @@ import { UnratedTabs } from 'src/templates/components/skills/UnratedTabs';
 import { Exp } from 'src/templates/components/exp/Exp';
 import { EduSection } from 'src/templates/components/education/EduSection';
 import { List } from 'src/templates/components/list/List';
-
 import {
   useIntro,
   useSocial,
@@ -24,6 +22,18 @@ import {
   useAchievements,
   useEducation,
 } from 'src/stores/data.store';
+
+const ResumeContainer = styled(Flex)`
+  height: 100%;
+  padding: 40px 25px;
+  column-gap: 10px;
+  color: ${(props) => props.theme.fontColor};
+  background-color: ${(props) => props.theme.backgroundColor};
+
+  @media print {
+    border: none;
+  }
+`;
 
 const LeftSection = styled(FlexCol)`
   flex-basis: 66%;
@@ -93,7 +103,7 @@ export function ProfessionalTemplate() {
   ];
 
   return (
-    <>
+    <ResumeContainer>
       <LeftSection>
         <ModernHeaderIntro title={intro.name} icons={social}>
           <Intro data={intro} />
@@ -113,6 +123,6 @@ export function ProfessionalTemplate() {
           </ModernHeader>
         ))}
       </RightSection>
-    </>
+    </ResumeContainer>
   );
 }

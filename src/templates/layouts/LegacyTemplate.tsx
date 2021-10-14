@@ -10,11 +10,9 @@ import { UnratedTabs } from 'src/templates/components/skills/UnratedTabs';
 import { Exp } from 'src/templates/components/exp/Exp';
 import { EduSection } from 'src/templates/components/education/EduSection';
 import { List } from 'src/templates/components/list/List';
-
 import { LineSeparator } from 'src/templates/components/separator/LineSeparator';
 import { LegacyHeader } from 'src/templates/components/section-layout/LegacyHeader';
 import { SocialBar } from 'src/templates/components/social/SocialBar';
-
 import {
   useIntro,
   useSocial,
@@ -27,7 +25,10 @@ import {
 const GridContainer = styled.div`
   margin: auto;
   display: grid;
-  grid-template-columns: 68% 10px 1fr; ;
+  padding: 40px 25px;
+  grid-template-columns: 68% 10px 1fr;
+  color: ${(props) => props.theme.fontColor};
+  background-color: ${(props) => props.theme.backgroundColor};
 `;
 
 const Divider = styled.div`
