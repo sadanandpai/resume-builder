@@ -1,19 +1,19 @@
 import React from "react";
 import shallow from "zustand/shallow";
 import styled from "styled-components";
-import { getIcon } from "../../components/common/icons";
+import { getIcon } from "../../core/common/icons";
 
-import { Intro } from "../items/intro/Intro";
-import { Description } from "../items/description/Description";
-import { RatedPill } from "../items/skills/RatedPills";
-import { UnratedTabs } from "../items/skills/UnratedTabs";
-import { Exp } from "../items/exp/Exp";
-import { EduSection } from "../items/education/EduSection";
-import { List } from "../items/list/List";
+import { Intro } from "../components/intro/Intro";
+import { Description } from "../components/description/Description";
+import { RatedPill } from "../components/skills/RatedPills";
+import { UnratedTabs } from "../components/skills/UnratedTabs";
+import { Exp } from "../components/exp/Exp";
+import { EduSection } from "../components/education/EduSection";
+import { List } from "../components/list/List";
 
-import { LineSeparator } from "../items/separator/LineSeparator";
-import { LegacyHeader } from "../items/section-layout/LegacyHeader";
-import { SocialBar } from "../items/social/SocialBar";
+import { LineSeparator } from "../components/separator/LineSeparator";
+import { LegacyHeader } from "../components/section-layout/LegacyHeader";
+import { SocialBar } from "../components/social/SocialBar";
 
 import {
   useIntro,
@@ -22,7 +22,7 @@ import {
   useSkills,
   useAchievements,
   useEducation,
-} from "../../components/stores/data.store";
+} from "../../stores/data.store";
 
 const GridContainer = styled.div`
   margin: auto;
