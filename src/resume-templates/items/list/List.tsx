@@ -1,11 +1,18 @@
 import React from "react";
+import styled from "styled-components";
+
+const UL = styled.ul`
+  padding-left: 16px;
+  margin-bottom: 0;
+  font-size: 0.8rem;
+`;
 
 export function List({ items }: any) {
   return (
-    <ul style={{ paddingLeft: "16px", marginBottom: "0", fontSize: "0.8rem" }}>
-      {items.map((data: any) => (
-        <li key={data} dangerouslySetInnerHTML={{ __html: data }} />
+    <UL>
+      {React.Children.map(items, (item) => (
+        <li dangerouslySetInnerHTML={{ __html: item }} />
       ))}
-    </ul>
+    </UL>
   );
 }
