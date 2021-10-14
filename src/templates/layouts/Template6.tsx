@@ -25,5 +25,5 @@ export function Template6() {
   //   shallow
   // );
 
-  return <h1>Template6</h1>;
+  return <h1>Template6: Awaiting template developer</h1>;
 }
