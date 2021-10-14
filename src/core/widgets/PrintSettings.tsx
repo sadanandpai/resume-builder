@@ -27,10 +27,6 @@ const IconButton = styled.button`
 export function PrintSettings() {
   const intro = useIntro((state: any) => state);
 
-  function onPrintHandler() {
-    window.print();
-  }
-
   useEffect(() => {
     window.addEventListener('beforeprint', () => {
       window.document.title = `Resume_${intro.name}_${intro.role}_${intro.experience[1]?.years}`
@@ -45,7 +41,7 @@ export function PrintSettings() {
 
   return (
     <IconWrapper>
-      <IconButton onClick={onPrintHandler}>{getIcon('download')}</IconButton>
+      <IconButton onClick={window.print}>{getIcon('download')}</IconButton>
     </IconWrapper>
   );
 }

@@ -17,7 +17,7 @@ export const useIntro = create((set) => ({
       const field = (<HTMLElement>event.target).dataset.label;
 
       if (field === undefined) return;
-      state[field] = (<HTMLInputElement>event.target)?.value;
+      state[field] = (<HTMLInputElement>event.target)?.value; // eslint-disable-line no-param-reassign
     }),
 
   setBlockField: (event: InputEvent) =>
@@ -42,7 +42,7 @@ export const useSocial = create((set) => ({
       const field = (<HTMLElement>event.target).dataset.label;
 
       if (field === undefined) return;
-      state[field] = (<HTMLInputElement>event.target)?.value;
+      state[field] = (<HTMLInputElement>event.target)?.value; // eslint-disable-line no-param-reassign
     }),
 }));
 

@@ -58,14 +58,14 @@ export function IntroEdit() {
   return (
     <>
       <Switch checked={isPhotoDisplayed} onChange={setIsPhotoDisplayed} size="small" />
-      {INTRO_METADATA?.metadata.map((metadata, indx) =>
+      {INTRO_METADATA?.metadata.map((metadata) =>
         metadata?.type !== 'Block' ? (
           <Wrapper key={metadata.label}>
             <Topic>{metadata.title}</Topic>
             {editFields[metadata.type]({ value: metadata.value, onChange: setField })}
           </Wrapper>
         ) : (
-          <Fragment key={indx}>
+          <Fragment key={metadata.type}>
             {editFields[metadata.type]({
               fields: metadata.fields,
               label: metadata.value,

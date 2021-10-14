@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import DOMPurify from 'dompurify';
 
 const UL = styled.ul`
   padding-left: 16px;
@@ -11,7 +12,7 @@ export function List({ items }: any) {
   return (
     <UL>
       {React.Children.map(items, (item) => (
-        <li dangerouslySetInnerHTML={{ __html: item }} />
+        <li dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(item) }} /> // eslint-disable-line react/no-danger
       ))}
     </UL>
   );
