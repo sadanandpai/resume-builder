@@ -43,88 +43,74 @@ export const INTRO_METADATA = {
       size: 'sm',
       value: 'location',
     },
+  ],
+};
+
+export const INFO_METADATA = {
+  section: 'Info',
+  metadata: [
     {
-      label: 'Experience',
-      title: 'Experience',
-      type: 'Block',
+      label: 'Relavant Experience Label',
+      title: 'Relavant Experience Label',
+      type: 'Input',
       size: 'lg',
-      value: 'experience',
-      fields: [
-        {
-          label: 'Title',
-          title: 'Relavant Experience Label',
-          type: 'Input',
-          size: 'lg',
-          value: 'relExpLabel',
-        },
-        {
-          label: 'Relavant_Experience',
-          title: 'Relavant Experience',
-          type: 'Input',
-          size: 'lg',
-          value: 'relExp',
-        },
-        {
-          label: 'Total_Experience_Label',
-          title: 'Total Experience Label',
-          type: 'Input',
-          size: 'lg',
-          value: 'expLabel',
-        },
-        {
-          label: 'Total_Experience',
-          title: 'Total Experience',
-          type: 'Input',
-          size: 'lg',
-          value: 'exp',
-        },
-      ],
+      value: 'relExpLabel',
     },
     {
-      label: 'Info',
-      title: 'Info',
-      type: 'Block',
+      label: 'Relavant_Experience',
+      title: 'Relavant Experience',
+      type: 'Input',
       size: 'lg',
-      value: 'about',
-      fields: [
-        {
-          label: 'Title',
-          title: 'Title',
-          type: 'Input',
-          size: 'lg',
-          value: 'title',
-        },
-        {
-          label: 'Relavant_Experience',
-          title: 'Relavant Experience',
-          type: 'Input',
-          size: 'lg',
-          value: 'description',
-        },
-      ],
+      value: 'relExp',
     },
     {
-      label: 'Objective',
-      title: 'Objective',
-      type: 'Block',
+      label: 'Total_Experience_Label',
+      title: 'Total Experience Label',
+      type: 'Input',
       size: 'lg',
-      value: 'objective',
-      fields: [
-        {
-          label: 'Title',
-          title: 'Title',
-          type: 'Input',
-          size: 'lg',
-          value: 'title',
-        },
-        {
-          label: 'Relavant_Experience',
-          title: 'Relavant Experience',
-          type: 'Input',
-          size: 'lg',
-          value: 'description',
-        },
-      ],
+      value: 'totalExpLabel',
+    },
+    {
+      label: 'Total_Experience',
+      title: 'Total Experience',
+      type: 'Input',
+      size: 'lg',
+      value: 'totalExp',
+    },
+  ],
+};
+
+export const ABOUT_METADATA = {
+  section: 'About',
+  metadata: [
+    {
+      label: 'About me',
+      title: 'About me',
+      type: 'Input',
+      size: 'lg',
+      value: 'title',
+    },
+    {
+      label: 'Relavant_Experience',
+      title: 'Relavant Experience',
+      type: 'Input',
+      size: 'lg',
+      value: 'description',
+    },
+
+    {
+      label: 'Title',
+      title: 'Title',
+      type: 'Input',
+      size: 'lg',
+      value: 'title',
+    },
+    {
+      label: 'Relavant_Experience',
+      title: 'Relavant Experience',
+      type: 'Input',
+      size: 'lg',
+      value: 'description',
     },
   ],
 };

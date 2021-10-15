@@ -17,24 +17,24 @@ const Contact = ({ icon, value }: any) => (
   </FlexVC>
 );
 
-export function Intro({ data }: any) {
+export function Intro({ intro, experience }: any) {
   return (
     <Flex jc="space-between">
       <FlexCol rGap="5px">
-        <Role>{data.role}</Role>
+        <Role>{intro.role}</Role>
         <div>
-          {data.experience.relExpLabel}:&nbsp;
-          <strong>{data.experience.relExp}</strong>
+          {experience.relExpLabel}:&nbsp;
+          <strong>{experience.relExp}</strong>
         </div>
         <div>
-          {data.experience.expLabel}:&nbsp;{data.experience.exp}
+          {experience.totalExpLabel}:&nbsp;{experience.totalExp}
         </div>
       </FlexCol>
 
       <FlexCol jc="flex-end" rGap="5px">
-        <Contact icon={getIcon('mobile')} value={data.mobile} />
-        <Contact icon={getIcon('email')} value={data.email} />
-        <Contact icon={getIcon('location')} value={data.location} />
+        <Contact icon={getIcon('mobile')} value={intro.mobile} />
+        <Contact icon={getIcon('email')} value={intro.email} />
+        <Contact icon={getIcon('location')} value={intro.location} />
       </FlexCol>
     </Flex>
   );

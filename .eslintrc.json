@@ -24,6 +24,8 @@
   "rules": {
     "react/jsx-filename-extension": [2, { "extensions": [".ts", ".tsx"] }],
     "no-use-before-define": "off",
+    "react/no-array-index-key": 0,
+    "react/no-danger": 0,
     "@typescript-eslint/no-use-before-define": ["error"],
     "import/prefer-default-export": 0,
     "import/extensions": [

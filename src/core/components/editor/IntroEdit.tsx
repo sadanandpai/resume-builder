@@ -2,10 +2,9 @@ import React, { Fragment } from 'react';
 import styled from 'styled-components';
 import { Input as AntInput, Switch } from 'antd';
 import shallow from 'zustand/shallow';
-
 import { useItems } from 'src/stores/settings.store';
 import { INTRO_METADATA } from 'src/core/meta-data/input_metadata';
-import { BlockField } from 'src/core/widgets/BlockField';
+// import { BlockField } from 'src/core/widgets/BlockField';
 import { useIntro } from 'src/stores/data.store';
 
 const Wrapper = styled.div`
@@ -32,48 +31,20 @@ const Input = styled(AntInput)`
 
 export function IntroEdit() {
   const intro = useIntro((state: any) => state);
-  const { setField, setBlockField } = useIntro(
-    (state: any) => ({ setField: state.setField, setBlockField: state.setBlockField }),
-    shallow
-  );
+  const { setField } = useIntro((state: any) => ({ setField: state.setField }), shallow);
 
   const isPhotoDisplayed = useItems((state: any) => state.isPhotoDisplayed);
   const setIsPhotoDisplayed = useItems((state: any) => state.setIsPhotoDisplayed);
 
-  const editFields: any = {
-    Input: ({ value, onChange }: any) => (
-      <Input value={intro[value]} data-label={value} onChange={onChange} />
-    ),
-    Block: ({ fields, label, onChange }: any) => (
-      <BlockField
-        fields={fields}
-        enableAdd={false}
-        rootLabel={label}
-        rootData={intro[label]}
-        onChange={onChange}
-      />
-    ),
-  };
-
   return (
     <>
       <Switch checked={isPhotoDisplayed} onChange={setIsPhotoDisplayed} size="small" />
-      {INTRO_METADATA?.metadata.map((metadata) =>
-        metadata?.type !== 'Block' ? (
-          <Wrapper key={metadata.label}>
-            <Topic>{metadata.title}</Topic>
-            {editFields[metadata.type]({ value: metadata.value, onChange: setField })}
-          </Wrapper>
-        ) : (
-          <Fragment key={metadata.type}>
-            {editFields[metadata.type]({
-              fields: metadata.fields,
-              label: metadata.value,
-              onChange: setBlockField,
-            })}
-          </Fragment>
-        )
-      )}
+      {INTRO_METADATA?.metadata.map((metadata) => (
+        <Wrapper key={metadata.label}>
+          <Topic>{metadata.title}</Topic>
+          <Input value={intro[metadata.value]} data-label={metadata.value} onChange={setField} />
+        </Wrapper>
+      ))}
     </>
   );
 }

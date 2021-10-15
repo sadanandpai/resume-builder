@@ -4,40 +4,33 @@ export const intro = {
   mobile: '+91 9876543210',
   email: 'janedoe@email.com',
   location: 'Bengaluru',
-  experience: {
-    relExpLabel: 'Frontend experience',
-    relExp: '4 years',
-    expLabel: 'Total Experience',
-    exp: '6 Years',
-  },
   photo: 'https://www.linkpicture.com/q/generated_photos_5e68893b6d3b380006f22f8b.jpg',
-  about: {
-    title: 'About me',
-    description: `I am a web developer having expertise in frontend development and exposure to back- end development. I design and develop web applications using the latest technologies to deliver the product with quality code.\nI am very good at UI fundamentals & Technologies and can adapt to most of the front-end frameworks quickly.`,
-  },
-  objective: {
-    title: 'Career Objective',
-    description:
-      'Eager to expand my skill set through external trainings to help boost all major front desk KPIs. Hoping to leverage organizational skills to help ABC Corp introduce time-saving schemes for all executives.',
-  },
+};
+
+export const info = {
+  aboutTitle: 'About me',
+  aboutDescription: `I am a web developer having expertise in frontend development and exposure to back- end development. I design and develop web applications using the latest technologies to deliver the product with quality code.\nI am very good at UI fundamentals & Technologies and can adapt to most of the front-end frameworks quickly.`,
+  objectiveTitle: 'Career Objective',
+  objectiveDescription:
+    'Eager to expand my skill set through external trainings to help boost all major front desk KPIs. Hoping to leverage organizational skills to help ABC Corp introduce time-saving schemes for all executives.',
 };
 
 export const social = {
   linkedin: 'https://www.linkedin.com/in/sadanandpai/',
   github: 'https://github.com/sadanandpai/',
   hackerrank: 'https://www.hackerrank.com/paicube/',
-  hackerearth: 'https://www.hackerearth.com/@sadanandpai/',
-  codechef: 'https://www.codechef.com/users/sadanandpai/',
-  codeforces: 'https://codeforces.com/profile/paicube',
-  twitter: 'https://twitter.com/paicube/',
+  hackerearth: '',
+  codechef: '',
+  codeforces: '',
+  twitter: '',
   leetcode: 'https://leetcode.com/paicube/',
-  medium: 'https://medium.com/@sadypai/',
-  devto: 'https://dev.to/sadanandpai/',
-  hashnode: 'https://hashnode.com/@paicube/',
-  wordpress: 'https://sadanandpai.wordpress.com/',
-  squarespace: 'https://www.squarespace.com/',
-  behance: 'https://www.behance.net/akshaypai1/',
-  dribbble: 'https://dribbble.com/paicube/',
+  medium: '',
+  devto: '',
+  hashnode: '',
+  wordpress: '',
+  squarespace: '',
+  behance: '',
+  dribbble: '',
 };
 
 export const skills = {
@@ -82,44 +75,37 @@ export const skills = {
 
 export const experience = {
   title: 'Experience',
+  relExpLabel: 'Frontend experience',
+  relExp: '4 years',
+  totalExpLabel: 'Total Experience',
+  totalExp: '6 Years',
   companies: [
     {
       name: 'Company 1',
       role: 'Senior Software Developer',
-      years: 'Apr 2021 - present',
-      expYears: '2.5 years',
-      description: [
-        'Use my extensive experience with front end development to <u>define the structure and components</u> for the project, making sure they are reusable',
-        'Keep the code quality high reviewing code from other developers and suggesting improvements',
-        'Interact with the designer to suggest changes and to make sure the view he has about the design is translated into actual functionality',
-        'E-commerce maintenance <i>with Fastcommerce</i>, a Brazilian e-commerce platform',
-      ],
+      from: 'Apr 2021',
+      to: 'present',
+      years: '2.5 years',
+      description:
+        '* Use my extensive experience with front end development to define the structure and components for the project, making sure they are reusable\n* Keep the code quality high reviewing code from other developers and suggesting improvements\n* Interact with the designer to suggest changes and to make sure the view he has about the design is translated into actual functionality\n* E-commerce maintenance **with Fastcommerce**, a Brazilian e-commerce platform',
     },
     {
       name: 'Company 2',
       role: 'Software Developer',
-      years: 'Jun 2015 - Dec 2017',
-      expYears: '2.5 years',
-      description: [
-        'Develop web applications based on Sharepoint, Drupal 8 and Episerver',
-        "Lead a team of <strong>10 front end developers</strong>, giving support to the client's multi-cultural team, providing feedback, clarifying requirements and helping with technical questions",
-        'Keep the Project Manager and the IT Leads updated on the overall progress of the projects and manage the tasks distributed to the team',
-        'Keep the code and the features implemented by the other developers in accordance to the requirements',
-      ],
+      from: 'Jun 2015',
+      to: 'Dec 2017',
+      years: '2.5 years',
+      description:
+        "* Develop web applications based on Sharepoint, Drupal 8 and Episerver\n* Lead a team of 10 front end developers, giving support to the client's multi-cultural team, providing feedback, clarifying requirements and helping with technical questions\n* Keep the Project Manager and the IT Leads updated on the overall progress of the projects and manage the tasks distributed to the team\n* Keep the code and the features implemented by the other developers in accordance to the requirements",
     },
     {
       name: 'Company 3',
       role: 'Trainee Developer',
-      years: 'Aug 2011 - May 2015',
-      expYears: '1 year',
-      description: [
-        'Design easy user interfaces and great user experiences for the digital platforms of small companies',
-        'Wordpress development, including themes creation or customization, custom plugins development and training',
-        'E-commerce maintenance <i>with Fastcommerce</i>, a Brazilian e-commerce platform',
-        'E-commerce development with Magento, customizing preexisting themes ',
-        'Integrate external services such as payment services, delivery, etc into Magento solutions',
-        'VPS configuration and optimization (Apache & Nginx)',
-      ],
+      from: 'Aug 2011',
+      to: 'May 2015',
+      years: '1 year',
+      description:
+        '* Design easy user interfaces and great user experiences for the digital platforms of small companies\n* Wordpress development, including themes creation or customization, custom plugins development and training\n* E-commerce maintenance with Fastcommerce, a Brazilian e-commerce platform\n* E-commerce development with Magento, customizing preexisting themes \n* Integrate external services such as payment services, delivery, etc into Magento solutions\n* VPS configuration and optimization (Apache & Nginx)',
     },
   ],
 };
