@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Timeline } from 'antd';
 import { Flex } from 'src/assets/styles/styles';
-import { List } from 'src/templates/components/list/List';
+import MarkdownIt from 'markdown-it';
 
 const FlexTimeline = styled(Timeline)`
   display: flex;
@@ -12,6 +12,12 @@ const FlexTimeline = styled(Timeline)`
   height: 100%;
   padding-top: 15px;
   color: ${(props: any) => props.theme.fontColor};
+
+  ul {
+    padding-left: 16px;
+    margin-bottom: 0;
+    font-size: 0.8rem;
+  }
 `;
 
 const TimelineItem = styled(FlexTimeline.Item)`
@@ -41,16 +47,20 @@ const CompanyExp = styled.div`
   font-size: 0.6rem;
 `;
 
+const mdParser = new MarkdownIt(/* Markdown-it options */);
+
 export function CompanyHeader({ company }: any) {
   return (
     <>
       <Flex jc="space-between" ai="flex-end" style={{ lineHeight: 'initial' }}>
         <CompanyName>{company.name}</CompanyName>
-        <CompanyExp>{company.years}</CompanyExp>
+        <CompanyExp>
+          {company.from} - {company.to}
+        </CompanyExp>
       </Flex>
       <Flex jc="space-between" ai="flex-end">
         <CompanyRole>{company.role}</CompanyRole>
-        <CompanyExp>{company.expYears}</CompanyExp>
+        <CompanyExp>{company.years}</CompanyExp>
       </Flex>
     </>
   );
@@ -59,10 +69,10 @@ export function CompanyHeader({ company }: any) {
 export function Exp({ companies, styles }: any) {
   return (
     <FlexTimeline style={styles}>
-      {companies.map((company: any) => (
-        <TimelineItem key={company.name}>
+      {companies.map((company: any, index: number) => (
+        <TimelineItem key={`${company.name}-${index}`}>
           <CompanyHeader company={company} />
-          <List items={company.description} />
+          <div dangerouslySetInnerHTML={{ __html: mdParser.render(company.description) }} />
         </TimelineItem>
       ))}
     </FlexTimeline>

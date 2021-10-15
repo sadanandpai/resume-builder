@@ -1,5 +1,5 @@
 import React from 'react';
-import { AiOutlineGithub, AiFillLinkedin, AiOutlineAim } from 'react-icons/ai';
+import { AiOutlineGithub, AiFillLinkedin, AiOutlineAim, AiFillDelete } from 'react-icons/ai';
 import {
   MdVpnKey,
   MdVerifiedUser,
@@ -13,6 +13,8 @@ import {
   MdColorLens,
   MdCloudDownload,
   MdLibraryBooks,
+  MdAddCircleOutline,
+  MdPeople,
 } from 'react-icons/md';
 import {
   SiBehance,
@@ -31,6 +33,7 @@ import {
 import { FaMediumM, FaUniversity, FaWordpressSimple } from 'react-icons/fa';
 import { IoGitBranch } from 'react-icons/io5';
 import { GoVerified } from 'react-icons/go';
+import { GrDrag } from 'react-icons/gr';
 
 const icons = new Map([
   ['mobile', <MdCall />],
@@ -66,8 +69,13 @@ const icons = new Map([
   ['color', <MdColorLens fill="#1890ff" />],
   ['download', <MdCloudDownload fill="#1890ff" />],
   ['template', <MdLibraryBooks fill="#1890ff" />],
+
+  ['drag', <GrDrag />],
+  ['delete', <AiFillDelete />],
+  ['add', <MdAddCircleOutline />],
+  ['social', <MdPeople />],
 ]);
 
 export function getIcon(iconName: string) {
-  return icons.get(iconName.toLowerCase());
+  return icons.get(iconName?.toLowerCase());
 }

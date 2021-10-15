@@ -16,6 +16,7 @@ import { EduSection } from 'src/templates/components/education/EduSection';
 import { List } from 'src/templates/components/list/List';
 import {
   useIntro,
+  useInfo,
   useSocial,
   useExp,
   useSkills,
@@ -50,9 +51,10 @@ const RightSection = styled(FlexCol)`
 
 export function ProfessionalTemplate() {
   const intro = useIntro((state: any) => state);
+  const info = useInfo((state: any) => state);
   const social = useSocial((state: any) => state);
   const education = useEducation((state: any) => state.education);
-  const experience = useExp((state: any) => state.experience);
+  const experience = useExp((state: any) => state);
   const [keyProjects, certificates] = useAchievements(
     (state: any) => [state.keyProjects, state.certificates],
     shallow
@@ -79,12 +81,12 @@ export function ProfessionalTemplate() {
   ];
   const rightSections = [
     {
-      title: intro.about.title,
-      component: <Description photo={intro.photo} description={intro.about.description} />,
+      title: info.aboutTitle,
+      component: <Description photo={intro.photo} description={info.aboutDescription} />,
     },
     {
-      title: intro.objective.title,
-      component: <Description description={intro.objective.description} />,
+      title: info.objectiveTitle,
+      component: <Description description={info.objectiveDescription} />,
     },
     {
       title: technical.title,
@@ -106,7 +108,7 @@ export function ProfessionalTemplate() {
     <ResumeContainer>
       <LeftSection>
         <ModernHeaderIntro title={intro.name} icons={social}>
-          <Intro data={intro} />
+          <Intro intro={intro} experience={experience} />
         </ModernHeaderIntro>
 
         {leftSections.map(({ title, component, styles }) => (

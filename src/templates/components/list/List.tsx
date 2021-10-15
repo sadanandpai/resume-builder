@@ -12,7 +12,7 @@ export function List({ items }: any) {
   return (
     <UL>
       {React.Children.map(items, (item) => (
-        <li dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(item) }} /> // eslint-disable-line react/no-danger
+        <li dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(item) }} />
       ))}
     </UL>
   );

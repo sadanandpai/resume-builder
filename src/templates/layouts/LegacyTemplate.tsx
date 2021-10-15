@@ -15,6 +15,7 @@ import { LegacyHeader } from 'src/templates/components/section-layout/LegacyHead
 import { SocialBar } from 'src/templates/components/social/SocialBar';
 import {
   useIntro,
+  useInfo,
   useSocial,
   useExp,
   useSkills,
@@ -55,9 +56,10 @@ const EmployeName = styled.div`
 
 export function LegacyTemplate() {
   const intro = useIntro((state: any) => state);
+  const info = useInfo((state: any) => state);
   const social = useSocial((state: any) => state);
   const education = useEducation((state: any) => state.education);
-  const experience = useExp((state: any) => state.experience);
+  const experience = useExp((state: any) => state);
   const [keyProjects, certificates] = useAchievements(
     (state: any) => [state.keyProjects, state.certificates],
     shallow
@@ -71,7 +73,7 @@ export function LegacyTemplate() {
     <GridContainer>
       <GridColumn>
         <EmployeName>{intro.name}</EmployeName>
-        <Intro data={intro} />
+        <Intro intro={intro} experience={experience} />
         <SocialBar items={social} />
 
         <LegacyHeader Icon={getIcon(experience.title)} title={experience.title} />
@@ -88,11 +90,11 @@ export function LegacyTemplate() {
       <Divider />
 
       <GridColumn>
-        <LegacyHeader Icon={getIcon(intro.about.title)} title={intro.about.title} />
-        <Description description={intro.about.description} />
+        <LegacyHeader Icon={getIcon(info.aboutTitle)} title={info.aboutTitle} />
+        <Description description={info.aboutDescription} />
         <LineSeparator />
-        <LegacyHeader Icon={getIcon(intro.objective.title)} title={intro.objective.title} />
-        <Description description={intro.objective.description} />
+        <LegacyHeader Icon={getIcon(info.objectiveTitle)} title={info.objectiveTitle} />
+        <Description description={info.objectiveDescription} />
         <LineSeparator />
         <LegacyHeader Icon={getIcon(technical.title)} title={technical.title} />
         <RatedPill items={technical.items} />
