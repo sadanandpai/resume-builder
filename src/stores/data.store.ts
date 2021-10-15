@@ -36,6 +36,19 @@ export const useIntro = create((set) => ({
 export const useSocial = create((set) => ({
   linkedin: social.linkedin,
   github: social.github,
+  hackerrank: social.hackerrank,
+  hackerearth: social.hackerearth,
+  codechef: social.codechef,
+  codeforces: social.codeforces,
+  twitter: social.twitter,
+  leetcode: social.leetcode,
+  devto: social.devto,
+  medium: social.medium,
+  hashnode: social.hashnode,
+  wordpress: social.wordpress,
+  squarespace: social.squarespace,
+  behance: social.behance,
+  dribbble: social.dribbble,
 
   setField: (event: InputEvent) =>
     set((state: any) => {

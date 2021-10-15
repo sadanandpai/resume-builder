@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import { IntroEdit } from 'src/core/components/editor/IntroEdit';
+import { SocialEdit } from 'src/core/components/editor/SocialEdit';
 
 const Divider = styled.div`
-  height: 1px;
-  background: #424242;
+  height: 2px;
+  background: white;
 `;
 
 const Container = styled.div`
@@ -25,6 +26,9 @@ export const Editor = () => (
   <Container>
     <Heading>Intro</Heading>
     <IntroEdit />
+    <Divider />
+    <Heading>Social</Heading>
+    <SocialEdit />
     <Divider />
   </Container>
 );

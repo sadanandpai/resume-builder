@@ -14,8 +14,21 @@ import {
   MdCloudDownload,
   MdLibraryBooks,
 } from 'react-icons/md';
-import { SiExpertsexchange } from 'react-icons/si';
-import { FaUniversity } from 'react-icons/fa';
+import {
+  SiBehance,
+  SiCodechef,
+  SiCodeforces,
+  SiDevDotTo,
+  SiDribbble,
+  SiExpertsexchange,
+  SiHackerearth,
+  SiHackerrank,
+  SiHashnode,
+  SiLeetcode,
+  SiSquarespace,
+  SiTwitter,
+} from 'react-icons/si';
+import { FaMediumM, FaUniversity, FaWordpressSimple } from 'react-icons/fa';
 import { IoGitBranch } from 'react-icons/io5';
 import { GoVerified } from 'react-icons/go';
 
@@ -25,6 +38,20 @@ const icons = new Map([
   ['location', <MdLocationOn />],
   ['github', <AiOutlineGithub />],
   ['linkedin', <AiFillLinkedin />],
+  ['hackerrank', <SiHackerrank />],
+  ['hackerearth', <SiHackerearth />],
+  ['twitter', <SiTwitter />],
+  ['leetcode', <SiLeetcode />],
+  ['devto', <SiDevDotTo />],
+  ['medium', <FaMediumM />],
+  ['wordpress', <FaWordpressSimple />],
+  ['codechef', <SiCodechef />],
+  ['codeforces', <SiCodeforces />],
+  ['behance', <SiBehance />],
+  ['dribbble', <SiDribbble />],
+  ['hashnode', <SiHashnode />],
+  ['squarespace', <SiSquarespace />],
+
   ['about me', <MdPermIdentity />],
   ['technical expertise', <SiExpertsexchange />],
   ['experience', <MdWork />],
