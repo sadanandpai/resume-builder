@@ -21,7 +21,7 @@ const SocialDiv = styled.div`
 
   a,
   svg {
-    color: ${(props) => props.theme.fontColor};
+    color: ${(props) => props.theme.primaryColor};
   }
 `;
 
@@ -31,10 +31,10 @@ export function SocialBar({ items }: any) {
   return (
     <SocialDiv>
       {Object.entries(items)
-        .filter((value) => typeof value[1] !== 'function')
+        .filter((value) => typeof value[1] !== 'function' && value[1] !== '')
         .map((icon: any) => (
           <a href={icon[1]} key={icon[1].split('/')}>
-            {getIcon(icon[0])} <span>{icon[1].split('/').slice(-2)}</span>
+            {getIcon(icon[0])}
           </a>
         ))}
     </SocialDiv>

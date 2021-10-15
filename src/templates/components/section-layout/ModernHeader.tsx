@@ -75,7 +75,7 @@ export function ModernHeaderIntro({ styles, title, icons, children }: any) {
       </FlexHVC>
       <Flex className="social-icons">
         {Object.entries(icons)
-          .filter((value) => typeof value[1] !== 'function')
+          .filter((value) => typeof value[1] !== 'function' && value[1] !== '')
           .map((icon: any) => (
             <a href={icon[1]} key={icon[1]}>
               {getIcon(icon[0])}

@@ -23,8 +23,21 @@ export const intro = {
 };
 
 export const social = {
-  linkedin: 'https://www.linkedin.com/in/johndoe/',
-  github: 'https://github.com/johndoe/',
+  linkedin: 'https://www.linkedin.com/in/sadanandpai/',
+  github: 'https://github.com/sadanandpai/',
+  hackerrank: 'https://www.hackerrank.com/paicube/',
+  hackerearth: 'https://www.hackerearth.com/@sadanandpai/',
+  codechef: 'https://www.codechef.com/users/sadanandpai/',
+  codeforces: 'https://codeforces.com/profile/paicube',
+  twitter: 'https://twitter.com/paicube/',
+  leetcode: 'https://leetcode.com/paicube/',
+  medium: 'https://medium.com/@sadypai/',
+  devto: 'https://dev.to/sadanandpai/',
+  hashnode: 'https://hashnode.com/@paicube/',
+  wordpress: 'https://sadanandpai.wordpress.com/',
+  squarespace: 'https://www.squarespace.com/',
+  behance: 'https://www.behance.net/akshaypai1/',
+  dribbble: 'https://dribbble.com/paicube/',
 };
 
 export const skills = {
