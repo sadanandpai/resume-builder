@@ -27,11 +27,11 @@ const RatedElement = withTheme(RatedElementComponent);
 export function RatedBars({ items }: any) {
   return (
     <FlexCol rGap="8px">
-      {items?.map((data: any) => (
+      {items?.map((data: any, index: number) => (
         <RatedElement
           itemLabel={data.name}
           itemRating={data.rating}
-          key={data.name}
+          key={index}
           index={data.name}
         />
       ))}

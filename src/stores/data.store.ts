@@ -100,7 +100,7 @@ export const useExp = create((set) => ({
       };
     }),
 
-  changeCompanyOrder: ({ oldIndex, newIndex }) =>
+  changeOrder: ({ oldIndex, newIndex }) =>
     set((state: any) => ({
       ...state,
       companies: arrayMoveImmutable(state.companies, oldIndex, newIndex),
@@ -113,18 +113,37 @@ export const useAchievements = create(() => ({
 }));
 
 export const useSkills = create((set) => ({
-  technical: skills.technical,
-  exposure: skills.exposure,
-  methodology: skills.methodology,
+  languages: skills.languages,
+  frameworks: skills.frameworks,
+  libraries: skills.libraries,
+  databases: skills.databases,
+  technologies: skills.technologies,
+  practices: skills.practices,
   tools: skills.tools,
 
-  setTechnical: (items) =>
+  addSkill: (type: string, name = '', rating = 1) =>
+    set((state: any) => {
+      if (state[type].some((skill) => skill.name === '')) return;
+
+      state[type] = [...state[type]]; // eslint-disable-line no-param-reassign
+      state[type].push({ name, rating }); // eslint-disable-line no-param-reassign
+    }),
+
+  updateSkill: (type: string, index: number, key: 'name' | 'rating', value: string | number) =>
+    set((state: any) => {
+      state[type] = [...state[type]]; // eslint-disable-line no-param-reassign
+      state[type][index][key] = value; // eslint-disable-line no-param-reassign
+    }),
+
+  deleteSkill: (type: string, index: number) =>
+    set((state: any) => {
+      state[type] = state[type].filter((_, ind) => index !== ind); // eslint-disable-line no-param-reassign
+    }),
+
+  changeOrder: (type: string, oldIndex: number, newIndex: number) =>
     set((state: any) => ({
       ...state,
-      technical: {
-        ...state.technical,
-        items,
-      },
+      [type]: arrayMoveImmutable(state[type], oldIndex, newIndex),
     })),
 }));
 

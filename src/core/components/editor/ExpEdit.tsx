@@ -67,13 +67,8 @@ const SortableList = SortableContainer(({ companies }) => (
 
 export function ExpEdit() {
   const companies = useExp((state: any) => state.companies);
-  const [updateCompany, addCompany, deleteCompany, changeCompanyOrder] = useExp(
-    (state: any) => [
-      state.updateCompany,
-      state.addCompany,
-      state.deleteCompany,
-      state.changeCompanyOrder,
-    ],
+  const [updateCompany, addCompany, deleteCompany, changeOrder] = useExp(
+    (state: any) => [state.updateCompany, state.addCompany, state.deleteCompany, state.changeOrder],
     shallow
   );
 
@@ -87,7 +82,7 @@ export function ExpEdit() {
     <>
       <Switch checked={isReorder} onChange={onChange} />
       {isReorder ? (
-        <SortableList companies={companies} onSortEnd={changeCompanyOrder} useDragHandle />
+        <SortableList companies={companies} onSortEnd={changeOrder} useDragHandle />
       ) : (
         <Collapse>
           {companies.map((company, index) => (

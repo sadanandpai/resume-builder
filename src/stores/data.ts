@@ -31,43 +31,42 @@ export const social = {
 };
 
 export const skills = {
-  technical: {
-    title: 'Technical Expertise',
-    items: [
-      { name: 'JavaScript', rating: 5 },
-      { name: 'HTML5', rating: 5 },
-      { name: 'CSS', rating: 5 },
-      { name: 'React', rating: 4 },
-      { name: 'Angular', rating: 4 },
-    ],
-  },
-  exposure: {
-    title: 'Skills / Expsoure',
-    items: [
-      'Algorithms',
-      'Data Structures',
-      'SQL',
-      'Progressive Web Apps',
-      'jQuery',
-      'Redux',
-      'Firebase',
-    ],
-  },
-  methodology: {
-    title: 'Methodology / Approach',
-    items: [
-      'Component based architecture',
-      'Agile methodology',
-      'Design Patterns',
-      'Test Driven Development',
-      'MVC',
-      'RESTful architecture',
-    ],
-  },
-  tools: {
-    title: 'Tools',
-    items: ['Git', 'VS Code', 'Jira', 'Webpack', 'Eclipse', 'Bitbucket'],
-  },
+  languages: [
+    { name: 'JavaScript', rating: 5 },
+    { name: 'HTML5', rating: 5 },
+    { name: 'CSS', rating: 5 },
+  ],
+  frameworks: [
+    { name: 'React', rating: 4 },
+    { name: 'Angular', rating: 4 },
+  ],
+  technologies: [
+    { name: 'Algorithms', rating: 3 },
+    { name: 'Data Structures', rating: 3 },
+    { name: 'SQL', rating: 3 },
+    { name: 'Progressive Web Apps', rating: 3 },
+  ],
+  libraries: [
+    { name: 'jQuery', rating: 3 },
+    { name: 'Redux', rating: 3 },
+  ],
+  databases: [{ name: 'Firebase', rating: 3 }],
+  practices: [
+    { name: 'Component based architecture', rating: 3 },
+    { name: 'Agile methodology', rating: 3 },
+    { name: 'Design Patterns', rating: 3 },
+    { name: 'Test Driven Development', rating: 3 },
+    { name: 'MVC', rating: 3 },
+    { name: 'RESTful architecture', rating: 3 },
+  ],
+  tools: [
+    { name: 'Git', rating: 3 },
+    { name: 'VS Code', rating: 3 },
+    { name: 'Jira', rating: 3 },
+    { name: 'Webpack', rating: 3 },
+    { name: 'Eclipse', rating: 3 },
+    { name: 'Bitbucket', rating: 3 },
+  ],
 };
 
 export const experience = {

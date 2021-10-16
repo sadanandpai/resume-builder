@@ -62,8 +62,16 @@ export function LegacyTemplate() {
     (state: any) => [state.keyProjects, state.certificates],
     shallow
   );
-  const [technical, exposure, methodology, tools] = useSkills(
-    (state: any) => [state.technical, state.exposure, state.methodology, state.tools],
+  const [languages, frameworks, libraries, databases, technologies, practices, tools] = useSkills(
+    (state: any) => [
+      state.languages,
+      state.frameworks,
+      state.libraries,
+      state.databases,
+      state.technologies,
+      state.practices,
+      state.tools,
+    ],
     shallow
   );
 
@@ -94,18 +102,18 @@ export function LegacyTemplate() {
         <LegacyHeader Icon={getIcon(intro.objectiveTitle)} title={intro.objectiveTitle} />
         <Description description={intro.objectiveDescription} />
         <LineSeparator />
-        <LegacyHeader Icon={getIcon(technical.title)} title={technical.title} />
-        <RatedPill items={technical.items} />
+        <LegacyHeader Icon={getIcon('Technical Expertise')} title="Technical Expertise" />
+        <RatedPill items={[...languages, ...frameworks]} />
         <LineSeparator />
-        <LegacyHeader Icon={getIcon(exposure.title)} title={exposure.title} />
-        <UnratedTabs items={exposure.items} />
+        <LegacyHeader Icon={getIcon('Skills / Expsoure')} title="Skills / Expsoure" />
+        <UnratedTabs items={[...technologies, ...libraries, ...databases]} />
 
         <LineSeparator />
-        <LegacyHeader Icon={getIcon(methodology.title)} title={methodology.title} />
-        <UnratedTabs items={methodology.items} />
+        <LegacyHeader Icon={getIcon('Methodology / Approach')} title="Methodology / Approach" />
+        <UnratedTabs items={practices} />
         <LineSeparator />
-        <LegacyHeader Icon={getIcon(tools.title)} title={tools.title} />
-        <UnratedTabs items={tools.items} />
+        <LegacyHeader Icon={getIcon('Tools')} title="Tools" />
+        <UnratedTabs items={tools} />
         <LineSeparator />
         <LegacyHeader Icon={getIcon(education.title)} title={education.title} />
         <EduSection items={education.items} />

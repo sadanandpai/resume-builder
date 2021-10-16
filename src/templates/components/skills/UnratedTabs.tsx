@@ -14,7 +14,7 @@ export function UnratedTabs({ items }: any) {
   return (
     <Flex cGap="10px" rGap="10px" style={{ flexWrap: 'wrap' }}>
       {items.map((value: any) => (
-        <Badge key={value}>{value}</Badge>
+        <Badge key={value.name}>{value.name}</Badge>
       ))}
     </Flex>
   );

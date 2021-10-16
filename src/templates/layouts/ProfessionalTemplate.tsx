@@ -57,8 +57,16 @@ export function ProfessionalTemplate() {
     (state: any) => [state.keyProjects, state.certificates],
     shallow
   );
-  const [technical, exposure, methodology, tools] = useSkills(
-    (state: any) => [state.technical, state.exposure, state.methodology, state.tools],
+  const [languages, frameworks, libraries, databases, technologies, practices, tools] = useSkills(
+    (state: any) => [
+      state.languages,
+      state.frameworks,
+      state.libraries,
+      state.databases,
+      state.technologies,
+      state.practices,
+      state.tools,
+    ],
     shallow
   );
 
@@ -87,15 +95,18 @@ export function ProfessionalTemplate() {
       component: <Description description={intro.objectiveDescription} />,
     },
     {
-      title: technical.title,
-      component: <RatedBars items={technical.items} />,
+      title: 'Technical Expertise',
+      component: <RatedBars items={[...languages, ...frameworks]} />,
     },
-    { title: exposure.title, component: <UnratedTabs items={exposure.items} /> },
     {
-      title: methodology.title,
-      component: <UnratedTabs items={methodology.items} />,
+      title: 'Skills / Expsoure',
+      component: <UnratedTabs items={[...technologies, ...libraries, ...databases]} />,
     },
-    { title: tools.title, component: <UnratedTabs items={tools.items} /> },
+    {
+      title: 'Methodology / Approach',
+      component: <UnratedTabs items={practices} />,
+    },
+    { title: 'Tools', component: <UnratedTabs items={tools} /> },
     {
       title: education.title,
       component: <EduSection items={education.items} />,
