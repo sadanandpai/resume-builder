@@ -4,7 +4,6 @@ import { IntroEdit } from 'src/core/components/editor/IntroEdit';
 import { SocialEdit } from 'src/core/components/editor/SocialEdit';
 import { RatedEdit } from './RatedEdit';
 import { ExpEdit } from './ExpEdit';
-import { InfoEdit } from './InfoEdit';
 
 const Divider = styled.div`
   height: 2px;
@@ -28,14 +27,6 @@ export const IntroEditor = () => (
   <Container>
     <Heading>Intro</Heading>
     <IntroEdit />
-    <Divider />
-  </Container>
-);
-
-export const InfoEditor = () => (
-  <Container>
-    <Heading>Info</Heading>
-    <InfoEdit />
     <Divider />
   </Container>
 );

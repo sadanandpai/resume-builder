@@ -43,39 +43,33 @@ export const INTRO_METADATA = {
       size: 'sm',
       value: 'location',
     },
-  ],
-};
-
-export const INFO_METADATA = {
-  section: 'Info',
-  metadata: [
     {
-      label: 'Relavant Experience Label',
-      title: 'Relavant Experience Label',
+      label: 'About Title',
+      title: 'About Title',
       type: 'Input',
       size: 'lg',
-      value: 'relExpLabel',
+      value: 'aboutTitle',
     },
     {
-      label: 'Relavant_Experience',
-      title: 'Relavant Experience',
-      type: 'Input',
+      label: 'About Description',
+      title: 'About Description',
+      type: 'MarkDownField',
       size: 'lg',
-      value: 'relExp',
+      value: 'aboutDescription',
     },
     {
-      label: 'Total_Experience_Label',
-      title: 'Total Experience Label',
+      label: 'Objective Title',
+      title: 'Objective Title',
       type: 'Input',
       size: 'lg',
-      value: 'totalExpLabel',
+      value: 'objectiveTitle',
     },
     {
-      label: 'Total_Experience',
-      title: 'Total Experience',
-      type: 'Input',
+      label: 'Objective Description',
+      title: 'Objective Description',
+      type: 'MarkDownField',
       size: 'lg',
-      value: 'totalExp',
+      value: 'objectiveDescription',
     },
   ],
 };

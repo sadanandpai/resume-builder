@@ -15,7 +15,6 @@ import { LegacyHeader } from 'src/templates/components/section-layout/LegacyHead
 import { SocialBar } from 'src/templates/components/social/SocialBar';
 import {
   useIntro,
-  useInfo,
   useSocial,
   useExp,
   useSkills,
@@ -56,7 +55,6 @@ const EmployeName = styled.div`
 
 export function LegacyTemplate() {
   const intro = useIntro((state: any) => state);
-  const info = useInfo((state: any) => state);
   const social = useSocial((state: any) => state);
   const education = useEducation((state: any) => state.education);
   const experience = useExp((state: any) => state);
@@ -90,11 +88,11 @@ export function LegacyTemplate() {
       <Divider />
 
       <GridColumn>
-        <LegacyHeader Icon={getIcon(info.aboutTitle)} title={info.aboutTitle} />
-        <Description description={info.aboutDescription} />
+        <LegacyHeader Icon={getIcon(intro.aboutTitle)} title={intro.aboutTitle} />
+        <Description description={intro.aboutDescription} />
         <LineSeparator />
-        <LegacyHeader Icon={getIcon(info.objectiveTitle)} title={info.objectiveTitle} />
-        <Description description={info.objectiveDescription} />
+        <LegacyHeader Icon={getIcon(intro.objectiveTitle)} title={intro.objectiveTitle} />
+        <Description description={intro.objectiveDescription} />
         <LineSeparator />
         <LegacyHeader Icon={getIcon(technical.title)} title={technical.title} />
         <RatedPill items={technical.items} />

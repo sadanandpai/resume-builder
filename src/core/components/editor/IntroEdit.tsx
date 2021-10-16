@@ -6,6 +6,7 @@ import { useItems } from 'src/stores/settings.store';
 import { INTRO_METADATA } from 'src/core/meta-data/input_metadata';
 // import { BlockField } from 'src/core/widgets/BlockField';
 import { useIntro } from 'src/stores/data.store';
+import { MarkDownField } from 'src/core/widgets/MarkdownField';
 
 const Wrapper = styled.div`
   margin: 8px 0;
@@ -36,13 +37,22 @@ export function IntroEdit() {
   const isPhotoDisplayed = useItems((state: any) => state.isPhotoDisplayed);
   const setIsPhotoDisplayed = useItems((state: any) => state.setIsPhotoDisplayed);
 
+  const onChange = (event: any) => setField(event.target.dataset.label, event.target.value);
+
   return (
     <>
       <Switch checked={isPhotoDisplayed} onChange={setIsPhotoDisplayed} size="small" />
       {INTRO_METADATA?.metadata.map((metadata) => (
         <Wrapper key={metadata.label}>
           <Topic>{metadata.title}</Topic>
-          <Input value={intro[metadata.value]} data-label={metadata.value} onChange={setField} />
+          {metadata.type === 'Input' ? (
+            <Input value={intro[metadata.value]} data-label={metadata.value} onChange={onChange} />
+          ) : (
+            <MarkDownField
+              value={intro[metadata.value]}
+              setValue={(text) => setField(metadata.value, text)}
+            />
+          )}
         </Wrapper>
       ))}
     </>

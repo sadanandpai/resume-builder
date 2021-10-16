@@ -16,7 +16,6 @@ import { EduSection } from 'src/templates/components/education/EduSection';
 import { List } from 'src/templates/components/list/List';
 import {
   useIntro,
-  useInfo,
   useSocial,
   useExp,
   useSkills,
@@ -51,7 +50,6 @@ const RightSection = styled(FlexCol)`
 
 export function ProfessionalTemplate() {
   const intro = useIntro((state: any) => state);
-  const info = useInfo((state: any) => state);
   const social = useSocial((state: any) => state);
   const education = useEducation((state: any) => state.education);
   const experience = useExp((state: any) => state);
@@ -81,12 +79,12 @@ export function ProfessionalTemplate() {
   ];
   const rightSections = [
     {
-      title: info.aboutTitle,
-      component: <Description photo={intro.photo} description={info.aboutDescription} />,
+      title: intro.aboutTitle,
+      component: <Description photo={intro.photo} description={intro.aboutDescription} />,
     },
     {
-      title: info.objectiveTitle,
-      component: <Description description={info.objectiveDescription} />,
+      title: intro.objectiveTitle,
+      component: <Description description={intro.objectiveDescription} />,
     },
     {
       title: technical.title,

@@ -15,10 +15,6 @@ const Wrapper = styled.div`
   flex-direction: column;
 `;
 
-const UL = styled.p`
-  margin: 0;
-`;
-
 const Handle = styled.span`
   display: flex;
   align-items: center;
@@ -59,7 +55,7 @@ const SortableItem = SortableElement(
 );
 
 const SortableList = SortableContainer(({ items, onNameChange, onRatingChange, onDelete }) => (
-  <UL>
+  <div>
     {items.map(({ name, rating }, index) => (
       <SortableItem
         key={index}
@@ -72,7 +68,7 @@ const SortableList = SortableContainer(({ items, onNameChange, onRatingChange, o
         onDelete={onDelete}
       />
     ))}
-  </UL>
+  </div>
 ));
 
 export function RatedEdit() {

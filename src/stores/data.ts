@@ -5,9 +5,6 @@ export const intro = {
   email: 'janedoe@email.com',
   location: 'Bengaluru',
   photo: 'https://www.linkpicture.com/q/generated_photos_5e68893b6d3b380006f22f8b.jpg',
-};
-
-export const info = {
   aboutTitle: 'About me',
   aboutDescription: `I am a web developer having expertise in frontend development and exposure to back- end development. I design and develop web applications using the latest technologies to deliver the product with quality code.\nI am very good at UI fundamentals & Technologies and can adapt to most of the front-end frameworks quickly.`,
   objectiveTitle: 'Career Objective',

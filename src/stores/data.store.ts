@@ -1,5 +1,6 @@
 import create from 'zustand';
-import { intro, info, social, experience, skills, achievements, education } from 'src/stores/data';
+import { intro, social, experience, skills, achievements, education } from 'src/stores/data';
+import { arrayMoveImmutable } from 'array-move';
 
 export const useIntro = create((set) => ({
   name: intro.name,
@@ -8,28 +9,14 @@ export const useIntro = create((set) => ({
   email: intro.email,
   location: intro.location,
   photo: intro.photo,
+  aboutTitle: intro.aboutTitle,
+  aboutDescription: intro.aboutDescription,
+  objectiveTitle: intro.objectiveTitle,
+  objectiveDescription: intro.objectiveDescription,
 
-  setField: (event: InputEvent) =>
+  setField: (field: string, value: string) =>
     set((state: any) => {
-      const field = (<HTMLElement>event.target).dataset.label;
-
-      if (field === undefined) return;
-      state[field] = (<HTMLInputElement>event.target)?.value; // eslint-disable-line no-param-reassign
-    }),
-}));
-
-export const useInfo = create((set) => ({
-  aboutTitle: info.aboutTitle,
-  aboutDescription: info.aboutDescription,
-  objectiveTitle: info.objectiveTitle,
-  objectiveDescription: info.objectiveDescription,
-
-  setField: (event: InputEvent) =>
-    set((state: any) => {
-      const field = (<HTMLElement>event.target).dataset.label;
-
-      if (field === undefined) return;
-      state[field] = (<HTMLInputElement>event.target)?.value; // eslint-disable-line no-param-reassign
+      state[field] = value; // eslint-disable-line no-param-reassign
     }),
 }));
 
@@ -112,6 +99,12 @@ export const useExp = create((set) => ({
         companies: newCompnaies,
       };
     }),
+
+  changeCompanyOrder: ({ oldIndex, newIndex }) =>
+    set((state: any) => ({
+      ...state,
+      companies: arrayMoveImmutable(state.companies, oldIndex, newIndex),
+    })),
 }));
 
 export const useAchievements = create(() => ({
