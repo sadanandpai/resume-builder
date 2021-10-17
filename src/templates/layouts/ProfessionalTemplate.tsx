@@ -140,7 +140,7 @@ export function ProfessionalTemplate() {
     <ResumeContainer>
       <LeftSection>
         <ModernHeaderIntro title={intro.name} icons={social}>
-          <Intro intro={intro} />
+          <Intro intro={intro} labels={labels} />
         </ModernHeaderIntro>
 
         {leftSections

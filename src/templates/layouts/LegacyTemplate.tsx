@@ -81,7 +81,7 @@ export function LegacyTemplate() {
     <GridContainer>
       <GridColumn>
         <EmployeName>{intro.name}</EmployeName>
-        <Intro intro={intro} />
+        <Intro intro={intro} labels={labels} />
         <SocialBar items={social} />
 
         <LegacyHeader Icon={getIcon('work')} title={labels[0]} />

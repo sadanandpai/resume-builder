@@ -20,8 +20,8 @@ const Wrapper = styled.div`
   overflow-y: auto;
 
   @media print {
-    height: auto;
     padding: 0;
+    overflow: inherit;
   }
 `;
 
