@@ -29,7 +29,7 @@ export function PrintSettings() {
 
   useEffect(() => {
     window.addEventListener('beforeprint', () => {
-      window.document.title = `Resume_${intro.name}_${intro.role}_${intro.experience[1]?.years}`
+      window.document.title = `Resume_${intro.name}_${intro.label}_${intro.totalExp}`
         .split(' ')
         .join('_');
     });

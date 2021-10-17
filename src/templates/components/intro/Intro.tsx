@@ -21,7 +21,7 @@ export function Intro({ intro }: any) {
   return (
     <Flex jc="space-between">
       <FlexCol rGap="5px">
-        <Role>{intro.role}</Role>
+        <Role>{intro.label}</Role>
         <div>
           Frontend experience:&nbsp;
           <strong>{intro.relExp}</strong>
@@ -30,7 +30,7 @@ export function Intro({ intro }: any) {
       </FlexCol>
 
       <FlexCol jc="flex-end" rGap="5px">
-        <Contact icon={getIcon('mobile')} value={intro.mobile} />
+        <Contact icon={getIcon('mobile')} value={intro.phone} />
         <Contact icon={getIcon('email')} value={intro.email} />
         <Contact icon={getIcon('location')} value={intro.location} />
       </FlexCol>

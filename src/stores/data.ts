@@ -1,13 +1,14 @@
 export const intro = {
   name: 'Jane Doe',
-  role: 'Frontend Developer',
-  mobile: '+91 9876543210',
+  label: 'Frontend Developer',
+  image: 'https://www.linkpicture.com/q/generated_photos_5e68893b6d3b380006f22f8b.jpg',
   email: 'janedoe@email.com',
+  phone: '+91 9876543210',
+  url: 'www.github.com/sadanandpai/',
+  summary: `I am a web developer having expertise in frontend development and exposure to back- end development. I design and develop web applications using the latest technologies to deliver the product with quality code.`,
   location: 'Bengaluru',
   relExp: '4 years',
   totalExp: '6 Years',
-  photo: 'https://www.linkpicture.com/q/generated_photos_5e68893b6d3b380006f22f8b.jpg',
-  about: `I am a web developer having expertise in frontend development and exposure to back- end development. I design and develop web applications using the latest technologies to deliver the product with quality code.`,
   objective:
     'Eager to expand my skill set through external trainings to help boost all major front desk KPIs. Hoping to leverage organizational skills to help ABC Corp introduce time-saving schemes for all executives.',
 };
@@ -16,11 +17,11 @@ export const social = {
   linkedin: 'https://www.linkedin.com/in/sadanandpai/',
   github: 'https://github.com/sadanandpai/',
   hackerrank: 'https://www.hackerrank.com/paicube/',
+  leetcode: 'https://leetcode.com/paicube/',
   hackerearth: '',
   codechef: '',
   codeforces: '',
   twitter: '',
-  leetcode: 'https://leetcode.com/paicube/',
   medium: '',
   devto: '',
   hashnode: '',
@@ -68,7 +69,7 @@ export const skills = {
   ],
 };
 
-export const experience = [
+export const work = [
   {
     name: 'Company 1',
     role: 'Senior Software Developer',
@@ -99,26 +100,10 @@ export const experience = [
 ];
 
 export const achievements = {
-  keyProjects: {
-    title: 'Key Projects / Involvements',
-    items: [
-      'Prevented millions of dollars in state sales tax undercharges by initiating tests that revealed a bug in a new release of shopping cart software.',
-      'Isolated previously undiscovered flaw in price checking tool resulting in more competitive pricing and a 20 percent increase in revenue.',
-      'Implemented automated testing tools spawning more diligent levels of regression testing, negative testing, error/bug retests and usability.',
-      'Prevented millions of dollars in state sales tax undercharges by initiating tests that revealed a bug in a new release of shopping cart software.',
-    ],
-  },
-  certificates: {
-    title: 'Certificates and Awards',
-    items: [
-      '<strong>React</strong> and redux - A complete guide 2020 from Udemy',
-      'Agile and Scrum Master Certificate from Udacity',
-      'Best performer award for consistently exceeding the performance',
-      'Certificate of exceptional bug finder by XYZ client',
-      'Recorgnition zero defect delivery',
-      'Best performer award for consistently exceeding the performance',
-    ],
-  },
+  projects:
+    '* Prevented millions of dollars in state sales tax undercharges by initiating tests that revealed a bug in a new release of shopping cart software.\n * Isolated previously undiscovered flaw in price checking tool resulting in more competitive pricing and a 20 percent increase in revenue.\n * Implemented automated testing tools spawning more diligent levels of regression testing, negative testing, error/bug retests and usability.\n * Prevented millions of dollars in state sales tax undercharges by initiating tests that revealed a bug in a new release of shopping cart software.\n',
+  awards:
+    "* React and redux - A complete guide 2020 from Udemy'\n * Agile and Scrum Master Certificate from Udacity\n  * Best performer award for consistently exceeding the performance\n  * Certificate of exceptional bug finder by XYZ client\n  * Recognition zero defect delivery\n  * Best performer award for consistently exceeding the performance",
 };
 
 export const education = [

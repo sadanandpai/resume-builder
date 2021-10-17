@@ -3,7 +3,7 @@ import React from 'react';
 // import {
 //   useIntro,
 //   useSocial,
-//   useExp,
+//   useWork,
 //   useSkills,
 //   useAchievements,
 //   useEducation,
@@ -15,7 +15,7 @@ export function Template5() {
   // const intro = useIntro((state: any) => state);
   // const social = useSocial((state: any) => state);
   // const education = useEducation((state: any) => state.education);
-  // const experience = useExp((state: any) => state);
+  // const experience = useWork((state: any) => state);
   // const [keyProjects, certificates] = useAchievements(
   //   (state: any) => [state.keyProjects, state.certificates],
   //   shallow

@@ -24,7 +24,7 @@ export function EduSection({ education }: any) {
   if (!education) return null;
 
   return education.map((data: any) => (
-    <Education key={data.degree}>
+    <Education key={data.studyType}>
       <Flex jc="space-between">
         <Degree>{data.studyType}</Degree>
         <em>

@@ -13,14 +13,14 @@ import { RatedBars } from 'src/templates/components/skills/RatedBars';
 import { UnratedTabs } from 'src/templates/components/skills/UnratedTabs';
 import { Exp } from 'src/templates/components/exp/Exp';
 import { EduSection } from 'src/templates/components/education/EduSection';
-import { List } from 'src/templates/components/list/List';
 import {
   useIntro,
   useSocial,
-  useExp,
+  useWork,
   useSkills,
   useAchievements,
   useEducation,
+  useLabels,
 } from 'src/stores/data.store';
 
 const ResumeContainer = styled(Flex)`
@@ -48,13 +48,26 @@ const RightSection = styled(FlexCol)`
   justify-content: space-between;
 `;
 
+const labelsIcon = [
+  'work',
+  'key',
+  'certificate',
+  'identity',
+  'career',
+  'expert',
+  'skill',
+  'branch',
+  'tool',
+  'education',
+];
+
 export function ProfessionalTemplate() {
   const intro = useIntro((state: any) => state);
   const social = useSocial((state: any) => state);
   const education = useEducation((state: any) => state.education);
-  const experience = useExp((state: any) => state);
-  const [keyProjects, certificates] = useAchievements(
-    (state: any) => [state.keyProjects, state.certificates],
+  const experience = useWork((state: any) => state);
+  const [projects, awards] = useAchievements(
+    (state: any) => [state.projects, state.awards],
     shallow
   );
   const [languages, frameworks, libraries, databases, technologies, practices, tools] = useSkills(
@@ -69,46 +82,56 @@ export function ProfessionalTemplate() {
     ],
     shallow
   );
+  const labels = useLabels((state: any) => state.labels);
 
   const leftSections = [
     {
-      title: 'Experience',
+      title: labels[0],
+      icon: labelsIcon[0],
       component: <Exp companies={experience.companies} />,
       styles: { flexGrow: 1 },
     },
     {
-      title: keyProjects.title,
-      component: <List items={keyProjects.items} />,
+      title: labels[1],
+      icon: labelsIcon[1],
+      component: <Description description={projects} />,
     },
     {
-      title: certificates.title,
-      component: <List items={certificates.items} />,
+      title: labels[2],
+      icon: labelsIcon[2],
+      component: <Description description={awards} />,
     },
   ];
   const rightSections = [
     {
-      title: 'About me',
-      component: <Description photo={intro.photo} description={intro.about} />,
+      title: labels[3],
+      icon: labelsIcon[3],
+      component: <Description photo={intro.image} description={intro.summary} />,
     },
     {
-      title: 'Career Objective',
+      title: labels[4],
+      icon: labelsIcon[4],
       component: <Description description={intro.objective} />,
     },
     {
-      title: 'Technical Expertise',
+      title: labels[5],
+      icon: labelsIcon[5],
       component: <RatedBars items={[...languages, ...frameworks]} />,
     },
     {
-      title: 'Skills / Expsoure',
+      title: labels[6],
+      icon: labelsIcon[6],
       component: <UnratedTabs items={[...technologies, ...libraries, ...databases]} />,
     },
     {
-      title: 'Methodology / Approach',
+      title: labels[7],
+      icon: labelsIcon[7],
       component: <UnratedTabs items={practices} />,
     },
-    { title: 'Tools', component: <UnratedTabs items={tools} /> },
+    { title: labels[8], icon: labelsIcon[8], component: <UnratedTabs items={tools} /> },
     {
-      title: 'Education',
+      title: labels[9],
+      icon: labelsIcon[9],
       component: <EduSection education={education} />,
     },
   ];
@@ -120,16 +143,16 @@ export function ProfessionalTemplate() {
           <Intro intro={intro} />
         </ModernHeaderIntro>
 
-        {leftSections.map(({ title, component, styles }) => (
-          <ModernHeader icon={getIcon(title)} title={title} styles={styles} key={title}>
+        {leftSections.map(({ title, icon, component, styles }) => (
+          <ModernHeader icon={getIcon(icon)} title={title} styles={styles} key={title}>
             {component}
           </ModernHeader>
         ))}
       </LeftSection>
 
       <RightSection>
-        {rightSections.map(({ title, component }) => (
-          <ModernHeader icon={getIcon(title)} title={title} key={title}>
+        {rightSections.map(({ title, icon, component }) => (
+          <ModernHeader icon={getIcon(icon)} title={title} key={title}>
             {component}
           </ModernHeader>
         ))}

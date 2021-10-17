@@ -5,14 +5,14 @@ export const INTRO_METADATA = [
     value: 'name',
   },
   {
-    label: 'Photo',
+    label: 'Image',
     type: 'Input',
-    value: 'photo',
+    value: 'image',
   },
   {
     label: 'Role',
     type: 'Input',
-    value: 'role',
+    value: 'label',
   },
   {
     label: 'Email',
@@ -20,9 +20,9 @@ export const INTRO_METADATA = [
     value: 'email',
   },
   {
-    label: 'Mobile',
+    label: 'Phone',
     type: 'Input',
-    value: 'mobile',
+    value: 'phone',
   },
   {
     label: 'Location',
@@ -40,9 +40,9 @@ export const INTRO_METADATA = [
     value: 'totalExp',
   },
   {
-    label: 'About',
+    label: 'Summary',
     type: 'MarkDownField',
-    value: 'about',
+    value: 'summary',
   },
   {
     label: 'Objective',
@@ -131,6 +131,19 @@ export const SOCIAL_METADATA = {
     },
   ],
 };
+
+export const ACHIEVEMNT_METADATA = [
+  {
+    label: 'Projects',
+    type: 'MarkDownField',
+    value: 'projects',
+  },
+  {
+    label: 'Awards',
+    type: 'MarkDownField',
+    value: 'awards',
+  },
+];
 
 export const EDU_METADATA = [
   {

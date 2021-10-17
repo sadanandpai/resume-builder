@@ -1,12 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import shallow from 'zustand/shallow';
-import { useEducation, useExp, useSkills } from 'src/stores/data.store';
+import { useEducation, useWork, useSkills } from 'src/stores/data.store';
 import { EDU_METADATA, EXP_METADATA } from 'src/core/meta-data/input_metadata';
 import { IntroEdit } from 'src/core/components/editor/IntroEdit';
 import { SocialEdit } from 'src/core/components/editor/SocialEdit';
 import { SkillsEdit } from './SkillsEdit';
 import { TimelineEdit } from './TimelineEdit';
+import { AwardsEdit } from './AwardsEdit';
+import { LabelsEdit } from './LabelsEdit';
 
 const Divider = styled.div`
   height: 2px;
@@ -39,7 +41,20 @@ export const SocialEditor = () => (
   <Container>
     <Heading>Social</Heading>
     <SocialEdit />
-    <Divider />
+  </Container>
+);
+
+export const AwardsEditor = () => (
+  <Container>
+    <Heading>Projects</Heading>
+    <AwardsEdit />
+  </Container>
+);
+
+export const LabelsEditor = () => (
+  <Container>
+    <Heading>Template Labels</Heading>
+    <LabelsEdit />
   </Container>
 );
 
@@ -64,8 +79,8 @@ export const EduEditor = () => {
 };
 
 export const ExerienceEditor = () => {
-  const companies = useExp((state: any) => state.companies);
-  const [add, update, purge, changeOrder] = useExp(
+  const companies = useWork((state: any) => state.companies);
+  const [add, update, purge, changeOrder] = useWork(
     (state: any) => [state.add, state.update, state.purge, state.changeOrder],
     shallow
   );

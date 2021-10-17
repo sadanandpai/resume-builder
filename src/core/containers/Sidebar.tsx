@@ -19,15 +19,15 @@ const Wrapper = styled.div`
 const sideBarList = [
   {
     key: 0,
-    title: 'Theme',
-    icon: 'color',
-    component: <Themes />,
-  },
-  {
-    key: 1,
     title: 'Template',
     icon: 'template',
     component: <Templates />,
+  },
+  {
+    key: 1,
+    title: 'Theme',
+    icon: 'color',
+    component: <Themes />,
   },
 ];
 

@@ -1,15 +1,29 @@
 import create from 'zustand';
-import { intro, social, experience, skills, achievements, education } from 'src/stores/data';
+import { intro, social, work, skills, achievements, education } from 'src/stores/data';
 import { arrayMoveImmutable } from 'array-move';
+
+const labels = [
+  'Experience',
+  'Key Projects / Involvements',
+  'Certificates and Awards',
+  'About me',
+  'Career Objective',
+  'Technical Expertise',
+  'Skills / Expsoure',
+  'Methodology / Approach',
+  'Tools',
+  'Education',
+];
 
 export const useIntro = create((set) => ({
   name: intro.name,
-  role: intro.role,
-  mobile: intro.mobile,
+  label: intro.label,
+  phone: intro.phone,
   email: intro.email,
+  url: intro.url,
   location: intro.location,
-  photo: intro.photo,
-  about: intro.about,
+  image: intro.image,
+  summary: intro.summary,
   objective: intro.objective,
   relExp: intro.relExp,
   totalExp: intro.totalExp,
@@ -46,8 +60,8 @@ export const useSocial = create((set) => ({
     }),
 }));
 
-export const useExp = create((set) => ({
-  companies: experience,
+export const useWork = create((set) => ({
+  companies: work,
 
   setField: (event: InputEvent) =>
     set((state: any) => {
@@ -58,53 +72,38 @@ export const useExp = create((set) => ({
     }),
 
   add: () =>
-    set((state: any) => {
-      const newCompnaies = [
+    set((state: any) => ({
+      companies: [
         ...state.companies,
         {
           name: 'Company',
-          role: 'Role',
-          from: 'from',
-          to: 'to',
-          years: '1 year',
+          role: '',
+          from: '',
+          to: '',
+          years: '',
           description: '* Point 1\n* Point 2\n* Point 3',
         },
-      ];
-      return {
-        ...state,
-        companies: newCompnaies,
-      };
-    }),
+      ],
+    })),
 
   update: (index, field, value) =>
     set((state: any) => {
       const newCompnaies = [...state.companies];
       newCompnaies[index][field] = value;
       return {
-        ...state,
         companies: newCompnaies,
       };
     }),
 
   purge: (index: number) =>
-    set((state: any) => {
-      const newCompnaies = state.companies.filter((_, ind) => ind !== index);
-      return {
-        ...state,
-        companies: newCompnaies,
-      };
-    }),
+    set((state: any) => ({
+      companies: state.companies.filter((_, ind) => ind !== index),
+    })),
 
   changeOrder: ({ oldIndex, newIndex }) =>
     set((state: any) => ({
-      ...state,
       companies: arrayMoveImmutable(state.companies, oldIndex, newIndex),
     })),
-}));
-
-export const useAchievements = create(() => ({
-  keyProjects: achievements.keyProjects,
-  certificates: achievements.certificates,
 }));
 
 export const useSkills = create((set) => ({
@@ -178,4 +177,28 @@ export const useEducation = create((set) => ({
     set((state: any) => ({
       education: arrayMoveImmutable(state.education, oldIndex, newIndex),
     })),
+}));
+
+export const useAchievements = create((set) => ({
+  projects: achievements.projects,
+  awards: achievements.awards,
+
+  update: (type: string, value: string | number) =>
+    set((state: any) => {
+      state[type] = [...state[type]]; // eslint-disable-line no-param-reassign
+      state[type] = value; // eslint-disable-line no-param-reassign
+    }),
+}));
+
+export const useLabels = create((set) => ({
+  labels,
+
+  update: (index: number, value: string) =>
+    set((state: any) => {
+      const newlabels = [...state.labels];
+      newlabels[index] = value;
+      return {
+        labels: newlabels,
+      };
+    }),
 }));

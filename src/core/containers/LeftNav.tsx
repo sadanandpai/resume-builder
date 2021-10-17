@@ -8,6 +8,8 @@ import {
   ExerienceEditor,
   SkillsEditor,
   IntroEditor,
+  AwardsEditor,
+  LabelsEditor,
 } from 'src/core/components/editor/Editor';
 import { SideMenu } from 'src/core/widgets/SideMenu';
 
@@ -36,13 +38,13 @@ const sideBarList = [
   {
     key: 2,
     title: 'Skills',
-    icon: 'tools',
+    icon: 'tool',
     component: <SkillsEditor />,
   },
   {
     key: 3,
     title: 'Experience',
-    icon: 'experience',
+    icon: 'work',
     component: <ExerienceEditor />,
   },
   {
@@ -50,6 +52,18 @@ const sideBarList = [
     title: 'Experience',
     icon: 'education',
     component: <EduEditor />,
+  },
+  {
+    key: 5,
+    title: 'Projects & Awards',
+    icon: 'certificate',
+    component: <AwardsEditor />,
+  },
+  {
+    key: 6,
+    title: 'Label',
+    icon: 'label',
+    component: <LabelsEditor />,
   },
 ];
 

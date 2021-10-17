@@ -91,6 +91,7 @@ export function TimelineEdit({ METADATA, identifier, itemList, operations }: any
               {METADATA.map((metadata) =>
                 metadata.type === 'Input' ? (
                   <Input
+                    key={metadata.label}
                     value={item[metadata.value]}
                     placeholder={metadata.label}
                     onChange={(event) =>
@@ -99,6 +100,7 @@ export function TimelineEdit({ METADATA, identifier, itemList, operations }: any
                   />
                 ) : (
                   <MarkDownField
+                    key={metadata.label}
                     value={item[metadata.value]}
                     setValue={(text) => operations.update(index, metadata.value, text)}
                   />

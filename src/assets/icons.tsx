@@ -15,6 +15,7 @@ import {
   MdLibraryBooks,
   MdAddCircleOutline,
   MdPeople,
+  MdLabel,
 } from 'react-icons/md';
 import {
   SiBehance,
@@ -55,25 +56,26 @@ const icons = new Map([
   ['hashnode', <SiHashnode />],
   ['squarespace', <SiSquarespace />],
 
-  ['about me', <MdPermIdentity />],
-  ['technical expertise', <SiExpertsexchange />],
-  ['experience', <MdWork />],
+  ['identity', <MdPermIdentity />],
+  ['expert', <SiExpertsexchange />],
+  ['work', <MdWork />],
   ['education', <FaUniversity />],
-  ['tools', <MdBuild />],
-  ['key projects / involvements', <MdVpnKey />],
-  ['certificates and awards', <MdVerifiedUser />],
-  ['career objective', <AiOutlineAim />],
-  ['methodology / approach', <IoGitBranch />],
-  ['skills / expsoure', <GoVerified />],
-  ['edit', <MdEdit fill="#1890ff" />],
-  ['color', <MdColorLens fill="#1890ff" />],
-  ['download', <MdCloudDownload fill="#1890ff" />],
-  ['template', <MdLibraryBooks fill="#1890ff" />],
+  ['tool', <MdBuild />],
+  ['key', <MdVpnKey />],
+  ['certificate', <MdVerifiedUser />],
+  ['career', <AiOutlineAim />],
+  ['branch', <IoGitBranch />],
+  ['skill', <GoVerified />],
+  ['edit', <MdEdit />],
+  ['color', <MdColorLens />],
+  ['download', <MdCloudDownload />],
+  ['template', <MdLibraryBooks />],
 
   ['drag', <GrDrag />],
   ['delete', <AiFillDelete />],
   ['add', <MdAddCircleOutline />],
   ['social', <MdPeople />],
+  ['label', <MdLabel />],
 ]);
 
 export function getIcon(iconName: string) {
