@@ -9,10 +9,10 @@ export const useIntro = create((set) => ({
   email: intro.email,
   location: intro.location,
   photo: intro.photo,
-  aboutTitle: intro.aboutTitle,
-  aboutDescription: intro.aboutDescription,
-  objectiveTitle: intro.objectiveTitle,
-  objectiveDescription: intro.objectiveDescription,
+  about: intro.about,
+  objective: intro.objective,
+  relExp: intro.relExp,
+  totalExp: intro.totalExp,
 
   setField: (field: string, value: string) =>
     set((state: any) => {
@@ -47,12 +47,7 @@ export const useSocial = create((set) => ({
 }));
 
 export const useExp = create((set) => ({
-  title: experience.title,
-  companies: experience.companies,
-  relExpLabel: experience.relExpLabel,
-  relExp: experience.relExp,
-  totalExpLabel: experience.totalExpLabel,
-  totalExp: experience.totalExp,
+  companies: experience,
 
   setField: (event: InputEvent) =>
     set((state: any) => {
@@ -62,17 +57,7 @@ export const useExp = create((set) => ({
       state[field] = (<HTMLInputElement>event.target)?.value; // eslint-disable-line no-param-reassign
     }),
 
-  updateCompany: (index, field, value) =>
-    set((state: any) => {
-      const newCompnaies = [...state.companies];
-      newCompnaies[index][field] = value;
-      return {
-        ...state,
-        companies: newCompnaies,
-      };
-    }),
-
-  addCompany: () =>
+  add: () =>
     set((state: any) => {
       const newCompnaies = [
         ...state.companies,
@@ -91,7 +76,17 @@ export const useExp = create((set) => ({
       };
     }),
 
-  deleteCompany: (index: number) =>
+  update: (index, field, value) =>
+    set((state: any) => {
+      const newCompnaies = [...state.companies];
+      newCompnaies[index][field] = value;
+      return {
+        ...state,
+        companies: newCompnaies,
+      };
+    }),
+
+  purge: (index: number) =>
     set((state: any) => {
       const newCompnaies = state.companies.filter((_, ind) => ind !== index);
       return {
@@ -121,7 +116,7 @@ export const useSkills = create((set) => ({
   practices: skills.practices,
   tools: skills.tools,
 
-  addSkill: (type: string, name = '', rating = 1) =>
+  add: (type: string, name = '', rating = 1) =>
     set((state: any) => {
       if (state[type].some((skill) => skill.name === '')) return;
 
@@ -129,13 +124,13 @@ export const useSkills = create((set) => ({
       state[type].push({ name, rating }); // eslint-disable-line no-param-reassign
     }),
 
-  updateSkill: (type: string, index: number, key: 'name' | 'rating', value: string | number) =>
+  update: (type: string, index: number, key: 'name' | 'rating', value: string | number) =>
     set((state: any) => {
       state[type] = [...state[type]]; // eslint-disable-line no-param-reassign
       state[type][index][key] = value; // eslint-disable-line no-param-reassign
     }),
 
-  deleteSkill: (type: string, index: number) =>
+  purge: (type: string, index: number) =>
     set((state: any) => {
       state[type] = state[type].filter((_, ind) => index !== ind); // eslint-disable-line no-param-reassign
     }),
@@ -147,6 +142,40 @@ export const useSkills = create((set) => ({
     })),
 }));
 
-export const useEducation = create(() => ({
+export const useEducation = create((set) => ({
   education,
+
+  add: () =>
+    set((state: any) => ({
+      education: [
+        ...state.education,
+        {
+          institution: '',
+          url: '',
+          studyType: 'Degree',
+          area: '',
+          startDate: '',
+          endDate: '',
+          score: '',
+          courses: [],
+        },
+      ],
+    })),
+
+  update: (index, field, value) =>
+    set((state: any) => {
+      const newEducation = [...state.education];
+      newEducation[index][field] = value;
+      return {
+        education: newEducation,
+      };
+    }),
+
+  purge: (index: number) =>
+    set((state: any) => ({ education: state.education.filter((_, ind) => ind !== index) })),
+
+  changeOrder: ({ oldIndex, newIndex }) =>
+    set((state: any) => ({
+      education: arrayMoveImmutable(state.education, oldIndex, newIndex),
+    })),
 }));

@@ -4,7 +4,6 @@ import { Input as AntInput, Switch } from 'antd';
 import shallow from 'zustand/shallow';
 import { useItems } from 'src/stores/settings.store';
 import { INTRO_METADATA } from 'src/core/meta-data/input_metadata';
-// import { BlockField } from 'src/core/widgets/BlockField';
 import { useIntro } from 'src/stores/data.store';
 import { MarkDownField } from 'src/core/widgets/MarkdownField';
 
@@ -42,9 +41,9 @@ export function IntroEdit() {
   return (
     <>
       <Switch checked={isPhotoDisplayed} onChange={setIsPhotoDisplayed} size="small" />
-      {INTRO_METADATA?.metadata.map((metadata) => (
+      {INTRO_METADATA.map((metadata) => (
         <Wrapper key={metadata.label}>
-          <Topic>{metadata.title}</Topic>
+          <Topic>{metadata.label}</Topic>
           {metadata.type === 'Input' ? (
             <Input value={intro[metadata.value]} data-label={metadata.value} onChange={onChange} />
           ) : (

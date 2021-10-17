@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import shallow from 'zustand/shallow';
-import { useSkills } from 'src/stores/data.store';
+import { useEducation, useExp, useSkills } from 'src/stores/data.store';
+import { EDU_METADATA, EXP_METADATA } from 'src/core/meta-data/input_metadata';
 import { IntroEdit } from 'src/core/components/editor/IntroEdit';
 import { SocialEdit } from 'src/core/components/editor/SocialEdit';
 import { SkillsEdit } from './SkillsEdit';
-import { ExpEdit } from './ExpEdit';
+import { TimelineEdit } from './TimelineEdit';
 
 const Divider = styled.div`
   height: 2px;
@@ -42,13 +43,45 @@ export const SocialEditor = () => (
   </Container>
 );
 
-export const ExerienceEditor = () => (
-  <Container>
-    <Heading>Social</Heading>
-    <ExpEdit />
-    <Divider />
-  </Container>
-);
+export const EduEditor = () => {
+  const education = useEducation((state: any) => state.education);
+  const [add, update, purge, changeOrder] = useEducation(
+    (state: any) => [state.add, state.update, state.purge, state.changeOrder],
+    shallow
+  );
+
+  return (
+    <Container>
+      <Heading>Education</Heading>
+      <TimelineEdit
+        METADATA={EDU_METADATA}
+        itemList={education}
+        identifier="studyType"
+        operations={{ update, add, purge, changeOrder }}
+      />
+    </Container>
+  );
+};
+
+export const ExerienceEditor = () => {
+  const companies = useExp((state: any) => state.companies);
+  const [add, update, purge, changeOrder] = useExp(
+    (state: any) => [state.add, state.update, state.purge, state.changeOrder],
+    shallow
+  );
+
+  return (
+    <Container>
+      <Heading>Experience</Heading>
+      <TimelineEdit
+        METADATA={EXP_METADATA}
+        itemList={companies}
+        identifier="name"
+        operations={{ update, add, purge, changeOrder }}
+      />
+    </Container>
+  );
+};
 
 export const SkillEditor = ({ type, hasRating = false }: { type: string; hasRating: boolean }) => {
   const [skillList, addSkill, updateSkill, deleteSkill, changeOrder] = useSkills(

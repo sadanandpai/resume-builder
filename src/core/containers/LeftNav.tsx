@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { SideDrawer } from 'src/core/widgets/SideDrawer';
 import {
   SocialEditor,
+  EduEditor,
   ExerienceEditor,
   SkillsEditor,
   IntroEditor,
@@ -43,6 +44,12 @@ const sideBarList = [
     title: 'Experience',
     icon: 'experience',
     component: <ExerienceEditor />,
+  },
+  {
+    key: 4,
+    title: 'Experience',
+    icon: 'education',
+    component: <EduEditor />,
   },
 ];
 

@@ -72,7 +72,7 @@ export function ProfessionalTemplate() {
 
   const leftSections = [
     {
-      title: experience.title,
+      title: 'Experience',
       component: <Exp companies={experience.companies} />,
       styles: { flexGrow: 1 },
     },
@@ -87,12 +87,12 @@ export function ProfessionalTemplate() {
   ];
   const rightSections = [
     {
-      title: intro.aboutTitle,
-      component: <Description photo={intro.photo} description={intro.aboutDescription} />,
+      title: 'About me',
+      component: <Description photo={intro.photo} description={intro.about} />,
     },
     {
-      title: intro.objectiveTitle,
-      component: <Description description={intro.objectiveDescription} />,
+      title: 'Career Objective',
+      component: <Description description={intro.objective} />,
     },
     {
       title: 'Technical Expertise',
@@ -108,8 +108,8 @@ export function ProfessionalTemplate() {
     },
     { title: 'Tools', component: <UnratedTabs items={tools} /> },
     {
-      title: education.title,
-      component: <EduSection items={education.items} />,
+      title: 'Education',
+      component: <EduSection education={education} />,
     },
   ];
 
@@ -117,7 +117,7 @@ export function ProfessionalTemplate() {
     <ResumeContainer>
       <LeftSection>
         <ModernHeaderIntro title={intro.name} icons={social}>
-          <Intro intro={intro} experience={experience} />
+          <Intro intro={intro} />
         </ModernHeaderIntro>
 
         {leftSections.map(({ title, component, styles }) => (

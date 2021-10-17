@@ -1,20 +1,18 @@
 import React from 'react';
 // import shallow from 'zustand/shallow';
 // import {
-// useIntro,
-// useInfo,
-// useSocial,
-// useExp,
-// useSkills,
-// useAchievements,
-// useEducation,
+//   useIntro,
+//   useSocial,
+//   useExp,
+//   useSkills,
+//   useAchievements,
+//   useEducation,
 // } from 'src/stores/data.store';
 
 export function Template4() {
   // Uncomment below lines to access data
 
   // const intro = useIntro((state: any) => state);
-  // const info = useInfo((state: any) => state);
   // const social = useSocial((state: any) => state);
   // const education = useEducation((state: any) => state.education);
   // const experience = useExp((state: any) => state);
@@ -22,8 +20,16 @@ export function Template4() {
   //   (state: any) => [state.keyProjects, state.certificates],
   //   shallow
   // );
-  // const [technical, exposure, methodology, tools] = useSkills(
-  //   (state: any) => [state.technical, state.exposure, state.methodology, state.tools],
+  // const [languages, frameworks, libraries, databases, technologies, practices, tools] = useSkills(
+  //   (state: any) => [
+  //     state.languages,
+  //     state.frameworks,
+  //     state.libraries,
+  //     state.databases,
+  //     state.technologies,
+  //     state.practices,
+  //     state.tools,
+  //   ],
   //   shallow
   // );
 

@@ -4,11 +4,11 @@ export const intro = {
   mobile: '+91 9876543210',
   email: 'janedoe@email.com',
   location: 'Bengaluru',
+  relExp: '4 years',
+  totalExp: '6 Years',
   photo: 'https://www.linkpicture.com/q/generated_photos_5e68893b6d3b380006f22f8b.jpg',
-  aboutTitle: 'About me',
-  aboutDescription: `I am a web developer having expertise in frontend development and exposure to back- end development. I design and develop web applications using the latest technologies to deliver the product with quality code.\nI am very good at UI fundamentals & Technologies and can adapt to most of the front-end frameworks quickly.`,
-  objectiveTitle: 'Career Objective',
-  objectiveDescription:
+  about: `I am a web developer having expertise in frontend development and exposure to back- end development. I design and develop web applications using the latest technologies to deliver the product with quality code.`,
+  objective:
     'Eager to expand my skill set through external trainings to help boost all major front desk KPIs. Hoping to leverage organizational skills to help ABC Corp introduce time-saving schemes for all executives.',
 };
 
@@ -57,7 +57,6 @@ export const skills = {
     { name: 'Design Patterns', rating: 3 },
     { name: 'Test Driven Development', rating: 3 },
     { name: 'MVC', rating: 3 },
-    { name: 'RESTful architecture', rating: 3 },
   ],
   tools: [
     { name: 'Git', rating: 3 },
@@ -69,42 +68,35 @@ export const skills = {
   ],
 };
 
-export const experience = {
-  title: 'Experience',
-  relExpLabel: 'Frontend experience',
-  relExp: '4 years',
-  totalExpLabel: 'Total Experience',
-  totalExp: '6 Years',
-  companies: [
-    {
-      name: 'Company 1',
-      role: 'Senior Software Developer',
-      from: 'Apr 2021',
-      to: 'present',
-      years: '2.5 years',
-      description:
-        '* Use my extensive experience with front end development to define the structure and components for the project, making sure they are reusable\n* Keep the code quality high reviewing code from other developers and suggesting improvements\n* Interact with the designer to suggest changes and to make sure the view he has about the design is translated into actual functionality\n* E-commerce maintenance **with Fastcommerce**, a Brazilian e-commerce platform',
-    },
-    {
-      name: 'Company 2',
-      role: 'Software Developer',
-      from: 'Jun 2015',
-      to: 'Dec 2017',
-      years: '2.5 years',
-      description:
-        "* Develop web applications based on Sharepoint, Drupal 8 and Episerver\n* Lead a team of 10 front end developers, giving support to the client's multi-cultural team, providing feedback, clarifying requirements and helping with technical questions\n* Keep the Project Manager and the IT Leads updated on the overall progress of the projects and manage the tasks distributed to the team\n* Keep the code and the features implemented by the other developers in accordance to the requirements",
-    },
-    {
-      name: 'Company 3',
-      role: 'Trainee Developer',
-      from: 'Aug 2011',
-      to: 'May 2015',
-      years: '1 year',
-      description:
-        '* Design easy user interfaces and great user experiences for the digital platforms of small companies\n* Wordpress development, including themes creation or customization, custom plugins development and training\n* E-commerce maintenance with Fastcommerce, a Brazilian e-commerce platform\n* E-commerce development with Magento, customizing preexisting themes \n* Integrate external services such as payment services, delivery, etc into Magento solutions\n* VPS configuration and optimization (Apache & Nginx)',
-    },
-  ],
-};
+export const experience = [
+  {
+    name: 'Company 1',
+    role: 'Senior Software Developer',
+    from: 'Apr 2021',
+    to: 'present',
+    years: '2.5 years',
+    description:
+      '* Use my extensive experience with front end development to define the structure and components for the project, making sure they are reusable\n* Keep the code quality high reviewing code from other developers and suggesting improvements\n* Interact with the designer to suggest changes and to make sure the view he has about the design is translated into actual functionality\n* E-commerce maintenance **with Fastcommerce**, a Brazilian e-commerce platform',
+  },
+  {
+    name: 'Company 2',
+    role: 'Software Developer',
+    from: 'Jun 2015',
+    to: 'Dec 2017',
+    years: '2.5 years',
+    description:
+      "* Develop web applications based on Sharepoint, Drupal 8 and Episerver\n* Lead a team of 10 front end developers, giving support to the client's multi-cultural team, providing feedback, clarifying requirements and helping with technical questions\n* Keep the Project Manager and the IT Leads updated on the overall progress of the projects and manage the tasks distributed to the team\n* Keep the code and the features implemented by the other developers in accordance to the requirements",
+  },
+  {
+    name: 'Company 3',
+    role: 'Trainee Developer',
+    from: 'Aug 2011',
+    to: 'May 2015',
+    years: '1 year',
+    description:
+      '* Design easy user interfaces and great user experiences for the digital platforms of small companies\n* Wordpress development, including themes creation or customization, custom plugins development and training\n* E-commerce maintenance with Fastcommerce, a Brazilian e-commerce platform\n* E-commerce development with Magento, customizing preexisting themes \n* Integrate external services such as payment services, delivery, etc into Magento solutions\n* VPS configuration and optimization (Apache & Nginx)',
+  },
+];
 
 export const achievements = {
   keyProjects: {
@@ -129,15 +121,25 @@ export const achievements = {
   },
 };
 
-export const education = {
-  title: 'Education',
-  items: [
-    {
-      institution: 'XIV, University',
-      years: '2010 - 2014',
-      grade: '8.3 CGPA',
-      degree: 'B.Tech',
-      specialization: 'Masters in Cloud Technology',
-    },
-  ],
-};
+export const education = [
+  {
+    institution: 'MIT, University',
+    url: 'https://www.mit.edu/',
+    studyType: 'MS',
+    area: 'Cloud technology',
+    startDate: '2014',
+    endDate: '2016',
+    score: '68%',
+    courses: [],
+  },
+  {
+    institution: 'NMAMIT, Nitte',
+    url: 'https://www.mit.edu/',
+    studyType: 'B.Tech (VTU)',
+    area: 'Computer Science',
+    startDate: '2010',
+    endDate: '2014',
+    score: '8.3 CGPA',
+    courses: [],
+  },
+];

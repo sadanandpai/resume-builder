@@ -79,10 +79,10 @@ export function LegacyTemplate() {
     <GridContainer>
       <GridColumn>
         <EmployeName>{intro.name}</EmployeName>
-        <Intro intro={intro} experience={experience} />
+        <Intro intro={intro} />
         <SocialBar items={social} />
 
-        <LegacyHeader Icon={getIcon(experience.title)} title={experience.title} />
+        <LegacyHeader Icon={getIcon('Experience')} title="Experience" />
         <Exp companies={experience.companies} />
         <LineSeparator />
         <LegacyHeader Icon={getIcon(keyProjects.title)} title={keyProjects.title} />
@@ -96,11 +96,11 @@ export function LegacyTemplate() {
       <Divider />
 
       <GridColumn>
-        <LegacyHeader Icon={getIcon(intro.aboutTitle)} title={intro.aboutTitle} />
-        <Description description={intro.aboutDescription} />
+        <LegacyHeader Icon={getIcon('About me')} title="About me" />
+        <Description description={intro.about} />
         <LineSeparator />
-        <LegacyHeader Icon={getIcon(intro.objectiveTitle)} title={intro.objectiveTitle} />
-        <Description description={intro.objectiveDescription} />
+        <LegacyHeader Icon={getIcon('Career Objective')} title="Career Objective" />
+        <Description description={intro.objective} />
         <LineSeparator />
         <LegacyHeader Icon={getIcon('Technical Expertise')} title="Technical Expertise" />
         <RatedPill items={[...languages, ...frameworks]} />
@@ -115,8 +115,8 @@ export function LegacyTemplate() {
         <LegacyHeader Icon={getIcon('Tools')} title="Tools" />
         <UnratedTabs items={tools} />
         <LineSeparator />
-        <LegacyHeader Icon={getIcon(education.title)} title={education.title} />
-        <EduSection items={education.items} />
+        <LegacyHeader Icon={getIcon('Education')} title="Education" />
+        <EduSection education={education} />
       </GridColumn>
     </GridContainer>
   );

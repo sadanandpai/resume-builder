@@ -2,6 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import { Flex } from 'src/assets/styles/styles';
 
+const Education = styled.div`
+  &:not(:last-child) {
+    border-bottom: 1px solid ${(props) => props.theme.secondaryColor};
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+`;
+
 const Degree = styled.div`
   font-weight: 500;
   font-size: 0.8rem;
@@ -12,21 +20,23 @@ const Specialization = styled.div`
   font-size: 0.7rem;
 `;
 
-export function EduSection({ items }: any) {
-  if (!items) return null;
+export function EduSection({ education }: any) {
+  if (!education) return null;
 
-  return items.map((data: any) => (
-    <div key={data.degree}>
+  return education.map((data: any) => (
+    <Education key={data.degree}>
       <Flex jc="space-between">
-        <Degree>{data.degree}</Degree>
-        <em>{data.years}</em>
+        <Degree>{data.studyType}</Degree>
+        <em>
+          {data.startDate} - {data.endDate}
+        </em>
       </Flex>
 
-      <Specialization>{data.specialization}</Specialization>
+      <Specialization>{data.area}</Specialization>
       <Flex jc="space-between">
         <div>{data.institution}</div>
-        <em>{data.grade}</em>
+        <em>{data.score}</em>
       </Flex>
-    </div>
+    </Education>
   ));
 }
