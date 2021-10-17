@@ -1,9 +1,10 @@
-@import "antd/dist/antd.css";
+@import 'antd/dist/antd.css';
 
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 0.65rem;
+  background: #eff1f5;
 }
 
 @media print {
@@ -12,13 +13,21 @@ body {
   *::after {
     -webkit-print-color-adjust: exact !important; /* Chrome, Safari, Edge */
     color-adjust: exact !important; /*Firefox*/
-  }  
+  }
 }
 
+@media print {
+  body *,
+  *::before,
+  *::after {
+    -webkit-print-color-adjust: exact !important; /* Chrome, Safari, Edge */
+    color-adjust: exact !important; /*Firefox*/
+  }
+}
 
 @page {
-  size: A4;
-  margin: 0;
+  size: A4 !important;
+  margin: 0 !important;
 }
 
 ul,

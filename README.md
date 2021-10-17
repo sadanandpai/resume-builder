@@ -41,7 +41,7 @@
 - [Zustand](https://github.com/pmndrs/zustand) (hooks based state management library)
 - [Vite](https://vitejs.dev/) (Bundler)
 
-----------------------------------------------------------------
+---
 
 Feel free to use the source to create your resume.<br/>
 Basic knowledge of HTML5, CSS and React is sufficient to customize the resume for your requirements.
