@@ -17,16 +17,18 @@ const Contact = ({ icon, value }: any) => (
   </FlexVC>
 );
 
-export function Intro({ intro }: any) {
+export function Intro({ intro, labels }: any) {
   return (
     <Flex jc="space-between">
       <FlexCol rGap="5px">
         <Role>{intro.label}</Role>
         <div>
-          Frontend experience:&nbsp;
+          {labels[10]}:&nbsp;
           <strong>{intro.relExp}</strong>
         </div>
-        <div>Total experience:&nbsp;{intro.totalExp}</div>
+        <div>
+          {labels[11]}:&nbsp;{intro.totalExp}
+        </div>
       </FlexCol>
 
       <FlexCol jc="flex-end" rGap="5px">
