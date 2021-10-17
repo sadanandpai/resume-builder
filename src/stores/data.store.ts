@@ -28,9 +28,9 @@ export const useIntro = create((set) => ({
   relExp: intro.relExp,
   totalExp: intro.totalExp,
 
-  setField: (field: string, value: string) =>
+  update: (type: string, value: string) =>
     set((state: any) => {
-      state[field] = value; // eslint-disable-line no-param-reassign
+      state[type] = value; // eslint-disable-line no-param-reassign
     }),
 }));
 
@@ -51,12 +51,9 @@ export const useSocial = create((set) => ({
   behance: social.behance,
   dribbble: social.dribbble,
 
-  setField: (event: InputEvent) =>
+  update: (type: string, value: string) =>
     set((state: any) => {
-      const field = (<HTMLElement>event.target).dataset.label;
-
-      if (field === undefined) return;
-      state[field] = (<HTMLInputElement>event.target)?.value; // eslint-disable-line no-param-reassign
+      state[type] = value; // eslint-disable-line no-param-reassign
     }),
 }));
 

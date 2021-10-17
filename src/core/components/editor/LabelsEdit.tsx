@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import styled from 'styled-components';
 import { Input as AntInput } from 'antd';
-import { useLabels } from 'src/stores/data.store';
 
 const Wrapper = styled.div`
   margin: 8px 0;
@@ -18,13 +17,10 @@ const Input = styled(AntInput)`
   margin-bottom: 5px;
 `;
 
-export function LabelsEdit() {
-  const labels = useLabels((state: any) => state.labels);
-  const update = useLabels((state: any) => state.update);
-
+export function LabelsEdit({ state, update }: any) {
   return (
     <>
-      {labels.map((label, index: number) => (
+      {state.map((label, index: number) => (
         <Wrapper key={index}>
           <Input
             placeholder={label}

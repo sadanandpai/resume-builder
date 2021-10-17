@@ -4,7 +4,7 @@ import styled, { withTheme } from 'styled-components';
 import { FlexCol, FlexVC } from 'src/assets/styles/styles';
 
 const RatedType = styled.div`
-  width: 15ch;
+  width: 25ch;
   font-weight: 600;
 `;
 

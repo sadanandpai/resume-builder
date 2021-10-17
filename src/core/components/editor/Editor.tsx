@@ -1,14 +1,25 @@
 import React from 'react';
 import styled from 'styled-components';
 import shallow from 'zustand/shallow';
-import { useEducation, useWork, useSkills } from 'src/stores/data.store';
-import { EDU_METADATA, EXP_METADATA } from 'src/core/meta-data/input_metadata';
-import { IntroEdit } from 'src/core/components/editor/IntroEdit';
-import { SocialEdit } from 'src/core/components/editor/SocialEdit';
+import {
+  useEducation,
+  useWork,
+  useSkills,
+  useLabels,
+  useIntro,
+  useSocial,
+} from 'src/stores/data.store';
+import {
+  INTRO_METADATA,
+  EDU_METADATA,
+  EXP_METADATA,
+  SOCIAL_METADATA,
+} from 'src/core/meta-data/input_metadata';
 import { SkillsEdit } from './SkillsEdit';
 import { TimelineEdit } from './TimelineEdit';
 import { AwardsEdit } from './AwardsEdit';
 import { LabelsEdit } from './LabelsEdit';
+import { StaticEdit } from './StaticEdit';
 
 const Divider = styled.div`
   height: 2px;
@@ -29,20 +40,30 @@ const Heading = styled.h2`
   margin-bottom: 0;
 `;
 
-export const IntroEditor = () => (
-  <Container>
-    <Heading>Intro</Heading>
-    <IntroEdit />
-    <Divider />
-  </Container>
-);
+export const IntroEditor = () => {
+  const introState = useIntro((state: any) => state);
+  const update = useIntro((state: any) => state.update);
 
-export const SocialEditor = () => (
-  <Container>
-    <Heading>Social</Heading>
-    <SocialEdit />
-  </Container>
-);
+  return (
+    <Container>
+      <Heading>Intro</Heading>
+      <StaticEdit state={introState} METADATA={INTRO_METADATA} update={update} />
+      <Divider />
+    </Container>
+  );
+};
+
+export const SocialEditor = () => {
+  const socialState = useSocial((state: any) => state);
+  const update = useSocial((state: any) => state.update);
+
+  return (
+    <Container>
+      <Heading>Social</Heading>
+      <StaticEdit state={socialState} METADATA={SOCIAL_METADATA} update={update} />
+    </Container>
+  );
+};
 
 export const AwardsEditor = () => (
   <Container>
@@ -51,12 +72,17 @@ export const AwardsEditor = () => (
   </Container>
 );
 
-export const LabelsEditor = () => (
-  <Container>
-    <Heading>Template Labels</Heading>
-    <LabelsEdit />
-  </Container>
-);
+export const LabelsEditor = () => {
+  const labelsState = useLabels((state: any) => state.labels);
+  const update = useLabels((state: any) => state.update);
+
+  return (
+    <Container>
+      <Heading>Template Labels</Heading>
+      <LabelsEdit state={labelsState} update={update} />
+    </Container>
+  );
+};
 
 export const EduEditor = () => {
   const education = useEducation((state: any) => state.education);
@@ -99,14 +125,8 @@ export const ExerienceEditor = () => {
 };
 
 export const SkillEditor = ({ type, hasRating = false }: { type: string; hasRating: boolean }) => {
-  const [skillList, addSkill, updateSkill, deleteSkill, changeOrder] = useSkills(
-    (state: any) => [
-      state[type],
-      state.addSkill,
-      state.updateSkill,
-      state.deleteSkill,
-      state.changeOrder,
-    ],
+  const [skillList, add, update, purge, changeOrder] = useSkills(
+    (state: any) => [state[type], state.add, state.update, state.purge, state.changeOrder],
     shallow
   );
 
@@ -117,9 +137,9 @@ export const SkillEditor = ({ type, hasRating = false }: { type: string; hasRati
         type={type}
         hasRating={hasRating}
         skills={skillList}
-        addSkill={addSkill}
-        updateSkill={updateSkill}
-        deleteSkill={deleteSkill}
+        addSkill={add}
+        updateSkill={update}
+        deleteSkill={purge}
         changeOrder={changeOrder}
       />
       <Divider />

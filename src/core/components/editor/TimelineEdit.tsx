@@ -70,46 +70,48 @@ export function TimelineEdit({ METADATA, identifier, itemList, operations }: any
     setIsReorder((state) => !state);
   };
 
+  const panelList = (
+    <Collapse>
+      {itemList.map((item, index) => (
+        <Panel
+          header={item[identifier]}
+          key={index}
+          extra={<AiFillDelete onClick={() => operations.purge(index)} />}
+        >
+          {METADATA.map((metadata) =>
+            metadata.type === 'Input' ? (
+              <Input
+                key={metadata.label}
+                value={item[metadata.value]}
+                placeholder={metadata.label}
+                onChange={(event) => operations.update(index, metadata.value, event.target.value)}
+              />
+            ) : (
+              <MarkDownField
+                key={metadata.label}
+                value={item[metadata.value]}
+                setValue={(text) => operations.update(index, metadata.value, text)}
+              />
+            )
+          )}
+        </Panel>
+      ))}
+    </Collapse>
+  );
+
+  const sortableList = (
+    <SortableList
+      items={itemList}
+      identifier={identifier}
+      onSortEnd={operations.changeOrder}
+      useDragHandle
+    />
+  );
+
   return (
     <>
       <Switch checked={isReorder} onChange={onChange} />
-      {isReorder ? (
-        <SortableList
-          items={itemList}
-          identifier={identifier}
-          onSortEnd={operations.changeOrder}
-          useDragHandle
-        />
-      ) : (
-        <Collapse>
-          {itemList.map((item, index) => (
-            <Panel
-              header={item[identifier]}
-              key={index}
-              extra={<AiFillDelete onClick={() => operations.purge(index)} />}
-            >
-              {METADATA.map((metadata) =>
-                metadata.type === 'Input' ? (
-                  <Input
-                    key={metadata.label}
-                    value={item[metadata.value]}
-                    placeholder={metadata.label}
-                    onChange={(event) =>
-                      operations.update(index, metadata.value, event.target.value)
-                    }
-                  />
-                ) : (
-                  <MarkDownField
-                    key={metadata.label}
-                    value={item[metadata.value]}
-                    setValue={(text) => operations.update(index, metadata.value, text)}
-                  />
-                )
-              )}
-            </Panel>
-          ))}
-        </Collapse>
-      )}
+      {isReorder ? sortableList : panelList}
       <button type="button" style={{ fontSize: '2rem' }} onClick={operations.add}>
         {getIcon('add')}
       </button>

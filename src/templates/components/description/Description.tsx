@@ -14,6 +14,13 @@ const RoundedImage = styled.img`
   border: 0.5px solid ${(props) => props.theme.fontColor};
 `;
 
+const MarkdownHolder = styled.div`
+  ul {
+    margin: 0;
+    padding-left: 1rem;
+  }
+`;
+
 const mdParser = new MarkdownIt(/* Markdown-it options */);
 
 export function Description({ description, photo }: any) {
@@ -26,7 +33,7 @@ export function Description({ description, photo }: any) {
   return (
     <>
       {image}
-      <div dangerouslySetInnerHTML={{ __html: mdParser.render(description) }} />
+      <MarkdownHolder dangerouslySetInnerHTML={{ __html: mdParser.render(description) }} />
     </>
   );
 }

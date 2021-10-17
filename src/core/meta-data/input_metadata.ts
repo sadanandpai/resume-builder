@@ -51,86 +51,83 @@ export const INTRO_METADATA = [
   },
 ];
 
-export const SOCIAL_METADATA = {
-  section: 'Social',
-  metadata: [
-    {
-      label: 'Linkedin',
-      type: 'Input',
-      value: 'linkedin',
-    },
-    {
-      label: 'Github',
-      type: 'Input',
-      value: 'github',
-    },
-    {
-      label: 'Hackerrank',
-      type: 'Input',
-      value: 'hackerrank',
-    },
-    {
-      label: 'HackerEarth',
-      type: 'Input',
-      value: 'hackerearth',
-    },
-    {
-      label: 'Codechef',
-      type: 'Input',
-      value: 'codechef',
-    },
-    {
-      label: 'Codeforces',
-      type: 'Input',
-      value: 'codeforces',
-    },
-    {
-      label: 'Twitter',
-      type: 'Input',
-      value: 'twitter',
-    },
-    {
-      label: 'Leetcode',
-      type: 'Input',
-      value: 'leetcode',
-    },
-    {
-      label: 'Devto',
-      type: 'Input',
-      value: 'devto',
-    },
-    {
-      label: 'Medium',
-      type: 'Input',
-      value: 'medium',
-    },
-    {
-      label: 'Wordpress',
-      type: 'Input',
-      value: 'wordpress',
-    },
-    {
-      label: 'Hashnode',
-      type: 'Input',
-      value: 'hashnode',
-    },
-    {
-      label: 'Squarespace',
-      type: 'Input',
-      value: 'squarespace',
-    },
-    {
-      label: 'Behance',
-      type: 'Input',
-      value: 'behance',
-    },
-    {
-      label: 'Dribbble',
-      type: 'Input',
-      value: 'dribbble',
-    },
-  ],
-};
+export const SOCIAL_METADATA = [
+  {
+    label: 'Linkedin',
+    type: 'Input',
+    value: 'linkedin',
+  },
+  {
+    label: 'Github',
+    type: 'Input',
+    value: 'github',
+  },
+  {
+    label: 'Hackerrank',
+    type: 'Input',
+    value: 'hackerrank',
+  },
+  {
+    label: 'HackerEarth',
+    type: 'Input',
+    value: 'hackerearth',
+  },
+  {
+    label: 'Codechef',
+    type: 'Input',
+    value: 'codechef',
+  },
+  {
+    label: 'Codeforces',
+    type: 'Input',
+    value: 'codeforces',
+  },
+  {
+    label: 'Twitter',
+    type: 'Input',
+    value: 'twitter',
+  },
+  {
+    label: 'Leetcode',
+    type: 'Input',
+    value: 'leetcode',
+  },
+  {
+    label: 'Devto',
+    type: 'Input',
+    value: 'devto',
+  },
+  {
+    label: 'Medium',
+    type: 'Input',
+    value: 'medium',
+  },
+  {
+    label: 'Wordpress',
+    type: 'Input',
+    value: 'wordpress',
+  },
+  {
+    label: 'Hashnode',
+    type: 'Input',
+    value: 'hashnode',
+  },
+  {
+    label: 'Squarespace',
+    type: 'Input',
+    value: 'squarespace',
+  },
+  {
+    label: 'Behance',
+    type: 'Input',
+    value: 'behance',
+  },
+  {
+    label: 'Dribbble',
+    type: 'Input',
+    value: 'dribbble',
+  },
+];
 
 export const ACHIEVEMNT_METADATA = [
   {

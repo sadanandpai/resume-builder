@@ -143,19 +143,23 @@ export function ProfessionalTemplate() {
           <Intro intro={intro} />
         </ModernHeaderIntro>
 
-        {leftSections.map(({ title, icon, component, styles }) => (
-          <ModernHeader icon={getIcon(icon)} title={title} styles={styles} key={title}>
-            {component}
-          </ModernHeader>
-        ))}
+        {leftSections
+          .filter(({ title }) => !!title)
+          .map(({ title, icon, component, styles }) => (
+            <ModernHeader icon={getIcon(icon)} title={title} styles={styles} key={title}>
+              {component}
+            </ModernHeader>
+          ))}
       </LeftSection>
 
       <RightSection>
-        {rightSections.map(({ title, icon, component }) => (
-          <ModernHeader icon={getIcon(icon)} title={title} key={title}>
-            {component}
-          </ModernHeader>
-        ))}
+        {rightSections
+          .filter(({ title }) => !!title)
+          .map(({ title, icon, component }) => (
+            <ModernHeader icon={getIcon(icon)} title={title} key={title}>
+              {component}
+            </ModernHeader>
+          ))}
       </RightSection>
     </ResumeContainer>
   );

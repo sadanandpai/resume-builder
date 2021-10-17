@@ -1,6 +1,5 @@
 import React, { useCallback, useState } from 'react';
 import styled from 'styled-components';
-
 import { SideDrawer } from 'src/core/widgets/SideDrawer';
 import {
   SocialEditor,
@@ -25,8 +24,8 @@ const Wrapper = styled.div`
 const sideBarList = [
   {
     key: 0,
-    title: 'Edit',
-    icon: 'edit',
+    title: 'Intro',
+    icon: 'identity',
     component: <IntroEditor />,
   },
   {
