@@ -9,7 +9,8 @@
 [![](https://img.shields.io/github/stars/sadanandpai/single-page-resume-builder?style=for-the-badge)](#stars)
 [![](https://img.shields.io/github/forks/sadanandpai/single-page-resume-builder?style=for-the-badge)](#forks)
 
-<a href="https://sadanandpai.github.io/single-page-resume-builder/dist/">Live demo</a>
+<a href="https://sadanandpai.github.io/single-page-resume-builder/dist/">Version 1.0</a><br><br>
+<a href="https://single-page-resume-builder.netlify.app/">Version 2.0</a>(in progress)
 
 </div>
 
