@@ -1,8 +1,7 @@
 import React, { Fragment } from 'react';
 import styled from 'styled-components';
 import { Input as AntInput } from 'antd';
-import { SOCIAL_METADATA } from 'src/core/meta-data/input_metadata';
-import { useSocial } from 'src/stores/data.store';
+import { MarkDownField } from 'src/core/widgets/MarkdownField';
 
 const Wrapper = styled.div`
   margin: 8px 0;
@@ -26,16 +25,24 @@ const Input = styled(AntInput)`
   margin-bottom: 5px;
 `;
 
-export function SocialEdit() {
-  const social = useSocial((state: any) => state);
-  const setField = useSocial((state: any) => state.setField);
-
+export function StaticEdit({ METADATA, state, update }: any) {
   return (
     <>
-      {SOCIAL_METADATA?.metadata.map((metadata) => (
+      {METADATA.map((metadata) => (
         <Wrapper key={metadata.label}>
           <Topic>{metadata.label}</Topic>
-          <Input value={social[metadata.value]} data-label={metadata.value} onChange={setField} />
+          {metadata.type === 'Input' ? (
+            <Input
+              value={state[metadata.value]}
+              data-label={metadata.value}
+              onChange={(event) => update(event.target.dataset.label, event.target.value)}
+            />
+          ) : (
+            <MarkDownField
+              value={state[metadata.value]}
+              setValue={(text) => update(metadata.value, text)}
+            />
+          )}
         </Wrapper>
       ))}
     </>

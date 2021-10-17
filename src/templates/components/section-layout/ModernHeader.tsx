@@ -23,11 +23,6 @@ const SectionHolder = styled.div`
       font-size: 0.8rem;
     }
   }
-
-  ul {
-    margin-bottom: 0;
-    padding-left: 1rem;
-  }
 `;
 
 const SectionIntroHolder = styled(SectionHolder)`
