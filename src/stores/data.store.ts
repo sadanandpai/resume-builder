@@ -1,7 +1,17 @@
 import create from 'zustand';
-import { intro, social, work, skills, achievements, education } from 'src/stores/data';
+import {
+  intro,
+  social,
+  work,
+  skills,
+  activities,
+  education,
+  volunteer,
+  awards,
+} from 'src/stores/data';
 import { arrayMoveImmutable } from 'array-move';
 import { persist } from 'zustand/middleware';
+import produce from 'immer';
 
 const labels = [
   'Experience',
@@ -214,20 +224,102 @@ export const useEducation = create(
   )
 );
 
-export const useAchievements = create(
+export const useActivities = create(
   persist(
     (set) => ({
-      projects: achievements.projects,
-      awards: achievements.awards,
+      involvements: activities.involvements,
+      achievements: activities.achievements,
 
       update: (type: string, value: string | number) =>
         set((state: any) => {
-          state[type] = [...state[type]]; // eslint-disable-line no-param-reassign
           state[type] = value; // eslint-disable-line no-param-reassign
         }),
     }),
     {
-      name: 'sprb-achievements',
+      name: 'sprb-activities',
+    }
+  )
+);
+
+export const useVolunteer = create(
+  persist(
+    (set) => ({
+      volunteer,
+
+      add: () =>
+        set(
+          produce((state: any) => {
+            state.volunteer.push({
+              organization: 'Organization',
+              position: 'Volunteer',
+              url: '',
+              startDate: '',
+              endDate: '',
+              summary: '',
+              highlights: '',
+            });
+          })
+        ),
+
+      update: (index: string, key: string, value: string) =>
+        set(
+          produce((state: any) => {
+            state.volunteer[index][key] = value; // eslint-disable-line no-param-reassign
+          })
+        ),
+
+      purge: (index: number) =>
+        set((state: any) => ({
+          volunteer: state.volunteer.filter((_, ind) => ind !== index),
+        })),
+
+      changeOrder: ({ oldIndex, newIndex }) =>
+        set((state: any) => ({
+          volunteer: arrayMoveImmutable(state.volunteer, oldIndex, newIndex),
+        })),
+    }),
+    {
+      name: 'sprb-volunteer',
+    }
+  )
+);
+
+export const useAwards = create(
+  persist(
+    (set) => ({
+      awards,
+
+      add: () =>
+        set(
+          produce((state: any) => {
+            state.awards.push({
+              title: 'Award X',
+              date: '',
+              awarder: '',
+              summary: '',
+            });
+          })
+        ),
+
+      update: (index: string, key: string, value: string) =>
+        set(
+          produce((state: any) => {
+            state.awards[index][key] = value; // eslint-disable-line no-param-reassign
+          })
+        ),
+
+      purge: (index: number) =>
+        set((state: any) => ({
+          awards: state.awards.filter((_, ind) => ind !== index),
+        })),
+
+      changeOrder: ({ oldIndex, newIndex }) =>
+        set((state: any) => ({
+          awards: arrayMoveImmutable(state.awards, oldIndex, newIndex),
+        })),
+    }),
+    {
+      name: 'sprb-awards',
     }
   )
 );

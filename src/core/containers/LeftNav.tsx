@@ -7,8 +7,9 @@ import {
   ExerienceEditor,
   SkillsEditor,
   IntroEditor,
-  AwardsEditor,
+  ForteEditor,
   LabelsEditor,
+  ActivitiesEditor,
 } from 'src/core/components/editor/Editor';
 import { SideMenu } from 'src/core/widgets/SideMenu';
 
@@ -48,18 +49,24 @@ const sideBarList = [
   },
   {
     key: 4,
-    title: 'Experience',
+    title: 'Education',
     icon: 'education',
     component: <EduEditor />,
   },
   {
     key: 5,
-    title: 'Projects & Awards',
-    icon: 'certificate',
-    component: <AwardsEditor />,
+    title: 'Awards',
+    icon: 'awards',
+    component: <ForteEditor />,
   },
   {
     key: 6,
+    title: 'Activities',
+    icon: 'certificate',
+    component: <ActivitiesEditor />,
+  },
+  {
+    key: 7,
     title: 'Label',
     icon: 'label',
     component: <LabelsEditor />,

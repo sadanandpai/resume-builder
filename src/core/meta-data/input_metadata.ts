@@ -212,3 +212,64 @@ export const EXP_METADATA = [
     value: 'description',
   },
 ];
+
+export const VOLUNTEERING_METADATA = [
+  {
+    label: 'Organization',
+    type: 'Input',
+    value: 'organization',
+  },
+  {
+    label: 'Position',
+    type: 'Input',
+    value: 'position',
+  },
+  {
+    label: 'URL',
+    type: 'Input',
+    value: 'url',
+  },
+  {
+    label: 'Start Date',
+    type: 'Input',
+    value: 'startDate',
+  },
+  {
+    label: 'End Date',
+    type: 'Input',
+    value: 'endDate',
+  },
+  {
+    label: 'Summary',
+    type: 'MarkDownField',
+    value: 'summary',
+  },
+  {
+    label: 'Highlights',
+    type: 'MarkDownField',
+    value: 'highlights',
+  },
+];
+
+export const AWARDS_METADATA = [
+  {
+    label: 'Title',
+    type: 'Input',
+    value: 'title',
+  },
+  {
+    label: 'Date',
+    type: 'Input',
+    value: 'date',
+  },
+  {
+    label: 'Awarder',
+    type: 'Input',
+    value: 'awarder',
+  },
+  {
+    label: 'Summary',
+    type: 'Input',
+    value: 'summary',
+  },
+];

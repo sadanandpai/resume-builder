@@ -17,7 +17,7 @@ import {
   useSocial,
   useWork,
   useSkills,
-  useAchievements,
+  useActivities,
   useEducation,
   useLabels,
 } from 'src/stores/data.store';
@@ -58,8 +58,8 @@ export function LegacyTemplate() {
   const social = useSocial((state: any) => state);
   const education = useEducation((state: any) => state.education);
   const experience = useWork((state: any) => state);
-  const [projects, awards] = useAchievements(
-    (state: any) => [state.projects, state.awards],
+  const [involvements, achievements] = useActivities(
+    (state: any) => [state.involvements, state.achievements],
     shallow
   );
   const [languages, frameworks, libraries, databases, technologies, practices, tools] = useSkills(
@@ -88,11 +88,11 @@ export function LegacyTemplate() {
         <Exp companies={experience.companies} />
         <LineSeparator />
         <LegacyHeader Icon={getIcon('key')} title={labels[1]} />
-        <Description description={projects} />
+        <Description description={involvements} />
 
         <LineSeparator />
         <LegacyHeader Icon={getIcon('certificate')} title={labels[2]} />
-        <Description description={awards} />
+        <Description description={achievements} />
       </GridColumn>
 
       <Divider />

@@ -18,7 +18,7 @@ import {
   useSocial,
   useWork,
   useSkills,
-  useAchievements,
+  useActivities,
   useEducation,
   useLabels,
 } from 'src/stores/data.store';
@@ -66,8 +66,8 @@ export function ProfessionalTemplate() {
   const social = useSocial((state: any) => state);
   const education = useEducation((state: any) => state.education);
   const experience = useWork((state: any) => state);
-  const [projects, awards] = useAchievements(
-    (state: any) => [state.projects, state.awards],
+  const [involvements, achievements] = useActivities(
+    (state: any) => [state.involvements, state.achievements],
     shallow
   );
   const [languages, frameworks, libraries, databases, technologies, practices, tools] = useSkills(
@@ -94,12 +94,12 @@ export function ProfessionalTemplate() {
     {
       title: labels[1],
       icon: labelsIcon[1],
-      component: <Description description={projects} />,
+      component: <Description description={involvements} />,
     },
     {
       title: labels[2],
       icon: labelsIcon[2],
-      component: <Description description={awards} />,
+      component: <Description description={achievements} />,
     },
   ];
   const rightSections = [

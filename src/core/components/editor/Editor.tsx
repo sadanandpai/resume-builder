@@ -8,16 +8,20 @@ import {
   useLabels,
   useIntro,
   useSocial,
+  useVolunteer,
+  useAwards,
 } from 'src/stores/data.store';
 import {
   INTRO_METADATA,
   EDU_METADATA,
   EXP_METADATA,
   SOCIAL_METADATA,
+  VOLUNTEERING_METADATA,
+  AWARDS_METADATA,
 } from 'src/core/meta-data/input_metadata';
 import { SkillsEdit } from './SkillsEdit';
 import { TimelineEdit } from './TimelineEdit';
-import { AwardsEdit } from './AwardsEdit';
+import { ActivitiesEdit } from './ActivitiesEdit';
 import { LabelsEdit } from './LabelsEdit';
 import { StaticEdit } from './StaticEdit';
 
@@ -65,10 +69,10 @@ export const SocialEditor = () => {
   );
 };
 
-export const AwardsEditor = () => (
+export const ActivitiesEditor = () => (
   <Container>
-    <Heading>Projects</Heading>
-    <AwardsEdit />
+    <Heading>Activities</Heading>
+    <ActivitiesEdit />
   </Container>
 );
 
@@ -123,6 +127,53 @@ export const ExerienceEditor = () => {
     </Container>
   );
 };
+
+const VolunteerEditor = () => {
+  const volunteer = useVolunteer((state: any) => state.volunteer);
+  const [add, update, purge, changeOrder] = useVolunteer(
+    (state: any) => [state.add, state.update, state.purge, state.changeOrder],
+    shallow
+  );
+
+  return (
+    <Container>
+      <Heading>Volunteering</Heading>
+      <TimelineEdit
+        METADATA={VOLUNTEERING_METADATA}
+        itemList={volunteer}
+        identifier="organization"
+        operations={{ update, add, purge, changeOrder }}
+      />
+    </Container>
+  );
+};
+
+const AwardsEditor = () => {
+  const awards = useAwards((state: any) => state.awards);
+  const [add, update, purge, changeOrder] = useAwards(
+    (state: any) => [state.add, state.update, state.purge, state.changeOrder],
+    shallow
+  );
+
+  return (
+    <Container>
+      <Heading>Awards</Heading>
+      <TimelineEdit
+        METADATA={AWARDS_METADATA}
+        itemList={awards}
+        identifier="title"
+        operations={{ update, add, purge, changeOrder }}
+      />
+    </Container>
+  );
+};
+
+export const ForteEditor = () => (
+  <>
+    <AwardsEditor />
+    <VolunteerEditor />
+  </>
+);
 
 export const SkillEditor = ({ type, hasRating = false }: { type: string; hasRating: boolean }) => {
   const [skillList, add, update, purge, changeOrder] = useSkills(

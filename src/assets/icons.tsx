@@ -31,7 +31,7 @@ import {
   SiSquarespace,
   SiTwitter,
 } from 'react-icons/si';
-import { FaMediumM, FaUniversity, FaWordpressSimple } from 'react-icons/fa';
+import { FaAward, FaMediumM, FaUniversity, FaWordpressSimple } from 'react-icons/fa';
 import { IoGitBranch } from 'react-icons/io5';
 import { GoVerified } from 'react-icons/go';
 import { GrDrag } from 'react-icons/gr';
@@ -76,6 +76,7 @@ const icons = new Map([
   ['add', <MdAddCircleOutline />],
   ['social', <MdPeople />],
   ['label', <MdLabel />],
+  ['awards', <FaAward />],
 ]);
 
 export function getIcon(iconName: string) {
