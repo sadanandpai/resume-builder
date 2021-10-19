@@ -48,7 +48,7 @@ const sideBarList = [
   },
   {
     key: 4,
-    title: 'Experience',
+    title: 'Education',
     icon: 'education',
     component: <EduEditor />,
   },
