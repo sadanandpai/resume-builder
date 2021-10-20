@@ -45,7 +45,7 @@ export const useIntro = create(
 
       update: (type: string, value: string) =>
         set((state: any) => {
-          state[type] = value; // eslint-disable-line no-param-reassign
+          state[type] = value;
         }),
     }),
     {
@@ -75,7 +75,7 @@ export const useSocial = create(
 
       update: (type: string, value: string) =>
         set((state: any) => {
-          state[type] = value; // eslint-disable-line no-param-reassign
+          state[type] = value;
         }),
     }),
     {
@@ -94,7 +94,7 @@ export const useWork = create(
           const field = (<HTMLElement>event.target).dataset.label;
 
           if (field === undefined) return;
-          state[field] = (<HTMLInputElement>event.target)?.value; // eslint-disable-line no-param-reassign
+          state[field] = (<HTMLInputElement>event.target)?.value;
         }),
 
       add: () =>
@@ -152,19 +152,19 @@ export const useSkills = create(
         set((state: any) => {
           if (state[type].some((skill) => skill.name === '')) return;
 
-          state[type] = [...state[type]]; // eslint-disable-line no-param-reassign
-          state[type].push({ name, rating }); // eslint-disable-line no-param-reassign
+          state[type] = [...state[type]];
+          state[type].push({ name, rating });
         }),
 
       update: (type: string, index: number, key: 'name' | 'rating', value: string | number) =>
         set((state: any) => {
-          state[type] = [...state[type]]; // eslint-disable-line no-param-reassign
-          state[type][index][key] = value; // eslint-disable-line no-param-reassign
+          state[type] = [...state[type]];
+          state[type][index][key] = value;
         }),
 
       purge: (type: string, index: number) =>
         set((state: any) => {
-          state[type] = state[type].filter((_, ind) => index !== ind); // eslint-disable-line no-param-reassign
+          state[type] = state[type].filter((_, ind) => index !== ind);
         }),
 
       changeOrder: (type: string, oldIndex: number, newIndex: number) =>
@@ -232,7 +232,7 @@ export const useActivities = create(
 
       update: (type: string, value: string | number) =>
         set((state: any) => {
-          state[type] = value; // eslint-disable-line no-param-reassign
+          state[type] = value;
         }),
     }),
     {
@@ -264,7 +264,7 @@ export const useVolunteer = create(
       update: (index: string, key: string, value: string) =>
         set(
           produce((state: any) => {
-            state.volunteer[index][key] = value; // eslint-disable-line no-param-reassign
+            state.volunteer[index][key] = value;
           })
         ),
 
@@ -304,7 +304,7 @@ export const useAwards = create(
       update: (index: string, key: string, value: string) =>
         set(
           produce((state: any) => {
-            state.awards[index][key] = value; // eslint-disable-line no-param-reassign
+            state.awards[index][key] = value;
           })
         ),
 

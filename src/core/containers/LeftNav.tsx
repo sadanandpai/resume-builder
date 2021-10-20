@@ -16,6 +16,10 @@ import { SideMenu } from 'src/core/widgets/SideMenu';
 const Wrapper = styled.div`
   height: 100vh;
   display: flex;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1;
 
   @media print {
     display: none;

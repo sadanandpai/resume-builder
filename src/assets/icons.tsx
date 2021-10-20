@@ -16,6 +16,8 @@ import {
   MdAddCircleOutline,
   MdPeople,
   MdLabel,
+  MdZoomOut,
+  MdZoomIn,
 } from 'react-icons/md';
 import {
   SiBehance,
@@ -77,6 +79,8 @@ const icons = new Map([
   ['social', <MdPeople />],
   ['label', <MdLabel />],
   ['awards', <FaAward />],
+  ['zoomin', <MdZoomIn />],
+  ['zoomout', <MdZoomOut />],
 ]);
 
 export function getIcon(iconName: string) {

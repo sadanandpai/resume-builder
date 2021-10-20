@@ -41,3 +41,17 @@ export const useItems = create((set) => ({
 
   setIsPhotoDisplayed: (isPhotoDisplayed: boolean) => set({ isPhotoDisplayed }),
 }));
+
+export const useZoom = create((set) => ({
+  zoom: 0,
+
+  update: (value: number) => {
+    const zoomLevel = +value.toFixed(1);
+
+    set((state: any) => {
+      if (zoomLevel > 0.5) state.zoom = 0.5;
+      else if (zoomLevel < -0.5) state.zoom = -0.5;
+      else state.zoom = zoomLevel;
+    });
+  },
+}));
