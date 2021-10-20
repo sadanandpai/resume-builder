@@ -43,9 +43,9 @@ export const skills = {
   ],
   technologies: [
     { name: 'Algorithms', rating: 3 },
-    { name: 'Data Structures', rating: 3 },
-    { name: 'SQL', rating: 3 },
     { name: 'Progressive Web Apps', rating: 3 },
+    { name: 'SQL', rating: 3 },
+    { name: 'Data Structures', rating: 3 },
   ],
   libraries: [
     { name: 'jQuery', rating: 3 },
