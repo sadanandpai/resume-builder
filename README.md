@@ -3,13 +3,13 @@
 
 ### Free and open source, fully customizable professional single page resume builder
 
-<a href="https://sadanandpai.github.io/single-page-resume-builder/dist/"><img src="covers/cover1.png" alt="cover" height="415px" width="294px"/></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://sadanandpai.github.io/single-page-resume-builder/dist/"><img src="covers/cover2.png" alt="cover" height="415px" width="294px"/></a>
+<a href="https://go-resume.vercel.app/"><img src="covers/cover1.png" alt="cover" height="415px" width="294px"/></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://go-resume.vercel.app/"><img src="covers/cover2.png" alt="cover" height="415px" width="294px"/></a>
 
 [![](https://img.shields.io/github/stars/sadanandpai/single-page-resume-builder?style=for-the-badge)](#stars)
 [![](https://img.shields.io/github/forks/sadanandpai/single-page-resume-builder?style=for-the-badge)](#forks)
 
-👉 &nbsp;&nbsp;[Single Page Resume Builder](https://sadanandpai.github.io/single-page-resume-builder/dist/)&nbsp;&nbsp;👈
+👉 &nbsp;&nbsp;[Single Page Resume Builder](https://go-resume.vercel.app/)&nbsp;&nbsp;👈
 
 </div>
 

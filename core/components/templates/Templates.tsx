@@ -39,8 +39,6 @@ export function Templates() {
   const templateIndex = useTemplates((state: any) => state.index);
   const setTemplate = useTemplates((state: any) => state.setTemplate);
 
-  console.log(templatesSrc);
-
   return (
     <TemplateWrapper>
       {templates.map((_: any, ind: number) => (
