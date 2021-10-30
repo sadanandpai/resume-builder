@@ -11,24 +11,28 @@ export const intro = {
   totalExp: '6 Years',
   objective:
     'Eager to expand my skill set through external trainings to help boost all major front desk KPIs. Hoping to leverage organizational skills to help ABC Corp introduce time-saving schemes for all executives.',
-};
-
-export const social = {
-  linkedin: 'https://www.linkedin.com/in/sadanandpai/',
-  github: 'https://github.com/sadanandpai/',
-  hackerrank: 'https://www.hackerrank.com/paicube/',
-  leetcode: 'https://leetcode.com/paicube/',
-  hackerearth: '',
-  codechef: '',
-  codeforces: '',
-  twitter: '',
-  medium: '',
-  devto: '',
-  hashnode: '',
-  wordpress: '',
-  squarespace: '',
-  behance: '',
-  dribbble: '',
+  profiles: [
+    {
+      network: 'linkedin',
+      username: 'sadanandpai',
+      url: 'https://www.linkedin.com/in/sadanandpai/',
+    },
+    {
+      network: 'github',
+      username: 'sadanandpai',
+      url: 'https://github.com/sadanandpai/',
+    },
+    {
+      network: 'hackerrank',
+      username: 'paicube',
+      url: 'https://www.hackerrank.com/paicube/',
+    },
+    {
+      network: 'leetcode',
+      username: 'paicube',
+      url: 'https://leetcode.com/paicube/',
+    },
+  ],
 };
 
 export const skills = {

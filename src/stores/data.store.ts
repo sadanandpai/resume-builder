@@ -1,14 +1,5 @@
 import create from 'zustand';
-import {
-  intro,
-  social,
-  work,
-  skills,
-  activities,
-  education,
-  volunteer,
-  awards,
-} from 'src/stores/data';
+import { intro, work, skills, activities, education, volunteer, awards } from 'src/stores/data';
 import { arrayMoveImmutable } from 'array-move';
 import { persist } from 'zustand/middleware';
 import produce from 'immer';
@@ -31,55 +22,31 @@ const labels = [
 export const useIntro = create(
   persist(
     (set) => ({
-      name: intro.name,
-      label: intro.label,
-      phone: intro.phone,
-      email: intro.email,
-      url: intro.url,
-      location: intro.location,
-      image: intro.image,
-      summary: intro.summary,
-      objective: intro.objective,
-      relExp: intro.relExp,
-      totalExp: intro.totalExp,
+      intro: intro,
 
       update: (type: string, value: string) =>
-        set((state: any) => {
-          state[type] = value;
-        }),
+        set(
+          produce((state: any) => {
+            state.intro[type] = value;
+          })
+        ),
+
+      updateProfiles: (type: string, field: string, value: string) =>
+        set(
+          produce((state: any) => {
+            const object = state.intro.profiles.find((profile) => profile.network === type);
+
+            if (object) {
+              object[field] = value;
+              return;
+            }
+
+            state.intro.profiles.push({ network: type, [field]: value });
+          })
+        ),
     }),
     {
       name: 'sprb-intro',
-    }
-  )
-);
-
-export const useSocial = create(
-  persist(
-    (set) => ({
-      linkedin: social.linkedin,
-      github: social.github,
-      hackerrank: social.hackerrank,
-      hackerearth: social.hackerearth,
-      codechef: social.codechef,
-      codeforces: social.codeforces,
-      twitter: social.twitter,
-      leetcode: social.leetcode,
-      devto: social.devto,
-      medium: social.medium,
-      hashnode: social.hashnode,
-      wordpress: social.wordpress,
-      squarespace: social.squarespace,
-      behance: social.behance,
-      dribbble: social.dribbble,
-
-      update: (type: string, value: string) =>
-        set((state: any) => {
-          state[type] = value;
-        }),
-    }),
-    {
-      name: 'sprb-social',
     }
   )
 );

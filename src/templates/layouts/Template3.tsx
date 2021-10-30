@@ -4,7 +4,6 @@ import shallow from 'zustand/shallow';
 
 import {
   useIntro,
-  useSocial,
   useWork,
   useSkills,
   useActivities,
@@ -57,8 +56,7 @@ const ResumeContainer = styled.div`
 export function Template3() {
   // Uncomment below lines to access data
 
-  const intro = useIntro((state: any) => state);
-  const social = useSocial((state: any) => state);
+  const intro = useIntro((state: any) => state.intro);
   const education = useEducation((state: any) => state.education);
   const experience = useWork((state: any) => state);
   const [involvements, achievements] = useActivities(
@@ -83,7 +81,7 @@ export function Template3() {
   return (
     <ResumeContainer>
       <Intro name="Varchasvi" intro={intro} />
-      <Social data={social} />
+      <Social profiles={intro.profiles} />
       <div className="body">
         <div className="body__section body__section--left">
           <Section title={labels[3]} icon="identity">

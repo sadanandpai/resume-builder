@@ -25,7 +25,7 @@ const Input = styled(AntInput)`
   margin-bottom: 5px;
 `;
 
-export function StaticEdit({ METADATA, state, update }: any) {
+export function IntroEdit({ METADATA, state, update }: any) {
   return (
     <>
       {METADATA.map((metadata) => (

@@ -25,7 +25,7 @@ const IconButton = styled.button`
 `;
 
 export function PrintSettings() {
-  const intro = useIntro((state: any) => state);
+  const intro = useIntro((state: any) => state.intro);
 
   useEffect(() => {
     globalThis?.addEventListener('beforeprint', () => {
