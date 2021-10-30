@@ -14,7 +14,6 @@ import { LegacyHeader } from 'src/templates/components/section-layout/LegacyHead
 import { SocialBar } from 'src/templates/components/social/SocialBar';
 import {
   useIntro,
-  useSocial,
   useWork,
   useSkills,
   useActivities,
@@ -54,8 +53,7 @@ const EmployeName = styled.div`
 `;
 
 export function LegacyTemplate() {
-  const intro = useIntro((state: any) => state);
-  const social = useSocial((state: any) => state);
+  const intro = useIntro((state: any) => state.intro);
   const education = useEducation((state: any) => state.education);
   const experience = useWork((state: any) => state);
   const [involvements, achievements] = useActivities(
@@ -82,7 +80,7 @@ export function LegacyTemplate() {
       <GridColumn>
         <EmployeName>{intro.name}</EmployeName>
         <Intro intro={intro} labels={labels} />
-        <SocialBar items={social} />
+        <SocialBar profiles={intro.profiles} />
 
         <LegacyHeader Icon={getIcon('work')} title={labels[0]} />
         <Exp companies={experience.companies} />

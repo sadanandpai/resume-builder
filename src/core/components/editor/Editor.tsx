@@ -7,7 +7,6 @@ import {
   useSkills,
   useLabels,
   useIntro,
-  useSocial,
   useVolunteer,
   useAwards,
 } from 'src/stores/data.store';
@@ -23,7 +22,8 @@ import { SkillsEdit } from './SkillsEdit';
 import { TimelineEdit } from './TimelineEdit';
 import { ActivitiesEdit } from './ActivitiesEdit';
 import { LabelsEdit } from './LabelsEdit';
-import { StaticEdit } from './StaticEdit';
+import { IntroEdit } from './IntroEdit';
+import { SocialEdit } from './SocialEdit';
 
 const Divider = styled.div`
   height: 2px;
@@ -45,26 +45,26 @@ const Heading = styled.h2`
 `;
 
 export const IntroEditor = () => {
-  const introState = useIntro((state: any) => state);
+  const introState = useIntro((state: any) => state.intro);
   const update = useIntro((state: any) => state.update);
 
   return (
     <Container>
       <Heading>Intro</Heading>
-      <StaticEdit state={introState} METADATA={INTRO_METADATA} update={update} />
+      <IntroEdit state={introState} METADATA={INTRO_METADATA} update={update} />
       <Divider />
     </Container>
   );
 };
 
 export const SocialEditor = () => {
-  const socialState = useSocial((state: any) => state);
-  const update = useSocial((state: any) => state.update);
+  const profiles = useIntro((state: any) => state.intro.profiles);
+  const updateProfiles = useIntro((state: any) => state.updateProfiles);
 
   return (
     <Container>
       <Heading>Social</Heading>
-      <StaticEdit state={socialState} METADATA={SOCIAL_METADATA} update={update} />
+      <SocialEdit state={profiles} METADATA={SOCIAL_METADATA} update={updateProfiles} />
     </Container>
   );
 };

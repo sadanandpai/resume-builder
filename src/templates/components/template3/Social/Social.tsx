@@ -19,14 +19,14 @@ const Container = styled.section`
   }
 `;
 
-export default function Social({ data }: any) {
+export default function Social({ profiles }: any) {
   return (
     <Container>
-      {Object.entries(data)
-        .filter((value) => typeof value[1] !== 'function' && value[1] !== '')
-        .map((icon: any) => (
-          <a href={icon[1]} key={icon[1].split('/')}>
-            {getIcon(icon[0])}
+      {profiles
+        .filter((profile) => profile.url)
+        .map((profile: any) => (
+          <a href={profile.url} key={profile.url}>
+            {getIcon(profile.network)}
           </a>
         ))}
     </Container>
