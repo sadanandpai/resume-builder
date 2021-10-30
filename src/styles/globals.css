@@ -33,3 +33,13 @@ li {
 p {
   margin: 0;
 }
+
+.show-web {
+  display: none;
+}
+
+@media all and (min-width: 768px) {
+  .show-web {
+    display: block;
+  }
+}

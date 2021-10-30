@@ -49,7 +49,7 @@ const Features: NextPage = () => {
       <div>
         <Image src="/home/timer.png" alt="No account" height="50px" width="50px" />
 
-        <h2>Resume in minutes</h2>
+        <h2>Build in minutes</h2>
         <p>
           With the powerful editor and wide range of professinal/job ready templates, you can build
           your resume within a matter few clicks & key strokes.

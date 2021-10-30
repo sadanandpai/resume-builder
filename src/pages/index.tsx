@@ -3,18 +3,15 @@ import styled from 'styled-components';
 import Head from 'next/head';
 import Hero from 'src/home/hero';
 import Features from 'src/home/features';
+import NavBar from 'src/home/navbar';
 
 const Main = styled.main`
+  padding: 10px 5% 0;
+  margin: auto;
   max-width: 1200px;
-  padding: 10px 0;
-  margin: 0 5%;
 
   & > div {
     margin-bottom: 25px;
-  }
-
-  @media (min-width: 768px) {
-    margin: auto;
   }
 `;
 
@@ -28,6 +25,7 @@ const Home: NextPage = () => {
       </Head>
 
       <Main>
+        <NavBar />
         <Hero />
         <Features />
       </Main>
