@@ -29,7 +29,7 @@
 
 - `git clone https://github.com/sadanandpai/single-page-resume-builder.git`
 - `yarn install`
-- `yarn start`
+- `yarn dev`
 
 ### Technologies
 
