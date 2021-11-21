@@ -59,7 +59,7 @@ const IconButton = styled.button`
 `;
 
 export const Sidebar = () => {
-  const [activeTab, setActiveTab] = useState(-1);
+  const [activeTab, setActiveTab] = useState(0);
   const zoom = useZoom((state: any) => state.zoom);
   const updateZoom = useZoom((state: any) => state.update);
 

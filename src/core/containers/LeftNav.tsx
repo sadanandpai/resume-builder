@@ -78,7 +78,7 @@ const sideBarList = [
 ];
 
 export const LeftNav = () => {
-  const [activeTab, setActiveTab] = useState(-1);
+  const [activeTab, setActiveTab] = useState(0);
 
   const clickHandler = useCallback(
     (event: any) => {

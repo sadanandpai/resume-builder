@@ -11,6 +11,7 @@ import {
   MdBuild,
   MdEdit,
   MdColorLens,
+  MdDragIndicator,
   MdCloudDownload,
   MdLibraryBooks,
   MdAddCircleOutline,
@@ -35,7 +36,6 @@ import {
 import { FaAward, FaMediumM, FaUniversity, FaWordpressSimple, FaHackerrank } from 'react-icons/fa';
 import { IoGitBranch } from 'react-icons/io5';
 import { GoVerified } from 'react-icons/go';
-import { GrDrag } from 'react-icons/gr';
 
 const icons = new Map([
   ['mobile', <MdCall />],
@@ -72,8 +72,8 @@ const icons = new Map([
   ['download', <MdCloudDownload />],
   ['template', <MdLibraryBooks />],
 
-  ['drag', <GrDrag />],
-  ['delete', <AiFillDelete />],
+  ['drag', <MdDragIndicator color="#fff" size="16" />],
+  ['delete', <AiFillDelete color="#fff" size="16" />],
   ['add', <MdAddCircleOutline />],
   ['social', <MdPeople />],
   ['label', <MdLabel />],

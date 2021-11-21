@@ -9,6 +9,7 @@ const Wrapper = styled.div`
   display: flex;
   margin-bottom: 10px;
   flex-direction: column;
+  z-index: 99;
 `;
 
 const Handle = styled.span`
@@ -17,17 +18,16 @@ const Handle = styled.span`
   justify-content: center;
   width: 50px;
   font-size: 1.5rem;
-  background-color: white;
+  background-color: #424242;
 `;
 
 const Input = styled(AntInput)`
-  border: 1px solid #222;
+  border: none;
   height: 2.625rem;
   padding: 0.625rem;
   max-width: 100%;
   background: #424242;
   color: #fff;
-  border-radius: 2px;
 `;
 
 const DragHandle = SortableHandle(() => <Handle>{getIcon('drag')}</Handle>);
