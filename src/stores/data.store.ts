@@ -11,7 +11,7 @@ const labels = [
   'About me',
   'Career Objective',
   'Technical Expertise',
-  'Skills / Expsoure',
+  'Skills / Exposure',
   'Methodology / Approach',
   'Tools',
   'Education',
