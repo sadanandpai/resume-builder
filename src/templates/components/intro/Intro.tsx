@@ -22,13 +22,17 @@ export function Intro({ intro, labels }: any) {
     <Flex jc="space-between">
       <FlexCol rGap="5px">
         <Role>{intro.label}</Role>
-        <div>
-          {labels[10]}:&nbsp;
-          <strong>{intro.relExp}</strong>
-        </div>
-        <div>
-          {labels[11]}:&nbsp;{intro.totalExp}
-        </div>
+        {labels[10] && (
+          <div>
+            {labels[10]}:&nbsp;
+            <strong>{intro.relExp}</strong>
+          </div>
+        )}
+        {labels[11] && (
+          <div>
+            {labels[11]}:&nbsp;{intro.totalExp}
+          </div>
+        )}
       </FlexCol>
 
       <FlexCol jc="flex-end" rGap="5px">
