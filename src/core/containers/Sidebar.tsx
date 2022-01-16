@@ -10,6 +10,7 @@ import { useZoom } from 'src/stores/settings.store';
 import { getIcon } from 'src/styles/icons';
 import { SaveSettings } from '../widgets/SaveSettings';
 import { UploadSettings } from '../widgets/UploadSettings';
+import { useActivities, useEducation, useIntro, useSkills, useWork } from 'src/stores/data.store';
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -65,6 +66,12 @@ export const Sidebar = () => {
   const zoom = useZoom((state: any) => state.zoom);
   const updateZoom = useZoom((state: any) => state.update);
 
+  const resetBasics = useIntro((state: any) => state.reset);
+  const resetSkills = useSkills((state: any) => state.reset);
+  const resetWork = useWork((state: any) => state.reset);
+  const resetEducation = useEducation((state: any) => state.reset);
+  const resetActivities = useActivities((state: any) => state.reset);
+
   const clickHandler = useCallback(
     (event: any) => {
       if (activeTab === event.currentTarget.dataset.id) setActiveTab(-1);
@@ -81,6 +88,14 @@ export const Sidebar = () => {
     updateZoom(zoom + 0.1);
   }, [zoom, updateZoom]);
 
+  const reset = () => {
+    resetBasics();
+    resetSkills();
+    resetWork();
+    resetEducation();
+    resetActivities();
+  };
+
   return (
     <Wrapper>
       <SideDrawer isShown={activeTab !== -1}>{sideBarList[activeTab]?.component}</SideDrawer>
@@ -92,6 +107,11 @@ export const Sidebar = () => {
         <IconWrapper onClick={zoomin}>
           <IconButton>{getIcon('zoomin')}</IconButton>
         </IconWrapper>
+
+        <IconWrapper onClick={reset}>
+          <IconButton>{getIcon('reset')}</IconButton>
+        </IconWrapper>
+
         <UploadSettings />
         <SaveSettings />
         <PrintSettings />

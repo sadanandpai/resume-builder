@@ -35,7 +35,7 @@ import {
   SiTwitter,
 } from 'react-icons/si';
 import { FaAward, FaMediumM, FaUniversity, FaWordpressSimple, FaHackerrank } from 'react-icons/fa';
-import { IoGitBranch } from 'react-icons/io5';
+import { IoGitBranch, IoReload } from 'react-icons/io5';
 import { GoVerified } from 'react-icons/go';
 import { GrDrag } from 'react-icons/gr';
 
@@ -84,6 +84,7 @@ const icons = new Map([
   ['zoomout', <MdZoomOut />],
   ['save', <MdSave />],
   ['upload', <MdCloudUpload />],
+  ['reset', <IoReload />],
 ]);
 
 export function getIcon(iconName: string) {
