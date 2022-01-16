@@ -55,11 +55,11 @@ export function CompanyHeader({ company }: any) {
       <Flex jc="space-between" ai="flex-end" style={{ lineHeight: 'initial' }}>
         <CompanyName>{company.name}</CompanyName>
         <CompanyExp>
-          {company.from} - {company.to}
+          {company.startDate} - {company.endDate}
         </CompanyExp>
       </Flex>
       <Flex jc="space-between" ai="flex-end">
-        <CompanyRole>{company.role}</CompanyRole>
+        <CompanyRole>{company.position}</CompanyRole>
         <CompanyExp>{company.years}</CompanyExp>
       </Flex>
     </>
@@ -72,7 +72,7 @@ export function Exp({ companies, styles }: any) {
       {companies.map((company: any, index: number) => (
         <TimelineItem key={`${company.name}-${index}`}>
           <CompanyHeader company={company} />
-          <div dangerouslySetInnerHTML={{ __html: mdParser.render(company.description) }} />
+          <div dangerouslySetInnerHTML={{ __html: mdParser.render(company.summary ?? '') }} />
         </TimelineItem>
       ))}
     </FlexTimeline>

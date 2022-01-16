@@ -8,6 +8,8 @@ import { SideMenu } from 'src/core/widgets/SideMenu';
 import { PrintSettings } from 'src/core/widgets/PrintSettings';
 import { useZoom } from 'src/stores/settings.store';
 import { getIcon } from 'src/styles/icons';
+import { SaveSettings } from '../widgets/SaveSettings';
+import { UploadSettings } from '../widgets/UploadSettings';
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -83,7 +85,6 @@ export const Sidebar = () => {
     <Wrapper>
       <SideDrawer isShown={activeTab !== -1}>{sideBarList[activeTab]?.component}</SideDrawer>
       <SideMenu menuList={sideBarList} onClick={clickHandler}>
-        <PrintSettings />
         <IconWrapper onClick={zoomout}>
           <IconButton>{getIcon('zoomout')}</IconButton>
         </IconWrapper>
@@ -91,6 +92,9 @@ export const Sidebar = () => {
         <IconWrapper onClick={zoomin}>
           <IconButton>{getIcon('zoomin')}</IconButton>
         </IconWrapper>
+        <UploadSettings />
+        <SaveSettings />
+        <PrintSettings />
       </SideMenu>
     </Wrapper>
   );

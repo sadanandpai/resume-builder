@@ -41,7 +41,7 @@ export function PrintSettings() {
 
   return (
     <IconWrapper>
-      <IconButton onClick={globalThis?.print}>{getIcon('download')}</IconButton>
+      <IconButton onClick={globalThis?.print}>{getIcon('print')}</IconButton>
     </IconWrapper>
   );
 }

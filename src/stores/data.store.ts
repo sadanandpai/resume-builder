@@ -1,8 +1,8 @@
 import create from 'zustand';
-import { intro, work, skills, activities, education, volunteer, awards } from 'src/stores/data';
 import { arrayMoveImmutable } from 'array-move';
 import { persist } from 'zustand/middleware';
 import produce from 'immer';
+import userData from 'src/stores/data.json';
 
 const labels = [
   'Experience',
@@ -22,12 +22,19 @@ const labels = [
 export const useIntro = create(
   persist(
     (set) => ({
-      intro: intro,
+      intro: userData.basics,
+
+      reset: (data = userData.basics) => {
+        set({ intro: data });
+      },
 
       update: (type: string, value: string) =>
         set(
           produce((state: any) => {
-            state.intro[type] = value;
+            if (type.includes('.')) {
+              const [parent, child] = type.split('.');
+              state.intro[parent][child] = value;
+            } else state.intro[type] = value;
           })
         ),
 
@@ -51,10 +58,68 @@ export const useIntro = create(
   )
 );
 
+export const useSkills = create(
+  persist(
+    (set) => ({
+      languages: userData.skills.languages,
+      frameworks: userData.skills.frameworks,
+      libraries: userData.skills.libraries,
+      databases: userData.skills.databases,
+      technologies: userData.skills.technologies,
+      practices: userData.skills.practices,
+      tools: userData.skills.tools,
+
+      reset: (data = userData.skills) => {
+        set({
+          languages: data.languages,
+          frameworks: data.frameworks,
+          libraries: data.libraries,
+          databases: data.databases,
+          technologies: data.technologies,
+          practices: data.practices,
+          tools: data.tools,
+        });
+      },
+
+      add: (type: string, name = '', level = 1) =>
+        set((state: any) => {
+          if (state[type].some((skill) => skill.name === '')) return;
+
+          state[type] = [...state[type]];
+          state[type].push({ name, level });
+        }),
+
+      update: (type: string, index: number, key: 'name' | 'level', value: string | number) =>
+        set((state: any) => {
+          state[type] = [...state[type]];
+          state[type][index][key] = value;
+        }),
+
+      purge: (type: string, index: number) =>
+        set((state: any) => {
+          state[type] = state[type].filter((_, ind) => index !== ind);
+        }),
+
+      changeOrder: (type: string, oldIndex: number, newIndex: number) =>
+        set((state: any) => ({
+          ...state,
+          [type]: arrayMoveImmutable(state[type], oldIndex, newIndex),
+        })),
+    }),
+    {
+      name: 'sprb-skills',
+    }
+  )
+);
+
 export const useWork = create(
   persist(
     (set) => ({
-      companies: work,
+      companies: userData.work,
+
+      reset: (data = userData.work) => {
+        set({ companies: data });
+      },
 
       setField: (event: InputEvent) =>
         set((state: any) => {
@@ -104,52 +169,14 @@ export const useWork = create(
   )
 );
 
-export const useSkills = create(
-  persist(
-    (set) => ({
-      languages: skills.languages,
-      frameworks: skills.frameworks,
-      libraries: skills.libraries,
-      databases: skills.databases,
-      technologies: skills.technologies,
-      practices: skills.practices,
-      tools: skills.tools,
-
-      add: (type: string, name = '', rating = 1) =>
-        set((state: any) => {
-          if (state[type].some((skill) => skill.name === '')) return;
-
-          state[type] = [...state[type]];
-          state[type].push({ name, rating });
-        }),
-
-      update: (type: string, index: number, key: 'name' | 'rating', value: string | number) =>
-        set((state: any) => {
-          state[type] = [...state[type]];
-          state[type][index][key] = value;
-        }),
-
-      purge: (type: string, index: number) =>
-        set((state: any) => {
-          state[type] = state[type].filter((_, ind) => index !== ind);
-        }),
-
-      changeOrder: (type: string, oldIndex: number, newIndex: number) =>
-        set((state: any) => ({
-          ...state,
-          [type]: arrayMoveImmutable(state[type], oldIndex, newIndex),
-        })),
-    }),
-    {
-      name: 'sprb-skills',
-    }
-  )
-);
-
 export const useEducation = create(
   persist(
     (set) => ({
-      education,
+      education: userData.education,
+
+      reset: (data = userData.education) => {
+        set({ education: data });
+      },
 
       add: () =>
         set((state: any) => ({
@@ -194,8 +221,15 @@ export const useEducation = create(
 export const useActivities = create(
   persist(
     (set) => ({
-      involvements: activities.involvements,
-      achievements: activities.achievements,
+      involvements: userData.activities.involvements,
+      achievements: userData.activities.achievements,
+
+      reset: (data = userData.activities) => {
+        set({
+          involvements: data.involvements,
+          achievements: data.achievements,
+        });
+      },
 
       update: (type: string, value: string | number) =>
         set((state: any) => {
@@ -211,7 +245,7 @@ export const useActivities = create(
 export const useVolunteer = create(
   persist(
     (set) => ({
-      volunteer,
+      volunteer: userData.volunteer,
 
       add: () =>
         set(
@@ -254,7 +288,7 @@ export const useVolunteer = create(
 export const useAwards = create(
   persist(
     (set) => ({
-      awards,
+      awards: userData.awards,
 
       add: () =>
         set(

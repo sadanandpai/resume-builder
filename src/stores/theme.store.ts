@@ -45,7 +45,7 @@ export const customTheme: Theme = {
   secondaryColor: lime[6],
 };
 
-export const useThemes = create((set) => ({
+export const useThemes = create((set: any) => ({
   theme: themes[0],
   customTheme,
 

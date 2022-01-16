@@ -53,7 +53,7 @@ const ResumeContainer = styled.div`
   }
 `;
 
-export function Template3() {
+export default function Template3() {
   // Uncomment below lines to access data
 
   const intro = useIntro((state: any) => state.intro);

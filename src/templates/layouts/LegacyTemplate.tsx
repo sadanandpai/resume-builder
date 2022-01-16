@@ -52,7 +52,7 @@ const EmployeName = styled.div`
   font-size: 1.5rem;
 `;
 
-export function LegacyTemplate() {
+export default function LegacyTemplate() {
   const intro = useIntro((state: any) => state.intro);
   const education = useEducation((state: any) => state.education);
   const experience = useWork((state: any) => state);

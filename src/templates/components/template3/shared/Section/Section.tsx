@@ -41,6 +41,8 @@ const SectionContainer = styled.section(({ style }: any) => [
 ]);
 
 export default function Section({ style = {}, title = '', icon = '', children }: any) {
+  if (!title) return null;
+
   return (
     <SectionContainer style={style}>
       {(title || icon) && (

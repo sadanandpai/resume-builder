@@ -38,7 +38,7 @@ export function Intro({ intro, labels }: any) {
       <FlexCol jc="flex-end" rGap="5px">
         <Contact icon={getIcon('mobile')} value={intro.phone} />
         <Contact icon={getIcon('email')} value={intro.email} />
-        <Contact icon={getIcon('location')} value={intro.location} />
+        <Contact icon={getIcon('location')} value={intro.location.city} />
       </FlexCol>
     </Flex>
   );

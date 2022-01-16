@@ -60,7 +60,7 @@ const labelsIcon = [
   'education',
 ];
 
-export function ProfessionalTemplate() {
+export default function ProfessionalTemplate() {
   const intro = useIntro((state: any) => state.intro);
   const education = useEducation((state: any) => state.education);
   const experience = useWork((state: any) => state);

@@ -33,7 +33,7 @@ const Input = styled(AntInput)`
 const DragHandle = SortableHandle(() => <Handle>{getIcon('drag')}</Handle>);
 
 const SortableItem = SortableElement(
-  ({ type, hasRating, focusIndex, setFocusIndex, ind, name, rating, updateSkill, deleteSkill }) => (
+  ({ type, hasRating, focusIndex, setFocusIndex, ind, name, level, updateSkill, deleteSkill }) => (
     <Wrapper>
       <Flex>
         <DragHandle />
@@ -49,10 +49,11 @@ const SortableItem = SortableElement(
       </Flex>
       {hasRating && (
         <Slider
-          defaultValue={rating}
+          defaultValue={level}
           min={1}
           max={5}
-          onChange={(event) => updateSkill(type, ind, 'rating', event)}
+          step={0.5}
+          onChange={(event) => updateSkill(type, ind, 'level', event)}
         />
       )}
     </Wrapper>
@@ -62,7 +63,7 @@ const SortableItem = SortableElement(
 const SortableList = SortableContainer(
   ({ type, focusIndex, setFocusIndex, hasRating, skills, updateSkill, deleteSkill }) => (
     <div>
-      {skills?.map(({ name, rating }, index) => (
+      {skills?.map(({ name, level }, index) => (
         <SortableItem
           key={name}
           index={index}
@@ -72,7 +73,7 @@ const SortableList = SortableContainer(
           focusIndex={focusIndex}
           setFocusIndex={setFocusIndex}
           name={name}
-          rating={rating}
+          level={level}
           updateSkill={updateSkill}
           deleteSkill={deleteSkill}
         />

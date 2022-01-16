@@ -7,7 +7,7 @@ const Container = styled.section``;
 interface TechnologyProps {
   tech: {
     name: string;
-    rating: number;
+    level: number;
   };
 }
 
@@ -34,7 +34,7 @@ function Technology({ tech }: TechnologyProps) {
       <p className="name">{tech.name}</p>
       <div className="rating">
         {/* percentage = rating * 100 / max rating */}
-        <Progress strokeColor={{}} percent={(tech.rating * 100) / 5} showInfo={false} />
+        <Progress strokeColor={{}} percent={(tech.level * 100) / 5} showInfo={false} />
       </div>
     </TechnologyContainer>
   );

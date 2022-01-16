@@ -33,7 +33,11 @@ export function IntroEdit({ METADATA, state, update }: any) {
           <Topic>{metadata.label}</Topic>
           {metadata.type === 'Input' ? (
             <Input
-              value={state[metadata.value]}
+              value={
+                metadata.value.includes('.')
+                  ? state[metadata.value.split('.')[0]][metadata.value.split('.')[1]]
+                  : state[metadata.value]
+              }
               data-label={metadata.value}
               onChange={(event) => update(event.target.dataset.label, event.target.value)}
             />

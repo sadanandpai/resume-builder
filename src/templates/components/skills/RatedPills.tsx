@@ -39,7 +39,7 @@ export function RatedPill({ items }: any) {
       {items.map((data: any, index: number) => (
         <RatedPillElement
           itemLabel={data.name}
-          itemRating={data.rating}
+          itemRating={data.level}
           key={data.name}
           index={index}
         />

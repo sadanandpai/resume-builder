@@ -78,9 +78,11 @@ function Intro({ intro }: any) {
   return (
     <IntroContainer>
       <div className="about">
-        <div className="about__profile-image">
-          <img src={intro.image} alt={intro.name} />
-        </div>
+        {intro.image && (
+          <div className="about__profile-image">
+            <img src={intro.image} alt={intro.name} />
+          </div>
+        )}
         <div className="about__info">
           <p className="about__info__name">{intro.name}</p>
           <p className="about__info__title">{intro.label}</p>
@@ -107,7 +109,7 @@ function Intro({ intro }: any) {
           value={intro.email}
           redirectAction={`mailto:${intro.email}`}
         />
-        <ContactItem icon={getIcon('location')} value={intro.location} type="location" />
+        <ContactItem icon={getIcon('location')} value={intro.location.city} type="location" />
       </div>
     </IntroContainer>
   );

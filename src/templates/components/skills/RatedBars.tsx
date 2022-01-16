@@ -28,12 +28,7 @@ export function RatedBars({ items }: any) {
   return (
     <FlexCol rGap="8px">
       {items?.map((data: any, index: number) => (
-        <RatedElement
-          itemLabel={data.name}
-          itemRating={data.rating}
-          key={index}
-          index={data.name}
-        />
+        <RatedElement itemLabel={data.name} itemRating={data.level} key={index} index={data.name} />
       ))}
     </FlexCol>
   );

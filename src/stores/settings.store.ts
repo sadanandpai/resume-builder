@@ -1,7 +1,4 @@
 import create from 'zustand';
-import { ProfessionalTemplate } from 'src/templates/layouts/ProfessionalTemplate';
-import { LegacyTemplate } from 'src/templates/layouts/LegacyTemplate';
-import { Template3 } from 'src/templates/layouts/Template3';
 import { Template4 } from 'src/templates/layouts/Template4';
 import { Template5 } from 'src/templates/layouts/Template5';
 import { Template6 } from 'src/templates/layouts/Template6';
@@ -10,6 +7,17 @@ import ProfessionalImg from 'public/images/professional.png';
 import LegacyImg from 'public/images/legacy.png';
 import FancyImg from 'public/images/fancy.png';
 import NewImg from 'public/images/new.png';
+import dynamic from 'next/dynamic';
+
+const ProfessionalTemplate = dynamic(() => import('src/templates/layouts/ProfessionalTemplate'), {
+  ssr: false,
+});
+const LegacyTemplate = dynamic(() => import('src/templates/layouts/LegacyTemplate'), {
+  ssr: false,
+});
+const Template3 = dynamic(() => import('src/templates/layouts/Template3'), {
+  ssr: false,
+});
 
 export const templates = [
   ProfessionalTemplate,
@@ -29,20 +37,20 @@ export const templatesName = [
   'template6',
 ];
 
-export const useTemplates = create((set) => ({
+export const useTemplates = create((set: any) => ({
   index: 0,
   template: templates[0],
 
   setTemplate: (index: number) => set({ index, template: templates[index] }),
 }));
 
-export const useItems = create((set) => ({
+export const useItems = create((set: any) => ({
   isPhotoDisplayed: true,
 
   setIsPhotoDisplayed: (isPhotoDisplayed: boolean) => set({ isPhotoDisplayed }),
 }));
 
-export const useZoom = create((set) => ({
+export const useZoom = create((set: any) => ({
   zoom: 0,
 
   update: (value: number) => {
