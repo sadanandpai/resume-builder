@@ -187,19 +187,19 @@ export const EXP_METADATA = [
     value: 'name',
   },
   {
-    label: 'Role',
+    label: 'Position',
     type: 'Input',
-    value: 'role',
+    value: 'position',
   },
   {
     label: 'From',
     type: 'Input',
-    value: 'from',
+    value: 'startDate',
   },
   {
     label: 'To',
     type: 'Input',
-    value: 'to',
+    value: 'endDate',
   },
   {
     label: 'Years',
@@ -207,9 +207,9 @@ export const EXP_METADATA = [
     value: 'years',
   },
   {
-    label: 'Description',
+    label: 'Summary',
     type: 'MarkDownField',
-    value: 'description',
+    value: 'summary',
   },
 ];
 
