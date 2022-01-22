@@ -74,7 +74,7 @@ const Hero: NextPage = () => {
           </Link>
         </div>
       </div>
-      <Image src="/hiring.svg" alt="hiring" width="300px" height="300px" />
+      <Image src="/hiring.svg" alt="hiring" width="300px" height="300px" priority />
     </HeroHolder>
   );
 };
