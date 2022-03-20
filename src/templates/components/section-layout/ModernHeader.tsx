@@ -38,6 +38,8 @@ const SectionIntroHolder = styled(SectionHolder)`
     .header__title {
       margin: 0;
       color: ${(props: any) => props.theme.colors.primaryColor};
+      font-size: 1.4rem;
+      font-weight: normal;
     }
   }
 
