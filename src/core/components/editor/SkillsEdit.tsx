@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
-import { Input as AntInput, Slider } from 'antd';
+import styled from '@emotion/styled';
 import { SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc';
 import { getIcon } from 'src/styles/icons';
 import { Flex } from 'src/styles/styles';
+import TextField from '@mui/material/TextField';
+import { Slider } from '@mui/material';
 
 const Wrapper = styled.div`
   display: flex;
   margin-bottom: 10px;
   flex-direction: column;
+  z-index: 1;
 `;
 
 const Handle = styled.span`
@@ -20,14 +22,11 @@ const Handle = styled.span`
   background-color: white;
 `;
 
-const Input = styled(AntInput)`
-  border: 1px solid #222;
-  height: 2.625rem;
-  padding: 0.625rem;
+const Input = styled(TextField)`
   max-width: 100%;
-  background: #424242;
+  background: white;
   color: #fff;
-  border-radius: 2px;
+  width: 100%;
 `;
 
 const DragHandle = SortableHandle(() => <Handle>{getIcon('drag')}</Handle>);
@@ -49,11 +48,11 @@ const SortableItem = SortableElement(
       </Flex>
       {hasRating && (
         <Slider
-          defaultValue={level}
+          value={level}
           min={1}
           max={5}
           step={0.5}
-          onChange={(event) => updateSkill(type, ind, 'level', event)}
+          onChange={(_, value) => updateSkill(type, ind, 'level', value)}
         />
       )}
     </Wrapper>

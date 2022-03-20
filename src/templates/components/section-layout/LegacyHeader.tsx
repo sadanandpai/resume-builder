@@ -1,10 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 export const Section = styled.div`
   font-size: 0.8rem;
   font-weight: 500;
-  color: ${(props) => props.theme.primaryColor};
+  color: ${(props: any) => props.theme.colors.primaryColor};
   display: flex;
   align-items: center;
   justify-content: center;

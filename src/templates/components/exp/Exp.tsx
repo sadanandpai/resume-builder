@@ -1,35 +1,14 @@
 import React from 'react';
-import styled from 'styled-components';
-import { Timeline } from 'antd';
+import styled from '@emotion/styled';
 import { Flex } from 'src/styles/styles';
 import MarkdownIt from 'markdown-it';
 
-const FlexTimeline = styled(Timeline)`
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  justify-content: space-between;
-  height: 100%;
-  padding-top: 15px;
-  color: ${(props: any) => props.theme.fontColor};
-
-  ul {
-    padding-left: 16px;
-    margin-bottom: 0;
-    font-size: 0.8rem;
-  }
-`;
-
-const TimelineItem = styled(FlexTimeline.Item)`
-  padding-bottom: 0;
-  flex-grow: 1;
-  padding-bottom: 20px;
-
-  :last-child {
-    flex-grow: 0;
-    padding-bottom: 0;
-  }
-`;
+import Timeline from '@mui/lab/Timeline';
+import TimelineItem from '@mui/lab/TimelineItem';
+import TimelineSeparator from '@mui/lab/TimelineSeparator';
+import TimelineConnector from '@mui/lab/TimelineConnector';
+import TimelineContent from '@mui/lab/TimelineContent';
+import TimelineDot from '@mui/lab/TimelineDot';
 
 const CompanyName = styled.div`
   font-size: 1rem;
@@ -45,6 +24,20 @@ const CompanyRole = styled.div`
 const CompanyExp = styled.div`
   font-style: italic;
   font-size: 0.6rem;
+`;
+
+const MyTimeline = styled(Timeline)`
+  padding: 0;
+`;
+
+const MyTimelineItem = styled(TimelineItem)`
+  ::before {
+    display: none;
+  }
+
+  ul {
+    padding-left: 1rem;
+  }
 `;
 
 const mdParser = new MarkdownIt(/* Markdown-it options */);
@@ -67,14 +60,18 @@ export function CompanyHeader({ company }: any) {
 }
 
 export function Exp({ companies, styles }: any) {
-  return (
-    <FlexTimeline style={styles}>
-      {companies.map((company: any, index: number) => (
-        <TimelineItem key={`${company.name}-${index}`}>
+  return companies.map((company: any, index: number) => (
+    <MyTimeline key={`${company.name}-${index}`}>
+      <MyTimelineItem>
+        <TimelineSeparator>
+          <TimelineDot variant="outlined" color="primary" />
+          {index !== companies.length - 1 && <TimelineConnector />}
+        </TimelineSeparator>
+        <TimelineContent>
           <CompanyHeader company={company} />
           <div dangerouslySetInnerHTML={{ __html: mdParser.render(company.summary ?? '') }} />
-        </TimelineItem>
-      ))}
-    </FlexTimeline>
-  );
+        </TimelineContent>
+      </MyTimelineItem>
+    </MyTimeline>
+  ));
 }

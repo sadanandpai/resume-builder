@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { FlexCol, FlexVC } from 'src/styles/styles';
 
 const RatedType = styled.div`
@@ -12,9 +12,10 @@ const RatingTablet: any = styled.span`
   height: 8px;
   border-radius: 25%;
   display: inline-block;
-  border: 0.5px solid ${(props: any) => props.theme.secondaryColor};
+  border: 0.5px solid ${(props: any) => props.theme.colors.secondaryColor};
   margin: 0px 4px;
-  background-color: ${(props: any) => (props.filled ? props.theme.secondaryColor : 'transparent')};
+  background-color: ${(props: any) =>
+    props.filled ? props.theme.colors.secondaryColor : 'transparent'};
 `;
 
 function RatedPillElement({ itemLabel, itemRating, index }: any) {

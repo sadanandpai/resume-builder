@@ -2,7 +2,7 @@
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: ['img.icons8.com'],
+    domains: ['img.icons8.com', 'www.linkpicture.com'],
   },
   eslint: {
     dirs: ['src/pages', 'src/core', 'src/stores', 'src/templates', 'src/home'],

@@ -1,6 +1,6 @@
 import React from 'react';
 import shallow from 'zustand/shallow';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { Flex, FlexCol } from 'src/styles/styles';
 import { getIcon } from 'src/styles/icons';
 import {
@@ -26,8 +26,8 @@ const ResumeContainer = styled(Flex)`
   height: 100%;
   padding: 40px 25px;
   column-gap: 10px;
-  color: ${(props) => props.theme.fontColor};
-  background-color: ${(props) => props.theme.backgroundColor};
+  color: ${(props: any) => props.theme.colors.fontColor};
+  background-color: ${(props: any) => props.theme.colors.backgroundColor};
 
   @media print {
     border: none;

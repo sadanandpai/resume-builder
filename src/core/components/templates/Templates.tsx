@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { templates, useTemplates, templatesSrc, templatesName } from 'src/stores/settings.store';
 
 const TemplateWrapper = styled.div`

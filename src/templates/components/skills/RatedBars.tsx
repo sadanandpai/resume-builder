@@ -1,34 +1,48 @@
 import React from 'react';
-import { Progress } from 'antd';
-import styled, { withTheme } from 'styled-components';
+import styled from '@emotion/styled';
 import { FlexCol, FlexVC } from 'src/styles/styles';
+import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
+
+const BorderLinearProgress = styled(LinearProgress)(() => ({
+  height: 5,
+  borderRadius: 5,
+  [`&.${linearProgressClasses.colorPrimary}`]: {
+    backgroundColor: 'lightgrey',
+  },
+  [`& .${linearProgressClasses.bar}`]: {
+    borderRadius: 5,
+    backgroundColor: '#1a90ff',
+  },
+}));
 
 const RatedType = styled.div`
   width: 25ch;
   font-weight: 600;
 `;
 
-function RatedElementComponent({ itemLabel, itemRating, theme }: any) {
+function RatedElementComponent({ itemLabel, itemRating }: any) {
   return (
     <FlexVC>
       <RatedType>{itemLabel}</RatedType>
-      <Progress
-        percent={itemRating * 20}
-        showInfo={false}
-        strokeColor={theme.secondaryColor}
-        size="small"
+      <BorderLinearProgress
+        variant="determinate"
+        value={itemRating * 20}
+        style={{ width: '100%' }}
       />
     </FlexVC>
   );
 }
 
-const RatedElement = withTheme(RatedElementComponent);
-
 export function RatedBars({ items }: any) {
   return (
     <FlexCol rGap="8px">
       {items?.map((data: any, index: number) => (
-        <RatedElement itemLabel={data.name} itemRating={data.level} key={index} index={data.name} />
+        <RatedElementComponent
+          itemLabel={data.name}
+          itemRating={data.level}
+          key={index}
+          index={data.name}
+        />
       ))}
     </FlexCol>
   );

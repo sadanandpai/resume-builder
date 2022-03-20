@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { Flex } from 'src/styles/styles';
 
 const Container = styled(Flex)`
@@ -10,8 +10,8 @@ const Skill = styled.section`
   margin: 4px 4px 0 0;
   font-weight: 600;
   border: 1px solid;
-  border-color: ${(props) =>
-    `${props.theme.primaryColor} ${props.theme.secondaryColor} ${props.theme.secondaryColor} ${props.theme.primaryColor}`};
+  border-color: ${(props: any) =>
+    `${props.theme.colors.primaryColor} ${props.theme.colors.secondaryColor} ${props.theme.colors.secondaryColor} ${props.theme.colors.primaryColor}`};
   padding: 6px 8px;
   border-radius: 4px;
 `;

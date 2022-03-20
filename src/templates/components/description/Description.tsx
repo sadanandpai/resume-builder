@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { PhotoElement } from 'src/core/widgets/PhotoElement';
 import MarkdownIt from 'markdown-it';
 
@@ -11,7 +11,7 @@ const RoundedImage = styled.img`
   shape-outside: circle();
   margin-right: 20px;
   margin-bottom: 5px;
-  border: 0.5px solid ${(props) => props.theme.fontColor};
+  border: 0.5px solid ${(props: any) => props.theme.colors.fontColor};
 `;
 
 const MarkdownHolder = styled.div`

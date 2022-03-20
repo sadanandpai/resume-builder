@@ -1,12 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { Flex } from 'src/styles/styles';
 
 const Badge = styled.span`
   padding: 4px;
   font-size: 98%;
   font-weight: 500;
-  border: 1px solid ${(props: any) => props.theme.secondaryColor};
+  border: 1px solid ${(props: any) => props.theme.colors.secondaryColor};
   border-radius: 4px;
 `;
 

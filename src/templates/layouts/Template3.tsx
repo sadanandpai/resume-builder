@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import shallow from 'zustand/shallow';
 
 import {
@@ -27,8 +27,8 @@ import { Description } from 'src/templates/components/description/Description';
 
 const ResumeContainer = styled.div`
   height: 100%;
-  color: ${(props) => props.theme.fontColor};
-  background-color: ${(props) => props.theme.backgroundColor};
+  color: ${(props: any) => props.theme.colors.fontColor};
+  background-color: ${(props: any) => props.theme.colors.backgroundColor};
 
   .body {
     display: flex;

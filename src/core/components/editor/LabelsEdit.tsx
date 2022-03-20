@@ -1,20 +1,17 @@
-import React, { Fragment } from 'react';
-import styled from 'styled-components';
-import { Input as AntInput } from 'antd';
+import React from 'react';
+import styled from '@emotion/styled';
+import TextField from '@mui/material/TextField';
 
 const Wrapper = styled.div`
   margin: 8px 0;
 `;
 
-const Input = styled(AntInput)`
-  border: 1px solid #222;
-  height: 2.625rem;
-  padding: 0.625rem;
+const Input = styled(TextField)`
   max-width: 100%;
-  background: #424242;
-  color: #fff;
-  border-radius: 2px;
+  background: white;
+  color: white;
   margin-bottom: 5px;
+  width: 100%;
 `;
 
 export function LabelsEdit({ state, update }: any) {

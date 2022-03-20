@@ -1,58 +1,54 @@
 import React from 'react';
 import { getIcon } from 'src/styles/icons';
-import styled, { css } from 'styled-components';
+import styled from '@emotion/styled';
+import { FlexVC } from 'src/styles/styles';
 
-const SectionContainer = styled.section(({ style }: any) => [
-  css`
-    padding: 10px;
+const SectionContainer = styled.section`
+  padding: 10px;
+`;
 
-    .heading {
-      display: flex;
-      align-items: center;
-      &__icon {
-        margin-right: 4px;
-        display: flex;
-        align-items: center;
-        svg {
-          fill: ${(props) => props.theme.primaryColor};
-        }
-      }
-      &__text {
-        margin: 0;
-        color: ${(props) => props.theme.primaryColor};
-        font-weight: 700;
-        font-size: 10px;
-        margin-right: 10px;
-      }
+const Icon = styled.div`
+  margin-right: 4px;
+  display: flex;
+  align-items: center;
 
-      hr {
-        flex: 1;
-        opacity: 0.1;
-        margin-top: 8px;
-        border: 0.1px solid rgba(0, 0, 0, 0.6);
-      }
-    }
+  svg {
+    fill: ${(props: any) => props.theme.colors.primaryColor};
+  }
+`;
 
-    .content {
-      padding: 8px 0;
-    }
-  `,
-  { ...style },
-]);
+const Text = styled.h3`
+  margin: 0;
+  color: ${(props: any) => props.theme.colors.primaryColor};
+  font-weight: 700;
+  font-size: 10px;
+  margin-right: 10px;
+`;
 
-export default function Section({ style = {}, title = '', icon = '', children }: any) {
+const Content = styled.div`
+  padding: 8px 0;
+`;
+
+const HR = styled.hr`
+  flex: 1;
+  opacity: 0.1;
+  margin-top: 8px;
+  border: 0.1px solid rgba(0, 0, 0, 0.6);
+`;
+
+export default function Section({ title = '', icon = '', children }: any) {
   if (!title) return null;
 
   return (
-    <SectionContainer style={style}>
+    <SectionContainer>
       {(title || icon) && (
-        <div className="heading">
-          {icon && <div className="heading__icon">{getIcon(icon)}</div>}
-          {title && <h3 className="heading__text">{title}</h3>}
-          <hr />
-        </div>
+        <FlexVC>
+          {icon && <Icon>{getIcon(icon)}</Icon>}
+          {title && <Text>{title}</Text>}
+          <HR />
+        </FlexVC>
       )}
-      {children && <div className="content">{children}</div>}
+      {children && <Content>{children}</Content>}
     </SectionContainer>
   );
 }

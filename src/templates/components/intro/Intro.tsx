@@ -1,11 +1,11 @@
 import React from 'react';
 import Color from 'color';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { Flex, FlexCol, FlexVC } from 'src/styles/styles';
 import { getIcon } from 'src/styles/icons';
 
 const Role = styled.h3`
-  color: ${(props) => Color(props.theme.primaryColor).alpha(0.75).toString()};
+  color: ${(props: any) => Color(props.theme.colors.primaryColor).alpha(0.75).toString()};
   margin-bottom: 0;
   font-weight: 600;
 `;

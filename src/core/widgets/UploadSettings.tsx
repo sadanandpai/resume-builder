@@ -1,6 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
-import { Upload } from 'antd';
+import styled from '@emotion/styled';
 import {
   useActivities,
   useAwards,
@@ -11,7 +10,6 @@ import {
   useWork,
 } from 'src/stores/data.store';
 import { getIcon } from 'src/styles/icons';
-import Form from 'antd/lib/form';
 
 const IconWrapper = styled.div`
   outline-color: transparent;
@@ -33,6 +31,7 @@ const IconButton = styled.button`
   padding: 0;
   color: rgb(230, 230, 230);
   font-size: 1.4rem;
+  pointer-events: none;
 `;
 
 export function UploadSettings() {
@@ -44,7 +43,7 @@ export function UploadSettings() {
   // const volunteer = useVolunteer((state: any) => state.reset);
   // const awards = useAwards((state: any) => state.reset);
 
-  function beforeUpload(file: File) {
+  function beforeUpload(e) {
     var reader = new FileReader();
     reader.onload = function (e: any) {
       const userJSoN = JSON.parse(e.target.result);
@@ -54,7 +53,7 @@ export function UploadSettings() {
       resetEducation(userJSoN.education);
       resetActivities(userJSoN.activities);
     };
-    reader.readAsText(file);
+    reader.readAsText(e.target.files[0]);
   }
 
   const props = {
@@ -67,9 +66,16 @@ export function UploadSettings() {
 
   return (
     <IconWrapper>
-      <Upload {...props}>
+      <label htmlFor="contained-button-file" style={{ cursor: 'pointer' }}>
+        <input
+          accept=".json"
+          id="contained-button-file"
+          type="file"
+          onChange={beforeUpload}
+          style={{ display: 'none' }}
+        />
         <IconButton>{getIcon('upload')}</IconButton>
-      </Upload>
+      </label>
     </IconWrapper>
   );
 }
