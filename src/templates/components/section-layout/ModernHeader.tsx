@@ -1,11 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import Color from 'color';
 import { Flex, FlexHVC } from 'src/styles/styles';
 import { getIcon } from 'src/styles/icons';
 
 const SectionHolder = styled.div`
-  border: 1px solid ${(props) => Color(props.theme.fontColor).alpha(0.25).toString()};
+  border: 1px solid ${(props: any) => Color(props.theme.colors.fontColor).alpha(0.25).toString()};
   border-radius: 5px;
   padding: 15px 10px 10px 10px;
   position: relative;
@@ -14,10 +14,10 @@ const SectionHolder = styled.div`
     position: absolute;
     top: -10px;
     left: 8px;
-    background: ${(props) => props.theme.backgroundColor};
+    background: ${(props: any) => props.theme.colors.backgroundColor};
     padding: 0 5px;
     font-weight: bold;
-    color: ${(props) => props.theme.primaryColor};
+    color: ${(props: any) => props.theme.colors.primaryColor};
 
     svg {
       font-size: 0.8rem;
@@ -33,11 +33,11 @@ const SectionIntroHolder = styled(SectionHolder)`
     left: 0;
     margin-left: 5px;
     padding: 0 5px;
-    background: ${(props) => props.theme.backgroundColor};
+    background: ${(props: any) => props.theme.colors.backgroundColor};
 
     .header__title {
       margin: 0;
-      color: ${(props) => props.theme.primaryColor};
+      color: ${(props: any) => props.theme.colors.primaryColor};
     }
   }
 
@@ -49,8 +49,8 @@ const SectionIntroHolder = styled(SectionHolder)`
     column-gap: 5px;
 
     svg {
-      color: ${(props) => props.theme.primaryColor};
-      background-color: ${(props) => props.theme.backgroundColor};
+      color: ${(props: any) => props.theme.colors.primaryColor};
+      background-color: ${(props: any) => props.theme.colors.backgroundColor};
     }
   }
 `;

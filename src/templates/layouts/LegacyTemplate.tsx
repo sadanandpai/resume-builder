@@ -1,6 +1,6 @@
 import React from 'react';
 import shallow from 'zustand/shallow';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { getIcon } from 'src/styles/icons';
 
 import { Intro } from 'src/templates/components/intro/Intro';
@@ -26,8 +26,8 @@ const GridContainer = styled.div`
   display: grid;
   padding: 40px 25px;
   grid-template-columns: 68% 10px 1fr;
-  color: ${(props) => props.theme.fontColor};
-  background-color: ${(props) => props.theme.backgroundColor};
+  color: ${(props: any) => props.theme.colors.fontColor};
+  background-color: ${(props: any) => props.theme.colors.backgroundColor};
 `;
 
 const Divider = styled.div`
@@ -48,7 +48,7 @@ const GridColumn = styled.div`
 
 const EmployeName = styled.div`
   margin: 0;
-  color: ${(props) => props.theme.primaryColor};
+  color: ${(props: any) => props.theme.colors.primaryColor};
   font-size: 1.5rem;
 `;
 

@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { getIcon } from 'src/styles/icons';
 
 const Nav = styled.nav`

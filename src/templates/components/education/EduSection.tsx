@@ -1,10 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { Flex } from 'src/styles/styles';
 
 const Education = styled.div`
   &:not(:last-child) {
-    border-bottom: 1px solid ${(props) => props.theme.secondaryColor};
+    border-bottom: 1px solid ${(props: any) => props.theme.colors.secondaryColor};
     padding-bottom: 10px;
     margin-bottom: 10px;
   }

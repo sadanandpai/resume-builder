@@ -1,12 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { getIcon } from 'src/styles/icons';
 
 const SocialDiv = styled.div`
   padding: 10px;
-  color: ${(props) => props.theme.fontColor};
-  border-top: 2px solid ${(props) => props.theme.primaryColor};
-  border-bottom: 2px solid ${(props) => props.theme.primaryColor};
+  color: ${(props: any) => props.theme.colors.fontColor};
+  border-top: 2px solid ${(props: any) => props.theme.colors.primaryColor};
+  border-bottom: 2px solid ${(props: any) => props.theme.colors.primaryColor};
   margin: 12px 0px;
   display: flex;
   justify-content: space-around;
@@ -21,7 +21,7 @@ const SocialDiv = styled.div`
 
   a,
   svg {
-    color: ${(props) => props.theme.primaryColor};
+    color: ${(props: any) => props.theme.colors.primaryColor};
   }
 `;
 

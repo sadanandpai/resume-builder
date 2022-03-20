@@ -1,6 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
-import { Tooltip } from 'antd';
+import styled from '@emotion/styled';
+import Tooltip from '@mui/material/Tooltip';
 import { getIcon } from 'src/styles/icons';
 
 const Sider = styled.nav`

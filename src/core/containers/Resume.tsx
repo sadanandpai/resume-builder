@@ -1,15 +1,16 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
+import { ThemeProvider } from '@emotion/react';
 import { useTemplates, useZoom } from 'src/stores/settings.store';
 import { useThemes } from 'src/stores/theme.store';
-import { ThemeProvider } from 'styled-components';
+import { createTheme, ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
 
 const ResumeContainer: any = styled.div`
   width: 210mm;
   height: 296mm;
   margin: auto;
   background-color: white;
-  border: 1px solid ${(props) => props.theme.fontColor};
+  border: 1px solid lightgrey;
   margin: 6mm;
   transform-origin: top;
   transform: ${({ zoom }: any) => `scale(${1 + zoom})`};
@@ -32,11 +33,19 @@ export function Resume() {
   const zoom = useZoom((state: any) => state.zoom);
   const theme = useThemes((state: any) => state.theme);
 
+  const themeMUI = createTheme({
+    colors: {
+      ...theme,
+    },
+  } as any);
+
   return (
-    <ThemeProvider theme={theme}>
-      <ResumeContainer className="resume" zoom={zoom}>
-        <Template />
-      </ResumeContainer>
-    </ThemeProvider>
+    <MuiThemeProvider theme={themeMUI}>
+      <ThemeProvider theme={themeMUI}>
+        <ResumeContainer className="resume" zoom={zoom}>
+          <Template />
+        </ResumeContainer>
+      </ThemeProvider>
+    </MuiThemeProvider>
   );
 }

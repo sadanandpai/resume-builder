@@ -1,5 +1,4 @@
 import create from 'zustand';
-import { lime, magenta, red } from '@ant-design/colors';
 
 interface Theme {
   id?: number;
@@ -24,9 +23,9 @@ export const themes: Theme[] = [
   },
   {
     id: 1,
-    fontColor: magenta[8],
+    fontColor: 'magenta',
     backgroundColor: 'white',
-    primaryColor: lime[9],
+    primaryColor: 'lime',
     secondaryColor: 'burlywood',
   },
   {
@@ -34,7 +33,7 @@ export const themes: Theme[] = [
     fontColor: 'black',
     backgroundColor: 'white',
     primaryColor: 'green',
-    secondaryColor: red[3],
+    secondaryColor: 'orange',
   },
 ];
 
@@ -42,7 +41,7 @@ export const customTheme: Theme = {
   fontColor: 'white',
   backgroundColor: 'black',
   primaryColor: 'yellow',
-  secondaryColor: lime[6],
+  secondaryColor: 'lime',
 };
 
 export const useThemes = create((set: any) => ({

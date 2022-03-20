@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import Color from 'color';
 import { getIcon } from 'src/styles/icons';
 import Image from 'next/image';
@@ -18,7 +18,7 @@ const IntroContainer = styled.div`
       img {
         width: 72px;
         border-radius: 50%;
-        border: 2px solid ${(props) => Color(props.theme.primaryColor).toString()};
+        border: 2px solid ${(props: any) => Color(props.theme.colors.primaryColor).toString()};
       }
       margin-right: 10px;
     }
@@ -28,11 +28,11 @@ const IntroContainer = styled.div`
       &__name {
         font-size: 18px;
         font-weight: 700;
-        color: ${(props) => Color(props.theme.primaryColor).toString()};
+        color: ${(props: any) => Color(props.theme.colors.primaryColor).toString()};
       }
       &__title {
         font-size: 14px;
-        color: ${(props) => Color(props.theme.primaryColor).alpha(0.75).toString()};
+        color: ${(props: any) => Color(props.theme.colors.primaryColor).alpha(0.75).toString()};
         font-weight: 600;
       }
       &__experience {
@@ -81,7 +81,7 @@ function Intro({ intro }: any) {
       <div className="about">
         {intro.image && (
           <div className="about__profile-image">
-            <Image src={intro.image} alt={intro.name} />
+            <Image src={intro.image} alt={intro.name} height="60" width="60" />
           </div>
         )}
         <div className="about__info">

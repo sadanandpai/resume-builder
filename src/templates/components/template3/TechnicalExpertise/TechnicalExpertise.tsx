@@ -1,8 +1,20 @@
 import React from 'react';
-import styled from 'styled-components';
-import { Progress } from 'antd';
+import styled from '@emotion/styled';
+import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
 
 const Container = styled.section``;
+
+const BorderLinearProgress = styled(LinearProgress)(() => ({
+  height: 5,
+  borderRadius: 5,
+  [`&.${linearProgressClasses.colorPrimary}`]: {
+    backgroundColor: 'lightgrey',
+  },
+  [`& .${linearProgressClasses.bar}`]: {
+    borderRadius: 5,
+    backgroundColor: '#1a90ff',
+  },
+}));
 
 interface TechnologyProps {
   tech: {
@@ -15,6 +27,7 @@ const TechnologyContainer = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  align-items: center;
   margin: 4px 0;
 
   .name {
@@ -34,7 +47,8 @@ function Technology({ tech }: TechnologyProps) {
       <p className="name">{tech.name}</p>
       <div className="rating">
         {/* percentage = rating * 100 / max rating */}
-        <Progress strokeColor={{}} percent={(tech.level * 100) / 5} showInfo={false} />
+        {/* <Progress strokeColor={{}} percent={(tech.level * 100) / 5} showInfo={false} /> */}
+        <BorderLinearProgress variant="determinate" value={(tech.level * 100) / 5} />
       </div>
     </TechnologyContainer>
   );

@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo, useState } from 'react';
 import shallow from 'zustand/shallow';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { SketchPicker } from 'react-color';
 import { MdColorize } from 'react-icons/md';
 import { themes, useThemes } from 'src/stores/theme.store';
