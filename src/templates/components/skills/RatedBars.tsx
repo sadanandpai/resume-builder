@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { FlexCol, FlexVC } from 'src/styles/styles';
 import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
 
-const BorderLinearProgress = styled(LinearProgress)(() => ({
+const BorderLinearProgress = styled(LinearProgress)((props: any) => ({
   height: 5,
   borderRadius: 5,
   [`&.${linearProgressClasses.colorPrimary}`]: {
@@ -11,7 +11,7 @@ const BorderLinearProgress = styled(LinearProgress)(() => ({
   },
   [`& .${linearProgressClasses.bar}`]: {
     borderRadius: 5,
-    backgroundColor: '#1a90ff',
+    backgroundColor: props.theme.colors.primaryColor,
   },
 }));
 
@@ -20,7 +20,7 @@ const RatedType = styled.div`
   font-weight: 600;
 `;
 
-function RatedElementComponent({ itemLabel, itemRating }: any) {
+export function RatedElementComponent({ itemLabel, itemRating }: any) {
   return (
     <FlexVC>
       <RatedType>{itemLabel}</RatedType>

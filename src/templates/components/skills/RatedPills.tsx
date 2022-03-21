@@ -18,12 +18,10 @@ const RatingTablet: any = styled.span`
     props.filled ? props.theme.colors.secondaryColor : 'transparent'};
 `;
 
-function RatedPillElement({ itemLabel, itemRating, index }: any) {
+export function RatedPillElement({ itemLabel, itemRating }: any) {
   const tablets: any = [];
   for (let i = 1; i <= 5; i += 1) {
-    tablets.push(
-      <RatingTablet data-index={index} data-rating={i} filled={i <= itemRating} key={i} />
-    );
+    tablets.push(<RatingTablet data-rating={i} filled={i <= itemRating} key={i} />);
   }
 
   return (

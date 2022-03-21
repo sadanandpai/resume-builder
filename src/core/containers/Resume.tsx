@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { ThemeProvider } from '@emotion/react';
 import { useTemplates, useZoom } from 'src/stores/settings.store';
 import { useThemes } from 'src/stores/theme.store';
-import { createTheme, ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
+import { createTheme } from '@mui/material/styles';
 
 const ResumeContainer: any = styled.div`
   width: 210mm;
@@ -40,12 +40,10 @@ export function Resume() {
   } as any);
 
   return (
-    <MuiThemeProvider theme={themeMUI}>
-      <ThemeProvider theme={themeMUI}>
-        <ResumeContainer className="resume" zoom={zoom}>
-          <Template />
-        </ResumeContainer>
-      </ThemeProvider>
-    </MuiThemeProvider>
+    <ThemeProvider theme={themeMUI}>
+      <ResumeContainer className="resume" zoom={zoom}>
+        <Template />
+      </ResumeContainer>
+    </ThemeProvider>
   );
 }
