@@ -1,9 +1,8 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { ThemeProvider } from '@emotion/react';
 import { useTemplates, useZoom } from 'src/stores/settings.store';
 import { useThemes } from 'src/stores/theme.store';
-import { createTheme } from '@mui/material/styles';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 const ResumeContainer: any = styled.div`
   width: 210mm;
@@ -25,6 +24,12 @@ const ResumeContainer: any = styled.div`
     overflow: inherit;
     margin: 0;
     transform: none;
+  }
+  font-size: 0.65rem;
+
+  ul,
+  li {
+    font-size: 0.65rem;
   }
 `;
 

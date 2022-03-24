@@ -20,4 +20,5 @@ module.exports = {
     },
   ],
   framework: '@storybook/react',
+  features: { emotionAlias: false },
 };

@@ -5,12 +5,6 @@
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 0.65rem;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
 }
 
 @media print {
@@ -25,15 +19,6 @@ a {
 @page {
   size: A4 !important;
   margin: 0 !important;
-}
-
-ul,
-li {
-  font-size: 0.65rem;
-}
-
-p {
-  margin: 0;
 }
 
 .show-web {

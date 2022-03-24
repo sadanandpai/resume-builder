@@ -1,8 +1,8 @@
 import { addDecorator } from '@storybook/react';
-import { withThemesProvider } from 'storybook-addon-emotion-theme';
-import { createTheme } from '@mui/material/styles';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import '../src/styles/globals.css';
 
-const theme1 = createTheme({
+const theme = createTheme({
   colors: {
     fontColor: 'black',
     backgroundColor: 'white',
@@ -12,25 +12,5 @@ const theme1 = createTheme({
   name: 'theme1',
 });
 
-const theme2 = createTheme({
-  colors: {
-    fontColor: 'magenta',
-    backgroundColor: 'white',
-    primaryColor: 'lime',
-    secondaryColor: 'burlywood',
-  },
-  name: 'theme2',
-});
-
-const theme3 = createTheme({
-  colors: {
-    fontColor: 'black',
-    backgroundColor: 'white',
-    primaryColor: 'green',
-    secondaryColor: 'orange',
-  },
-  name: 'theme3',
-});
-
 // pass ThemeProvider and array of your themes to decorator
-addDecorator(withThemesProvider([theme1, theme2, theme3]));
+addDecorator((story) => <ThemeProvider theme={theme}>{story()}</ThemeProvider>);
