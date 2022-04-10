@@ -1,19 +1,19 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import HomeLayout from 'src/modules/home/HomeLayout';
+import BuilderLayout from 'src/modules/builder/BuilderLayout';
 
-const HomePage: NextPage = () => {
+const BuilderPage: NextPage = () => {
   return (
     <div>
       <Head>
-        <title>E-Resume: Home</title>
+        <title>E-Resume: Builder</title>
         <meta name="description" content="Single Page Resume Builder" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <HomeLayout />
+      <BuilderLayout />
     </div>
   );
 };
 
-export default HomePage;
+export default BuilderPage;
