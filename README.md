@@ -1,34 +1,48 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<div align="center">
+<h1>Single Page Resume Builder</h1>
 
-## Getting Started
+### Free and open source, fully customizable professional single page resume builder
 
-First, run the development server:
+<a href="https://e-resume.vercel.app/"><img src="public/images/professional.png" alt="cover" height="415px" width="294px"/></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://e-resume.vercel.app/"><img src="public/images/legacy.png" alt="cover" height="415px" width="294px"/></a>
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+[![](https://img.shields.io/github/stars/sadanandpai/single-page-resume-builder?style=for-the-badge)](#stars)
+[![](https://img.shields.io/github/forks/sadanandpai/single-page-resume-builder?style=for-the-badge)](#forks)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+👉 &nbsp;&nbsp;[Single Page Resume Builder](https://e-resume.vercel.app/)&nbsp;&nbsp;👈
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+</div>
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+### For users
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- Replace all the placeholder with you information
+- Select the template
+- Click on Print and save as PDF. (In case the template is not fitting properly, follow the below recommended settings)
+  - Orientation: Portrait
+  - Paper size: A4
+  - Scale: Fit to width
+  - Margins: None
+  - Print headers & footers: Uncheck (remove tick mark)
+  - Background/graphics: Check (add tick mark)
 
-## Learn More
+### For developers
 
-To learn more about Next.js, take a look at the following resources:
+- `git clone https://github.com/sadanandpai/single-page-resume-builder.git`
+- `yarn install`
+- `yarn dev`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Technologies
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- [React](https://reactjs.org/) with hooks
+- [Styled components](https://styled-components.com/) + [Antd](https://ant.design/docs/react/introduce) (css and component libraries)
+- [Zustand](https://github.com/pmndrs/zustand) (hooks based state management library)
+- [Next.js](https://nextjs.org/) (Bundler)
 
-## Deploy on Vercel
+<div align="center">More features coming soon</div>
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Feel free to use the source to create your resume.<br/>
+Basic knowledge of HTML5, CSS and React is sufficient if you to customize the resume for your requirements.
+
+![](https://visitor-badge.glitch.me/badge?page_id=single-page-resume-builder)

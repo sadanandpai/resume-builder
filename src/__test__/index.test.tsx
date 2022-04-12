@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { fireEvent, render } from '@testing-library/react';
-
 import { sum } from 'src/helpers/utils';
 
 const CheckboxWithLabel = ({ labelOn, labelOff }) => {

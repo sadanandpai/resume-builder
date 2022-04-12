@@ -1,14 +1,11 @@
 module.exports = {
-  stories: [
-    "../stories/**/*.stories.mdx",
-    "../stories/**/*.stories.@(js|jsx|ts|tsx)",
-  ],
+  stories: ['../src/stories/**/*.stories.mdx', '../src/stories/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@storybook/addon-interactions",
+    '@storybook/addon-links',
+    '@storybook/addon-essentials',
+    '@storybook/addon-interactions',
     {
-      name: "@storybook/addon-postcss",
+      name: '@storybook/addon-postcss',
       options: {
         cssLoaderOptions: {
           // When you have splitted your css over multiple files
@@ -16,10 +13,10 @@ module.exports = {
           importLoaders: 1,
         },
         postcssLoaderOptions: {
-          implementation: require("postcss"),
+          implementation: require('postcss'),
         },
       },
     },
   ],
-  framework: "@storybook/react"
+  framework: '@storybook/react',
 };
