@@ -1,5 +1,5 @@
 import React from 'react';
-import EditorPage from './editor/EditorLayout';
+import EditorLayout from './editor/EditorLayout';
 import NavBarLayout from './nav-bar/NavBarLayout';
 
 const BuilderLayout = () => {
@@ -9,7 +9,7 @@ const BuilderLayout = () => {
       <main className="flex flex-1">
         <div className="flex flex-1"></div>
         <aside className="w-[360px]">
-          <EditorPage />
+          <EditorLayout />
         </aside>
       </main>
     </div>
