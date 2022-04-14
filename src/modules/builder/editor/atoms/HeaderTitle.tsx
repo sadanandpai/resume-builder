@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import React from 'react';
 
 const HeaderTitle = ({ title }: { title: string }) => (
   <div className="flex my-5 cursor-pointer">
@@ -9,7 +8,7 @@ const HeaderTitle = ({ title }: { title: string }) => (
 
     <p>{title}</p>
 
-    <div className="ml-auto">
+    <div className="ml-auto pl-4">
       <Image src="/icons/right-arrow.svg" alt="eye" height="10px" width="15px" />
     </div>
   </div>

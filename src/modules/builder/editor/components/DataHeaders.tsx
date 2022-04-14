@@ -1,6 +1,5 @@
-import { Divider } from '@mui/material';
 import Link from 'next/link';
-import React from 'react';
+import { Divider } from '@mui/material';
 import HeaderTitle from '../atoms/HeaderTitle';
 
 const headerTitles = [
@@ -17,7 +16,7 @@ const DataHeaders = () => {
   return (
     <>
       {headerTitles.map((title) => (
-        <Link href={`/builder/${title.toLowerCase().replaceAll(' ', '')}`} key={title} passHref>
+        <Link href={`/builder/${title.toLowerCase().replace(/ /g, '')}`} key={title} passHref>
           <a>
             <HeaderTitle title={title} />
             <Divider />

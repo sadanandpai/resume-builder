@@ -1,4 +1,3 @@
-import React from 'react';
 import EditorLayout from './editor/EditorLayout';
 import NavBarLayout from './nav-bar/NavBarLayout';
 
@@ -8,7 +7,7 @@ const BuilderLayout = () => {
       <NavBarLayout />
       <main className="flex flex-1">
         <div className="flex flex-1"></div>
-        <aside className="w-[360px]">
+        <aside className="w-[25vw] min-w-[20rem]">
           <EditorLayout />
         </aside>
       </main>
