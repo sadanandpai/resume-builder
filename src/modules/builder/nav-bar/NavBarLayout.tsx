@@ -1,4 +1,33 @@
 import Image from 'next/image';
+import Button from '@mui/material/Button';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+const theme = createTheme({
+  palette: {
+    neutral: {
+      main: '#E7EEFA',
+      contrastText: '#fff',
+    },
+  },
+});
+
+declare module '@mui/material/styles' {
+  interface Palette {
+    neutral: Palette['primary'];
+  }
+
+  // allow configuration using `createTheme`
+  interface PaletteOptions {
+    neutral?: PaletteOptions['primary'];
+  }
+}
+
+// Update the Button's color prop options
+declare module '@mui/material/Button' {
+  interface ButtonPropsColorOverrides {
+    neutral: true;
+  }
+}
 
 const NavBarLayout = () => {
   return (
@@ -6,14 +35,22 @@ const NavBarLayout = () => {
       <Image src={'/icons/right-arrow.svg'} alt="logo" height={'39px'} width={'32px'} />
 
       <div className="flex-auto flex justify-between items-center ml-5">
-        <div>
-          <h1>Templates</h1>
-          <h1>Themes</h1>
+        <div className="flex gap-3.5">
+          <h1 className="text-resume-50">Templates</h1>
+          <h1 className="text-resume-50">Themes</h1>
         </div>
-        <div>
-          <button>Export</button>
-          <button>Import</button>
-          <button>Export as PDF</button>
+        <div className="flex gap-3.5">
+          <ThemeProvider theme={theme}>
+            <Button variant="text" color="neutral">
+              Export
+            </Button>
+            <Button variant="text" color="neutral">
+              Import
+            </Button>
+            <Button variant="outlined" color="neutral">
+              Export as PDF
+            </Button>
+          </ThemeProvider>
         </div>
       </div>
     </nav>
