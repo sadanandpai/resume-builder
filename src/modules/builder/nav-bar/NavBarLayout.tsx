@@ -1,6 +1,10 @@
+import React from 'react';
 import Image from 'next/image';
 import Button from '@mui/material/Button';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+import { NavBarMenu } from './atoms/NavBarMenu';
+import { NavBarActions } from './atoms/NavBarActions';
 
 const theme = createTheme({
   palette: {
@@ -34,11 +38,11 @@ const NavBarLayout = () => {
       <Image src={'/icons/right-arrow.svg'} alt="logo" height={'39px'} width={'32px'} />
 
       <div className="flex-auto flex justify-between items-center ml-5">
-        <div className="flex gap-3.5">
+        <NavBarMenu>
           <h1 className="text-resume-50">Templates</h1>
           <h1 className="text-resume-50">Themes</h1>
-        </div>
-        <div className="flex gap-3.5">
+        </NavBarMenu>
+        <NavBarActions>
           <ThemeProvider theme={theme}>
             <Button variant="text" color="resume50">
               Export
@@ -50,7 +54,7 @@ const NavBarLayout = () => {
               Export as PDF
             </Button>
           </ThemeProvider>
-        </div>
+        </NavBarActions>
       </div>
     </nav>
   );
