@@ -1,35 +1,8 @@
 import Image from 'next/image';
-import Button from '@mui/material/Button';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import { NavBarMenu } from './atoms/NavBarMenu';
 import { NavBarActions } from './atoms/NavBarActions';
-
-const theme = createTheme({
-  palette: {
-    resume50: {
-      main: '#E7EEFA',
-    },
-  },
-});
-
-declare module '@mui/material/styles' {
-  interface Palette {
-    resume50: object;
-  }
-
-  // allow configuration using `createTheme`
-  interface PaletteOptions {
-    resume50?: object;
-  }
-}
-
-// Update the Button's color prop options
-declare module '@mui/material/Button' {
-  interface ButtonPropsColorOverrides {
-    resume50: true;
-  }
-}
+import { CustomizedButton } from 'src/common/components';
 
 const NavBarLayout = () => {
   return (
@@ -42,17 +15,15 @@ const NavBarLayout = () => {
           <h1 className="text-resume-50">Themes</h1>
         </NavBarMenu>
         <NavBarActions>
-          <ThemeProvider theme={theme}>
-            <Button variant="text" color="resume50">
-              Export
-            </Button>
-            <Button variant="text" color="resume50">
-              Import
-            </Button>
-            <Button variant="outlined" color="resume50">
-              Export as PDF
-            </Button>
-          </ThemeProvider>
+          <CustomizedButton variant="text" color="resume50">
+            Import
+          </CustomizedButton>
+          <CustomizedButton variant="text" color="resume50">
+            Import
+          </CustomizedButton>
+          <CustomizedButton variant="outlined" color="resume50">
+            Export as PDF
+          </CustomizedButton>
         </NavBarActions>
       </div>
     </nav>
