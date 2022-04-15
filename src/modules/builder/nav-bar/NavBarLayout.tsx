@@ -1,4 +1,3 @@
-import React from 'react';
 import Image from 'next/image';
 import Button from '@mui/material/Button';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
