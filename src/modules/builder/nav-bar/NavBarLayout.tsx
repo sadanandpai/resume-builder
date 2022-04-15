@@ -4,28 +4,27 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const theme = createTheme({
   palette: {
-    neutral: {
+    resume50: {
       main: '#E7EEFA',
-      contrastText: '#fff',
     },
   },
 });
 
 declare module '@mui/material/styles' {
   interface Palette {
-    neutral: Palette['primary'];
+    resume50: object;
   }
 
   // allow configuration using `createTheme`
   interface PaletteOptions {
-    neutral?: PaletteOptions['primary'];
+    resume50?: object;
   }
 }
 
 // Update the Button's color prop options
 declare module '@mui/material/Button' {
   interface ButtonPropsColorOverrides {
-    neutral: true;
+    resume50: true;
   }
 }
 
@@ -41,13 +40,13 @@ const NavBarLayout = () => {
         </div>
         <div className="flex gap-3.5">
           <ThemeProvider theme={theme}>
-            <Button variant="text" color="neutral">
+            <Button variant="text" color="resume50">
               Export
             </Button>
-            <Button variant="text" color="neutral">
+            <Button variant="text" color="resume50">
               Import
             </Button>
-            <Button variant="outlined" color="neutral">
+            <Button variant="outlined" color="resume50">
               Export as PDF
             </Button>
           </ThemeProvider>
