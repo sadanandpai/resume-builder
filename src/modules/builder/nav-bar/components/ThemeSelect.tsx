@@ -2,6 +2,8 @@ import Image from 'next/image';
 import { Divider } from '@mui/material';
 import { Fragment, useState } from 'react';
 
+import { ColorBox, ColorBoxWrapper, ColorDetails } from '../atoms';
+
 export const ThemeSelectPopover = () => {
   const [activeTheme, setActiveTheme] = useState<string>(THEME_LIST.ONE);
 
@@ -10,9 +12,7 @@ export const ThemeSelectPopover = () => {
   };
 
   return (
-    <div
-      className={`fixed h-[510px] w-[475px] bg-white flex flex-col top-100 left-[40px] px-7 pt-6 pb-4 shadow-2xl`}
-    >
+    <div className={`h-[510px] w-[475px] bg-white flex flex-col px-7 pt-6 pb-4 shadow-2xl`}>
       <span className="text-[#2E4052] font-bold">Choose a theme</span>
       <div className="mt-1.5 w-full">
         {Object.keys(MOCK_THEME).map((themeName) => {
@@ -102,23 +102,4 @@ const MOCK_THEME: ThemeObject = {
     primaryColor: 'red',
     secondaryColor: 'violet',
   },
-};
-
-const ColorBox = ({ bgColor }: { bgColor: string }) => {
-  return <div className={'w-8 h-5 '} style={{ backgroundColor: bgColor }} />;
-};
-
-const ColorBoxWrapper = ({ children }: { children: React.ReactNode }) => {
-  return <div className="flex shadow-[0_0_2px_0_rgba(0_0_0/0.5)] ">{children}</div>;
-};
-
-const ColorDetails = ({ label, bgColor }: { label: string; bgColor: string }) => {
-  return (
-    <div className="flex items-center w-100 gap-3">
-      <ColorBoxWrapper>
-        <ColorBox bgColor={bgColor} />
-      </ColorBoxWrapper>
-      <span className="text-xs text-[#2E4052]">{label}</span>
-    </div>
-  );
 };
