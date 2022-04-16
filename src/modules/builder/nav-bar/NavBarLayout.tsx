@@ -7,7 +7,7 @@ import { ThemeSelectPopover } from './components/ThemeSelect';
 
 const NavBarLayout = () => {
   return (
-    <nav className="h-14 w-full bg-resume-800 relative flex py-2.5 px-4 items-center">
+    <nav className="h-14 w-full bg-resume-800 relative flex py-2.5 pl-5 pr-4 items-center">
       <Image src={'/icons/right-arrow.svg'} alt="logo" height={'39px'} width={'31px'} />
       <div className="flex-auto flex justify-between items-center ml-5">
         <NavBarMenu>
