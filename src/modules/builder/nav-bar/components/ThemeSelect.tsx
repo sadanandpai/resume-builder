@@ -24,7 +24,7 @@ export const ThemeSelectPopover = () => {
               key={themeName}
               className={`flex border rounded mb-[16px] justify-between items-center py-[14px] px-4 ${
                 isActive ? 'bg-resume-50 border-resume-500' : 'border-[#a9a9a9]'
-              }`}
+              } hover:cursor-pointer`}
               onClick={() => handleActiveTheme(themeName)}
             >
               <ColorBoxWrapper>
@@ -41,7 +41,7 @@ export const ThemeSelectPopover = () => {
         })}
       </div>
       <div
-        className={`flex flex-col border rounded mb-[16px] justify-start px-4 py-3 ${
+        className={`flex flex-col border rounded mb-[16px] justify-start px-4 py-3 hover:cursor-pointer ${
           activeTheme === THEME_IDS.CUSTOM ? 'bg-resume-50 border-resume-500' : 'border-[#a9a9a9]'
         }`}
         onClick={() => handleActiveTheme(THEME_IDS.CUSTOM)}
