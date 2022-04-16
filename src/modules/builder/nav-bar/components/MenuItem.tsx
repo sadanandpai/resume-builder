@@ -6,7 +6,7 @@ import { NavMenuPopover } from './NavMenuPopover';
 
 interface NavMenuItemProps {
   caption: string;
-  popoverChildren: React.ReactNode; // #TODO
+  popoverChildren: React.ReactNode;
 }
 
 export const NavMenuItem = ({ caption, popoverChildren }: NavMenuItemProps) => {
