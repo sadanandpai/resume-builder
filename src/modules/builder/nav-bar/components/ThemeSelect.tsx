@@ -13,7 +13,7 @@ export const ThemeSelectPopover = () => {
 
   return (
     <div className={`h-[510px] w-[475px] bg-white flex flex-col px-7 pt-6 pb-4 shadow-2xl`}>
-      <span className="text-[#2E4052] font-bold">Choose a theme</span>
+      <span className="text-resume-800 font-bold">Choose a theme</span>
       <div className="mt-1.5 w-full">
         {Object.keys(MOCK_THEME).map((themeName) => {
           const themeObject = MOCK_THEME[themeName];
@@ -22,7 +22,7 @@ export const ThemeSelectPopover = () => {
             <div
               key={themeName}
               className={`flex border rounded mb-[16px] justify-between items-center px-4 py-3 last:mb-2 ${
-                isActive ? 'bg-[#E7EEFA] border-[#59748F]' : 'border-[#a9a9a9]'
+                isActive ? 'bg-resume-50 border-resume-500' : 'border-[#a9a9a9]'
               }`}
               onClick={() => handleActiveTheme(themeName)}
             >
@@ -41,12 +41,12 @@ export const ThemeSelectPopover = () => {
       </div>
       <div
         className={`flex flex-col border rounded mb-[16px] justify-start px-4 py-3 last:mb-2 ${
-          activeTheme === THEME_LIST.CUSTOM ? 'bg-[#E7EEFA] border-[#59748F]' : 'border-[#a9a9a9]'
+          activeTheme === THEME_LIST.CUSTOM ? 'bg-resume-50 border-resume-500' : 'border-[#a9a9a9]'
         }`}
         onClick={() => handleActiveTheme(THEME_LIST.CUSTOM)}
       >
         <div className="w-full h-full flex items-center justify-between">
-          <span className="text-[#2E4052] font-normal text-sm">Custom theme</span>
+          <span className="text-resume-800 font-normal text-sm">Custom theme</span>
           {activeTheme === THEME_LIST.CUSTOM && (
             <Image src={'/icons/selected-tick.svg'} alt="logo" width={'28px'} height={'20px'} />
           )}

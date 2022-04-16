@@ -7,7 +7,7 @@ export const ColorDetails = ({ label, bgColor }: { label: string; bgColor: strin
       <ColorBoxWrapper>
         <ColorBox bgColor={bgColor} />
       </ColorBoxWrapper>
-      <span className="text-xs text-[#2E4052]">{label}</span>
+      <span className="text-xs text-resume-800">{label}</span>
     </div>
   );
 };
