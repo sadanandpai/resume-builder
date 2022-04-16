@@ -1,14 +1,9 @@
 import Image from 'next/image';
 import Button from '@mui/material/Button';
-import { styled } from '@mui/material';
 
 import { NavBarMenu, NavBarActions } from './atoms';
 import { NavMenuItem } from './components/MenuItem';
 import { ThemeSelectPopover } from './components/ThemeSelect';
-
-const StyledButton = styled(Button)(() => ({
-  backgroundColor: 'red',
-}));
 
 const NavBarLayout = () => {
   return (
@@ -26,9 +21,9 @@ const NavBarLayout = () => {
           <Button variant="text" color="resume50">
             Import
           </Button>
-          <StyledButton variant="outlined" color="resume50">
+          <Button variant="outlined" color="resume50">
             Export as PDF
-          </StyledButton>
+          </Button>
         </NavBarActions>
       </div>
     </nav>
