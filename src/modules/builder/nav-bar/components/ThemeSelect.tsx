@@ -12,16 +12,16 @@ export const ThemeSelectPopover = () => {
   };
 
   return (
-    <div className={`h-[510px] w-[475px] bg-white flex flex-col px-7 pt-6 pb-4 shadow-2xl`}>
-      <span className="text-resume-800 font-bold">Choose a theme</span>
-      <div className="mt-1.5 w-full">
+    <div className={`h-[510px] w-[475px] bg-white flex flex-col px-9 py-7 shadow-2xl`}>
+      <span className="text-resume-800 font-bold text-lg mb-2">Choose a theme</span>
+      <div className="w-full">
         {Object.keys(MOCK_THEME).map((themeName) => {
           const themeObject = MOCK_THEME[themeName];
           const isActive = themeName === activeTheme;
           return (
             <div
               key={themeName}
-              className={`flex border rounded mb-[16px] justify-between items-center px-4 py-3 last:mb-2 ${
+              className={`flex border rounded mb-[16px] justify-between items-center py-[14px] px-4 ${
                 isActive ? 'bg-resume-50 border-resume-500' : 'border-[#a9a9a9]'
               }`}
               onClick={() => handleActiveTheme(themeName)}
@@ -40,13 +40,13 @@ export const ThemeSelectPopover = () => {
         })}
       </div>
       <div
-        className={`flex flex-col border rounded mb-[16px] justify-start px-4 py-3 last:mb-2 ${
+        className={`flex flex-col border rounded mb-[16px] justify-start px-4 py-3 ${
           activeTheme === THEME_LIST.CUSTOM ? 'bg-resume-50 border-resume-500' : 'border-[#a9a9a9]'
         }`}
         onClick={() => handleActiveTheme(THEME_LIST.CUSTOM)}
       >
         <div className="w-full h-full flex items-center justify-between">
-          <span className="text-resume-800 font-normal text-sm">Custom theme</span>
+          <span className="text-resume-800 font-normal text-base">Custom theme</span>
           {activeTheme === THEME_LIST.CUSTOM && (
             <Image src={'/icons/selected-tick.svg'} alt="logo" width={'28px'} height={'20px'} />
           )}
@@ -54,7 +54,7 @@ export const ThemeSelectPopover = () => {
         {activeTheme === THEME_LIST.CUSTOM && (
           <Fragment>
             <Divider className="mt-3" />
-            <div className="grid grid-cols-2 grid-rows-2 gap-y-6 gap-x-7 mt-4 mb-2">
+            <div className="grid grid-cols-2 grid-rows-2 gap-y-6 gap-x-10 mt-6 mb-8">
               <ColorDetails bgColor={'red'} label="Background Color" />
               <ColorDetails bgColor={'blue'} label="Font Color" />
               <ColorDetails bgColor={'green'} label="Background Color" />
