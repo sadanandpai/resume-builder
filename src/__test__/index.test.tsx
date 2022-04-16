@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import { sum } from 'src/helpers/utils';
 
-const CheckboxWithLabel = ({ labelOn, labelOff }) => {
+const CheckboxWithLabel = ({ labelOn, labelOff }: { labelOn: string; labelOff: string }) => {
   const [isChecked, setIsChecked] = useState(false);
 
   const onChange = () => {
