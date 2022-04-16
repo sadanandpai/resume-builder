@@ -10,26 +10,17 @@ export const GLOBAL_MUI_THEME = createTheme({
 
 declare module '@mui/material/styles' {
   interface Palette {
-    resume50: object;
+    resume50: Palette['primary'];
   }
 
   // allow configuration using `createTheme`
   interface PaletteOptions {
-    resume50?: object;
+    resume50?: PaletteOptions['primary'];
   }
 }
 
 declare module '@mui/material/Button' {
   interface ButtonPropsColorOverrides {
     resume50: true;
-    // resume100: true;
-    // resume200: true;
-    // resume300: true;
-    // resume400: true;
-    // resume500: true;
-    // resume600: true;
-    // resume700: true;
-    // resume800: true;
-    // resume900: true;
   }
 }
