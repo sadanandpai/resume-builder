@@ -1,6 +1,5 @@
 import { Fragment, useState } from 'react';
-
-import { CustomizedButton } from 'src/common/components';
+import Button from '@mui/material/Button';
 
 import { NavMenuPopover } from './NavMenuPopover';
 
@@ -22,14 +21,9 @@ export const NavMenuItem = ({ caption, popoverChildren }: NavMenuItemProps) => {
 
   return (
     <Fragment>
-      <CustomizedButton
-        variant="text"
-        color="resume50"
-        onClick={handleClick}
-        aria-describedby={'mark'}
-      >
+      <Button variant="text" color="resume50" onClick={handleClick} aria-describedby={'mark'}>
         {caption}
-      </CustomizedButton>
+      </Button>
       <NavMenuPopover isOpen={!!anchorEl} anchorElement={anchorEl} id="mark" onClose={handleClose}>
         {popoverChildren}
       </NavMenuPopover>
