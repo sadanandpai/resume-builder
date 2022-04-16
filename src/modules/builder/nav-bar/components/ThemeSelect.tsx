@@ -3,6 +3,7 @@ import { Divider } from '@mui/material';
 import { Fragment, useState } from 'react';
 
 import { ColorBox, ColorBoxWrapper, ColorDetails } from '../atoms';
+import { THEME_IDS, SYSTEM_THEME_OBJECT } from 'src/helpers/constants/index';
 
 export const ThemeSelectPopover = () => {
   const [activeTheme, setActiveTheme] = useState<string>(THEME_IDS.ONE);
@@ -65,41 +66,4 @@ export const ThemeSelectPopover = () => {
       </div>
     </div>
   );
-};
-
-interface ThemeObject {
-  [key: string]: {
-    fontColor: string;
-    backgroundColor: string;
-    primaryColor: string;
-    secondaryColor: string;
-  };
-}
-
-const THEME_IDS = {
-  ONE: 'ONE',
-  SECONDARY: 'SECONDARY',
-  THREE: 'THREE',
-  CUSTOM: 'CUSTOM',
-};
-
-const SYSTEM_THEME_OBJECT: ThemeObject = {
-  ONE: {
-    fontColor: '#FFFFFF',
-    backgroundColor: '#000000',
-    primaryColor: '#0019FD',
-    secondaryColor: '#22B34B',
-  },
-  TWO: {
-    fontColor: '#FFFFFF',
-    backgroundColor: '#9F0808',
-    primaryColor: '#000000',
-    secondaryColor: '#F1A91E',
-  },
-  THREE: {
-    fontColor: '#FFFFFF',
-    backgroundColor: '#000000',
-    primaryColor: '#217503',
-    secondaryColor: '#F556E5',
-  },
 };
