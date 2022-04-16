@@ -5,7 +5,7 @@ import { Fragment, useState } from 'react';
 import { ColorBox, ColorBoxWrapper, ColorDetails } from '../atoms';
 
 export const ThemeSelectPopover = () => {
-  const [activeTheme, setActiveTheme] = useState<string>(THEME_LIST.ONE);
+  const [activeTheme, setActiveTheme] = useState<string>(THEME_IDS.ONE);
 
   const handleActiveTheme = (themeName: string) => {
     setActiveTheme(themeName);
@@ -15,8 +15,8 @@ export const ThemeSelectPopover = () => {
     <div className={`h-[510px] w-[475px] bg-white flex flex-col px-9 py-7 shadow-2xl`}>
       <span className="text-resume-800 font-bold text-lg mb-2">Choose a theme</span>
       <div className="w-full">
-        {Object.keys(MOCK_THEME).map((themeName) => {
-          const themeObject = MOCK_THEME[themeName];
+        {Object.keys(SYSTEM_THEME_OBJECT).map((themeName) => {
+          const themeObject = SYSTEM_THEME_OBJECT[themeName];
           const isActive = themeName === activeTheme;
           return (
             <div
@@ -41,24 +41,24 @@ export const ThemeSelectPopover = () => {
       </div>
       <div
         className={`flex flex-col border rounded mb-[16px] justify-start px-4 py-3 ${
-          activeTheme === THEME_LIST.CUSTOM ? 'bg-resume-50 border-resume-500' : 'border-[#a9a9a9]'
+          activeTheme === THEME_IDS.CUSTOM ? 'bg-resume-50 border-resume-500' : 'border-[#a9a9a9]'
         }`}
-        onClick={() => handleActiveTheme(THEME_LIST.CUSTOM)}
+        onClick={() => handleActiveTheme(THEME_IDS.CUSTOM)}
       >
         <div className="w-full h-full flex items-center justify-between">
           <span className="text-resume-800 font-normal text-base">Custom theme</span>
-          {activeTheme === THEME_LIST.CUSTOM && (
+          {activeTheme === THEME_IDS.CUSTOM && (
             <Image src={'/icons/selected-tick.svg'} alt="logo" width={'28px'} height={'20px'} />
           )}
         </div>
-        {activeTheme === THEME_LIST.CUSTOM && (
+        {activeTheme === THEME_IDS.CUSTOM && (
           <Fragment>
             <Divider className="mt-3" />
             <div className="grid grid-cols-2 grid-rows-2 gap-y-6 gap-x-10 mt-6 mb-8">
-              <ColorDetails bgColor={'red'} label="Background Color" />
-              <ColorDetails bgColor={'blue'} label="Font Color" />
-              <ColorDetails bgColor={'green'} label="Background Color" />
-              <ColorDetails bgColor={'violet'} label="Background Color" />
+              <ColorDetails bgColor={'#FFFFFF'} label="Background Color" />
+              <ColorDetails bgColor={'#000000'} label="Font Color" />
+              <ColorDetails bgColor={'#0019FD'} label="Accent Color" />
+              <ColorDetails bgColor={'#22B34B'} label="Bar Color" />
             </div>
           </Fragment>
         )}
@@ -76,30 +76,30 @@ interface ThemeObject {
   };
 }
 
-const THEME_LIST = {
+const THEME_IDS = {
   ONE: 'ONE',
   SECONDARY: 'SECONDARY',
   THREE: 'THREE',
   CUSTOM: 'CUSTOM',
 };
 
-const MOCK_THEME: ThemeObject = {
+const SYSTEM_THEME_OBJECT: ThemeObject = {
   ONE: {
-    fontColor: 'white',
-    backgroundColor: 'blue',
-    primaryColor: 'red',
-    secondaryColor: 'violet',
+    fontColor: '#FFFFFF',
+    backgroundColor: '#000000',
+    primaryColor: '#0019FD',
+    secondaryColor: '#22B34B',
   },
   TWO: {
-    fontColor: 'white',
-    backgroundColor: 'blue',
-    primaryColor: 'red',
-    secondaryColor: 'violet',
+    fontColor: '#FFFFFF',
+    backgroundColor: '#9F0808',
+    primaryColor: '#000000',
+    secondaryColor: '#F1A91E',
   },
   THREE: {
-    fontColor: 'white',
-    backgroundColor: '#232232',
-    primaryColor: 'red',
-    secondaryColor: 'violet',
+    fontColor: '#FFFFFF',
+    backgroundColor: '#000000',
+    primaryColor: '#217503',
+    secondaryColor: '#F556E5',
   },
 };
