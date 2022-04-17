@@ -4,7 +4,7 @@ import { TemplateSlider } from './TemplatesSlider';
 
 export const StyledButton = styled(Button)(({ theme }) => ({
   color: theme.palette.resume[800],
-  borderColor: alpha(theme.palette.resume[800], 0.8),
+  borderColor: theme.palette.resume[100],
   ':hover': {
     borderColor: theme.palette.resume[800],
     backgroundColor: alpha(theme.palette.resume[800], 0.04),

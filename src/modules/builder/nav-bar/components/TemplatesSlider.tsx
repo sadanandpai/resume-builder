@@ -1,28 +1,12 @@
-import { Global } from '@emotion/react';
-import Splide, { Splide as SplideCore } from '@splidejs/splide';
-import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
+import { useEffect, useRef, useState } from 'react';
+import Splide, { Splide as SplideCore } from '@splidejs/splide';
+import { Global } from '@emotion/react';
 
 // eslint-disable-next-line import/no-unresolved
 import '@splidejs/splide/css';
 
-const TEMPLATES_IDS = {
-  PRIMARY: 'PRIMARY',
-  SECONDARY: 'SECONDARY',
-  TERTIARY: 'TERTIARY',
-};
-
-export const AVAILABLE_TEMPLATES = {
-  PRIMARY: {
-    imageSrc: '',
-  },
-  SECONDARY: {
-    imageSrc: '',
-  },
-  TERTIARY: {
-    imageSrc: '',
-  },
-};
+import { TEMPLATES_IDS, AVAILABLE_TEMPLATES } from 'src/helpers/constants';
 
 export const TemplateSlider = () => {
   const [activeTemplateId, setActiveTemplateId] = useState(TEMPLATES_IDS.PRIMARY);

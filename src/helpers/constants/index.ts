@@ -27,3 +27,21 @@ export const SYSTEM_THEME_OBJECT: ThemeObject = {
     secondaryColor: '#F556E5',
   },
 };
+
+export const TEMPLATES_IDS = {
+  PRIMARY: 'PRIMARY',
+  SECONDARY: 'SECONDARY',
+  TERTIARY: 'TERTIARY',
+};
+
+export const AVAILABLE_TEMPLATES = {
+  PRIMARY: {
+    imageSrc: '',
+  },
+  SECONDARY: {
+    imageSrc: '',
+  },
+  TERTIARY: {
+    imageSrc: '',
+  },
+};
