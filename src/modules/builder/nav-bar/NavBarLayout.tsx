@@ -1,7 +1,6 @@
 import Image from 'next/image';
-import Button from '@mui/material/Button';
 
-import { NavBarMenu, NavBarActions } from './atoms';
+import { NavBarMenu, NavBarActions, StyledButton } from './atoms';
 import { NavMenuItem } from './components/MenuItem';
 import { ThemeSelectPopover } from './components/ThemeSelect';
 
@@ -21,15 +20,9 @@ const NavBarLayout = () => {
           <NavMenuItem caption="Themes" popoverChildren={<ThemeSelectPopover />} />
         </NavBarMenu>
         <NavBarActions>
-          <Button variant="text" color="resume50">
-            Export
-          </Button>
-          <Button variant="text" color="resume50">
-            Import
-          </Button>
-          <Button variant="outlined" color="resume50">
-            Export as PDF
-          </Button>
+          <StyledButton variant="text">Export</StyledButton>
+          <StyledButton variant="text">Import</StyledButton>
+          <StyledButton variant="outlined">Export as PDF</StyledButton>
         </NavBarActions>
       </div>
     </nav>

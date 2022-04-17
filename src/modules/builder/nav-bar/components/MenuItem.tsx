@@ -1,8 +1,8 @@
 import { Fragment, useState } from 'react';
 import Image from 'next/image';
-import Button from '@mui/material/Button';
 
 import { NavMenuPopover } from './NavMenuPopover';
+import { StyledButton } from '../atoms';
 
 interface NavMenuItemProps {
   caption: string;
@@ -22,9 +22,8 @@ export const NavMenuItem = ({ caption, popoverChildren }: NavMenuItemProps) => {
 
   return (
     <Fragment>
-      <Button
+      <StyledButton
         variant="text"
-        color="resume50"
         onClick={handleClick}
         aria-describedby={'mark'}
         endIcon={
@@ -38,7 +37,7 @@ export const NavMenuItem = ({ caption, popoverChildren }: NavMenuItemProps) => {
         }
       >
         {caption}
-      </Button>
+      </StyledButton>
       <NavMenuPopover isOpen={!!anchorEl} anchorElement={anchorEl} id="mark" onClose={handleClose}>
         {popoverChildren}
       </NavMenuPopover>
