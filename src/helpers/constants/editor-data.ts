@@ -6,7 +6,7 @@ import ActivitiesLayout from 'src/modules/builder/editor/modules/activities/Acti
 import VolunteeringLayout from 'src/modules/builder/editor/modules/volunteering/Volunteering';
 import AwardsLayout from 'src/modules/builder/editor/modules/awards/AwardsLayout';
 
-export const EditorHeaders: { [key: string]: { title: string; component: () => JSX.Element } } = {
+export const headers: { [key: string]: { title: string; component: () => JSX.Element } } = {
   'basic-details': { title: 'Basic details', component: BasicLayout },
   'skills-and-expertise': {
     title: 'Skills and expertise',

@@ -1,17 +1,25 @@
-import React from 'react';
-import { useRouter } from 'next/router';
-import DataHeaders from './components/DataHeaders';
-import { EditorHeaders } from 'src/helpers/constants/editor-data';
+import React, { useState } from 'react';
+import { headers } from 'src/helpers/constants/editor-data';
+import DataHeaders from './components/EditHeaders';
 import EditSection from './components/EditSection';
 
 const EditorLayout = () => {
-  const url = useRouter();
-  const querySection = url.query.section as string;
-  const section = EditorHeaders[querySection];
+  const [link, setLink] = useState('');
+  const section = headers[link];
+
+  const linkClickHandler = (link: string) => {
+    setLink(link);
+  };
+
+  const displayElement = link ? (
+    <EditSection section={section} onLinkClick={linkClickHandler} />
+  ) : (
+    <DataHeaders onLinkClick={linkClickHandler} />
+  );
 
   return (
-    <div className="bg-resume-50 h-full text-resume-800 p-6">
-      {section ? <EditSection section={section} /> : <DataHeaders />}
+    <div className="bg-resume-50 h-full text-resume-800 p-6 overflow-hidden relative">
+      {displayElement}
     </div>
   );
 };
