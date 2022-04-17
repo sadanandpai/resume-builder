@@ -3,11 +3,7 @@ import Image from 'next/image';
 
 import { NavMenuPopover } from './NavMenuPopover';
 import { StyledButton } from '../atoms';
-
-interface NavMenuItemProps {
-  caption: string;
-  popoverChildren: React.ReactNode;
-}
+import { NavMenuItemProps } from './MenuItem.interface';
 
 export const NavMenuItem = ({ caption, popoverChildren }: NavMenuItemProps) => {
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);

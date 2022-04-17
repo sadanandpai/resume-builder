@@ -1,13 +1,6 @@
-interface ThemeObject {
-  [key: string]: {
-    fontColor: string;
-    backgroundColor: string;
-    primaryColor: string;
-    secondaryColor: string;
-  };
-}
+import { ThemeObject, ThemeIDs } from './index.interface';
 
-export const THEME_IDS = {
+export const THEME_IDS: ThemeIDs = {
   PRIMARY: 'PRIMARY',
   SECONDARY: 'SECONDARY',
   TERTIARY: 'TERTIARY',

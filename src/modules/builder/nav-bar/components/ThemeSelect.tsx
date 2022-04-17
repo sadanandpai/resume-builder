@@ -46,7 +46,11 @@ export const ThemeSelectPopover = () => {
         }`}
         onClick={() => handleActiveTheme(THEME_IDS.CUSTOM)}
       >
-        <div className="w-full h-full flex items-center justify-between">
+        <div
+          className={`w-full h-full flex items-center justify-between ${
+            activeTheme === THEME_IDS.CUSTOM ? 'mb-3' : ''
+          }`}
+        >
           <span className="text-resume-800 font-normal text-base">Custom theme</span>
           {activeTheme === THEME_IDS.CUSTOM && (
             <Image src={'/icons/selected-tick.svg'} alt="logo" width={'28px'} height={'20px'} />
@@ -54,7 +58,7 @@ export const ThemeSelectPopover = () => {
         </div>
         {activeTheme === THEME_IDS.CUSTOM && (
           <Fragment>
-            <Divider className="mt-3" />
+            <Divider />
             <div className="grid grid-cols-2 grid-rows-2 gap-y-6 gap-x-10 mt-6 mb-8">
               <ColorDetails bgColor={'#FFFFFF'} label="Background Color" />
               <ColorDetails bgColor={'#000000'} label="Font Color" />
