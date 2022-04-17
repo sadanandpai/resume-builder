@@ -75,7 +75,7 @@ export const TemplateSlider = () => {
         <div className="splide__track">
           <ul className="splide__list">
             {Object.keys(AVAILABLE_TEMPLATES).map((templateId) => {
-              let isActive = templateId === activeTemplateId;
+              const isActive = templateId === activeTemplateId;
               return (
                 <TemplateSlide
                   key={templateId}
@@ -99,7 +99,7 @@ export const TemplateSlide = ({
 }: {
   isActive: boolean;
   templateId: string;
-  onChangeTemplate: Function;
+  onChangeTemplate: (templateId: string) => void;
 }) => {
   return (
     <li
