@@ -5,7 +5,7 @@ import { Fragment, useState } from 'react';
 import { ColorBox, ColorBoxWrapper, ColorDetails } from '../atoms';
 import { THEME_IDS, SYSTEM_THEME_OBJECT } from 'src/helpers/constants/index';
 
-export const ThemeSelectPopover = () => {
+export const ThemeSelect = () => {
   const [activeTheme, setActiveTheme] = useState<string>(THEME_IDS.PRIMARY);
 
   const handleActiveTheme = (themeName: string) => {
