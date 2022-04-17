@@ -2,25 +2,28 @@ import { createTheme } from '@mui/material/styles';
 
 export const GLOBAL_MUI_THEME = createTheme({
   palette: {
-    resume50: {
-      main: '#E7EEFA',
+    resume: {
+      50: '#E7EEFA',
+      100: '#C7D6E4',
+      200: '#A8B9CC',
+      300: '#889DB3',
+      400: '#7188A1',
+      500: '#59748F',
+      600: '#4C667E',
+      700: '#3C5268',
+      800: '#2E4052',
+      900: '#1C2C3A',
     },
   },
 });
 
 declare module '@mui/material/styles' {
   interface Palette {
-    resume50: Palette['primary'];
+    resume: Palette['grey'];
   }
 
   // allow configuration using `createTheme`
   interface PaletteOptions {
-    resume50?: PaletteOptions['primary'];
-  }
-}
-
-declare module '@mui/material/Button' {
-  interface ButtonPropsColorOverrides {
-    resume50: true;
+    resume?: PaletteOptions['grey'];
   }
 }

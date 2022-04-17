@@ -1,12 +1,6 @@
 import Popover from '@mui/material/Popover';
 
-interface NavMenuPopoverProps {
-  isOpen: boolean;
-  anchorElement: Element | null;
-  children: React.ReactNode;
-  id: string;
-  onClose: () => void;
-}
+import { NavMenuPopoverProps } from './NavMenuPopover.interface';
 
 export const NavMenuPopover = ({
   isOpen,
