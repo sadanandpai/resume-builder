@@ -2,7 +2,8 @@ import Image from 'next/image';
 
 import { NavBarMenu, NavBarActions, StyledButton } from './atoms';
 import { NavMenuItem } from './components/MenuItem';
-import { ThemeSelectPopover } from './components/ThemeSelect';
+import { ThemeSelect } from './components/ThemeSelect';
+import { TemplateSelect } from './components/TemplateSelect';
 
 const NavBarLayout = () => {
   return (
@@ -16,8 +17,8 @@ const NavBarLayout = () => {
       />
       <div className="flex-auto flex justify-between items-center ml-5">
         <NavBarMenu>
-          <NavMenuItem caption="Templates" popoverChildren={<ThemeSelectPopover />} />
-          <NavMenuItem caption="Themes" popoverChildren={<ThemeSelectPopover />} />
+          <NavMenuItem caption="Templates" popoverChildren={<TemplateSelect />} />
+          <NavMenuItem caption="Themes" popoverChildren={<ThemeSelect />} />
         </NavBarMenu>
         <NavBarActions>
           <StyledButton variant="text">Export</StyledButton>
