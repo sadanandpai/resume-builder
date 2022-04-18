@@ -4,6 +4,7 @@ module.exports = {
     extend: {
       colors: {
         resume: {
+          10: '#F3F8FF',
           50: '#E7EEFA',
           100: '#C7D6E4',
           200: '#A8B9CC',
@@ -15,6 +16,15 @@ module.exports = {
           800: '#2E4052',
           900: '#1C2C3A',
         },
+        custom: {
+          grey: '#E2E7ED',
+        },
+      },
+      borderRadius: {
+        md: '4px',
+      },
+      boxShadow: {
+        'level-4px-0.25': '0px 4px 4px rgba(0, 0, 0, 0.25)',
       },
     },
   },
