@@ -1,6 +1,7 @@
-import { Button, TextField } from '@mui/material';
+import { Button } from '@mui/material';
 import { useState } from 'react';
 import { useLanguages } from 'src/helpers/stores/skills';
+import AddSkill from '../atoms/AddSkill';
 import SkillPill from '../atoms/SkillPill';
 
 const Unrated = () => {
@@ -8,13 +9,12 @@ const Unrated = () => {
   const addLanguage = useLanguages((state) => state.addLanguage);
   const removeLanguage = useLanguages((state) => state.removeLanguage);
   const [isNewEntry, setIsNewEntry] = useState(false);
-  const [value, setValue] = useState('');
 
-  const addMoreHandler = () => {
+  const toggleEntry = () => {
     setIsNewEntry(!isNewEntry);
   };
 
-  const addHandler = () => {
+  const addHandler = (value: string) => {
     addLanguage(value);
   };
 
@@ -22,35 +22,24 @@ const Unrated = () => {
     removeLanguage(lang);
   };
 
+  const languagesElement = languages.map((language) => (
+    <SkillPill key={language} value={language} onDelete={deleteHandler} />
+  ));
+
+  const newLanguageElement = isNewEntry ? (
+    <AddSkill addHandler={addHandler} cancelHandler={toggleEntry} languages={languages} />
+  ) : (
+    <div className="mt-8">
+      <Button variant="outlined" onClick={toggleEntry}>
+        + Add more
+      </Button>
+    </div>
+  );
+
   return (
     <div className="flex flex-col gap-2">
-      {languages.map((language) => (
-        <SkillPill key={language} value={language} onDelete={deleteHandler} />
-      ))}
-
-      {isNewEntry ? (
-        <>
-          <TextField
-            label="Skill"
-            variant="filled"
-            value={value}
-            onChange={(e) => setValue(e.target.value)}
-            className="mt-4"
-          />
-          <div className="flex gap-2">
-            <Button variant="outlined" onClick={addHandler} className="text-resume-900">
-              Done
-            </Button>
-            <Button variant="outlined" onClick={addMoreHandler} className="text-resume-900">
-              Cancel
-            </Button>
-          </div>
-        </>
-      ) : (
-        <Button variant="outlined" onClick={addMoreHandler} className="mt-4">
-          + Add more
-        </Button>
-      )}
+      {languagesElement}
+      {newLanguageElement}
     </div>
   );
 };

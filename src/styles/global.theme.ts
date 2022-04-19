@@ -14,6 +14,9 @@ export const GLOBAL_MUI_THEME = createTheme({
       800: '#2E4052',
       900: '#1C2C3A',
     },
+    primary: {
+      main: '#2E4052',
+    },
   },
 });
 
