@@ -4,11 +4,11 @@ import { Button, TextField } from '@mui/material';
 const AddSkill = ({
   addHandler,
   cancelHandler,
-  languages,
+  items,
 }: {
   addHandler: (v: string) => void;
   cancelHandler: () => void;
-  languages: string[];
+  items: string[];
 }) => {
   const [value, setValue] = useState('');
   const [disabled, setDisabled] = useState(true);
@@ -20,7 +20,7 @@ const AddSkill = ({
   };
 
   const doneHandler = (value: string) => {
-    if (!languages.includes(value)) {
+    if (!items.includes(value)) {
       addHandler(value);
       setValue('');
     } else {
@@ -37,7 +37,7 @@ const AddSkill = ({
   }, [value]);
 
   return (
-    <form className="mt-8">
+    <form>
       <TextField
         label="Skill"
         variant="filled"

@@ -4,6 +4,7 @@ interface LanguageState {
   languages: string[];
   addLanguage: (language: string) => void;
   removeLanguage: (language: string) => void;
+  setLanguages: (language: string[]) => void;
 }
 
 export const useLanguages = create<LanguageState>((set) => ({
@@ -12,4 +13,5 @@ export const useLanguages = create<LanguageState>((set) => ({
   addLanguage: (language) => set((state) => ({ languages: state.languages.concat(language) })),
   removeLanguage: (language) =>
     set((state) => ({ languages: state.languages.filter((l) => l !== language) })),
+  setLanguages: (languages) => set(() => ({ languages })),
 }));
