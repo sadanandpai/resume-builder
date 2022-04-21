@@ -22,9 +22,11 @@ const SkillPill = ({ value, onDelete }: { value: string; onDelete: (v: string) =
       <div className="flex items-center min-w-max" {...listeners}>
         <Image src="/icons/equals.svg" width={16} height={6} alt="close" className="cursor-grab" />
       </div>
-      <span className="ml-2">{value}</span>
-      <button className="ml-auto min-w-max" onClick={() => onDelete(value)}>
-        <Image src="/icons/close.svg" width={15} height={15} alt="close" />
+      <span className="flex-1 ml-2 cursor-grab" {...listeners}>
+        {value}
+      </span>
+      <button className="ml-3 min-w-max flex items-center" onClick={() => onDelete(value)}>
+        <Image src="/icons/close.svg" width={16} height={16} alt="close" />
       </button>
     </div>
   );
