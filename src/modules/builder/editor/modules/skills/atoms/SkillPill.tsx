@@ -14,17 +14,18 @@ const SkillPill = ({ value, onDelete }: { value: string; onDelete: (v: string) =
 
   return (
     <div
-      className="bg-custom-grey flex items-center pl-4 pr-2 py-2 rounded-full text-sm cursor-grab"
+      className="bg-custom-grey flex items-center pl-4 pr-2 py-2 rounded-full text-sm cursor-default"
       style={style}
       ref={setNodeRef}
       {...attributes}
-      {...listeners}
     >
-      <div className="flex items-center min-w-max">
-        <Image src="/icons/equals.svg" width={16} height={6} alt="close" />
+      <div className="flex items-center min-w-max" {...listeners}>
+        <Image src="/icons/equals.svg" width={16} height={6} alt="close" className="cursor-grab" />
       </div>
-      <span className="ml-2">{value}</span>
-      <button className="ml-auto min-w-max flex items-center" onClick={() => onDelete(value)}>
+      <span className="flex-1 ml-2 cursor-grab" {...listeners}>
+        {value}
+      </span>
+      <button className="ml-3 min-w-max flex items-center" onClick={() => onDelete(value)}>
         <Image src="/icons/close.svg" width={16} height={16} alt="close" />
       </button>
     </div>
