@@ -2,34 +2,34 @@ import create from 'zustand';
 import produce from 'immer';
 
 export interface Item {
-  value: string;
+  name: string;
   score: number;
 }
 
 interface LanguageState {
   languages: Item[];
-  addLanguage: ({ value, score }: { value: string; score: number }) => void;
-  removeLanguage: (value: string) => void;
-  setLanguages: (value: Item[]) => void;
+  addLanguage: ({ name, score }: { name: string; score: number }) => void;
+  removeLanguage: (name: string) => void;
+  setLanguages: (name: Item[]) => void;
 }
 
 export const useLanguages = create<LanguageState>((set) => ({
   languages: [
-    { value: 'JavaScript', score: 60 },
-    { value: 'HTML', score: 40 },
-    { value: 'CSS', score: 80 },
+    { name: 'JavaScript', score: 60 },
+    { name: 'HTML', score: 40 },
+    { name: 'CSS', score: 80 },
   ],
 
-  addLanguage: ({ value, score }) =>
+  addLanguage: ({ name, score }) =>
     set(
       produce((state: LanguageState) => {
-        state.languages.push({ value, score });
+        state.languages.push({ name, score });
       })
     ),
 
-  removeLanguage: (value) =>
+  removeLanguage: (name) =>
     set((state: LanguageState) => ({
-      languages: state.languages.filter((item) => item.value !== value),
+      languages: state.languages.filter((item) => item.name !== name),
     })),
 
   setLanguages: (languages) => set(() => ({ languages })),

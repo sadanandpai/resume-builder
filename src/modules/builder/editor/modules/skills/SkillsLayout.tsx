@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import EditSectionContainer from 'src/helpers/common/components/EditSectionContainer';
 import { useLanguages } from 'src/stores/skills';
-import Unrated from './components/Unrated';
+import Skill from './components/Skill';
 
 const SkillsLayout = () => {
   const languages = useLanguages((state) => state.languages);
@@ -18,10 +18,11 @@ const SkillsLayout = () => {
   return (
     <>
       <EditSectionContainer title="Languages" expanded={expanded} clickHandler={clickHandler}>
-        <Unrated
+        <Skill
           items={languages}
           addItem={addLanguage}
           removeItem={removeLanguage}
+          hasScore={true}
           setItems={setLanguages}
         />
       </EditSectionContainer>

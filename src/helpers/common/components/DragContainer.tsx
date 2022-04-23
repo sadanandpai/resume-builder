@@ -36,8 +36,8 @@ export default function DragContainer({
     const { active, over } = event;
 
     if (over && active.id !== over.id) {
-      const oldIndex = items.findIndex((item) => item.value === active.id);
-      const newIndex = items.findIndex((item) => item.value === over.id);
+      const oldIndex = items.findIndex((item) => item.name === active.id);
+      const newIndex = items.findIndex((item) => item.name === over.id);
       setItems(arrayMove(items, oldIndex, newIndex));
     }
   }
@@ -49,10 +49,7 @@ export default function DragContainer({
       onDragEnd={handleDragEnd}
       modifiers={[restrictToVerticalAxis]}
     >
-      <SortableContext
-        items={items.map(({ value }) => value)}
-        strategy={verticalListSortingStrategy}
-      >
+      <SortableContext items={items.map(({ name }) => name)} strategy={verticalListSortingStrategy}>
         {children}
       </SortableContext>
     </DndContext>

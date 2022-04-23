@@ -1,51 +1,56 @@
 import { ChangeEvent, useEffect, useState } from 'react';
-import { Button, TextField } from '@mui/material';
+import { TextField } from '@mui/material';
 import SliderValue from '../atoms/SliderValue';
+import { OutlinedButton, TextButton } from 'src/helpers/common/atoms/Buttons';
 
 const AddSkill = ({
   addHandler,
-  cancelHandler,
   items,
   hasScore = false,
 }: {
-  addHandler: ({ value, score }: { value: string; score: number }) => void;
-  cancelHandler: () => void;
-  items: { value: string; score: number }[];
+  addHandler: ({ name, score }: { name: string; score: number }) => void;
+  items: { name: string; score: number }[];
   hasScore: boolean;
 }) => {
-  const [value, setValue] = useState('');
+  const [showForm, setShowForm] = useState(false);
+  const [name, setName] = useState('');
   const [score, setScore] = useState(0);
   const [disabled, setDisabled] = useState(true);
   const [errorText, setErrorText] = useState('');
 
+  const toggleForm = () => {
+    setShowForm(!showForm);
+    setName('');
+  };
+
   const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
+    setName(e.target.value);
     setErrorText('');
   };
 
-  const doneHandler = ({ value, score }: { value: string; score: number }) => {
-    if (items.find((item) => item.value === value)) {
-      setErrorText('Duplicate value');
+  const doneHandler = ({ name, score }: { name: string; score: number }) => {
+    if (items.find((item) => item.name.toLowerCase() === name.toLowerCase())) {
+      setErrorText('Duplicate name');
     } else {
-      addHandler({ value, score });
-      setValue('');
+      addHandler({ name, score });
+      setName('');
     }
   };
 
   useEffect(() => {
-    if (value.length > 0) {
+    if (name.length > 0) {
       setDisabled(false);
     } else {
       setDisabled(true);
     }
-  }, [value]);
+  }, [name]);
 
-  return (
+  const formEl = (
     <form>
       <TextField
         label="Skill"
         variant="filled"
-        value={value}
+        value={name}
         fullWidth
         required
         error={!!errorText}
@@ -55,20 +60,15 @@ const AddSkill = ({
       />
       {hasScore && <SliderValue score={score} setScore={setScore} />}
       <div className="flex gap-2 mt-3">
-        <Button
-          variant="outlined"
-          onClick={() => doneHandler({ value, score })}
-          className="text-resume-900"
-          disabled={disabled}
-        >
+        <OutlinedButton onClick={() => doneHandler({ name, score })} disabled={disabled}>
           Done
-        </Button>
-        <Button variant="text" onClick={cancelHandler} className="text-resume-900">
-          Cancel
-        </Button>
+        </OutlinedButton>
+        <TextButton onClick={toggleForm}>Cancel</TextButton>
       </div>
     </form>
   );
+
+  return showForm ? formEl : <OutlinedButton onClick={toggleForm}>+ Add more</OutlinedButton>;
 };
 
 export default AddSkill;

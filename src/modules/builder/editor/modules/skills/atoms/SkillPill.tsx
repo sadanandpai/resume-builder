@@ -3,16 +3,18 @@ import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 
 const SkillPill = ({
-  value,
+  name,
   score,
   onDelete,
+  showScore,
 }: {
-  value: string;
+  name: string;
   score?: number;
   onDelete: (v: string) => void;
+  showScore: boolean;
 }) => {
   const { attributes, listeners, setNodeRef, transform, transition } = useSortable({
-    id: value,
+    id: name,
   });
 
   const style = {
@@ -31,10 +33,10 @@ const SkillPill = ({
         <Image src="/icons/equals.svg" width={16} height={6} alt="close" className="cursor-grab" />
       </div>
       <span className="flex-1 ml-2 cursor-grab" {...listeners}>
-        {value}
+        {name}
       </span>
-      <span className="ml-2">{score}</span>
-      <button className="ml-2 min-w-max flex items-center" onClick={() => onDelete(value)}>
+      {showScore && <span className="ml-2">{score}</span>}
+      <button className="ml-2 min-w-max flex items-center" onClick={() => onDelete(name)}>
         <Image src="/icons/close.svg" width={16} height={16} alt="close" />
       </button>
     </div>
