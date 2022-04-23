@@ -2,7 +2,15 @@ import Image from 'next/image';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 
-const SkillPill = ({ value, onDelete }: { value: string; onDelete: (v: string) => void }) => {
+const SkillPill = ({
+  value,
+  score,
+  onDelete,
+}: {
+  value: string;
+  score?: number;
+  onDelete: (v: string) => void;
+}) => {
   const { attributes, listeners, setNodeRef, transform, transition } = useSortable({
     id: value,
   });
@@ -25,7 +33,8 @@ const SkillPill = ({ value, onDelete }: { value: string; onDelete: (v: string) =
       <span className="flex-1 ml-2 cursor-grab" {...listeners}>
         {value}
       </span>
-      <button className="ml-3 min-w-max flex items-center" onClick={() => onDelete(value)}>
+      <span className="ml-2">{score}</span>
+      <button className="ml-2 min-w-max flex items-center" onClick={() => onDelete(value)}>
         <Image src="/icons/close.svg" width={16} height={16} alt="close" />
       </button>
     </div>

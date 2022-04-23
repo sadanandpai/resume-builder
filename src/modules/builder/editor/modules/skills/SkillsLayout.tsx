@@ -4,7 +4,7 @@ import { useLanguages } from 'src/helpers/stores/skills';
 import Unrated from './components/Unrated';
 
 const SkillsLayout = () => {
-  const languages = useLanguages((state) => [...state.languages.values()]);
+  const languages = useLanguages((state) => state.languages);
   const addLanguage = useLanguages((state) => state.addLanguage);
   const removeLanguage = useLanguages((state) => state.removeLanguage);
   const setLanguages = useLanguages((state) => state.setLanguages);

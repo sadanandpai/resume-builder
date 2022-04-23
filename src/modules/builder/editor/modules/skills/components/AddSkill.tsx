@@ -1,16 +1,20 @@
 import { ChangeEvent, useEffect, useState } from 'react';
 import { Button, TextField } from '@mui/material';
+import SliderValue from '../atoms/SliderValue';
 
 const AddSkill = ({
   addHandler,
   cancelHandler,
   items,
+  hasScore = false,
 }: {
-  addHandler: (v: string) => void;
+  addHandler: ({ value, score }: { value: string; score: number }) => void;
   cancelHandler: () => void;
-  items: string[];
+  items: { value: string; score: number }[];
+  hasScore: boolean;
 }) => {
   const [value, setValue] = useState('');
+  const [score, setScore] = useState(0);
   const [disabled, setDisabled] = useState(true);
   const [errorText, setErrorText] = useState('');
 
@@ -19,12 +23,12 @@ const AddSkill = ({
     setErrorText('');
   };
 
-  const doneHandler = (value: string) => {
-    if (!items.includes(value)) {
-      addHandler(value);
-      setValue('');
-    } else {
+  const doneHandler = ({ value, score }: { value: string; score: number }) => {
+    if (items.find((item) => item.value === value)) {
       setErrorText('Duplicate value');
+    } else {
+      addHandler({ value, score });
+      setValue('');
     }
   };
 
@@ -48,10 +52,11 @@ const AddSkill = ({
         helperText={errorText}
         onChange={changeHandler}
       />
+      {hasScore && <SliderValue score={score} setScore={setScore} />}
       <div className="flex gap-2 mt-3">
         <Button
           variant="outlined"
-          onClick={() => doneHandler(value)}
+          onClick={() => doneHandler({ value, score })}
           className="text-resume-900"
           disabled={disabled}
         >

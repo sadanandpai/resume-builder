@@ -1,6 +1,7 @@
 import { Button } from '@mui/material';
 import { useState } from 'react';
-import AddSkill from '../atoms/AddSkill';
+import { Item } from 'src/helpers/stores/skills';
+import AddSkill from './AddSkill';
 import SkillPill from '../atoms/SkillPill';
 import DragContainer from 'src/common/components/DragContainer';
 
@@ -10,10 +11,10 @@ export default function Unrated({
   removeItem,
   setItems,
 }: {
-  items: string[];
-  addItem: (v: string) => void;
-  removeItem: (v: string) => void;
-  setItems: (v: string[]) => void;
+  items: Item[];
+  addItem: ({ value, score }: { value: string; score: number }) => void;
+  removeItem: (value: string) => void;
+  setItems: (value: Item[]) => void;
 }) {
   const [isNewEntry, setIsNewEntry] = useState(false);
 
@@ -21,26 +22,31 @@ export default function Unrated({
     setIsNewEntry(!isNewEntry);
   };
 
-  const addHandler = (value: string) => {
-    addItem(value);
+  const addHandler = (item: Item) => {
+    addItem(item);
   };
 
-  const deleteHandler = (lang: string) => {
-    removeItem(lang);
+  const deleteHandler = (value: string) => {
+    removeItem(value);
   };
 
-  const languagesElement = items.length ? (
+  const itemsElementArray = items.length ? (
     <div className="flex flex-col gap-2 mb-8">
       <DragContainer items={items} setItems={setItems}>
         {items.map((item) => (
-          <SkillPill key={item} value={item} onDelete={deleteHandler} />
+          <SkillPill
+            key={item.value}
+            value={item.value}
+            score={item.score}
+            onDelete={deleteHandler}
+          />
         ))}
       </DragContainer>
     </div>
   ) : null;
 
-  const newLanguageElement = isNewEntry ? (
-    <AddSkill addHandler={addHandler} cancelHandler={toggleEntry} items={items} />
+  const newItemElement = isNewEntry ? (
+    <AddSkill addHandler={addHandler} cancelHandler={toggleEntry} items={items} hasScore={true} />
   ) : (
     <div>
       <Button variant="outlined" onClick={toggleEntry}>
@@ -51,8 +57,8 @@ export default function Unrated({
 
   return (
     <>
-      {languagesElement}
-      {newLanguageElement}
+      {itemsElementArray}
+      {newItemElement}
     </>
   );
 }

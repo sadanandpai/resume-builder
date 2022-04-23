@@ -14,14 +14,15 @@ import {
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
 import { restrictToVerticalAxis } from '@dnd-kit/modifiers';
+import { Item } from 'src/helpers/stores/skills';
 
 export default function DragContainer({
   items,
   setItems,
   children,
 }: {
-  items: string[];
-  setItems: (v: string[]) => void;
+  items: Item[];
+  setItems: (v: Item[]) => void;
   children: JSX.Element | JSX.Element[];
 }) {
   const sensors = useSensors(
@@ -35,8 +36,8 @@ export default function DragContainer({
     const { active, over } = event;
 
     if (over && active.id !== over.id) {
-      const oldIndex = items.indexOf(active.id);
-      const newIndex = items.indexOf(over.id);
+      const oldIndex = items.findIndex((item) => item.value === active.id);
+      const newIndex = items.findIndex((item) => item.value === over.id);
       setItems(arrayMove(items, oldIndex, newIndex));
     }
   }
@@ -48,7 +49,10 @@ export default function DragContainer({
       onDragEnd={handleDragEnd}
       modifiers={[restrictToVerticalAxis]}
     >
-      <SortableContext items={items} strategy={verticalListSortingStrategy}>
+      <SortableContext
+        items={items.map(({ value }) => value)}
+        strategy={verticalListSortingStrategy}
+      >
         {children}
       </SortableContext>
     </DndContext>
