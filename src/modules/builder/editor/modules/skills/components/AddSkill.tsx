@@ -51,6 +51,7 @@ const AddSkill = ({
         error={!!errorText}
         helperText={errorText}
         onChange={changeHandler}
+        autoComplete="off"
       />
       {hasScore && <SliderValue score={score} setScore={setScore} />}
       <div className="flex gap-2 mt-3">

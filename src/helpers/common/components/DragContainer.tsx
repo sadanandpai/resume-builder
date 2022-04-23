@@ -14,7 +14,7 @@ import {
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
 import { restrictToVerticalAxis } from '@dnd-kit/modifiers';
-import { Item } from 'src/helpers/stores/skills';
+import { Item } from 'src/stores/skills';
 
 export default function DragContainer({
   items,

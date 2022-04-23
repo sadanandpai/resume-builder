@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import EditSectionContainer from 'src/common/components/EditSectionContainer';
-import { useLanguages } from 'src/helpers/stores/skills';
+import EditSectionContainer from 'src/helpers/common/components/EditSectionContainer';
+import { useLanguages } from 'src/stores/skills';
 import Unrated from './components/Unrated';
 
 const SkillsLayout = () => {

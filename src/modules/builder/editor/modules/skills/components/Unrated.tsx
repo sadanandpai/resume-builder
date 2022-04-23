@@ -1,9 +1,9 @@
 import { Button } from '@mui/material';
 import { useState } from 'react';
-import { Item } from 'src/helpers/stores/skills';
+import { Item } from 'src/stores/skills';
 import AddSkill from './AddSkill';
 import SkillPill from '../atoms/SkillPill';
-import DragContainer from 'src/common/components/DragContainer';
+import DragContainer from 'src/helpers/common/components/DragContainer';
 
 export default function Unrated({
   items,
