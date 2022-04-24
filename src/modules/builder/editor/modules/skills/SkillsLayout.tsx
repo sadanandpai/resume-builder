@@ -24,7 +24,7 @@ const SkillsLayout = () => {
   const [expandedIndex, setExpandedIndex] = useState(0);
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-8 mb-8">
       {skillState.map((state, index) => (
         <EditSectionContainer
           key={state.title}

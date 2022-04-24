@@ -8,6 +8,7 @@ import {
   libraries,
   practices,
   SkillState,
+  technologies,
   tools,
 } from './skill.interface';
 
@@ -50,7 +51,7 @@ export const useFrameworks = create<SkillState>((set) => ({
 export const useTechnologies = create<SkillState>((set) => ({
   title: 'Technologies',
   hasLevel: false,
-  values: frameworks,
+  values: technologies,
 
   add: addSkill(set),
   remove: removeSkill(set),

@@ -29,13 +29,19 @@ const AddSkill = ({
     setErrorText('');
   };
 
-  const doneHandler = ({ name, level }: { name: string; level: number }) => {
+  const doneHandler = () => {
     if (items.find((item) => item.name.toLowerCase() === name.toLowerCase())) {
-      setErrorText('Duplicate name');
+      setErrorText('Duplicate entry');
     } else {
-      addHandler({ name, level });
       setName('');
+      setErrorText('');
+      addHandler({ name, level });
     }
+  };
+
+  const submitHandler = (e: ChangeEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    doneHandler();
   };
 
   useEffect(() => {
@@ -47,7 +53,7 @@ const AddSkill = ({
   }, [name]);
 
   const formEl = (
-    <form>
+    <form onSubmit={submitHandler}>
       <TextField
         label="Skill"
         variant="filled"
@@ -61,7 +67,7 @@ const AddSkill = ({
       />
       {hasLevel && <SliderValue level={level} setLevel={setLevel} />}
       <div className="flex gap-2 mt-3">
-        <OutlinedButton onClick={() => doneHandler({ name, level })} disabled={disabled}>
+        <OutlinedButton onClick={doneHandler} disabled={disabled}>
           Done
         </OutlinedButton>
         <TextButton onClick={toggleForm}>Cancel</TextButton>

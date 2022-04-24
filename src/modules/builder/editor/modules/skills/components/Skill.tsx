@@ -2,6 +2,12 @@ import { Item } from 'src/stores/skill.interface';
 import AddSkill from './AddSkill';
 import SkillPill from '../atoms/SkillPill';
 import DragContainer from 'src/helpers/common/components/DragContainer';
+import { motion } from 'framer-motion';
+
+const animation = {
+  initial: { height: '1px' },
+  animate: { height: '100%' },
+};
 
 export default function Skill({
   items,
@@ -25,7 +31,11 @@ export default function Skill({
   };
 
   const itemsArrayEl = items.length ? (
-    <div className="flex flex-col gap-2 mb-8">
+    <motion.div
+      className="flex flex-col gap-2 mb-8"
+      initial={animation.initial}
+      animate={animation.animate}
+    >
       <DragContainer items={items} setItems={setItems}>
         {items.map((item, index) => (
           <SkillPill
@@ -38,7 +48,7 @@ export default function Skill({
           />
         ))}
       </DragContainer>
-    </div>
+    </motion.div>
   ) : null;
 
   return (
