@@ -1,7 +1,6 @@
 import create from 'zustand';
 import produce from 'immer';
 import { Item, Resume } from './index.interface';
-import { addSkillItem, removeSkillItem } from './skills';
 
 const INITIAL_DATA = {
   basics: {
@@ -148,92 +147,4 @@ const INITIAL_DATA = {
 
 export const useResumeStore = create<Resume>((set) => ({
   ...INITIAL_DATA,
-
-  addFramework: ({ name, level }: Item) => {
-    set(
-      produce((state) => {
-        state.skills.frameworks = addSkillItem(state.skills.frameworks, { name, level });
-      })
-    );
-  },
-
-  removeFramework: (index: number) => {
-    set(
-      produce((state) => {
-        state.skills.frameworks = removeSkillItem(state.skills.frameworks, index);
-      })
-    );
-  },
-
-  addTechnology: ({ name, level }: Item) => {
-    set(
-      produce((state) => {
-        state.skills.technologies = addSkillItem(state.skills.technologies, { name, level });
-      })
-    );
-  },
-
-  removeTechnology: (index: number) => {
-    set(
-      produce((state) => {
-        state.skills.technologies = removeSkillItem(state.skills.technologies, index);
-      })
-    );
-  },
-
-  addLibrary: ({ name, level }: Item) => {
-    set(
-      produce((state) => {
-        state.skills.libraries = addSkillItem(state.skills.libraries, { name, level });
-      })
-    );
-  },
-
-  removeLibrary: (index: number) => {
-    set(
-      produce((state) => {
-        state.skills.libraries = removeSkillItem(state.skills.libraries, index);
-      })
-    );
-  },
-
-  addDatabase: ({ name, level }: Item) => {
-    set(
-      produce((state) => {
-        state.skills.databases = addSkillItem(state.skills.databases, { name, level });
-      })
-    );
-  },
-
-  removeDatabase: (index: number) => {
-    set(
-      produce((state) => {
-        state.skills.databases = removeSkillItem(state.skills.databases, index);
-      })
-    );
-  },
-
-  addPractice: ({ name, level }: Item) => {
-    set(
-      produce((state) => {
-        state.skills.practices = addSkillItem(state.skills.practices, { name, level });
-      })
-    );
-  },
-
-  removePractice: (index: number) => {
-    set(
-      produce((state) => {
-        state.skills.practices = removeSkillItem(state.skills.practices, index);
-      })
-    );
-  },
-
-  addTool: ({ name, level }: Item) => {
-    set(
-      produce((state) => {
-        state.skills.tools = addSkillItem(state.skills.tools, { name, level });
-      })
-    );
-  },
 }));

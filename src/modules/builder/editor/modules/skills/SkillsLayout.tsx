@@ -21,16 +21,21 @@ const SkillsLayout = () => {
     usePractices(),
     useTools(),
   ];
-  const [expandedIndex, setExpandedIndex] = useState(0);
+
+  const [expanded, setExpanded] = useState<string | false>('Languages');
+
+  const handleChange = (panel: string, isExpanded: boolean) => {
+    setExpanded(isExpanded ? panel : false);
+  };
 
   return (
     <div className="flex flex-col gap-8 mb-8">
-      {skillState.map((state, index) => (
+      {skillState.map((state) => (
         <EditSectionContainer
           key={state.title}
-          expanded={expandedIndex === index}
           title={state.title}
-          clickHandler={() => setExpandedIndex(index)}
+          expanded={expanded === state.title}
+          clickHandler={() => handleChange(state.title, expanded !== state.title)}
         >
           <Skill
             items={state.values}
