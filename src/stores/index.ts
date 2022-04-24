@@ -50,39 +50,39 @@ const INITIAL_DATA = {
 
   skills: {
     languages: [
-      { name: 'JavaScript', score: 5 },
-      { name: 'HTML5', score: 5 },
-      { name: 'CSS', score: 5 },
+      { name: 'JavaScript', level: 5 },
+      { name: 'HTML5', level: 5 },
+      { name: 'CSS', level: 5 },
     ],
     frameworks: [
-      { name: 'React', score: 4 },
-      { name: 'Angular', score: 4 },
+      { name: 'React', level: 4 },
+      { name: 'Angular', level: 4 },
     ],
     technologies: [
-      { name: 'Algorithms', score: 3 },
-      { name: 'Progressive Web Apps', score: 3 },
-      { name: 'SQL', score: 3 },
-      { name: 'Data Structures', score: 3 },
+      { name: 'Algorithms', level: 3 },
+      { name: 'Progressive Web Apps', level: 3 },
+      { name: 'SQL', level: 3 },
+      { name: 'Data Structures', level: 3 },
     ],
     libraries: [
-      { name: 'jQuery', score: 3 },
-      { name: 'Redux', score: 3 },
+      { name: 'jQuery', level: 3 },
+      { name: 'Redux', level: 3 },
     ],
-    databases: [{ name: 'Firebase', score: 3 }],
+    databases: [{ name: 'Firebase', level: 3 }],
     practices: [
-      { name: 'Component based architecture', score: 3 },
-      { name: 'Agile methodology', score: 3 },
-      { name: 'Design Patterns', score: 3 },
-      { name: 'Test Driven Development', score: 3 },
-      { name: 'MVC', score: 3 },
+      { name: 'Component based architecture', level: 3 },
+      { name: 'Agile methodology', level: 3 },
+      { name: 'Design Patterns', level: 3 },
+      { name: 'Test Driven Development', level: 3 },
+      { name: 'MVC', level: 3 },
     ],
     tools: [
-      { name: 'Git', score: 3 },
-      { name: 'VS Code', score: 3 },
-      { name: 'Jira', score: 3 },
-      { name: 'Webpack', score: 3 },
-      { name: 'Eclipse', score: 3 },
-      { name: 'Bitbucket', score: 3 },
+      { name: 'Git', level: 3 },
+      { name: 'VS Code', level: 3 },
+      { name: 'Jira', level: 3 },
+      { name: 'Webpack', level: 3 },
+      { name: 'Eclipse', level: 3 },
+      { name: 'Bitbucket', level: 3 },
     ],
   },
 
@@ -149,10 +149,10 @@ const INITIAL_DATA = {
 export const useResumeStore = create<Resume>((set) => ({
   ...INITIAL_DATA,
 
-  addFramework: ({ name, score }: Item) => {
+  addFramework: ({ name, level }: Item) => {
     set(
       produce((state) => {
-        state.skills.frameworks = addSkillItem(state.skills.frameworks, { name, score });
+        state.skills.frameworks = addSkillItem(state.skills.frameworks, { name, level });
       })
     );
   },
@@ -165,10 +165,10 @@ export const useResumeStore = create<Resume>((set) => ({
     );
   },
 
-  addTechnology: ({ name, score }: Item) => {
+  addTechnology: ({ name, level }: Item) => {
     set(
       produce((state) => {
-        state.skills.technologies = addSkillItem(state.skills.technologies, { name, score });
+        state.skills.technologies = addSkillItem(state.skills.technologies, { name, level });
       })
     );
   },
@@ -181,10 +181,10 @@ export const useResumeStore = create<Resume>((set) => ({
     );
   },
 
-  addLibrary: ({ name, score }: Item) => {
+  addLibrary: ({ name, level }: Item) => {
     set(
       produce((state) => {
-        state.skills.libraries = addSkillItem(state.skills.libraries, { name, score });
+        state.skills.libraries = addSkillItem(state.skills.libraries, { name, level });
       })
     );
   },
@@ -197,10 +197,10 @@ export const useResumeStore = create<Resume>((set) => ({
     );
   },
 
-  addDatabase: ({ name, score }: Item) => {
+  addDatabase: ({ name, level }: Item) => {
     set(
       produce((state) => {
-        state.skills.databases = addSkillItem(state.skills.databases, { name, score });
+        state.skills.databases = addSkillItem(state.skills.databases, { name, level });
       })
     );
   },
@@ -213,10 +213,10 @@ export const useResumeStore = create<Resume>((set) => ({
     );
   },
 
-  addPractice: ({ name, score }: Item) => {
+  addPractice: ({ name, level }: Item) => {
     set(
       produce((state) => {
-        state.skills.practices = addSkillItem(state.skills.practices, { name, score });
+        state.skills.practices = addSkillItem(state.skills.practices, { name, level });
       })
     );
   },
@@ -229,10 +229,10 @@ export const useResumeStore = create<Resume>((set) => ({
     );
   },
 
-  addTool: ({ name, score }: Item) => {
+  addTool: ({ name, level }: Item) => {
     set(
       produce((state) => {
-        state.skills.tools = addSkillItem(state.skills.tools, { name, score });
+        state.skills.tools = addSkillItem(state.skills.tools, { name, level });
       })
     );
   },

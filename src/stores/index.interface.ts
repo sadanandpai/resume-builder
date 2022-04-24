@@ -29,7 +29,7 @@ export interface Basics {
 
 export interface Item {
   name: string;
-  score: number;
+  level: number;
 }
 
 export interface Skills {
