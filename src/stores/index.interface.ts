@@ -6,13 +6,13 @@ export interface Location {
   region: string;
 }
 
-export interface Profile {
+export interface ProfileIntrf {
   network: string;
   username: string;
   url: string;
 }
 
-export interface Basics {
+export interface BasicsIntrf {
   name: string;
   label: string;
   image: string;
@@ -24,25 +24,25 @@ export interface Basics {
   location: Location;
   relExp: string;
   totalExp: string;
-  profiles: Profile[];
+  profiles: ProfileIntrf[];
 }
 
-export interface Item {
+export interface ItemIntrf {
   name: string;
   level: number;
 }
 
-export interface Skills {
-  languages: Item[];
-  frameworks: Item[];
-  technologies: Item[];
-  libraries: Item[];
-  databases: Item[];
-  tools: Item[];
-  practices: Item[];
+export interface SkillsIntrf {
+  languages: ItemIntrf[];
+  frameworks: ItemIntrf[];
+  technologies: ItemIntrf[];
+  libraries: ItemIntrf[];
+  databases: ItemIntrf[];
+  tools: ItemIntrf[];
+  practices: ItemIntrf[];
 }
 
-export interface Work {
+export interface WorkIntrf {
   company: string;
   position: string;
   website: string;
@@ -53,7 +53,7 @@ export interface Work {
   years: string;
 }
 
-export interface Education {
+export interface EducationIntrf {
   institution: string;
   website: string;
   studyType: string;
@@ -64,9 +64,9 @@ export interface Education {
   courses: string[];
 }
 
-export interface Resume {
-  basics: Basics;
-  skills: Skills;
-  work: Work[];
-  education: Education[];
+export interface ResumeIntrf {
+  basics: BasicsIntrf;
+  skills: SkillsIntrf;
+  work: WorkIntrf[];
+  education: EducationIntrf[];
 }
