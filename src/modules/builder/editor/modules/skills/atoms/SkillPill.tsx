@@ -40,6 +40,7 @@ const SkillPill = ({
     >
       <div
         className="bg-custom-grey flex items-center pl-4 pr-2 py-2 rounded-full text-sm cursor-default"
+        data-testid="skill-pill"
         style={style}
         ref={setNodeRef}
         {...attributes}
@@ -53,7 +54,7 @@ const SkillPill = ({
             className="cursor-grab"
           />
         </div>
-        <span className="flex-1 ml-2 cursor-grab" {...listeners}>
+        <span className="flex-1 ml-2 cursor-grab" data-testid="skill-title" {...listeners}>
           {name}
         </span>
         {showLevel && <span className="ml-2">{level}</span>}

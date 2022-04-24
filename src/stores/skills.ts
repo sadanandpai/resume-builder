@@ -97,7 +97,3 @@ export const useTools = create<SkillState>((set) => ({
   remove: removeSkill(set),
   set: setSkills(set),
 }));
-
-export const addSkillItem = (list: Item[], item: Item) => list.push(item);
-
-export const removeSkillItem = (list: Item[], index: number) => list.splice(index, 1);

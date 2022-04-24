@@ -23,14 +23,6 @@ export default function Skill({
   setItems: (name: Item[]) => void;
   hasLevel: boolean;
 }) {
-  const addHandler = (item: Item) => {
-    addItem(item);
-  };
-
-  const deleteHandler = (index: number) => {
-    removeItem(index);
-  };
-
   return (
     <>
       <motion.div
@@ -46,14 +38,14 @@ export default function Skill({
                 index={index}
                 name={item.name}
                 level={item.level}
-                onDelete={deleteHandler}
+                onDelete={removeItem}
                 showLevel={hasLevel}
               />
             ))}
           </AnimatePresence>
         </DragContainer>
       </motion.div>
-      <AddSkill addHandler={addHandler} items={items} hasLevel={hasLevel} />
+      <AddSkill addHandler={addItem} items={items} hasLevel={hasLevel} />
     </>
   );
 }
