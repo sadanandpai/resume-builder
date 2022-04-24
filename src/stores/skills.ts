@@ -34,3 +34,7 @@ export const useLanguages = create<LanguageState>((set) => ({
 
   setLanguages: (languages) => set(() => ({ languages })),
 }));
+
+export const addSkillItem = (list: Item[], item: Item) => list.push(item);
+
+export const removeSkillItem = (list: Item[], index: number) => list.splice(index, 1);
