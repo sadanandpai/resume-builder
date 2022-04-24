@@ -1,17 +1,26 @@
 import Image from 'next/image';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
+import { motion } from 'framer-motion';
+
+const animation = {
+  initial: { y: 25, opacity: 0 },
+  animate: { y: 0, opacity: 1 },
+  exit: { height: 0, padding: 0, opacity: 0, transition: { duration: 0.15 } },
+};
 
 const SkillPill = ({
+  index,
   name,
-  score,
+  level,
   onDelete,
-  showScore,
+  showLevel,
 }: {
+  index: number;
   name: string;
-  score?: number;
-  onDelete: (v: string) => void;
-  showScore: boolean;
+  level?: number;
+  onDelete: (index: number) => void;
+  showLevel: boolean;
 }) => {
   const { attributes, listeners, setNodeRef, transform, transition } = useSortable({
     id: name,
@@ -23,23 +32,36 @@ const SkillPill = ({
   };
 
   return (
-    <div
-      className="bg-custom-grey flex items-center pl-4 pr-2 py-2 rounded-full text-sm cursor-default"
-      style={style}
-      ref={setNodeRef}
-      {...attributes}
+    <motion.div
+      initial={animation.initial}
+      animate={animation.animate}
+      exit={animation.exit}
+      key={name}
     >
-      <div className="flex items-center min-w-max" {...listeners}>
-        <Image src="/icons/equals.svg" width={16} height={6} alt="close" className="cursor-grab" />
+      <div
+        className="bg-custom-grey flex items-center pl-4 pr-2 py-2 rounded-full text-sm cursor-default"
+        style={style}
+        ref={setNodeRef}
+        {...attributes}
+      >
+        <div className="flex items-center min-w-max" {...listeners}>
+          <Image
+            src="/icons/equals.svg"
+            width={16}
+            height={6}
+            alt="close"
+            className="cursor-grab"
+          />
+        </div>
+        <span className="flex-1 ml-2 cursor-grab" {...listeners}>
+          {name}
+        </span>
+        {showLevel && <span className="ml-2">{level}</span>}
+        <button className="ml-2 min-w-max flex items-center" onClick={() => onDelete(index)}>
+          <Image src="/icons/close.svg" width={16} height={16} alt="close" />
+        </button>
       </div>
-      <span className="flex-1 ml-2 cursor-grab" {...listeners}>
-        {name}
-      </span>
-      {showScore && <span className="ml-2">{score}</span>}
-      <button className="ml-2 min-w-max flex items-center" onClick={() => onDelete(name)}>
-        <Image src="/icons/close.svg" width={16} height={16} alt="close" />
-      </button>
-    </div>
+    </motion.div>
   );
 };
 
