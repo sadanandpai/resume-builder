@@ -1,32 +1,47 @@
 import { useState } from 'react';
+import {
+  useDatabases,
+  useFrameworks,
+  useLanguages,
+  useLibraries,
+  usePractices,
+  useTechnologies,
+  useTools,
+} from 'src/stores/skills';
 import EditSectionContainer from 'src/helpers/common/components/EditSectionContainer';
-import { useLanguages } from 'src/stores/skills';
 import Skill from './components/Skill';
 
 const SkillsLayout = () => {
-  const languages = useLanguages((state) => state.languages);
-  const addLanguage = useLanguages((state) => state.addLanguage);
-  const removeLanguage = useLanguages((state) => state.removeLanguage);
-  const setLanguages = useLanguages((state) => state.setLanguages);
-
-  const [expanded, setExpanded] = useState(true);
-
-  const clickHandler = () => {
-    setExpanded(!expanded);
-  };
+  const skillState = [
+    useLanguages(),
+    useFrameworks(),
+    useTechnologies(),
+    useLibraries(),
+    useDatabases(),
+    usePractices(),
+    useTools(),
+  ];
+  const [expandedIndex, setExpandedIndex] = useState(0);
 
   return (
-    <>
-      <EditSectionContainer title="Languages" expanded={expanded} clickHandler={clickHandler}>
-        <Skill
-          items={languages}
-          addItem={addLanguage}
-          removeItem={removeLanguage}
-          hasScore={true}
-          setItems={setLanguages}
-        />
-      </EditSectionContainer>
-    </>
+    <div className="flex flex-col gap-8">
+      {skillState.map((state, index) => (
+        <EditSectionContainer
+          key={state.title}
+          expanded={expandedIndex === index}
+          title={state.title}
+          clickHandler={() => setExpandedIndex(index)}
+        >
+          <Skill
+            items={state.values}
+            addItem={state.add}
+            removeItem={state.remove}
+            setItems={state.set}
+            hasLevel={state.hasLevel}
+          />
+        </EditSectionContainer>
+      ))}
+    </div>
   );
 };
 

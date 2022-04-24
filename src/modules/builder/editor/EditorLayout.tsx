@@ -18,7 +18,7 @@ const EditorLayout = () => {
   );
 
   return (
-    <div className="bg-resume-50 h-full text-resume-800 p-6 overflow-hidden relative">
+    <div className="bg-resume-50 h-full text-resume-800 p-6 overflow-auto relative no-scrollbar">
       {displayElement}
     </div>
   );

@@ -2,19 +2,20 @@ import { ChangeEvent, useEffect, useState } from 'react';
 import { TextField } from '@mui/material';
 import SliderValue from '../atoms/SliderValue';
 import { OutlinedButton, TextButton } from 'src/helpers/common/atoms/Buttons';
+import { Item } from 'src/stores/skill.interface';
 
 const AddSkill = ({
   addHandler,
   items,
-  hasScore = false,
+  hasLevel = false,
 }: {
-  addHandler: ({ name, score }: { name: string; score: number }) => void;
-  items: { name: string; score: number }[];
-  hasScore: boolean;
+  addHandler: ({ name, level }: Item) => void;
+  items: Item[];
+  hasLevel: boolean;
 }) => {
   const [showForm, setShowForm] = useState(false);
   const [name, setName] = useState('');
-  const [score, setScore] = useState(0);
+  const [level, setLevel] = useState(0);
   const [disabled, setDisabled] = useState(true);
   const [errorText, setErrorText] = useState('');
 
@@ -28,11 +29,11 @@ const AddSkill = ({
     setErrorText('');
   };
 
-  const doneHandler = ({ name, score }: { name: string; score: number }) => {
+  const doneHandler = ({ name, level }: { name: string; level: number }) => {
     if (items.find((item) => item.name.toLowerCase() === name.toLowerCase())) {
       setErrorText('Duplicate name');
     } else {
-      addHandler({ name, score });
+      addHandler({ name, level });
       setName('');
     }
   };
@@ -58,9 +59,9 @@ const AddSkill = ({
         onChange={changeHandler}
         autoComplete="off"
       />
-      {hasScore && <SliderValue score={score} setScore={setScore} />}
+      {hasLevel && <SliderValue level={level} setLevel={setLevel} />}
       <div className="flex gap-2 mt-3">
-        <OutlinedButton onClick={() => doneHandler({ name, score })} disabled={disabled}>
+        <OutlinedButton onClick={() => doneHandler({ name, level })} disabled={disabled}>
           Done
         </OutlinedButton>
         <TextButton onClick={toggleForm}>Cancel</TextButton>
