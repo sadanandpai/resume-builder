@@ -3,6 +3,7 @@ import AddSkill from './AddSkill';
 import SkillPill from '../atoms/SkillPill';
 import DragContainer from 'src/helpers/common/components/DragContainer';
 import { motion } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 
 const animation = {
   initial: { height: '1px' },
@@ -30,30 +31,28 @@ export default function Skill({
     removeItem(index);
   };
 
-  const itemsArrayEl = items.length ? (
-    <motion.div
-      className="flex flex-col gap-2 mb-8"
-      initial={animation.initial}
-      animate={animation.animate}
-    >
-      <DragContainer items={items} setItems={setItems}>
-        {items.map((item, index) => (
-          <SkillPill
-            key={item.name}
-            index={index}
-            name={item.name}
-            level={item.level}
-            onDelete={deleteHandler}
-            showLevel={hasLevel}
-          />
-        ))}
-      </DragContainer>
-    </motion.div>
-  ) : null;
-
   return (
     <>
-      {itemsArrayEl}
+      <motion.div
+        className="flex flex-col gap-2 mb-8 empty:mb-0"
+        initial={animation.initial}
+        animate={animation.animate}
+      >
+        <DragContainer items={items} setItems={setItems}>
+          <AnimatePresence>
+            {items.map((item, index) => (
+              <SkillPill
+                key={item.name}
+                index={index}
+                name={item.name}
+                level={item.level}
+                onDelete={deleteHandler}
+                showLevel={hasLevel}
+              />
+            ))}
+          </AnimatePresence>
+        </DragContainer>
+      </motion.div>
       <AddSkill addHandler={addHandler} items={items} hasLevel={hasLevel} />
     </>
   );

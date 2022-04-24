@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import { TextField } from '@mui/material';
 import SliderValue from '../atoms/SliderValue';
 import { OutlinedButton, TextButton } from 'src/helpers/common/atoms/Buttons';
@@ -18,6 +18,7 @@ const AddSkill = ({
   const [level, setLevel] = useState(0);
   const [disabled, setDisabled] = useState(true);
   const [errorText, setErrorText] = useState('');
+  const inputRef = useRef<HTMLInputElement>();
 
   const toggleForm = () => {
     setShowForm(!showForm);
@@ -29,19 +30,22 @@ const AddSkill = ({
     setErrorText('');
   };
 
+  const submitHandler = (e: ChangeEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    doneHandler();
+  };
+
   const doneHandler = () => {
-    if (items.find((item) => item.name.toLowerCase() === name.toLowerCase())) {
+    const trimmedLowerText = name.trim().toLowerCase();
+
+    if (items.find((item) => item.name.toLowerCase() === trimmedLowerText)) {
       setErrorText('Duplicate entry');
     } else {
       setName('');
       setErrorText('');
-      addHandler({ name, level });
+      addHandler({ name: trimmedLowerText, level });
+      inputRef.current?.focus();
     }
-  };
-
-  const submitHandler = (e: ChangeEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    doneHandler();
   };
 
   useEffect(() => {
@@ -58,12 +62,14 @@ const AddSkill = ({
         label="Skill"
         variant="filled"
         value={name}
-        fullWidth
-        required
         error={!!errorText}
         helperText={errorText}
         onChange={changeHandler}
         autoComplete="off"
+        inputRef={inputRef}
+        fullWidth
+        required
+        autoFocus
       />
       {hasLevel && <SliderValue level={level} setLevel={setLevel} />}
       <div className="flex gap-2 mt-3">
