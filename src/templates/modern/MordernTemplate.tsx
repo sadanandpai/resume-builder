@@ -7,42 +7,28 @@ import { Objective } from './components/Objective';
 import { SkillsSection } from './components/Skills';
 import { SummarySection } from './components/Summary';
 import { WorkSection } from './components/Work';
+import { useContext } from 'react';
+import { StateContext } from 'src/modules/builder/resume/ResumeLayout';
 
 export const MordernTemplate = () => {
-  const {
-    name,
-    summary,
-    objective,
-    label,
-    url,
-    email,
-    phone,
-    city,
-    experience,
-    education,
-    languages,
-    frameworks,
-    technologies,
-    tools,
-  } = useResumeStore(
-    (state) => ({
-      name: state.basics.name,
-      summary: state.basics.summary,
-      objective: state.basics.objective,
-      label: state.basics.label,
-      url: state.basics.url,
-      email: state.basics.email,
-      phone: state.basics.phone,
-      city: state.basics.location.city,
-      experience: state.work,
-      education: state.education,
-      languages: state.skills.languages,
-      frameworks: state.skills.frameworks,
-      technologies: state.skills.technologies,
-      tools: state.skills.tools,
-    }),
-    shallow
-  );
+  const { languages, frameworks, technologies, tools } = useContext(StateContext);
+
+  const { name, summary, objective, label, url, email, phone, city, experience, education } =
+    useResumeStore(
+      (state) => ({
+        name: state.basics.name,
+        summary: state.basics.summary,
+        objective: state.basics.objective,
+        label: state.basics.label,
+        url: state.basics.url,
+        email: state.basics.email,
+        phone: state.basics.phone,
+        city: state.basics.location.city,
+        experience: state.work,
+        education: state.education,
+      }),
+      shallow
+    );
 
   return (
     <div className="p-2">

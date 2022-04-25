@@ -14,15 +14,15 @@ import {
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
 import { restrictToVerticalAxis } from '@dnd-kit/modifiers';
-import { Item } from 'src/stores/skill.interface';
+import { SkillItemIntf } from 'src/stores/skill.interface';
 
 export default function DragContainer({
   items,
   setItems,
   children,
 }: {
-  items: Item[];
-  setItems: (v: Item[]) => void;
+  items: SkillItemIntf[];
+  setItems: (v: SkillItemIntf[]) => void;
   children: JSX.Element | JSX.Element[];
 }) {
   const sensors = useSensors(
