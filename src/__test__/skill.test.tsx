@@ -1,7 +1,7 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 import { render, screen } from '@testing-library/react';
-import { Item } from 'src/stores/skill.interface';
+import { SkillItemIntf } from 'src/stores/skill.interface';
 import Skill from 'src/modules/builder/editor/modules/skills/components/Skill';
 
 let items = [
@@ -10,7 +10,7 @@ let items = [
   { name: 'CSS', level: 80 },
 ];
 
-const addItem = jest.fn(({ name, level }: Item) => {
+const addItem = jest.fn(({ name, level }: SkillItemIntf) => {
   items.push({ name, level });
 });
 
@@ -18,7 +18,7 @@ const removeItem = jest.fn((index: number) => {
   items.splice(index, 1);
 });
 
-const setItems = jest.fn((values: Item[]) => {
+const setItems = jest.fn((values: SkillItemIntf[]) => {
   items = values;
 });
 

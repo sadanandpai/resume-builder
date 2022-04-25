@@ -2,15 +2,15 @@ import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import { TextField } from '@mui/material';
 import SliderValue from '../atoms/SliderValue';
 import { OutlinedButton, TextButton } from 'src/helpers/common/atoms/Buttons';
-import { Item } from 'src/stores/skill.interface';
+import { SkillItemIntf } from 'src/stores/skill.interface';
 
 const AddSkill = ({
   addHandler,
   items,
   hasLevel = false,
 }: {
-  addHandler: ({ name, level }: Item) => void;
-  items: Item[];
+  addHandler: ({ name, level }: SkillItemIntf) => void;
+  items: SkillItemIntf[];
   hasLevel: boolean;
 }) => {
   const [showForm, setShowForm] = useState(false);
@@ -36,14 +36,15 @@ const AddSkill = ({
   };
 
   const doneHandler = () => {
-    const trimmedLowerText = name.trim().toLowerCase();
+    const trimmedText = name.trim();
+    const trimmedLowerText = trimmedText.toLowerCase();
 
     if (items.find((item) => item.name.toLowerCase() === trimmedLowerText)) {
       setErrorText('Duplicate entry');
     } else {
       setName('');
       setErrorText('');
-      addHandler({ name: trimmedLowerText, level });
+      addHandler({ name: trimmedText, level });
       inputRef.current?.focus();
     }
   };

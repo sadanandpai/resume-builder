@@ -1,97 +1,91 @@
 import create, { SetState } from 'zustand';
 import produce from 'immer';
-import {
-  databases,
-  frameworks,
-  Item,
-  languages,
-  libraries,
-  practices,
-  SkillState,
-  technologies,
-  tools,
-} from './skill.interface';
+import { SkillItemIntf, SkillStateIntf } from './skill.interface';
+import ResumeData from 'src/helpers/constants/resume-data.json';
 
 const addSkill =
-  (set: SetState<SkillState>) =>
-  ({ name, level }: Item) =>
+  (set: SetState<SkillStateIntf>) =>
+  ({ name, level }: SkillItemIntf) =>
     set(
-      produce((state: SkillState) => {
+      produce((state: SkillStateIntf) => {
         state.values.push({ name, level });
       })
     );
 
-const removeSkill = (set: SetState<SkillState>) => (index: number) =>
-  set((state) => ({
-    values: state.values.slice(0, index).concat(state.values.slice(index + 1)),
-  }));
+const removeSkill = (set: SetState<SkillStateIntf>) => (index: number) =>
+  set(
+    produce((state: SkillStateIntf) => {
+      state.values.splice(index, 1);
+    })
+  );
 
-const setSkills = (set: SetState<SkillState>) => (values: Item[]) => set(() => ({ values }));
+const setSkills = (set: SetState<SkillStateIntf>) => (values: SkillItemIntf[]) =>
+  set(() => ({ values }));
 
-export const useLanguages = create<SkillState>((set) => ({
+export const useLanguages = create<SkillStateIntf>((set) => ({
   title: 'Languages',
   hasLevel: true,
-  values: languages,
+  values: ResumeData.skills.languages,
 
   add: addSkill(set),
   remove: removeSkill(set),
   set: setSkills(set),
 }));
 
-export const useFrameworks = create<SkillState>((set) => ({
+export const useFrameworks = create<SkillStateIntf>((set) => ({
   title: 'Frameworks',
   hasLevel: true,
-  values: frameworks,
+  values: ResumeData.skills.frameworks,
 
   add: addSkill(set),
   remove: removeSkill(set),
   set: setSkills(set),
 }));
 
-export const useTechnologies = create<SkillState>((set) => ({
+export const useTechnologies = create<SkillStateIntf>((set) => ({
   title: 'Technologies',
   hasLevel: false,
-  values: technologies,
+  values: ResumeData.skills.technologies,
 
   add: addSkill(set),
   remove: removeSkill(set),
   set: setSkills(set),
 }));
 
-export const useLibraries = create<SkillState>((set) => ({
+export const useLibraries = create<SkillStateIntf>((set) => ({
   title: 'Libraries',
   hasLevel: false,
-  values: libraries,
+  values: ResumeData.skills.libraries,
 
   add: addSkill(set),
   remove: removeSkill(set),
   set: setSkills(set),
 }));
 
-export const useDatabases = create<SkillState>((set) => ({
+export const useDatabases = create<SkillStateIntf>((set) => ({
   title: 'Databases',
   hasLevel: false,
-  values: databases,
+  values: ResumeData.skills.databases,
 
   add: addSkill(set),
   remove: removeSkill(set),
   set: setSkills(set),
 }));
 
-export const usePractices = create<SkillState>((set) => ({
+export const usePractices = create<SkillStateIntf>((set) => ({
   title: 'Practices',
   hasLevel: false,
-  values: practices,
+  values: ResumeData.skills.practices,
 
   add: addSkill(set),
   remove: removeSkill(set),
   set: setSkills(set),
 }));
 
-export const useTools = create<SkillState>((set) => ({
+export const useTools = create<SkillStateIntf>((set) => ({
   title: 'Tools',
   hasLevel: false,
-  values: tools,
+  values: ResumeData.skills.tools,
 
   add: addSkill(set),
   remove: removeSkill(set),
