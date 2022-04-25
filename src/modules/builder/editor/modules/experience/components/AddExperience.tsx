@@ -26,9 +26,11 @@ const AddExperience = ({
   };
 
   return (
-    <OutlinedButton onClick={onCreateNewExperience} disabled={false}>
-      + Add more
-    </OutlinedButton>
+    <div className="flex gap-2 mt-3">
+      <OutlinedButton onClick={onCreateNewExperience} disabled={false}>
+        + Add more
+      </OutlinedButton>
+    </div>
   );
 };
 
