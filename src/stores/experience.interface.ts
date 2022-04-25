@@ -5,6 +5,7 @@ export interface ExperienceItem {
   isWorkingHere: boolean;
   endDate: string;
   summary: string;
+  id: string;
 }
 
 export interface ExperienceStore {
@@ -30,5 +31,6 @@ export const allWorks = [
     isWorkingHere: false,
     endDate: '25/1/2022',
     summary: '',
+    id: 'xyx',
   },
 ];

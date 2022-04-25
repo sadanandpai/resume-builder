@@ -4,7 +4,7 @@ import { ExperienceItem, ExperienceStore, allWorks } from './experience.interfac
 
 const addExperience =
   (set: SetState<ExperienceStore>) =>
-  ({ companyName, position, startDate, isWorkingHere, endDate, summary }: ExperienceItem) =>
+  ({ companyName, position, startDate, isWorkingHere, endDate, summary, id }: ExperienceItem) =>
     set(
       produce((state: ExperienceStore) => {
         state.experiences.push({
@@ -14,6 +14,7 @@ const addExperience =
           isWorkingHere,
           endDate,
           summary,
+          id,
         });
       })
     );
