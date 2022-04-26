@@ -1,6 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import { useState } from 'react';
 
 const animation = {
   exit: {
@@ -17,18 +16,20 @@ const nonEditableStyle =
 const EditSectionContainer = ({
   title,
   expanded,
-  children,
   clickHandler,
+  isEnabled,
+  setIsEnabled,
+  children,
 }: {
   title: string;
   expanded: boolean;
-  children: JSX.Element;
   clickHandler: () => void;
+  isEnabled: boolean;
+  setIsEnabled: (enabled: boolean) => void;
+  children: JSX.Element;
 }) => {
-  const [isVisible, setIsVisible] = useState(true);
-
   const toggleVisibility = (e: React.MouseEvent) => {
-    setIsVisible(!isVisible);
+    setIsEnabled(!isEnabled);
     e.stopPropagation();
   };
 
@@ -40,7 +41,7 @@ const EditSectionContainer = ({
       >
         <span>{title}</span>
         <Image
-          src={isVisible ? '/icons/eye.svg' : '/icons/eye-slash.svg'}
+          src={isEnabled ? '/icons/eye.svg' : '/icons/eye-slash.svg'}
           alt="eye"
           height="16px"
           width="21px"
@@ -51,7 +52,7 @@ const EditSectionContainer = ({
         {expanded && (
           <motion.div
             className={`bg-resume-10 relative rounded-b-md px-4 py-6 shadow-level-4px-0.25 overflow-hidden ${
-              !isVisible && nonEditableStyle
+              !isEnabled && nonEditableStyle
             }`}
             exit={animation.exit}
           >
