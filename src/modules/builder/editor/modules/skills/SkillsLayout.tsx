@@ -35,6 +35,8 @@ const SkillsLayout = () => {
           key={state.title}
           title={state.title}
           expanded={expanded === state.title}
+          isEnabled={state.isEnabled}
+          setIsEnabled={state.setIsEnabled}
           clickHandler={() => handleChange(state.title, expanded !== state.title)}
         >
           <Skill

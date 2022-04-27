@@ -15,13 +15,13 @@ export let StateContext: Context<any> = createContext(null);
 
 export const ResumeLayout = () => {
   const skillState = {
-    languages: useLanguages((state) => state.values),
-    frameworks: useFrameworks((state) => state.values),
-    technologies: useTechnologies((state) => state.values),
-    libraries: useLibraries((state) => state.values),
-    databases: useDatabases((state) => state.values),
-    practices: usePractices((state) => state.values),
-    tools: useTools((state) => state.values),
+    languages: useLanguages((state) => state.get()),
+    frameworks: useFrameworks((state) => state.get()),
+    technologies: useTechnologies((state) => state.get()),
+    libraries: useLibraries((state) => state.get()),
+    databases: useDatabases((state) => state.get()),
+    practices: usePractices((state) => state.get()),
+    tools: useTools((state) => state.get()),
   };
 
   StateContext = createContext(skillState);
