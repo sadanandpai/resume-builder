@@ -15,8 +15,7 @@ const labels = [
   'Methodology / Approach',
   'Tools',
   'Education',
-  'Relevant Experience',
-  'Total Experience',
+  'Industry Experience',
 ];
 
 export const useIntro = create(

@@ -30,11 +30,6 @@ export const INTRO_METADATA = [
     value: 'location.city',
   },
   {
-    label: 'Relevant Experience',
-    type: 'Input',
-    value: 'relExp',
-  },
-  {
     label: 'Total Experience',
     type: 'Input',
     value: 'totalExp',

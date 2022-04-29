@@ -89,10 +89,7 @@ function Intro({ intro }: any) {
           <p className="about__info__title">{intro.label}</p>
           <div className="about__info__experience">
             <p className="about__info__experience__item">
-              Relevant Experience: <span>{intro.relExp}</span>
-            </p>
-            <p className="about__info__experience__item">
-              Total Experience: <span>{intro.totalExp}</span>
+              Industry Experience: <span>{intro.totalExp}</span>
             </p>
           </div>
         </div>
