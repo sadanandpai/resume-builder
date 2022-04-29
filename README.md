@@ -27,9 +27,13 @@
 
 ### For developers
 
-- `git clone https://github.com/sadanandpai/single-page-resume-builder.git`
-- `yarn install`
-- `yarn dev`
+```bash
+git clone https://github.com/sadanandpai/single-page-resume-builder.git
+cd single-page-resume-builder
+yarn install
+yarn dev
+```
+
 
 ### Technologies
 
