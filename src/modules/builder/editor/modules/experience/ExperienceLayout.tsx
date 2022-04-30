@@ -5,12 +5,13 @@ import AddExperience from './components/AddExperience';
 import Experience from './components/Experience';
 
 const ExperienceLayout = () => {
-  const allExperience = useExperiences((state) => state.experiences);
+  const allWorks = useExperiences((state) => state.experiences);
+  const setIsEnabled = useExperiences((state) => state.setIsEnabled);
 
   const [expanded, setExpanded] = useState<string | false>('Languages');
 
   useEffect(() => {
-    setExpanded(allExperience[0]?.id);
+    setExpanded(allWorks[0]?.id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -20,9 +21,13 @@ const ExperienceLayout = () => {
 
   return (
     <div className="flex flex-col gap-8 mb-8">
-      {allExperience.map((state) => (
+      {allWorks.map((state, index) => (
         <EditSectionContainer
           key={state.companyName}
+          isEnabled={state.isEnabled}
+          setIsEnabled={(enabled: boolean) => {
+            setIsEnabled(index, enabled);
+          }}
           title={state.companyName || 'Experience'}
           expanded={expanded === state.id}
           clickHandler={() => handleChange(state.id, expanded !== state.id)}

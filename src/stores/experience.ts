@@ -1,10 +1,19 @@
-import create, { SetState } from 'zustand';
+import create, { SetState, GetState } from 'zustand';
 import produce from 'immer';
 import { ExperienceItem, ExperienceStore, allWorks } from './experience.interface';
 
 const addExperience =
   (set: SetState<ExperienceStore>) =>
-  ({ companyName, position, startDate, isWorkingHere, endDate, summary, id }: ExperienceItem) =>
+  ({
+    companyName,
+    position,
+    startDate,
+    isWorkingHere,
+    endDate,
+    summary,
+    id,
+    isEnabled,
+  }: ExperienceItem) =>
     set(
       produce((state: ExperienceStore) => {
         state.experiences.push({
@@ -15,6 +24,7 @@ const addExperience =
           endDate,
           summary,
           id,
+          isEnabled,
         });
       })
     );
@@ -27,9 +37,23 @@ const removeExperience = (set: SetState<ExperienceStore>) => (index: number) =>
 const setExperience = (set: SetState<ExperienceStore>) => (values: ExperienceItem[]) =>
   set(() => ({ experiences: values }));
 
-export const useExperiences = create<ExperienceStore>((set) => ({
+const getExperience = (get: GetState<ExperienceStore>) => (index: number) => {
+  return get().experiences[index];
+};
+
+const setIsEnabled = (set: SetState<ExperienceStore>) => (index: number, isEnabled: boolean) => {
+  set(
+    produce((state: ExperienceStore) => {
+      state.experiences[index].isEnabled = isEnabled;
+    })
+  );
+};
+
+export const useExperiences = create<ExperienceStore>((set, get) => ({
   experiences: allWorks,
   add: addExperience(set),
+  get: getExperience(get),
   remove: removeExperience(set),
   set: setExperience(set),
+  setIsEnabled: setIsEnabled(set),
 }));

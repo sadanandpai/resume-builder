@@ -6,20 +6,16 @@ export interface ExperienceItem {
   endDate: string;
   summary: string;
   id: string;
+  isEnabled: boolean;
 }
 
 export interface ExperienceStore {
   experiences: ExperienceItem[];
-  add: ({
-    companyName,
-    position,
-    startDate,
-    isWorkingHere,
-    endDate,
-    summary,
-  }: ExperienceItem) => void;
+  add: (newExperience: ExperienceItem) => void;
+  get: (index: number) => void;
   remove: (index: number) => void;
   set: (values: ExperienceItem[]) => void;
+  setIsEnabled: (index: number, enabled: boolean) => void;
 }
 
 // temp data
@@ -28,9 +24,10 @@ export const allWorks = [
     companyName: 'XYZ Private Limted',
     position: 'SDE 1',
     startDate: '12/3/2019',
-    isWorkingHere: false,
-    endDate: '25/1/2022',
+    isWorkingHere: true,
+    endDate: '1/5/2022',
     summary: '',
     id: 'xyx',
+    isEnabled: true,
   },
 ];
