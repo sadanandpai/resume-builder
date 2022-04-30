@@ -48,13 +48,11 @@ const Experience: React.FC<Props> = memo(({ experienceInfo, currentIndex }) => {
     <Fragment>
       <TextField
         label="Comapany name"
-        name={'companyName'}
         variant="filled"
         value={experienceInfo.companyName}
         onChange={(e: ChangeEvent<HTMLInputElement>) => {
-          const name = e.target.name;
           const value = e.target.value;
-          onChangeHandler(name, value);
+          onChangeHandler('companyName', value);
         }}
         autoComplete="off"
         fullWidth
@@ -64,13 +62,11 @@ const Experience: React.FC<Props> = memo(({ experienceInfo, currentIndex }) => {
       />
       <TextField
         label="Position"
-        name={'position'}
         variant="filled"
         value={experienceInfo.position}
         onChange={(e: ChangeEvent<HTMLInputElement>) => {
-          const name = e.target.name;
           const value = e.target.value;
-          onChangeHandler(name, value);
+          onChangeHandler('position', value);
         }}
         autoComplete="off"
         fullWidth
@@ -126,9 +122,8 @@ const Experience: React.FC<Props> = memo(({ experienceInfo, currentIndex }) => {
         name="summary"
         value={experienceInfo.summary}
         onChange={(e: ChangeEvent<HTMLInputElement>) => {
-          const name = e.target.name;
           const value = e.target.value;
-          onChangeHandler(name, value);
+          onChangeHandler('summary', value);
         }}
       />
     </Fragment>
