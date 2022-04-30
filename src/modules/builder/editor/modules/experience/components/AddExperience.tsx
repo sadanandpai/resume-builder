@@ -1,7 +1,8 @@
 import { OutlinedButton } from 'src/helpers/common/atoms/Buttons';
 import { useExperiences } from 'src/stores/experience';
+import { ExperienceItem } from 'src/stores/experience.interface';
 
-const NEW_EXPERIENCE = {
+const NEW_EXPERIENCE: ExperienceItem = {
   companyName: '',
   position: '',
   startDate: '',
@@ -9,6 +10,7 @@ const NEW_EXPERIENCE = {
   endDate: '',
   summary: '',
   id: '',
+  isEnabled: true,
 };
 
 const AddExperience = ({
