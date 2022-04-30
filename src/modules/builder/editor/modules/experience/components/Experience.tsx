@@ -1,7 +1,6 @@
 import React, { ChangeEvent, Fragment, memo } from 'react';
 import TextField from '@mui/material/TextField';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import dayjs from 'dayjs';
 
 import { useExperiences } from 'src/stores/experience';
 import { ExperienceItem } from 'src/stores/experience.interface';
@@ -76,9 +75,8 @@ const Experience: React.FC<Props> = memo(({ experienceInfo, currentIndex }) => {
       <DatePicker
         label="Start date"
         value={experienceInfo.startDate}
-        onChange={(newValue) => {
-          const formattedDate = dayjs(newValue).format('DD/MM/YYYY');
-          onChangeHandler('startDate', formattedDate);
+        onChange={(newDate) => {
+          onChangeHandler('startDate', newDate);
         }}
         inputFormat={'DD/MM/YYYY'}
         renderInput={(params) => (
@@ -95,9 +93,8 @@ const Experience: React.FC<Props> = memo(({ experienceInfo, currentIndex }) => {
       <DatePicker
         label="End date"
         value={experienceInfo.endDate}
-        onChange={(newValue) => {
-          const formattedDate = dayjs(newValue).format('DD/MM/YYYY');
-          onChangeHandler('endDate', formattedDate);
+        onChange={(newDate) => {
+          onChangeHandler('endDate', newDate);
         }}
         inputFormat={'DD/MM/YYYY'}
         renderInput={(params) => (
