@@ -1,6 +1,5 @@
 import Switch from '@mui/material/Switch';
 
-// revisit (override switch default colors)
 export const SwitchWidget = ({
   label,
   value,
