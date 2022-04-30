@@ -1,20 +1,47 @@
-import { ChangeEvent, Fragment } from 'react';
-import { TextField } from '@mui/material';
+import React, { ChangeEvent, Fragment, memo } from 'react';
+import TextField from '@mui/material/TextField';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import dayjs from 'dayjs';
 
+import { useExperiences } from 'src/stores/experience';
 import { ExperienceItem } from 'src/stores/experience.interface';
 import { SwitchWidget } from 'src/helpers/common/atoms/Switch';
 
-const Experience = ({ experienceInfo }: { experienceInfo: ExperienceItem }) => {
+interface Props {
+  experienceInfo: ExperienceItem;
+  currentIndex: number;
+}
+
+const Experience: React.FC<Props> = memo(({ experienceInfo, currentIndex }) => {
+  const { set: setExperiences, experiences } = useExperiences();
+
   const onChangeHandler = (name: string, value: any) => {
+    const currentExpInfo = { ...experienceInfo };
     switch (name) {
       case 'companyName':
+        currentExpInfo.companyName = value;
         break;
       case 'position':
+        currentExpInfo.position = value;
+        break;
+      case 'startDate':
+        currentExpInfo.startDate = value;
+        break;
+      case 'isWorkingHere':
+        currentExpInfo.isWorkingHere = value;
+        break;
+      case 'endDate':
+        currentExpInfo.endDate = value;
+        break;
+      case 'summary':
+        currentExpInfo.summary = value;
         break;
       default:
         break;
     }
+    const updatedWorkExperiences = [...experiences];
+    updatedWorkExperiences[currentIndex] = currentExpInfo;
+    setExperiences(updatedWorkExperiences);
   };
 
   return (
@@ -32,7 +59,7 @@ const Experience = ({ experienceInfo }: { experienceInfo: ExperienceItem }) => {
         autoComplete="off"
         fullWidth
         required
-        autoFocus
+        autoFocus={experienceInfo.isEnabled ? true : false}
         sx={{ marginBottom: '26px' }}
       />
       <TextField
@@ -54,7 +81,8 @@ const Experience = ({ experienceInfo }: { experienceInfo: ExperienceItem }) => {
         label="Start date"
         value={experienceInfo.startDate}
         onChange={(newValue) => {
-          console.info('date', newValue);
+          const formattedDate = dayjs(newValue).format('DD/MM/YYYY');
+          onChangeHandler('startDate', formattedDate);
         }}
         inputFormat={'DD/MM/YYYY'}
         renderInput={(params) => (
@@ -65,14 +93,15 @@ const Experience = ({ experienceInfo }: { experienceInfo: ExperienceItem }) => {
         label={'I currently work here'}
         value={experienceInfo.isWorkingHere}
         onChange={(newValue: boolean) => {
-          console.log('sdfs');
+          onChangeHandler('isWorkingHere', newValue);
         }}
       />
       <DatePicker
         label="End date"
         value={experienceInfo.endDate}
         onChange={(newValue) => {
-          console.info('date', newValue);
+          const formattedDate = dayjs(newValue).format('DD/MM/YYYY');
+          onChangeHandler('endDate', formattedDate);
         }}
         inputFormat={'DD/MM/YYYY'}
         renderInput={(params) => (
@@ -94,10 +123,19 @@ const Experience = ({ experienceInfo }: { experienceInfo: ExperienceItem }) => {
         variant="filled"
         autoComplete="off"
         fullWidth
+        name="summary"
         value={experienceInfo.summary}
+        onChange={(e: ChangeEvent<HTMLInputElement>) => {
+          const name = e.target.name;
+          const value = e.target.value;
+          onChangeHandler(name, value);
+        }}
       />
     </Fragment>
   );
-};
+});
+
+// revisit
+Experience.displayName = 'Experience';
 
 export default Experience;

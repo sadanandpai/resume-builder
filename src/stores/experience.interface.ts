@@ -1,9 +1,9 @@
 export interface ExperienceItem {
   companyName: string;
   position: string;
-  startDate: string;
+  startDate: string | null;
   isWorkingHere: boolean;
-  endDate: string;
+  endDate: string | null;
   summary: string;
   id: string;
   isEnabled: boolean;
@@ -15,7 +15,7 @@ export interface ExperienceStore {
   get: (index: number) => void;
   remove: (index: number) => void;
   set: (values: ExperienceItem[]) => void;
-  setIsEnabled: (index: number, enabled: boolean) => void;
+  setIsEnabled: (enabled: boolean, index: number) => void;
 }
 
 // temp data

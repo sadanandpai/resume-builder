@@ -5,9 +5,9 @@ import { ExperienceItem } from 'src/stores/experience.interface';
 const NEW_EXPERIENCE: ExperienceItem = {
   companyName: '',
   position: '',
-  startDate: '',
+  startDate: null,
   isWorkingHere: false,
-  endDate: '',
+  endDate: null,
   summary: '',
   id: '',
   isEnabled: true,

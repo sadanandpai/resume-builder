@@ -34,14 +34,17 @@ const removeExperience = (set: SetState<ExperienceStore>) => (index: number) =>
     experiences: state.experiences.slice(0, index).concat(state.experiences.slice(index + 1)),
   }));
 
-const setExperience = (set: SetState<ExperienceStore>) => (values: ExperienceItem[]) =>
-  set(() => ({ experiences: values }));
+const setExperience = (set: SetState<ExperienceStore>) => (values: ExperienceItem[]) => {
+  set({
+    experiences: values,
+  });
+};
 
 const getExperience = (get: GetState<ExperienceStore>) => (index: number) => {
   return get().experiences[index];
 };
 
-const setIsEnabled = (set: SetState<ExperienceStore>) => (index: number, isEnabled: boolean) => {
+const setIsEnabled = (set: SetState<ExperienceStore>) => (isEnabled: boolean, index: number) => {
   set(
     produce((state: ExperienceStore) => {
       state.experiences[index].isEnabled = isEnabled;

@@ -26,13 +26,13 @@ const ExperienceLayout = () => {
           key={state.companyName}
           isEnabled={state.isEnabled}
           setIsEnabled={(enabled: boolean) => {
-            setIsEnabled(index, enabled);
+            setIsEnabled(enabled, index);
           }}
           title={state.companyName || 'Experience'}
           expanded={expanded === state.id}
           clickHandler={() => handleChange(state.id, expanded !== state.id)}
         >
-          <Experience experienceInfo={state} />
+          <Experience experienceInfo={state} currentIndex={index} />
         </EditSectionContainer>
       ))}
       <AddExperience handleChange={handleChange} />
