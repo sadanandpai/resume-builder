@@ -10,7 +10,6 @@ const NEW_EXPERIENCE: ExperienceItem = {
   endDate: null,
   summary: '',
   id: '',
-  isEnabled: true,
 };
 
 const AddExperience = ({

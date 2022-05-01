@@ -4,16 +4,7 @@ import { ExperienceItem, ExperienceStore, allWorks } from './experience.interfac
 
 const addExperience =
   (set: SetState<ExperienceStore>) =>
-  ({
-    companyName,
-    position,
-    startDate,
-    isWorkingHere,
-    endDate,
-    summary,
-    id,
-    isEnabled,
-  }: ExperienceItem) =>
+  ({ companyName, position, startDate, isWorkingHere, endDate, summary, id }: ExperienceItem) =>
     set(
       produce((state: ExperienceStore) => {
         state.experiences.push({
@@ -24,7 +15,6 @@ const addExperience =
           endDate,
           summary,
           id,
-          isEnabled,
         });
       })
     );
@@ -44,10 +34,26 @@ const getExperience = (get: GetState<ExperienceStore>) => (index: number) => {
   return get().experiences[index];
 };
 
-const setIsEnabled = (set: SetState<ExperienceStore>) => (isEnabled: boolean, index: number) => {
+const onMoveUp = (set: SetState<ExperienceStore>) => (index: number) => {
   set(
     produce((state: ExperienceStore) => {
-      state.experiences[index].isEnabled = isEnabled;
+      if (index > 0) {
+        let currentExperience = state.experiences[index];
+        state.experiences[index] = state.experiences[index - 1];
+        state.experiences[index - 1] = currentExperience;
+      }
+    })
+  );
+};
+const onMoveDown = (set: SetState<ExperienceStore>) => (index: number) => {
+  set(
+    produce((state: ExperienceStore) => {
+      const totalExp = state.experiences.length;
+      if (index < totalExp - 1) {
+        let currentExperience = state.experiences[index];
+        state.experiences[index] = state.experiences[index + 1];
+        state.experiences[index + 1] = currentExperience;
+      }
     })
   );
 };
@@ -58,5 +64,6 @@ export const useExperiences = create<ExperienceStore>((set, get) => ({
   get: getExperience(get),
   remove: removeExperience(set),
   set: setExperience(set),
-  setIsEnabled: setIsEnabled(set),
+  onmoveup: onMoveUp(set),
+  onmovedown: onMoveDown(set),
 }));

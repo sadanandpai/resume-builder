@@ -6,7 +6,6 @@ export interface ExperienceItem {
   endDate: string | null;
   summary: string;
   id: string;
-  isEnabled: boolean;
 }
 
 export interface ExperienceStore {
@@ -15,7 +14,8 @@ export interface ExperienceStore {
   get: (index: number) => void;
   remove: (index: number) => void;
   set: (values: ExperienceItem[]) => void;
-  setIsEnabled: (enabled: boolean, index: number) => void;
+  onmoveup: (index: number) => void;
+  onmovedown: (index: number) => void;
 }
 
 // temp data

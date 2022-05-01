@@ -56,7 +56,7 @@ const Experience: React.FC<Props> = memo(({ experienceInfo, currentIndex }) => {
         autoComplete="off"
         fullWidth
         required
-        autoFocus={experienceInfo.isEnabled ? true : false}
+        autoFocus={true}
         sx={{ marginBottom: '26px' }}
       />
       <TextField
