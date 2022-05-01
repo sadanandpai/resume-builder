@@ -1,37 +1,37 @@
 import { useMemo } from 'react';
 import { OutlinedButton } from 'src/helpers/common/atoms/Buttons';
-import { useExperiences } from 'src/stores/experience';
-import { ExperienceItem } from 'src/stores/experience.interface';
+import { useEducations } from 'src/stores/education';
+import { EducationItem } from 'src/stores/education.interface';
 
-const NEW_EXPERIENCE: ExperienceItem = {
-  companyName: '',
-  position: '',
+const NEW_EDUCATION: EducationItem = {
+  academyName: '',
+  degree: '',
+  grade: '',
   startDate: null,
-  isWorkingHere: false,
+  isStudyingHere: false,
   endDate: null,
-  summary: '',
   id: '',
 };
 
-const AddExperience = ({
+const AddEducation = ({
   handleChange,
   isEmpty,
 }: {
   handleChange: (name: string, isExpanded: boolean) => void;
   isEmpty: boolean;
 }) => {
-  const addNewExperience = useExperiences((state) => state.add);
+  const addEducation = useEducations((state) => state.add);
 
-  const onCreateNewExperience = () => {
+  const onCreateEducation = () => {
     const uniqueExpandedId = `${Math.random()}`;
-    NEW_EXPERIENCE.id = uniqueExpandedId;
-    addNewExperience(NEW_EXPERIENCE);
+    NEW_EDUCATION.id = uniqueExpandedId;
+    addEducation(NEW_EDUCATION);
     handleChange(uniqueExpandedId, true);
   };
 
   const buttonCaption = useMemo(() => {
     if (isEmpty) {
-      return '+ Add an experience';
+      return '+ Add an education';
     } else {
       return '+ Add more';
     }
@@ -39,11 +39,11 @@ const AddExperience = ({
 
   return (
     <div className="flex gap-2 mt-3">
-      <OutlinedButton onClick={onCreateNewExperience} disabled={false}>
+      <OutlinedButton onClick={onCreateEducation} disabled={false}>
         {buttonCaption}
       </OutlinedButton>
     </div>
   );
 };
 
-export default AddExperience;
+export default AddEducation;

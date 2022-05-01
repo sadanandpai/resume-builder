@@ -39,7 +39,7 @@ const ExperienceLayout = () => {
           <Experience experienceInfo={state} currentIndex={index} />
         </MoveEditSection>
       ))}
-      <AddExperience handleChange={handleChange} />
+      <AddExperience handleChange={handleChange} isEmpty={allWorks.length === 0} />
     </div>
   );
 };
