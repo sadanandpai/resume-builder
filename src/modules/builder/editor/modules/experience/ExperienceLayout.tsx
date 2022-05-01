@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useExperiences } from 'src/stores/experience';
-import EditSectionContainer from 'src/helpers/common/components/EditSectionContainer';
 import AddExperience from './components/AddExperience';
 import Experience from './components/Experience';
 
-import MoveEditSection from './MoveEditSection';
+import MoveEditSection from 'src/helpers/common/components/MoveEditSectionContainer';
 
 const ExperienceLayout = () => {
   const allWorks = useExperiences((state) => state.experiences);

@@ -28,6 +28,5 @@ export const allWorks = [
     endDate: '1/5/2022',
     summary: '',
     id: 'xyx',
-    isEnabled: true,
   },
 ];

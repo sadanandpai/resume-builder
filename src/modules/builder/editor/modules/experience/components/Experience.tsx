@@ -127,7 +127,6 @@ const Experience: React.FC<Props> = memo(({ experienceInfo, currentIndex }) => {
   );
 });
 
-// revisit
 Experience.displayName = 'Experience';
 
 export default Experience;
