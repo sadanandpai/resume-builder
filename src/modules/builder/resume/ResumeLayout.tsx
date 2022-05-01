@@ -27,10 +27,12 @@ export const ResumeLayout = () => {
   StateContext = createContext(skillState);
 
   return (
-    <div className="my-5 overflow-y-auto no-scrollbar">
-      <ResumeHeader />
-      <div className="w-[210mm] h-[296mm] bg-white mt-3">
-        <div className="h-full overflow-hidden">
+    <div className="m-5">
+      <header className="mb-3">
+        <ResumeHeader />
+      </header>
+      <div className="h-[calc(100%_-_2.75rem)] overflow-auto no-scrollbar">
+        <div className="w-[210mm] h-[296mm] bg-white">
           <StateContext.Provider value={skillState}>
             <MordernTemplate />
           </StateContext.Provider>
