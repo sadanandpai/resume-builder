@@ -13,13 +13,16 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@date-io/dayjs": "^2.13.1",
     "@dnd-kit/core": "^5.0.3",
     "@dnd-kit/modifiers": "^5.0.0",
     "@dnd-kit/sortable": "^6.0.1",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
     "@mui/material": "^5.6.1",
+    "@mui/x-date-pickers": "^5.0.0-alpha.2",
     "@splidejs/splide": "^4.0.1",
+    "dayjs": "^1.11.1",
     "framer-motion": "^6.3.0",
     "immer": "^9.0.12",
     "next": "12.1.4",

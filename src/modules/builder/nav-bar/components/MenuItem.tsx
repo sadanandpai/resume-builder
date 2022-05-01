@@ -24,8 +24,8 @@ export const NavMenuItem = ({ caption, popoverChildren }: NavMenuItemProps) => {
         aria-describedby={'mark'}
         endIcon={
           <Image
-            src={'/icons/down-arrow.svg'}
-            alt="down-arrow"
+            src={'/icons/dropdown-arrow.svg'}
+            alt="dropdown-arrow"
             width={'20px'}
             height={'20px'}
             className={`${anchorEl ? 'scale-y-[-1]' : ''}`}

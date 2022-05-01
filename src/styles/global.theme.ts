@@ -18,6 +18,26 @@ export const GLOBAL_MUI_THEME = createTheme({
       main: '#2E4052',
     },
   },
+  components: {
+    MuiSwitch: {
+      styleOverrides: {
+        switchBase: {
+          '& > .MuiSwitch-thumb': {
+            backgroundColor: '#FFFFFF',
+          },
+          '&.Mui-checked > .MuiSwitch-thumb': {
+            backgroundColor: '#59748F', // resume 500 variant
+          },
+          '& + .MuiSwitch-track': {
+            backgroundColor: '#C7D6E4', // resume 100 variant
+          },
+          '&.Mui-checked + .MuiSwitch-track': {
+            backgroundColor: '#C7D6E4', // resume 100 variant
+          },
+        },
+      },
+    },
+  },
 });
 
 declare module '@mui/material/styles' {
