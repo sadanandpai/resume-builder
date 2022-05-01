@@ -25,7 +25,7 @@ export const allWorks = [
     position: 'SDE 1',
     startDate: '12/3/2019',
     isWorkingHere: true,
-    endDate: '1/5/2022',
+    endDate: null,
     summary: '',
     id: 'xyx',
   },
