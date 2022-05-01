@@ -1,30 +1,13 @@
 import { MordernTemplate } from 'src/templates/modern/MordernTemplate';
 import ResumeHeader from './components/ResumeHeader';
-import {
-  useDatabases,
-  useFrameworks,
-  useLanguages,
-  useLibraries,
-  usePractices,
-  useTechnologies,
-  useTools,
-} from 'src/stores/skills';
 import { Context, createContext } from 'react';
+import { useResumeStore } from 'src/stores/useResumeStore';
 
 export let StateContext: Context<any> = createContext(null);
 
 export const ResumeLayout = () => {
-  const skillState = {
-    languages: useLanguages((state) => state.get()),
-    frameworks: useFrameworks((state) => state.get()),
-    technologies: useTechnologies((state) => state.get()),
-    libraries: useLibraries((state) => state.get()),
-    databases: useDatabases((state) => state.get()),
-    practices: usePractices((state) => state.get()),
-    tools: useTools((state) => state.get()),
-  };
-
-  StateContext = createContext(skillState);
+  const resumeData = useResumeStore();
+  StateContext = createContext(resumeData);
 
   return (
     <div className="m-5">
@@ -33,7 +16,7 @@ export const ResumeLayout = () => {
       </header>
       <div className="h-[calc(100%_-_2.75rem)] overflow-auto no-scrollbar">
         <div className="w-[210mm] h-[296mm] bg-white">
-          <StateContext.Provider value={skillState}>
+          <StateContext.Provider value={resumeData}>
             <MordernTemplate />
           </StateContext.Provider>
         </div>

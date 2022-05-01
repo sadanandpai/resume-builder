@@ -4,7 +4,7 @@ import { ResumeTitle } from '../atoms/ResumeTitle';
 const ResumeHeader = () => {
   return (
     <div className="flex items-center justify-between">
-      <ResumeTitle title="Your name" />
+      <ResumeTitle title="Modern Resume" />
       <ResumeController />
     </div>
   );

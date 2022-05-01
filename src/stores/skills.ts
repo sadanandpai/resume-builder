@@ -27,17 +27,21 @@ const getSkills = (get: GetState<SkillStateIntf>) => () => get().isEnabled ? get
 const setIsEnabled = (set: SetState<SkillStateIntf>) => (isEnabled: boolean) =>
   set(() => ({ isEnabled }));
 
+const getMethods = (set: SetState<SkillStateIntf>, get: GetState<SkillStateIntf>) => ({
+  get: getSkills(get),
+  add: addSkill(set),
+  remove: removeSkill(set),
+  set: setSkills(set),
+  setIsEnabled: setIsEnabled(set),
+});
+
 export const useLanguages = create<SkillStateIntf>((set, get) => ({
   title: 'Languages',
   hasLevel: true,
   values: ResumeData.skills.languages,
   isEnabled: true,
 
-  get: getSkills(get),
-  add: addSkill(set),
-  remove: removeSkill(set),
-  set: setSkills(set),
-  setIsEnabled: setIsEnabled(set),
+  ...getMethods(set, get),
 }));
 
 export const useFrameworks = create<SkillStateIntf>((set, get) => ({
@@ -46,11 +50,7 @@ export const useFrameworks = create<SkillStateIntf>((set, get) => ({
   values: ResumeData.skills.frameworks,
   isEnabled: true,
 
-  get: getSkills(get),
-  add: addSkill(set),
-  remove: removeSkill(set),
-  set: setSkills(set),
-  setIsEnabled: setIsEnabled(set),
+  ...getMethods(set, get),
 }));
 
 export const useTechnologies = create<SkillStateIntf>((set, get) => ({
@@ -59,11 +59,7 @@ export const useTechnologies = create<SkillStateIntf>((set, get) => ({
   values: ResumeData.skills.technologies,
   isEnabled: true,
 
-  get: getSkills(get),
-  add: addSkill(set),
-  remove: removeSkill(set),
-  set: setSkills(set),
-  setIsEnabled: setIsEnabled(set),
+  ...getMethods(set, get),
 }));
 
 export const useLibraries = create<SkillStateIntf>((set, get) => ({
@@ -72,11 +68,7 @@ export const useLibraries = create<SkillStateIntf>((set, get) => ({
   values: ResumeData.skills.libraries,
   isEnabled: true,
 
-  get: getSkills(get),
-  add: addSkill(set),
-  remove: removeSkill(set),
-  set: setSkills(set),
-  setIsEnabled: setIsEnabled(set),
+  ...getMethods(set, get),
 }));
 
 export const useDatabases = create<SkillStateIntf>((set, get) => ({
@@ -85,11 +77,7 @@ export const useDatabases = create<SkillStateIntf>((set, get) => ({
   values: ResumeData.skills.databases,
   isEnabled: true,
 
-  get: getSkills(get),
-  add: addSkill(set),
-  remove: removeSkill(set),
-  set: setSkills(set),
-  setIsEnabled: setIsEnabled(set),
+  ...getMethods(set, get),
 }));
 
 export const usePractices = create<SkillStateIntf>((set, get) => ({
@@ -98,11 +86,7 @@ export const usePractices = create<SkillStateIntf>((set, get) => ({
   values: ResumeData.skills.practices,
   isEnabled: true,
 
-  get: getSkills(get),
-  add: addSkill(set),
-  remove: removeSkill(set),
-  set: setSkills(set),
-  setIsEnabled: setIsEnabled(set),
+  ...getMethods(set, get),
 }));
 
 export const useTools = create<SkillStateIntf>((set, get) => ({
@@ -111,9 +95,5 @@ export const useTools = create<SkillStateIntf>((set, get) => ({
   values: ResumeData.skills.tools,
   isEnabled: true,
 
-  get: getSkills(get),
-  add: addSkill(set),
-  remove: removeSkill(set),
-  set: setSkills(set),
-  setIsEnabled: setIsEnabled(set),
+  ...getMethods(set, get),
 }));
