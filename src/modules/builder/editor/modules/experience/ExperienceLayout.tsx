@@ -27,7 +27,7 @@ const ExperienceLayout = () => {
       {allWorks.map((state, index) => (
         <MoveEditSection
           key={state.id}
-          title={state.companyName || 'Experience'}
+          title={state.name || 'Experience'}
           expanded={expanded === state.id}
           length={allWorks.length}
           index={index}

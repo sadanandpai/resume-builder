@@ -18,7 +18,7 @@ const Experience: React.FC<Props> = memo(({ experienceInfo, currentIndex }) => {
     const currentExpInfo = { ...experienceInfo };
     switch (name) {
       case 'companyName':
-        currentExpInfo.companyName = value;
+        currentExpInfo.name = value;
         break;
       case 'position':
         currentExpInfo.position = value;
@@ -48,7 +48,7 @@ const Experience: React.FC<Props> = memo(({ experienceInfo, currentIndex }) => {
       <TextField
         label="Comapany name"
         variant="filled"
-        value={experienceInfo.companyName}
+        value={experienceInfo.name}
         onChange={(e: ChangeEvent<HTMLInputElement>) => {
           const value = e.target.value;
           onChangeHandler('companyName', value);
@@ -85,7 +85,7 @@ const Experience: React.FC<Props> = memo(({ experienceInfo, currentIndex }) => {
       />
       <SwitchWidget
         label={'I currently work here'}
-        value={experienceInfo.isWorkingHere}
+        value={experienceInfo.isWorkingHere ?? false}
         onChange={(newValue: boolean) => {
           onChangeHandler('isWorkingHere', newValue);
         }}

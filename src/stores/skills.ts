@@ -1,7 +1,7 @@
 import create, { GetState, SetState } from 'zustand';
 import produce from 'immer';
 import { SkillItemIntf, SkillStateIntf } from './skill.interface';
-import ResumeData from 'src/helpers/constants/resume-data.json';
+import resumeData from 'src/helpers/constants/resume-data.json';
 
 const addSkill =
   (set: SetState<SkillStateIntf>) =>
@@ -38,7 +38,7 @@ const getMethods = (set: SetState<SkillStateIntf>, get: GetState<SkillStateIntf>
 export const useLanguages = create<SkillStateIntf>((set, get) => ({
   title: 'Languages',
   hasLevel: true,
-  values: ResumeData.skills.languages,
+  values: resumeData.skills.languages,
   isEnabled: true,
 
   ...getMethods(set, get),
@@ -47,7 +47,7 @@ export const useLanguages = create<SkillStateIntf>((set, get) => ({
 export const useFrameworks = create<SkillStateIntf>((set, get) => ({
   title: 'Frameworks',
   hasLevel: true,
-  values: ResumeData.skills.frameworks,
+  values: resumeData.skills.frameworks,
   isEnabled: true,
 
   ...getMethods(set, get),
@@ -56,7 +56,7 @@ export const useFrameworks = create<SkillStateIntf>((set, get) => ({
 export const useTechnologies = create<SkillStateIntf>((set, get) => ({
   title: 'Technologies',
   hasLevel: false,
-  values: ResumeData.skills.technologies,
+  values: resumeData.skills.technologies,
   isEnabled: true,
 
   ...getMethods(set, get),
@@ -65,7 +65,7 @@ export const useTechnologies = create<SkillStateIntf>((set, get) => ({
 export const useLibraries = create<SkillStateIntf>((set, get) => ({
   title: 'Libraries',
   hasLevel: false,
-  values: ResumeData.skills.libraries,
+  values: resumeData.skills.libraries,
   isEnabled: true,
 
   ...getMethods(set, get),
@@ -74,7 +74,7 @@ export const useLibraries = create<SkillStateIntf>((set, get) => ({
 export const useDatabases = create<SkillStateIntf>((set, get) => ({
   title: 'Databases',
   hasLevel: false,
-  values: ResumeData.skills.databases,
+  values: resumeData.skills.databases,
   isEnabled: true,
 
   ...getMethods(set, get),
@@ -83,7 +83,7 @@ export const useDatabases = create<SkillStateIntf>((set, get) => ({
 export const usePractices = create<SkillStateIntf>((set, get) => ({
   title: 'Practices',
   hasLevel: false,
-  values: ResumeData.skills.practices,
+  values: resumeData.skills.practices,
   isEnabled: true,
 
   ...getMethods(set, get),
@@ -92,7 +92,7 @@ export const usePractices = create<SkillStateIntf>((set, get) => ({
 export const useTools = create<SkillStateIntf>((set, get) => ({
   title: 'Tools',
   hasLevel: false,
-  values: ResumeData.skills.tools,
+  values: resumeData.skills.tools,
   isEnabled: true,
 
   ...getMethods(set, get),

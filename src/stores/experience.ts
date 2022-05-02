@@ -1,20 +1,33 @@
 import create, { SetState, GetState } from 'zustand';
 import produce from 'immer';
-import { ExperienceItem, ExperienceStore, allWorks } from './experience.interface';
+import resumeData from 'src/helpers/constants/resume-data.json';
+import { ExperienceItem, ExperienceStore } from './experience.interface';
 
 const addExperience =
   (set: SetState<ExperienceStore>) =>
-  ({ companyName, position, startDate, isWorkingHere, endDate, summary, id }: ExperienceItem) =>
+  ({
+    name,
+    position,
+    startDate,
+    isWorkingHere,
+    endDate,
+    summary,
+    id,
+    url = '',
+    highlights = [],
+  }: ExperienceItem) =>
     set(
       produce((state: ExperienceStore) => {
         state.experiences.push({
-          companyName,
+          id,
+          name,
           position,
           startDate,
           isWorkingHere,
           endDate,
           summary,
-          id,
+          url,
+          highlights,
         });
       })
     );
@@ -38,19 +51,20 @@ const onMoveUp = (set: SetState<ExperienceStore>) => (index: number) => {
   set(
     produce((state: ExperienceStore) => {
       if (index > 0) {
-        let currentExperience = state.experiences[index];
+        const currentExperience = state.experiences[index];
         state.experiences[index] = state.experiences[index - 1];
         state.experiences[index - 1] = currentExperience;
       }
     })
   );
 };
+
 const onMoveDown = (set: SetState<ExperienceStore>) => (index: number) => {
   set(
     produce((state: ExperienceStore) => {
       const totalExp = state.experiences.length;
       if (index < totalExp - 1) {
-        let currentExperience = state.experiences[index];
+        const currentExperience = state.experiences[index];
         state.experiences[index] = state.experiences[index + 1];
         state.experiences[index + 1] = currentExperience;
       }
@@ -59,7 +73,7 @@ const onMoveDown = (set: SetState<ExperienceStore>) => (index: number) => {
 };
 
 export const useExperiences = create<ExperienceStore>((set, get) => ({
-  experiences: allWorks,
+  experiences: resumeData.work,
   add: addExperience(set),
   get: getExperience(get),
   remove: removeExperience(set),

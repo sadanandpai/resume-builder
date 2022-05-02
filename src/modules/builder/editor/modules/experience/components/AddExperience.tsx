@@ -4,13 +4,15 @@ import { useExperiences } from 'src/stores/experience';
 import { ExperienceItem } from 'src/stores/experience.interface';
 
 const NEW_EXPERIENCE: ExperienceItem = {
-  companyName: '',
+  name: '',
   position: '',
   startDate: null,
   isWorkingHere: false,
   endDate: null,
   summary: '',
   id: '',
+  url: '',
+  highlights: [],
 };
 
 const AddExperience = ({
