@@ -9,12 +9,14 @@ import {
   useTechnologies,
   useTools,
 } from 'src/stores/skills';
+import { useEducations } from './education';
 import { useExperiences } from './experience';
 
 export const useResumeStore = () => {
   return {
     ...ResumeData,
     work: useExperiences((state) => state.experiences),
+    education: useEducations((state) => state.academics),
     skills: {
       languages: useLanguages((state) => state.get()),
       frameworks: useFrameworks((state) => state.get()),
