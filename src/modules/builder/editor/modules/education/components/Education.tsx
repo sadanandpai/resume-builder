@@ -2,56 +2,57 @@ import React, { ChangeEvent, Fragment, memo } from 'react';
 import TextField from '@mui/material/TextField';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
-import { useExperiences } from 'src/stores/experience';
-import { ExperienceItem } from 'src/stores/experience.interface';
+import { useEducations } from 'src/stores/education';
+import { EducationItem } from 'src/stores/education.interface';
 import { SwitchWidget } from 'src/helpers/common/atoms/Switch';
 
 interface Props {
-  experienceInfo: ExperienceItem;
+  educationInfo: EducationItem;
   currentIndex: number;
 }
 
-const Experience: React.FC<Props> = memo(({ experienceInfo, currentIndex }) => {
-  const { set: setExperiences, experiences } = useExperiences();
+const Education: React.FC<Props> = memo(({ educationInfo, currentIndex }) => {
+  const { set: setExperiences, academics } = useEducations();
 
   const onChangeHandler = (name: string, value: any) => {
-    const currentExpInfo = { ...experienceInfo };
+    const currentExpInfo = { ...educationInfo };
     switch (name) {
-      case 'companyName':
-        currentExpInfo.name = value;
+      case 'academyName':
+        currentExpInfo.institution = value;
         break;
-      case 'position':
-        currentExpInfo.position = value;
+      case 'degree':
+        currentExpInfo.area = value;
+        break;
+      case 'grade':
+        currentExpInfo.score = value;
         break;
       case 'startDate':
         currentExpInfo.startDate = value;
         break;
-      case 'isWorkingHere':
-        currentExpInfo.isWorkingHere = value;
+      case 'isStudyingHere':
+        currentExpInfo.isStudyingHere = value;
         break;
       case 'endDate':
         currentExpInfo.endDate = value;
         break;
-      case 'summary':
-        currentExpInfo.summary = value;
-        break;
+
       default:
         break;
     }
-    const updatedWorkExperiences = [...experiences];
-    updatedWorkExperiences[currentIndex] = currentExpInfo;
-    setExperiences(updatedWorkExperiences);
+    const updatedEducations = [...academics];
+    updatedEducations[currentIndex] = currentExpInfo;
+    setExperiences(updatedEducations);
   };
 
   return (
     <Fragment>
       <TextField
-        label="Comapany name"
+        label="School or College name"
         variant="filled"
-        value={experienceInfo.name}
+        value={educationInfo.institution}
         onChange={(e: ChangeEvent<HTMLInputElement>) => {
           const value = e.target.value;
-          onChangeHandler('companyName', value);
+          onChangeHandler('academyName', value);
         }}
         autoComplete="off"
         fullWidth
@@ -60,12 +61,25 @@ const Experience: React.FC<Props> = memo(({ experienceInfo, currentIndex }) => {
         sx={{ marginBottom: '26px' }}
       />
       <TextField
-        label="Position"
+        label="Degree"
         variant="filled"
-        value={experienceInfo.position}
+        value={educationInfo.area}
         onChange={(e: ChangeEvent<HTMLInputElement>) => {
           const value = e.target.value;
-          onChangeHandler('position', value);
+          onChangeHandler('degree', value);
+        }}
+        autoComplete="off"
+        fullWidth
+        required
+        sx={{ marginBottom: '26px' }}
+      />
+      <TextField
+        label="Grade"
+        variant="filled"
+        value={educationInfo.score}
+        onChange={(e: ChangeEvent<HTMLInputElement>) => {
+          const value = e.target.value;
+          onChangeHandler('grade', value);
         }}
         autoComplete="off"
         fullWidth
@@ -74,7 +88,7 @@ const Experience: React.FC<Props> = memo(({ experienceInfo, currentIndex }) => {
       />
       <DatePicker
         label="Start date"
-        value={experienceInfo.startDate}
+        value={educationInfo.startDate}
         onChange={(newDate) => {
           onChangeHandler('startDate', newDate);
         }}
@@ -84,15 +98,15 @@ const Experience: React.FC<Props> = memo(({ experienceInfo, currentIndex }) => {
         )}
       />
       <SwitchWidget
-        label={'I currently work here'}
-        value={experienceInfo.isWorkingHere ?? false}
+        label={'I currently study here'}
+        value={educationInfo.isStudyingHere ?? false}
         onChange={(newValue: boolean) => {
-          onChangeHandler('isWorkingHere', newValue);
+          onChangeHandler('isStudyingHere', newValue);
         }}
       />
       <DatePicker
         label="End date"
-        value={experienceInfo.endDate}
+        value={educationInfo.endDate}
         onChange={(newDate) => {
           onChangeHandler('endDate', newDate);
         }}
@@ -107,27 +121,12 @@ const Experience: React.FC<Props> = memo(({ experienceInfo, currentIndex }) => {
             sx={{ marginBottom: '26px' }}
           />
         )}
-        disabled={experienceInfo.isWorkingHere}
-      />
-      <TextField
-        id="filled-multiline-static"
-        label="Few points on this work experience"
-        multiline
-        rows={4}
-        variant="filled"
-        autoComplete="off"
-        fullWidth
-        name="summary"
-        value={experienceInfo.summary}
-        onChange={(e: ChangeEvent<HTMLInputElement>) => {
-          const value = e.target.value;
-          onChangeHandler('summary', value);
-        }}
+        disabled={educationInfo.isStudyingHere}
       />
     </Fragment>
   );
 });
 
-Experience.displayName = 'Experience';
+Education.displayName = 'Education';
 
-export default Experience;
+export default Education;

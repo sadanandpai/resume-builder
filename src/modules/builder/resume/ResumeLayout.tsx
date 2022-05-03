@@ -1,4 +1,5 @@
 import { MordernTemplate } from 'src/templates/modern/MordernTemplate';
+import ProfessionalTemplate from 'src/templates/professional/ProfessionalTemplate';
 import ResumeHeader from './components/ResumeHeader';
 import { Context, createContext } from 'react';
 import { useResumeStore } from 'src/stores/useResumeStore';

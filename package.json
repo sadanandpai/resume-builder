@@ -19,6 +19,7 @@
     "@dnd-kit/sortable": "^6.0.1",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
+    "@mui/lab": "^5.0.0-alpha.79",
     "@mui/material": "^5.6.1",
     "@mui/x-date-pickers": "^5.0.0-alpha.2",
     "@splidejs/splide": "^4.0.1",

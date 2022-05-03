@@ -27,7 +27,7 @@ const ExperienceLayout = () => {
       {allWorks.map((state, index) => (
         <MoveEditSection
           key={state.id}
-          title={state.companyName || 'Experience'}
+          title={state.name || 'Experience'}
           expanded={expanded === state.id}
           length={allWorks.length}
           index={index}
@@ -39,7 +39,7 @@ const ExperienceLayout = () => {
           <Experience experienceInfo={state} currentIndex={index} />
         </MoveEditSection>
       ))}
-      <AddExperience handleChange={handleChange} />
+      <AddExperience handleChange={handleChange} isEmpty={allWorks.length === 0} />
     </div>
   );
 };

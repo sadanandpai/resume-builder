@@ -43,13 +43,13 @@
 
   "skills": {
     "languages": [
-      { "name": "JavaScript", "level": 5 },
-      { "name": "HTML5", "level": 5 },
-      { "name": "CSS", "level": 5 }
+      { "name": "JavaScript", "level": 90 },
+      { "name": "HTML5", "level": 80 },
+      { "name": "CSS", "level": 80 }
     ],
     "frameworks": [
-      { "name": "React", "level": 4 },
-      { "name": "Angular", "level": 4 }
+      { "name": "React", "level": 70 },
+      { "name": "Angular", "level": 70 }
     ],
     "technologies": [
       { "name": "Algorithms", "level": 3 },
@@ -81,41 +81,48 @@
 
   "work": [
     {
-      "company": "Company 1",
+      "id": "1",
+      "name": "Company 1",
       "position": "Senior Software Developer",
-      "website": "",
+      "url": "",
       "startDate": "Apr 2021",
       "endDate": "present",
-      "years": "2.5 years",
-      "highlights": [],
+      "highlights": [
+        "* Worked on a team of 5 developers to develop a web application for a client"
+      ],
       "summary": "* Use my extensive experience with front end development to define the structure and components for the project, making sure they are reusable\n* Keep the code quality high reviewing code from other developers and suggesting improvements\n* Interact with the designer to suggest changes and to make sure the view he has about the design is translated into actual functionality\n* E-commerce maintenance **with Fastcommerce**, a Brazilian e-commerce platform"
     },
     {
-      "company": "Company 2",
+      "id": "2",
+      "name": "Company 2",
       "position": "Software Developer",
-      "website": "",
+      "url": "",
       "startDate": "Jun 2015",
       "endDate": "Dec 2017",
-      "years": "2.5 years",
-      "highlights": [],
+      "highlights": [
+        "* Worked on a team of 5 developers to develop a web application for a client"
+      ],
       "summary": "* Develop web applications based on Sharepoint, Drupal 8 and Episerver\n* Lead a team of 10 front end developers, giving support to the client's multi-cultural team, providing feedback, clarifying requirements and helping with technical questions\n* Keep the Project Manager and the IT Leads updated on the overall progress of the projects and manage the tasks distributed to the team\n* Keep the code and the features implemented by the other developers in accordance to the requirements"
     },
     {
-      "company": "Company 3",
+      "id": "3",
+      "name": "Company 3",
       "position": "Trainee Developer",
-      "website": "",
+      "url": "",
       "startDate": "Aug 2011",
       "endDate": "May 2015",
-      "years": "1 year",
-      "highlights": [],
+      "highlights": [
+        "* Worked on a team of 5 developers to develop a web application for a client"
+      ],
       "summary": "* Design easy user interfaces and great user experiences for the digital platforms of small companies\n* Wordpress development, including themes creation or customization, custom plugins development and training\n* E-commerce maintenance with Fastcommerce, a Brazilian e-commerce platform\n* E-commerce development with Magento, customizing preexisting themes \n* Integrate external services such as payment services, delivery, etc into Magento solutions\n* VPS configuration and optimization (Apache & Nginx)"
     }
   ],
 
   "education": [
     {
+      "id": "1",
       "institution": "MIT, University",
-      "website": "https://www.mit.edu/",
+      "url": "https://www.mit.edu/",
       "studyType": "MS",
       "area": "Cloud technology",
       "startDate": "2014",
@@ -124,8 +131,9 @@
       "courses": []
     },
     {
+      "id": "2",
       "institution": "NMAMIT, Nitte",
-      "website": "https://www.mit.edu/",
+      "url": "https://www.mit.edu/",
       "studyType": "B.Tech (VTU)",
       "area": "Computer Science",
       "startDate": "2010",
@@ -133,5 +141,14 @@
       "score": "8.3 CGPA",
       "courses": []
     }
-  ]
+  ],
+
+  "activities": {
+    "involvements": "* Prevented millions of dollars in state sales tax undercharges by initiating tests that revealed a bug in a new release of shopping cart software.\n * Isolated previously undiscovered flaw in price checking tool resulting in more competitive pricing and a 20 percent increase in revenue.\n * Implemented automated testing tools spawning more diligent levels of regression testing, negative testing, error/bug retests and usability.\n * Prevented millions of dollars in state sales tax undercharges by initiating tests that revealed a bug in a new release of shopping cart software.",
+
+    "achievements": "* React and redux - A complete guide 2020 from Udemy'\n * Agile and Scrum Master Certificate from Udacity\n  * Best performer award for consistently exceeding the performance\n  * Certificate of exceptional bug finder by XYZ client\n  * Recognition zero defect delivery\n  * Best performer award for consistently exceeding the performance"
+  },
+
+  "volunteer": [],
+  "awards": []
 }
