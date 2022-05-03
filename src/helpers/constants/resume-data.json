@@ -120,6 +120,7 @@
 
   "education": [
     {
+      "id": "1",
       "institution": "MIT, University",
       "url": "https://www.mit.edu/",
       "studyType": "MS",
@@ -130,6 +131,7 @@
       "courses": []
     },
     {
+      "id": "2",
       "institution": "NMAMIT, Nitte",
       "url": "https://www.mit.edu/",
       "studyType": "B.Tech (VTU)",
