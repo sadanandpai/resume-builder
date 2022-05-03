@@ -79,6 +79,48 @@
     ]
   },
 
+  "basic": [
+    {
+      "name": "Contact",
+      "fields": [
+        { "id": "name", "name": "Name", "value": "Jane Doe" },
+        { "id": "title", "name": "Title", "value": "Frontend Developer" },
+        { "id": "email", "name": "Email", "value": "janedoe@gmail.com" },
+        { "id": "phone", "name": "Phone", "value": "+91 9876543210" },
+        { "id": "location", "name": "Location", "value": "Bengaluru" }
+      ],
+      "type": "singleline"
+    },
+    {
+      "name": "Links",
+      "fields": [
+        { "id": "linkedIn", "name": "LinkedIn", "value": "https://www.linkedin.com/janedoe" },
+        { "id": "twitter", "name": "Twitter", "value": "https://www.twitter.com/janedoe" },
+        { "id": "github", "name": "Github", "value": "https://www.github.com/janedoe" },
+        { "id": "hackerrank", "name": "Hackerrank", "value": "https://www.hackerrank.com/janedoe" },
+        {
+          "id": "hackerearth",
+          "name": "Hackerearth",
+          "value": "https://www.hackerearth.com/janedoe"
+        },
+        { "id": "codechef", "name": "Codechef", "value": "https://www.codechef.com/janedoe" }
+      ],
+      "type": "singleline"
+    },
+    {
+      "name": "About",
+      "fields": [
+        { "id": "aboutMe", "name": "About Me", "value": "A software developer" },
+        {
+          "id": "careerObjective",
+          "name": "Career Objective",
+          "value": "To be the best software developer"
+        }
+      ],
+      "type": "multiline"
+    }
+  ],
+
   "work": [
     {
       "id": "1",
