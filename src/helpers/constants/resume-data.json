@@ -43,13 +43,13 @@
 
   "skills": {
     "languages": [
-      { "name": "JavaScript", "level": 5 },
-      { "name": "HTML5", "level": 5 },
-      { "name": "CSS", "level": 5 }
+      { "name": "JavaScript", "level": 90 },
+      { "name": "HTML5", "level": 80 },
+      { "name": "CSS", "level": 80 }
     ],
     "frameworks": [
-      { "name": "React", "level": 4 },
-      { "name": "Angular", "level": 4 }
+      { "name": "React", "level": 70 },
+      { "name": "Angular", "level": 70 }
     ],
     "technologies": [
       { "name": "Algorithms", "level": 3 },
