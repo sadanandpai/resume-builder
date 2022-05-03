@@ -27,7 +27,7 @@ const Education: React.FC<Props> = memo(({ educationInfo, currentIndex }) => {
         currentExpInfo.score = value;
         break;
       case 'startDate':
-        if (value.isValid()) {
+        if (value?.isValid()) {
           currentExpInfo.startDate = value;
         }
         break;
@@ -35,7 +35,7 @@ const Education: React.FC<Props> = memo(({ educationInfo, currentIndex }) => {
         currentExpInfo.isStudyingHere = value;
         break;
       case 'endDate':
-        if (value.isValid()) {
+        if (value?.isValid()) {
           currentExpInfo.endDate = value;
         }
         break;

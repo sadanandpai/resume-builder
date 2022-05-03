@@ -24,7 +24,7 @@ const Experience: React.FC<Props> = memo(({ experienceInfo, currentIndex }) => {
         currentExpInfo.position = value;
         break;
       case 'startDate':
-        if (value.isValid()) {
+        if (value?.isValid()) {
           currentExpInfo.startDate = value;
         }
         break;
@@ -32,7 +32,7 @@ const Experience: React.FC<Props> = memo(({ experienceInfo, currentIndex }) => {
         currentExpInfo.isWorkingHere = value;
         break;
       case 'endDate':
-        if (value.isValid()) {
+        if (value?.isValid()) {
           currentExpInfo.endDate = value;
         }
         break;
