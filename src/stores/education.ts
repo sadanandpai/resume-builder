@@ -1,20 +1,35 @@
 import create, { SetState, GetState } from 'zustand';
 import produce from 'immer';
-import { EducationItem, EducationStore, allAcademics } from './education.interface';
+import resumeData from 'src/helpers/constants/resume-data.json';
+import { EducationItem, EducationStore } from './education.interface';
 
 const addEducation =
   (set: SetState<EducationStore>) =>
-  ({ academyName, degree, grade, startDate, isStudyingHere, endDate, id }: EducationItem) =>
+  ({
+    institution,
+    studyType,
+    area,
+    startDate,
+    isStudyingHere,
+    endDate,
+    id,
+    url,
+    score,
+    courses,
+  }: EducationItem) =>
     set(
       produce((state: EducationStore) => {
         state.academics.push({
-          academyName,
-          degree,
-          grade,
+          institution,
+          studyType,
+          area,
           startDate,
           isStudyingHere,
           endDate,
           id,
+          url,
+          courses,
+          score,
         });
       })
     );
@@ -38,7 +53,7 @@ const onMoveUp = (set: SetState<EducationStore>) => (index: number) => {
   set(
     produce((state: EducationStore) => {
       if (index > 0) {
-        let currentExperience = state.academics[index];
+        const currentExperience = state.academics[index];
         state.academics[index] = state.academics[index - 1];
         state.academics[index - 1] = currentExperience;
       }
@@ -50,7 +65,7 @@ const onMoveDown = (set: SetState<EducationStore>) => (index: number) => {
     produce((state: EducationStore) => {
       const totalExp = state.academics.length;
       if (index < totalExp - 1) {
-        let currentExperience = state.academics[index];
+        const currentExperience = state.academics[index];
         state.academics[index] = state.academics[index + 1];
         state.academics[index + 1] = currentExperience;
       }
@@ -59,7 +74,7 @@ const onMoveDown = (set: SetState<EducationStore>) => (index: number) => {
 };
 
 export const useEducations = create<EducationStore>((set, get) => ({
-  academics: allAcademics,
+  academics: resumeData.education,
   add: addEducation(set),
   get: getEducation(get),
   remove: removeEducation(set),

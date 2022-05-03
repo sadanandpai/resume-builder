@@ -27,7 +27,7 @@ const EducationLayout = () => {
       {allAcademics.map((state, index) => (
         <MoveEditSection
           key={state.id}
-          title={state.academyName || 'Education'}
+          title={state.institution || 'Education'}
           expanded={expanded === state.id}
           length={allAcademics.length}
           index={index}

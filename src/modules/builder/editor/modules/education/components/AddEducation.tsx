@@ -4,12 +4,15 @@ import { useEducations } from 'src/stores/education';
 import { EducationItem } from 'src/stores/education.interface';
 
 const NEW_EDUCATION: EducationItem = {
-  academyName: '',
-  degree: '',
-  grade: '',
+  institution: '',
+  url: '',
+  studyType: '',
+  area: '',
   startDate: null,
   isStudyingHere: false,
   endDate: null,
+  score: '',
+  courses: [],
   id: '',
 };
 

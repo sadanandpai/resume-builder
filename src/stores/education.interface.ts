@@ -1,10 +1,13 @@
 export interface EducationItem {
-  academyName: string;
-  degree: string;
-  grade: string;
+  institution: string;
+  url: string;
+  studyType: string;
+  area: string;
   startDate: string | null;
-  isStudyingHere: boolean;
+  isStudyingHere?: boolean;
   endDate: string | null;
+  score: string;
+  courses: string[];
   id: string;
 }
 
@@ -17,16 +20,3 @@ export interface EducationStore {
   onmoveup: (index: number) => void;
   onmovedown: (index: number) => void;
 }
-
-// temp data
-export const allAcademics = [
-  {
-    academyName: 'MIT Univerisity',
-    degree: 'CSE',
-    grade: '50%',
-    startDate: '12/3/2019',
-    isStudyingHere: true,
-    endDate: null,
-    id: 'xyx',
-  },
-];

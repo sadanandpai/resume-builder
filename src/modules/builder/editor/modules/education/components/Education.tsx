@@ -18,13 +18,13 @@ const Education: React.FC<Props> = memo(({ educationInfo, currentIndex }) => {
     const currentExpInfo = { ...educationInfo };
     switch (name) {
       case 'academyName':
-        currentExpInfo.academyName = value;
+        currentExpInfo.institution = value;
         break;
       case 'degree':
-        currentExpInfo.degree = value;
+        currentExpInfo.area = value;
         break;
       case 'grade':
-        currentExpInfo.grade = value;
+        currentExpInfo.score = value;
         break;
       case 'startDate':
         currentExpInfo.startDate = value;
@@ -49,7 +49,7 @@ const Education: React.FC<Props> = memo(({ educationInfo, currentIndex }) => {
       <TextField
         label="School or College name"
         variant="filled"
-        value={educationInfo.academyName}
+        value={educationInfo.institution}
         onChange={(e: ChangeEvent<HTMLInputElement>) => {
           const value = e.target.value;
           onChangeHandler('academyName', value);
@@ -63,7 +63,7 @@ const Education: React.FC<Props> = memo(({ educationInfo, currentIndex }) => {
       <TextField
         label="Degree"
         variant="filled"
-        value={educationInfo.degree}
+        value={educationInfo.area}
         onChange={(e: ChangeEvent<HTMLInputElement>) => {
           const value = e.target.value;
           onChangeHandler('degree', value);
@@ -76,7 +76,7 @@ const Education: React.FC<Props> = memo(({ educationInfo, currentIndex }) => {
       <TextField
         label="Grade"
         variant="filled"
-        value={educationInfo.grade}
+        value={educationInfo.score}
         onChange={(e: ChangeEvent<HTMLInputElement>) => {
           const value = e.target.value;
           onChangeHandler('grade', value);
@@ -99,7 +99,7 @@ const Education: React.FC<Props> = memo(({ educationInfo, currentIndex }) => {
       />
       <SwitchWidget
         label={'I currently study here'}
-        value={educationInfo.isStudyingHere}
+        value={educationInfo.isStudyingHere ?? false}
         onChange={(newValue: boolean) => {
           onChangeHandler('isStudyingHere', newValue);
         }}
