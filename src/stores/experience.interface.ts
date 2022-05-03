@@ -7,7 +7,7 @@ export interface ExperienceItem {
   endDate: string | null;
   summary: string;
   highlights: string[];
-  isWorkingHere?: boolean;
+  isWorkingHere: boolean;
 }
 
 export interface ExperienceStore {

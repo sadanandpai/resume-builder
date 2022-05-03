@@ -86,7 +86,8 @@
       "position": "Senior Software Developer",
       "url": "",
       "startDate": "Apr 2021",
-      "endDate": "present",
+      "isWorkingHere": true,
+      "endDate": null,
       "highlights": [
         "* Worked on a team of 5 developers to develop a web application for a client"
       ],
@@ -98,6 +99,7 @@
       "position": "Software Developer",
       "url": "",
       "startDate": "Jun 2015",
+      "isWorkingHere": false,
       "endDate": "Dec 2017",
       "highlights": [
         "* Worked on a team of 5 developers to develop a web application for a client"
@@ -110,6 +112,7 @@
       "position": "Trainee Developer",
       "url": "",
       "startDate": "Aug 2011",
+      "isWorkingHere": false,
       "endDate": "May 2015",
       "highlights": [
         "* Worked on a team of 5 developers to develop a web application for a client"
@@ -126,6 +129,7 @@
       "studyType": "MS",
       "area": "Cloud technology",
       "startDate": "2014",
+      "isStudyingHere": false,
       "endDate": "2016",
       "score": "68%",
       "courses": []
@@ -137,6 +141,7 @@
       "studyType": "B.Tech (VTU)",
       "area": "Computer Science",
       "startDate": "2010",
+      "isStudyingHere": false,
       "endDate": "2014",
       "score": "8.3 CGPA",
       "courses": []

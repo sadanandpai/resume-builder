@@ -4,7 +4,7 @@ export interface EducationItem {
   studyType: string;
   area: string;
   startDate: string | null;
-  isStudyingHere?: boolean;
+  isStudyingHere: boolean;
   endDate: string | null;
   score: string;
   courses: string[];
