@@ -21,19 +21,26 @@ const Education: React.FC<Props> = memo(({ educationInfo, currentIndex }) => {
         currentExpInfo.institution = value;
         break;
       case 'degree':
+        currentExpInfo.studyType = value;
+        break;
+      case 'area':
         currentExpInfo.area = value;
         break;
       case 'grade':
         currentExpInfo.score = value;
         break;
       case 'startDate':
-        currentExpInfo.startDate = value;
+        if (value?.isValid()) {
+          currentExpInfo.startDate = value;
+        }
         break;
       case 'isStudyingHere':
         currentExpInfo.isStudyingHere = value;
         break;
       case 'endDate':
-        currentExpInfo.endDate = value;
+        if (value?.isValid()) {
+          currentExpInfo.endDate = value;
+        }
         break;
 
       default:
@@ -63,10 +70,23 @@ const Education: React.FC<Props> = memo(({ educationInfo, currentIndex }) => {
       <TextField
         label="Degree"
         variant="filled"
-        value={educationInfo.area}
+        value={educationInfo.studyType}
         onChange={(e: ChangeEvent<HTMLInputElement>) => {
           const value = e.target.value;
           onChangeHandler('degree', value);
+        }}
+        autoComplete="off"
+        fullWidth
+        required
+        sx={{ marginBottom: '26px' }}
+      />
+      <TextField
+        label="Area"
+        variant="filled"
+        value={educationInfo.area}
+        onChange={(e: ChangeEvent<HTMLInputElement>) => {
+          const value = e.target.value;
+          onChangeHandler('area', value);
         }}
         autoComplete="off"
         fullWidth

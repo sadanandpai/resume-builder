@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 export interface Location {
   address: string;
   postalCode: string;
@@ -43,25 +44,30 @@ export interface SkillsIntrf {
 }
 
 export interface WorkIntrf {
-  company: string;
+  id: string;
+  name: string;
   position: string;
-  website: string;
-  startDate: string;
-  endDate: string;
+  url: string;
+  startDate: dayjs.Dayjs;
+  endDate: dayjs.Dayjs;
   summary: string;
   highlights: string[];
-  years: string;
+  isWorkingHere: boolean;
+  website: string;
 }
 
 export interface EducationIntrf {
+  id: string;
   institution: string;
-  website: string;
+  url: string;
   studyType: string;
   area: string;
-  startDate: string;
-  endDate: string;
+  startDate: dayjs.Dayjs;
+  isStudyingHere: boolean;
+  endDate: dayjs.Dayjs;
   score: string;
   courses: string[];
+  website: string;
 }
 
 export interface ResumeIntrf {
