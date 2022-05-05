@@ -18,7 +18,7 @@ export const ResumeLayout = () => {
       <div className="h-[calc(100%_-_2.75rem)] overflow-auto no-scrollbar">
         <div className="w-[210mm] h-[296mm] bg-white">
           <StateContext.Provider value={resumeData}>
-            <MordernTemplate />
+            <ProfessionalTemplate />
           </StateContext.Provider>
         </div>
       </div>

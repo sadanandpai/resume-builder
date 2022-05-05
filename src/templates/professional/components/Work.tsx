@@ -4,7 +4,6 @@ import TimelineSeparator from '@mui/lab/TimelineSeparator';
 import TimelineConnector from '@mui/lab/TimelineConnector';
 import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineDot from '@mui/lab/TimelineDot';
-import { WorkIntrf } from 'src/stores/index.interface';
 import { ExperienceItem } from 'src/stores/experience.interface';
 
 export default function Work({ work }: { work: ExperienceItem[] }) {
@@ -19,7 +18,7 @@ export default function Work({ work }: { work: ExperienceItem[] }) {
             </TimelineSeparator>
             <TimelineContent>
               <ExperienceHeader work={company} />
-              <p className="text-[1em]">{company.summary}</p>
+              <p className="text-xs">{company.summary}</p>
             </TimelineContent>
           </TimelineItem>
         </Timeline>
