@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 const HomeLayout = () => {
   return (
@@ -9,6 +10,7 @@ const HomeLayout = () => {
           <button className="bg-resume-200 p-4 rounded-md">Start Building</button>
         </Link>
       </div>
+      <Image src={'/icons/resume.png'} alt="logo" height={'256px'} width={'256px'} />
     </>
   );
 };
