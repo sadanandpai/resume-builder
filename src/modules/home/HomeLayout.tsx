@@ -10,7 +10,7 @@ const HomeLayout = () => {
           <button className="bg-resume-200 p-4 rounded-md">Start Building</button>
         </Link>
       </div>
-      <Image src={'/icons/resume.png'} alt="logo" height={'256px'} width={'256px'} />
+      <Image src={'/icons/resume.png'} alt="resume-3d" height={'360px'} width={'360px'} />
     </>
   );
 };
