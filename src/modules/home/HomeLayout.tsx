@@ -2,11 +2,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { NavBarActions, StyledButton } from '../builder/nav-bar/atoms';
 import { Button } from '@mui/material';
+import 'animate.css';
 
 const HomeLayout = () => {
   return (
     <>
-      <div className="bg-resume-50">
+      <div className="bg-resume-50 animate__animated animate__zoomIn">
         <nav className="h-14 w-full bg-resume-800 relative flex py-2.5 pl-40 pr-4 items-center">
           <Image src={'/icons/resume-icon.svg'} alt="logo" height={'36px'} width={'36px'} />
           <div className="flex-auto flex justify-between items-center ml-5">

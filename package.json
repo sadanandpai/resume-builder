@@ -23,6 +23,7 @@
     "@mui/material": "^5.6.1",
     "@mui/x-date-pickers": "^5.0.0-alpha.2",
     "@splidejs/splide": "^4.0.1",
+    "animate.css": "^4.1.1",
     "dayjs": "^1.11.1",
     "framer-motion": "^6.3.0",
     "immer": "^9.0.12",
