@@ -22,7 +22,7 @@ const HomeLayout = () => {
         <div className="mx-32 my-6">
           <div className="flex">
             <Image src={'/icons/resume.png'} alt="resume-3d" height={'380px'} width={'380px'} />
-            <div className="mt-14">
+            <div className="mt-10">
               <h1
                 className="text-5xl mb-4 text-resume-800"
                 style={{ fontFamily: "'Roboto Slab', serif" }}
@@ -30,7 +30,7 @@ const HomeLayout = () => {
                 Professional Resumes
               </h1>
               <p
-                className="text-xl mb-10 text-resume-400"
+                className="text-3xl mb-10 text-resume-400"
                 style={{ fontFamily: "'Roboto Condensed', serif" }}
               >
                 AT ITS SIMPLEST
