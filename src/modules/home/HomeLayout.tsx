@@ -88,7 +88,7 @@ const HomeLayout = () => {
             style={{ borderBottomLeftRadius: '32px' }}
           >
             <p className="text-resume-800 text-xl">
-              Go straight to building, no <strong>sign ups</strong>
+              Go straight to building, no <strong>sign up </strong>needed
             </p>
             <Image src={'/icons/magic.svg'} alt="logo" height={'64px'} width={'64px'} />
           </div>
