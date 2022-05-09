@@ -21,20 +21,28 @@ const HomeLayout = () => {
 
         <div className="mx-32 my-6">
           <div className="flex">
-            <Image src={'/icons/resume.png'} alt="resume-3d" height={'380px'} width={'380px'} />
-            <div className="mt-10">
+            {/* <img src={'/icons/resume.png'} alt="resume-3d" style={{width : "380px"}} /> */}
+            <Image
+              src={'/icons/resume.png'}
+              alt="resume-3d"
+              height={'380px'}
+              width={'380px'}
+              unoptimized={true}
+            />
+            <div className="mt-12">
+              <h3
+                className="text-2xl mb-2 text-resume-400"
+                style={{ fontFamily: "'Roboto Condensed', serif" }}
+              >
+                SIMPLEST WAY TO BUILD
+              </h3>
               <h1
-                className="text-5xl mb-4 text-resume-800"
+                className="text-5xl mb-12 text-resume-800"
                 style={{ fontFamily: "'Roboto Slab', serif" }}
               >
                 Professional Resumes
               </h1>
-              <p
-                className="text-3xl mb-10 text-resume-400"
-                style={{ fontFamily: "'Roboto Condensed', serif" }}
-              >
-                AT ITS SIMPLEST
-              </p>
+
               <div className="flex mb-10">
                 <div
                   style={{
