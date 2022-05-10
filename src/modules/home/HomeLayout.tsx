@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { NavBarActions, StyledButton } from '../builder/nav-bar/atoms';
+import FeatureCard from './components/FeatureCard';
 import { Button } from '@mui/material';
 import 'animate.css';
 
@@ -8,8 +9,8 @@ const HomeLayout = () => {
   return (
     <>
       <div style={{ background: 'linear-gradient(180deg, #E7EEFA 50%, #FFFFFF 100%);' }}>
-        <nav className="h-14 w-full bg-resume-800 relative flex py-2.5 px-60 items-center">
-          <Image src={'/icons/resume-icon.svg'} alt="logo" height={'36px'} width={'36px'} />
+        <nav className="h-14 w-full bg-resume-800 relative flex py-2.5 px-4 xl:px-60 items-center">
+          <Image src={'/icons/resume-icon.png'} alt="logo" height={'36px'} width={'36px'} />
           <div className="flex-auto flex justify-between items-center ml-5">
             <NavBarActions>
               <StyledButton variant="text">Editor</StyledButton>
@@ -22,15 +23,16 @@ const HomeLayout = () => {
           </div>
         </nav>
 
-        <div className="mx-56 my-6">
-          <div className="flex">
-            <img
-              src={'/icons/resume.png'}
-              alt="resume-3d"
-              style={{ width: '380px', height: 'auto' }}
-              className="animate__animated animate__headShake animate__delay-1s"
-            />
-            <div className="mt-12 -ml-12">
+        <div className="mx-4 md:mx-40 xl:mx-60 my-6">
+          <div className="flex flex-row mt-24">
+            <div className="basis-full md:basis-3/12 md:mr-24">
+              <img
+                src={'/icons/resume.png'}
+                alt="resume-3d"
+                className="animate__animated animate__headShake animate__delay-1s"
+              />
+            </div>
+            <div className="basis-full md:basis-9/12">
               <h3
                 className="text-2xl mb-2 text-resume-400"
                 style={{ fontFamily: "'Roboto Condensed', serif" }}
@@ -72,48 +74,19 @@ const HomeLayout = () => {
         </div>
       </div>
 
-      <div className="mx-60 my-32" style={{ fontFamily: "'Roboto Slab', serif" }}>
-        <div className="grid grid-cols-2 gap-6">
-          <div
-            className="bg-resume-100 px-14 py-12 rounded-lg flex justify-between shadow-lg"
-            style={{ borderBottomRightRadius: '32px' }}
-          >
-            <Image src={'/icons/style.svg'} alt="logo" height={'64px'} width={'64px'} />
-            <p className="text-resume-800 text-xl ml-8">
-              With <strong>templates and themes</strong>, make it yours!
-            </p>
-          </div>
-          <div
-            className="bg-resume-100 px-14 py-12 rounded-lg flex justify-between shadow-lg"
-            style={{ borderBottomLeftRadius: '32px' }}
-          >
-            <p className="text-resume-800 text-xl">
-              Go straight to building, no <strong>sign up </strong>needed
-            </p>
-            <Image src={'/icons/magic.svg'} alt="logo" height={'64px'} width={'64px'} />
-          </div>
-          <div
-            className="bg-resume-100 px-14 py-12 rounded-lg flex justify-between shadow-lg"
-            style={{ borderTopRightRadius: '32px' }}
-          >
-            <Image src={'/icons/code.svg'} alt="logo" height={'64px'} width={'64px'} />
-            <p className="text-resume-800 text-xl ml-8">
-              We love <strong>open source</strong>, we hope you too!
-            </p>
-          </div>
-          <div
-            className="bg-resume-100 px-14 py-12 rounded-lg flex justify-between shadow-lg"
-            style={{ borderTopLeftRadius: '32px' }}
-          >
-            <p className="text-resume-800 text-xl">
-              Your <strong>data</strong> never leaves your device
-            </p>
-            <Image src={'/icons/lock.svg'} alt="logo" height={'64px'} width={'64px'} />
-          </div>
+      <div
+        className="mx-4 md:mx-40 xl:mx-60 my-32 w-75"
+        style={{ fontFamily: "'Roboto Slab', serif" }}
+      >
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <FeatureCard number={1} />
+          <FeatureCard number={2} />
+          <FeatureCard number={3} />
+          <FeatureCard number={4} />
         </div>
       </div>
 
-      <div className="mx-60 my-32" style={{ fontFamily: "'Roboto Slab', serif" }}>
+      <div className="mx-4 md:mx-40 xl:mx-60 my-32" style={{ fontFamily: "'Roboto Slab', serif" }}>
         <div className="flex items-center justify-center">
           <div className="basis-3/12 flex-col text-center">
             <Image src={'/icons/palette.svg'} alt="logo" height={'48px'} width={'48px'} />
