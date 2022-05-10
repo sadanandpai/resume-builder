@@ -112,6 +112,35 @@ const HomeLayout = () => {
           </div>
         </div>
       </div>
+
+      <div className="mx-60 my-32" style={{ fontFamily: "'Roboto Slab', serif" }}>
+        <div className="flex items-center justify-center">
+          <div className="basis-3/12 flex-col text-center">
+            <Image src={'/icons/palette.svg'} alt="logo" height={'48px'} width={'48px'} />
+            <p className="text-resume-800 text-xl mt-4">
+              Do you want to make your own <strong>template?</strong>
+            </p>
+          </div>
+          <div className="basis-1/12 flex-col text-center text-4xl">
+            <p>+</p>
+          </div>
+          <div className="basis-2/12 px-2 flex-col text-center">
+            <Image src={'/icons/terminal.svg'} alt="logo" height={'48px'} width={'48px'} />
+            <p className="text-resume-800 text-xl mt-4">
+              Do you write <strong>React</strong> code?
+            </p>
+          </div>
+          <div className="basis-1/12 flex-col text-center text-4xl mx-6">
+            <p>=</p>
+          </div>
+          <div className="basis-2/12 px-2 flex-col text-center">
+            <Image src={'/icons/wave.svg'} alt="logo" height={'48px'} width={'48px'} />
+            <Button variant="contained" className="bg-resume-800 mt-8">
+              CONTRIBUTE
+            </Button>
+          </div>
+        </div>
+      </div>
     </>
   );
 };
