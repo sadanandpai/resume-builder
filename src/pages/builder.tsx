@@ -8,7 +8,7 @@ const BuilderPage: NextPage = () => {
       <Head>
         <title>E-Resume: Builder</title>
         <meta name="description" content="Single Page Resume Builder" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" href="/icons/resume-icon.png" />
       </Head>
 
       <BuilderLayout />

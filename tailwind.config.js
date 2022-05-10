@@ -27,6 +27,9 @@ module.exports = {
       boxShadow: {
         'level-4px-0.25': '0px 4px 4px rgba(0, 0, 0, 0.25)',
       },
+      screens: {
+        xsm: '480px',
+      },
     },
   },
   plugins: [],
