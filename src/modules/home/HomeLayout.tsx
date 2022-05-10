@@ -135,7 +135,7 @@ const HomeLayout = () => {
           </div>
           <div className="basis-2/12 px-2 flex-col text-center">
             <Image src={'/icons/wave.svg'} alt="logo" height={'48px'} width={'48px'} />
-            <Button variant="contained" className="bg-resume-800 mt-8">
+            <Button variant="contained" className="bg-resume-800 mt-7 mb-3">
               CONTRIBUTE
             </Button>
           </div>
