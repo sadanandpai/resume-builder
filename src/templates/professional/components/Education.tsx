@@ -1,6 +1,8 @@
 import { EducationIntrf } from 'src/stores/index.interface';
 
 export const Education = ({ education }: { education: EducationIntrf[] }) => {
+  console.log(education[0].startDate, '--------');
+
   return (
     <>
       {education.map((item: EducationIntrf, index: number) => (
@@ -11,11 +13,7 @@ export const Education = ({ education }: { education: EducationIntrf[] }) => {
             </p>
             <div className="flex justify-between items-center">
               <p className="font-normal text-[#1AB0B3]">{item.institution}</p>
-              <div className="flex gap-3">
-                <p className="text-xs">
-                  {item.startDate} - {item.endDate}
-                </p>
-              </div>
+              <p className="gap-3 text-xs">{`${item.startDate} - ${item.endDate}`}</p>
             </div>
           </div>
         </div>
