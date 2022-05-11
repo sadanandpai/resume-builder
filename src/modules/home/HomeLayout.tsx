@@ -34,7 +34,7 @@ const HomeLayout = () => {
             </div>
             <div className="col-span-12 sm:col-span-8">
               <h3
-                className="text-2xl mb-2 text-resume-400"
+                className="text-xl md:text-2xl mb-2 text-resume-400"
                 style={{ fontFamily: "'Roboto Condensed', serif" }}
               >
                 SIMPLEST WAY TO BUILD A
@@ -65,10 +65,16 @@ const HomeLayout = () => {
                 </p>
               </div>
               <Link href="/builder" passHref={true}>
-                <Button variant="contained" className="bg-resume-800">
+                <Button variant="contained" className="bg-resume-800 mb-2">
                   BUILD YOUR RESUME
                 </Button>
               </Link>
+              <p
+                className="xl:invisible text-resume-800"
+                style={{ fontFamily: "'Roboto Slab', serif" }}
+              >
+                Desktop screen recommended
+              </p>
             </div>
           </div>
         </div>
