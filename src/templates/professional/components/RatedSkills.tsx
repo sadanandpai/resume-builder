@@ -2,10 +2,7 @@ import { SkillItemIntf } from 'src/stores/skill.interface';
 import styled from '@emotion/styled';
 
 const ProgressBar = styled.div`
-  width: ${(props: { level: number }) => {
-    console.log(props);
-    return props.level;
-  }}%;
+  width: ${(props: { level: number }) => props.level}%;
   height: 6px;
   background-color: yellowgreen;
 `;
