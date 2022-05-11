@@ -113,7 +113,7 @@ const HomeLayout = () => {
           <div className="invisible lg:visible lg:col-span-2 text-resume-800 text-4xl mx-6">
             <p>=</p>
           </div>
-          <div className="col-span-12 lg:col-span-3 mx-auto">
+          <div className="col-span-12 lg:col-span-3 flex-col mx-auto">
             <Image src={'/icons/wave.svg'} alt="logo" height={'48px'} width={'48px'} />
             <Button variant="contained" className="block bg-resume-800 mt-2 lg:mt-5 mb-3">
               CONTRIBUTE
