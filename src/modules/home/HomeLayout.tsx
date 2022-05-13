@@ -2,22 +2,47 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { NavBarActions, StyledButton } from '../builder/nav-bar/atoms';
 import FeatureCard from './components/FeatureCard';
+import PersonCard from './components/PersonCard';
 import { Button } from '@mui/material';
 import 'animate.css';
+import { useEffect } from 'react';
 
 const HomeLayout = () => {
+  useEffect(() => {
+    const element = document.querySelector('#resume-3d')!;
+
+    element.addEventListener('mouseenter', function () {
+      element.classList.remove('animate__animated');
+      element.classList.remove('animate__headShake');
+      element.classList.remove('animate__delay-1s');
+
+      setTimeout(() => {
+        element.classList.add('animate__animated');
+        element.classList.add('animate__headShake');
+      }, 100);
+    });
+  }, []);
+
   return (
-    <>
+    <div className="scroll-smooth">
       <div style={{ background: 'linear-gradient(180deg, #E7EEFA 50%, #FFFFFF 100%);' }}>
         <nav className="h-14 w-full bg-resume-800 relative flex py-2.5 px-4 xl:px-60 items-center">
-          <Image src={'/icons/resume-icon.png'} alt="logo" height={'36px'} width={'36px'} />
+          <a href="/" className="flex items-center">
+            <Image src={'/icons/resume-icon.png'} alt="logo" height={'36px'} width={'36px'} />
+          </a>
           <div className="flex-auto flex justify-between items-center ml-5">
             <NavBarActions>
-              <StyledButton variant="text">Editor</StyledButton>
+              <Link href="/builder" passHref={true}>
+                <StyledButton variant="text">Editor</StyledButton>
+              </Link>
             </NavBarActions>
             <NavBarActions>
-              <StyledButton variant="text">Contribute</StyledButton>
-              <StyledButton variant="text">About us</StyledButton>
+              <Link href="#contribute" passHref={true}>
+                <StyledButton variant="text">Contribute</StyledButton>
+              </Link>
+              <Link href="#about-us" passHref={true}>
+                <StyledButton variant="text">About us</StyledButton>
+              </Link>
               {/* <StyledButton variant="outlined">Export as PDF</StyledButton> */}
             </NavBarActions>
           </div>
@@ -27,7 +52,8 @@ const HomeLayout = () => {
           <div className="grid grid-cols-12 mt-12 md:mt-24">
             <div className="col-span-12 sm:col-span-4">
               <img
-                src={'/icons/resume.png'}
+                id="resume-3d"
+                src={'/resume.png'}
                 alt="resume-3d"
                 className="animate__animated animate__headShake animate__delay-1s w-6/12 sm:w-9/12"
               />
@@ -93,7 +119,11 @@ const HomeLayout = () => {
         </div>
       </div>
 
-      <div className="mx-6 md:mx-40 xl:mx-60 my-32" style={{ fontFamily: "'Roboto Slab', serif" }}>
+      <div
+        id="contribute"
+        className="mx-6 md:mx-40 xl:mx-60 my-32"
+        style={{ fontFamily: "'Roboto Slab', serif" }}
+      >
         <div className="grid grid-cols-12 items-center text-center">
           <div className="col-span-12 lg:col-span-4 mb-4 lg:mb-0">
             <Image src={'/icons/palette.svg'} alt="logo" height={'48px'} width={'48px'} />
@@ -115,13 +145,38 @@ const HomeLayout = () => {
           </div>
           <div className="col-span-12 lg:col-span-3 flex-col mx-auto">
             <Image src={'/icons/wave.svg'} alt="logo" height={'48px'} width={'48px'} />
-            <Button variant="contained" className="block bg-resume-800 mt-2 lg:mt-5 mb-3">
-              CONTRIBUTE
-            </Button>
+            <a
+              href="https://github.com/sadanandpai/resume-builder"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Button variant="contained" className="block bg-resume-800 mt-2 lg:mt-5 mb-3">
+                CONTRIBUTE
+              </Button>
+            </a>
           </div>
         </div>
       </div>
-    </>
+
+      <div
+        id="about-us"
+        className="mx-6 md:mx-40 xl:mx-60 my-32"
+        style={{ fontFamily: "'Roboto Slab', serif" }}
+      >
+        <h2 className="text-3xl mb-2 text-center lg:text-left">About us</h2>
+        <p className="text-resume-400 mb-8 text-center lg:text-left">
+          A bunch of developers and designers — who love to build open source projects and learn
+          along!
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <PersonCard number={1} />
+          <PersonCard number={2} />
+          <PersonCard number={3} />
+          <PersonCard number={4} />
+          <PersonCard number={5} />
+        </div>
+      </div>
+    </div>
   );
 };
 

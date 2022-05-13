@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 import { NavBarMenu, NavBarActions, StyledButton } from './atoms';
 import { NavMenuItem } from './components/MenuItem';
@@ -8,7 +9,9 @@ import { TemplateSelect } from './components/TemplateSelect';
 const NavBarLayout = () => {
   return (
     <nav className="h-14 w-full bg-resume-800 relative flex py-2.5 pl-5 pr-4 items-center">
-      <Image src={'/icons/resume-icon.png'} alt="logo" height={'36px'} width={'36px'} />
+      <a href="/" className="flex items-center">
+        <Image src={'/icons/resume-icon.png'} alt="logo" height={'36px'} width={'36px'} />
+      </a>
       <div className="flex-auto flex justify-between items-center ml-5">
         <NavBarMenu>
           <NavMenuItem caption="Templates" popoverChildren={<TemplateSelect />} />
