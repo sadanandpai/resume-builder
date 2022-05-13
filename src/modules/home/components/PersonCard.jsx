@@ -63,7 +63,7 @@ function PersonCard(props) {
           <p className="text-resume-800">
             <strong>Sachin Kumar</strong>
           </p>
-          <p className="text-resume-400 mb-6">Front-end developer</p>
+          <p className="text-resume-400 mb-6">Web developer</p>
           <div className="flex gap-4">
             <a href="https://github.com/sachinkumar579" target="_blank" rel="noreferrer">
               <img src="/icons/github.svg" alt="github" width={'24px'} />

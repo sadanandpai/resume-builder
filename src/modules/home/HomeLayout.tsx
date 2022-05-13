@@ -5,10 +5,15 @@ import FeatureCard from './components/FeatureCard';
 import PersonCard from './components/PersonCard';
 import { Button } from '@mui/material';
 import 'animate.css';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 const HomeLayout = () => {
+  const [personArray, setPersonArray] = useState([1, 2, 3, 4, 5]);
+
   useEffect(() => {
+    const shuffledPersonArray = personArray.sort((a, b) => 0.5 - Math.random());
+    setPersonArray([...shuffledPersonArray]);
+
     const element = document.querySelector('#resume-3d')!;
 
     element.addEventListener('mouseenter', function () {
@@ -25,7 +30,7 @@ const HomeLayout = () => {
 
   return (
     <div className="scroll-smooth">
-      <div style={{ background: 'linear-gradient(180deg, #E7EEFA 50%, #FFFFFF 100%);' }}>
+      <div style={{ background: 'linear-gradient(180deg, #E7EEFA 50%, #FFFFFF 100%)' }}>
         <nav className="h-14 w-full bg-resume-800 relative flex py-2.5 px-4 xl:px-60 items-center">
           <a href="/" className="flex items-center">
             <Image src={'/icons/resume-icon.png'} alt="logo" height={'36px'} width={'36px'} />
@@ -169,11 +174,11 @@ const HomeLayout = () => {
           along!
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          <PersonCard number={1} />
-          <PersonCard number={2} />
-          <PersonCard number={3} />
-          <PersonCard number={4} />
-          <PersonCard number={5} />
+          <PersonCard number={personArray[0]} />
+          <PersonCard number={personArray[1]} />
+          <PersonCard number={personArray[2]} />
+          <PersonCard number={personArray[3]} />
+          <PersonCard number={personArray[4]} />
         </div>
       </div>
     </div>
