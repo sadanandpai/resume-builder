@@ -148,17 +148,21 @@ const HomeLayout = () => {
           <div className="invisible lg:visible lg:col-span-2 text-resume-800 text-4xl mx-6">
             <p>=</p>
           </div>
-          <div className="col-span-12 lg:col-span-3 flex-col mx-auto">
-            <Image src={'/icons/wave.svg'} alt="logo" height={'48px'} width={'48px'} />
-            <a
-              href="https://github.com/sadanandpai/resume-builder"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Button variant="contained" className="block bg-resume-800 mt-2 lg:mt-5 mb-3">
-                CONTRIBUTE
-              </Button>
-            </a>
+          <div className="col-span-12 lg:col-span-3 mx-auto text-center">
+            <div>
+              <Image src={'/icons/wave.svg'} alt="logo" height={'48px'} width={'48px'} />
+            </div>
+            <div>
+              <a
+                href="https://github.com/sadanandpai/resume-builder"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Button variant="contained" className="bg-resume-800 mt-2 lg:mt-5 mb-3">
+                  CONTRIBUTE
+                </Button>
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -168,7 +172,7 @@ const HomeLayout = () => {
         className="mx-6 md:mx-40 xl:mx-60 my-32"
         style={{ fontFamily: "'Roboto Slab', serif" }}
       >
-        <h2 className="text-3xl mb-2 text-center lg:text-left">About us</h2>
+        <h2 className="text-resume-800 text-3xl mb-2 text-center lg:text-left">About us</h2>
         <p className="text-resume-400 mb-8 text-center lg:text-left">
           A bunch of developers and designers — who love to build open source projects and learn
           along!
