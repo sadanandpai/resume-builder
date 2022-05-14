@@ -8,12 +8,7 @@ import 'animate.css';
 import { useState, useEffect } from 'react';
 
 const HomeLayout = () => {
-  const [personArray, setPersonArray] = useState([1, 2, 3, 4, 5]);
-
   useEffect(() => {
-    const shuffledPersonArray = personArray.sort((a, b) => 0.5 - Math.random());
-    setPersonArray([...shuffledPersonArray]);
-
     const element = document.querySelector('#resume-3d')!;
 
     element.addEventListener('mouseenter', function () {
@@ -48,7 +43,6 @@ const HomeLayout = () => {
               <Link href="#about-us" passHref={true}>
                 <StyledButton variant="text">About us</StyledButton>
               </Link>
-              {/* <StyledButton variant="outlined">Export as PDF</StyledButton> */}
             </NavBarActions>
           </div>
         </nav>
@@ -149,7 +143,7 @@ const HomeLayout = () => {
             <p>=</p>
           </div>
           <div className="col-span-12 lg:col-span-3 mx-auto text-center">
-            <div>
+            <div className="mb-6">
               <Image src={'/icons/wave.svg'} alt="logo" height={'48px'} width={'48px'} />
             </div>
             <div>
@@ -178,11 +172,11 @@ const HomeLayout = () => {
           along!
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          <PersonCard number={personArray[0]} />
-          <PersonCard number={personArray[1]} />
-          <PersonCard number={personArray[2]} />
-          <PersonCard number={personArray[3]} />
-          <PersonCard number={personArray[4]} />
+          <PersonCard number={1} />
+          <PersonCard number={2} />
+          <PersonCard number={5} />
+          <PersonCard number={4} />
+          <PersonCard number={3} />
         </div>
       </div>
     </div>

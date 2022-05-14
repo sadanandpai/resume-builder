@@ -20,7 +20,7 @@ const NavBarLayout = () => {
         <NavBarActions>
           <StyledButton variant="text">Export</StyledButton>
           <StyledButton variant="text">Import</StyledButton>
-          <StyledButton variant="outlined">Export as PDF</StyledButton>
+          <StyledButton variant="outlined">Download as PDF</StyledButton>
         </NavBarActions>
       </div>
     </nav>
