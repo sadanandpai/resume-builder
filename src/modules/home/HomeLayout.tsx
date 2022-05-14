@@ -5,7 +5,7 @@ import FeatureCard from './components/FeatureCard';
 import PersonCard from './components/PersonCard';
 import { Button } from '@mui/material';
 import 'animate.css';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 
 const HomeLayout = () => {
   useEffect(() => {
@@ -72,14 +72,7 @@ const HomeLayout = () => {
               </h1>
 
               <div className="flex mb-10">
-                <div
-                  style={{
-                    backgroundColor: '#2E4052',
-                    width: '3px',
-                    padding: '1px',
-                    borderRadius: '8px',
-                  }}
-                ></div>
+                <div className="bg-resume-800 w-1 rounded-lg"></div>
                 <p
                   className="text-lg ml-3 text-resume-800"
                   style={{ fontFamily: "'Kalam', serif" }}
