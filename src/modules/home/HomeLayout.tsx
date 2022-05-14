@@ -26,7 +26,7 @@ const HomeLayout = () => {
   return (
     <div className="scroll-smooth">
       <div style={{ background: 'linear-gradient(180deg, #E7EEFA 50%, #FFFFFF 100%)' }}>
-        <nav className="h-14 w-full bg-resume-800 relative flex py-2.5 px-4 xl:px-60 items-center">
+        <nav className="h-14 w-full bg-resume-800 relative flex py-2.5 px-4 xl:px-60 items-center shadow-level-8dp">
           <a href="/" className="flex items-center">
             <Image src={'/icons/resume-icon.png'} alt="logo" height={'36px'} width={'36px'} />
           </a>

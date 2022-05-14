@@ -26,6 +26,10 @@ module.exports = {
       },
       boxShadow: {
         'level-4px-0.25': '0px 4px 4px rgba(0, 0, 0, 0.25)',
+        'level-8dp':
+          '0px 8px 10px rgba(0, 0, 0, 0.14), 0px 3px 14px rgba(0, 0, 0, 0.12), 0px 5px 5px rgba(0, 0, 0, 0.2)',
+        'level-4dp':
+          '0px 4px 5px rgba(0, 0, 0, 0.14), 0px 1px 10px rgba(0, 0, 0, 0.12), 0px 2px 4px rgba(0, 0, 0, 0.2)',
       },
       screens: {
         xsm: '480px',
