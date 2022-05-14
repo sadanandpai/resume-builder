@@ -25,7 +25,7 @@ function FeatureCard(props) {
         <div className="bg-resume-100 hover:bg-resume-200 px-6 lg:px-14 py-6 lg:py-12 rounded-lg flex justify-between items-center shadow-lg lg:rounded-tr-[32px]">
           <Image src={'/icons/code.svg'} alt="logo" height={'64px'} width={'64px'} />
           <p className="text-resume-800 text-xl ml-8 basis-10/12">
-            We love <strong>open source</strong>, we hope you too!
+            We love <strong>open source</strong>, we hope you do too!
           </p>
         </div>
       )}
