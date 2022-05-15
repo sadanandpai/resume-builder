@@ -146,7 +146,7 @@ const HomeLayout = () => {
                 rel="noreferrer"
               >
                 <Button variant="contained" className="bg-resume-800 mt-2 lg:mt-5 mb-3">
-                  CONTRIBUTE TO PITCH
+                  CONTRIBUTE
                 </Button>
               </a>
             </div>
