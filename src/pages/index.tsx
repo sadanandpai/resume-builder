@@ -6,7 +6,7 @@ const HomePage: NextPage = () => {
   return (
     <div>
       <Head>
-        <title>Pitch — Home</title>
+        <title>E-Resume: Home</title>
         <meta name="description" content="Single Page Resume Builder" />
         <link rel="icon" type="image/png" href="/icons/resume-icon.png" />
       </Head>

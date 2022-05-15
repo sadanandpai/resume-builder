@@ -62,7 +62,7 @@ const HomeLayout = () => {
                 className="text-xl md:text-2xl mb-2 text-resume-400"
                 style={{ fontFamily: "'Roboto Condensed', serif" }}
               >
-                PITCH — SIMPLEST WAY TO BUILD A
+                SIMPLEST WAY TO BUILD A
               </h3>
               <h1
                 className="text-5xl mb-12 text-resume-800"
@@ -102,7 +102,6 @@ const HomeLayout = () => {
         className="mx-6 md:mx-40 xl:mx-60 my-32 w-75"
         style={{ fontFamily: "'Roboto Slab', serif" }}
       >
-        <h2 className="text-resume-800 text-3xl mb-3 text-center lg:text-left">What is Pitch?</h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* These cards are written in JSX because I do not know Typescript */}
           <FeatureCard number={1} />
