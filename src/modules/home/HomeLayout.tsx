@@ -9,18 +9,29 @@ import { useEffect } from 'react';
 
 const HomeLayout = () => {
   useEffect(() => {
-    const element = document.querySelector('#resume-3d')!;
+    const element = document.querySelector('#resume-3d');
+    let mouseEnterHandler: { (): void } | null = null;
 
-    element.addEventListener('mouseenter', function () {
-      element.classList.remove('animate__animated');
-      element.classList.remove('animate__headShake');
-      element.classList.remove('animate__delay-1s');
+    if (element) {
+      mouseEnterHandler = () => {
+        element.classList.remove('animate__animated');
+        element.classList.remove('animate__headShake');
+        element.classList.remove('animate__delay-1s');
 
-      setTimeout(() => {
-        element.classList.add('animate__animated');
-        element.classList.add('animate__headShake');
-      }, 100);
-    });
+        setTimeout(() => {
+          element.classList.add('animate__animated');
+          element.classList.add('animate__headShake');
+        }, 100);
+      };
+
+      element.addEventListener('mouseenter', mouseEnterHandler);
+    }
+
+    return () => {
+      if (typeof mouseEnterHandler === 'function') {
+        element?.removeEventListener('mouseenter', mouseEnterHandler);
+      }
+    };
   }, []);
 
   return (
