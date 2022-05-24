@@ -1,8 +1,6 @@
 import { EducationIntrf } from 'src/stores/index.interface';
 
 export const Education = ({ education }: { education: EducationIntrf[] }) => {
-  console.log(education[0].startDate, '--------');
-
   return (
     <>
       {education.map((item: EducationIntrf, index: number) => {
