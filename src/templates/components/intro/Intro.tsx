@@ -22,7 +22,7 @@ export function Intro({ intro, labels }: any) {
     <Flex jc="space-between">
       <FlexCol rGap="5px">
         <Role>{intro.label}</Role>
-        {labels[10] && (
+        {intro.relExp && labels[10] && (
           <div>
             {labels[10]}:&nbsp;
             <strong>{intro.relExp}</strong>
