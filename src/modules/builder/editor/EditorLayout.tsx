@@ -20,7 +20,7 @@ const EditorLayout = () => {
 
   return (
     <ErrorBoundary>
-      <div className="bg-resume-50 h-full text-resume-800 p-6 overflow-auto relative no-scrollbar">
+      <div className="bg-resume-50 h-full text-resume-800 p-6 overflow-auto relative no-scrollbar shadow-level-4dp">
         {displayElement}
       </div>
     </ErrorBoundary>
