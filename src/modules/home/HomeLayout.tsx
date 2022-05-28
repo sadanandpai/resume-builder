@@ -1,46 +1,21 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { NavBarActions, StyledButton } from '../builder/nav-bar/atoms';
-import FeatureCard from './components/FeatureCard';
-import PersonCard from './components/PersonCard';
 import { Button } from '@mui/material';
-import 'animate.css';
-import { useEffect } from 'react';
+
+import { NavBarActions, StyledButton } from '../builder/nav-bar/atoms';
+import FeatureSection from './components/Feature';
+import PersonSection from './components/Person';
 
 const HomeLayout = () => {
-  useEffect(() => {
-    const element = document.querySelector('#resume-3d');
-    let mouseEnterHandler: { (): void } | null = null;
-
-    if (element) {
-      mouseEnterHandler = () => {
-        element.classList.remove('animate__animated');
-        element.classList.remove('animate__headShake');
-        element.classList.remove('animate__delay-1s');
-
-        setTimeout(() => {
-          element.classList.add('animate__animated');
-          element.classList.add('animate__headShake');
-        }, 100);
-      };
-
-      element.addEventListener('mouseenter', mouseEnterHandler);
-    }
-
-    return () => {
-      if (typeof mouseEnterHandler === 'function') {
-        element?.removeEventListener('mouseenter', mouseEnterHandler);
-      }
-    };
-  }, []);
-
   return (
     <div className="scroll-smooth">
       <div style={{ background: 'linear-gradient(180deg, #E7EEFA 50%, #FFFFFF 100%)' }}>
         <nav className="h-14 w-full bg-resume-800 relative flex py-2.5 px-4 xl:px-60 items-center shadow-level-8dp">
-          <a href="/" className="flex items-center">
-            <Image src={'/icons/resume-icon.png'} alt="logo" height={'36px'} width={'36px'} />
-          </a>
+          <Link href="/">
+            <a className="flex items-center">
+              <Image src={'/icons/resume-icon.png'} alt="logo" height={'36px'} width={'36px'} />
+            </a>
+          </Link>
           <div className="flex-auto flex justify-between items-center ml-5">
             <NavBarActions>
               <Link href="/builder" passHref={true}>
@@ -61,12 +36,7 @@ const HomeLayout = () => {
         <div className="mx-6 md:mx-40 xl:mx-60 my-6">
           <div className="grid grid-cols-12 mt-12 md:mt-24">
             <div className="col-span-12 sm:col-span-4">
-              <img
-                id="resume-3d"
-                src={'/resume.png'}
-                alt="resume-3d"
-                className="animate__animated animate__headShake animate__delay-1s w-6/12 sm:w-9/12"
-              />
+              <img id="resume-3d" src="/resume.png" alt="resume-3d" className="w-6/12 sm:w-9/12" />
             </div>
             <div className="col-span-12 sm:col-span-8">
               <h3
@@ -114,11 +84,7 @@ const HomeLayout = () => {
         style={{ fontFamily: "'Roboto Slab', serif" }}
       >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {/* These cards are written in JSX because I do not know Typescript */}
-          <FeatureCard number={1} />
-          <FeatureCard number={2} />
-          <FeatureCard number={3} />
-          <FeatureCard number={4} />
+          <FeatureSection />
         </div>
       </div>
 
@@ -176,11 +142,7 @@ const HomeLayout = () => {
           along!
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          <PersonCard number={1} />
-          <PersonCard number={2} />
-          <PersonCard number={5} />
-          <PersonCard number={4} />
-          <PersonCard number={3} />
+          <PersonSection />
         </div>
       </div>
     </div>
