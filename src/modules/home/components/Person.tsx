@@ -77,11 +77,11 @@ const PersonCard = ({ children }: { children: React.ReactNode }) => (
 );
 
 const PersonProfile = ({ src, alt }: { src: string; alt: string }) => (
-  <Image src={src} alt={alt} className="rounded-full mb-4 shadow-lg" height="96px" width="96px" />
+  <img src={src} alt={alt} className="rounded-full shadow-lg" height="96px" width="96px" />
 );
 
 const ProfileName = ({ name }: { name: string }) => (
-  <p className="text-resume-800">
+  <p className="text-resume-800 mt-4">
     <strong>{name}</strong>
   </p>
 );
