@@ -36,7 +36,7 @@ const HomeLayout = () => {
         <div className="mx-6 md:mx-40 xl:mx-60 my-6">
           <div className="grid grid-cols-12 mt-12 md:mt-24">
             <div className="col-span-12 sm:col-span-4">
-              <img id="resume-3d" src="/resume.png" alt="resume-3d" className="w-6/12 sm:w-9/12" />
+              <img id="resume-3d" src="/resume.webp" alt="resume-3d" className="w-6/12 sm:w-9/12" />
             </div>
             <div className="col-span-12 sm:col-span-8">
               <h3
