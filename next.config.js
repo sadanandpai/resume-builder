@@ -13,6 +13,9 @@ const nextConfig = {
       'src/templates',
     ],
   },
+  images: {
+    domains: ['avatars.githubusercontent.com'],
+  },
 };
 
 module.exports = nextConfig;

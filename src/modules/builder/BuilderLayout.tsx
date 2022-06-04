@@ -9,14 +9,14 @@ const BuilderLayout = () => {
       <NavBarLayout />
       <main className="flex flex-1 max-h-[calc(100vh_-_3.5rem)]">
         <div className="flex flex-col flex-1 justify-center bg-custom-grey100">
-          <header className="w-[210mm] mt-5 mb-3 mx-auto">
+          <header className="w-[210mm] mt-5 mb-3 mx-auto print:hidden">
             <ResumeHeader />
           </header>
           <div className="overflow-auto no-scrollbar">
             <ResumeLayout />
           </div>
         </div>
-        <aside className="w-[25vw] min-w-[20rem]">
+        <aside className="w-[25vw] min-w-[20rem] print:hidden">
           <EditorLayout />
         </aside>
       </main>
