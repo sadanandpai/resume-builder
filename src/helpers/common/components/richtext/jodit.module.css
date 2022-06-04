@@ -69,6 +69,30 @@
   color: #007bff;
 }
 
+.editor_wrapper :global(.jodit-wysiwyg > ol),
+.editor_wrapper :global(.jodit-wysiwyg > ul) {
+  display: block;
+
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+}
+
+.editor_wrapper :global(.jodit-wysiwyg ol) {
+  list-style-type: decimal;
+}
+
+.editor_wrapper :global(.jodit-wysiwyg ul) {
+  list-style-type: disc;
+}
+
+.editor_wrapper :global(.jodit-wysiwyg a) {
+  text-decoration: underline;
+  color: #007bff;
+}
+
 .jodit_form_group {
   display: flex;
   flex-direction: column;
