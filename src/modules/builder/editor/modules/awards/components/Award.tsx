@@ -11,7 +11,7 @@ interface Props {
 }
 
 const AwardComp: React.FC<Props> = memo(({ awardInfo, currentIndex }) => {
-  const { set: setExperiences, awards } = useAwards();
+  const { set: setAwards, awards } = useAwards();
 
   const onChangeHandler = (name: string, value: any) => {
     const currentAwardInfo = { ...awardInfo };
@@ -33,7 +33,7 @@ const AwardComp: React.FC<Props> = memo(({ awardInfo, currentIndex }) => {
     }
     const updatedAwards = [...awards];
     updatedAwards[currentIndex] = currentAwardInfo;
-    setExperiences(updatedAwards);
+    setAwards(updatedAwards);
   };
 
   return (
