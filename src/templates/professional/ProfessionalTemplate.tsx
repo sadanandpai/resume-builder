@@ -50,6 +50,7 @@ import RatedSkills from './components/RatedSkills';
 import UnratedSkills from './components/UnratedSkills';
 import { Education } from './components/Education';
 import { Section } from './components/Section';
+import AwardComp from './components/Awards';
 
 export default function ProfessionalTemplate() {
   const resumeData = useContext(StateContext);
@@ -61,6 +62,9 @@ export default function ProfessionalTemplate() {
         <BasicIntro basics={resumeData.basics} />
         <Section title="Work Experience">
           <Work work={resumeData.work} />
+        </Section>
+        <Section title="Awards / Accolades">
+          <AwardComp awards={resumeData.awards} />
         </Section>
       </LeftSection>
 

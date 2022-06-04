@@ -4,6 +4,7 @@ import { Objective } from './components/Objective';
 import { SkillsSection } from './components/Skills';
 import { SummarySection } from './components/Summary';
 import { WorkSection } from './components/Work';
+import { AwardSection } from './components/Awards';
 import { useContext } from 'react';
 import { StateContext } from 'src/modules/builder/resume/ResumeLayout';
 
@@ -24,6 +25,7 @@ export const MordernTemplate = () => {
         <div className="basis-[60%] p-3">
           <SummarySection summary={resumeData.basics.summary} />
           <WorkSection experience={resumeData.work} />
+          <AwardSection awardsReceived={resumeData.awards} />
 
           <SkillsSection title="Languages" list={resumeData.skills.languages} />
         </div>

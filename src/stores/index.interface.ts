@@ -70,6 +70,14 @@ export interface EducationIntrf {
   website: string;
 }
 
+export interface AwardsIntrf {
+  id: string;
+  title: string;
+  awarder: string;
+  date: dayjs.Dayjs;
+  summary: string;
+}
+
 export interface ResumeIntrf {
   basics: BasicsIntrf;
   skills: SkillsIntrf;
