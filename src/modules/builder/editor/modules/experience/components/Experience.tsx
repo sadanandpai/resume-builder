@@ -5,6 +5,7 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { useExperiences } from 'src/stores/experience';
 import { ExperienceItem } from 'src/stores/experience.interface';
 import { SwitchWidget } from 'src/helpers/common/atoms/Switch';
+import { RichtextEditor } from 'src/helpers/common/components/richtext';
 
 interface Props {
   experienceInfo: ExperienceItem;
@@ -113,20 +114,13 @@ const Experience: React.FC<Props> = memo(({ experienceInfo, currentIndex }) => {
         )}
         disabled={experienceInfo.isWorkingHere}
       />
-      <TextField
-        id="filled-multiline-static"
+      <RichtextEditor
         label="Few points on this work experience"
-        multiline
-        rows={4}
-        variant="filled"
-        autoComplete="off"
-        fullWidth
-        name="summary"
         value={experienceInfo.summary}
-        onChange={(e: ChangeEvent<HTMLInputElement>) => {
-          const value = e.target.value;
-          onChangeHandler('summary', value);
+        onChange={(htmlOutput) => {
+          onChangeHandler('summary', htmlOutput);
         }}
+        name="summary"
       />
     </Fragment>
   );
