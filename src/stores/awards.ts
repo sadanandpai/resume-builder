@@ -5,7 +5,7 @@ import { AwardItem, AwardsStore } from './awards.interface';
 
 const addAward =
   (set: SetState<AwardsStore>) =>
-  ({ title, awarder, date, summary }: AwardItem) =>
+  ({ title, awarder, date, summary, id }: AwardItem) =>
     set(
       produce((state: AwardsStore) => {
         state.awards.push({
@@ -13,6 +13,7 @@ const addAward =
           awarder,
           date,
           summary,
+          id,
         });
       })
     );

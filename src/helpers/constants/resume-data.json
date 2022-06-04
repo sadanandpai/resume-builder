@@ -199,10 +199,10 @@
   "volunteer": [],
   "awards": [
     {
-      "title": "Award",
+      "title": "Certificate of exceptional bug finder",
       "date": "2014-11-01",
-      "awarder": "Company",
-      "summary": "There is no spoon."
+      "awarder": "XYZ client",
+      "summary": "* Recognition zero defect delivery"
     }
   ]
 }
