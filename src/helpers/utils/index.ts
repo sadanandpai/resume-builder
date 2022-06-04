@@ -1,10 +1,8 @@
-import { Dayjs } from 'dayjs/index';
-
-export const sum = (a: number, b: number): number => {
-  return a + b;
-};
+import type { Dayjs } from 'dayjs/index';
+import dayjs from 'dayjs';
 
 export const dateParser = (dateValue: string | Dayjs | null, outputFormat = 'MMM YYYY') => {
   if (dateValue === null) return;
-  return typeof dateValue === 'object' ? dateValue.format(outputFormat) : dateValue;
+  const dayjsDate = dayjs(dateValue);
+  return dayjsDate.format(outputFormat);
 };
