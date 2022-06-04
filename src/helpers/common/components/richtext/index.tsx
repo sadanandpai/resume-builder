@@ -5,12 +5,19 @@ import 'jodit/build/jodit.min.css';
 
 import styles from './jodit.module.css';
 
-export const RichtextEditor = () => {
+interface IRichtext {
+  label: string;
+  onChange: (htmlOutput: string) => void;
+  value: string;
+  name: string;
+}
+
+export const RichtextEditor = ({ label, onChange, value }: IRichtext) => {
   const editorRef = useRef<HTMLTextAreaElement | null>(null);
 
   useEffect(() => {
     if (editorRef.current) {
-      Jodit.make(editorRef.current, {
+      const editor = Jodit.make(editorRef.current, {
         showCharsCounter: false,
         showWordsCounter: false,
         showXPathInStatusbar: false,
@@ -61,11 +68,23 @@ export const RichtextEditor = () => {
           openInNewTabCheckbox: false,
         },
       });
+      editor.value = value;
+      editor.events.on('change', (htmlOutput) => {
+        onChange(htmlOutput);
+      });
     }
   }, []);
 
   return (
     <div className={`${styles.editor_wrapper}`}>
+      <div
+        style={{
+          padding: '8px 16px 0px',
+        }}
+        className="text-resume-800 text-xs mb-1"
+      >
+        <span>{label}</span>
+      </div>
       <textarea ref={editorRef}></textarea>
     </div>
   );
