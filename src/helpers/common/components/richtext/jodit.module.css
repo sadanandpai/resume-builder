@@ -51,17 +51,9 @@
   border-top-right-radius: 4px;
 }
 
-.editor_wrapper :global(.jodit-workplace) :global(.jodit-wysiwyg) {
+.editor_wrapper :global(.jodit-wysiwyg) {
   background-color: rgba(0, 0, 0, 0.06);
   transition: background-color 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
-}
-
-.editor_wrapper :global(.jodit-workplace) :global(.jodit-wysiwyg:focus) {
-  background-color: rgba(0, 0, 0, 0.06);
-}
-
-.editor_wrapper :global(.jodit-workplace) :global(.jodit-wysiwyg:hover) {
-  background-color: rgba(0, 0, 0, 0.09);
 }
 
 .jodit_form_group {
