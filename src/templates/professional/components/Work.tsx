@@ -5,6 +5,7 @@ import TimelineConnector from '@mui/lab/TimelineConnector';
 import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineDot from '@mui/lab/TimelineDot';
 import { ExperienceItem } from 'src/stores/experience.interface';
+import { dateParser } from 'src/helpers/utils';
 
 export default function Work({ work }: { work: ExperienceItem[] }) {
   return (
@@ -33,12 +34,12 @@ function ExperienceHeader({ work }: { work: ExperienceItem }) {
       <div className="flex justify-between items-end">
         <div className="font-medium">{work.name}</div>
         <div className="italic text-xs">
-          {work.startDate} - {work.endDate}
+          {dateParser(work.startDate)} - {dateParser(work.endDate)}
         </div>
       </div>
       <div className="flex justify-between items-end">
         <div className="font-medium text-xs">{work.position}</div>
-        <div className="italic text-xs">{work.startDate}</div>
+        <div className="italic text-xs">{dateParser(work.startDate)}</div>
       </div>
     </>
   );
