@@ -1,6 +1,8 @@
-import React, { ChangeEvent, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
+import Contacts from './Contacts';
+import Links from './Links';
+import About from './About';
 
 const BasicPanel = ({
   activeTab,
@@ -11,44 +13,31 @@ const BasicPanel = ({
   basicTabs: any;
   onChangeText: any;
 }) => {
-  const onChangeHandler = (
-    event: ChangeEvent<HTMLInputElement>,
-    tabIndex: number,
-    fieldIndex: number
-  ) => {
-    const updatedTabs = [...basicTabs];
-    updatedTabs[tabIndex].fields[fieldIndex].value = event.target.value;
+  const onChangeHandler = (value: any, key: string) => {
+    const updatedTabs = { ...basicTabs };
+    updatedTabs[key] = value;
     onChangeText(updatedTabs);
   };
+
   return (
     <Fragment>
-      {basicTabs.map((tab: any, tabIndex: number) => (
-        <div role="tabpanel" hidden={activeTab !== tabIndex} key={tabIndex}>
-          <Box
-            component="form"
-            sx={{
-              '& > :not(style)': { margin: '0.5rem 0' },
-              backgroundColor: 'rgb(231 238 250)',
-              display: 'flex',
-              flexDirection: 'column',
-            }}
-            noValidate
-            autoComplete="off"
-          >
-            {tab.fields.map((field: any, fieldIndex: number) => (
-              <TextField
-                label={field.name}
-                variant="filled"
-                key={fieldIndex}
-                defaultValue={field.value}
-                onChange={(event: ChangeEvent<HTMLInputElement>) => {
-                  onChangeHandler(event, tabIndex, fieldIndex);
-                }}
-              />
-            ))}
-          </Box>
-        </div>
-      ))}
+      <Box
+        component="form"
+        sx={{
+          '& > :not(style)': { margin: '0.5rem 0' },
+          backgroundColor: 'rgb(231 238 250)',
+          display: 'flex',
+          flexDirection: 'column',
+        }}
+        noValidate
+        autoComplete="off"
+      >
+        {activeTab == 0 && (
+          <Contacts basicTabs={basicTabs} onChangeHandler={onChangeHandler}></Contacts>
+        )}
+        {activeTab == 1 && <Links basicTabs={basicTabs} onChangeHandler={onChangeHandler}></Links>}
+        {activeTab == 2 && <About basicTabs={basicTabs} onChangeHandler={onChangeHandler}></About>}
+      </Box>
     </Fragment>
   );
 };

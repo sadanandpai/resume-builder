@@ -6,6 +6,7 @@ import BasicPanel from './components/BasicPanel';
 const BasicLayout = () => {
   const [activeTab, setActiveTab] = React.useState(0);
   const { set: onChangeText, values: basicTabs } = useBasicDetails();
+  const tabTitles = ['Contacts', 'Links', 'About'];
 
   const changeActiveTab = (event: React.SyntheticEvent, activeTab: number) => {
     setActiveTab(activeTab);
@@ -16,7 +17,7 @@ const BasicLayout = () => {
       <BasicHeader
         activeTab={activeTab}
         changeActiveTab={changeActiveTab}
-        basicTabs={basicTabs}
+        tabTitles={tabTitles}
       ></BasicHeader>
       <BasicPanel
         activeTab={activeTab}
