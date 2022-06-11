@@ -13,7 +13,6 @@ const Links = ({
       <TextField
         label="LinkedIn"
         variant="filled"
-        key={basicTabs.profiles[0].network}
         defaultValue={basicTabs.profiles[0].url}
         onChange={(event: ChangeEvent<HTMLInputElement>) => {
           const profiles = basicTabs.profiles;
@@ -24,7 +23,6 @@ const Links = ({
       <TextField
         label="Twitter"
         variant="filled"
-        key={basicTabs.profiles[1].network}
         defaultValue={basicTabs.profiles[1].url}
         onChange={(event: ChangeEvent<HTMLInputElement>) => {
           const profiles = basicTabs.profiles;
@@ -35,7 +33,6 @@ const Links = ({
       <TextField
         label="Github"
         variant="filled"
-        key={basicTabs.profiles[2].network}
         defaultValue={basicTabs.profiles[2].url}
         onChange={(event: ChangeEvent<HTMLInputElement>) => {
           const profiles = basicTabs.profiles;
@@ -46,7 +43,6 @@ const Links = ({
       <TextField
         label="Hackerrank"
         variant="filled"
-        key={basicTabs.profiles[3].network}
         defaultValue={basicTabs.profiles[3].url}
         onChange={(event: ChangeEvent<HTMLInputElement>) => {
           const profiles = basicTabs.profiles;
@@ -57,7 +53,6 @@ const Links = ({
       <TextField
         label="HackerEarth"
         variant="filled"
-        key={basicTabs.profiles[4].network}
         defaultValue={basicTabs.profiles[4].url}
         onChange={(event: ChangeEvent<HTMLInputElement>) => {
           const profiles = basicTabs.profiles;
@@ -68,7 +63,6 @@ const Links = ({
       <TextField
         label="CodeChef"
         variant="filled"
-        key={basicTabs.profiles[5].network}
         defaultValue={basicTabs.profiles[5].url}
         onChange={(event: ChangeEvent<HTMLInputElement>) => {
           const profiles = basicTabs.profiles;

@@ -9,11 +9,11 @@ const BasicHeader = ({
 }: {
   activeTab: number;
   changeActiveTab: (event: React.SyntheticEvent, activeTab: number) => void;
-  tabTitles: any;
+  tabTitles: string[];
 }) => {
   return (
     <Tabs value={activeTab} onChange={changeActiveTab} variant="fullWidth">
-      {tabTitles.map((title: any, index: number) => (
+      {tabTitles.map((title: string, index: number) => (
         <Tab
           key={index}
           label={title}

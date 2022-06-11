@@ -3,10 +3,11 @@ import { useBasicDetails } from 'src/stores/basic';
 import BasicHeader from './components/BasicHeader';
 import BasicPanel from './components/BasicPanel';
 
+const tabTitles = ['Contacts', 'Links', 'About'];
+
 const BasicLayout = () => {
   const [activeTab, setActiveTab] = React.useState(0);
   const { set: onChangeText, values: basicTabs } = useBasicDetails();
-  const tabTitles = ['Contacts', 'Links', 'About'];
 
   const changeActiveTab = (event: React.SyntheticEvent, activeTab: number) => {
     setActiveTab(activeTab);

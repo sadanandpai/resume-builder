@@ -13,7 +13,6 @@ const Contacts = ({
       <TextField
         label="Name"
         variant="filled"
-        key={basicTabs.name}
         defaultValue={basicTabs.name}
         onChange={(event: ChangeEvent<HTMLInputElement>) => {
           onChangeHandler(event.target.value, 'name');
@@ -22,7 +21,6 @@ const Contacts = ({
       <TextField
         label="Title"
         variant="filled"
-        key={basicTabs.label}
         defaultValue={basicTabs.label}
         onChange={(event: ChangeEvent<HTMLInputElement>) => {
           onChangeHandler(event.target.value, 'label');
@@ -31,7 +29,6 @@ const Contacts = ({
       <TextField
         label="Email"
         variant="filled"
-        key={basicTabs.email}
         defaultValue={basicTabs.email}
         onChange={(event: ChangeEvent<HTMLInputElement>) => {
           onChangeHandler(event.target.value, 'email');
@@ -40,7 +37,6 @@ const Contacts = ({
       <TextField
         label="Phone"
         variant="filled"
-        key={basicTabs.phone}
         defaultValue={basicTabs.phone}
         onChange={(event: ChangeEvent<HTMLInputElement>) => {
           onChangeHandler(event.target.value, 'phone');
@@ -49,7 +45,6 @@ const Contacts = ({
       <TextField
         label="Location"
         variant="filled"
-        key={basicTabs.location}
         defaultValue={basicTabs.location.city}
         onChange={(event: ChangeEvent<HTMLInputElement>) => {
           const location = basicTabs.location;
