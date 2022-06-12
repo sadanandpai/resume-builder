@@ -5,12 +5,12 @@
     "image": "https://www.linkpicture.com/q/generated_photos_5e68893b6d3b380006f22f8b.jpg",
     "email": "janedoe@email.com",
     "phone": "+91 9876543210",
-    "url": "www.github.com/sadanandpai/",
+    "url": "www.github.com/janedoe/",
     "summary": "I am a web developer having expertise in frontend development and exposure to back- end development. I design and develop web applications using the latest technologies to deliver the product with quality code.",
     "location": {
       "address": "",
       "postalCode": "",
-      "city": "Benglauru",
+      "city": "Bengaluru",
       "countryCode": "",
       "region": ""
     },
@@ -20,23 +20,38 @@
     "profiles": [
       {
         "network": "linkedin",
-        "username": "sadanandpai",
-        "url": "https://www.linkedin.com/in/sadanandpai/"
+        "username": "janedoe",
+        "url": "https://www.linkedin.com/in/janedoe/"
+      },
+      {
+        "network": "twitter",
+        "username": "janedoe",
+        "url": "https://www.twitter.com/in/janedoe/"
       },
       {
         "network": "github",
-        "username": "sadanandpai",
-        "url": "https://github.com/sadanandpai/"
+        "username": "janedoe",
+        "url": "https://github.com/janedoe/"
       },
       {
         "network": "hackerrank",
-        "username": "paicube",
-        "url": "https://www.hackerrank.com/paicube/"
+        "username": "janedoe",
+        "url": "https://www.hackerrank.com/janedoe/"
+      },
+      {
+        "network": "hackerearth",
+        "username": "janedoe",
+        "url": "https://www.hackerearth.com/in/janedoe/"
+      },
+      {
+        "network": "codechef",
+        "username": "janedoe",
+        "url": "https://www.codechef.com/in/janedoe/"
       },
       {
         "network": "leetcode",
-        "username": "paicube",
-        "url": "https://leetcode.com/paicube/"
+        "username": "janedoe",
+        "url": "https://leetcode.com/janedoe/"
       }
     ]
   },
@@ -78,48 +93,6 @@
       { "name": "Bitbucket", "level": 3 }
     ]
   },
-
-  "basic": [
-    {
-      "name": "Contact",
-      "fields": [
-        { "id": "name", "name": "Name", "value": "Jane Doe" },
-        { "id": "title", "name": "Title", "value": "Frontend Developer" },
-        { "id": "email", "name": "Email", "value": "janedoe@gmail.com" },
-        { "id": "phone", "name": "Phone", "value": "+91 9876543210" },
-        { "id": "location", "name": "Location", "value": "Bengaluru" }
-      ],
-      "type": "singleline"
-    },
-    {
-      "name": "Links",
-      "fields": [
-        { "id": "linkedIn", "name": "LinkedIn", "value": "https://www.linkedin.com/janedoe" },
-        { "id": "twitter", "name": "Twitter", "value": "https://www.twitter.com/janedoe" },
-        { "id": "github", "name": "Github", "value": "https://www.github.com/janedoe" },
-        { "id": "hackerrank", "name": "Hackerrank", "value": "https://www.hackerrank.com/janedoe" },
-        {
-          "id": "hackerearth",
-          "name": "Hackerearth",
-          "value": "https://www.hackerearth.com/janedoe"
-        },
-        { "id": "codechef", "name": "Codechef", "value": "https://www.codechef.com/janedoe" }
-      ],
-      "type": "singleline"
-    },
-    {
-      "name": "About",
-      "fields": [
-        { "id": "aboutMe", "name": "About Me", "value": "A software developer" },
-        {
-          "id": "careerObjective",
-          "name": "Career Objective",
-          "value": "To be the best software developer"
-        }
-      ],
-      "type": "multiline"
-    }
-  ],
 
   "work": [
     {

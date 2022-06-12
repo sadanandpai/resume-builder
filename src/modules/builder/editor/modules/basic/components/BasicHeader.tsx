@@ -5,18 +5,18 @@ import Tab from '@mui/material/Tab';
 const BasicHeader = ({
   activeTab,
   changeActiveTab,
-  basicTabs,
+  tabTitles,
 }: {
   activeTab: number;
   changeActiveTab: (event: React.SyntheticEvent, activeTab: number) => void;
-  basicTabs: any;
+  tabTitles: string[];
 }) => {
   return (
     <Tabs value={activeTab} onChange={changeActiveTab} variant="fullWidth">
-      {basicTabs.map((tab: any, index: number) => (
+      {tabTitles.map((title: string, index: number) => (
         <Tab
           key={index}
-          label={tab.name}
+          label={title}
           sx={{ color: 'rgb(46 64 82)', textTransform: 'none', fontSize: '1rem' }}
         />
       ))}
