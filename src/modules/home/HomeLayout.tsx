@@ -88,44 +88,46 @@ const HomeLayout = () => {
         </div>
       </div>
 
-      <div
-        id="contribute"
-        className="mx-6 md:mx-40 xl:mx-60 my-32"
-        style={{ fontFamily: "'Roboto Slab', serif" }}
-      >
-        <div className="grid grid-cols-12 items-center text-center">
-          <div className="col-span-12 lg:col-span-4 mb-4 lg:mb-0">
-            <Image src={'/icons/palette.svg'} alt="logo" height={'48px'} width={'48px'} />
-            <p className="text-resume-800 text-xl mt-2">
-              Do you want to make your own <strong>template?</strong>
-            </p>
-          </div>
-          <div className="col-span-12 lg:col-span-1 mb-4 lg:mb-0 text-resume-800 text-4xl">
-            <p>+</p>
-          </div>
-          <div className="col-span-12 lg:col-span-2 flex-col">
-            <Image src={'/icons/terminal.svg'} alt="logo" height={'48px'} width={'48px'} />
-            <p className="text-resume-800 text-xl mt-2">
-              Do you write <strong>React</strong> code?
-            </p>
-          </div>
-          <div className="invisible lg:visible lg:col-span-2 text-resume-800 text-4xl mx-6">
-            <p>=</p>
-          </div>
-          <div className="col-span-12 lg:col-span-3 mx-auto text-center">
-            <div className="mb-6">
-              <Image src={'/icons/wave.svg'} alt="logo" height={'48px'} width={'48px'} />
+      <div className="bg-resume-50 my-32">
+        <div
+          id="contribute"
+          className="mx-6 md:mx-40 xl:mx-60 py-12"
+          style={{ fontFamily: "'Roboto Slab', serif" }}
+        >
+          <div className="grid grid-cols-12 items-center text-center">
+            <div className="col-span-12 lg:col-span-4 mb-4 lg:mb-0">
+              <Image src={'/icons/palette.svg'} alt="logo" height={'48px'} width={'48px'} />
+              <p className="text-resume-800 text-xl mt-2">
+                Do you want to make your own <strong>template?</strong>
+              </p>
             </div>
-            <div>
-              <a
-                href="https://github.com/sadanandpai/resume-builder"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <Button variant="contained" className="bg-resume-800 mt-2 lg:mt-5 mb-3">
-                  CONTRIBUTE
-                </Button>
-              </a>
+            <div className="col-span-12 lg:col-span-1 mb-4 lg:mb-0 text-resume-800 text-4xl">
+              <p>+</p>
+            </div>
+            <div className="col-span-12 lg:col-span-2 flex-col">
+              <Image src={'/icons/terminal.svg'} alt="logo" height={'48px'} width={'48px'} />
+              <p className="text-resume-800 text-xl mt-2">
+                Do you write <strong>React</strong> code?
+              </p>
+            </div>
+            <div className="invisible lg:visible lg:col-span-2 text-resume-800 text-4xl mx-6">
+              <p>=</p>
+            </div>
+            <div className="col-span-12 lg:col-span-3 mx-auto text-center">
+              <div className="mb-6">
+                <Image src={'/icons/wave.svg'} alt="logo" height={'48px'} width={'48px'} />
+              </div>
+              <div>
+                <a
+                  href="https://github.com/sadanandpai/resume-builder"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Button variant="contained" className="bg-resume-800 mt-2 lg:mt-5 mb-3">
+                    CONTRIBUTE
+                  </Button>
+                </a>
+              </div>
             </div>
           </div>
         </div>
