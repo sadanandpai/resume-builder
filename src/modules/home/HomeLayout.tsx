@@ -1,12 +1,24 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@mui/material';
+import { motion, useAnimation } from 'framer-motion';
+import { useEffect } from 'react';
 
 import { NavBarActions, StyledButton } from '../builder/nav-bar/atoms';
 import FeatureSection from './components/Feature';
 import PersonSection from './components/Person';
 
 const HomeLayout = () => {
+  const controls = useAnimation();
+  const animationEffects = {
+    translateX: [0, -5, 0, 5, -2, 0, 2, 0],
+    transition: { duration: 0.5 },
+  };
+
+  useEffect(() => {
+    controls.start(animationEffects);
+  }, []);
+
   return (
     <div className="scroll-smooth">
       <div style={{ background: 'linear-gradient(180deg, #E7EEFA 50%, #FFFFFF 100%)' }}>
@@ -36,7 +48,15 @@ const HomeLayout = () => {
         <div className="mx-6 md:mx-40 xl:mx-60 my-6">
           <div className="grid grid-cols-12 mt-12 md:mt-24">
             <div className="col-span-12 sm:col-span-4">
-              <img id="resume-3d" src="/resume.webp" alt="resume-3d" className="w-6/12 sm:w-9/12" />
+              <motion.img
+                id="resume-3d"
+                src="/resume.webp"
+                alt="resume-3d"
+                className="w-6/12 sm:w-9/12"
+                whileHover={animationEffects}
+                whileTap={animationEffects}
+                animate={controls}
+              />
             </div>
             <div className="col-span-12 sm:col-span-8">
               <h3
