@@ -21,32 +21,31 @@ const HomeLayout = () => {
 
   return (
     <div className="scroll-smooth">
+      <nav className="sticky top-0 z-10 h-14 w-full bg-resume-800 relative flex py-2.5 px-4 xl:px-60 items-center shadow-level-8dp">
+        <Link href="/">
+          <a className="flex items-center">
+            <Image src={'/icons/resume-icon.png'} alt="logo" height={'36px'} width={'36px'} />
+          </a>
+        </Link>
+        <div className="flex-auto flex justify-between items-center ml-5">
+          <NavBarActions>
+            <Link href="/builder" passHref={true}>
+              <StyledButton variant="text">Editor</StyledButton>
+            </Link>
+          </NavBarActions>
+          <NavBarActions>
+            <Link href="#contribute" passHref={true}>
+              <StyledButton variant="text">Contribute</StyledButton>
+            </Link>
+            <Link href="#about-us" passHref={true}>
+              <StyledButton variant="text">About us</StyledButton>
+            </Link>
+          </NavBarActions>
+        </div>
+      </nav>
       <div style={{ background: 'linear-gradient(180deg, #E7EEFA 50%, #FFFFFF 100%)' }}>
-        <nav className="h-14 w-full bg-resume-800 relative flex py-2.5 px-4 xl:px-60 items-center shadow-level-8dp">
-          <Link href="/">
-            <a className="flex items-center">
-              <Image src={'/icons/resume-icon.png'} alt="logo" height={'36px'} width={'36px'} />
-            </a>
-          </Link>
-          <div className="flex-auto flex justify-between items-center ml-5">
-            <NavBarActions>
-              <Link href="/builder" passHref={true}>
-                <StyledButton variant="text">Editor</StyledButton>
-              </Link>
-            </NavBarActions>
-            <NavBarActions>
-              <Link href="#contribute" passHref={true}>
-                <StyledButton variant="text">Contribute</StyledButton>
-              </Link>
-              <Link href="#about-us" passHref={true}>
-                <StyledButton variant="text">About us</StyledButton>
-              </Link>
-            </NavBarActions>
-          </div>
-        </nav>
-
-        <div className="mx-6 md:mx-40 xl:mx-60 my-6">
-          <div className="grid grid-cols-12 mt-12 md:mt-24">
+        <div className="mx-6 md:mx-40 xl:mx-60 mb-6">
+          <div className="grid grid-cols-12 pt-12 md:pt-24">
             <div className="col-span-12 sm:col-span-4">
               <motion.img
                 id="resume-3d"

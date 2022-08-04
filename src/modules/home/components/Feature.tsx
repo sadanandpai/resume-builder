@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 function FeatureSection() {
   return (
     <>
@@ -43,15 +45,17 @@ function FeatureSection() {
 
 const FeatureCard = ({ children, className }: { children: React.ReactNode; className: string }) => {
   return (
-    <div
-      className={`transition ease-in-out delay-75
+    <Link href="/builder" passHref={true}>
+      <div
+        className={`transition ease-in-out delay-75
      bg-resume-100 hover:bg-resume-600 text-resume-800
       hover:text-resume-50 fill-resume-800
        hover:fill-resume-100 px-6 lg:px-14 py-6 lg:py-12
-        rounded-lg flex justify-between items-center shadow-lg ${className}`}
-    >
-      {children}
-    </div>
+        rounded-lg flex justify-between items-center shadow-lg cursor-pointer ${className}`}
+      >
+        {children}
+      </div>
+    </Link>
   );
 };
 
