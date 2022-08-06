@@ -149,3 +149,25 @@
   background-color: #007bff;
   color: #fff;
 }
+
+.richtextRuntimeWrapper a {
+  color: #007bff;
+  text-decoration: underline;
+}
+
+.richtextRuntimeWrapper ul,
+.richtextRuntimeWrapper ol {
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 20px;
+}
+
+.richtextRuntimeWrapper ul {
+  list-style-type: disc;
+}
+
+.richtextRuntimeWrapper ol {
+  list-style-type: decimal;
+}
