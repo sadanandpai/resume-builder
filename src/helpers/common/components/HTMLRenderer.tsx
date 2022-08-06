@@ -15,6 +15,8 @@ export const HTMLRenderer = ({ htmlString }: { htmlString: string }) => {
               <a>{domToReact(domNode.children)}</a>
             </Link>
           );
+        } else if (domNode.name === 'script') {
+          return <></>;
         }
       },
     });
