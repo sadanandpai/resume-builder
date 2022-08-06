@@ -1,3 +1,5 @@
+import { dateParser } from 'src/helpers/utils';
+import { HTMLRenderer } from 'src/helpers/common/components/HTMLRenderer';
 import { WorkIntrf } from 'src/stores/index.interface';
 import { SectionHeading } from '../atoms/SectionHeading';
 import { SectionList } from '../atoms/SectionList';
@@ -10,16 +12,6 @@ export const WorkSection = ({ experience }: { experience: WorkIntrf[] }) => {
       <SectionHeading title="Experience" />
 
       {experience.map((item: WorkIntrf, index: number) => {
-        let startDate;
-        let endDate;
-        if (item.startDate !== null) {
-          startDate =
-            typeof item.startDate === 'object' ? item.startDate.format('MMM YYYY') : item.startDate;
-        }
-        if (item.endDate !== null) {
-          endDate =
-            typeof item.endDate === 'object' ? item.endDate.format('MMM YYYY') : item.endDate;
-        }
         return (
           <div key={index} className="py-3">
             <SectionTitle label={item.name} />
@@ -27,12 +19,15 @@ export const WorkSection = ({ experience }: { experience: WorkIntrf[] }) => {
               <SectionSubtitle label={item.position} />
               <div>
                 <p className="text-xs">
-                  {startDate} - {item.isWorkingHere ? 'present' : endDate}
+                  {dateParser(item.startDate)} -{' '}
+                  {item.isWorkingHere ? 'present' : dateParser(item.endDate)}
                 </p>
               </div>
             </div>
 
-            <SectionList>{item.summary}</SectionList>
+            <SectionList>
+              <HTMLRenderer htmlString={item.summary} />
+            </SectionList>
           </div>
         );
       })}
