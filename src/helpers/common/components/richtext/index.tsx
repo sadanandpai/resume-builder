@@ -53,7 +53,10 @@ export const RichtextEditor = ({ label, onChange, value }: IRichtext) => {
       >
         <span>{label}</span>
       </div>
-      <textarea ref={editorRef}></textarea>
+      <textarea
+        ref={editorRef}
+        className={`min-h-[200px] min-w-full bg-[rgba(0,0,0,0.06)]`}
+      ></textarea>
     </div>
   );
 };
