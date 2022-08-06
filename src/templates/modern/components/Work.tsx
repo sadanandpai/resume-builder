@@ -1,4 +1,5 @@
 import { dateParser } from 'src/helpers/utils';
+import { HTMLRenderer } from 'src/helpers/common/components/HTMLRenderer';
 import { WorkIntrf } from 'src/stores/index.interface';
 import { SectionHeading } from '../atoms/SectionHeading';
 import { SectionList } from '../atoms/SectionList';
@@ -24,7 +25,9 @@ export const WorkSection = ({ experience }: { experience: WorkIntrf[] }) => {
               </div>
             </div>
 
-            <SectionList>{item.summary}</SectionList>
+            <SectionList>
+              <HTMLRenderer htmlString={item.summary} />
+            </SectionList>
           </div>
         );
       })}
