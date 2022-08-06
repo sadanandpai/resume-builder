@@ -10,12 +10,14 @@ import {
   useTools,
 } from 'src/stores/skills';
 import { useAwards } from './awards';
+import { useBasicDetails } from './basic';
 import { useEducations } from './education';
 import { useExperiences } from './experience';
 
 export const useResumeStore = () => {
   return {
     ...ResumeData,
+    basics: useBasicDetails((state) => state.values),
     work: useExperiences((state) => state.experiences),
     education: useEducations((state) => state.academics),
     awards: useAwards((state) => state.awards),

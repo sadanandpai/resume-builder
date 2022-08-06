@@ -1,5 +1,5 @@
-import React, { Fragment, ChangeEvent } from 'react';
-import TextField from '@mui/material/TextField';
+import React, { Fragment } from 'react';
+import { RichtextEditor } from 'src/helpers/common/components/richtext';
 
 const About = ({
   basicTabs,
@@ -10,27 +10,21 @@ const About = ({
 }) => {
   return (
     <Fragment>
-      <TextField
-        id="filled-multiline-static"
+      <RichtextEditor
         label="About me"
-        multiline
-        rows={4}
-        defaultValue={basicTabs.summary}
-        variant="filled"
-        onChange={(event: ChangeEvent<HTMLInputElement>) => {
-          onChangeHandler(event.target.value, 'summary');
+        value={basicTabs.summary}
+        onChange={(htmlOutput) => {
+          onChangeHandler(htmlOutput, 'summary');
         }}
+        name="summary"
       />
-      <TextField
-        id="filled-multiline-static"
-        label="Career Objective"
-        multiline
-        rows={4}
-        defaultValue={basicTabs.objective}
-        variant="filled"
-        onChange={(event: ChangeEvent<HTMLInputElement>) => {
-          onChangeHandler(event.target.value, 'objective');
+      <RichtextEditor
+        label="Career objective"
+        value={basicTabs.objective}
+        onChange={(htmlOutput) => {
+          onChangeHandler(htmlOutput, 'objective');
         }}
+        name="objective"
       />
     </Fragment>
   );
