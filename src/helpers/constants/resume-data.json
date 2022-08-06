@@ -170,5 +170,13 @@
   },
 
   "volunteer": [],
-  "awards": []
+  "awards": [
+    {
+      "title": "Certificate of exceptional bug finder",
+      "date": "2014-11-01",
+      "awarder": "XYZ client",
+      "summary": "* Recognition zero defect delivery",
+      "id": "1"
+    }
+  ]
 }

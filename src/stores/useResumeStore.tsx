@@ -9,6 +9,7 @@ import {
   useTechnologies,
   useTools,
 } from 'src/stores/skills';
+import { useAwards } from './awards';
 import { useEducations } from './education';
 import { useExperiences } from './experience';
 
@@ -17,6 +18,7 @@ export const useResumeStore = () => {
     ...ResumeData,
     work: useExperiences((state) => state.experiences),
     education: useEducations((state) => state.academics),
+    awards: useAwards((state) => state.awards),
     skills: {
       languages: useLanguages((state) => state.get()),
       frameworks: useFrameworks((state) => state.get()),
