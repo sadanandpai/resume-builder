@@ -4,7 +4,9 @@ import TimelineSeparator from '@mui/lab/TimelineSeparator';
 import TimelineConnector from '@mui/lab/TimelineConnector';
 import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineDot from '@mui/lab/TimelineDot';
+import { HTMLRenderer } from 'src/helpers/common/components/HTMLRenderer';
 import { AwardsIntrf } from 'src/stores/index.interface';
+import { dateParser } from 'src/helpers/utils';
 
 export default function AwardComp({ awards }: { awards: AwardsIntrf[] }) {
   return (
@@ -18,7 +20,7 @@ export default function AwardComp({ awards }: { awards: AwardsIntrf[] }) {
             </TimelineSeparator>
             <TimelineContent>
               <AwardHeader award={award} />
-              <p className="text-xs">{award.summary}</p>
+              <HTMLRenderer htmlString={award.summary} />
             </TimelineContent>
           </TimelineItem>
         </Timeline>
@@ -28,15 +30,11 @@ export default function AwardComp({ awards }: { awards: AwardsIntrf[] }) {
 }
 
 function AwardHeader({ award }: { award: AwardsIntrf }) {
-  let awardDate;
-  if (award.date !== null) {
-    awardDate = typeof award.date === 'object' ? award.date.format('DD-MM-YYYY') : award.date;
-  }
   return (
     <>
       <div className="flex justify-between items-end">
         <div className="font-medium">{award.title}</div>
-        <div className="italic text-xs">{awardDate}</div>
+        <div className="italic text-xs">{dateParser(award.date)}</div>
       </div>
       <div className="flex justify-between items-end">
         <div className="font-medium text-xs">{award.awarder}</div>
