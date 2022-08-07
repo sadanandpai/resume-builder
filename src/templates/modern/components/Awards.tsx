@@ -4,6 +4,7 @@ import { SectionHeading } from '../atoms/SectionHeading';
 import { SectionList } from '../atoms/SectionList';
 import { SectionSubtitle } from '../atoms/SectionSubtitle';
 import { SectionTitle } from '../atoms/SectionTitle';
+import { dateParser } from 'src/helpers/utils';
 
 export const AwardSection = ({ awardsReceived }: { awardsReceived: AwardsIntrf[] }) => {
   return (
@@ -11,18 +12,13 @@ export const AwardSection = ({ awardsReceived }: { awardsReceived: AwardsIntrf[]
       <SectionHeading title="Awards" />
 
       {awardsReceived.map((award: AwardsIntrf, index: number) => {
-        let awardDate;
-        if (award.date !== null) {
-          awardDate = typeof award.date === 'object' ? award.date.format('DD-MM-YYYY') : award.date;
-        }
-
         return (
           <div key={index} className="py-3">
             <SectionTitle label={award.title} />
             <div className="flex justify-between awards-center">
               <SectionSubtitle label={award.awarder} />
               <div>
-                <p className="text-xs">{awardDate}</p>
+                <p className="text-xs">{dateParser(award.date)}</p>
               </div>
             </div>
             <SectionList>
