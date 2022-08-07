@@ -4,6 +4,7 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 import { useAwards } from 'src/stores/awards';
 import { AwardItem } from 'src/stores/awards.interface';
+import { RichtextEditor } from 'src/helpers/common/components/richtext';
 
 interface Props {
   awardInfo: AwardItem;
@@ -83,19 +84,13 @@ const AwardComp: React.FC<Props> = memo(({ awardInfo, currentIndex }) => {
           />
         )}
       />
-      <TextField
+      <RichtextEditor
         label="About the award"
-        variant="filled"
-        multiline
-        rows={4}
         value={awardInfo.summary}
-        onChange={(e: ChangeEvent<HTMLInputElement>) => {
-          const value = e.target.value;
-          onChangeHandler('summary', value);
+        onChange={(htmlOutput) => {
+          onChangeHandler('summary', htmlOutput);
         }}
-        autoComplete="off"
-        fullWidth
-        required
+        name="summary"
       />
     </Fragment>
   );

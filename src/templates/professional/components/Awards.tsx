@@ -4,6 +4,7 @@ import TimelineSeparator from '@mui/lab/TimelineSeparator';
 import TimelineConnector from '@mui/lab/TimelineConnector';
 import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineDot from '@mui/lab/TimelineDot';
+import { HTMLRenderer } from 'src/helpers/common/components/HTMLRenderer';
 import { AwardsIntrf } from 'src/stores/index.interface';
 
 export default function AwardComp({ awards }: { awards: AwardsIntrf[] }) {
@@ -18,7 +19,7 @@ export default function AwardComp({ awards }: { awards: AwardsIntrf[] }) {
             </TimelineSeparator>
             <TimelineContent>
               <AwardHeader award={award} />
-              <p className="text-xs">{award.summary}</p>
+              <HTMLRenderer htmlString={award.summary} />
             </TimelineContent>
           </TimelineItem>
         </Timeline>

@@ -1,3 +1,4 @@
+import { HTMLRenderer } from 'src/helpers/common/components/HTMLRenderer';
 import { AwardsIntrf } from 'src/stores/index.interface';
 import { SectionHeading } from '../atoms/SectionHeading';
 import { SectionList } from '../atoms/SectionList';
@@ -24,7 +25,9 @@ export const AwardSection = ({ awardsReceived }: { awardsReceived: AwardsIntrf[]
                 <p className="text-xs">{awardDate}</p>
               </div>
             </div>
-            <SectionList>{award.summary}</SectionList>
+            <SectionList>
+              <HTMLRenderer htmlString={award.summary} />
+            </SectionList>
           </div>
         );
       })}
