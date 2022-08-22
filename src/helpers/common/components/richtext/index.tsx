@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, memo } from 'react';
 import 'jodit/build/jodit.min.css';
 
 import { LinkPlugin } from './plugins/link';
@@ -12,14 +12,15 @@ interface IRichtext {
   name: string;
 }
 
-export const RichtextEditor = ({ label, onChange, value }: IRichtext) => {
-  const editorRef = useRef<HTMLTextAreaElement | null>(null);
+export const RichtextEditor = memo(({ label, onChange, value }: IRichtext) => {
+  const editorContainerRef = useRef<HTMLTextAreaElement | null>(null);
+  const editorRef = useRef<any>(null);
 
   useEffect(() => {
-    if (editorRef.current) {
+    if (editorContainerRef.current) {
       const initEditor = async () => {
         const { Jodit } = await import('jodit');
-        const editor = Jodit.make(editorRef.current as HTMLTextAreaElement, {
+        const editor = Jodit.make(editorContainerRef.current as HTMLTextAreaElement, {
           showCharsCounter: false,
           showWordsCounter: false,
           showXPathInStatusbar: false,
@@ -34,14 +35,18 @@ export const RichtextEditor = ({ label, onChange, value }: IRichtext) => {
           link: LinkPlugin,
         });
         editor.value = value;
-        editor.events.on('change', (htmlOutput) => {
-          onChange(htmlOutput);
-        });
+        editorRef.current = editor;
       };
       initEditor();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    if (editorRef.current) {
+      editorRef.current.events.on('change', onChange);
+    }
+  }, [onChange]);
 
   return (
     <div className={`${styles.editor_wrapper}`}>
@@ -54,9 +59,11 @@ export const RichtextEditor = ({ label, onChange, value }: IRichtext) => {
         <span>{label}</span>
       </div>
       <textarea
-        ref={editorRef}
+        ref={editorContainerRef}
         className={`min-h-[200px] min-w-full bg-[rgba(0,0,0,0.06)]`}
       ></textarea>
     </div>
   );
-};
+});
+
+RichtextEditor.displayName = 'RichtextEditor';

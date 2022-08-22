@@ -24,19 +24,19 @@ const ExperienceLayout = () => {
 
   return (
     <div className="flex flex-col gap-8 mb-8">
-      {allWorks.map((state, index) => (
+      {allWorks.map((work, index) => (
         <MoveEditSection
-          key={state.id}
-          title={state.name || 'Experience'}
-          expanded={expanded === state.id}
+          key={work.id}
+          title={work.name || 'Experience'}
+          expanded={expanded === work.id}
           length={allWorks.length}
           index={index}
-          clickHandler={() => handleChange(state.id, expanded !== state.id)}
+          clickHandler={() => handleChange(work.id, expanded !== work.id)}
           onMoveUp={onMoveUp}
           onMoveDown={onMoveDown}
           onDelete={removeExperience}
         >
-          <Experience experienceInfo={state} currentIndex={index} />
+          <Experience experienceInfo={work} currentIndex={index} />
         </MoveEditSection>
       ))}
       <AddExperience handleChange={handleChange} isEmpty={allWorks.length === 0} />
