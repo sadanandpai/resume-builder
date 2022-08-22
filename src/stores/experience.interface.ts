@@ -18,4 +18,5 @@ export interface ExperienceStore {
   set: (values: ExperienceItem[]) => void;
   onmoveup: (index: number) => void;
   onmovedown: (index: number) => void;
+  updateExperience: (index: number, updatedInfo: ExperienceItem) => void;
 }

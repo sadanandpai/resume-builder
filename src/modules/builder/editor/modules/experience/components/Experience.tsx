@@ -1,4 +1,4 @@
-import React, { ChangeEvent, Fragment, memo } from 'react';
+import React, { ChangeEvent, Fragment, useCallback } from 'react';
 import TextField from '@mui/material/TextField';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
@@ -12,41 +12,48 @@ interface Props {
   currentIndex: number;
 }
 
-const Experience: React.FC<Props> = memo(({ experienceInfo, currentIndex }) => {
-  const { set: setExperiences, experiences } = useExperiences();
+const Experience: React.FC<Props> = ({ experienceInfo, currentIndex }) => {
+  const onChangeHandler = useCallback(
+    (name: string, value: any) => {
+      const currentExpInfo = { ...experienceInfo };
+      const updateExperience = useExperiences.getState().updateExperience;
+      switch (name) {
+        case 'companyName':
+          currentExpInfo.name = value;
+          break;
+        case 'position':
+          currentExpInfo.position = value;
+          break;
+        case 'startDate':
+          if (value?.isValid()) {
+            currentExpInfo.startDate = value;
+          }
+          break;
+        case 'isWorkingHere':
+          currentExpInfo.isWorkingHere = value;
+          break;
+        case 'endDate':
+          if (value?.isValid()) {
+            currentExpInfo.endDate = value;
+          }
+          break;
+        case 'summary':
+          currentExpInfo.summary = value;
+          break;
+        default:
+          break;
+      }
+      updateExperience(currentIndex, currentExpInfo);
+    },
+    [currentIndex, experienceInfo]
+  );
 
-  const onChangeHandler = (name: string, value: any) => {
-    const currentExpInfo = { ...experienceInfo };
-    switch (name) {
-      case 'companyName':
-        currentExpInfo.name = value;
-        break;
-      case 'position':
-        currentExpInfo.position = value;
-        break;
-      case 'startDate':
-        if (value?.isValid()) {
-          currentExpInfo.startDate = value;
-        }
-        break;
-      case 'isWorkingHere':
-        currentExpInfo.isWorkingHere = value;
-        break;
-      case 'endDate':
-        if (value?.isValid()) {
-          currentExpInfo.endDate = value;
-        }
-        break;
-      case 'summary':
-        currentExpInfo.summary = value;
-        break;
-      default:
-        break;
-    }
-    const updatedWorkExperiences = [...experiences];
-    updatedWorkExperiences[currentIndex] = currentExpInfo;
-    setExperiences(updatedWorkExperiences);
-  };
+  const onSummaryChange = useCallback(
+    (htmlOutput: string) => {
+      onChangeHandler('summary', htmlOutput);
+    },
+    [onChangeHandler]
+  );
 
   return (
     <Fragment>
@@ -117,14 +124,12 @@ const Experience: React.FC<Props> = memo(({ experienceInfo, currentIndex }) => {
       <RichtextEditor
         label="Few points on this work experience"
         value={experienceInfo.summary}
-        onChange={(htmlOutput) => {
-          onChangeHandler('summary', htmlOutput);
-        }}
+        onChange={onSummaryChange}
         name="summary"
       />
     </Fragment>
   );
-});
+};
 
 Experience.displayName = 'Experience';
 
