@@ -96,7 +96,7 @@ const Experience: React.FC<Props> = ({ volunteeringInfo, currentIndex }) => {
         )}
       />
       <SwitchWidget
-        label={'I currently work here'}
+        label={'I currently volunteer here'}
         value={volunteeringInfo.isVolunteeringNow ?? false}
         onChange={(newValue: boolean) => {
           onChangeHandler('isVolunteeringNow', newValue);
@@ -122,7 +122,7 @@ const Experience: React.FC<Props> = ({ volunteeringInfo, currentIndex }) => {
         disabled={volunteeringInfo.isVolunteeringNow}
       />
       <RichtextEditor
-        label="Few points on this work experience"
+        label="Few points on this volunteering experience"
         value={volunteeringInfo.summary}
         onChange={onSummaryChange}
         name="summary"
