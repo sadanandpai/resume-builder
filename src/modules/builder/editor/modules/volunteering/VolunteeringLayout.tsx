@@ -24,19 +24,19 @@ const VolunteeringLayout = () => {
 
   return (
     <div className="flex flex-col gap-8 mb-8">
-      {allVolunteeringExps.map((work, index) => (
+      {allVolunteeringExps.map((volunteeringInfo, index) => (
         <MoveEditSection
-          key={work.id}
-          title={work.organization || 'Experience'}
-          expanded={expanded === work.id}
+          key={volunteeringInfo.id}
+          title={volunteeringInfo.organization || 'Experience'}
+          expanded={expanded === volunteeringInfo.id}
           length={allVolunteeringExps.length}
           index={index}
-          clickHandler={() => handleChange(work.id, expanded !== work.id)}
+          clickHandler={() => handleChange(volunteeringInfo.id, expanded !== volunteeringInfo.id)}
           onMoveUp={onMoveUp}
           onMoveDown={onMoveDown}
           onDelete={removeExperience}
         >
-          <Volunteering volunteeringInfo={work} currentIndex={index} />
+          <Volunteering volunteeringInfo={volunteeringInfo} currentIndex={index} />
         </MoveEditSection>
       ))}
       <AddVolunteeringExp handleChange={handleChange} isEmpty={allVolunteeringExps.length === 0} />
