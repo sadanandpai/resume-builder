@@ -11,12 +11,20 @@ import PersonSection from './components/Person';
 const HomeLayout = () => {
   const controls = useAnimation();
   const animationEffects = {
-    translateX: [0, -5, 0, 5, -2, 0, 2, 0],
-    transition: { duration: 0.5 },
+    // translateX: [0, -5, 0, 5, -2, 0, 2, 0],
+    // transition: { duration: 0.5 },
+    rotate: [0, -7, 0],
+  };
+  const transtionEffects = {
+    type: 'spring',
+    duration: 0.5,
+    ease: 'easeOut',
+    damping: 10,
+    times: [0, 0.7, 1],
   };
 
   useEffect(() => {
-    controls.start(animationEffects);
+    controls.start(animationEffects, transtionEffects);
   }, []);
 
   return (
@@ -60,6 +68,7 @@ const HomeLayout = () => {
                 whileHover={animationEffects}
                 whileTap={animationEffects}
                 animate={controls}
+                transition={transtionEffects}
               />
             </div>
             <div className="col-span-12 sm:col-span-8">
