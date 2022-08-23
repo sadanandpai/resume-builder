@@ -14,4 +14,5 @@ export interface AwardsStore {
   set: (values: AwardItem[]) => void;
   onmoveup: (index: number) => void;
   onmovedown: (index: number) => void;
+  updateAward: (index: number, updatedInfo: AwardItem) => void;
 }

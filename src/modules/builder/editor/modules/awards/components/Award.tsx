@@ -1,4 +1,4 @@
-import React, { ChangeEvent, Fragment, memo } from 'react';
+import React, { ChangeEvent, Fragment, memo, useCallback } from 'react';
 import TextField from '@mui/material/TextField';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
@@ -12,30 +12,37 @@ interface Props {
 }
 
 const AwardComp: React.FC<Props> = memo(({ awardInfo, currentIndex }) => {
-  const { set: setAwards, awards } = useAwards();
+  const onChangeHandler = useCallback(
+    (name: string, value: any) => {
+      const currentAwardInfo = { ...awardInfo };
+      const updateAward = useAwards.getState().updateAward;
+      switch (name) {
+        case 'title':
+          currentAwardInfo.title = value;
+          break;
+        case 'awarder':
+          currentAwardInfo.awarder = value;
+          break;
+        case 'date':
+          currentAwardInfo.date = value;
+          break;
+        case 'summary':
+          currentAwardInfo.summary = value;
+          break;
+        default:
+          break;
+      }
+      updateAward(currentIndex, currentAwardInfo);
+    },
+    [currentIndex, awardInfo]
+  );
 
-  const onChangeHandler = (name: string, value: any) => {
-    const currentAwardInfo = { ...awardInfo };
-    switch (name) {
-      case 'title':
-        currentAwardInfo.title = value;
-        break;
-      case 'awarder':
-        currentAwardInfo.awarder = value;
-        break;
-      case 'date':
-        currentAwardInfo.date = value;
-        break;
-      case 'summary':
-        currentAwardInfo.summary = value;
-        break;
-      default:
-        break;
-    }
-    const updatedAwards = [...awards];
-    updatedAwards[currentIndex] = currentAwardInfo;
-    setAwards(updatedAwards);
-  };
+  const onSummaryChange = useCallback(
+    (htmlOutput: string) => {
+      onChangeHandler('summary', htmlOutput);
+    },
+    [onChangeHandler]
+  );
 
   return (
     <Fragment>
@@ -87,9 +94,7 @@ const AwardComp: React.FC<Props> = memo(({ awardInfo, currentIndex }) => {
       <RichtextEditor
         label="About the award"
         value={awardInfo.summary}
-        onChange={(htmlOutput) => {
-          onChangeHandler('summary', htmlOutput);
-        }}
+        onChange={onSummaryChange}
         name="summary"
       />
     </Fragment>

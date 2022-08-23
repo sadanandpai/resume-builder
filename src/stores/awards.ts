@@ -57,6 +57,14 @@ const onMoveDown = (set: SetState<AwardsStore>) => (index: number) => {
   );
 };
 
+const updateAward = (set: SetState<AwardsStore>) => (index: number, updatedInfo: AwardItem) => {
+  set(
+    produce((state: AwardsStore) => {
+      state.awards[index] = updatedInfo;
+    })
+  );
+};
+
 export const useAwards = create<AwardsStore>((set, get) => ({
   awards: resumeData.awards,
   add: addAward(set),
@@ -65,4 +73,5 @@ export const useAwards = create<AwardsStore>((set, get) => ({
   set: setAllAwards(set),
   onmoveup: onMoveUp(set),
   onmovedown: onMoveDown(set),
+  updateAward: updateAward(set),
 }));

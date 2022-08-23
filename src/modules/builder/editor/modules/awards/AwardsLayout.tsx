@@ -24,19 +24,19 @@ const AwardsLayout = () => {
 
   return (
     <div className="flex flex-col gap-8 mb-8">
-      {allAwards.map((state, index) => (
+      {allAwards.map((award, index) => (
         <MoveEditSection
-          key={state.id}
-          title={state.title || 'Award'}
-          expanded={expanded === state.id}
+          key={award.id}
+          title={award.title || 'Award'}
+          expanded={expanded === award.id}
           length={allAwards.length}
           index={index}
-          clickHandler={() => handleChange(state.id, expanded !== state.id)}
+          clickHandler={() => handleChange(award.id, expanded !== award.id)}
           onMoveUp={onMoveUp}
           onMoveDown={onMoveDown}
           onDelete={removeEducation}
         >
-          <AwardComponent awardInfo={state} currentIndex={index} />
+          <AwardComponent awardInfo={award} currentIndex={index} />
         </MoveEditSection>
       ))}
       <AddAward handleChange={handleChange} isEmpty={allAwards.length === 0} />
