@@ -169,7 +169,19 @@
     "achievements": "* React and redux - A complete guide 2020 from Udemy'\n * Agile and Scrum Master Certificate from Udacity\n  * Best performer award for consistently exceeding the performance\n  * Certificate of exceptional bug finder by XYZ client\n  * Recognition zero defect delivery\n  * Best performer award for consistently exceeding the performance"
   },
 
-  "volunteer": [],
+  "volunteer": [
+    {
+      "id": "1",
+      "organization": "Organization",
+      "position": "Volunteer",
+      "url": "https://organization.com/",
+      "startDate": "2012-01-01",
+      "endDate": "2013-01-01",
+      "summary": "Description…",
+      "highlights": ["Awarded 'Volunteer of the Month'"],
+      "isVolunteeringNow": false
+    }
+  ],
   "awards": [
     {
       "title": "Certificate of exceptional bug finder",
