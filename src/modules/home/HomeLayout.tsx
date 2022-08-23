@@ -21,7 +21,7 @@ const HomeLayout = () => {
 
   return (
     <div className="scroll-smooth">
-      <nav className="sticky top-0 z-10 h-14 w-full bg-resume-800 relative flex py-2.5 px-4 xl:px-60 items-center shadow-level-8dp">
+      <nav className="sticky top-0 z-20 h-14 w-full bg-resume-800 relative flex py-2.5 px-4 xl:px-60 items-center shadow-level-8dp">
         <Link href="/">
           <a className="flex items-center">
             <Image src={'/icons/resume-icon.png'} alt="logo" height={'36px'} width={'36px'} />
@@ -43,7 +43,12 @@ const HomeLayout = () => {
           </NavBarActions>
         </div>
       </nav>
-      <div style={{ background: 'linear-gradient(180deg, #E7EEFA 50%, #FFFFFF 100%)' }}>
+      <div
+        style={{
+          background: 'linear-gradient(180deg, #E7EEFA 50%, #FFFFFF 100%)',
+          fontFamily: "'Roboto Slab', serif",
+        }}
+      >
         <div className="mx-6 md:mx-40 xl:mx-60 mb-6">
           <div className="grid grid-cols-12 pt-12 md:pt-24">
             <div className="col-span-12 sm:col-span-4">
@@ -58,25 +63,12 @@ const HomeLayout = () => {
               />
             </div>
             <div className="col-span-12 sm:col-span-8">
-              <h3
-                className="text-xl md:text-2xl mb-2 text-resume-400"
-                style={{ fontFamily: "'Roboto Condensed', serif" }}
-              >
-                SIMPLEST WAY TO BUILD A
-              </h3>
-              <h1
-                className="text-5xl mb-12 text-resume-800"
-                style={{ fontFamily: "'Roboto Slab', serif" }}
-              >
-                Professional Resume
-              </h1>
+              <h3 className="text-xl md:text-2xl mb-2 text-resume-400">SIMPLEST WAY TO BUILD A</h3>
+              <h1 className="text-5xl mb-12 text-resume-800">Professional Resume</h1>
 
               <div className="flex mb-10">
                 <div className="bg-resume-800 w-1 rounded-lg"></div>
-                <p
-                  className="text-lg ml-3 text-resume-800"
-                  style={{ fontFamily: "'Kalam', serif" }}
-                >
+                <p className="text-lg ml-3 text-resume-800">
                   &ldquo;The secret to getting ahead is getting started&rdquo;
                   <br />
                   —Mark Twain
