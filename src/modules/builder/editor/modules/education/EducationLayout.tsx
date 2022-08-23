@@ -24,19 +24,19 @@ const EducationLayout = () => {
 
   return (
     <div className="flex flex-col gap-8 mb-8">
-      {allAcademics.map((state, index) => (
+      {allAcademics.map((education, index) => (
         <MoveEditSection
-          key={state.id}
-          title={state.institution || 'Education'}
-          expanded={expanded === state.id}
+          key={education.id}
+          title={education.institution || 'Education'}
+          expanded={expanded === education.id}
           length={allAcademics.length}
           index={index}
-          clickHandler={() => handleChange(state.id, expanded !== state.id)}
+          clickHandler={() => handleChange(education.id, expanded !== education.id)}
           onMoveUp={onMoveUp}
           onMoveDown={onMoveDown}
           onDelete={removeEducation}
         >
-          <Education educationInfo={state} currentIndex={index} />
+          <Education educationInfo={education} currentIndex={index} />
         </MoveEditSection>
       ))}
       <AddEducation handleChange={handleChange} isEmpty={allAcademics.length === 0} />

@@ -1,4 +1,4 @@
-import React, { ChangeEvent, Fragment, memo, useCallback } from 'react';
+import React, { ChangeEvent, Fragment, useCallback } from 'react';
 import TextField from '@mui/material/TextField';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
@@ -11,7 +11,7 @@ interface Props {
   currentIndex: number;
 }
 
-const AwardComp: React.FC<Props> = memo(({ awardInfo, currentIndex }) => {
+const AwardComp: React.FC<Props> = ({ awardInfo, currentIndex }) => {
   const onChangeHandler = useCallback(
     (name: string, value: any) => {
       const currentAwardInfo = { ...awardInfo };
@@ -99,8 +99,6 @@ const AwardComp: React.FC<Props> = memo(({ awardInfo, currentIndex }) => {
       />
     </Fragment>
   );
-});
-
-AwardComp.displayName = 'AwardComp';
+};
 
 export default AwardComp;
