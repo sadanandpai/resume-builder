@@ -131,6 +131,4 @@ const Experience: React.FC<Props> = ({ experienceInfo, currentIndex }) => {
   );
 };
 
-Experience.displayName = 'Experience';
-
 export default Experience;

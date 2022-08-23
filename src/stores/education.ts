@@ -73,6 +73,15 @@ const onMoveDown = (set: SetState<EducationStore>) => (index: number) => {
   );
 };
 
+const updateEducation =
+  (set: SetState<EducationStore>) => (index: number, updatedInfo: EducationItem) => {
+    set(
+      produce((state: EducationStore) => {
+        state.academics[index] = updatedInfo;
+      })
+    );
+  };
+
 export const useEducations = create<EducationStore>((set, get) => ({
   academics: resumeData.education,
   add: addEducation(set),
@@ -81,4 +90,5 @@ export const useEducations = create<EducationStore>((set, get) => ({
   set: setEducation(set),
   onmoveup: onMoveUp(set),
   onmovedown: onMoveDown(set),
+  updateEducation: updateEducation(set),
 }));

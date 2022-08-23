@@ -1,4 +1,4 @@
-import React, { ChangeEvent, Fragment, memo } from 'react';
+import React, { ChangeEvent, Fragment, useCallback } from 'react';
 import TextField from '@mui/material/TextField';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
@@ -11,45 +11,44 @@ interface Props {
   currentIndex: number;
 }
 
-const Education: React.FC<Props> = memo(({ educationInfo, currentIndex }) => {
-  const { set: setExperiences, academics } = useEducations();
+const Education: React.FC<Props> = ({ educationInfo, currentIndex }) => {
+  const onChangeHandler = useCallback(
+    (name: string, value: any) => {
+      const currentExpInfo = { ...educationInfo };
+      switch (name) {
+        case 'academyName':
+          currentExpInfo.institution = value;
+          break;
+        case 'degree':
+          currentExpInfo.studyType = value;
+          break;
+        case 'area':
+          currentExpInfo.area = value;
+          break;
+        case 'grade':
+          currentExpInfo.score = value;
+          break;
+        case 'startDate':
+          if (value?.isValid()) {
+            currentExpInfo.startDate = value;
+          }
+          break;
+        case 'isStudyingHere':
+          currentExpInfo.isStudyingHere = value;
+          break;
+        case 'endDate':
+          if (value?.isValid()) {
+            currentExpInfo.endDate = value;
+          }
+          break;
 
-  const onChangeHandler = (name: string, value: any) => {
-    const currentExpInfo = { ...educationInfo };
-    switch (name) {
-      case 'academyName':
-        currentExpInfo.institution = value;
-        break;
-      case 'degree':
-        currentExpInfo.studyType = value;
-        break;
-      case 'area':
-        currentExpInfo.area = value;
-        break;
-      case 'grade':
-        currentExpInfo.score = value;
-        break;
-      case 'startDate':
-        if (value?.isValid()) {
-          currentExpInfo.startDate = value;
-        }
-        break;
-      case 'isStudyingHere':
-        currentExpInfo.isStudyingHere = value;
-        break;
-      case 'endDate':
-        if (value?.isValid()) {
-          currentExpInfo.endDate = value;
-        }
-        break;
-
-      default:
-        break;
-    }
-    const updatedEducations = [...academics];
-    updatedEducations[currentIndex] = currentExpInfo;
-    setExperiences(updatedEducations);
-  };
+        default:
+          break;
+      }
+      useEducations.getState().updateEducation(currentIndex, currentExpInfo);
+    },
+    [currentIndex, educationInfo]
+  );
 
   return (
     <Fragment>
@@ -145,8 +144,6 @@ const Education: React.FC<Props> = memo(({ educationInfo, currentIndex }) => {
       />
     </Fragment>
   );
-});
-
-Education.displayName = 'Education';
+};
 
 export default Education;
