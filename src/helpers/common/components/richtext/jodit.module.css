@@ -12,8 +12,9 @@
   position: absolute;
   bottom: 0;
   width: 100%;
-  border-radius: 0px;
+  border-radius: 0px 0px 4px 4px;
   border-inline: 1px solid #dadada;
+  background-color: white;
 }
 
 .editor_wrapper :global(.jodit-workplace) {

@@ -49,7 +49,7 @@ export const RichtextEditor = memo(({ label, onChange, value }: IRichtext) => {
   }, [onChange]);
 
   return (
-    <div className={`${styles.editor_wrapper}`}>
+    <div className={`${styles.editor_wrapper} mb-4`}>
       <div
         style={{
           padding: '8px 16px 0px',
