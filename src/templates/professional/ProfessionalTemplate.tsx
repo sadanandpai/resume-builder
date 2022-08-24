@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import styled from '@emotion/styled';
+import { ThemeProvider } from '@emotion/react';
 
 const ResumeContainer = styled.div`
   display: flex;
@@ -51,43 +52,47 @@ import UnratedSkills from './components/UnratedSkills';
 import { Education } from './components/Education';
 import { Section } from './components/Section';
 import AwardComp from './components/Awards';
+import { useThemes } from 'src/stores/themes';
 
 export default function ProfessionalTemplate() {
   const resumeData = useContext(StateContext);
   const skills = resumeData.skills;
+  const selectedTheme = useThemes((state) => state.selectedTheme);
 
   return (
-    <ResumeContainer>
-      <LeftSection>
-        <BasicIntro basics={resumeData.basics} />
-        <Section title="Work Experience">
-          <Work work={resumeData.work} />
-        </Section>
-        <Section title="Awards / Accolades">
-          <AwardComp awards={resumeData.awards} />
-        </Section>
-      </LeftSection>
+    <ThemeProvider theme={selectedTheme}>
+      <ResumeContainer>
+        <LeftSection>
+          <BasicIntro basics={resumeData.basics} />
+          <Section title="Work Experience">
+            <Work work={resumeData.work} />
+          </Section>
+          <Section title="Awards / Accolades">
+            <AwardComp awards={resumeData.awards} />
+          </Section>
+        </LeftSection>
 
-      <RightSection>
-        <Section title="Summary">
-          <AboutMe summary={resumeData.basics.summary} />
-        </Section>
-        <Section title="Technical expertise">
-          <RatedSkills items={skills.languages.concat(skills.frameworks)} />
-        </Section>
-        <Section title="Skills / Exposure">
-          <UnratedSkills items={skills.technologies.concat(skills.libraries, skills.databases)} />
-        </Section>
-        <Section title="Methodology/Approach">
-          <UnratedSkills items={skills.practices} />
-        </Section>
-        <Section title="Tools">
-          <UnratedSkills items={skills.tools} />
-        </Section>
-        <Section title="Education">
-          <Education education={resumeData.education} />
-        </Section>
-      </RightSection>
-    </ResumeContainer>
+        <RightSection>
+          <Section title="Summary">
+            <AboutMe summary={resumeData.basics.summary} />
+          </Section>
+          <Section title="Technical expertise">
+            <RatedSkills items={skills.languages.concat(skills.frameworks)} />
+          </Section>
+          <Section title="Skills / Exposure">
+            <UnratedSkills items={skills.technologies.concat(skills.libraries, skills.databases)} />
+          </Section>
+          <Section title="Methodology/Approach">
+            <UnratedSkills items={skills.practices} />
+          </Section>
+          <Section title="Tools">
+            <UnratedSkills items={skills.tools} />
+          </Section>
+          <Section title="Education">
+            <Education education={resumeData.education} />
+          </Section>
+        </RightSection>
+      </ResumeContainer>
+    </ThemeProvider>
   );
 }

@@ -1,33 +1,30 @@
 import dynamic from 'next/dynamic';
-import { ThemeObject, ThemeIDs, ITemplate } from './index.interface';
+import { ITemplate } from './index.interface';
+import { ThemeColorIntf } from './index.interface';
 
-export const THEME_IDS: ThemeIDs = {
-  PRIMARY: 'PRIMARY',
-  SECONDARY: 'SECONDARY',
-  TERTIARY: 'TERTIARY',
-  CUSTOM: 'CUSTOM',
-};
-
-export const SYSTEM_THEME_OBJECT: ThemeObject = {
-  PRIMARY: {
+export const SYSTEM_COLORS: ThemeColorIntf[] = [
+  {
     fontColor: '#FFFFFF',
     backgroundColor: '#000000',
     primaryColor: '#0019FD',
     secondaryColor: '#22B34B',
+    id: 1,
   },
-  SECONDARY: {
+  {
     fontColor: '#FFFFFF',
     backgroundColor: '#9F0808',
     primaryColor: '#000000',
     secondaryColor: '#F1A91E',
+    id: 2,
   },
-  TERTIARY: {
+  {
     fontColor: '#FFFFFF',
     backgroundColor: '#000000',
     primaryColor: '#217503',
     secondaryColor: '#F556E5',
+    id: 3,
   },
-};
+];
 
 export const AVAILABLE_TEMPLATES: ITemplate[] = [
   {
@@ -43,5 +40,12 @@ export const AVAILABLE_TEMPLATES: ITemplate[] = [
     }),
   },
 ];
+export const CUSTOM_THEME_COLOR: ThemeColorIntf = {
+  fontColor: '#FFFFFF',
+  backgroundColor: '#000000',
+  primaryColor: '#0019FD',
+  secondaryColor: '#22B34B',
+  id: 4,
+};
 
 export const DATE_PICKER_FORMAT = 'DD/MM/YYYY';
