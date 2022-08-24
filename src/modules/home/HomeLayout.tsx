@@ -11,20 +11,24 @@ import PersonSection from './components/Person';
 const HomeLayout = () => {
   const controls = useAnimation();
   const animationEffects = {
-    // translateX: [0, -5, 0, 5, -2, 0, 2, 0],
+    translateX: [0, 25],
     // transition: { duration: 0.5 },
-    rotate: [0, -7, 0],
+    rotate: [0, -10],
+  };
+  const animationEffectsFirstLoad = {
+    translateX: [0, 25, 0],
+    // transition: { duration: 0.5 },
+    rotate: [0, -10, 0],
   };
   const transtionEffects = {
     type: 'spring',
-    duration: 0.5,
-    ease: 'easeOut',
-    damping: 10,
-    times: [0, 0.7, 1],
+    duration: 0.75,
+    ease: 'easeInOut',
+    // times: [0, 0.8, 1],
   };
 
   useEffect(() => {
-    controls.start(animationEffects, transtionEffects);
+    controls.start(animationEffectsFirstLoad, transtionEffects);
   }, []);
 
   return (
