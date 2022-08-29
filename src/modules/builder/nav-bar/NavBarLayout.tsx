@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import exportFromJSON from 'export-from-json';
+import { useRef, ChangeEvent } from 'react';
 
 import { NavBarMenu, NavBarActions, StyledButton } from './atoms';
 import { NavMenuItem } from './components/MenuItem';
@@ -24,6 +25,7 @@ import {
 import { useVoluteeringStore } from 'src/stores/volunteering';
 
 const NavBarLayout = () => {
+  const fileInputRef = useRef(null);
   const exportResumeData = () => {
     const updatedResumeJson = {
       ...DEFAULT_RESUME_JSON,
@@ -54,6 +56,53 @@ const NavBarLayout = () => {
     });
   };
 
+  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const fileObj = event.target.files && event.target.files[0];
+    if (!fileObj) {
+      return;
+    }
+
+    const reader = new FileReader();
+
+    reader.readAsText(fileObj);
+
+    reader.onload = (e) => {
+      if (typeof e.target?.result === 'string') {
+        const uploadedResumeJSON = JSON.parse(e.target?.result);
+        const {
+          basics = {},
+          skills = {},
+          work = [],
+          education = [],
+          // activities = [],
+          volunteer = [],
+          awards = [],
+        } = uploadedResumeJSON;
+        const {
+          languages = [],
+          frameworks = [],
+          libraries = [],
+          databases = [],
+          technologies = [],
+          practices = [],
+          tools = [],
+        } = skills;
+        useBasicDetails.getState().reset(basics);
+        useLanguages.getState().reset(languages);
+        useFrameworks.getState().reset(frameworks);
+        useLibraries.getState().reset(libraries);
+        useDatabases.getState().reset(databases);
+        useTechnologies.getState().reset(technologies);
+        usePractices.getState().reset(practices);
+        useTools.getState().reset(tools);
+        useExperiences.getState().reset(work);
+        useEducations.getState().reset(education);
+        useVoluteeringStore.getState().reset(volunteer);
+        useAwards.getState().reset(awards);
+      }
+    };
+  };
+
   return (
     <nav className="h-14 w-full bg-resume-800 relative flex py-2.5 pl-5 pr-4 items-center shadow-level-8dp z-20 print:hidden">
       <Link href="/">
@@ -70,7 +119,24 @@ const NavBarLayout = () => {
           <StyledButton variant="text" onClick={exportResumeData}>
             Export
           </StyledButton>
-          <StyledButton variant="text">Import</StyledButton>
+          <StyledButton
+            variant="text"
+            onClick={() => {
+              if (fileInputRef.current) {
+                const fileElement = fileInputRef.current as HTMLInputElement;
+                fileElement.click();
+              }
+            }}
+          >
+            Import{' '}
+            <input
+              type="file"
+              hidden
+              ref={fileInputRef}
+              accept="application/json"
+              onChange={handleFileChange}
+            />
+          </StyledButton>
           <PrintResume />
         </NavBarActions>
       </div>
