@@ -1,6 +1,5 @@
 import create, { SetState, GetState } from 'zustand';
 import produce from 'immer';
-import { devtools } from 'zustand/middleware';
 import resumeData from 'src/helpers/constants/resume-data.json';
 import { VolunteeringItem, VolunteeringStore } from './volunteering.interface';
 
@@ -84,15 +83,13 @@ const onMoveDown = (set: SetState<VolunteeringStore>) => (index: number) => {
   );
 };
 
-export const useVoluteeringStore = create<VolunteeringStore>(
-  devtools((set, get) => ({
-    volunteeredExps: resumeData.volunteer,
-    add: addVolunteering(set),
-    get: getVolunteeringExp(get),
-    remove: removeVolunteeringExp(set),
-    reset: setVolunteeringExps(set),
-    onmoveup: onMoveUp(set),
-    onmovedown: onMoveDown(set),
-    updatedVolunteeringExp: updatedVolunteeringExp(set),
-  }))
-);
+export const useVoluteeringStore = create<VolunteeringStore>((set, get) => ({
+  volunteeredExps: resumeData.volunteer,
+  add: addVolunteering(set),
+  get: getVolunteeringExp(get),
+  remove: removeVolunteeringExp(set),
+  reset: setVolunteeringExps(set),
+  onmoveup: onMoveUp(set),
+  onmovedown: onMoveDown(set),
+  updatedVolunteeringExp: updatedVolunteeringExp(set),
+}));

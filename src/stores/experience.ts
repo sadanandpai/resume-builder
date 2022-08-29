@@ -1,6 +1,5 @@
 import create, { SetState, GetState } from 'zustand';
 import produce from 'immer';
-import { devtools } from 'zustand/middleware';
 import resumeData from 'src/helpers/constants/resume-data.json';
 import { ExperienceItem, ExperienceStore } from './experience.interface';
 
@@ -82,15 +81,13 @@ const onMoveDown = (set: SetState<ExperienceStore>) => (index: number) => {
   );
 };
 
-export const useExperiences = create<ExperienceStore>(
-  devtools((set, get) => ({
-    experiences: resumeData.work,
-    add: addExperience(set),
-    get: getExperience(get),
-    remove: removeExperience(set),
-    reset: setExperience(set),
-    onmoveup: onMoveUp(set),
-    onmovedown: onMoveDown(set),
-    updateExperience: updateExperience(set),
-  }))
-);
+export const useExperiences = create<ExperienceStore>((set, get) => ({
+  experiences: resumeData.work,
+  add: addExperience(set),
+  get: getExperience(get),
+  remove: removeExperience(set),
+  reset: setExperience(set),
+  onmoveup: onMoveUp(set),
+  onmovedown: onMoveDown(set),
+  updateExperience: updateExperience(set),
+}));
