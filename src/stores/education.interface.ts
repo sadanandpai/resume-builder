@@ -16,7 +16,7 @@ export interface EducationStore {
   add: (newEducation: EducationItem) => void;
   get: (index: number) => void;
   remove: (index: number) => void;
-  set: (values: EducationItem[]) => void;
+  reset: (values: EducationItem[]) => void;
   onmoveup: (index: number) => void;
   onmovedown: (index: number) => void;
   updateEducation: (index: number, updatedInfo: EducationItem) => void;

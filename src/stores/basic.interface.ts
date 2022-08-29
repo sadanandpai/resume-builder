@@ -29,5 +29,5 @@ export interface BasicDetailsItem {
 
 export interface BasicDetailsStore {
   values: BasicDetailsItem;
-  set: (values: BasicDetailsItem) => void;
+  reset: (values: BasicDetailsItem) => void;
 }

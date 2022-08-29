@@ -87,7 +87,7 @@ export const useEducations = create<EducationStore>((set, get) => ({
   add: addEducation(set),
   get: getEducation(get),
   remove: removeEducation(set),
-  set: setEducation(set),
+  reset: setEducation(set),
   onmoveup: onMoveUp(set),
   onmovedown: onMoveDown(set),
   updateEducation: updateEducation(set),

@@ -11,7 +11,7 @@ export interface AwardsStore {
   add: (newEducation: AwardItem) => void;
   get: (index: number) => void;
   remove: (index: number) => void;
-  set: (values: AwardItem[]) => void;
+  reset: (values: AwardItem[]) => void;
   onmoveup: (index: number) => void;
   onmovedown: (index: number) => void;
   updateAward: (index: number, updatedInfo: AwardItem) => void;

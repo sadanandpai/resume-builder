@@ -104,7 +104,7 @@ const Experience: React.FC<Props> = ({ volunteeringInfo, currentIndex }) => {
       />
       <DatePicker
         label="End date"
-        value={volunteeringInfo.endDate}
+        value={volunteeringInfo.isVolunteeringNow ? null : volunteeringInfo.endDate}
         onChange={(newDate) => {
           onChangeHandler('endDate', newDate);
         }}

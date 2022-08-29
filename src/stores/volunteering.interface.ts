@@ -15,7 +15,7 @@ export interface VolunteeringStore {
   add: (newVolunteering: VolunteeringItem) => void;
   get: (index: number) => void;
   remove: (index: number) => void;
-  set: (values: VolunteeringItem[]) => void;
+  reset: (values: VolunteeringItem[]) => void;
   onmoveup: (index: number) => void;
   onmovedown: (index: number) => void;
   updatedVolunteeringExp: (index: number, updatedInfo: VolunteeringItem) => void;

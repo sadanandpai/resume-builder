@@ -70,7 +70,7 @@ export const useAwards = create<AwardsStore>((set, get) => ({
   add: addAward(set),
   get: getAllAwards(get),
   remove: removeAward(set),
-  set: setAllAwards(set),
+  reset: setAllAwards(set),
   onmoveup: onMoveUp(set),
   onmovedown: onMoveDown(set),
   updateAward: updateAward(set),

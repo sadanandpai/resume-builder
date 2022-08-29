@@ -15,7 +15,7 @@ export interface ExperienceStore {
   add: (newExperience: ExperienceItem) => void;
   get: (index: number) => void;
   remove: (index: number) => void;
-  set: (values: ExperienceItem[]) => void;
+  reset: (values: ExperienceItem[]) => void;
   onmoveup: (index: number) => void;
   onmovedown: (index: number) => void;
   updateExperience: (index: number, updatedInfo: ExperienceItem) => void;

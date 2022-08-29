@@ -88,7 +88,7 @@ export const useExperiences = create<ExperienceStore>(
     add: addExperience(set),
     get: getExperience(get),
     remove: removeExperience(set),
-    set: setExperience(set),
+    reset: setExperience(set),
     onmoveup: onMoveUp(set),
     onmovedown: onMoveDown(set),
     updateExperience: updateExperience(set),

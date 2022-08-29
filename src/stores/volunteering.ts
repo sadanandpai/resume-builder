@@ -90,7 +90,7 @@ export const useVoluteeringStore = create<VolunteeringStore>(
     add: addVolunteering(set),
     get: getVolunteeringExp(get),
     remove: removeVolunteeringExp(set),
-    set: setVolunteeringExps(set),
+    reset: setVolunteeringExps(set),
     onmoveup: onMoveUp(set),
     onmovedown: onMoveDown(set),
     updatedVolunteeringExp: updatedVolunteeringExp(set),

@@ -104,7 +104,7 @@ const Experience: React.FC<Props> = ({ experienceInfo, currentIndex }) => {
       />
       <DatePicker
         label="End date"
-        value={experienceInfo.endDate}
+        value={experienceInfo.isWorkingHere ? null : experienceInfo.endDate}
         onChange={(newDate) => {
           onChangeHandler('endDate', newDate);
         }}
