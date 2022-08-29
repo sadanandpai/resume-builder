@@ -45,3 +45,5 @@ export const AVAILABLE_TEMPLATES = {
     imageSrc: '',
   },
 };
+
+export const DATE_PICKER_FORMAT = 'DD/MM/YYYY';

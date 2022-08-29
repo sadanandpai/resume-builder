@@ -5,6 +5,7 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { useEducations } from 'src/stores/education';
 import { EducationItem } from 'src/stores/education.interface';
 import { SwitchWidget } from 'src/helpers/common/atoms/Switch';
+import { DATE_PICKER_FORMAT } from 'src/helpers/constants';
 
 interface Props {
   educationInfo: EducationItem;
@@ -111,7 +112,7 @@ const Education: React.FC<Props> = ({ educationInfo, currentIndex }) => {
         onChange={(newDate) => {
           onChangeHandler('startDate', newDate);
         }}
-        inputFormat={'DD/MM/YYYY'}
+        inputFormat={DATE_PICKER_FORMAT}
         renderInput={(params) => (
           <TextField {...params} variant="filled" autoComplete="off" fullWidth required />
         )}
@@ -129,7 +130,7 @@ const Education: React.FC<Props> = ({ educationInfo, currentIndex }) => {
         onChange={(newDate) => {
           onChangeHandler('endDate', newDate);
         }}
-        inputFormat={'DD/MM/YYYY'}
+        inputFormat={DATE_PICKER_FORMAT}
         renderInput={(params) => (
           <TextField
             {...params}
