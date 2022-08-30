@@ -7,7 +7,8 @@ const tabTitles = ['Contacts', 'Links', 'About'];
 
 const BasicLayout = () => {
   const [activeTab, setActiveTab] = React.useState(0);
-  const { set: onChangeText, values: basicTabs } = useBasicDetails();
+  const basicTabs = useBasicDetails((state) => state.values);
+  const onChangeText = useBasicDetails((state) => state.set);
 
   const changeActiveTab = (event: React.SyntheticEvent, activeTab: number) => {
     setActiveTab(activeTab);
