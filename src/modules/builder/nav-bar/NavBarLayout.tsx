@@ -1,9 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import exportFromJSON from 'export-from-json';
-import { useRef, ChangeEvent } from 'react';
+import { useRef, ChangeEvent, useState, useCallback } from 'react';
 
 import { NavBarMenu, NavBarActions, StyledButton } from './atoms';
+import { Toast } from 'src/helpers/common/atoms/Toast';
 import { NavMenuItem } from './components/MenuItem';
 import { ThemeSelect } from './components/ThemeSelect';
 import { TemplateSelect } from './components/TemplateSelect';
@@ -25,8 +26,10 @@ import {
 import { useVoluteeringStore } from 'src/stores/volunteering';
 
 const NavBarLayout = () => {
+  const [openToast, setOpenToast] = useState(false);
   const fileInputRef = useRef(null);
-  const exportResumeData = () => {
+
+  const exportResumeData = useCallback(() => {
     const updatedResumeJson = {
       ...DEFAULT_RESUME_JSON,
       basics: {
@@ -54,9 +57,9 @@ const NavBarLayout = () => {
       fileName,
       exportType,
     });
-  };
+  }, []);
 
-  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
     const fileObj = event.target.files && event.target.files[0];
     if (!fileObj) {
       return;
@@ -65,6 +68,8 @@ const NavBarLayout = () => {
     const reader = new FileReader();
 
     reader.readAsText(fileObj);
+
+    event.target.value = ''; // To read the same file
 
     reader.onload = (e) => {
       if (typeof e.target?.result === 'string') {
@@ -99,9 +104,10 @@ const NavBarLayout = () => {
         useEducations.getState().reset(education);
         useVoluteeringStore.getState().reset(volunteer);
         useAwards.getState().reset(awards);
+        setOpenToast(true);
       }
     };
-  };
+  }, []);
 
   return (
     <nav className="h-14 w-full bg-resume-800 relative flex py-2.5 pl-5 pr-4 items-center shadow-level-8dp z-20 print:hidden">
@@ -140,6 +146,13 @@ const NavBarLayout = () => {
           <PrintResume />
         </NavBarActions>
       </div>
+      <Toast
+        open={openToast}
+        onClose={() => {
+          setOpenToast(false);
+        }}
+        content={'Resume data was successfully imported.'}
+      />
     </nav>
   );
 };
