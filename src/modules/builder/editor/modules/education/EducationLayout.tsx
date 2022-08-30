@@ -7,9 +7,9 @@ import MoveEditSection from 'src/helpers/common/components/MoveEditSectionContai
 
 const EducationLayout = () => {
   const allAcademics = useEducations((state) => state.academics);
-  const removeEducation = useEducations((state) => state.remove);
-  const onMoveUp = useEducations((state) => state.onmoveup);
-  const onMoveDown = useEducations((state) => state.onmovedown);
+  const removeEducation = useEducations.getState().remove;
+  const onMoveUp = useEducations.getState().onmoveup;
+  const onMoveDown = useEducations.getState().onmovedown;
 
   const [expanded, setExpanded] = useState<string | false>(false);
 

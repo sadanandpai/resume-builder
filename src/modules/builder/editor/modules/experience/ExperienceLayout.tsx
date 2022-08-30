@@ -7,9 +7,9 @@ import MoveEditSection from 'src/helpers/common/components/MoveEditSectionContai
 
 const ExperienceLayout = () => {
   const allWorks = useExperiences((state) => state.experiences);
-  const removeExperience = useExperiences((state) => state.remove);
-  const onMoveUp = useExperiences((state) => state.onmoveup);
-  const onMoveDown = useExperiences((state) => state.onmovedown);
+  const removeExperience = useExperiences.getState().remove;
+  const onMoveUp = useExperiences.getState().onmoveup;
+  const onMoveDown = useExperiences.getState().onmovedown;
 
   const [expanded, setExpanded] = useState<string | false>(false);
 

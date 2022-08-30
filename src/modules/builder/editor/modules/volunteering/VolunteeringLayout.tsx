@@ -7,9 +7,9 @@ import MoveEditSection from 'src/helpers/common/components/MoveEditSectionContai
 
 const VolunteeringLayout = () => {
   const allVolunteeringExps = useVoluteeringStore((state) => state.volunteeredExps);
-  const removeExperience = useVoluteeringStore((state) => state.remove);
-  const onMoveUp = useVoluteeringStore((state) => state.onmoveup);
-  const onMoveDown = useVoluteeringStore((state) => state.onmovedown);
+  const removeExperience = useVoluteeringStore.getState().remove;
+  const onMoveUp = useVoluteeringStore.getState().onmoveup;
+  const onMoveDown = useVoluteeringStore.getState().onmovedown;
 
   const [expanded, setExpanded] = useState<string | false>(false);
 
