@@ -1,4 +1,4 @@
-import { useRef, useEffect, memo } from 'react';
+import { useRef, useEffect, memo, useState } from 'react';
 import 'jodit/build/jodit.min.css';
 
 import { LinkPlugin } from './plugins/link';
@@ -15,6 +15,7 @@ interface IRichtext {
 export const RichtextEditor = memo(({ label, onChange, value }: IRichtext) => {
   const editorContainerRef = useRef<HTMLTextAreaElement | null>(null);
   const editorRef = useRef<any>(null);
+  const [editorInstanceCreated, setEditorInstanceCreated] = useState(false);
 
   useEffect(() => {
     if (editorContainerRef.current) {
@@ -36,6 +37,7 @@ export const RichtextEditor = memo(({ label, onChange, value }: IRichtext) => {
         });
         editor.value = value;
         editorRef.current = editor;
+        setEditorInstanceCreated(true);
       };
       initEditor();
     }
@@ -43,10 +45,10 @@ export const RichtextEditor = memo(({ label, onChange, value }: IRichtext) => {
   }, []);
 
   useEffect(() => {
-    if (editorRef.current) {
+    if (editorRef.current && editorInstanceCreated) {
       editorRef.current.events.on('change', onChange);
     }
-  }, [onChange]);
+  }, [onChange, editorInstanceCreated]);
 
   return (
     <div className={`${styles.editor_wrapper} mb-4`}>
