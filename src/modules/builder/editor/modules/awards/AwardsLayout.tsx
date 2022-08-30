@@ -7,9 +7,9 @@ import MoveEditSection from 'src/helpers/common/components/MoveEditSectionContai
 
 const AwardsLayout = () => {
   const allAwards = useAwards((state) => state.awards);
-  const removeEducation = useAwards((state) => state.remove);
-  const onMoveUp = useAwards((state) => state.onmoveup);
-  const onMoveDown = useAwards((state) => state.onmovedown);
+  const removeEducation = useAwards.getState().remove;
+  const onMoveUp = useAwards.getState().onmoveup;
+  const onMoveDown = useAwards.getState().onmovedown;
 
   const [expanded, setExpanded] = useState<string | false>(false);
 
