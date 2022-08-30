@@ -13,7 +13,7 @@ const Links = ({
       <TextField
         label="LinkedIn"
         variant="filled"
-        defaultValue={basicTabs.profiles[0].url}
+        value={basicTabs.profiles[0].url}
         onChange={(event: ChangeEvent<HTMLInputElement>) => {
           const profiles = basicTabs.profiles;
           profiles[0].url = event.target.value;
@@ -23,7 +23,7 @@ const Links = ({
       <TextField
         label="Twitter"
         variant="filled"
-        defaultValue={basicTabs.profiles[1].url}
+        value={basicTabs.profiles[1].url}
         onChange={(event: ChangeEvent<HTMLInputElement>) => {
           const profiles = basicTabs.profiles;
           profiles[1].url = event.target.value;
@@ -33,7 +33,7 @@ const Links = ({
       <TextField
         label="Github"
         variant="filled"
-        defaultValue={basicTabs.profiles[2].url}
+        value={basicTabs.profiles[2].url}
         onChange={(event: ChangeEvent<HTMLInputElement>) => {
           const profiles = basicTabs.profiles;
           profiles[2].url = event.target.value;
@@ -43,7 +43,7 @@ const Links = ({
       <TextField
         label="Hackerrank"
         variant="filled"
-        defaultValue={basicTabs.profiles[3].url}
+        value={basicTabs.profiles[3].url}
         onChange={(event: ChangeEvent<HTMLInputElement>) => {
           const profiles = basicTabs.profiles;
           profiles[3].url = event.target.value;
@@ -53,7 +53,7 @@ const Links = ({
       <TextField
         label="HackerEarth"
         variant="filled"
-        defaultValue={basicTabs.profiles[4].url}
+        value={basicTabs.profiles[4].url}
         onChange={(event: ChangeEvent<HTMLInputElement>) => {
           const profiles = basicTabs.profiles;
           profiles[4].url = event.target.value;
@@ -63,7 +63,7 @@ const Links = ({
       <TextField
         label="CodeChef"
         variant="filled"
-        defaultValue={basicTabs.profiles[5].url}
+        value={basicTabs.profiles[5].url}
         onChange={(event: ChangeEvent<HTMLInputElement>) => {
           const profiles = basicTabs.profiles;
           profiles[5].url = event.target.value;
