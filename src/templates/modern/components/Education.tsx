@@ -2,6 +2,7 @@ import { EducationIntrf } from 'src/stores/index.interface';
 import { SectionHeading } from '../atoms/SectionHeading';
 import { SectionSubtitle } from '../atoms/SectionSubtitle';
 import { SectionTitle } from '../atoms/SectionTitle';
+import { dateParser } from 'src/helpers/utils';
 
 export const EducationSection = ({ education }: { education: EducationIntrf[] }) => {
   return (
@@ -9,16 +10,6 @@ export const EducationSection = ({ education }: { education: EducationIntrf[] })
       <SectionHeading title="Education" />
 
       {education.map((item: EducationIntrf, index: number) => {
-        let startDate;
-        let endDate;
-        if (item.startDate !== null) {
-          startDate =
-            typeof item.startDate === 'object' ? item.startDate.format('MMM YYYY') : item.startDate;
-        }
-        if (item.endDate !== null) {
-          endDate =
-            typeof item.endDate === 'object' ? item.endDate.format('MMM YYYY') : item.endDate;
-        }
         return (
           <div key={index} className="py-3">
             <div>
@@ -27,7 +18,8 @@ export const EducationSection = ({ education }: { education: EducationIntrf[] })
                 <SectionSubtitle label={item.institution} />
                 <div className="flex gap-3">
                   <p className="text-xs">
-                    {startDate} - {item.isStudyingHere ? 'present' : endDate}
+                    {dateParser(item.startDate)} -
+                    {item.isStudyingHere ? 'present' : dateParser(item.endDate)}
                   </p>
                   {/* <p className="text-xs">60%</p> */}
                 </div>

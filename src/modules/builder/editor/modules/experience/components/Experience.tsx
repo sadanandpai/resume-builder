@@ -6,6 +6,7 @@ import { useExperiences } from 'src/stores/experience';
 import { ExperienceItem } from 'src/stores/experience.interface';
 import { SwitchWidget } from 'src/helpers/common/atoms/Switch';
 import { RichtextEditor } from 'src/helpers/common/components/richtext';
+import { DATE_PICKER_FORMAT } from 'src/helpers/constants';
 
 interface Props {
   experienceInfo: ExperienceItem;
@@ -90,7 +91,7 @@ const Experience: React.FC<Props> = ({ experienceInfo, currentIndex }) => {
         onChange={(newDate) => {
           onChangeHandler('startDate', newDate);
         }}
-        inputFormat={'DD/MM/YYYY'}
+        inputFormat={DATE_PICKER_FORMAT}
         renderInput={(params) => (
           <TextField {...params} variant="filled" autoComplete="off" fullWidth required />
         )}
@@ -104,11 +105,11 @@ const Experience: React.FC<Props> = ({ experienceInfo, currentIndex }) => {
       />
       <DatePicker
         label="End date"
-        value={experienceInfo.endDate}
+        value={experienceInfo.isWorkingHere ? null : experienceInfo.endDate}
         onChange={(newDate) => {
           onChangeHandler('endDate', newDate);
         }}
-        inputFormat={'DD/MM/YYYY'}
+        inputFormat={DATE_PICKER_FORMAT}
         renderInput={(params) => (
           <TextField
             {...params}

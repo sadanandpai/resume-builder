@@ -6,6 +6,7 @@ import { useVoluteeringStore } from 'src/stores/volunteering';
 import { VolunteeringItem } from 'src/stores/volunteering.interface';
 import { SwitchWidget } from 'src/helpers/common/atoms/Switch';
 import { RichtextEditor } from 'src/helpers/common/components/richtext';
+import { DATE_PICKER_FORMAT } from 'src/helpers/constants';
 
 interface Props {
   volunteeringInfo: VolunteeringItem;
@@ -90,7 +91,7 @@ const Experience: React.FC<Props> = ({ volunteeringInfo, currentIndex }) => {
         onChange={(newDate) => {
           onChangeHandler('startDate', newDate);
         }}
-        inputFormat={'DD/MM/YYYY'}
+        inputFormat={DATE_PICKER_FORMAT}
         renderInput={(params) => (
           <TextField {...params} variant="filled" autoComplete="off" fullWidth required />
         )}
@@ -104,11 +105,11 @@ const Experience: React.FC<Props> = ({ volunteeringInfo, currentIndex }) => {
       />
       <DatePicker
         label="End date"
-        value={volunteeringInfo.endDate}
+        value={volunteeringInfo.isVolunteeringNow ? null : volunteeringInfo.endDate}
         onChange={(newDate) => {
           onChangeHandler('endDate', newDate);
         }}
-        inputFormat={'DD/MM/YYYY'}
+        inputFormat={DATE_PICKER_FORMAT}
         renderInput={(params) => (
           <TextField
             {...params}

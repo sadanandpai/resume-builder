@@ -5,6 +5,7 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { useAwards } from 'src/stores/awards';
 import { AwardItem } from 'src/stores/awards.interface';
 import { RichtextEditor } from 'src/helpers/common/components/richtext';
+import { DATE_PICKER_FORMAT } from 'src/helpers/constants';
 
 interface Props {
   awardInfo: AwardItem;
@@ -79,7 +80,7 @@ const AwardComp: React.FC<Props> = ({ awardInfo, currentIndex }) => {
         onChange={(newDate) => {
           onChangeHandler('date', newDate);
         }}
-        inputFormat={'DD/MM/YYYY'}
+        inputFormat={DATE_PICKER_FORMAT}
         renderInput={(params) => (
           <TextField
             {...params}

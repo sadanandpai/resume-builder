@@ -31,7 +31,7 @@ const getMethods = (set: SetState<SkillStateIntf>, get: GetState<SkillStateIntf>
   get: getSkills(get),
   add: addSkill(set),
   remove: removeSkill(set),
-  set: setSkills(set),
+  reset: setSkills(set),
   setIsEnabled: setIsEnabled(set),
 });
 

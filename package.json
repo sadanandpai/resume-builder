@@ -24,6 +24,7 @@
     "@mui/x-date-pickers": "^5.0.0-alpha.2",
     "@splidejs/splide": "^4.0.1",
     "dayjs": "^1.11.1",
+    "export-from-json": "^1.6.0",
     "framer-motion": "^6.3.0",
     "html-react-parser": "^3.0.1",
     "immer": "^9.0.12",

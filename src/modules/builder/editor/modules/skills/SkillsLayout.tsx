@@ -43,7 +43,7 @@ const SkillsLayout = () => {
             items={state.values}
             addItem={state.add}
             removeItem={state.remove}
-            setItems={state.set}
+            setItems={state.reset}
             hasLevel={state.hasLevel}
           />
         </EditSectionContainer>

@@ -7,5 +7,5 @@ const onChangeText = (set: SetState<BasicDetailsStore>) => (values: BasicDetails
 
 export const useBasicDetails = create<BasicDetailsStore>((set) => ({
   values: resumeData.basics,
-  set: onChangeText(set),
+  reset: onChangeText(set),
 }));
