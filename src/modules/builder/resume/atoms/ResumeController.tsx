@@ -1,9 +1,17 @@
 import Image from 'next/image';
 
-const ResumeController = ({ zoomIn, zoomOut }: { zoomIn: () => void; zoomOut: () => void }) => {
+const ResumeController = ({
+  zoomIn,
+  zoomOut,
+  resetZoom,
+}: {
+  zoomIn: () => void;
+  zoomOut: () => void;
+  resetZoom: () => void;
+}) => {
   return (
     <div className="flex">
-      <div className="flex items-center block pr-4">
+      <div className="flex items-center pr-4">
         <Image
           src="/icons/fit-height.svg"
           className="cursor-pointer"
@@ -15,14 +23,6 @@ const ResumeController = ({ zoomIn, zoomOut }: { zoomIn: () => void; zoomOut: ()
 
       <div className="grid grid-cols-3 items-center gap-5 pl-4 border-l-2	border-resume-200">
         <Image
-          src="/icons/zoom-in.svg"
-          className="cursor-pointer"
-          alt="Zoom in"
-          width="24px"
-          height="24px"
-          onClick={zoomIn}
-        />
-        <Image
           src="/icons/zoom-out.svg"
           className="cursor-pointer"
           alt="Zoom out"
@@ -31,11 +31,20 @@ const ResumeController = ({ zoomIn, zoomOut }: { zoomIn: () => void; zoomOut: ()
           onClick={zoomOut}
         />
         <Image
+          src="/icons/zoom-in.svg"
+          className="cursor-pointer"
+          alt="Zoom in"
+          width="24px"
+          height="24px"
+          onClick={zoomIn}
+        />
+        <Image
           src="/icons/reset-zoom.svg"
           className="cursor-pointer"
           alt="Reset zoom"
           width="24px"
           height="24px"
+          onClick={resetZoom}
         />
       </div>
     </div>

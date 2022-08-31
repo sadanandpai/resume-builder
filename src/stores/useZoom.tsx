@@ -4,6 +4,7 @@ interface IZoomStore {
   zoom: number;
   zoomIn: () => void;
   zoomOut: () => void;
+  resetZoom: () => void;
   setZoom: (zoom: number) => void;
 }
 
@@ -18,9 +19,16 @@ const handleSetZoom = (set: SetState<IZoomStore>) => (zoom: number) =>
     return { zoom: +zoom.toFixed(1) };
   });
 
+const handleResetZoom = (set: SetState<IZoomStore>) => () => {
+  set(() => {
+    return { zoom: 1 };
+  });
+};
+
 export const useZoom = create<IZoomStore>((set, get) => ({
   zoom: 1,
   setZoom: handleSetZoom(set),
   zoomIn: handleZoomIn(get),
+  resetZoom: handleResetZoom(set),
   zoomOut: handleZoomOut(get),
 }));
