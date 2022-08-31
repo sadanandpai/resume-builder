@@ -15,9 +15,9 @@ export const ResumeLayout = () => {
     <div className="mx-5">
       <div
         style={{ transform: `scale(${zoom})` }}
-        className="origin-top transition-all duration-300 ease-linear	"
+        className="origin-top transition-all duration-300 ease-linear	print:!scale-100"
       >
-        <div className="w-[210mm] h-[296mm] bg-white my-0 mx-auto">
+        <div className="w-[210mm] h-[296mm] bg-white my-0 mx-auto print:h-full">
           <StateContext.Provider value={resumeData}>
             <ProfessionalTemplate />
           </StateContext.Provider>
