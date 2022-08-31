@@ -1,20 +1,20 @@
 import dynamic from 'next/dynamic';
 import { ITemplate } from './index.interface';
-import { ThemeColorIntf } from './index.interface';
+import { ThemeColorIntf, TemplateIntf } from './index.interface';
 
 export const SYSTEM_COLORS: ThemeColorIntf[] = [
   {
-    backgroundColor: '#FFFFFF',
-    fontColor: '#000000',
-    titleColor: '#0019FD',
-    highlighterColor: '#22B34B',
+    backgroundColor: 'white',
+    fontColor: 'black',
+    titleColor: '#1890ff',
+    highlighterColor: 'yellowgreen',
     id: 1,
   },
   {
-    backgroundColor: '#FFFFFF',
-    fontColor: '#9F0808',
-    titleColor: '#000000',
-    highlighterColor: '#F1A91E',
+    backgroundColor: 'white',
+    fontColor: '#780650',
+    titleColor: '#254000',
+    highlighterColor: 'burlywood',
     id: 2,
   },
   {
@@ -41,11 +41,32 @@ export const AVAILABLE_TEMPLATES: ITemplate[] = [
   },
 ];
 export const CUSTOM_THEME_COLOR: ThemeColorIntf = {
-  backgroundColor: '#FFFFFF',
-  fontColor: '#000000',
-  titleColor: '#0019FD',
-  highlighterColor: '#22B34B',
+  backgroundColor: 'white',
+  fontColor: 'black',
+  titleColor: 'green',
+  highlighterColor: '#ff7875',
   id: 4,
 };
+
+export const TEMPLATES_IDS = {
+  PRIMARY: 'PRIMARY',
+  SECONDARY: 'SECONDARY',
+  TERTIARY: 'TERTIARY',
+};
+
+export const AVAILABLE_TEMPLATES: TemplateIntf[] = [
+  {
+    type: TEMPLATES_IDS.PRIMARY,
+    imageSrc: '',
+  },
+  {
+    type: TEMPLATES_IDS.SECONDARY,
+    imageSrc: '',
+  },
+  {
+    type: TEMPLATES_IDS.TERTIARY,
+    imageSrc: '',
+  },
+];
 
 export const DATE_PICKER_FORMAT = 'DD/MM/YYYY';

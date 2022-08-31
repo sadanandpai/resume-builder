@@ -27,10 +27,10 @@ export const ThemeSelect = () => {
               onClick={() => handleActiveTheme(themeObject)}
             >
               <ColorBoxWrapper>
-                <ColorBox bgColor={themeObject.fontColor} />
                 <ColorBox bgColor={themeObject.backgroundColor} />
-                <ColorBox bgColor={themeObject.primaryColor} />
-                <ColorBox bgColor={themeObject.secondaryColor} />
+                <ColorBox bgColor={themeObject.fontColor} />
+                <ColorBox bgColor={themeObject.titleColor} />
+                <ColorBox bgColor={themeObject.highlighterColor} />
               </ColorBoxWrapper>
               {isActive && (
                 <Image src={'/icons/selected-tick.svg'} alt="logo" width={'28px'} height={'20px'} />
