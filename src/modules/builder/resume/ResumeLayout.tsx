@@ -1,6 +1,9 @@
+import { ThemeProvider } from '@mui/material/styles';
+
 import { Context, createContext } from 'react';
 import { useResumeStore } from 'src/stores/useResumeStore';
 import { useZoom } from 'src/stores/useZoom';
+import { useThemes } from 'src/stores/themes';
 import { useTemplates } from 'src/stores/useTemplate';
 
 export let StateContext: Context<any> = createContext(null);
@@ -9,7 +12,7 @@ export const ResumeLayout = () => {
   const resumeData = useResumeStore();
   const zoom = useZoom((state) => state.zoom);
   const Template = useTemplates((state) => state.activeTemplate.component);
-
+  const selectedTheme = useThemes((state) => state.selectedTheme);
   StateContext = createContext(resumeData);
 
   return (
@@ -20,7 +23,9 @@ export const ResumeLayout = () => {
       >
         <div className="w-[210mm] h-[296mm] bg-white my-0 mx-auto print:h-full">
           <StateContext.Provider value={resumeData}>
-            <Template />
+            <ThemeProvider theme={selectedTheme}>
+              <Template />
+            </ThemeProvider>
           </StateContext.Provider>
         </div>
       </div>
