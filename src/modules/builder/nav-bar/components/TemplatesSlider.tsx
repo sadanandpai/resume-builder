@@ -1,15 +1,16 @@
 import Image from 'next/image';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import Splide, { Splide as SplideCore } from '@splidejs/splide';
 import { Global } from '@emotion/react';
 
 // eslint-disable-next-line import/no-unresolved
 import '@splidejs/splide/css';
 
-import { TEMPLATES_IDS, AVAILABLE_TEMPLATES } from 'src/helpers/constants';
+import { AVAILABLE_TEMPLATES } from 'src/helpers/constants';
+import { useTemplates } from 'src/stores/useTemplate';
 
 export const TemplateSlider = () => {
-  const [activeTemplateId, setActiveTemplateId] = useState(TEMPLATES_IDS.PRIMARY);
+  const templateIndex = useTemplates((state) => state.index);
 
   const targetElementRef = useRef<HTMLElement | null>(null);
   const splideInstanceRef = useRef<Splide | null>(null);
@@ -34,8 +35,8 @@ export const TemplateSlider = () => {
     };
   }, []);
 
-  const onChangeTemplate = (templateId: string) => {
-    setActiveTemplateId(templateId);
+  const onChangeTemplate = (templateId: number) => {
+    useTemplates.getState().setTemplate(templateId);
   };
 
   return (
@@ -58,13 +59,14 @@ export const TemplateSlider = () => {
       <section className="splide mt-[26px] mb-[32px]" ref={targetElementRef}>
         <div className="splide__track">
           <ul className="splide__list">
-            {Object.keys(AVAILABLE_TEMPLATES).map((templateId) => {
-              const isActive = templateId === activeTemplateId;
+            {AVAILABLE_TEMPLATES.map((template, index) => {
+              const isActive = index === templateIndex;
               return (
                 <TemplateSlide
-                  key={templateId}
+                  key={index}
+                  id={index}
                   isActive={isActive}
-                  templateId={templateId}
+                  {...template}
                   onChangeTemplate={onChangeTemplate}
                 />
               );
@@ -78,18 +80,22 @@ export const TemplateSlider = () => {
 
 export const TemplateSlide = ({
   isActive,
-  templateId,
+  id,
+  name,
+  thumbnail,
   onChangeTemplate,
 }: {
   isActive: boolean;
-  templateId: string;
-  onChangeTemplate: (templateId: string) => void;
+  id: number;
+  name: string;
+  thumbnail: string;
+  onChangeTemplate: (id: number) => void;
 }) => {
   return (
     <li
       className="splide__slide hover:cursor-pointer"
       onClick={() => {
-        onChangeTemplate(templateId);
+        onChangeTemplate(id);
       }}
     >
       <div
@@ -97,6 +103,8 @@ export const TemplateSlide = ({
           isActive ? 'bg-resume-50 border-resume-500' : 'border-[#a9a9a9]'
         }`}
       >
+        <Image src={thumbnail} alt={name} layout="fill" />
+
         {isActive && (
           <div className="absolute top-3 right-3">
             <Image src={'/icons/selected-tick.svg'} alt="logo" width={'28px'} height={'20px'} />

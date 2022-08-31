@@ -8,7 +8,7 @@ import { AwardSection } from './components/Awards';
 import { useContext } from 'react';
 import { StateContext } from 'src/modules/builder/resume/ResumeLayout';
 
-export const MordernTemplate = () => {
+export default function MordernTemplate() {
   const resumeData = useContext(StateContext);
 
   return (
@@ -40,4 +40,4 @@ export const MordernTemplate = () => {
       </div>
     </div>
   );
-};
+}

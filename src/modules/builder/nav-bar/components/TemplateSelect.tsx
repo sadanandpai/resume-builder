@@ -1,8 +1,9 @@
-import { Divider, Button, styled, alpha } from '@mui/material';
+import { Divider, styled, alpha } from '@mui/material';
+import Link from '@mui/material/Link';
 
 import { TemplateSlider } from './TemplatesSlider';
 
-export const StyledButton = styled(Button)(({ theme }) => ({
+export const StyledLink = styled(Link)(({ theme }) => ({
   color: theme.palette.resume[800],
   borderColor: theme.palette.resume[100],
   ':hover': {
@@ -20,7 +21,13 @@ export const TemplateSelect = () => {
         Want to build your own template?
       </span>
       <div>
-        <StyledButton variant="outlined">Contribute on Github</StyledButton>
+        <StyledLink
+          href="https://github.com/sadanandpai/resume-builder"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Contribute on Github
+        </StyledLink>
       </div>
     </div>
   );

@@ -10,3 +10,9 @@ export interface ThemeObject {
 export interface ThemeIDs {
   [key: string]: string;
 }
+
+export interface ITemplate {
+  name: string;
+  thumbnail: string;
+  component: React.ComponentType;
+}

@@ -1,4 +1,5 @@
-import { ThemeObject, ThemeIDs } from './index.interface';
+import dynamic from 'next/dynamic';
+import { ThemeObject, ThemeIDs, ITemplate } from './index.interface';
 
 export const THEME_IDS: ThemeIDs = {
   PRIMARY: 'PRIMARY',
@@ -28,22 +29,19 @@ export const SYSTEM_THEME_OBJECT: ThemeObject = {
   },
 };
 
-export const TEMPLATES_IDS = {
-  PRIMARY: 'PRIMARY',
-  SECONDARY: 'SECONDARY',
-  TERTIARY: 'TERTIARY',
-};
-
-export const AVAILABLE_TEMPLATES = {
-  PRIMARY: {
-    imageSrc: '',
+export const AVAILABLE_TEMPLATES: ITemplate[] = [
+  {
+    name: 'Modern Resume',
+    thumbnail: '/templates/modern.png',
+    component: dynamic(() => import('src/templates/modern/MordernTemplate'), { ssr: false }),
   },
-  SECONDARY: {
-    imageSrc: '',
+  {
+    name: 'Professional Resume',
+    thumbnail: '/templates/professional.png',
+    component: dynamic(() => import('src/templates/professional/ProfessionalTemplate'), {
+      ssr: false,
+    }),
   },
-  TERTIARY: {
-    imageSrc: '',
-  },
-};
+];
 
 export const DATE_PICKER_FORMAT = 'DD/MM/YYYY';
