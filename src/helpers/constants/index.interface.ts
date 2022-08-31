@@ -1,8 +1,8 @@
 export interface ThemeColorIntf {
-  fontColor: string;
   backgroundColor: string;
-  primaryColor: string;
-  secondaryColor: string;
+  fontColor: string;
+  titleColor: string;
+  highlighterColor: string;
   id: number;
 }
 

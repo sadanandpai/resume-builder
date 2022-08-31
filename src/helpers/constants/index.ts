@@ -4,24 +4,24 @@ import { ThemeColorIntf } from './index.interface';
 
 export const SYSTEM_COLORS: ThemeColorIntf[] = [
   {
-    fontColor: '#FFFFFF',
-    backgroundColor: '#000000',
-    primaryColor: '#0019FD',
-    secondaryColor: '#22B34B',
+    backgroundColor: '#FFFFFF',
+    fontColor: '#000000',
+    titleColor: '#0019FD',
+    highlighterColor: '#22B34B',
     id: 1,
   },
   {
-    fontColor: '#FFFFFF',
-    backgroundColor: '#9F0808',
-    primaryColor: '#000000',
-    secondaryColor: '#F1A91E',
+    backgroundColor: '#FFFFFF',
+    fontColor: '#9F0808',
+    titleColor: '#000000',
+    highlighterColor: '#F1A91E',
     id: 2,
   },
   {
-    fontColor: '#FFFFFF',
-    backgroundColor: '#000000',
-    primaryColor: '#217503',
-    secondaryColor: '#F556E5',
+    backgroundColor: '#FFFFFF',
+    fontColor: '#000000',
+    titleColor: '#217503',
+    highlighterColor: '#F556E5',
     id: 3,
   },
 ];
@@ -41,10 +41,10 @@ export const AVAILABLE_TEMPLATES: ITemplate[] = [
   },
 ];
 export const CUSTOM_THEME_COLOR: ThemeColorIntf = {
-  fontColor: '#FFFFFF',
-  backgroundColor: '#000000',
-  primaryColor: '#0019FD',
-  secondaryColor: '#22B34B',
+  backgroundColor: '#FFFFFF',
+  fontColor: '#000000',
+  titleColor: '#0019FD',
+  highlighterColor: '#22B34B',
   id: 4,
 };
 
