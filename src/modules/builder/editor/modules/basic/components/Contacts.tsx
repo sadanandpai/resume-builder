@@ -35,6 +35,14 @@ const Contacts = ({
         }}
       />
       <TextField
+        label="Websit URL"
+        variant="filled"
+        value={basicTabs.url}
+        onChange={(event: ChangeEvent<HTMLInputElement>) => {
+          onChangeHandler(event.target.value, 'url');
+        }}
+      />
+      <TextField
         label="Phone"
         variant="filled"
         value={basicTabs.phone}
@@ -50,6 +58,22 @@ const Contacts = ({
           const location = basicTabs.location;
           location.city = event.target.value;
           onChangeHandler(location, 'location');
+        }}
+      />
+      <TextField
+        label="Relevant Experience"
+        variant="filled"
+        value={basicTabs.relExp}
+        onChange={(event: ChangeEvent<HTMLInputElement>) => {
+          onChangeHandler(event.target.value, 'relExp');
+        }}
+      />
+      <TextField
+        label="Total Experience"
+        variant="filled"
+        value={basicTabs.totalExp}
+        onChange={(event: ChangeEvent<HTMLInputElement>) => {
+          onChangeHandler(event.target.value, 'totalExp');
         }}
       />
     </Fragment>
