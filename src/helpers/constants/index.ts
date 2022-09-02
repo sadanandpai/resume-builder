@@ -47,10 +47,4 @@ export const CUSTOM_THEME_COLOR: ThemeColorIntf = {
   id: 4,
 };
 
-export const TEMPLATES_IDS = {
-  PRIMARY: 'PRIMARY',
-  SECONDARY: 'SECONDARY',
-  TERTIARY: 'TERTIARY',
-};
-
 export const DATE_PICKER_FORMAT = 'DD/MM/YYYY';
