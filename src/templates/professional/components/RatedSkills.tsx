@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 const ProgressBar = styled.div`
   width: ${(props: { level: number }) => props.level}%;
   height: 6px;
-  background-color: yellowgreen;
+  background-color: ${(props) => props.theme.highlighterColor};
 `;
 
 export default function RatedSkills({ items }: { items: SkillItemIntf[] }) {

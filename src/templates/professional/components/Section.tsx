@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import Color from 'color';
 
 const SectionHolder = styled.div`
-  border: 1px solid gray;
+  border: 1px solid ${(props) => Color(props.theme.highlighterColor).alpha(0.75).toString()};
   border-radius: 5px;
   padding: 15px 10px 10px 10px;
   position: relative;
@@ -14,7 +15,7 @@ const SectionHolder = styled.div`
     background: white;
     padding: 0 5px;
     font-weight: bold;
-    color: #1890ff;
+    color: ${(props) => props.theme.titleColor};
   }
 `;
 
