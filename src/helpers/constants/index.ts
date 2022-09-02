@@ -1,6 +1,5 @@
 import dynamic from 'next/dynamic';
-import { ITemplate } from './index.interface';
-import { ThemeColorIntf, TemplateIntf } from './index.interface';
+import { ThemeColorIntf, TemplateIntf, ITemplate } from './index.interface';
 
 export const SYSTEM_COLORS: ThemeColorIntf[] = [
   {
@@ -53,20 +52,5 @@ export const TEMPLATES_IDS = {
   SECONDARY: 'SECONDARY',
   TERTIARY: 'TERTIARY',
 };
-
-export const AVAILABLE_TEMPLATES: TemplateIntf[] = [
-  {
-    type: TEMPLATES_IDS.PRIMARY,
-    imageSrc: '',
-  },
-  {
-    type: TEMPLATES_IDS.SECONDARY,
-    imageSrc: '',
-  },
-  {
-    type: TEMPLATES_IDS.TERTIARY,
-    imageSrc: '',
-  },
-];
 
 export const DATE_PICKER_FORMAT = 'DD/MM/YYYY';
