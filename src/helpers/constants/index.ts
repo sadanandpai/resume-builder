@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic';
-import { ThemeColorIntf, TemplateIntf, ITemplate } from './index.interface';
+import { ThemeColorIntf, ITemplate } from './index.interface';
 
 export const SYSTEM_COLORS: ThemeColorIntf[] = [
   {

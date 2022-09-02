@@ -11,8 +11,3 @@ export interface ITemplate {
   thumbnail: string;
   component: React.ComponentType;
 }
-
-export interface TemplateIntf {
-  type: string;
-  imageSrc: string;
-}
