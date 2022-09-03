@@ -2,13 +2,13 @@ import Image from 'next/image';
 
 import { ColorBox, ColorBoxWrapper } from '../atoms';
 import { SYSTEM_COLORS } from 'src/helpers/constants/index';
-import { ThemeColorIntf } from 'src/helpers/constants/index.interface';
+import { IThemeColor } from 'src/helpers/constants/index.interface';
 import { useThemes } from 'src/stores/themes';
 
 export const ThemeSelect = () => {
   const activeTheme = useThemes((state) => state.selectedTheme);
 
-  const handleActiveTheme = (themeObject: ThemeColorIntf) => {
+  const handleActiveTheme = (themeObject: IThemeColor) => {
     useThemes.getState().chooseTheme(themeObject);
   };
 

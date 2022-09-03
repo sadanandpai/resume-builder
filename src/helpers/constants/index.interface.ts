@@ -1,4 +1,4 @@
-export interface ThemeColorIntf {
+export interface IThemeColor {
   backgroundColor: string;
   fontColor: string;
   titleColor: string;

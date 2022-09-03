@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic';
-import { ThemeColorIntf, ITemplate } from './index.interface';
+import { IThemeColor, ITemplate } from './index.interface';
 
-export const SYSTEM_COLORS: ThemeColorIntf[] = [
+export const SYSTEM_COLORS: IThemeColor[] = [
   {
     backgroundColor: 'white',
     fontColor: 'black',
@@ -39,7 +39,7 @@ export const AVAILABLE_TEMPLATES: ITemplate[] = [
     }),
   },
 ];
-export const CUSTOM_THEME_COLOR: ThemeColorIntf = {
+export const CUSTOM_THEME_COLOR: IThemeColor = {
   backgroundColor: 'white',
   fontColor: 'black',
   titleColor: 'green',
