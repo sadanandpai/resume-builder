@@ -1,9 +1,9 @@
 import { useMemo } from 'react';
 import { OutlinedButton } from 'src/helpers/common/atoms/Buttons';
 import { useExperiences } from 'src/stores/experience';
-import { ExperienceItem } from 'src/stores/experience.interface';
+import { IExperienceItem } from 'src/stores/experience.interface';
 
-const NEW_EXPERIENCE: ExperienceItem = {
+const NEW_EXPERIENCE: IExperienceItem = {
   name: '',
   position: '',
   startDate: null,

@@ -6,7 +6,7 @@ const animation = {
   animate: { x: 0, opacity: 1 },
 };
 
-interface props {
+interface IEditSection {
   section: {
     title: string;
     component: () => JSX.Element;
@@ -14,7 +14,7 @@ interface props {
   onLinkClick: (link: string) => void;
 }
 
-const EditSection = ({ section, onLinkClick }: props) => {
+const EditSection = ({ section, onLinkClick }: IEditSection) => {
   return (
     <motion.div initial={animation.initial} animate={animation.animate}>
       <div className="flex items-center mb-6 mt-4">

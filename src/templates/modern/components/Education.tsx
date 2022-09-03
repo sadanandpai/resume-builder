@@ -1,15 +1,15 @@
-import { EducationIntrf } from 'src/stores/index.interface';
+import { IEducation } from 'src/stores/index.interface';
 import { SectionHeading } from '../atoms/SectionHeading';
 import { SectionSubtitle } from '../atoms/SectionSubtitle';
 import { SectionTitle } from '../atoms/SectionTitle';
 import { dateParser } from 'src/helpers/utils';
 
-export const EducationSection = ({ education }: { education: EducationIntrf[] }) => {
+export const EducationSection = ({ education }: { education: IEducation[] }) => {
   return (
     <div className="mb-3">
       <SectionHeading title="Education" />
 
-      {education.map((item: EducationIntrf, index: number) => {
+      {education.map((item: IEducation, index: number) => {
         return (
           <div key={index} className="py-3">
             <div>

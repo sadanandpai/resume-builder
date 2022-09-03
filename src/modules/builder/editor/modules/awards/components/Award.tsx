@@ -3,16 +3,16 @@ import TextField from '@mui/material/TextField';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 import { useAwards } from 'src/stores/awards';
-import { AwardItem } from 'src/stores/awards.interface';
+import { IAwardItem } from 'src/stores/awards.interface';
 import { RichtextEditor } from 'src/helpers/common/components/richtext';
 import { DATE_PICKER_FORMAT } from 'src/helpers/constants';
 
-interface Props {
-  awardInfo: AwardItem;
+interface IAwardComp {
+  awardInfo: IAwardItem;
   currentIndex: number;
 }
 
-const AwardComp: React.FC<Props> = ({ awardInfo, currentIndex }) => {
+const AwardComp: React.FC<IAwardComp> = ({ awardInfo, currentIndex }) => {
   const onChangeHandler = useCallback(
     (name: string, value: any) => {
       const currentAwardInfo = { ...awardInfo };

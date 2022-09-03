@@ -1,10 +1,10 @@
 import create, { SetState, GetState } from 'zustand';
 import produce from 'immer';
 import resumeData from 'src/helpers/constants/resume-data.json';
-import { ExperienceItem, ExperienceStore } from './experience.interface';
+import { IExperienceItem, IExperienceStore } from './experience.interface';
 
 const addExperience =
-  (set: SetState<ExperienceStore>) =>
+  (set: SetState<IExperienceStore>) =>
   ({
     name,
     position,
@@ -15,9 +15,9 @@ const addExperience =
     id,
     url = '',
     highlights = [],
-  }: ExperienceItem) =>
+  }: IExperienceItem) =>
     set(
-      produce((state: ExperienceStore) => {
+      produce((state: IExperienceStore) => {
         state.experiences.push({
           id,
           name,
@@ -32,33 +32,33 @@ const addExperience =
       })
     );
 
-const removeExperience = (set: SetState<ExperienceStore>) => (index: number) =>
+const removeExperience = (set: SetState<IExperienceStore>) => (index: number) =>
   set((state) => ({
     experiences: state.experiences.slice(0, index).concat(state.experiences.slice(index + 1)),
   }));
 
-const setExperience = (set: SetState<ExperienceStore>) => (values: ExperienceItem[]) => {
+const setExperience = (set: SetState<IExperienceStore>) => (values: IExperienceItem[]) => {
   set({
     experiences: values,
   });
 };
 
 const updateExperience =
-  (set: SetState<ExperienceStore>) => (index: number, updatedInfo: ExperienceItem) => {
+  (set: SetState<IExperienceStore>) => (index: number, updatedInfo: IExperienceItem) => {
     set(
-      produce((state: ExperienceStore) => {
+      produce((state: IExperienceStore) => {
         state.experiences[index] = updatedInfo;
       })
     );
   };
 
-const getExperience = (get: GetState<ExperienceStore>) => (index: number) => {
+const getExperience = (get: GetState<IExperienceStore>) => (index: number) => {
   return get().experiences[index];
 };
 
-const onMoveUp = (set: SetState<ExperienceStore>) => (index: number) => {
+const onMoveUp = (set: SetState<IExperienceStore>) => (index: number) => {
   set(
-    produce((state: ExperienceStore) => {
+    produce((state: IExperienceStore) => {
       if (index > 0) {
         const currentExperience = state.experiences[index];
         state.experiences[index] = state.experiences[index - 1];
@@ -68,9 +68,9 @@ const onMoveUp = (set: SetState<ExperienceStore>) => (index: number) => {
   );
 };
 
-const onMoveDown = (set: SetState<ExperienceStore>) => (index: number) => {
+const onMoveDown = (set: SetState<IExperienceStore>) => (index: number) => {
   set(
-    produce((state: ExperienceStore) => {
+    produce((state: IExperienceStore) => {
       const totalExp = state.experiences.length;
       if (index < totalExp - 1) {
         const currentExperience = state.experiences[index];
@@ -81,7 +81,7 @@ const onMoveDown = (set: SetState<ExperienceStore>) => (index: number) => {
   );
 };
 
-export const useExperiences = create<ExperienceStore>((set, get) => ({
+export const useExperiences = create<IExperienceStore>((set, get) => ({
   experiences: resumeData.work,
   add: addExperience(set),
   get: getExperience(get),

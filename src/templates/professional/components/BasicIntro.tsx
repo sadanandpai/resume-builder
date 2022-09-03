@@ -1,6 +1,6 @@
-import { BasicsIntrf } from 'src/stores/index.interface';
+import { IBasics } from 'src/stores/index.interface';
 
-export default function BasicIntro({ basics }: { basics: BasicsIntrf }) {
+export default function BasicIntro({ basics }: { basics: IBasics }) {
   return (
     <div className="flex justify-between">
       <div className="flex flex-col gap-1">

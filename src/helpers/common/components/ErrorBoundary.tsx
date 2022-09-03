@@ -1,20 +1,20 @@
 import React, { Component, ErrorInfo, ReactNode } from 'react';
 
-interface Props {
+interface IErrorProps {
   children: ReactNode;
   fallbackComponent?: () => JSX.Element;
 }
 
-interface State {
+interface IErrorState {
   hasError: boolean;
 }
 
-class ErrorBoundary extends Component<Props, State> {
-  public state: State = {
+class ErrorBoundary extends Component<IErrorProps, IErrorState> {
+  public state: IErrorState = {
     hasError: false,
   };
 
-  public static getDerivedStateFromError(): State {
+  public static getDerivedStateFromError(): IErrorState {
     // Update state so the next render will show the fallback UI.
     return { hasError: true };
   }

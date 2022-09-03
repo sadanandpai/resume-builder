@@ -1,11 +1,11 @@
 import create, { SetState } from 'zustand';
 import resumeData from 'src/helpers/constants/resume-data.json';
-import { BasicDetailsItem, BasicDetailsStore } from './basic.interface';
+import { IBasicDetailsItem, IBasicDetailsStore } from './basic.interface';
 
-const onChangeText = (set: SetState<BasicDetailsStore>) => (values: BasicDetailsItem) =>
+const onChangeText = (set: SetState<IBasicDetailsStore>) => (values: IBasicDetailsItem) =>
   set({ values });
 
-export const useBasicDetails = create<BasicDetailsStore>((set) => ({
+export const useBasicDetails = create<IBasicDetailsStore>((set) => ({
   values: resumeData.basics,
   reset: onChangeText(set),
 }));

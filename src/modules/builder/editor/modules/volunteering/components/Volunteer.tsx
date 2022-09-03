@@ -3,17 +3,17 @@ import TextField from '@mui/material/TextField';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 import { useVoluteeringStore } from 'src/stores/volunteering';
-import { VolunteeringItem } from 'src/stores/volunteering.interface';
+import { IVolunteeringItem } from 'src/stores/volunteering.interface';
 import { SwitchWidget } from 'src/helpers/common/atoms/Switch';
 import { RichtextEditor } from 'src/helpers/common/components/richtext';
 import { DATE_PICKER_FORMAT } from 'src/helpers/constants';
 
-interface Props {
-  volunteeringInfo: VolunteeringItem;
+interface IVolunteerProps {
+  volunteeringInfo: IVolunteeringItem;
   currentIndex: number;
 }
 
-const Experience: React.FC<Props> = ({ volunteeringInfo, currentIndex }) => {
+const Volunteer: React.FC<IVolunteerProps> = ({ volunteeringInfo, currentIndex }) => {
   const onChangeHandler = useCallback(
     (name: string, value: any) => {
       const currentExpInfo = { ...volunteeringInfo };
@@ -132,4 +132,4 @@ const Experience: React.FC<Props> = ({ volunteeringInfo, currentIndex }) => {
   );
 };
 
-export default Experience;
+export default Volunteer;

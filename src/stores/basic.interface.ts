@@ -1,10 +1,10 @@
-type Profiles = {
+type IProfiles = {
   network: string;
   username: string;
   url: string;
 };
 
-type Location = {
+type ILocation = {
   address: string;
   postalCode: string;
   city: string;
@@ -12,7 +12,7 @@ type Location = {
   region: string;
 };
 
-export interface BasicDetailsItem {
+export interface IBasicDetailsItem {
   name: string;
   label: string;
   image: string;
@@ -20,14 +20,14 @@ export interface BasicDetailsItem {
   phone: string;
   url: string;
   summary: string;
-  location: Location;
+  location: ILocation;
   relExp: string;
   totalExp: string;
   objective: string;
-  profiles: Profiles[];
+  profiles: IProfiles[];
 }
 
-export interface BasicDetailsStore {
-  values: BasicDetailsItem;
-  reset: (values: BasicDetailsItem) => void;
+export interface IBasicDetailsStore {
+  values: IBasicDetailsItem;
+  reset: (values: IBasicDetailsItem) => void;
 }

@@ -2,15 +2,15 @@ import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import { TextField } from '@mui/material';
 import SliderValue from '../atoms/SliderValue';
 import { OutlinedButton, TextButton } from 'src/helpers/common/atoms/Buttons';
-import { SkillItemIntf } from 'src/stores/skill.interface';
+import { ISkillItem } from 'src/stores/skill.interface';
 
 const AddSkill = ({
   addHandler,
   items,
   hasLevel = false,
 }: {
-  addHandler: ({ name, level }: SkillItemIntf) => void;
-  items: SkillItemIntf[];
+  addHandler: ({ name, level }: ISkillItem) => void;
+  items: ISkillItem[];
   hasLevel: boolean;
 }) => {
   const [showForm, setShowForm] = useState(false);

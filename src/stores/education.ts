@@ -1,10 +1,10 @@
 import create, { SetState, GetState } from 'zustand';
 import produce from 'immer';
 import resumeData from 'src/helpers/constants/resume-data.json';
-import { EducationItem, EducationStore } from './education.interface';
+import { IEducationItem, IEducationStore } from './education.interface';
 
 const addEducation =
-  (set: SetState<EducationStore>) =>
+  (set: SetState<IEducationStore>) =>
   ({
     institution,
     studyType,
@@ -16,9 +16,9 @@ const addEducation =
     url,
     score,
     courses,
-  }: EducationItem) =>
+  }: IEducationItem) =>
     set(
-      produce((state: EducationStore) => {
+      produce((state: IEducationStore) => {
         state.academics.push({
           institution,
           studyType,
@@ -34,24 +34,24 @@ const addEducation =
       })
     );
 
-const removeEducation = (set: SetState<EducationStore>) => (index: number) =>
+const removeEducation = (set: SetState<IEducationStore>) => (index: number) =>
   set((state) => ({
     academics: state.academics.slice(0, index).concat(state.academics.slice(index + 1)),
   }));
 
-const setEducation = (set: SetState<EducationStore>) => (values: EducationItem[]) => {
+const setEducation = (set: SetState<IEducationStore>) => (values: IEducationItem[]) => {
   set({
     academics: values,
   });
 };
 
-const getEducation = (get: GetState<EducationStore>) => (index: number) => {
+const getEducation = (get: GetState<IEducationStore>) => (index: number) => {
   return get().academics[index];
 };
 
-const onMoveUp = (set: SetState<EducationStore>) => (index: number) => {
+const onMoveUp = (set: SetState<IEducationStore>) => (index: number) => {
   set(
-    produce((state: EducationStore) => {
+    produce((state: IEducationStore) => {
       if (index > 0) {
         const currentExperience = state.academics[index];
         state.academics[index] = state.academics[index - 1];
@@ -60,9 +60,9 @@ const onMoveUp = (set: SetState<EducationStore>) => (index: number) => {
     })
   );
 };
-const onMoveDown = (set: SetState<EducationStore>) => (index: number) => {
+const onMoveDown = (set: SetState<IEducationStore>) => (index: number) => {
   set(
-    produce((state: EducationStore) => {
+    produce((state: IEducationStore) => {
       const totalExp = state.academics.length;
       if (index < totalExp - 1) {
         const currentExperience = state.academics[index];
@@ -74,15 +74,15 @@ const onMoveDown = (set: SetState<EducationStore>) => (index: number) => {
 };
 
 const updateEducation =
-  (set: SetState<EducationStore>) => (index: number, updatedInfo: EducationItem) => {
+  (set: SetState<IEducationStore>) => (index: number, updatedInfo: IEducationItem) => {
     set(
-      produce((state: EducationStore) => {
+      produce((state: IEducationStore) => {
         state.academics[index] = updatedInfo;
       })
     );
   };
 
-export const useEducations = create<EducationStore>((set, get) => ({
+export const useEducations = create<IEducationStore>((set, get) => ({
   academics: resumeData.education,
   add: addEducation(set),
   get: getEducation(get),
