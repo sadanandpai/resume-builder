@@ -23,19 +23,27 @@ export default function MordernTemplate() {
       />
       <div className="flex ">
         <div className="basis-[60%] p-3">
-          <SummarySection summary={resumeData.basics.summary} />
-          <WorkSection experience={resumeData.work} />
-          <AwardSection awardsReceived={resumeData.awards} />
+          {resumeData.basics.summary && <SummarySection summary={resumeData.basics.summary} />}
+          {resumeData.work.length > 0 && <WorkSection experience={resumeData.work} />}
+          {resumeData.awards.length > 0 && <AwardSection awardsReceived={resumeData.awards} />}
 
-          <SkillsSection title="Languages" list={resumeData.skills.languages} />
+          {resumeData.skills.languages.length > 0 && (
+            <SkillsSection title="Languages" list={resumeData.skills.languages} />
+          )}
         </div>
 
         <div className="basis-[40%] p-3">
-          <Objective objective={resumeData.basics.objective} />
-          <SkillsSection title="Technologies" list={resumeData.skills.technologies} />
-          <SkillsSection title="Frameworks" list={resumeData.skills.frameworks} />
-          <SkillsSection title="Tools" list={resumeData.skills.tools} />
-          <EducationSection education={resumeData.education} />
+          {resumeData.basics.objective && <Objective objective={resumeData.basics.objective} />}
+          {resumeData.skills.technologies.length > 0 && (
+            <SkillsSection title="Technologies" list={resumeData.skills.technologies} />
+          )}
+          {resumeData.skills.frameworks.length > 0 && (
+            <SkillsSection title="Frameworks" list={resumeData.skills.frameworks} />
+          )}
+          {resumeData.skills.tools.length > 0 && (
+            <SkillsSection title="Tools" list={resumeData.skills.tools} />
+          )}
+          {resumeData.education.length > 0 && <EducationSection education={resumeData.education} />}
         </div>
       </div>
     </div>

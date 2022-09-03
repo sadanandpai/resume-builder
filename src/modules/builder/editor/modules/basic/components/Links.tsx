@@ -1,5 +1,63 @@
-import React, { ChangeEvent, Fragment } from 'react';
+import React, { ChangeEvent, Fragment, useEffect, useState } from 'react';
 import TextField from '@mui/material/TextField';
+
+const SUPPORTED_NETWORKS = {
+  linkedin: 'linkedin',
+  twitter: 'twitter',
+  github: 'github',
+  hackerrank: 'hackerrank',
+  hackerearth: 'hackerearth',
+  codechef: 'codechef',
+  leetcode: 'leetcode',
+};
+
+interface profileNetworkIntf {
+  network: string;
+  username: string;
+  url: string;
+}
+
+interface supportedNtwkDefaultStateIntf {
+  [key: string]: profileNetworkIntf;
+}
+
+const SUPPORTED_NETWORK_DEFAULT_STATE: supportedNtwkDefaultStateIntf = {
+  linkedin: {
+    network: 'linkedin',
+    username: 'janedoe',
+    url: '',
+  },
+  twitter: {
+    network: 'twitter',
+    username: 'janedoe',
+    url: '',
+  },
+  github: {
+    network: 'github',
+    username: 'janedoe',
+    url: '',
+  },
+  hackerrank: {
+    network: 'hackerrank',
+    username: 'janedoe',
+    url: '',
+  },
+  hackerearth: {
+    network: 'hackerearth',
+    username: 'janedoe',
+    url: '',
+  },
+  codechef: {
+    network: 'codechef',
+    username: 'janedoe',
+    url: '',
+  },
+  leetcode: {
+    network: 'leetcode',
+    username: 'janedoe',
+    url: '',
+  },
+};
 
 const Links = ({
   basicTabs,
@@ -8,66 +66,88 @@ const Links = ({
   basicTabs: any;
   onChangeHandler: (value: any, key: string) => void;
 }) => {
+  const [networks, setNetworks] = useState(SUPPORTED_NETWORK_DEFAULT_STATE);
+
+  useEffect(() => {
+    const defaultNetworks = { ...SUPPORTED_NETWORK_DEFAULT_STATE };
+    Object.keys(SUPPORTED_NETWORKS).forEach((ntwk) => {
+      const matchedNetwork = basicTabs.profiles.find(
+        (profile: profileNetworkIntf) => profile.network === ntwk
+      );
+      if (matchedNetwork) {
+        defaultNetworks[ntwk] = matchedNetwork;
+      }
+    });
+    setNetworks(defaultNetworks);
+    onChangeHandler(Object.values(defaultNetworks), 'profiles');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const onURLChange = (value: string, network: string) => {
+    const profiles = basicTabs.profiles;
+    const matchedNetwork = profiles.find(
+      (profile: profileNetworkIntf) => profile.network === network
+    );
+    matchedNetwork.url = value;
+    onChangeHandler(profiles, 'profiles');
+  };
+
   return (
     <Fragment>
       <TextField
         label="LinkedIn"
         variant="filled"
-        value={basicTabs.profiles[0].url}
+        value={networks[SUPPORTED_NETWORKS.linkedin].url}
         onChange={(event: ChangeEvent<HTMLInputElement>) => {
-          const profiles = basicTabs.profiles;
-          profiles[0].url = event.target.value;
-          onChangeHandler(profiles, 'profiles');
+          onURLChange(event.target.value, SUPPORTED_NETWORKS.linkedin);
         }}
       />
       <TextField
         label="Twitter"
         variant="filled"
-        value={basicTabs.profiles[1].url}
+        value={networks[SUPPORTED_NETWORKS.twitter].url}
         onChange={(event: ChangeEvent<HTMLInputElement>) => {
-          const profiles = basicTabs.profiles;
-          profiles[1].url = event.target.value;
-          onChangeHandler(profiles, 'profiles');
+          onURLChange(event.target.value, SUPPORTED_NETWORKS.twitter);
         }}
       />
       <TextField
         label="Github"
         variant="filled"
-        value={basicTabs.profiles[2].url}
+        value={networks[SUPPORTED_NETWORKS.github].url}
         onChange={(event: ChangeEvent<HTMLInputElement>) => {
-          const profiles = basicTabs.profiles;
-          profiles[2].url = event.target.value;
-          onChangeHandler(profiles, 'profiles');
+          onURLChange(event.target.value, SUPPORTED_NETWORKS.github);
         }}
       />
       <TextField
         label="Hackerrank"
         variant="filled"
-        value={basicTabs.profiles[3].url}
+        value={networks[SUPPORTED_NETWORKS.hackerrank].url}
         onChange={(event: ChangeEvent<HTMLInputElement>) => {
-          const profiles = basicTabs.profiles;
-          profiles[3].url = event.target.value;
-          onChangeHandler(profiles, 'profiles');
+          onURLChange(event.target.value, SUPPORTED_NETWORKS.hackerrank);
         }}
       />
       <TextField
         label="HackerEarth"
         variant="filled"
-        value={basicTabs.profiles[4].url}
+        value={networks[SUPPORTED_NETWORKS.hackerearth].url}
         onChange={(event: ChangeEvent<HTMLInputElement>) => {
-          const profiles = basicTabs.profiles;
-          profiles[4].url = event.target.value;
-          onChangeHandler(profiles, 'profiles');
+          onURLChange(event.target.value, SUPPORTED_NETWORKS.hackerearth);
         }}
       />
       <TextField
         label="CodeChef"
         variant="filled"
-        value={basicTabs.profiles[5].url}
+        value={networks[SUPPORTED_NETWORKS.codechef].url}
         onChange={(event: ChangeEvent<HTMLInputElement>) => {
-          const profiles = basicTabs.profiles;
-          profiles[5].url = event.target.value;
-          onChangeHandler(profiles, 'profiles');
+          onURLChange(event.target.value, SUPPORTED_NETWORKS.codechef);
+        }}
+      />
+      <TextField
+        label="Leetcode"
+        variant="filled"
+        value={networks[SUPPORTED_NETWORKS.leetcode].url}
+        onChange={(event: ChangeEvent<HTMLInputElement>) => {
+          onURLChange(event.target.value, SUPPORTED_NETWORKS.leetcode);
         }}
       />
     </Fragment>

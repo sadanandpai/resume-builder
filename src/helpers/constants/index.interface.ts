@@ -1,14 +1,9 @@
-export interface ThemeObject {
-  [key: string]: {
-    fontColor: string;
-    backgroundColor: string;
-    primaryColor: string;
-    secondaryColor: string;
-  };
-}
-
-export interface ThemeIDs {
-  [key: string]: string;
+export interface ThemeColorIntf {
+  backgroundColor: string;
+  fontColor: string;
+  titleColor: string;
+  highlighterColor: string;
+  id: number;
 }
 
 export interface ITemplate {

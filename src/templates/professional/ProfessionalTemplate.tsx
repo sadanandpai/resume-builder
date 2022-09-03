@@ -60,33 +60,49 @@ export default function ProfessionalTemplate() {
     <ResumeContainer>
       <LeftSection>
         <BasicIntro basics={resumeData.basics} />
-        <Section title="Work Experience">
-          <Work work={resumeData.work} />
-        </Section>
-        <Section title="Awards / Accolades">
-          <AwardComp awards={resumeData.awards} />
-        </Section>
+        {resumeData.work.length > 0 && (
+          <Section title="Work Experience">
+            <Work work={resumeData.work} />
+          </Section>
+        )}
+        {resumeData.awards.length > 0 && (
+          <Section title="Awards / Accolades">
+            <AwardComp awards={resumeData.awards} />
+          </Section>
+        )}
       </LeftSection>
 
       <RightSection>
-        <Section title="Summary">
-          <AboutMe summary={resumeData.basics.summary} />
-        </Section>
-        <Section title="Technical expertise">
-          <RatedSkills items={skills.languages.concat(skills.frameworks)} />
-        </Section>
-        <Section title="Skills / Exposure">
-          <UnratedSkills items={skills.technologies.concat(skills.libraries, skills.databases)} />
-        </Section>
-        <Section title="Methodology/Approach">
-          <UnratedSkills items={skills.practices} />
-        </Section>
-        <Section title="Tools">
-          <UnratedSkills items={skills.tools} />
-        </Section>
-        <Section title="Education">
-          <Education education={resumeData.education} />
-        </Section>
+        {resumeData.basics.summary && (
+          <Section title="Summary">
+            <AboutMe summary={resumeData.basics.summary} />
+          </Section>
+        )}
+        {skills.frameworks.length > 0 && (
+          <Section title="Technical expertise">
+            <RatedSkills items={skills.languages.concat(skills.frameworks)} />
+          </Section>
+        )}
+        {skills.technologies.concat(skills.libraries, skills.databases).length > 0 && (
+          <Section title="Skills / Exposure">
+            <UnratedSkills items={skills.technologies.concat(skills.libraries, skills.databases)} />
+          </Section>
+        )}
+        {skills.practices.length > 0 && (
+          <Section title="Methodology/Approach">
+            <UnratedSkills items={skills.practices} />
+          </Section>
+        )}
+        {skills.tools.length > 0 && (
+          <Section title="Tools">
+            <UnratedSkills items={skills.tools} />
+          </Section>
+        )}
+        {resumeData.education.length > 0 && (
+          <Section title="Education">
+            <Education education={resumeData.education} />
+          </Section>
+        )}
       </RightSection>
     </ResumeContainer>
   );

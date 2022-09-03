@@ -12,7 +12,7 @@ export const Education = ({ education }: { education: EducationIntrf[] }) => {
                 {item.studyType} - {item.area}
               </p>
               <div className="flex justify-between items-center">
-                <p className="font-normal text-[#1AB0B3]">{item.institution}</p>
+                <p className="font-normal">{item.institution}</p>
                 <div className="flex gap-3">
                   <p className="text-xs">
                     {dateParser(item.startDate)} -

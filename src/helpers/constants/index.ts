@@ -1,33 +1,29 @@
 import dynamic from 'next/dynamic';
-import { ThemeObject, ThemeIDs, ITemplate } from './index.interface';
+import { ThemeColorIntf, ITemplate } from './index.interface';
 
-export const THEME_IDS: ThemeIDs = {
-  PRIMARY: 'PRIMARY',
-  SECONDARY: 'SECONDARY',
-  TERTIARY: 'TERTIARY',
-  CUSTOM: 'CUSTOM',
-};
-
-export const SYSTEM_THEME_OBJECT: ThemeObject = {
-  PRIMARY: {
-    fontColor: '#FFFFFF',
-    backgroundColor: '#000000',
-    primaryColor: '#0019FD',
-    secondaryColor: '#22B34B',
+export const SYSTEM_COLORS: ThemeColorIntf[] = [
+  {
+    backgroundColor: 'white',
+    fontColor: 'black',
+    titleColor: '#1890ff',
+    highlighterColor: 'yellowgreen',
+    id: 1,
   },
-  SECONDARY: {
-    fontColor: '#FFFFFF',
-    backgroundColor: '#9F0808',
-    primaryColor: '#000000',
-    secondaryColor: '#F1A91E',
+  {
+    backgroundColor: 'white',
+    fontColor: '#780650',
+    titleColor: '#254000',
+    highlighterColor: 'burlywood',
+    id: 2,
   },
-  TERTIARY: {
-    fontColor: '#FFFFFF',
-    backgroundColor: '#000000',
-    primaryColor: '#217503',
-    secondaryColor: '#F556E5',
+  {
+    backgroundColor: '#FFFFFF',
+    fontColor: '#000000',
+    titleColor: '#217503',
+    highlighterColor: '#F556E5',
+    id: 3,
   },
-};
+];
 
 export const AVAILABLE_TEMPLATES: ITemplate[] = [
   {
@@ -43,5 +39,12 @@ export const AVAILABLE_TEMPLATES: ITemplate[] = [
     }),
   },
 ];
+export const CUSTOM_THEME_COLOR: ThemeColorIntf = {
+  backgroundColor: 'white',
+  fontColor: 'black',
+  titleColor: 'green',
+  highlighterColor: '#ff7875',
+  id: 4,
+};
 
 export const DATE_PICKER_FORMAT = 'DD/MM/YYYY';

@@ -4,10 +4,10 @@ import '../src/styles/globals.css';
 
 const theme = createTheme({
   colors: {
-    fontColor: 'black',
-    backgroundColor: 'white',
-    primaryColor: '#1890ff',
-    secondaryColor: 'yellowgreen',
+    backgroundColor: 'black',
+    fontColor: 'white',
+    titleColor: '#1890ff',
+    highlighterColor: 'yellowgreen',
   },
   name: 'theme1',
 });

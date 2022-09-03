@@ -1,37 +1,36 @@
 import Image from 'next/image';
-import { Divider } from '@mui/material';
-import { Fragment, useState } from 'react';
 
-import { ColorBox, ColorBoxWrapper, ColorDetails } from '../atoms';
-import { THEME_IDS, SYSTEM_THEME_OBJECT } from 'src/helpers/constants/index';
+import { ColorBox, ColorBoxWrapper } from '../atoms';
+import { SYSTEM_COLORS } from 'src/helpers/constants/index';
+import { ThemeColorIntf } from 'src/helpers/constants/index.interface';
+import { useThemes } from 'src/stores/themes';
 
 export const ThemeSelect = () => {
-  const [activeTheme, setActiveTheme] = useState<string>(THEME_IDS.PRIMARY);
+  const activeTheme = useThemes((state) => state.selectedTheme);
 
-  const handleActiveTheme = (themeName: string) => {
-    setActiveTheme(themeName);
+  const handleActiveTheme = (themeObject: ThemeColorIntf) => {
+    useThemes.getState().chooseTheme(themeObject);
   };
 
   return (
-    <div className={`h-[510px] w-[475px] bg-white flex flex-col px-9 py-7 shadow-2xl`}>
+    <div className={`h-[auto] w-[475px] bg-white flex flex-col px-9 py-7 shadow-2xl`}>
       <span className="text-resume-800 font-bold text-lg mb-2">Choose a theme</span>
       <div className="w-full">
-        {Object.keys(SYSTEM_THEME_OBJECT).map((themeName) => {
-          const themeObject = SYSTEM_THEME_OBJECT[themeName];
-          const isActive = themeName === activeTheme;
+        {SYSTEM_COLORS.map((themeObject) => {
+          const isActive = themeObject.id === activeTheme.id;
           return (
             <div
-              key={themeName}
+              key={themeObject.id}
               className={`flex border rounded mb-[16px] justify-between items-center py-[14px] px-4 ${
                 isActive ? 'bg-resume-50 border-resume-500' : 'border-[#a9a9a9]'
               } hover:cursor-pointer`}
-              onClick={() => handleActiveTheme(themeName)}
+              onClick={() => handleActiveTheme(themeObject)}
             >
               <ColorBoxWrapper>
-                <ColorBox bgColor={themeObject.fontColor} />
                 <ColorBox bgColor={themeObject.backgroundColor} />
-                <ColorBox bgColor={themeObject.primaryColor} />
-                <ColorBox bgColor={themeObject.secondaryColor} />
+                <ColorBox bgColor={themeObject.fontColor} />
+                <ColorBox bgColor={themeObject.titleColor} />
+                <ColorBox bgColor={themeObject.highlighterColor} />
               </ColorBoxWrapper>
               {isActive && (
                 <Image src={'/icons/selected-tick.svg'} alt="logo" width={'28px'} height={'20px'} />
@@ -40,7 +39,7 @@ export const ThemeSelect = () => {
           );
         })}
       </div>
-      <div
+      {/* <div
         className={`flex flex-col border rounded mb-[16px] justify-start px-4 py-3 hover:cursor-pointer ${
           activeTheme === THEME_IDS.CUSTOM ? 'bg-resume-50 border-resume-500' : 'border-[#a9a9a9]'
         }`}
@@ -67,7 +66,7 @@ export const ThemeSelect = () => {
             </div>
           </Fragment>
         )}
-      </div>
+      </div> */}
     </div>
   );
 };
