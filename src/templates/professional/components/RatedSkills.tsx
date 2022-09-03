@@ -1,4 +1,4 @@
-import { SkillItemIntf } from 'src/stores/skill.interface';
+import { ISkillItem } from 'src/stores/skill.interface';
 import styled from '@emotion/styled';
 
 const ProgressBar = styled.div`
@@ -7,7 +7,7 @@ const ProgressBar = styled.div`
   background-color: ${(props) => props.theme.highlighterColor};
 `;
 
-export default function RatedSkills({ items }: { items: SkillItemIntf[] }) {
+export default function RatedSkills({ items }: { items: ISkillItem[] }) {
   return (
     <div className="flex flex-col gap-2">
       {items?.map(({ name, level }) => (

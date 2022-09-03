@@ -1,9 +1,9 @@
 import { useMemo } from 'react';
 import { OutlinedButton } from 'src/helpers/common/atoms/Buttons';
 import { useVoluteeringStore } from 'src/stores/volunteering';
-import { VolunteeringItem } from 'src/stores/volunteering.interface';
+import { IVolunteeringItem } from 'src/stores/volunteering.interface';
 
-const NEW_VOLUNTEER_EXP: VolunteeringItem = {
+const NEW_VOLUNTEER_EXP: IVolunteeringItem = {
   organization: '',
   position: '',
   startDate: null,

@@ -1,10 +1,10 @@
-import { EducationIntrf } from 'src/stores/index.interface';
+import { IEducation } from 'src/stores/index.interface';
 import { dateParser } from 'src/helpers/utils';
 
-export const Education = ({ education }: { education: EducationIntrf[] }) => {
+export const Education = ({ education }: { education: IEducation[] }) => {
   return (
     <>
-      {education.map((item: EducationIntrf, index: number) => {
+      {education.map((item: IEducation, index: number) => {
         return (
           <div key={index} className="mt-3">
             <div>

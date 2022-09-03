@@ -1,4 +1,4 @@
-export interface VolunteeringItem {
+export interface IVolunteeringItem {
   id: string;
   organization: string;
   position: string;
@@ -10,13 +10,13 @@ export interface VolunteeringItem {
   isVolunteeringNow: boolean;
 }
 
-export interface VolunteeringStore {
-  volunteeredExps: VolunteeringItem[];
-  add: (newVolunteering: VolunteeringItem) => void;
+export interface IVolunteeringStore {
+  volunteeredExps: IVolunteeringItem[];
+  add: (newVolunteering: IVolunteeringItem) => void;
   get: (index: number) => void;
   remove: (index: number) => void;
-  reset: (values: VolunteeringItem[]) => void;
+  reset: (values: IVolunteeringItem[]) => void;
   onmoveup: (index: number) => void;
   onmovedown: (index: number) => void;
-  updatedVolunteeringExp: (index: number, updatedInfo: VolunteeringItem) => void;
+  updatedVolunteeringExp: (index: number, updatedInfo: IVolunteeringItem) => void;
 }

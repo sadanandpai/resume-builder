@@ -3,9 +3,9 @@ import Image from 'next/image';
 
 import { NavMenuPopover } from './NavMenuPopover';
 import { StyledButton } from '../atoms';
-import { NavMenuItemProps } from './MenuItem.interface';
+import { INavMenuItemProps } from './MenuItem.interface';
 
-export const NavMenuItem = ({ caption, popoverChildren }: NavMenuItemProps) => {
+export const NavMenuItem = ({ caption, popoverChildren }: INavMenuItemProps) => {
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {

@@ -3,16 +3,16 @@ import TextField from '@mui/material/TextField';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 import { useEducations } from 'src/stores/education';
-import { EducationItem } from 'src/stores/education.interface';
+import { IEducationItem } from 'src/stores/education.interface';
 import { SwitchWidget } from 'src/helpers/common/atoms/Switch';
 import { DATE_PICKER_FORMAT } from 'src/helpers/constants';
 
-interface Props {
-  educationInfo: EducationItem;
+interface IEducationProps {
+  educationInfo: IEducationItem;
   currentIndex: number;
 }
 
-const Education: React.FC<Props> = ({ educationInfo, currentIndex }) => {
+const Education: React.FC<IEducationProps> = ({ educationInfo, currentIndex }) => {
   const onChangeHandler = useCallback(
     (name: string, value: any) => {
       const currentExpInfo = { ...educationInfo };

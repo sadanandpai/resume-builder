@@ -6,9 +6,9 @@ import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineDot from '@mui/lab/TimelineDot';
 import { HTMLRenderer } from 'src/helpers/common/components/HTMLRenderer';
 import { dateParser } from 'src/helpers/utils';
-import { ExperienceItem } from 'src/stores/experience.interface';
+import { IExperienceItem } from 'src/stores/experience.interface';
 
-export default function Work({ work }: { work: ExperienceItem[] }) {
+export default function Work({ work }: { work: IExperienceItem[] }) {
   return (
     <div>
       {work.map((company, index) => (
@@ -29,7 +29,7 @@ export default function Work({ work }: { work: ExperienceItem[] }) {
   );
 }
 
-function ExperienceHeader({ work }: { work: ExperienceItem }) {
+function ExperienceHeader({ work }: { work: IExperienceItem }) {
   return (
     <>
       <div className="flex justify-between items-end">

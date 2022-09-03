@@ -3,17 +3,17 @@ import TextField from '@mui/material/TextField';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 import { useExperiences } from 'src/stores/experience';
-import { ExperienceItem } from 'src/stores/experience.interface';
+import { IExperienceItem } from 'src/stores/experience.interface';
 import { SwitchWidget } from 'src/helpers/common/atoms/Switch';
 import { RichtextEditor } from 'src/helpers/common/components/richtext';
 import { DATE_PICKER_FORMAT } from 'src/helpers/constants';
 
-interface Props {
-  experienceInfo: ExperienceItem;
+interface IExperienceProps {
+  experienceInfo: IExperienceItem;
   currentIndex: number;
 }
 
-const Experience: React.FC<Props> = ({ experienceInfo, currentIndex }) => {
+const Experience: React.FC<IExperienceProps> = ({ experienceInfo, currentIndex }) => {
   const onChangeHandler = useCallback(
     (name: string, value: any) => {
       const currentExpInfo = { ...experienceInfo };

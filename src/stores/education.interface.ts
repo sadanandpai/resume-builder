@@ -1,4 +1,4 @@
-export interface EducationItem {
+export interface IEducationItem {
   institution: string;
   url: string;
   studyType: string;
@@ -11,13 +11,13 @@ export interface EducationItem {
   id: string;
 }
 
-export interface EducationStore {
-  academics: EducationItem[];
-  add: (newEducation: EducationItem) => void;
+export interface IEducationStore {
+  academics: IEducationItem[];
+  add: (newEducation: IEducationItem) => void;
   get: (index: number) => void;
   remove: (index: number) => void;
-  reset: (values: EducationItem[]) => void;
+  reset: (values: IEducationItem[]) => void;
   onmoveup: (index: number) => void;
   onmovedown: (index: number) => void;
-  updateEducation: (index: number, updatedInfo: EducationItem) => void;
+  updateEducation: (index: number, updatedInfo: IEducationItem) => void;
 }

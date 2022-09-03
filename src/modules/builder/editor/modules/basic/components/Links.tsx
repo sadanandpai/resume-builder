@@ -11,17 +11,17 @@ const SUPPORTED_NETWORKS = {
   leetcode: 'leetcode',
 };
 
-interface profileNetworkIntf {
+interface IProfileNetwork {
   network: string;
   username: string;
   url: string;
 }
 
-interface supportedNtwkDefaultStateIntf {
-  [key: string]: profileNetworkIntf;
+interface ISupportedNtwkDefaultState {
+  [key: string]: IProfileNetwork;
 }
 
-const SUPPORTED_NETWORK_DEFAULT_STATE: supportedNtwkDefaultStateIntf = {
+const SUPPORTED_NETWORK_DEFAULT_STATE: ISupportedNtwkDefaultState = {
   linkedin: {
     network: 'linkedin',
     username: 'janedoe',
@@ -72,7 +72,7 @@ const Links = ({
     const defaultNetworks = { ...SUPPORTED_NETWORK_DEFAULT_STATE };
     Object.keys(SUPPORTED_NETWORKS).forEach((ntwk) => {
       const matchedNetwork = basicTabs.profiles.find(
-        (profile: profileNetworkIntf) => profile.network === ntwk
+        (profile: IProfileNetwork) => profile.network === ntwk
       );
       if (matchedNetwork) {
         defaultNetworks[ntwk] = matchedNetwork;
@@ -85,9 +85,7 @@ const Links = ({
 
   const onURLChange = (value: string, network: string) => {
     const profiles = basicTabs.profiles;
-    const matchedNetwork = profiles.find(
-      (profile: profileNetworkIntf) => profile.network === network
-    );
+    const matchedNetwork = profiles.find((profile: IProfileNetwork) => profile.network === network);
     matchedNetwork.url = value;
     onChangeHandler(profiles, 'profiles');
   };

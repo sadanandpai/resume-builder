@@ -1,4 +1,4 @@
-import { SkillItemIntf } from 'src/stores/skill.interface';
+import { ISkillItem } from 'src/stores/skill.interface';
 import AddSkill from './AddSkill';
 import SkillPill from '../atoms/SkillPill';
 import DragContainer from 'src/helpers/common/components/DragContainer';
@@ -17,10 +17,10 @@ export default function Skill({
   setItems,
   hasLevel,
 }: {
-  items: SkillItemIntf[];
-  addItem: ({ name, level }: SkillItemIntf) => void;
+  items: ISkillItem[];
+  addItem: ({ name, level }: ISkillItem) => void;
   removeItem: (index: number) => void;
-  setItems: (name: SkillItemIntf[]) => void;
+  setItems: (name: ISkillItem[]) => void;
   hasLevel: boolean;
 }) {
   return (

@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-export interface Location {
+export interface ILocation {
   address: string;
   postalCode: string;
   city: string;
@@ -7,13 +7,13 @@ export interface Location {
   region: string;
 }
 
-export interface ProfileIntrf {
+export interface IProfile {
   network: string;
   username: string;
   url: string;
 }
 
-export interface BasicsIntrf {
+export interface IBasics {
   name: string;
   label: string;
   image: string;
@@ -22,28 +22,28 @@ export interface BasicsIntrf {
   url: string;
   summary: string;
   objective: string;
-  location: Location;
+  location: ILocation;
   relExp: string;
   totalExp: string;
-  profiles: ProfileIntrf[];
+  profiles: IProfile[];
 }
 
-export interface ItemIntrf {
+export interface IItem {
   name: string;
   level: number;
 }
 
-export interface SkillsIntrf {
-  languages: ItemIntrf[];
-  frameworks: ItemIntrf[];
-  technologies: ItemIntrf[];
-  libraries: ItemIntrf[];
-  databases: ItemIntrf[];
-  tools: ItemIntrf[];
-  practices: ItemIntrf[];
+export interface ISkillsIntrf {
+  languages: IItem[];
+  frameworks: IItem[];
+  technologies: IItem[];
+  libraries: IItem[];
+  databases: IItem[];
+  tools: IItem[];
+  practices: IItem[];
 }
 
-export interface WorkIntrf {
+export interface IWorkIntrf {
   id: string;
   name: string;
   position: string;
@@ -56,7 +56,7 @@ export interface WorkIntrf {
   website: string;
 }
 
-export interface EducationIntrf {
+export interface IEducation {
   id: string;
   institution: string;
   url: string;
@@ -70,7 +70,7 @@ export interface EducationIntrf {
   website: string;
 }
 
-export interface AwardsIntrf {
+export interface IAwards {
   id: string;
   title: string;
   awarder: string;
@@ -78,9 +78,9 @@ export interface AwardsIntrf {
   summary: string;
 }
 
-export interface ResumeIntrf {
-  basics: BasicsIntrf;
-  skills: SkillsIntrf;
-  work: WorkIntrf[];
-  education: EducationIntrf[];
+export interface IResume {
+  basics: IBasics;
+  skills: ISkillsIntrf;
+  work: IWorkIntrf[];
+  education: IEducation[];
 }

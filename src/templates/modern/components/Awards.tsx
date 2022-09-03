@@ -1,17 +1,17 @@
 import { HTMLRenderer } from 'src/helpers/common/components/HTMLRenderer';
-import { AwardsIntrf } from 'src/stores/index.interface';
+import { IAwards } from 'src/stores/index.interface';
 import { SectionHeading } from '../atoms/SectionHeading';
 import { SectionList } from '../atoms/SectionList';
 import { SectionSubtitle } from '../atoms/SectionSubtitle';
 import { SectionTitle } from '../atoms/SectionTitle';
 import { dateParser } from 'src/helpers/utils';
 
-export const AwardSection = ({ awardsReceived }: { awardsReceived: AwardsIntrf[] }) => {
+export const AwardSection = ({ awardsReceived }: { awardsReceived: IAwards[] }) => {
   return (
     <div className="mb-3">
       <SectionHeading title="Awards" />
 
-      {awardsReceived.map((award: AwardsIntrf, index: number) => {
+      {awardsReceived.map((award: IAwards, index: number) => {
         return (
           <div key={index} className="py-3">
             <SectionTitle label={award.title} />

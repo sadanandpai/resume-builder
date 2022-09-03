@@ -1,4 +1,4 @@
-export interface ExperienceItem {
+export interface IExperienceItem {
   id: string;
   name: string;
   position: string;
@@ -10,13 +10,13 @@ export interface ExperienceItem {
   isWorkingHere: boolean;
 }
 
-export interface ExperienceStore {
-  experiences: ExperienceItem[];
-  add: (newExperience: ExperienceItem) => void;
+export interface IExperienceStore {
+  experiences: IExperienceItem[];
+  add: (newExperience: IExperienceItem) => void;
   get: (index: number) => void;
   remove: (index: number) => void;
-  reset: (values: ExperienceItem[]) => void;
+  reset: (values: IExperienceItem[]) => void;
   onmoveup: (index: number) => void;
   onmovedown: (index: number) => void;
-  updateExperience: (index: number, updatedInfo: ExperienceItem) => void;
+  updateExperience: (index: number, updatedInfo: IExperienceItem) => void;
 }

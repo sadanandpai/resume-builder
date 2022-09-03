@@ -5,10 +5,10 @@ import TimelineConnector from '@mui/lab/TimelineConnector';
 import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineDot from '@mui/lab/TimelineDot';
 import { HTMLRenderer } from 'src/helpers/common/components/HTMLRenderer';
-import { AwardsIntrf } from 'src/stores/index.interface';
+import { IAwards } from 'src/stores/index.interface';
 import { dateParser } from 'src/helpers/utils';
 
-export default function AwardComp({ awards }: { awards: AwardsIntrf[] }) {
+export default function AwardComp({ awards }: { awards: IAwards[] }) {
   return (
     <div>
       {awards.map((award, index) => (
@@ -29,7 +29,7 @@ export default function AwardComp({ awards }: { awards: AwardsIntrf[] }) {
   );
 }
 
-function AwardHeader({ award }: { award: AwardsIntrf }) {
+function AwardHeader({ award }: { award: IAwards }) {
   return (
     <>
       <div className="flex justify-between items-end">

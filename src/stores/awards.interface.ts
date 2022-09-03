@@ -1,4 +1,4 @@
-export interface AwardItem {
+export interface IAwardItem {
   title: string;
   awarder: string;
   date: string | null;
@@ -6,13 +6,13 @@ export interface AwardItem {
   id: string;
 }
 
-export interface AwardsStore {
-  awards: AwardItem[];
-  add: (newEducation: AwardItem) => void;
+export interface IAwardsStore {
+  awards: IAwardItem[];
+  add: (newEducation: IAwardItem) => void;
   get: (index: number) => void;
   remove: (index: number) => void;
-  reset: (values: AwardItem[]) => void;
+  reset: (values: IAwardItem[]) => void;
   onmoveup: (index: number) => void;
   onmovedown: (index: number) => void;
-  updateAward: (index: number, updatedInfo: AwardItem) => void;
+  updateAward: (index: number, updatedInfo: IAwardItem) => void;
 }

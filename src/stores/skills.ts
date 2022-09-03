@@ -1,33 +1,32 @@
 import create, { GetState, SetState } from 'zustand';
 import produce from 'immer';
-import { SkillItemIntf, SkillStateIntf } from './skill.interface';
+import { ISkillItem, ISkillState } from './skill.interface';
 import resumeData from 'src/helpers/constants/resume-data.json';
 
 const addSkill =
-  (set: SetState<SkillStateIntf>) =>
-  ({ name, level }: SkillItemIntf) =>
+  (set: SetState<ISkillState>) =>
+  ({ name, level }: ISkillItem) =>
     set(
-      produce((state: SkillStateIntf) => {
+      produce((state: ISkillState) => {
         state.values.push({ name, level });
       })
     );
 
-const removeSkill = (set: SetState<SkillStateIntf>) => (index: number) =>
+const removeSkill = (set: SetState<ISkillState>) => (index: number) =>
   set(
-    produce((state: SkillStateIntf) => {
+    produce((state: ISkillState) => {
       state.values.splice(index, 1);
     })
   );
 
-const setSkills = (set: SetState<SkillStateIntf>) => (values: SkillItemIntf[]) =>
-  set(() => ({ values }));
+const setSkills = (set: SetState<ISkillState>) => (values: ISkillItem[]) => set(() => ({ values }));
 
-const getSkills = (get: GetState<SkillStateIntf>) => () => get().isEnabled ? get().values : [];
+const getSkills = (get: GetState<ISkillState>) => () => get().isEnabled ? get().values : [];
 
-const setIsEnabled = (set: SetState<SkillStateIntf>) => (isEnabled: boolean) =>
+const setIsEnabled = (set: SetState<ISkillState>) => (isEnabled: boolean) =>
   set(() => ({ isEnabled }));
 
-const getMethods = (set: SetState<SkillStateIntf>, get: GetState<SkillStateIntf>) => ({
+const getMethods = (set: SetState<ISkillState>, get: GetState<ISkillState>) => ({
   get: getSkills(get),
   add: addSkill(set),
   remove: removeSkill(set),
@@ -35,7 +34,7 @@ const getMethods = (set: SetState<SkillStateIntf>, get: GetState<SkillStateIntf>
   setIsEnabled: setIsEnabled(set),
 });
 
-export const useLanguages = create<SkillStateIntf>((set, get) => ({
+export const useLanguages = create<ISkillState>((set, get) => ({
   title: 'Languages',
   hasLevel: true,
   values: resumeData.skills.languages,
@@ -44,7 +43,7 @@ export const useLanguages = create<SkillStateIntf>((set, get) => ({
   ...getMethods(set, get),
 }));
 
-export const useFrameworks = create<SkillStateIntf>((set, get) => ({
+export const useFrameworks = create<ISkillState>((set, get) => ({
   title: 'Frameworks',
   hasLevel: true,
   values: resumeData.skills.frameworks,
@@ -53,7 +52,7 @@ export const useFrameworks = create<SkillStateIntf>((set, get) => ({
   ...getMethods(set, get),
 }));
 
-export const useTechnologies = create<SkillStateIntf>((set, get) => ({
+export const useTechnologies = create<ISkillState>((set, get) => ({
   title: 'Technologies',
   hasLevel: false,
   values: resumeData.skills.technologies,
@@ -62,7 +61,7 @@ export const useTechnologies = create<SkillStateIntf>((set, get) => ({
   ...getMethods(set, get),
 }));
 
-export const useLibraries = create<SkillStateIntf>((set, get) => ({
+export const useLibraries = create<ISkillState>((set, get) => ({
   title: 'Libraries',
   hasLevel: false,
   values: resumeData.skills.libraries,
@@ -71,7 +70,7 @@ export const useLibraries = create<SkillStateIntf>((set, get) => ({
   ...getMethods(set, get),
 }));
 
-export const useDatabases = create<SkillStateIntf>((set, get) => ({
+export const useDatabases = create<ISkillState>((set, get) => ({
   title: 'Databases',
   hasLevel: false,
   values: resumeData.skills.databases,
@@ -80,7 +79,7 @@ export const useDatabases = create<SkillStateIntf>((set, get) => ({
   ...getMethods(set, get),
 }));
 
-export const usePractices = create<SkillStateIntf>((set, get) => ({
+export const usePractices = create<ISkillState>((set, get) => ({
   title: 'Practices',
   hasLevel: false,
   values: resumeData.skills.practices,
@@ -89,7 +88,7 @@ export const usePractices = create<SkillStateIntf>((set, get) => ({
   ...getMethods(set, get),
 }));
 
-export const useTools = create<SkillStateIntf>((set, get) => ({
+export const useTools = create<ISkillState>((set, get) => ({
   title: 'Tools',
   hasLevel: false,
   values: resumeData.skills.tools,

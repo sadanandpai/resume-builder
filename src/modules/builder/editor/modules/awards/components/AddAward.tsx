@@ -1,9 +1,9 @@
 import { useMemo } from 'react';
 import { OutlinedButton } from 'src/helpers/common/atoms/Buttons';
 import { useAwards } from 'src/stores/awards';
-import { AwardItem } from 'src/stores/awards.interface';
+import { IAwardItem } from 'src/stores/awards.interface';
 
-const NEW_AWARD: AwardItem = {
+const NEW_AWARD: IAwardItem = {
   title: '',
   awarder: '',
   date: null,
