@@ -1,6 +1,17 @@
 import React, { useContext } from 'react';
 import styled from '@emotion/styled';
 
+import { StateContext } from 'src/modules/builder/resume/ResumeLayout';
+import BasicIntro from './components/BasicIntro';
+import AboutMe from './components/AboutMe';
+import Work from './components/Work';
+import RatedSkills from './components/RatedSkills';
+import UnratedSkills from './components/UnratedSkills';
+import { Education } from './components/Education';
+import { Section } from './components/Section';
+import AwardComp from './components/Awards';
+import { ValidSectionRenderer } from 'src/helpers/common/components/ValidSectionRenderer';
+
 const ResumeContainer = styled.div`
   display: flex;
   height: 100%;
@@ -42,16 +53,6 @@ const RightSection = styled.div`
 //   'education',
 // ];
 
-import { StateContext } from 'src/modules/builder/resume/ResumeLayout';
-import BasicIntro from './components/BasicIntro';
-import AboutMe from './components/AboutMe';
-import Work from './components/Work';
-import RatedSkills from './components/RatedSkills';
-import UnratedSkills from './components/UnratedSkills';
-import { Education } from './components/Education';
-import { Section } from './components/Section';
-import AwardComp from './components/Awards';
-
 export default function ProfessionalTemplate() {
   const resumeData = useContext(StateContext);
   const skills = resumeData.skills;
@@ -60,49 +61,54 @@ export default function ProfessionalTemplate() {
     <ResumeContainer>
       <LeftSection>
         <BasicIntro basics={resumeData.basics} />
-        {resumeData.work.length > 0 && (
+        <ValidSectionRenderer value={resumeData.work}>
           <Section title="Work Experience">
             <Work work={resumeData.work} />
           </Section>
-        )}
-        {resumeData.awards.length > 0 && (
+        </ValidSectionRenderer>
+
+        <ValidSectionRenderer value={resumeData.awards}>
           <Section title="Awards / Accolades">
             <AwardComp awards={resumeData.awards} />
           </Section>
-        )}
+        </ValidSectionRenderer>
       </LeftSection>
 
       <RightSection>
-        {resumeData.basics.summary && (
+        <ValidSectionRenderer value={resumeData.basics.summary}>
           <Section title="Summary">
             <AboutMe summary={resumeData.basics.summary} />
           </Section>
-        )}
-        {skills.frameworks.length > 0 && (
+        </ValidSectionRenderer>
+
+        <ValidSectionRenderer value={skills.languages.concat(skills.frameworks)}>
           <Section title="Technical expertise">
             <RatedSkills items={skills.languages.concat(skills.frameworks)} />
           </Section>
-        )}
-        {skills.technologies.concat(skills.libraries, skills.databases).length > 0 && (
+        </ValidSectionRenderer>
+
+        <ValidSectionRenderer
+          value={skills.technologies.concat(skills.libraries, skills.databases)}
+        >
           <Section title="Skills / Exposure">
             <UnratedSkills items={skills.technologies.concat(skills.libraries, skills.databases)} />
           </Section>
-        )}
-        {skills.practices.length > 0 && (
+        </ValidSectionRenderer>
+        <ValidSectionRenderer value={skills.practices}>
           <Section title="Methodology/Approach">
             <UnratedSkills items={skills.practices} />
           </Section>
-        )}
-        {skills.tools.length > 0 && (
+        </ValidSectionRenderer>
+        <ValidSectionRenderer value={skills.tools}>
           <Section title="Tools">
             <UnratedSkills items={skills.tools} />
           </Section>
-        )}
-        {resumeData.education.length > 0 && (
+        </ValidSectionRenderer>
+        <ValidSectionRenderer value={resumeData.education}>
           <Section title="Education">
             <Education education={resumeData.education} />
           </Section>
-        )}
+        </ValidSectionRenderer>
       </RightSection>
     </ResumeContainer>
   );
