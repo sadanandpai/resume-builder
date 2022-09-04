@@ -91,13 +91,13 @@ export const TemplateSlide = ({
 }) => {
   return (
     <li
-      className="splide__slide hover:cursor-pointer px-12"
+      className="splide__slide hover:cursor-pointer px-14"
       onClick={() => {
         onChangeTemplate(id);
       }}
     >
       <div
-        className={`h-[255px] w-[179px] rounded border relative ${
+        className={`h-[255px] w-[180px] rounded border relative ${
           isActive ? 'bg-resume-50 border-resume-800' : 'border-resume-200'
         }`}
       >
