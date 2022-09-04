@@ -21,7 +21,7 @@ export const TemplateSlider = () => {
       splideInstanceRef.current = new SplideCore(targetElement, {
         perPage: 2,
         pagination: false,
-        gap: '-64px',
+        gap: '0px',
         width: '100%',
         autoHeight: true,
         perMove: 1,
@@ -54,7 +54,7 @@ export const TemplateSlider = () => {
           },
         }}
       />
-      <section className="splide mt-[26px] mb-[32px]" ref={targetElementRef}>
+      <section className="splide mt-[26px] mb-[32px] px-[40px]" ref={targetElementRef}>
         <div className="splide__track">
           <ul className="splide__list">
             {AVAILABLE_TEMPLATES.map((template, index) => {
@@ -90,16 +90,14 @@ export const TemplateSlide = ({
   onChangeTemplate: (id: number) => void;
 }) => {
   return (
-    <li
-      className="splide__slide hover:cursor-pointer px-14"
-      onClick={() => {
-        onChangeTemplate(id);
-      }}
-    >
+    <li className="splide__slide flex justify-center">
       <div
-        className={`h-[255px] w-[180px] rounded border relative ${
+        className={`h-[255px] w-[180px] rounded border hover:cursor-pointer relative ${
           isActive ? 'border-resume-800' : 'border-resume-200'
         }`}
+        onClick={() => {
+          onChangeTemplate(id);
+        }}
       >
         <Image src={thumbnail} alt={name} layout="fill" />
 
