@@ -10,7 +10,7 @@ import UnratedSkills from './components/UnratedSkills';
 import { Education } from './components/Education';
 import { Section } from './components/Section';
 import AwardComp from './components/Awards';
-import { SectionValidator } from 'src/helpers/common/components/SectionValidator';
+import { SectionValidator } from 'src/helpers/common/components/ValidSectionRenderer';
 
 const ResumeContainer = styled.div`
   display: flex;
@@ -87,9 +87,7 @@ export default function ProfessionalTemplate() {
           </Section>
         </SectionValidator>
 
-        <SectionValidator
-          value={skills.technologies.concat(skills.libraries, skills.databases)}
-        >
+        <SectionValidator value={skills.technologies.concat(skills.libraries, skills.databases)}>
           <Section title="Skills / Exposure">
             <UnratedSkills items={skills.technologies.concat(skills.libraries, skills.databases)} />
           </Section>

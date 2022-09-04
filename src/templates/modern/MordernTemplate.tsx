@@ -7,7 +7,7 @@ import { WorkSection } from './components/Work';
 import { AwardSection } from './components/Awards';
 import { useContext } from 'react';
 import { StateContext } from 'src/modules/builder/resume/ResumeLayout';
-import { SectionValidator } from 'src/helpers/common/components/SectionValidator';
+import { SectionValidator } from 'src/helpers/common/components/ValidSectionRenderer';
 
 export default function MordernTemplate() {
   const resumeData = useContext(StateContext);
