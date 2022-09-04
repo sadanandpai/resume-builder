@@ -103,7 +103,7 @@ export const TemplateSlide = ({
 
         {isActive && (
           <div className="absolute top-1 right-1 bg-white rounded-full">
-            <Image src={'/icons/selected-tick.svg'}  alt="logo" width={'24px'} height={'24px'} />
+            <Image src={'/icons/selected-tick.svg'} alt="logo" width={'24px'} height={'24px'} />
           </div>
         )}
       </div>
