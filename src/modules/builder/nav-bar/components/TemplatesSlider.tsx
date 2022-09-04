@@ -21,7 +21,7 @@ export const TemplateSlider = () => {
       splideInstanceRef.current = new SplideCore(targetElement, {
         perPage: 2,
         pagination: false,
-        gap: '33px',
+        gap: '-72px',
         width: '100%',
         autoHeight: true,
         perMove: 1,
@@ -47,11 +47,9 @@ export const TemplateSlider = () => {
             fill: '#000000',
           },
           '.splide__arrow--prev': {
-            left: '-2.2rem',
             backgroundColor: 'transparent',
           },
           '.splide__arrow--next': {
-            right: '-2.2rem',
             backgroundColor: 'transparent',
           },
         }}
@@ -93,20 +91,20 @@ export const TemplateSlide = ({
 }) => {
   return (
     <li
-      className="splide__slide hover:cursor-pointer"
+      className="splide__slide hover:cursor-pointer px-12"
       onClick={() => {
         onChangeTemplate(id);
       }}
     >
       <div
         className={`h-[255px] w-[179px] rounded border relative ${
-          isActive ? 'bg-resume-50 border-resume-500' : 'border-[#a9a9a9]'
+          isActive ? 'bg-resume-50 border-resume-800' : 'border-resume-200'
         }`}
       >
         <Image src={thumbnail} alt={name} layout="fill" />
 
         {isActive && (
-          <div className="absolute top-3 right-3">
+          <div className="absolute top-1 right-1 bg-white">
             <Image src={'/icons/selected-tick.svg'} alt="logo" width={'28px'} height={'20px'} />
           </div>
         )}
