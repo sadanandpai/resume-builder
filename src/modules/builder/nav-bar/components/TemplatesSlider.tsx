@@ -21,7 +21,7 @@ export const TemplateSlider = () => {
       splideInstanceRef.current = new SplideCore(targetElement, {
         perPage: 2,
         pagination: false,
-        gap: '-72px',
+        gap: '-64px',
         width: '100%',
         autoHeight: true,
         perMove: 1,
