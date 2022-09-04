@@ -98,13 +98,13 @@ export const TemplateSlide = ({
     >
       <div
         className={`h-[255px] w-[180px] rounded border relative ${
-          isActive ? 'bg-resume-50 border-resume-800' : 'border-resume-200'
+          isActive ? 'border-resume-800' : 'border-resume-200'
         }`}
       >
         <Image src={thumbnail} alt={name} layout="fill" />
 
         {isActive && (
-          <div className="absolute top-1 right-1 bg-white">
+          <div className="absolute top-1 right-1 bg-white rounded-full">
             <Image src={'/icons/selected-tick.svg'} alt="logo" width={'24px'} height={'24px'} />
           </div>
         )}
