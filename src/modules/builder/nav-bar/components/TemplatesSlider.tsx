@@ -21,7 +21,7 @@ export const TemplateSlider = () => {
       splideInstanceRef.current = new SplideCore(targetElement, {
         perPage: 2,
         pagination: false,
-        gap: '33px',
+        gap: '0px',
         width: '100%',
         autoHeight: true,
         perMove: 1,
@@ -47,16 +47,14 @@ export const TemplateSlider = () => {
             fill: '#000000',
           },
           '.splide__arrow--prev': {
-            left: '-2.2rem',
             backgroundColor: 'transparent',
           },
           '.splide__arrow--next': {
-            right: '-2.2rem',
             backgroundColor: 'transparent',
           },
         }}
       />
-      <section className="splide mt-[26px] mb-[32px]" ref={targetElementRef}>
+      <section className="splide mt-[26px] mb-[32px] px-[40px]" ref={targetElementRef}>
         <div className="splide__track">
           <ul className="splide__list">
             {AVAILABLE_TEMPLATES.map((template, index) => {
@@ -92,22 +90,20 @@ export const TemplateSlide = ({
   onChangeTemplate: (id: number) => void;
 }) => {
   return (
-    <li
-      className="splide__slide hover:cursor-pointer"
-      onClick={() => {
-        onChangeTemplate(id);
-      }}
-    >
+    <li className="splide__slide flex justify-center">
       <div
-        className={`h-[255px] w-[179px] rounded border relative ${
-          isActive ? 'bg-resume-50 border-resume-500' : 'border-[#a9a9a9]'
+        className={`h-[255px] w-[180px] rounded border hover:cursor-pointer relative ${
+          isActive ? 'border-resume-800' : 'border-resume-200'
         }`}
+        onClick={() => {
+          onChangeTemplate(id);
+        }}
       >
         <Image src={thumbnail} alt={name} layout="fill" />
 
         {isActive && (
-          <div className="absolute top-3 right-3">
-            <Image src={'/icons/selected-tick.svg'} alt="logo" width={'28px'} height={'20px'} />
+          <div className="absolute top-1 right-1 bg-white rounded-full">
+            <Image src={'/icons/selected-tick.svg'} alt="logo" width={'24px'} height={'24px'} />
           </div>
         )}
       </div>
