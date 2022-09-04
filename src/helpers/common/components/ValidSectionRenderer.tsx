@@ -5,7 +5,7 @@ import { IAwardItem } from 'src/stores/awards.interface';
 import { IVolunteeringItem } from 'src/stores/volunteering.interface';
 import { ISkillItem } from 'src/stores/skill.interface';
 
-export const ValidSectionRenderer = ({
+export const SectionValidator = ({
   value,
   children,
 }: {
