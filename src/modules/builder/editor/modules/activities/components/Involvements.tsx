@@ -1,19 +1,15 @@
 import React from 'react';
 import { RichtextEditor } from 'src/helpers/common/components/richtext';
+import { useActivity } from 'src/stores/activity';
 
-const Involvements = ({
-  value,
-  onChangeHandler,
-}: {
-  value: string;
-  onChangeHandler: (value: string, key: string) => void;
-}) => {
+const Involvements = () => {
+  const activities = useActivity((state) => state.activities);
   return (
     <RichtextEditor
       label="Involvements"
-      value={value}
+      value={activities.involvements}
       onChange={(htmlOutput) => {
-        onChangeHandler(htmlOutput, 'involvements');
+        useActivity.getState().updateInvolvements(htmlOutput);
       }}
       name="involvements"
     />

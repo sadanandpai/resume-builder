@@ -1,7 +1,7 @@
 import React from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import { IActivityTab } from '../ActivitiesLayout';
+import { IAllActivityTabs, IActivityTab } from '../ActivitiesLayout';
 
 const BasicHeader = ({
   activeTab,
@@ -10,15 +10,15 @@ const BasicHeader = ({
 }: {
   activeTab: IActivityTab;
   changeActiveTab: (event: React.SyntheticEvent, key: string) => void;
-  tabs: IActivityTab[];
+  tabs: IAllActivityTabs;
 }) => {
   return (
     <Tabs value={activeTab.key} onChange={changeActiveTab} variant="fullWidth">
-      {tabs.map((tab: IActivityTab) => (
+      {Object.keys(tabs).map((tab) => (
         <Tab
-          key={tab.key}
-          label={tab.label}
-          value={tab.key}
+          key={tab}
+          label={tabs[tab].label}
+          value={tab}
           sx={{ color: 'rgb(46 64 82)', textTransform: 'none', fontSize: '1rem' }}
         />
       ))}

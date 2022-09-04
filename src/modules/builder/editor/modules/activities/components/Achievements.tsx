@@ -1,19 +1,15 @@
 import React from 'react';
 import { RichtextEditor } from 'src/helpers/common/components/richtext';
+import { useActivity } from 'src/stores/activity';
 
-const Achievements = ({
-  value,
-  onChangeHandler,
-}: {
-  value: string;
-  onChangeHandler: (value: string, key: string) => void;
-}) => {
+const Achievements = () => {
+  const activities = useActivity((state) => state.activities);
   return (
     <RichtextEditor
       label="Achievements"
-      value={value}
+      value={activities.achievements}
       onChange={(htmlOutput) => {
-        onChangeHandler(htmlOutput, 'achievements');
+        useActivity.getState().updateAchievements(htmlOutput);
       }}
       name="achievements"
     />
