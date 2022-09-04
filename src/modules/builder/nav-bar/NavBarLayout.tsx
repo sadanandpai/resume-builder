@@ -14,6 +14,7 @@ import { useAwards } from 'src/stores/awards';
 import { useExperiences } from 'src/stores/experience';
 import { useEducations } from 'src/stores/education';
 import { useBasicDetails } from 'src/stores/basic';
+import { useActivity } from 'src/stores/activity';
 import {
   useDatabases,
   useFrameworks,
@@ -49,6 +50,7 @@ const NavBarLayout = () => {
         practices: usePractices.getState().get(),
         tools: useTools.getState().get(),
       },
+      activities: useActivity.getState().activities,
     };
     const fileName = updatedResumeJson.basics.name + '_' + new Date().toLocaleString();
     const exportType = exportFromJSON.types.json;
@@ -79,7 +81,10 @@ const NavBarLayout = () => {
           skills = {},
           work = [],
           education = [],
-          // activities = [],
+          activities = {
+            involvements: '',
+            achievements: '',
+          },
           volunteer = [],
           awards = [],
         } = uploadedResumeJSON;
@@ -104,6 +109,7 @@ const NavBarLayout = () => {
         useEducations.getState().reset(education);
         useVoluteeringStore.getState().reset(volunteer);
         useAwards.getState().reset(awards);
+        useActivity.getState().reset(activities);
         setOpenToast(true);
       }
     };
