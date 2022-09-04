@@ -7,7 +7,7 @@ import { WorkSection } from './components/Work';
 import { AwardSection } from './components/Awards';
 import { useContext } from 'react';
 import { StateContext } from 'src/modules/builder/resume/ResumeLayout';
-import { ValidSectionRenderer } from 'src/helpers/common/components/ValidSectionRenderer';
+import { SectionValidator } from 'src/helpers/common/components/SectionValidator';
 
 export default function MordernTemplate() {
   const resumeData = useContext(StateContext);
@@ -24,43 +24,43 @@ export default function MordernTemplate() {
       />
       <div className="flex ">
         <div className="basis-[60%] p-3">
-          <ValidSectionRenderer value={resumeData.basics.summary}>
+          <SectionValidator value={resumeData.basics.summary}>
             <SummarySection summary={resumeData.basics.summary} />
-          </ValidSectionRenderer>
+          </SectionValidator>
 
-          <ValidSectionRenderer value={resumeData.work}>
+          <SectionValidator value={resumeData.work}>
             <WorkSection experience={resumeData.work} />
-          </ValidSectionRenderer>
+          </SectionValidator>
 
-          <ValidSectionRenderer value={resumeData.awards}>
+          <SectionValidator value={resumeData.awards}>
             <AwardSection awardsReceived={resumeData.awards} />
-          </ValidSectionRenderer>
+          </SectionValidator>
 
-          <ValidSectionRenderer value={resumeData.skills.languages}>
+          <SectionValidator value={resumeData.skills.languages}>
             <SkillsSection title="Languages" list={resumeData.skills.languages} />
-          </ValidSectionRenderer>
+          </SectionValidator>
         </div>
 
         <div className="basis-[40%] p-3">
-          <ValidSectionRenderer value={resumeData.basics.objective}>
+          <SectionValidator value={resumeData.basics.objective}>
             <Objective objective={resumeData.basics.objective} />
-          </ValidSectionRenderer>
+          </SectionValidator>
 
-          <ValidSectionRenderer value={resumeData.skills.technologies}>
+          <SectionValidator value={resumeData.skills.technologies}>
             <SkillsSection title="Technologies" list={resumeData.skills.technologies} />
-          </ValidSectionRenderer>
+          </SectionValidator>
 
-          <ValidSectionRenderer value={resumeData.skills.frameworks}>
+          <SectionValidator value={resumeData.skills.frameworks}>
             <SkillsSection title="Frameworks" list={resumeData.skills.frameworks} />
-          </ValidSectionRenderer>
+          </SectionValidator>
 
-          <ValidSectionRenderer value={resumeData.skills.tools}>
+          <SectionValidator value={resumeData.skills.tools}>
             <SkillsSection title="Tools" list={resumeData.skills.tools} />
-          </ValidSectionRenderer>
+          </SectionValidator>
 
-          <ValidSectionRenderer value={resumeData.education}>
+          <SectionValidator value={resumeData.education}>
             <EducationSection education={resumeData.education} />
-          </ValidSectionRenderer>
+          </SectionValidator>
         </div>
       </div>
     </div>
