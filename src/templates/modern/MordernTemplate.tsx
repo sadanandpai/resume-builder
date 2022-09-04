@@ -7,6 +7,7 @@ import { WorkSection } from './components/Work';
 import { AwardSection } from './components/Awards';
 import { useContext } from 'react';
 import { StateContext } from 'src/modules/builder/resume/ResumeLayout';
+import { SectionValidator } from 'src/helpers/common/components/ValidSectionRenderer';
 
 export default function MordernTemplate() {
   const resumeData = useContext(StateContext);
@@ -23,27 +24,43 @@ export default function MordernTemplate() {
       />
       <div className="flex ">
         <div className="basis-[60%] p-3">
-          {resumeData.basics.summary && <SummarySection summary={resumeData.basics.summary} />}
-          {resumeData.work.length > 0 && <WorkSection experience={resumeData.work} />}
-          {resumeData.awards.length > 0 && <AwardSection awardsReceived={resumeData.awards} />}
+          <SectionValidator value={resumeData.basics.summary}>
+            <SummarySection summary={resumeData.basics.summary} />
+          </SectionValidator>
 
-          {resumeData.skills.languages.length > 0 && (
+          <SectionValidator value={resumeData.work}>
+            <WorkSection experience={resumeData.work} />
+          </SectionValidator>
+
+          <SectionValidator value={resumeData.awards}>
+            <AwardSection awardsReceived={resumeData.awards} />
+          </SectionValidator>
+
+          <SectionValidator value={resumeData.skills.languages}>
             <SkillsSection title="Languages" list={resumeData.skills.languages} />
-          )}
+          </SectionValidator>
         </div>
 
         <div className="basis-[40%] p-3">
-          {resumeData.basics.objective && <Objective objective={resumeData.basics.objective} />}
-          {resumeData.skills.technologies.length > 0 && (
+          <SectionValidator value={resumeData.basics.objective}>
+            <Objective objective={resumeData.basics.objective} />
+          </SectionValidator>
+
+          <SectionValidator value={resumeData.skills.technologies}>
             <SkillsSection title="Technologies" list={resumeData.skills.technologies} />
-          )}
-          {resumeData.skills.frameworks.length > 0 && (
+          </SectionValidator>
+
+          <SectionValidator value={resumeData.skills.frameworks}>
             <SkillsSection title="Frameworks" list={resumeData.skills.frameworks} />
-          )}
-          {resumeData.skills.tools.length > 0 && (
+          </SectionValidator>
+
+          <SectionValidator value={resumeData.skills.tools}>
             <SkillsSection title="Tools" list={resumeData.skills.tools} />
-          )}
-          {resumeData.education.length > 0 && <EducationSection education={resumeData.education} />}
+          </SectionValidator>
+
+          <SectionValidator value={resumeData.education}>
+            <EducationSection education={resumeData.education} />
+          </SectionValidator>
         </div>
       </div>
     </div>
