@@ -22,14 +22,13 @@ export const TemplateSelect = () => {
         Want to build your own template?
       </span>
       <div>
-        <Link
-          href="https://github.com/sadanandpai/resume-builder"
-          target="_blank"
-          rel="noreferrer"
-          className="no-underline"
+        <OutlinedButton
+          onClick={() => {
+            window.open('https://github.com/sadanandpai/resume-builder', '_blank');
+          }}
         >
-          <OutlinedButton>Contribute on Github</OutlinedButton>
-        </Link>
+          Contribute on Github
+        </OutlinedButton>
       </div>
     </div>
   );
