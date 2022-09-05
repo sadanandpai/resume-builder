@@ -10,26 +10,17 @@ import PersonSection from './components/Person';
 
 const HomeLayout = () => {
   const controls = useAnimation();
-  const animationEffects = {
-    translateX: [0, 25],
-    // transition: { duration: 0.5 },
-    rotate: [0, -10],
-  };
+  const animationEffectsHoverEnter = { scale: 1.05 };
+  const animationEffectsHoverLeave = { scale: 1 };
   const animationEffectsFirstLoad = {
-    translateX: [0, 25, 0],
-    // transition: { duration: 0.5 },
-    rotate: [0, -10, 0],
+    initial: { scale: 0 },
+    scale: [0.99, 1.01, 0.99, 1],
   };
   const transtionEffects = {
     type: 'spring',
-    duration: 0.75,
-    ease: 'easeInOut',
-    // times: [0, 0.8, 1],
+    stiffness: 400,
+    damping: 10,
   };
-
-  useEffect(() => {
-    controls.start(animationEffectsFirstLoad, transtionEffects);
-  }, []);
 
   return (
     <div className="scroll-smooth">
@@ -62,17 +53,24 @@ const HomeLayout = () => {
         }}
       >
         <div className="mx-6 md:mx-40 xl:mx-60 mb-6">
-          <div className="grid grid-cols-12 pt-12 md:pt-24">
+          <motion.div
+            className="grid grid-cols-12 pt-12 md:pt-24"
+            animate={animationEffectsFirstLoad}
+            transition={transtionEffects}
+          >
             <div className="col-span-12 sm:col-span-4">
               <motion.img
                 id="resume-3d"
                 src="/resume.webp"
                 alt="resume-3d"
                 className="w-6/12 sm:w-9/12"
-                whileHover={animationEffects}
-                whileTap={animationEffects}
+                onMouseEnter={() => {
+                  controls.start(animationEffectsHoverEnter, transtionEffects);
+                }}
+                onMouseLeave={() => {
+                  controls.start(animationEffectsHoverLeave, transtionEffects);
+                }}
                 animate={controls}
-                transition={transtionEffects}
               />
             </div>
             <div className="col-span-12 sm:col-span-8">
@@ -99,18 +97,20 @@ const HomeLayout = () => {
                 Desktop screen recommended
               </p>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
 
-      <div
+      <motion.div
         className="mx-6 md:mx-40 xl:mx-60 my-32 w-75"
         style={{ fontFamily: "'Roboto Slab', serif" }}
+        animate={animationEffectsFirstLoad}
+        transition={transtionEffects}
       >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <FeatureSection />
         </div>
-      </div>
+      </motion.div>
 
       <div className="bg-resume-50 my-32">
         <div
