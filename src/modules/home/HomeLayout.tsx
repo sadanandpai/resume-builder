@@ -13,18 +13,18 @@ const HomeLayout = () => {
   const animationEffectsHoverEnter = { scale: 1.05 };
   const animationEffectsHoverLeave = { scale: 1 };
   const animationEffectsFirstLoad = {
-    initial: { scale: 0 },
-    scale: [0.99, 1.01, 0.99, 1],
+    scale: [0.95, 1.02, 0.99, 1],
   };
   const transtionEffects = {
     type: 'spring',
     stiffness: 400,
-    damping: 10,
+    damping: 17,
+    times: [0, 0.95, 1],
   };
 
   return (
     <div className="scroll-smooth">
-      <nav className="sticky top-0 z-20 h-14 w-full bg-resume-800 relative flex py-2.5 px-4 xl:px-60 items-center shadow-level-8dp">
+      <nav className="sticky top-0 z-20 h-14 w-full bg-resume-800 flex py-2.5 px-4 xl:px-60 items-center shadow-level-8dp">
         <Link href="/">
           <a className="flex items-center">
             <Image src={'/icons/resume-icon.png'} alt="logo" height={'36px'} width={'36px'} />

@@ -18,7 +18,7 @@ function FeatureSection() {
           <Image src="/icons/speed.svg" alt="speed" height="56px" width="56px" />
         </CardPinnnedIcon>
         <p className="text-xl mr-14">
-          Well designed <strong>editor</strong> that helps you build easily!
+          Simple <strong>interface</strong> that helps you build quicky!
         </p>
       </FeatureCard>
 
