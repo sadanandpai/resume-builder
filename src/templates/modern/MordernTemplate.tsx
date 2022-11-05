@@ -21,6 +21,7 @@ export default function MordernTemplate() {
         email={resumeData.basics.email}
         city={resumeData.basics.location.city}
         phone={resumeData.basics.phone}
+        image={resumeData.basics.image}
       />
       <div className="flex ">
         <div className="basis-[60%] p-3">
