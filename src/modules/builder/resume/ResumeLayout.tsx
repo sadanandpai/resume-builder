@@ -14,7 +14,7 @@ export const ResumeLayout = () => {
   const zoom = useZoom((state) => state.zoom);
 
   const templateId = useTemplates((state) => state.activeTemplate?.id || '');
-  const Template = AVAILABLE_TEMPLATES[templateId].component;
+  const Template = AVAILABLE_TEMPLATES[templateId]?.component;
   const selectedTheme = useThemes((state) => state.selectedTheme);
   StateContext = createContext(resumeData);
 
@@ -32,9 +32,7 @@ export const ResumeLayout = () => {
       >
         <div className="w-[210mm] h-[296mm] bg-white my-0 mx-auto print:h-full">
           <StateContext.Provider value={resumeData}>
-            <ThemeProvider theme={selectedTheme}>
-              <Template />
-            </ThemeProvider>
+            <ThemeProvider theme={selectedTheme}>{Template && <Template />}</ThemeProvider>
           </StateContext.Provider>
         </div>
       </div>
