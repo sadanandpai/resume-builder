@@ -2,10 +2,10 @@
   "basics": {
     "name": "Jane Doe",
     "label": "Frontend Developer",
-    "image": "https://www.linkpicture.com/q/generated_photos_5e68893b6d3b380006f22f8b.jpg",
+    "image": "https://randomuser.me/api/portraits/men/18.jpg",
     "email": "janedoe@email.com",
     "phone": "+91 9876543210",
-    "url": "www.github.com/janedoe/",
+    "url": "www.github.com/sadanandpai/",
     "summary": "I am a web developer having expertise in frontend development and exposure to back- end development. I design and develop web applications using the latest technologies to deliver the product with quality code.",
     "location": {
       "address": "",
@@ -20,38 +20,38 @@
     "profiles": [
       {
         "network": "linkedin",
-        "username": "janedoe",
-        "url": "https://www.linkedin.com/in/janedoe/"
+        "username": "sadanandpai",
+        "url": "https://www.linkedin.com/in/sadanandpai/"
       },
       {
         "network": "twitter",
-        "username": "janedoe",
-        "url": "https://www.twitter.com/in/janedoe/"
+        "username": "sadanandpai",
+        "url": "https://www.twitter.com/sadanandpai/"
       },
       {
         "network": "github",
-        "username": "janedoe",
-        "url": "https://github.com/janedoe/"
+        "username": "sadanandpai",
+        "url": "https://github.com/sadanandpai/"
       },
       {
         "network": "hackerrank",
-        "username": "janedoe",
-        "url": "https://www.hackerrank.com/janedoe/"
+        "username": "paicube",
+        "url": "https://www.hackerrank.com/paicube/"
       },
       {
         "network": "hackerearth",
-        "username": "janedoe",
-        "url": "https://www.hackerearth.com/in/janedoe/"
+        "username": "sadanandpai",
+        "url": "https://www.hackerearth.com/sadanandpai/"
       },
       {
         "network": "codechef",
-        "username": "janedoe",
-        "url": "https://www.codechef.com/in/janedoe/"
+        "username": "sadanandpai",
+        "url": "https://www.codechef.com/sadanandpai/"
       },
       {
         "network": "leetcode",
-        "username": "janedoe",
-        "url": "https://leetcode.com/janedoe/"
+        "username": "paicube",
+        "url": "https://leetcode.com/paicube/"
       }
     ]
   },
@@ -172,12 +172,12 @@
   "volunteer": [
     {
       "id": "1",
-      "organization": "Organization",
-      "position": "Volunteer",
-      "url": "https://organization.com/",
+      "organization": "Company XYZ",
+      "position": "Organizer",
+      "url": "https://xyx.com/",
       "startDate": "2012-01-01",
       "endDate": "2013-01-01",
-      "summary": "Description…",
+      "summary": "Organized several hackthons & monthly meetup to improve the community",
       "highlights": ["Awarded 'Volunteer of the Month'"],
       "isVolunteeringNow": false
     }
@@ -188,6 +188,13 @@
       "date": "2014-11-01",
       "awarder": "XYZ client",
       "summary": "* Recognition zero defect delivery",
+      "id": "1"
+    },
+    {
+      "title": "Certificate of best frontend developer",
+      "date": "2016-11-01",
+      "awarder": "XYZ client",
+      "summary": "Awarded for exceptional improvements made to improve user experience",
       "id": "1"
     }
   ]

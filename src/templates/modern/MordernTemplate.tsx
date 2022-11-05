@@ -1,5 +1,6 @@
 import { BasicIntro } from './components/BasicIntro';
 import { EducationSection } from './components/Education';
+import { VolunteerSection } from './components/Volunteer';
 import { Objective } from './components/Objective';
 import { SkillsSection } from './components/Skills';
 import { SummarySection } from './components/Summary';
@@ -36,15 +37,15 @@ export default function MordernTemplate() {
           <SectionValidator value={resumeData.awards}>
             <AwardSection awardsReceived={resumeData.awards} />
           </SectionValidator>
-
-          <SectionValidator value={resumeData.skills.languages}>
-            <SkillsSection title="Languages" list={resumeData.skills.languages} />
-          </SectionValidator>
         </div>
 
         <div className="basis-[40%] p-3">
           <SectionValidator value={resumeData.basics.objective}>
             <Objective objective={resumeData.basics.objective} />
+          </SectionValidator>
+
+          <SectionValidator value={resumeData.skills.languages}>
+            <SkillsSection title="Languages" list={resumeData.skills.languages} />
           </SectionValidator>
 
           <SectionValidator value={resumeData.skills.technologies}>
@@ -61,6 +62,10 @@ export default function MordernTemplate() {
 
           <SectionValidator value={resumeData.education}>
             <EducationSection education={resumeData.education} />
+          </SectionValidator>
+
+          <SectionValidator value={resumeData.volunteer}>
+            <VolunteerSection volunteer={resumeData.volunteer} />
           </SectionValidator>
         </div>
       </div>

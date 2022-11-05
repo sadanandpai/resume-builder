@@ -13,6 +13,7 @@ import {
 import { useAwards } from './awards';
 import { useEducations } from './education';
 import { useExperiences } from './experience';
+import { useVoluteeringStore } from './volunteering';
 
 export const useResumeStore = () => {
   return {
@@ -21,6 +22,7 @@ export const useResumeStore = () => {
     work: useExperiences((state) => state.experiences),
     education: useEducations((state) => state.academics),
     awards: useAwards((state) => state.awards),
+    volunteer: useVoluteeringStore((state) => state.volunteeredExps),
     skills: {
       languages: useLanguages((state) => state.get()),
       frameworks: useFrameworks((state) => state.get()),
