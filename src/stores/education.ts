@@ -1,4 +1,5 @@
 import create, { SetState, GetState } from 'zustand';
+import { persist } from 'zustand/middleware';
 import produce from 'immer';
 import resumeData from 'src/helpers/constants/resume-data.json';
 import { IEducationItem, IEducationStore } from './education.interface';
@@ -82,13 +83,18 @@ const updateEducation =
     );
   };
 
-export const useEducations = create<IEducationStore>((set, get) => ({
-  academics: resumeData.education,
-  add: addEducation(set),
-  get: getEducation(get),
-  remove: removeEducation(set),
-  reset: setEducation(set),
-  onmoveup: onMoveUp(set),
-  onmovedown: onMoveDown(set),
-  updateEducation: updateEducation(set),
-}));
+export const useEducations = create<IEducationStore>(
+  persist(
+    (set, get) => ({
+      academics: resumeData.education,
+      add: addEducation(set),
+      get: getEducation(get),
+      remove: removeEducation(set),
+      reset: setEducation(set),
+      onmoveup: onMoveUp(set),
+      onmovedown: onMoveDown(set),
+      updateEducation: updateEducation(set),
+    }),
+    { name: 'education' }
+  )
+);

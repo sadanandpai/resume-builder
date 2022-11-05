@@ -5,7 +5,7 @@ import { ResumeTitle } from '../atoms/ResumeTitle';
 
 const ResumeHeader = () => {
   const { zoomIn, zoomOut, resetZoom } = useZoom.getState();
-  const templateName = useTemplates((state) => state.activeTemplate.name);
+  const templateName = useTemplates((state) => state.activeTemplate?.name || '');
 
   return (
     <div className="flex items-center justify-between">

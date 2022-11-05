@@ -10,7 +10,7 @@ import { AVAILABLE_TEMPLATES } from 'src/helpers/constants';
 import { useTemplates } from 'src/stores/useTemplate';
 
 export const TemplateSlider = () => {
-  const templateIndex = useTemplates((state) => state.index);
+  const templateIndex = useTemplates((state) => state.activeTemplate?.id);
 
   const targetElementRef = useRef<HTMLElement | null>(null);
   const splideInstanceRef = useRef<Splide | null>(null);
@@ -35,8 +35,8 @@ export const TemplateSlider = () => {
     };
   }, []);
 
-  const onChangeTemplate = (templateId: number) => {
-    useTemplates.getState().setTemplate(templateId);
+  const onChangeTemplate = (templateId: string) => {
+    useTemplates.getState().setTemplate(AVAILABLE_TEMPLATES[templateId]);
   };
 
   return (
@@ -57,12 +57,12 @@ export const TemplateSlider = () => {
       <section className="splide mt-[26px] mb-[32px] px-[40px]" ref={targetElementRef}>
         <div className="splide__track">
           <ul className="splide__list">
-            {AVAILABLE_TEMPLATES.map((template, index) => {
-              const isActive = index === templateIndex;
+            {Object.keys(AVAILABLE_TEMPLATES).map((templateKey) => {
+              const template = AVAILABLE_TEMPLATES[templateKey];
+              const isActive = template.id === templateIndex;
               return (
                 <TemplateSlide
-                  key={index}
-                  id={index}
+                  key={template.id}
                   isActive={isActive}
                   {...template}
                   onChangeTemplate={onChangeTemplate}
@@ -84,10 +84,10 @@ export const TemplateSlide = ({
   onChangeTemplate,
 }: {
   isActive: boolean;
-  id: number;
+  id: string;
   name: string;
   thumbnail: string;
-  onChangeTemplate: (id: number) => void;
+  onChangeTemplate: (id: string) => void;
 }) => {
   return (
     <li className="splide__slide flex justify-center">
