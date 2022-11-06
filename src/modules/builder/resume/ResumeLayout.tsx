@@ -13,8 +13,8 @@ export const ResumeLayout = () => {
   const resumeData = useResumeStore();
   const zoom = useZoom((state) => state.zoom);
 
-  const templateId = useTemplates((state) => state.activeTemplate?.id || '');
-  const Template = AVAILABLE_TEMPLATES[templateId]?.component;
+  const templateId = useTemplates((state) => state.activeTemplate.id);
+  const Template = AVAILABLE_TEMPLATES[templateId].component;
   const selectedTheme = useThemes((state) => state.selectedTheme);
   StateContext = createContext(resumeData);
 

@@ -1,5 +1,4 @@
 import create, { SetState, GetState } from 'zustand';
-import { persist } from 'zustand/middleware';
 
 interface IZoomStore {
   zoom: number;
@@ -26,15 +25,10 @@ const handleResetZoom = (set: SetState<IZoomStore>) => () => {
   });
 };
 
-export const useZoom = create<IZoomStore>(
-  persist(
-    (set, get) => ({
-      zoom: 1,
-      setZoom: handleSetZoom(set),
-      zoomIn: handleZoomIn(get),
-      resetZoom: handleResetZoom(set),
-      zoomOut: handleZoomOut(get),
-    }),
-    { name: 'zoom' }
-  )
-);
+export const useZoom = create<IZoomStore>((set, get) => ({
+  zoom: 1,
+  setZoom: handleSetZoom(set),
+  zoomIn: handleZoomIn(get),
+  resetZoom: handleResetZoom(set),
+  zoomOut: handleZoomOut(get),
+}));

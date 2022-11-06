@@ -2,6 +2,7 @@ import Image from 'next/image';
 
 const HeaderTitle = ({ title }: { title: string }) => (
   <div className="flex items-center my-5 cursor-pointer">
+    {/* TODO: enable it later */}
     {/* <div className="mr-6 flex items-center">
       <Image src="/icons/eye.svg" alt="eye" height="16px" width="16px" />
     </div> */}

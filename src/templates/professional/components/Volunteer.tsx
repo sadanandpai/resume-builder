@@ -8,7 +8,7 @@ import { HTMLRenderer } from 'src/helpers/common/components/HTMLRenderer';
 import { IVolunteer } from 'src/stores/index.interface';
 import { dateParser } from 'src/helpers/utils';
 
-export default function VolunteerComp({ volunteer }: { volunteer: IVolunteer[] }) {
+export default function Volunteering({ volunteer }: { volunteer: IVolunteer[] }) {
   return (
     <div>
       {volunteer.map((vol, index) => (
