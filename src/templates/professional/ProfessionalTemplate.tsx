@@ -10,6 +10,7 @@ import UnratedSkills from './components/UnratedSkills';
 import { Education } from './components/Education';
 import { Section } from './components/Section';
 import AwardComp from './components/Awards';
+import VolunteerComp from './components/Volunteer';
 import { SectionValidator } from 'src/helpers/common/components/ValidSectionRenderer';
 
 const ResumeContainer = styled.div`
@@ -70,6 +71,12 @@ export default function ProfessionalTemplate() {
         <SectionValidator value={resumeData.awards}>
           <Section title="Awards / Accolades">
             <AwardComp awards={resumeData.awards} />
+          </Section>
+        </SectionValidator>
+
+        <SectionValidator value={resumeData.volunteer}>
+          <Section title="Volunteering">
+            <VolunteerComp volunteer={resumeData.volunteer} />
           </Section>
         </SectionValidator>
       </LeftSection>

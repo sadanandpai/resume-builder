@@ -1,4 +1,5 @@
 import create, { SetState } from 'zustand';
+import { persist } from 'zustand/middleware';
 import produce from 'immer';
 import resumeData from 'src/helpers/constants/resume-data.json';
 import { IActivityStore, IActivity } from './activity.interface';
@@ -25,9 +26,14 @@ const updateInvolvements = (set: SetState<IActivityStore>) => (involvements: str
   );
 };
 
-export const useActivity = create<IActivityStore>((set) => ({
-  activities: resumeData.activities,
-  reset: setAllAwards(set),
-  updateAchievements: updateAchievements(set),
-  updateInvolvements: updateInvolvements(set),
-}));
+export const useActivity = create<IActivityStore>(
+  persist(
+    (set) => ({
+      activities: resumeData.activities,
+      reset: setAllAwards(set),
+      updateAchievements: updateAchievements(set),
+      updateInvolvements: updateInvolvements(set),
+    }),
+    { name: 'activities' }
+  )
+);

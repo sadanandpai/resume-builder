@@ -25,20 +25,23 @@ export const SYSTEM_COLORS: IThemeColor[] = [
   },
 ];
 
-export const AVAILABLE_TEMPLATES: ITemplate[] = [
-  {
+export const AVAILABLE_TEMPLATES: ITemplate = {
+  modern: {
+    id: 'modern',
     name: 'Modern Resume',
     thumbnail: '/templates/modern.png',
     component: dynamic(() => import('src/templates/modern/MordernTemplate'), { ssr: false }),
   },
-  {
+  professional: {
+    id: 'professional',
     name: 'Professional Resume',
     thumbnail: '/templates/professional.png',
     component: dynamic(() => import('src/templates/professional/ProfessionalTemplate'), {
       ssr: false,
     }),
   },
-];
+};
+
 export const CUSTOM_THEME_COLOR: IThemeColor = {
   backgroundColor: 'white',
   fontColor: 'black',

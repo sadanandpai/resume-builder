@@ -10,6 +10,7 @@ export const BasicIntro = ({
   email,
   phone,
   city,
+  image,
 }: {
   name: string;
   label: string;
@@ -17,6 +18,7 @@ export const BasicIntro = ({
   email: string;
   phone: string;
   city: string;
+  image: string;
 }) => {
   return (
     <div className="flex justify-between items-center p-3">
@@ -30,7 +32,7 @@ export const BasicIntro = ({
           <ProfileContact src="text" text={city} alt="location" />
         </div>
       </div>
-      <ProfileImage />
+      <ProfileImage src={image} />
     </div>
   );
 };

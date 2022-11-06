@@ -1,20 +1,19 @@
 import { AVAILABLE_TEMPLATES } from 'src/helpers/constants';
-import { ITemplate } from 'src/helpers/constants/index.interface';
-import create, { SetState, GetState } from 'zustand';
+import { ITemplate, ITemplateContent } from 'src/helpers/constants/index.interface';
+import create from 'zustand';
 
 interface ITemplateStore {
-  index: number;
-  availableTemplate: ITemplate[];
-  activeTemplate: ITemplate;
-  setTemplate: (id: number) => void;
+  availableTemplate: ITemplate;
+  activeTemplate: ITemplateContent;
+  setTemplate: (template: ITemplateContent) => void;
 }
 
-export const useTemplates = create<ITemplateStore>(
-  (set: SetState<ITemplateStore>, get: GetState<ITemplateStore>) => ({
-    index: 0,
-    availableTemplate: AVAILABLE_TEMPLATES,
-    activeTemplate: AVAILABLE_TEMPLATES[0],
+export const useTemplates = create<ITemplateStore>((set) => ({
+  availableTemplate: AVAILABLE_TEMPLATES,
+  activeTemplate: AVAILABLE_TEMPLATES['modern'],
 
-    setTemplate: (idx: number) => set({ index: idx, activeTemplate: get().availableTemplate[idx] }),
-  })
-);
+  setTemplate: (template: ITemplateContent) => {
+    localStorage.setItem('selectedTemplateId', template.id);
+    set({ activeTemplate: template });
+  },
+}));
