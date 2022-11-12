@@ -13,17 +13,17 @@ const HomeLayout = () => {
   const animationEffectsHoverEnter = { scale: 1.05 };
   const animationEffectsHoverLeave = { scale: 1 };
   const animationEffectsFirstLoad = {
-    scale: [0.95, 1.02, 0.99, 1],
+    scale: [0.9, 1],
+    opacity: [0, 1],
   };
   const transtionEffects = {
     type: 'spring',
     stiffness: 400,
     damping: 17,
-    times: [0, 0.95, 1],
   };
 
   return (
-    <div className="scroll-smooth">
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: [0, 1] }} className="scroll-smooth">
       <nav className="sticky top-0 z-20 h-14 w-full bg-resume-800 flex py-2.5 px-4 xl:px-60 items-center shadow-level-8dp">
         <Link href="/">
           <a className="flex items-center">
@@ -55,6 +55,7 @@ const HomeLayout = () => {
         <div className="mx-6 md:mx-40 xl:mx-60 mb-6">
           <motion.div
             className="grid grid-cols-12 pt-12 md:pt-24"
+            initial={{ opacity: 0 }}
             animate={animationEffectsFirstLoad}
             transition={transtionEffects}
           >
@@ -104,6 +105,7 @@ const HomeLayout = () => {
       <motion.div
         className="mx-6 md:mx-40 xl:mx-60 my-32 w-75"
         style={{ fontFamily: "'Roboto Slab', serif" }}
+        initial={{ opacity: 0 }}
         animate={animationEffectsFirstLoad}
         transition={transtionEffects}
       >
@@ -171,7 +173,7 @@ const HomeLayout = () => {
           <PersonSection />
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

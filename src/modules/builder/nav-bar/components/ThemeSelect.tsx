@@ -14,7 +14,7 @@ export const ThemeSelect = () => {
 
   return (
     <div className={`h-[auto] w-[475px] bg-white flex flex-col px-9 py-7 shadow-2xl`}>
-      <span className="text-resume-800 font-bold text-lg mb-2">Choose a theme</span>
+      <span className="text-resume-800 font-bold text-lg mb-2">Choose a resume colour scheme</span>
       <div className="w-full">
         {SYSTEM_COLORS.map((themeObject) => {
           const isActive = themeObject.id === activeTheme.id;
