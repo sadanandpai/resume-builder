@@ -3,27 +3,18 @@
 
 ### Free and open source, fully customizable professional single page resume builder
 
-<a href="https://e-resume.vercel.app/"><img src="public/images/professional.png" alt="cover" height="415px" width="294px"/></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://e-resume.vercel.app/"><img src="public/images/legacy.png" alt="cover" height="415px" width="294px"/></a>
+<a href="https://e-resume.vercel.app/"><img src="https://user-images.githubusercontent.com/12962887/201484876-75290af9-ccd6-4f6d-be96-6a8fb4f20c4b.png" alt="get started with resume builder" height="200" widdth="330" />
 
 [![](https://img.shields.io/github/stars/sadanandpai/single-page-resume-builder?style=for-the-badge)](#stars)
 [![](https://img.shields.io/github/forks/sadanandpai/single-page-resume-builder?style=for-the-badge)](#forks)
 
 👉 &nbsp;&nbsp;[Single Page Resume Builder](https://e-resume.vercel.app/)&nbsp;&nbsp;👈
 
+[![NextJS](https://skillicons.dev/icons?i=nextjs)](https://nextjs.org/)
+[![Material React](https://skillicons.dev/icons?i=materialui)](https://mui.com/)
+<a href="https://github.com/pmndrs/zustand"><img src="http://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/bear-face.png" alt="" height="48" width="48" /></a>
+
 </div>
-
-### For users
-
-- Replace all the placeholder with you information
-- Select the template
-- Click on Print and save as PDF. (In case the template is not fitting properly, follow the below recommended settings)
-  - Orientation: Portrait
-  - Paper size: A4
-  - Scale: Fit to width
-  - Margins: None
-  - Print headers & footers: Uncheck (remove tick mark)
-  - Background/graphics: Check (add tick mark)
 
 ### For developers
 
@@ -31,18 +22,7 @@
 - `yarn install`
 - `yarn dev`
 
-### Technologies
+### Core contributors
 
-- [React](https://reactjs.org/) with hooks
-- [Styled components](https://styled-components.com/) + [Antd](https://ant.design/docs/react/introduce) (css and component libraries)
-- [Zustand](https://github.com/pmndrs/zustand) (hooks based state management library)
-- [Next.js](https://nextjs.org/) (Bundler)
+<a href="https://github.com/sadanandpai"><img src="https://avatars.githubusercontent.com/u/12962887" alt="sadanand" height="100px" width="100px" /></a> <a href="https://github.com/gopal1996"><img src="https://avatars.githubusercontent.com/u/22369081" alt="sadanand" height="100px" width="100px" /></a> <a href="https://github.com/yakshaG"><img src="https://avatars.githubusercontent.com/u/26523871" alt="sadanand" height="100px" width="100px" /></a> <a href="https://github.com/siva-kannan3"><img src="https://avatars.githubusercontent.com/u/60533560" alt="sadanand" height="100px" width="100px" /></a> <a href="https://github.com/sachinkumar579"><img src="https://avatars.githubusercontent.com/u/32408232" alt="sadanand" height="100px" width="100px" /></a>
 
-<div align="center">More features coming soon</div>
-
----
-
-Feel free to use the source to create your resume.<br/>
-Basic knowledge of HTML5, CSS and React is sufficient if you to customize the resume for your requirements.
-
-![](https://visitor-badge.glitch.me/badge?page_id=single-page-resume-builder)
