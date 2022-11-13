@@ -15,7 +15,6 @@ import { useBasicDetails } from './basic';
 import { useEducations } from './education';
 import { useExperiences } from './experience';
 import { useVoluteeringStore } from './volunteering';
-import { useActivity } from './activity';
 
 export const useResumeStore = () => {
   return {
