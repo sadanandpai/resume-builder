@@ -38,7 +38,7 @@ const RightSection = styled.div`
   flex-basis: 34%;
   row-gap: 20px;
   height: 100%;
-  font-size: 14px;
+  font-size: 12px;
 `;
 
 export default function ProfessionalTemplate() {
