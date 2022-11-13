@@ -10,6 +10,7 @@ const NEW_EXPERIENCE: IExperienceItem = {
   isWorkingHere: false,
   endDate: null,
   summary: '',
+  years: '',
   id: '',
   url: '',
   highlights: [],

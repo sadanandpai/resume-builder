@@ -40,7 +40,7 @@ function ExperienceHeader({ work }: { work: IExperienceItem }) {
       </div>
       <div className="flex justify-between items-end">
         <div className="font-medium text-xs">{work.position}</div>
-        <div className="italic text-xs">{dateParser(work.startDate)}</div>
+        <div className="italic text-xs">{work.years}</div>
       </div>
     </>
   );

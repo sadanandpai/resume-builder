@@ -5,6 +5,7 @@ export interface IExperienceItem {
   url: string;
   startDate: string | null;
   endDate: string | null;
+  years: string;
   summary: string;
   highlights: string[];
   isWorkingHere: boolean;

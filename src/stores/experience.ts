@@ -12,6 +12,7 @@ const addExperience =
     startDate,
     isWorkingHere,
     endDate,
+    years,
     summary,
     id,
     url = '',
@@ -28,6 +29,7 @@ const addExperience =
           endDate,
           summary,
           url,
+          years,
           highlights,
         });
       })
