@@ -10,8 +10,8 @@ const SectionHolder = styled.div`
 
   .header {
     position: absolute;
-    top: -10px;
-    left: 8px;
+    top: 0px;
+    transform: translate(0, -50%);
     background: white;
     padding: 0 5px;
     font-weight: bold;
@@ -19,11 +19,19 @@ const SectionHolder = styled.div`
   }
 `;
 
-export function Section({ title, children }: { title: string; children: React.ReactNode }) {
+export function Section({
+  title,
+  children,
+  titleClassname,
+}: {
+  title: string;
+  children: React.ReactNode;
+  titleClassname?: string;
+}) {
   return (
     <SectionHolder>
       <div className="header flex justify-center items-center gap-1">
-        <span>{title}</span>
+        <span className={titleClassname ? titleClassname : ''}>{title}</span>
       </div>
       {children}
     </SectionHolder>
