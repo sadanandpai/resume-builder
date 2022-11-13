@@ -71,7 +71,7 @@ function PersonSection() {
 }
 
 const PersonCard = ({ children }: { children: React.ReactNode }) => (
-  <div className="px-6 py-8 flex flex-col items-center text-center shadow hover:shadow-xl rounded-xl border-2 border-resume-50 hover:border-resume-100">
+  <div className="transition ease-in-out delay-100 duration-300 px-6 py-8 flex flex-col items-center text-center shadow hover:shadow-xl rounded-xl border-2 border-resume-50 hover:border-resume-100">
     {children}
   </div>
 );

@@ -47,8 +47,8 @@ const FeatureCard = ({ children }: { children: React.ReactNode }) => {
   return (
     <Link href="/builder" passHref={true}>
       <div
-        className={`transition ease-in-out delay-75 bg-resume-100 hover:bg-resume-500 text-resume-800
-      hover:text-resume-50 fill-resume-800 px-6 py-10 lg:p-12 rounded-lg flex shadow-md cursor-pointer relative rounded-xl`}
+        className={`transition ease-in-out delay-100 duration-300 bg-resume-100 hover:bg-resume-500 text-resume-800
+      hover:text-resume-50 fill-resume-800 px-6 py-10 lg:p-12 flex shadow-md cursor-pointer relative rounded-xl`}
       >
         {children}
       </div>
