@@ -28,8 +28,10 @@ const updateInvolvements = (set: SetState<IActivityStore>) => (involvements: str
 
 export const useActivity = create<IActivityStore>(
   persist(
-    (set) => ({
+    (set, get) => ({
       activities: resumeData.activities,
+
+      get: () => get().activities,
       reset: setAllAwards(set),
       updateAchievements: updateAchievements(set),
       updateInvolvements: updateInvolvements(set),

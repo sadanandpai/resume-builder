@@ -14,6 +14,7 @@ import { useAwards } from './awards';
 import { useEducations } from './education';
 import { useExperiences } from './experience';
 import { useVoluteeringStore } from './volunteering';
+import { useActivity } from './activity';
 
 export const useResumeStore = () => {
   return {
@@ -32,5 +33,6 @@ export const useResumeStore = () => {
       practices: usePractices((state) => state.get()),
       tools: useTools((state) => state.get()),
     },
+    activities: useActivity((state) => state.get()),
   };
 };

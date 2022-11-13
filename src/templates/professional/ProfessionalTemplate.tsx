@@ -9,9 +9,9 @@ import RatedSkills from './components/RatedSkills';
 import UnratedSkills from './components/UnratedSkills';
 import { Education } from './components/Education';
 import { Section } from './components/Section';
-import AwardComp from './components/Awards';
-import VolunteerComp from './components/Volunteer';
 import { SectionValidator } from 'src/helpers/common/components/ValidSectionRenderer';
+import Involvement from './components/Involvement';
+import Achievements from './components/Achievements';
 
 const ResumeContainer = styled.div`
   display: flex;
@@ -41,22 +41,11 @@ const RightSection = styled.div`
   font-size: 14px;
 `;
 
-// const sections = [
-//   'work',
-//   'key',
-//   'certificate',
-//   'identity',
-//   'career',
-//   'expert',
-//   'skill',
-//   'branch',
-//   'tool',
-//   'education',
-// ];
-
 export default function ProfessionalTemplate() {
   const resumeData = useContext(StateContext);
   const skills = resumeData.skills;
+  const involvements = resumeData.activities.involvements;
+  const achievements = resumeData.activities.achievements;
 
   return (
     <ResumeContainer>
@@ -68,15 +57,15 @@ export default function ProfessionalTemplate() {
           </Section>
         </SectionValidator>
 
-        <SectionValidator value={resumeData.awards}>
-          <Section title="Awards / Accolades">
-            <AwardComp awards={resumeData.awards} />
+        <SectionValidator value={involvements}>
+          <Section title="Key Projects / Involvements">
+            <Involvement data={involvements} />
           </Section>
         </SectionValidator>
 
-        <SectionValidator value={resumeData.volunteer}>
-          <Section title="Volunteering">
-            <VolunteerComp volunteer={resumeData.volunteer} />
+        <SectionValidator value={achievements}>
+          <Section title="Certificates and Awards">
+            <Achievements data={achievements} />
           </Section>
         </SectionValidator>
       </LeftSection>
