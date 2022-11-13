@@ -7,6 +7,8 @@ import { useThemes } from 'src/stores/themes';
 import { useTemplates } from 'src/stores/useTemplate';
 import { AVAILABLE_TEMPLATES } from 'src/helpers/constants';
 
+// TODO: need to define types
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export let StateContext: Context<any> = createContext(null);
 
 export const ResumeLayout = () => {
