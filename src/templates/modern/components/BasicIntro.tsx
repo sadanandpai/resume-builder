@@ -1,7 +1,8 @@
 import { ProfileContact } from '../atoms/ProfileContact';
-import { ProfileImage } from '../atoms/ProfileImage';
 import { ProfileName } from '../atoms/ProfileName';
 import { SectionSubtitle } from '../atoms/SectionSubtitle';
+
+import { ProfileImage } from 'src/helpers/common/components/ProfileImage';
 
 export const BasicIntro = ({
   name,
