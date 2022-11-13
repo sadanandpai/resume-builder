@@ -51,6 +51,7 @@ export interface IWorkIntrf {
   startDate: dayjs.Dayjs;
   endDate: dayjs.Dayjs;
   summary: string;
+  years: string;
   highlights: string[];
   isWorkingHere: boolean;
   website: string;

@@ -38,6 +38,9 @@ const Experience: React.FC<IExperienceProps> = ({ experienceInfo, currentIndex }
             currentExpInfo.endDate = value;
           }
           break;
+        case 'years':
+          currentExpInfo.years = value;
+          break;
         case 'summary':
           currentExpInfo.summary = value;
           break;
@@ -121,6 +124,19 @@ const Experience: React.FC<IExperienceProps> = ({ experienceInfo, currentIndex }
           />
         )}
         disabled={experienceInfo.isWorkingHere}
+      />
+      <TextField
+        label="Years"
+        variant="filled"
+        value={experienceInfo.years}
+        onChange={(e: ChangeEvent<HTMLInputElement>) => {
+          const value = e.target.value;
+          onChangeHandler('years', value);
+        }}
+        autoComplete="off"
+        fullWidth
+        required
+        sx={{ marginBottom: '26px' }}
       />
       <RichtextEditor
         label="Few points on this work experience"
