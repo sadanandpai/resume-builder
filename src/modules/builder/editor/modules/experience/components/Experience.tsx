@@ -135,7 +135,6 @@ const Experience: React.FC<IExperienceProps> = ({ experienceInfo, currentIndex }
         }}
         autoComplete="off"
         fullWidth
-        required
         sx={{ marginBottom: '26px' }}
       />
       <RichtextEditor
