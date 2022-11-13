@@ -1,5 +1,5 @@
-import Image from 'next/image';
 import styled from '@emotion/styled';
+import { SectionValidator } from './ValidSectionRenderer';
 
 const RoundedImage = styled.img`
   border-radius: 50%;
@@ -19,17 +19,9 @@ export const ProfileImage = ({
 }) => {
   return (
     <div className={imageWrapperClassname}>
-      {src ? (
+      <SectionValidator value={src}>
         <RoundedImage alt="Profile image" src={src} height={height} width={width} />
-      ) : (
-        <Image
-          className="rounded-full"
-          src="/icons/profile.svg"
-          alt="profile"
-          height={height}
-          width={width}
-        />
-      )}
+      </SectionValidator>
     </div>
   );
 };
