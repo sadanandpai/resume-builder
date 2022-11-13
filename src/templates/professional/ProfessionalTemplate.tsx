@@ -50,7 +50,9 @@ export default function ProfessionalTemplate() {
   return (
     <ResumeContainer>
       <LeftSection>
-        <BasicIntro basics={resumeData.basics} />
+        <Section title={resumeData.basics?.name} titleClassname="text-xl font-bold">
+          <BasicIntro basics={resumeData.basics} />
+        </Section>
         <SectionValidator value={resumeData.work}>
           <Section title="Work Experience">
             <Work work={resumeData.work} />
@@ -73,7 +75,7 @@ export default function ProfessionalTemplate() {
       <RightSection>
         <SectionValidator value={resumeData.basics.summary}>
           <Section title="Summary">
-            <AboutMe summary={resumeData.basics.summary} />
+            <AboutMe summary={resumeData.basics.summary} profileImage={resumeData.basics.image} />
           </Section>
         </SectionValidator>
 
