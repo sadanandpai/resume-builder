@@ -1,16 +1,16 @@
-import Image from 'next/image';
 import EditorLayout from './editor/EditorLayout';
+import Image from 'next/image';
 import NavBarLayout from './nav-bar/NavBarLayout';
 import ResumeHeader from './resume/components/ResumeHeader';
-import Tooltip from '@mui/material/Tooltip';
 import { ResumeLayout } from './resume/ResumeLayout';
+import Tooltip from '@mui/material/Tooltip';
 
 const BuilderLayout = () => {
   return (
     <div className="flex flex-col h-screen">
       <NavBarLayout />
       <main className="flex flex-1 max-h-[calc(100vh_-_3.5rem)] print:max-h-fit">
-        <div className="flex flex-col flex-1 justify-center bg-custom-grey100">
+        <div className="flex flex-col flex-1 justify-center bg-custom-grey100 print:bg-white">
           <header className="w-[210mm] mt-5 mb-3 mx-auto print:hidden">
             <ResumeHeader />
           </header>
@@ -23,7 +23,7 @@ const BuilderLayout = () => {
         </aside>
       </main>
 
-      <footer>
+      <footer className="print:hidden">
         <Tooltip title="Share feedback">
           <button className="fixed w-14 h-14 rounded-full bottom-4 left-4 flex justify-center items-center bg-resume-50 shadow-level-4dp">
             <Image src="/icons/rate-review.svg" alt="Feedback button" width="24" height="24" />

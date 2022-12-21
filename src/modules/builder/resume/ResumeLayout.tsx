@@ -1,11 +1,11 @@
-import { ThemeProvider } from '@mui/material/styles';
-
 import { Context, createContext, useEffect } from 'react';
-import { useResumeStore } from 'src/stores/useResumeStore';
-import { useZoom } from 'src/stores/useZoom';
-import { useThemes } from 'src/stores/themes';
-import { useTemplates } from 'src/stores/useTemplate';
+
 import { AVAILABLE_TEMPLATES } from 'src/helpers/constants';
+import { ThemeProvider } from '@mui/material/styles';
+import { useResumeStore } from 'src/stores/useResumeStore';
+import { useTemplates } from 'src/stores/useTemplate';
+import { useThemes } from 'src/stores/themes';
+import { useZoom } from 'src/stores/useZoom';
 
 // TODO: need to define types
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -27,7 +27,7 @@ export const ResumeLayout = () => {
   }, []);
 
   return (
-    <div className="mx-5">
+    <div className="mx-5 print:mx-0">
       <div
         style={{ transform: `scale(${zoom})` }}
         className="origin-top transition-all duration-300 ease-linear	print:!scale-100"

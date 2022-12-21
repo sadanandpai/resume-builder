@@ -16,3 +16,17 @@ body {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
+
+@media print {
+  body *,
+  *::before,
+  *::after {
+    -webkit-print-color-adjust: exact !important; /* Chrome, Safari, Edge */
+    color-adjust: exact !important; /*Firefox*/
+  }
+}
+
+@page {
+  size: A4 !important;
+  margin: 0 !important;
+}
