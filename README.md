@@ -1,15 +1,18 @@
 <div align="center">
-<h1>Single Page Resume Builder</h1>
+<h1>Resume Builder</h1>
 
 ### Free and open source, fully customizable professional single page resume builder
 
 <a href="https://e-resume.vercel.app/"><img src="https://user-images.githubusercontent.com/12962887/201484876-75290af9-ccd6-4f6d-be96-6a8fb4f20c4b.png" alt="get started with resume builder" height="200" widdth="330" />
+
+<a href="e-resume.vercel.app">Resume builder</a>
 
 [![](https://img.shields.io/github/stars/sadanandpai/single-page-resume-builder?style=for-the-badge)](#stars)
 [![](https://img.shields.io/github/forks/sadanandpai/single-page-resume-builder?style=for-the-badge)](#forks)
 
 [![NextJS](https://skillicons.dev/icons?i=nextjs)](https://nextjs.org/)
 [![Material React](https://skillicons.dev/icons?i=materialui)](https://mui.com/)
+[![TailwindCSS](https://skillicons.dev/icons?i=tailwind)](https://tailwindcss.com/)
 <a href="https://github.com/pmndrs/zustand"><img src="http://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/bear-face.png" alt="" height="48" width="48" /></a>
 
 </div>
