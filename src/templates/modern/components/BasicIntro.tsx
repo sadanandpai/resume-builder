@@ -22,7 +22,7 @@ export const BasicIntro = ({
   image: string;
 }) => {
   return (
-    <div className="flex justify-between items-center p-3">
+    <div className="flex justify-between items-center p-2">
       <div>
         <ProfileName name={name} />
         <SectionSubtitle label={label} />
@@ -33,7 +33,7 @@ export const BasicIntro = ({
           <ProfileContact src="text" text={city} alt="location" />
         </div>
       </div>
-      <ProfileImage src={image} />
+      <ProfileImage src={image} height="100px" width="100px" />
     </div>
   );
 };

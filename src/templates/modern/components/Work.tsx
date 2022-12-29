@@ -13,7 +13,7 @@ export const WorkSection = ({ experience }: { experience: IWorkIntrf[] }) => {
 
       {experience.map((item: IWorkIntrf, index: number) => {
         return (
-          <div key={index} className="py-3">
+          <div key={index} className="py-2">
             <SectionTitle label={item.name} />
             <div className="flex justify-between items-center">
               <SectionSubtitle label={item.position} />

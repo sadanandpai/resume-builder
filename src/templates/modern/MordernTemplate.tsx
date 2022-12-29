@@ -24,7 +24,7 @@ export default function MordernTemplate() {
         phone={resumeData.basics.phone}
         image={resumeData.basics.image}
       />
-      <div className="flex ">
+      <div className="flex">
         <div className="basis-[60%] p-3">
           <SectionValidator value={resumeData.basics.summary}>
             <SummarySection summary={resumeData.basics.summary} />

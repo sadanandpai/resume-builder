@@ -11,7 +11,7 @@ export const EducationSection = ({ education }: { education: IEducation[] }) => 
 
       {education.map((item: IEducation, index: number) => {
         return (
-          <div key={index} className="py-3">
+          <div key={index} className="py-2">
             <div>
               <SectionTitle label={`${item.studyType} - ${item.area}`} />
               <div className="flex justify-between items-center">

@@ -13,7 +13,7 @@ export const VolunteerSection = ({ volunteer }: { volunteer: IVolunteer[] }) => 
 
       {volunteer.map((item: IVolunteer, index: number) => {
         return (
-          <div key={index} className="py-3">
+          <div key={index} className="py-2">
             <div>
               <SectionTitle label={`${item.organization}`} />
               <div className="flex justify-between items-center">
