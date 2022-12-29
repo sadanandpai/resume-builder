@@ -25,9 +25,14 @@ const BuilderLayout = () => {
 
       <footer className="print:hidden">
         <Tooltip title="Share feedback">
-          <button className="fixed w-14 h-14 rounded-full bottom-4 left-4 flex justify-center items-center bg-resume-50 shadow-level-4dp">
+          <a
+            href="https://forms.gle/YmpXEZLk6LYdnqet7"
+            target="_blank"
+            rel="noreferrer"
+            className="fixed w-14 h-14 rounded-full bottom-4 left-4 flex justify-center items-center bg-resume-50 shadow-level-4dp"
+          >
             <Image src="/icons/rate-review.svg" alt="Feedback button" width="24" height="24" />
-          </button>
+          </a>
         </Tooltip>
       </footer>
     </div>
