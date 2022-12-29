@@ -12,6 +12,7 @@ import { StateContext } from 'src/modules/builder/resume/ResumeLayout';
 import UnratedSkills from './components/UnratedSkills';
 import Work from './components/Work';
 import styled from '@emotion/styled';
+import { Objective } from './components/Objective';
 
 const ResumeContainer = styled.div`
   display: flex;
@@ -76,6 +77,12 @@ export default function ProfessionalTemplate() {
         <SectionValidator value={resumeData.basics.summary}>
           <Section title="Summary">
             <AboutMe summary={resumeData.basics.summary} profileImage={resumeData.basics.image} />
+          </Section>
+        </SectionValidator>
+
+        <SectionValidator value={resumeData.basics.objective}>
+          <Section title="Career Objective">
+            <Objective objective={resumeData.basics.objective} />
           </Section>
         </SectionValidator>
 

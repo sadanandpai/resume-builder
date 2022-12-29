@@ -8,12 +8,12 @@ import { dateParser } from 'src/helpers/utils';
 
 export const AwardSection = ({ awardsReceived }: { awardsReceived: IAwards[] }) => {
   return (
-    <div className="mb-3">
+    <div className="mb-2">
       <SectionHeading title="Awards" />
 
       {awardsReceived.map((award: IAwards, index: number) => {
         return (
-          <div key={index} className="py-3">
+          <div key={index} className="pb-2">
             <SectionTitle label={award.title} />
             <div className="flex justify-between awards-center">
               <SectionSubtitle label={award.awarder} />

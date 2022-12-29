@@ -27,12 +27,12 @@ export const ResumeLayout = () => {
   }, []);
 
   return (
-    <div className="mx-5 print:mx-0">
+    <div className="mx-5 print:mx-0 mb-2 print:mb-0">
       <div
         style={{ transform: `scale(${zoom})` }}
         className="origin-top transition-all duration-300 ease-linear	print:!scale-100"
       >
-        <div className="w-[210mm] h-[296mm] bg-white my-0 mx-auto print:h-full">
+        <div className="w-[210mm] h-[296mm] bg-white my-0 mx-auto">
           <StateContext.Provider value={resumeData}>
             <ThemeProvider theme={selectedTheme}>{Template && <Template />}</ThemeProvider>
           </StateContext.Provider>
