@@ -1,6 +1,5 @@
 import type { AppProps } from 'next/app';
-import { ThemeProvider } from '@mui/material/styles';
-import { StyledEngineProvider } from '@mui/material/styles';
+import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { GLOBAL_MUI_THEME } from '../styles/global.theme';
