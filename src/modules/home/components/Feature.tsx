@@ -1,17 +1,12 @@
-import Link from "next/link";
-import Image from "next/image";
+import Link from 'next/link';
+import Image from 'next/image';
 
 function FeatureSection() {
   return (
     <>
       <FeatureCard>
         <CardPinnnedIcon>
-          <Image
-            src="/icons/style.svg"
-            alt="style"
-            height="56px"
-            width="56px"
-          />
+          <Image src="/icons/style.svg" alt="style" height="56px" width="56px" />
         </CardPinnnedIcon>
         <p className="text-xl mr-14">
           Customise with <strong>templates and themes</strong>!
@@ -20,12 +15,7 @@ function FeatureSection() {
 
       <FeatureCard>
         <CardPinnnedIcon>
-          <Image
-            src="/icons/speed.svg"
-            alt="speed"
-            height="56px"
-            width="56px"
-          />
+          <Image src="/icons/speed.svg" alt="speed" height="56px" width="56px" />
         </CardPinnnedIcon>
         <p className="text-xl mr-14">
           Simple <strong>interface</strong> that helps you build quicky!
@@ -34,12 +24,7 @@ function FeatureSection() {
 
       <FeatureCard>
         <CardPinnnedIcon>
-          <Image
-            src="/icons/magic.svg"
-            alt="magic"
-            height="56px"
-            width="56px"
-          />
+          <Image src="/icons/magic.svg" alt="magic" height="56px" width="56px" />
         </CardPinnnedIcon>
         <p className="text-xl mr-14">
           No <strong>sign up </strong>needed — go straight to building!

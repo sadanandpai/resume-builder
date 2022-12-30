@@ -1,6 +1,6 @@
-import Popover from "@mui/material/Popover";
+import Popover from '@mui/material/Popover';
 
-import { INavMenuPopoverProps } from "./NavMenuPopover.interface";
+import { INavMenuPopoverProps } from './NavMenuPopover.interface';
 
 export const NavMenuPopover = ({
   isOpen,
@@ -14,12 +14,12 @@ export const NavMenuPopover = ({
       open={isOpen}
       anchorEl={anchorElement}
       anchorOrigin={{
-        vertical: "bottom",
-        horizontal: "center",
+        vertical: 'bottom',
+        horizontal: 'center',
       }}
       transformOrigin={{
-        vertical: "top",
-        horizontal: "center",
+        vertical: 'top',
+        horizontal: 'center',
       }}
       id={id}
       onClose={onClose}

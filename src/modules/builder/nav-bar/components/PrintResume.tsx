@@ -1,15 +1,15 @@
-import { useEffect } from "react";
+import { useEffect } from 'react';
 
-import { StyledButton } from "../atoms";
+import { StyledButton } from '../atoms';
 
 export const PrintResume = () => {
   useEffect(() => {
-    globalThis?.addEventListener("beforeprint", () => {
+    globalThis?.addEventListener('beforeprint', () => {
       globalThis.document.title = `Resume_Builder_${Date.now()}`;
     });
 
-    globalThis?.addEventListener("afterprint", () => {
-      globalThis.document.title = "Single Page Resume Builder";
+    globalThis?.addEventListener('afterprint', () => {
+      globalThis.document.title = 'Single Page Resume Builder';
     });
   }, []);
 

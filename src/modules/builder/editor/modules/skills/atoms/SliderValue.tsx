@@ -1,12 +1,6 @@
-import { Slider } from "@mui/material";
+import { Slider } from '@mui/material';
 
-const SliderValue = ({
-  level,
-  setLevel,
-}: {
-  level: number;
-  setLevel: (v: number) => void;
-}) => {
+const SliderValue = ({ level, setLevel }: { level: number; setLevel: (v: number) => void }) => {
   const sliderhangeHandler = (_: Event, value: number | number[]) => {
     setLevel(value as number);
   };

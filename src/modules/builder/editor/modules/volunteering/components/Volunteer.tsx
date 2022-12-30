@@ -1,48 +1,44 @@
-import React, { ChangeEvent, Fragment, useCallback } from "react";
-import TextField from "@mui/material/TextField";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import React, { ChangeEvent, Fragment, useCallback } from 'react';
+import TextField from '@mui/material/TextField';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
-import { useVoluteeringStore } from "src/stores/volunteering";
-import { IVolunteeringItem } from "src/stores/volunteering.interface";
-import { SwitchWidget } from "src/helpers/common/atoms/Switch";
-import { RichtextEditor } from "src/helpers/common/components/richtext";
-import { DATE_PICKER_FORMAT } from "src/helpers/constants";
+import { useVoluteeringStore } from 'src/stores/volunteering';
+import { IVolunteeringItem } from 'src/stores/volunteering.interface';
+import { SwitchWidget } from 'src/helpers/common/atoms/Switch';
+import { RichtextEditor } from 'src/helpers/common/components/richtext';
+import { DATE_PICKER_FORMAT } from 'src/helpers/constants';
 
 interface IVolunteerProps {
   volunteeringInfo: IVolunteeringItem;
   currentIndex: number;
 }
 
-const Volunteer: React.FC<IVolunteerProps> = ({
-  volunteeringInfo,
-  currentIndex,
-}) => {
+const Volunteer: React.FC<IVolunteerProps> = ({ volunteeringInfo, currentIndex }) => {
   const onChangeHandler = useCallback(
     (name: string, value: any) => {
       const currentExpInfo = { ...volunteeringInfo };
-      const updatedVolunteeringExp =
-        useVoluteeringStore.getState().updatedVolunteeringExp;
+      const updatedVolunteeringExp = useVoluteeringStore.getState().updatedVolunteeringExp;
       switch (name) {
-        case "organisation":
+        case 'organisation':
           currentExpInfo.organization = value;
           break;
-        case "role":
+        case 'role':
           currentExpInfo.position = value;
           break;
-        case "startDate":
+        case 'startDate':
           if (value?.isValid()) {
             currentExpInfo.startDate = value;
           }
           break;
-        case "isVolunteeringNow":
+        case 'isVolunteeringNow':
           currentExpInfo.isVolunteeringNow = value;
           break;
-        case "endDate":
+        case 'endDate':
           if (value?.isValid()) {
             currentExpInfo.endDate = value;
           }
           break;
-        case "summary":
+        case 'summary':
           currentExpInfo.summary = value;
           break;
         default:
@@ -55,7 +51,7 @@ const Volunteer: React.FC<IVolunteerProps> = ({
 
   const onSummaryChange = useCallback(
     (htmlOutput: string) => {
-      onChangeHandler("summary", htmlOutput);
+      onChangeHandler('summary', htmlOutput);
     },
     [onChangeHandler]
   );
@@ -68,13 +64,13 @@ const Volunteer: React.FC<IVolunteerProps> = ({
         value={volunteeringInfo.organization}
         onChange={(e: ChangeEvent<HTMLInputElement>) => {
           const value = e.target.value;
-          onChangeHandler("organisation", value);
+          onChangeHandler('organisation', value);
         }}
         autoComplete="off"
         fullWidth
         required
         autoFocus={true}
-        sx={{ marginBottom: "26px" }}
+        sx={{ marginBottom: '26px' }}
       />
       <TextField
         label="Role"
@@ -82,44 +78,36 @@ const Volunteer: React.FC<IVolunteerProps> = ({
         value={volunteeringInfo.position}
         onChange={(e: ChangeEvent<HTMLInputElement>) => {
           const value = e.target.value;
-          onChangeHandler("role", value);
+          onChangeHandler('role', value);
         }}
         autoComplete="off"
         fullWidth
         required
-        sx={{ marginBottom: "26px" }}
+        sx={{ marginBottom: '26px' }}
       />
       <DatePicker
         label="Start date"
         value={volunteeringInfo.startDate}
         onChange={(newDate) => {
-          onChangeHandler("startDate", newDate);
+          onChangeHandler('startDate', newDate);
         }}
         inputFormat={DATE_PICKER_FORMAT}
         renderInput={(params) => (
-          <TextField
-            {...params}
-            variant="filled"
-            autoComplete="off"
-            fullWidth
-            required
-          />
+          <TextField {...params} variant="filled" autoComplete="off" fullWidth required />
         )}
       />
       <SwitchWidget
-        label={"I currently volunteer here"}
+        label={'I currently volunteer here'}
         value={volunteeringInfo.isVolunteeringNow ?? false}
         onChange={(newValue: boolean) => {
-          onChangeHandler("isVolunteeringNow", newValue);
+          onChangeHandler('isVolunteeringNow', newValue);
         }}
       />
       <DatePicker
         label="End date"
-        value={
-          volunteeringInfo.isVolunteeringNow ? null : volunteeringInfo.endDate
-        }
+        value={volunteeringInfo.isVolunteeringNow ? null : volunteeringInfo.endDate}
         onChange={(newDate) => {
-          onChangeHandler("endDate", newDate);
+          onChangeHandler('endDate', newDate);
         }}
         inputFormat={DATE_PICKER_FORMAT}
         renderInput={(params) => (
@@ -129,7 +117,7 @@ const Volunteer: React.FC<IVolunteerProps> = ({
             autoComplete="off"
             fullWidth
             required
-            sx={{ marginBottom: "26px" }}
+            sx={{ marginBottom: '26px' }}
           />
         )}
         disabled={volunteeringInfo.isVolunteeringNow}

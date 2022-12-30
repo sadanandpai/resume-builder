@@ -1,8 +1,8 @@
-import { ProfileContact } from "../atoms/ProfileContact";
-import { ProfileName } from "../atoms/ProfileName";
-import { SectionSubtitle } from "../atoms/SectionSubtitle";
+import { ProfileContact } from '../atoms/ProfileContact';
+import { ProfileName } from '../atoms/ProfileName';
+import { SectionSubtitle } from '../atoms/SectionSubtitle';
 
-import { ProfileImage } from "src/helpers/common/components/ProfileImage";
+import { ProfileImage } from 'src/helpers/common/components/ProfileImage';
 
 export const BasicIntro = ({
   name,

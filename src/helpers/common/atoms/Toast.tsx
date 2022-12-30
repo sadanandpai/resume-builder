@@ -1,7 +1,7 @@
-import Snackbar from "@mui/material/Snackbar";
-import Slide, { SlideProps } from "@mui/material/Slide";
+import Snackbar from '@mui/material/Snackbar';
+import Slide, { SlideProps } from '@mui/material/Slide';
 
-type TransitionProps = Omit<SlideProps, "direction">;
+type TransitionProps = Omit<SlideProps, 'direction'>;
 
 function TransitionUp(props: TransitionProps) {
   return <Slide {...props} direction="up" />;
@@ -20,7 +20,7 @@ export const Toast = ({
     open={open}
     autoHideDuration={4000}
     onClose={(event, reason) => {
-      if (reason === "clickaway") {
+      if (reason === 'clickaway') {
         return;
       }
       onClose();

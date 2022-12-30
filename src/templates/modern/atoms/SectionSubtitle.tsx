@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
 const SubTitle = styled.p`
   color: ${(props) => props.theme.titleColor};

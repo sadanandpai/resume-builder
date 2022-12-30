@@ -1,4 +1,4 @@
-import React, { Component, ErrorInfo, ReactNode } from "react";
+import React, { Component, ErrorInfo, ReactNode } from 'react';
 
 interface IErrorProps {
   children: ReactNode;
@@ -20,7 +20,7 @@ class ErrorBoundary extends Component<IErrorProps, IErrorState> {
   }
 
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.error("Uncaught error:", error, errorInfo);
+    console.error('Uncaught error:', error, errorInfo);
   }
 
   public render() {
@@ -28,7 +28,7 @@ class ErrorBoundary extends Component<IErrorProps, IErrorState> {
       if (this.props.fallbackComponent) {
         return <>{this.props.fallbackComponent}</>;
       }
-      return <h1 style={{ color: "red" }}>Sorry.. there was an error</h1>;
+      return <h1 style={{ color: 'red' }}>Sorry.. there was an error</h1>;
     }
 
     return this.props.children;

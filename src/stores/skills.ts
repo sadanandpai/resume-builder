@@ -1,8 +1,8 @@
-import create, { GetState, SetState } from "zustand";
-import { persist } from "zustand/middleware";
-import produce from "immer";
-import { ISkillItem, ISkillState } from "./skill.interface";
-import resumeData from "src/helpers/constants/resume-data.json";
+import create, { GetState, SetState } from 'zustand';
+import { persist } from 'zustand/middleware';
+import produce from 'immer';
+import { ISkillItem, ISkillState } from './skill.interface';
+import resumeData from 'src/helpers/constants/resume-data.json';
 
 const addSkill =
   (set: SetState<ISkillState>) =>
@@ -20,19 +20,14 @@ const removeSkill = (set: SetState<ISkillState>) => (index: number) =>
     })
   );
 
-const setSkills = (set: SetState<ISkillState>) => (values: ISkillItem[]) =>
-  set(() => ({ values }));
+const setSkills = (set: SetState<ISkillState>) => (values: ISkillItem[]) => set(() => ({ values }));
 
-const getSkills = (get: GetState<ISkillState>) => () =>
-  get().isEnabled ? get().values : [];
+const getSkills = (get: GetState<ISkillState>) => () => get().isEnabled ? get().values : [];
 
 const setIsEnabled = (set: SetState<ISkillState>) => (isEnabled: boolean) =>
   set(() => ({ isEnabled }));
 
-const getMethods = (
-  set: SetState<ISkillState>,
-  get: GetState<ISkillState>
-) => ({
+const getMethods = (set: SetState<ISkillState>, get: GetState<ISkillState>) => ({
   get: getSkills(get),
   add: addSkill(set),
   remove: removeSkill(set),
@@ -43,97 +38,97 @@ const getMethods = (
 export const useLanguages = create<ISkillState>(
   persist(
     (set, get) => ({
-      title: "Languages",
+      title: 'Languages',
       hasLevel: true,
       values: resumeData.skills.languages,
       isEnabled: true,
 
       ...getMethods(set, get),
     }),
-    { name: "languages" }
+    { name: 'languages' }
   )
 );
 
 export const useFrameworks = create<ISkillState>(
   persist(
     (set, get) => ({
-      title: "Frameworks",
+      title: 'Frameworks',
       hasLevel: true,
       values: resumeData.skills.frameworks,
       isEnabled: true,
 
       ...getMethods(set, get),
     }),
-    { name: "frameworks" }
+    { name: 'frameworks' }
   )
 );
 
 export const useTechnologies = create<ISkillState>(
   persist(
     (set, get) => ({
-      title: "Technologies",
+      title: 'Technologies',
       hasLevel: false,
       values: resumeData.skills.technologies,
       isEnabled: true,
 
       ...getMethods(set, get),
     }),
-    { name: "technologies" }
+    { name: 'technologies' }
   )
 );
 
 export const useLibraries = create<ISkillState>(
   persist(
     (set, get) => ({
-      title: "Libraries",
+      title: 'Libraries',
       hasLevel: false,
       values: resumeData.skills.libraries,
       isEnabled: true,
 
       ...getMethods(set, get),
     }),
-    { name: "libraries" }
+    { name: 'libraries' }
   )
 );
 
 export const useDatabases = create<ISkillState>(
   persist(
     (set, get) => ({
-      title: "Databases",
+      title: 'Databases',
       hasLevel: false,
       values: resumeData.skills.databases,
       isEnabled: true,
 
       ...getMethods(set, get),
     }),
-    { name: "databases" }
+    { name: 'databases' }
   )
 );
 
 export const usePractices = create<ISkillState>(
   persist(
     (set, get) => ({
-      title: "Practices",
+      title: 'Practices',
       hasLevel: false,
       values: resumeData.skills.practices,
       isEnabled: true,
 
       ...getMethods(set, get),
     }),
-    { name: "practices" }
+    { name: 'practices' }
   )
 );
 
 export const useTools = create<ISkillState>(
   persist(
     (set, get) => ({
-      title: "Tools",
+      title: 'Tools',
       hasLevel: false,
       values: resumeData.skills.tools,
       isEnabled: true,
 
       ...getMethods(set, get),
     }),
-    { name: "tools" }
+    { name: 'tools' }
   )
 );

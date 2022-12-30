@@ -1,14 +1,10 @@
-import { IEducation } from "src/stores/index.interface";
-import { SectionHeading } from "../atoms/SectionHeading";
-import { SectionSubtitle } from "../atoms/SectionSubtitle";
-import { SectionTitle } from "../atoms/SectionTitle";
-import { dateParser } from "src/helpers/utils";
+import { IEducation } from 'src/stores/index.interface';
+import { SectionHeading } from '../atoms/SectionHeading';
+import { SectionSubtitle } from '../atoms/SectionSubtitle';
+import { SectionTitle } from '../atoms/SectionTitle';
+import { dateParser } from 'src/helpers/utils';
 
-export const EducationSection = ({
-  education,
-}: {
-  education: IEducation[];
-}) => {
+export const EducationSection = ({ education }: { education: IEducation[] }) => {
   return (
     <div className="mb-3">
       <SectionHeading title="Education" />
@@ -23,7 +19,7 @@ export const EducationSection = ({
                 <div className="flex gap-3">
                   <p className="text-xs">
                     {dateParser(item.startDate)} -
-                    {item.isStudyingHere ? "present" : dateParser(item.endDate)}
+                    {item.isStudyingHere ? 'present' : dateParser(item.endDate)}
                   </p>
                   {/* <p className="text-xs">60%</p> */}
                 </div>

@@ -1,6 +1,6 @@
-import type { NextPage } from "next";
-import Head from "next/head";
-import BuilderLayout from "src/modules/builder/BuilderLayout";
+import type { NextPage } from 'next';
+import Head from 'next/head';
+import BuilderLayout from 'src/modules/builder/BuilderLayout';
 
 const BuilderPage: NextPage = () => {
   return (

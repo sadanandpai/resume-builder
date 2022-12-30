@@ -1,13 +1,13 @@
-import React from "react";
-import userEvent from "@testing-library/user-event";
-import { render, screen } from "@testing-library/react";
-import { ISkillItem } from "src/stores/skill.interface";
-import Skill from "src/modules/builder/editor/modules/skills/components/Skill";
+import React from 'react';
+import userEvent from '@testing-library/user-event';
+import { render, screen } from '@testing-library/react';
+import { ISkillItem } from 'src/stores/skill.interface';
+import Skill from 'src/modules/builder/editor/modules/skills/components/Skill';
 
 let items = [
-  { name: "JavaScript", level: 60 },
-  { name: "HTML", level: 40 },
-  { name: "CSS", level: 80 },
+  { name: 'JavaScript', level: 60 },
+  { name: 'HTML', level: 40 },
+  { name: 'CSS', level: 80 },
 ];
 
 const addItem = jest.fn(({ name, level }: ISkillItem) => {
@@ -24,7 +24,7 @@ const setItems = jest.fn((values: ISkillItem[]) => {
 
 const hasLevel = true;
 
-it("should show the list of skills", async () => {
+it('should show the list of skills', async () => {
   render(
     <Skill
       items={items}
@@ -35,10 +35,10 @@ it("should show the list of skills", async () => {
     />
   );
 
-  const skillPillEls = screen.queryAllByTestId("skill-pill");
+  const skillPillEls = screen.queryAllByTestId('skill-pill');
   expect(skillPillEls.length).toBe(items.length);
 
-  const skillTitleEls = screen.queryAllByTestId("skill-title");
+  const skillTitleEls = screen.queryAllByTestId('skill-title');
   expect(skillPillEls.length).toBe(items.length);
 
   for (let index = 0; index < skillTitleEls.length; index++) {
@@ -46,7 +46,7 @@ it("should show the list of skills", async () => {
   }
 });
 
-it("should delete the skills", async () => {
+it('should delete the skills', async () => {
   render(
     <Skill
       items={items}
@@ -57,12 +57,12 @@ it("should delete the skills", async () => {
     />
   );
 
-  const skillPillEls = screen.queryAllByTestId("skill-pill");
+  const skillPillEls = screen.queryAllByTestId('skill-pill');
   const user = userEvent.setup();
 
   for (let index = 0; index < skillPillEls.length; index++) {
     const randomIndex = Math.floor(Math.random() * items.length);
-    const deleteEl = skillPillEls[randomIndex].querySelector("button");
+    const deleteEl = skillPillEls[randomIndex].querySelector('button');
 
     if (deleteEl) {
       await user.click(deleteEl);

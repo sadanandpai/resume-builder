@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 import {
   useDatabases,
   useFrameworks,
@@ -7,9 +7,9 @@ import {
   usePractices,
   useTechnologies,
   useTools,
-} from "src/stores/skills";
-import EditSectionContainer from "src/helpers/common/components/EditSectionContainer";
-import Skill from "./components/Skill";
+} from 'src/stores/skills';
+import EditSectionContainer from 'src/helpers/common/components/EditSectionContainer';
+import Skill from './components/Skill';
 
 const SkillsLayout = () => {
   const skillState = [
@@ -22,7 +22,7 @@ const SkillsLayout = () => {
     useTools(),
   ];
 
-  const [expanded, setExpanded] = useState<string | false>("Languages");
+  const [expanded, setExpanded] = useState<string | false>('Languages');
 
   const handleChange = (panel: string, isExpanded: boolean) => {
     setExpanded(isExpanded ? panel : false);
@@ -37,9 +37,7 @@ const SkillsLayout = () => {
           expanded={expanded === state.title}
           isEnabled={state.isEnabled}
           setIsEnabled={state.setIsEnabled}
-          clickHandler={() =>
-            handleChange(state.title, expanded !== state.title)
-          }
+          clickHandler={() => handleChange(state.title, expanded !== state.title)}
         >
           <Skill
             items={state.values}

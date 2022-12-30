@@ -6,15 +6,15 @@ import {
   useSensor,
   useSensors,
   DragEndEvent,
-} from "@dnd-kit/core";
+} from '@dnd-kit/core';
 import {
   arrayMove,
   SortableContext,
   sortableKeyboardCoordinates,
   verticalListSortingStrategy,
-} from "@dnd-kit/sortable";
-import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
-import { ISkillItem } from "src/stores/skill.interface";
+} from '@dnd-kit/sortable';
+import { restrictToVerticalAxis } from '@dnd-kit/modifiers';
+import { ISkillItem } from 'src/stores/skill.interface';
 
 export default function DragContainer({
   items,
@@ -49,10 +49,7 @@ export default function DragContainer({
       onDragEnd={handleDragEnd}
       modifiers={[restrictToVerticalAxis]}
     >
-      <SortableContext
-        items={items.map(({ name }) => name)}
-        strategy={verticalListSortingStrategy}
-      >
+      <SortableContext items={items.map(({ name }) => name)} strategy={verticalListSortingStrategy}>
         {children}
       </SortableContext>
     </DndContext>

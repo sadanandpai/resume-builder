@@ -1,18 +1,18 @@
-import React, { useContext } from "react";
+import React, { useContext } from 'react';
 
-import AboutMe from "./components/AboutMe";
-import Achievements from "./components/Achievements";
-import BasicIntro from "./components/BasicIntro";
-import { Education } from "./components/Education";
-import Involvement from "./components/Involvement";
-import RatedSkills from "./components/RatedSkills";
-import { Section } from "./components/Section";
-import { SectionValidator } from "src/helpers/common/components/ValidSectionRenderer";
-import { StateContext } from "src/modules/builder/resume/ResumeLayout";
-import UnratedSkills from "./components/UnratedSkills";
-import Work from "./components/Work";
-import styled from "@emotion/styled";
-import { Objective } from "./components/Objective";
+import AboutMe from './components/AboutMe';
+import Achievements from './components/Achievements';
+import BasicIntro from './components/BasicIntro';
+import { Education } from './components/Education';
+import Involvement from './components/Involvement';
+import RatedSkills from './components/RatedSkills';
+import { Section } from './components/Section';
+import { SectionValidator } from 'src/helpers/common/components/ValidSectionRenderer';
+import { StateContext } from 'src/modules/builder/resume/ResumeLayout';
+import UnratedSkills from './components/UnratedSkills';
+import Work from './components/Work';
+import styled from '@emotion/styled';
+import { Objective } from './components/Objective';
 
 const ResumeContainer = styled.div`
   display: flex;
@@ -51,10 +51,7 @@ export default function ProfessionalTemplate() {
   return (
     <ResumeContainer>
       <LeftSection>
-        <Section
-          title={resumeData.basics?.name}
-          titleClassname="text-xl font-bold"
-        >
+        <Section title={resumeData.basics?.name} titleClassname="text-xl font-bold">
           <BasicIntro basics={resumeData.basics} />
         </Section>
         <SectionValidator value={resumeData.work}>
@@ -79,10 +76,7 @@ export default function ProfessionalTemplate() {
       <RightSection>
         <SectionValidator value={resumeData.basics.summary}>
           <Section title="Summary">
-            <AboutMe
-              summary={resumeData.basics.summary}
-              profileImage={resumeData.basics.image}
-            />
+            <AboutMe summary={resumeData.basics.summary} profileImage={resumeData.basics.image} />
           </Section>
         </SectionValidator>
 
@@ -98,16 +92,9 @@ export default function ProfessionalTemplate() {
           </Section>
         </SectionValidator>
 
-        <SectionValidator
-          value={skills.technologies.concat(skills.libraries, skills.databases)}
-        >
+        <SectionValidator value={skills.technologies.concat(skills.libraries, skills.databases)}>
           <Section title="Skills / Exposure">
-            <UnratedSkills
-              items={skills.technologies.concat(
-                skills.libraries,
-                skills.databases
-              )}
-            />
+            <UnratedSkills items={skills.technologies.concat(skills.libraries, skills.databases)} />
           </Section>
         </SectionValidator>
         <SectionValidator value={skills.practices}>

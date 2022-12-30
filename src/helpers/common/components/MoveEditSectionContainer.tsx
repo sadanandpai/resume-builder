@@ -1,10 +1,10 @@
-import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
-import { Fragment } from "react";
+import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
+import { Fragment } from 'react';
 
 const animation = {
   exit: {
-    height: "0",
+    height: '0',
     paddingTop: 0,
     paddingBottom: 0,
     opacity: 0,
@@ -40,17 +40,14 @@ const MoveEditSection = ({
         } relative flex items-center justify-between pl-4 pr-5 text-resume-800 font-bold text-lg select-none cursor-pointer z-10`}
         onClick={clickHandler}
       >
-        <span
-          className="w-[15rem] overflow-hidden text-ellipsis whitespace-nowrap"
-          title={title}
-        >
+        <span className="w-[15rem] overflow-hidden text-ellipsis whitespace-nowrap" title={title}>
           {title}
         </span>
         <div className="flex gap-3">
           {length > 1 && (
             <Fragment>
               <Image
-                src={"/icons/up-arrow.svg"}
+                src={'/icons/up-arrow.svg'}
                 width={16}
                 height={16}
                 alt="up-arrow"
@@ -60,7 +57,7 @@ const MoveEditSection = ({
                 }}
               />
               <Image
-                src={"/icons/down-arrow.svg"}
+                src={'/icons/down-arrow.svg'}
                 width={16}
                 height={16}
                 alt="down-arrow"
@@ -72,7 +69,7 @@ const MoveEditSection = ({
             </Fragment>
           )}
           <Image
-            src={"/icons/delete.svg"}
+            src={'/icons/delete.svg'}
             width={14}
             height={18}
             alt="delete"

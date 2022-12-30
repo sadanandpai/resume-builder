@@ -1,16 +1,12 @@
-import { IVolunteer } from "src/stores/index.interface";
-import { SectionHeading } from "../atoms/SectionHeading";
-import { SectionSubtitle } from "../atoms/SectionSubtitle";
-import { SectionTitle } from "../atoms/SectionTitle";
-import { dateParser } from "src/helpers/utils";
-import { SectionList } from "../atoms/SectionList";
-import { HTMLRenderer } from "src/helpers/common/components/HTMLRenderer";
+import { IVolunteer } from 'src/stores/index.interface';
+import { SectionHeading } from '../atoms/SectionHeading';
+import { SectionSubtitle } from '../atoms/SectionSubtitle';
+import { SectionTitle } from '../atoms/SectionTitle';
+import { dateParser } from 'src/helpers/utils';
+import { SectionList } from '../atoms/SectionList';
+import { HTMLRenderer } from 'src/helpers/common/components/HTMLRenderer';
 
-export const VolunteerSection = ({
-  volunteer,
-}: {
-  volunteer: IVolunteer[];
-}) => {
+export const VolunteerSection = ({ volunteer }: { volunteer: IVolunteer[] }) => {
   return (
     <div className="mb-3">
       <SectionHeading title="Volunteering" />
@@ -25,9 +21,7 @@ export const VolunteerSection = ({
                 <div className="flex gap-3">
                   <p className="text-xs">
                     {dateParser(item.startDate)} -
-                    {item.isVolunteeringNow
-                      ? "present"
-                      : dateParser(item.endDate)}
+                    {item.isVolunteeringNow ? 'present' : dateParser(item.endDate)}
                   </p>
                 </div>
               </div>

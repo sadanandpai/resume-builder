@@ -1,7 +1,7 @@
-import React from "react";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-import { IAllActivityTabs, IActivityTab } from "../ActivitiesLayout";
+import React from 'react';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import { IAllActivityTabs, IActivityTab } from '../ActivitiesLayout';
 
 const BasicHeader = ({
   activeTab,
@@ -20,9 +20,9 @@ const BasicHeader = ({
           label={tabs[tab].label}
           value={tab}
           sx={{
-            color: "rgb(46 64 82)",
-            textTransform: "none",
-            fontSize: "1rem",
+            color: 'rgb(46 64 82)',
+            textTransform: 'none',
+            fontSize: '1rem',
           }}
         />
       ))}

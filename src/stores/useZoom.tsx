@@ -1,4 +1,4 @@
-import create, { SetState, GetState } from "zustand";
+import create, { SetState, GetState } from 'zustand';
 
 interface IZoomStore {
   zoom: number;
@@ -8,11 +8,9 @@ interface IZoomStore {
   setZoom: (zoom: number) => void;
 }
 
-const handleZoomIn = (get: GetState<IZoomStore>) => () =>
-  get().setZoom(get().zoom * 1.1);
+const handleZoomIn = (get: GetState<IZoomStore>) => () => get().setZoom(get().zoom * 1.1);
 
-const handleZoomOut = (get: GetState<IZoomStore>) => () =>
-  get().setZoom(get().zoom / 1.1);
+const handleZoomOut = (get: GetState<IZoomStore>) => () => get().setZoom(get().zoom / 1.1);
 
 const handleSetZoom = (set: SetState<IZoomStore>) => (zoom: number) =>
   set(() => {

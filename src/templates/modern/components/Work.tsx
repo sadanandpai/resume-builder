@@ -1,10 +1,10 @@
-import { dateParser } from "src/helpers/utils";
-import { HTMLRenderer } from "src/helpers/common/components/HTMLRenderer";
-import { IWorkIntrf } from "src/stores/index.interface";
-import { SectionHeading } from "../atoms/SectionHeading";
-import { SectionList } from "../atoms/SectionList";
-import { SectionSubtitle } from "../atoms/SectionSubtitle";
-import { SectionTitle } from "../atoms/SectionTitle";
+import { dateParser } from 'src/helpers/utils';
+import { HTMLRenderer } from 'src/helpers/common/components/HTMLRenderer';
+import { IWorkIntrf } from 'src/stores/index.interface';
+import { SectionHeading } from '../atoms/SectionHeading';
+import { SectionList } from '../atoms/SectionList';
+import { SectionSubtitle } from '../atoms/SectionSubtitle';
+import { SectionTitle } from '../atoms/SectionTitle';
 
 export const WorkSection = ({ experience }: { experience: IWorkIntrf[] }) => {
   return (
@@ -19,8 +19,8 @@ export const WorkSection = ({ experience }: { experience: IWorkIntrf[] }) => {
               <SectionSubtitle label={item.position} />
               <div>
                 <p className="text-xs">
-                  {dateParser(item.startDate)} -{" "}
-                  {item.isWorkingHere ? "present" : dateParser(item.endDate)}
+                  {dateParser(item.startDate)} -{' '}
+                  {item.isWorkingHere ? 'present' : dateParser(item.endDate)}
                 </p>
               </div>
             </div>

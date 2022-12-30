@@ -1,12 +1,12 @@
-import Link from "next/link";
-import Image from "next/image";
-import { Button } from "@mui/material";
-import { motion, useAnimation } from "framer-motion";
-import { useEffect } from "react";
+import Link from 'next/link';
+import Image from 'next/image';
+import { Button } from '@mui/material';
+import { motion, useAnimation } from 'framer-motion';
+import { useEffect } from 'react';
 
-import { NavBarActions, StyledButton } from "../builder/nav-bar/atoms";
-import FeatureSection from "./components/Feature";
-import PersonSection from "./components/Person";
+import { NavBarActions, StyledButton } from '../builder/nav-bar/atoms';
+import FeatureSection from './components/Feature';
+import PersonSection from './components/Person';
 
 const HomeLayout = () => {
   const controls = useAnimation();
@@ -17,26 +17,17 @@ const HomeLayout = () => {
     opacity: [0, 1],
   };
   const transtionEffects = {
-    type: "spring",
+    type: 'spring',
     stiffness: 400,
     damping: 17,
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: [0, 1] }}
-      className="scroll-smooth"
-    >
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: [0, 1] }} className="scroll-smooth">
       <nav className="sticky top-0 z-20 h-14 w-full bg-resume-800 flex py-2.5 px-4 xl:px-60 items-center shadow-level-8dp">
         <Link href="/">
           <a className="flex items-center">
-            <Image
-              src={"/icons/resume-icon.png"}
-              alt="logo"
-              height={"36px"}
-              width={"36px"}
-            />
+            <Image src={'/icons/resume-icon.png'} alt="logo" height={'36px'} width={'36px'} />
           </a>
         </Link>
         <div className="flex-auto flex justify-between items-center ml-5">
@@ -57,7 +48,7 @@ const HomeLayout = () => {
       </nav>
       <div
         style={{
-          background: "linear-gradient(180deg, #E7EEFA 50%, #FFFFFF 100%)",
+          background: 'linear-gradient(180deg, #E7EEFA 50%, #FFFFFF 100%)',
           fontFamily: "'Roboto Slab', serif",
         }}
       >
@@ -84,12 +75,8 @@ const HomeLayout = () => {
               />
             </div>
             <div className="col-span-12 sm:col-span-8">
-              <h3 className="text-xl md:text-2xl mb-2 text-resume-400">
-                SIMPLEST WAY TO BUILD A
-              </h3>
-              <h1 className="text-5xl mb-12 text-resume-800">
-                Professional Resume
-              </h1>
+              <h3 className="text-xl md:text-2xl mb-2 text-resume-400">SIMPLEST WAY TO BUILD A</h3>
+              <h1 className="text-5xl mb-12 text-resume-800">Professional Resume</h1>
 
               <div className="flex mb-10">
                 <div className="bg-resume-800 w-1 rounded-lg"></div>
@@ -135,12 +122,7 @@ const HomeLayout = () => {
         >
           <div className="grid grid-cols-12 items-center text-center">
             <div className="col-span-12 lg:col-span-4 mb-4 lg:mb-0">
-              <Image
-                src={"/icons/palette.svg"}
-                alt="logo"
-                height={"48px"}
-                width={"48px"}
-              />
+              <Image src={'/icons/palette.svg'} alt="logo" height={'48px'} width={'48px'} />
               <p className="text-resume-800 text-xl mt-2">
                 Do you want to make your own <strong>template?</strong>
               </p>
@@ -149,12 +131,7 @@ const HomeLayout = () => {
               <p>+</p>
             </div>
             <div className="col-span-12 lg:col-span-2 flex-col">
-              <Image
-                src={"/icons/terminal.svg"}
-                alt="logo"
-                height={"48px"}
-                width={"48px"}
-              />
+              <Image src={'/icons/terminal.svg'} alt="logo" height={'48px'} width={'48px'} />
               <p className="text-resume-800 text-xl mt-2">
                 Do you write <strong>React</strong> code?
               </p>
@@ -164,12 +141,7 @@ const HomeLayout = () => {
             </div>
             <div className="col-span-12 lg:col-span-3 mx-auto text-center">
               <div className="mb-6">
-                <Image
-                  src={"/icons/wave.svg"}
-                  alt="logo"
-                  height={"48px"}
-                  width={"48px"}
-                />
+                <Image src={'/icons/wave.svg'} alt="logo" height={'48px'} width={'48px'} />
               </div>
               <div>
                 <a
@@ -177,10 +149,7 @@ const HomeLayout = () => {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <Button
-                    variant="contained"
-                    className="bg-resume-800 mt-2 lg:mt-5 mb-3"
-                  >
+                  <Button variant="contained" className="bg-resume-800 mt-2 lg:mt-5 mb-3">
                     CONTRIBUTE
                   </Button>
                 </a>
@@ -195,12 +164,10 @@ const HomeLayout = () => {
         className="mx-6 md:mx-40 xl:mx-60 my-32"
         style={{ fontFamily: "'Roboto Slab', serif" }}
       >
-        <h2 className="text-resume-800 text-3xl mb-2 text-center lg:text-left">
-          About us
-        </h2>
+        <h2 className="text-resume-800 text-3xl mb-2 text-center lg:text-left">About us</h2>
         <p className="text-resume-400 mb-8 text-center lg:text-left">
-          A bunch of developers and designers — who love to build open source
-          projects and learn along!
+          A bunch of developers and designers — who love to build open source projects and learn
+          along!
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           <PersonSection />

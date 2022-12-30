@@ -1,6 +1,6 @@
-import React from "react";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
+import React from 'react';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
 
 const BasicHeader = ({
   activeTab,
@@ -18,9 +18,9 @@ const BasicHeader = ({
           key={index}
           label={title}
           sx={{
-            color: "rgb(46 64 82)",
-            textTransform: "none",
-            fontSize: "1rem",
+            color: 'rgb(46 64 82)',
+            textTransform: 'none',
+            fontSize: '1rem',
           }}
         />
       ))}

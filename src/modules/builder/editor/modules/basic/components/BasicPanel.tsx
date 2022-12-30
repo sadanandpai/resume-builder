@@ -1,8 +1,8 @@
-import React, { Fragment } from "react";
-import Box from "@mui/material/Box";
-import Contacts from "./Contacts";
-import Links from "./Links";
-import About from "./About";
+import React, { Fragment } from 'react';
+import Box from '@mui/material/Box';
+import Contacts from './Contacts';
+import Links from './Links';
+import About from './About';
 
 const BasicPanel = ({
   activeTab,
@@ -24,32 +24,19 @@ const BasicPanel = ({
       <Box
         component="form"
         sx={{
-          "& > :not(style)": { margin: "0.5rem 0" },
-          backgroundColor: "rgb(231 238 250)",
-          display: "flex",
-          flexDirection: "column",
+          '& > :not(style)': { margin: '0.5rem 0' },
+          backgroundColor: 'rgb(231 238 250)',
+          display: 'flex',
+          flexDirection: 'column',
         }}
         noValidate
         autoComplete="off"
       >
         {activeTab == 0 && (
-          <Contacts
-            basicTabs={basicTabs}
-            onChangeHandler={onChangeHandler}
-          ></Contacts>
+          <Contacts basicTabs={basicTabs} onChangeHandler={onChangeHandler}></Contacts>
         )}
-        {activeTab == 1 && (
-          <Links
-            basicTabs={basicTabs}
-            onChangeHandler={onChangeHandler}
-          ></Links>
-        )}
-        {activeTab == 2 && (
-          <About
-            basicTabs={basicTabs}
-            onChangeHandler={onChangeHandler}
-          ></About>
-        )}
+        {activeTab == 1 && <Links basicTabs={basicTabs} onChangeHandler={onChangeHandler}></Links>}
+        {activeTab == 2 && <About basicTabs={basicTabs} onChangeHandler={onChangeHandler}></About>}
       </Box>
     </Fragment>
   );

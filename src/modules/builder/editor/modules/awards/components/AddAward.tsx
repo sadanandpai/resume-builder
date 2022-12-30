@@ -1,14 +1,14 @@
-import { useMemo } from "react";
-import { OutlinedButton } from "src/helpers/common/atoms/Buttons";
-import { useAwards } from "src/stores/awards";
-import { IAwardItem } from "src/stores/awards.interface";
+import { useMemo } from 'react';
+import { OutlinedButton } from 'src/helpers/common/atoms/Buttons';
+import { useAwards } from 'src/stores/awards';
+import { IAwardItem } from 'src/stores/awards.interface';
 
 const NEW_AWARD: IAwardItem = {
-  title: "",
-  awarder: "",
+  title: '',
+  awarder: '',
   date: null,
-  summary: "",
-  id: "",
+  summary: '',
+  id: '',
 };
 
 const AddAward = ({
@@ -29,9 +29,9 @@ const AddAward = ({
 
   const buttonCaption = useMemo(() => {
     if (isEmpty) {
-      return "+ Add an award";
+      return '+ Add an award';
     } else {
-      return "+ Add more";
+      return '+ Add more';
     }
   }, [isEmpty]);
 

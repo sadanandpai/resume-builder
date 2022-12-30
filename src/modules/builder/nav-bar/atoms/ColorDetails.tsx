@@ -1,13 +1,7 @@
-import { ColorBox } from "./ColorBox";
-import { ColorBoxWrapper } from "./ColorBoxWrapper";
+import { ColorBox } from './ColorBox';
+import { ColorBoxWrapper } from './ColorBoxWrapper';
 
-export const ColorDetails = ({
-  label,
-  bgColor,
-}: {
-  label: string;
-  bgColor: string;
-}) => {
+export const ColorDetails = ({ label, bgColor }: { label: string; bgColor: string }) => {
   return (
     <div className="flex items-center w-100 gap-3">
       <ColorBoxWrapper>

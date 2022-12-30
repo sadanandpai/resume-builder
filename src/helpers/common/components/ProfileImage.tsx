@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
-import { SectionValidator } from "./ValidSectionRenderer";
+import styled from '@emotion/styled';
+import { SectionValidator } from './ValidSectionRenderer';
 
 const RoundedImage = styled.img`
   border-radius: 50%;
@@ -8,9 +8,9 @@ const RoundedImage = styled.img`
 
 export const ProfileImage = ({
   src,
-  height = "108px",
-  width = "108px",
-  imageWrapperClassname = "",
+  height = '108px',
+  width = '108px',
+  imageWrapperClassname = '',
 }: {
   src: string;
   height?: string;
@@ -20,12 +20,7 @@ export const ProfileImage = ({
   return (
     <div className={imageWrapperClassname}>
       <SectionValidator value={src}>
-        <RoundedImage
-          alt="Profile image"
-          src={src}
-          height={height}
-          width={width}
-        />
+        <RoundedImage alt="Profile image" src={src} height={height} width={width} />
       </SectionValidator>
     </div>
   );

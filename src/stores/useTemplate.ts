@@ -1,9 +1,6 @@
-import { AVAILABLE_TEMPLATES } from "src/helpers/constants";
-import {
-  ITemplate,
-  ITemplateContent,
-} from "src/helpers/constants/index.interface";
-import create from "zustand";
+import { AVAILABLE_TEMPLATES } from 'src/helpers/constants';
+import { ITemplate, ITemplateContent } from 'src/helpers/constants/index.interface';
+import create from 'zustand';
 
 interface ITemplateStore {
   availableTemplate: ITemplate;
@@ -13,10 +10,10 @@ interface ITemplateStore {
 
 export const useTemplates = create<ITemplateStore>((set) => ({
   availableTemplate: AVAILABLE_TEMPLATES,
-  activeTemplate: AVAILABLE_TEMPLATES["modern"],
+  activeTemplate: AVAILABLE_TEMPLATES['modern'],
 
   setTemplate: (template: ITemplateContent) => {
-    localStorage.setItem("selectedTemplateId", template.id);
+    localStorage.setItem('selectedTemplateId', template.id);
     set({ activeTemplate: template });
   },
 }));

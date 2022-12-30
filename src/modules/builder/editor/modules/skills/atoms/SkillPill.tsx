@@ -1,7 +1,7 @@
-import Image from "next/image";
-import { useSortable } from "@dnd-kit/sortable";
-import { CSS } from "@dnd-kit/utilities";
-import { motion } from "framer-motion";
+import Image from 'next/image';
+import { useSortable } from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
+import { motion } from 'framer-motion';
 
 const animation = {
   initial: { y: 25, opacity: 0 },
@@ -22,10 +22,9 @@ const SkillPill = ({
   onDelete: (index: number) => void;
   showLevel: boolean;
 }) => {
-  const { attributes, listeners, setNodeRef, transform, transition } =
-    useSortable({
-      id: name,
-    });
+  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({
+    id: name,
+  });
 
   const style = {
     transform: CSS.Transform.toString(transform),
@@ -55,18 +54,11 @@ const SkillPill = ({
             className="cursor-grab"
           />
         </div>
-        <span
-          className="flex-1 ml-2 cursor-grab"
-          data-testid="skill-title"
-          {...listeners}
-        >
+        <span className="flex-1 ml-2 cursor-grab" data-testid="skill-title" {...listeners}>
           {name}
         </span>
         {showLevel && <span className="ml-2">{level}</span>}
-        <button
-          className="ml-2 min-w-max flex items-center"
-          onClick={() => onDelete(index)}
-        >
+        <button className="ml-2 min-w-max flex items-center" onClick={() => onDelete(index)}>
           <Image src="/icons/close.svg" width={16} height={16} alt="close" />
         </button>
       </div>

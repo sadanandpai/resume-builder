@@ -1,4 +1,4 @@
-import dayjs from "dayjs";
+import dayjs from 'dayjs';
 export interface ILocation {
   address: string;
   postalCode: string;

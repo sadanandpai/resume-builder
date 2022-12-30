@@ -1,9 +1,9 @@
-import EditorLayout from "./editor/EditorLayout";
-import Image from "next/image";
-import NavBarLayout from "./nav-bar/NavBarLayout";
-import ResumeHeader from "./resume/components/ResumeHeader";
-import { ResumeLayout } from "./resume/ResumeLayout";
-import Tooltip from "@mui/material/Tooltip";
+import EditorLayout from './editor/EditorLayout';
+import Image from 'next/image';
+import NavBarLayout from './nav-bar/NavBarLayout';
+import ResumeHeader from './resume/components/ResumeHeader';
+import { ResumeLayout } from './resume/ResumeLayout';
+import Tooltip from '@mui/material/Tooltip';
 
 const BuilderLayout = () => {
   return (
@@ -31,12 +31,7 @@ const BuilderLayout = () => {
             rel="noreferrer"
             className="fixed w-14 h-14 rounded-full bottom-4 left-4 flex justify-center items-center bg-resume-50 shadow-level-4dp"
           >
-            <Image
-              src="/icons/rate-review.svg"
-              alt="Feedback button"
-              width="24"
-              height="24"
-            />
+            <Image src="/icons/rate-review.svg" alt="Feedback button" width="24" height="24" />
           </a>
         </Tooltip>
       </footer>

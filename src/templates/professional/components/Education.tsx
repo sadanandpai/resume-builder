@@ -1,5 +1,5 @@
-import { IEducation } from "src/stores/index.interface";
-import { dateParser } from "src/helpers/utils";
+import { IEducation } from 'src/stores/index.interface';
+import { dateParser } from 'src/helpers/utils';
 
 export const Education = ({ education }: { education: IEducation[] }) => {
   return (
@@ -16,7 +16,7 @@ export const Education = ({ education }: { education: IEducation[] }) => {
                 <div className="flex gap-3">
                   <p className="text-xs">
                     {dateParser(item.startDate)} -
-                    {item.isStudyingHere ? "present" : dateParser(item.endDate)}
+                    {item.isStudyingHere ? 'present' : dateParser(item.endDate)}
                   </p>
                 </div>
               </div>

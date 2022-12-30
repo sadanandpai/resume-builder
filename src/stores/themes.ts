@@ -1,8 +1,8 @@
-import create from "zustand";
-import { persist } from "zustand/middleware";
+import create from 'zustand';
+import { persist } from 'zustand/middleware';
 
-import { SYSTEM_COLORS, CUSTOM_THEME_COLOR } from "src/helpers/constants/index";
-import { IThemeColor } from "src/helpers/constants/index.interface";
+import { SYSTEM_COLORS, CUSTOM_THEME_COLOR } from 'src/helpers/constants/index';
+import { IThemeColor } from 'src/helpers/constants/index.interface';
 
 interface IThemeStore {
   selectedTheme: IThemeColor;
@@ -19,6 +19,6 @@ export const useThemes = create<IThemeStore>(
         set(() => ({ selectedTheme: theme }));
       },
     }),
-    { name: "themes" }
+    { name: 'themes' }
   )
 );

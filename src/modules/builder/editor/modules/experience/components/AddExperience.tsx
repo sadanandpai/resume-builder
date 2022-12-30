@@ -1,18 +1,18 @@
-import { useMemo } from "react";
-import { OutlinedButton } from "src/helpers/common/atoms/Buttons";
-import { useExperiences } from "src/stores/experience";
-import { IExperienceItem } from "src/stores/experience.interface";
+import { useMemo } from 'react';
+import { OutlinedButton } from 'src/helpers/common/atoms/Buttons';
+import { useExperiences } from 'src/stores/experience';
+import { IExperienceItem } from 'src/stores/experience.interface';
 
 const NEW_EXPERIENCE: IExperienceItem = {
-  name: "",
-  position: "",
+  name: '',
+  position: '',
   startDate: null,
   isWorkingHere: false,
   endDate: null,
-  summary: "",
-  years: "",
-  id: "",
-  url: "",
+  summary: '',
+  years: '',
+  id: '',
+  url: '',
   highlights: [],
 };
 
@@ -34,9 +34,9 @@ const AddExperience = ({
 
   const buttonCaption = useMemo(() => {
     if (isEmpty) {
-      return "+ Add an experience";
+      return '+ Add an experience';
     } else {
-      return "+ Add more";
+      return '+ Add more';
     }
   }, [isEmpty]);
 

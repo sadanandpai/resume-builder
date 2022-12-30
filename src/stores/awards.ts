@@ -1,8 +1,8 @@
-import create, { SetState, GetState } from "zustand";
-import { persist } from "zustand/middleware";
-import produce from "immer";
-import resumeData from "src/helpers/constants/resume-data.json";
-import { IAwardItem, IAwardsStore } from "./awards.interface";
+import create, { SetState, GetState } from 'zustand';
+import { persist } from 'zustand/middleware';
+import produce from 'immer';
+import resumeData from 'src/helpers/constants/resume-data.json';
+import { IAwardItem, IAwardsStore } from './awards.interface';
 
 const addAward =
   (set: SetState<IAwardsStore>) =>
@@ -24,12 +24,11 @@ const removeAward = (set: SetState<IAwardsStore>) => (index: number) =>
     awards: state.awards.slice(0, index).concat(state.awards.slice(index + 1)),
   }));
 
-const setAllAwards =
-  (set: SetState<IAwardsStore>) => (values: IAwardItem[]) => {
-    set({
-      awards: values,
-    });
-  };
+const setAllAwards = (set: SetState<IAwardsStore>) => (values: IAwardItem[]) => {
+  set({
+    awards: values,
+  });
+};
 
 const getAllAwards = (get: GetState<IAwardsStore>) => (index: number) => {
   return get().awards[index];
@@ -59,14 +58,13 @@ const onMoveDown = (set: SetState<IAwardsStore>) => (index: number) => {
   );
 };
 
-const updateAward =
-  (set: SetState<IAwardsStore>) => (index: number, updatedInfo: IAwardItem) => {
-    set(
-      produce((state: IAwardsStore) => {
-        state.awards[index] = updatedInfo;
-      })
-    );
-  };
+const updateAward = (set: SetState<IAwardsStore>) => (index: number, updatedInfo: IAwardItem) => {
+  set(
+    produce((state: IAwardsStore) => {
+      state.awards[index] = updatedInfo;
+    })
+  );
+};
 
 export const useAwards = create<IAwardsStore>(
   persist(
@@ -80,6 +78,6 @@ export const useAwards = create<IAwardsStore>(
       onmovedown: onMoveDown(set),
       updateAward: updateAward(set),
     }),
-    { name: "awards" }
+    { name: 'awards' }
   )
 );

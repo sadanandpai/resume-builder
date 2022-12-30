@@ -6,15 +6,15 @@ import {
   usePractices,
   useTechnologies,
   useTools,
-} from "src/stores/skills";
+} from 'src/stores/skills';
 
-import ResumeData from "src/helpers/constants/resume-data.json";
-import { useActivity } from "./activity";
-import { useAwards } from "./awards";
-import { useBasicDetails } from "./basic";
-import { useEducations } from "./education";
-import { useExperiences } from "./experience";
-import { useVoluteeringStore } from "./volunteering";
+import ResumeData from 'src/helpers/constants/resume-data.json';
+import { useActivity } from './activity';
+import { useAwards } from './awards';
+import { useBasicDetails } from './basic';
+import { useEducations } from './education';
+import { useExperiences } from './experience';
+import { useVoluteeringStore } from './volunteering';
 
 export const useResumeStore = () => {
   return {

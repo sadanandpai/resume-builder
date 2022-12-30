@@ -1,8 +1,8 @@
-import { ChangeEvent, useEffect, useRef, useState } from "react";
-import { TextField } from "@mui/material";
-import SliderValue from "../atoms/SliderValue";
-import { OutlinedButton, TextButton } from "src/helpers/common/atoms/Buttons";
-import { ISkillItem } from "src/stores/skill.interface";
+import { ChangeEvent, useEffect, useRef, useState } from 'react';
+import { TextField } from '@mui/material';
+import SliderValue from '../atoms/SliderValue';
+import { OutlinedButton, TextButton } from 'src/helpers/common/atoms/Buttons';
+import { ISkillItem } from 'src/stores/skill.interface';
 
 const AddSkill = ({
   addHandler,
@@ -14,20 +14,20 @@ const AddSkill = ({
   hasLevel: boolean;
 }) => {
   const [showForm, setShowForm] = useState(false);
-  const [name, setName] = useState("");
+  const [name, setName] = useState('');
   const [level, setLevel] = useState(0);
   const [disabled, setDisabled] = useState(true);
-  const [errorText, setErrorText] = useState("");
+  const [errorText, setErrorText] = useState('');
   const inputRef = useRef<HTMLInputElement>();
 
   const toggleForm = () => {
     setShowForm(!showForm);
-    setName("");
+    setName('');
   };
 
   const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
-    setErrorText("");
+    setErrorText('');
   };
 
   const submitHandler = (e: ChangeEvent<HTMLFormElement>) => {
@@ -40,10 +40,10 @@ const AddSkill = ({
     const trimmedLowerText = trimmedText.toLowerCase();
 
     if (items.find((item) => item.name.toLowerCase() === trimmedLowerText)) {
-      setErrorText("Duplicate entry");
+      setErrorText('Duplicate entry');
     } else {
-      setName("");
-      setErrorText("");
+      setName('');
+      setErrorText('');
       addHandler({ name: trimmedText, level });
       inputRef.current?.focus();
     }
@@ -82,11 +82,7 @@ const AddSkill = ({
     </form>
   );
 
-  return showForm ? (
-    formEl
-  ) : (
-    <OutlinedButton onClick={toggleForm}>+ Add more</OutlinedButton>
-  );
+  return showForm ? formEl : <OutlinedButton onClick={toggleForm}>+ Add more</OutlinedButton>;
 };
 
 export default AddSkill;

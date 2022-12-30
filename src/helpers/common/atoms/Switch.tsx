@@ -1,4 +1,4 @@
-import Switch from "@mui/material/Switch";
+import Switch from '@mui/material/Switch';
 
 export const SwitchWidget = ({
   label,
@@ -9,9 +9,7 @@ export const SwitchWidget = ({
   value: boolean;
   onChange: (newValue: boolean) => void;
 }) => {
-  const handleSwitchChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ): void => {
+  const handleSwitchChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const newValue = event.target.checked;
     onChange(newValue);
   };

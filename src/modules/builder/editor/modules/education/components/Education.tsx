@@ -1,46 +1,43 @@
-import React, { ChangeEvent, Fragment, useCallback } from "react";
-import TextField from "@mui/material/TextField";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import React, { ChangeEvent, Fragment, useCallback } from 'react';
+import TextField from '@mui/material/TextField';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
-import { useEducations } from "src/stores/education";
-import { IEducationItem } from "src/stores/education.interface";
-import { SwitchWidget } from "src/helpers/common/atoms/Switch";
-import { DATE_PICKER_FORMAT } from "src/helpers/constants";
+import { useEducations } from 'src/stores/education';
+import { IEducationItem } from 'src/stores/education.interface';
+import { SwitchWidget } from 'src/helpers/common/atoms/Switch';
+import { DATE_PICKER_FORMAT } from 'src/helpers/constants';
 
 interface IEducationProps {
   educationInfo: IEducationItem;
   currentIndex: number;
 }
 
-const Education: React.FC<IEducationProps> = ({
-  educationInfo,
-  currentIndex,
-}) => {
+const Education: React.FC<IEducationProps> = ({ educationInfo, currentIndex }) => {
   const onChangeHandler = useCallback(
     (name: string, value: any) => {
       const currentExpInfo = { ...educationInfo };
       switch (name) {
-        case "academyName":
+        case 'academyName':
           currentExpInfo.institution = value;
           break;
-        case "degree":
+        case 'degree':
           currentExpInfo.studyType = value;
           break;
-        case "area":
+        case 'area':
           currentExpInfo.area = value;
           break;
-        case "grade":
+        case 'grade':
           currentExpInfo.score = value;
           break;
-        case "startDate":
+        case 'startDate':
           if (value?.isValid()) {
             currentExpInfo.startDate = value;
           }
           break;
-        case "isStudyingHere":
+        case 'isStudyingHere':
           currentExpInfo.isStudyingHere = value;
           break;
-        case "endDate":
+        case 'endDate':
           if (value?.isValid()) {
             currentExpInfo.endDate = value;
           }
@@ -62,13 +59,13 @@ const Education: React.FC<IEducationProps> = ({
         value={educationInfo.institution}
         onChange={(e: ChangeEvent<HTMLInputElement>) => {
           const value = e.target.value;
-          onChangeHandler("academyName", value);
+          onChangeHandler('academyName', value);
         }}
         autoComplete="off"
         fullWidth
         required
         autoFocus={true}
-        sx={{ marginBottom: "26px" }}
+        sx={{ marginBottom: '26px' }}
       />
       <TextField
         label="Degree"
@@ -76,12 +73,12 @@ const Education: React.FC<IEducationProps> = ({
         value={educationInfo.studyType}
         onChange={(e: ChangeEvent<HTMLInputElement>) => {
           const value = e.target.value;
-          onChangeHandler("degree", value);
+          onChangeHandler('degree', value);
         }}
         autoComplete="off"
         fullWidth
         required
-        sx={{ marginBottom: "26px" }}
+        sx={{ marginBottom: '26px' }}
       />
       <TextField
         label="Area"
@@ -89,12 +86,12 @@ const Education: React.FC<IEducationProps> = ({
         value={educationInfo.area}
         onChange={(e: ChangeEvent<HTMLInputElement>) => {
           const value = e.target.value;
-          onChangeHandler("area", value);
+          onChangeHandler('area', value);
         }}
         autoComplete="off"
         fullWidth
         required
-        sx={{ marginBottom: "26px" }}
+        sx={{ marginBottom: '26px' }}
       />
       <TextField
         label="Grade"
@@ -102,42 +99,36 @@ const Education: React.FC<IEducationProps> = ({
         value={educationInfo.score}
         onChange={(e: ChangeEvent<HTMLInputElement>) => {
           const value = e.target.value;
-          onChangeHandler("grade", value);
+          onChangeHandler('grade', value);
         }}
         autoComplete="off"
         fullWidth
         required
-        sx={{ marginBottom: "26px" }}
+        sx={{ marginBottom: '26px' }}
       />
       <DatePicker
         label="Start date"
         value={educationInfo.startDate}
         onChange={(newDate) => {
-          onChangeHandler("startDate", newDate);
+          onChangeHandler('startDate', newDate);
         }}
         inputFormat={DATE_PICKER_FORMAT}
         renderInput={(params) => (
-          <TextField
-            {...params}
-            variant="filled"
-            autoComplete="off"
-            fullWidth
-            required
-          />
+          <TextField {...params} variant="filled" autoComplete="off" fullWidth required />
         )}
       />
       <SwitchWidget
-        label={"I currently study here"}
+        label={'I currently study here'}
         value={educationInfo.isStudyingHere ?? false}
         onChange={(newValue: boolean) => {
-          onChangeHandler("isStudyingHere", newValue);
+          onChangeHandler('isStudyingHere', newValue);
         }}
       />
       <DatePicker
         label="End date"
         value={educationInfo.isStudyingHere ? null : educationInfo.endDate}
         onChange={(newDate) => {
-          onChangeHandler("endDate", newDate);
+          onChangeHandler('endDate', newDate);
         }}
         inputFormat={DATE_PICKER_FORMAT}
         renderInput={(params) => (
@@ -147,7 +138,7 @@ const Education: React.FC<IEducationProps> = ({
             autoComplete="off"
             fullWidth
             required
-            sx={{ marginBottom: "26px" }}
+            sx={{ marginBottom: '26px' }}
           />
         )}
         disabled={educationInfo.isStudyingHere}

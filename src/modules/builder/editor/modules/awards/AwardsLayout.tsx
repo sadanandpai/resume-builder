@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import { useAwards } from "src/stores/awards";
-import AddAward from "./components/AddAward";
-import AwardComponent from "./components/Award";
+import { useEffect, useState } from 'react';
+import { useAwards } from 'src/stores/awards';
+import AddAward from './components/AddAward';
+import AwardComponent from './components/Award';
 
-import MoveEditSection from "src/helpers/common/components/MoveEditSectionContainer";
+import MoveEditSection from 'src/helpers/common/components/MoveEditSectionContainer';
 
 const AwardsLayout = () => {
   const allAwards = useAwards((state) => state.awards);
@@ -27,7 +27,7 @@ const AwardsLayout = () => {
       {allAwards.map((award, index) => (
         <MoveEditSection
           key={award.id}
-          title={award.title || "Award"}
+          title={award.title || 'Award'}
           expanded={expanded === award.id}
           length={allAwards.length}
           index={index}

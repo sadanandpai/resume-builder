@@ -1,5 +1,5 @@
-import { ISkillItem } from "src/stores/skill.interface";
-import styled from "@emotion/styled";
+import { ISkillItem } from 'src/stores/skill.interface';
+import styled from '@emotion/styled';
 
 const ProgressBar = styled.div`
   width: ${(props: { level: number }) => props.level}%;

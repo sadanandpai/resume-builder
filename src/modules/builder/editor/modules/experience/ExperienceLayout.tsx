@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import { useExperiences } from "src/stores/experience";
-import AddExperience from "./components/AddExperience";
-import Experience from "./components/Experience";
+import { useEffect, useState } from 'react';
+import { useExperiences } from 'src/stores/experience';
+import AddExperience from './components/AddExperience';
+import Experience from './components/Experience';
 
-import MoveEditSection from "src/helpers/common/components/MoveEditSectionContainer";
+import MoveEditSection from 'src/helpers/common/components/MoveEditSectionContainer';
 
 const ExperienceLayout = () => {
   const allWorks = useExperiences((state) => state.experiences);
@@ -27,7 +27,7 @@ const ExperienceLayout = () => {
       {allWorks.map((work, index) => (
         <MoveEditSection
           key={work.id}
-          title={work.name || "Experience"}
+          title={work.name || 'Experience'}
           expanded={expanded === work.id}
           length={allWorks.length}
           index={index}
@@ -39,10 +39,7 @@ const ExperienceLayout = () => {
           <Experience experienceInfo={work} currentIndex={index} />
         </MoveEditSection>
       ))}
-      <AddExperience
-        handleChange={handleChange}
-        isEmpty={allWorks.length === 0}
-      />
+      <AddExperience handleChange={handleChange} isEmpty={allWorks.length === 0} />
     </div>
   );
 };

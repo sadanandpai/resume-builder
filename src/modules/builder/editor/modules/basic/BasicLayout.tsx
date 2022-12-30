@@ -1,9 +1,9 @@
-import React, { Fragment } from "react";
-import { useBasicDetails } from "src/stores/basic";
-import BasicHeader from "./components/BasicHeader";
-import BasicPanel from "./components/BasicPanel";
+import React, { Fragment } from 'react';
+import { useBasicDetails } from 'src/stores/basic';
+import BasicHeader from './components/BasicHeader';
+import BasicPanel from './components/BasicPanel';
 
-const tabTitles = ["Contacts", "Links", "About"];
+const tabTitles = ['Contacts', 'Links', 'About'];
 
 const BasicLayout = () => {
   const [activeTab, setActiveTab] = React.useState(0);

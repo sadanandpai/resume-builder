@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import { useEducations } from "src/stores/education";
-import AddEducation from "./components/AddEducation";
-import Education from "./components/Education";
+import { useEffect, useState } from 'react';
+import { useEducations } from 'src/stores/education';
+import AddEducation from './components/AddEducation';
+import Education from './components/Education';
 
-import MoveEditSection from "src/helpers/common/components/MoveEditSectionContainer";
+import MoveEditSection from 'src/helpers/common/components/MoveEditSectionContainer';
 
 const EducationLayout = () => {
   const allAcademics = useEducations((state) => state.academics);
@@ -27,13 +27,11 @@ const EducationLayout = () => {
       {allAcademics.map((education, index) => (
         <MoveEditSection
           key={education.id}
-          title={education.institution || "Education"}
+          title={education.institution || 'Education'}
           expanded={expanded === education.id}
           length={allAcademics.length}
           index={index}
-          clickHandler={() =>
-            handleChange(education.id, expanded !== education.id)
-          }
+          clickHandler={() => handleChange(education.id, expanded !== education.id)}
           onMoveUp={onMoveUp}
           onMoveDown={onMoveDown}
           onDelete={removeEducation}
@@ -41,10 +39,7 @@ const EducationLayout = () => {
           <Education educationInfo={education} currentIndex={index} />
         </MoveEditSection>
       ))}
-      <AddEducation
-        handleChange={handleChange}
-        isEmpty={allAcademics.length === 0}
-      />
+      <AddEducation handleChange={handleChange} isEmpty={allAcademics.length === 0} />
     </div>
   );
 };
