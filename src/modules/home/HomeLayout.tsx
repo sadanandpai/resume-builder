@@ -2,7 +2,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@mui/material';
 import { motion, useAnimation } from 'framer-motion';
-import { useEffect } from 'react';
 
 import { NavBarActions, StyledButton } from '../builder/nav-bar/atoms';
 import FeatureSection from './components/Feature';
