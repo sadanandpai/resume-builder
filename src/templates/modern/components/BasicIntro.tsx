@@ -27,10 +27,10 @@ export const BasicIntro = ({
         <ProfileName name={name} />
         <SectionSubtitle label={label} />
         <div className="flex gap-3">
-          <ProfileContact src="text" text={phone} alt="Phone" />
-          <ProfileContact src="text" text={email} alt="email" />
-          <ProfileContact src="text" text={url} alt="website" />
-          <ProfileContact src="text" text={city} alt="location" />
+          <ProfileContact text={phone} />
+          <ProfileContact text={email} />
+          <ProfileContact text={url} />
+          <ProfileContact text={city} />
         </div>
       </div>
       <ProfileImage src={image} height="100px" width="100px" />
