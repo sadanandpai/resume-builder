@@ -70,6 +70,4 @@ Once done, our developer will review the changes and merge to <code>main</code> 
 
 <a href="https://github.com/sadanandpai"><img src="https://avatars.githubusercontent.com/u/12962887" alt="sadanand" height="100px" width="100px" /></a> <a href="https://github.com/gopal1996"><img src="https://avatars.githubusercontent.com/u/22369081" alt="sadanand" height="100px" width="100px" /></a> <a href="https://github.com/yakshaG"><img src="https://avatars.githubusercontent.com/u/26523871" alt="sadanand" height="100px" width="100px" /></a> <a href="https://github.com/siva-kannan3"><img src="https://avatars.githubusercontent.com/u/60533560" alt="sadanand" height="100px" width="100px" /></a> <a href="https://github.com/sachinkumar579"><img src="https://avatars.githubusercontent.com/u/32408232" alt="sadanand" height="100px" width="100px" /></a>
 
-<div></div>
-
 > Disclaimer: In order to enhance the vision and usage, we are shadowing our user's interactions. This is solely performed to serve you better
