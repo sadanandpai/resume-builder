@@ -19,7 +19,7 @@ const Contacts = ({
         }}
       />
       <TextField
-        label="Image"
+        label="Image URL"
         variant="filled"
         value={basicTabs.image}
         onChange={(event: ChangeEvent<HTMLInputElement>) => {
@@ -43,7 +43,7 @@ const Contacts = ({
         }}
       />
       <TextField
-        label="Websit URL"
+        label="Website URL"
         variant="filled"
         value={basicTabs.url}
         onChange={(event: ChangeEvent<HTMLInputElement>) => {
