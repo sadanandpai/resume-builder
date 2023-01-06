@@ -21,7 +21,7 @@ export const TemplateSlider = () => {
       splideInstanceRef.current = new SplideCore(targetElement, {
         perPage: 2,
         pagination: false,
-        gap: '0px',
+        gap: '40px',
         width: '100%',
         autoHeight: true,
         perMove: 1,
@@ -48,9 +48,11 @@ export const TemplateSlider = () => {
           },
           '.splide__arrow--prev': {
             backgroundColor: 'transparent',
+            display: 'none !important', // #TODO: revert if more than templates available
           },
           '.splide__arrow--next': {
             backgroundColor: 'transparent',
+            display: 'none !important', // #TODO: revert if more than templates available
           },
         }}
       />
