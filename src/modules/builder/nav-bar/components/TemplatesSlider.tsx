@@ -52,6 +52,12 @@ export const TemplateSlider = () => {
           '.splide__arrow--next': {
             backgroundColor: 'transparent',
           },
+          '.splide__arrow--prev:disabled': {
+            cursor: 'not-allowed',
+          },
+          '.splide__arrow--next:disabled': {
+            cursor: 'not-allowed',
+          },
         }}
       />
       <section className="splide mt-[26px] mb-[32px] px-[40px]" ref={targetElementRef}>
@@ -92,7 +98,7 @@ export const TemplateSlide = ({
   return (
     <li className="splide__slide flex justify-center">
       <div
-        className={`h-[255px] w-[180px] rounded border hover:cursor-pointer relative ${
+        className={`h-[255px] w-[180px] rounded border hover:cursor-pointer overflow-hidden relative ${
           isActive ? 'border-resume-800' : 'border-resume-200'
         }`}
         onClick={() => {
