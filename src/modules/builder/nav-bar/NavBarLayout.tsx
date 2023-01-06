@@ -25,6 +25,9 @@ import {
   useTools,
 } from 'src/stores/skills';
 import { useVoluteeringStore } from 'src/stores/volunteering';
+import { AVAILABLE_TEMPLATES } from 'src/helpers/constants';
+
+const TOTAL_TEMPLATES_AVAILABLE = Object.keys(AVAILABLE_TEMPLATES).length;
 
 const NavBarLayout = () => {
   const [openToast, setOpenToast] = useState(false);
@@ -124,7 +127,10 @@ const NavBarLayout = () => {
       </Link>
       <div className="flex-auto flex justify-between items-center ml-5">
         <NavBarMenu>
-          <NavMenuItem caption="Templates" popoverChildren={<TemplateSelect />} />
+          <NavMenuItem
+            caption={`Templates (${TOTAL_TEMPLATES_AVAILABLE})`}
+            popoverChildren={<TemplateSelect />}
+          />
           <NavMenuItem caption="Colours" popoverChildren={<ThemeSelect />} />
         </NavBarMenu>
         <NavBarActions>
