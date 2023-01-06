@@ -94,7 +94,7 @@ export const TemplateSlide = ({
   return (
     <li className="splide__slide flex justify-center">
       <div
-        className={`h-[255px] w-[180px] rounded border hover:cursor-pointer relative ${
+        className={`h-[255px] w-[180px] rounded border hover:cursor-pointer overflow-hidden relative ${
           isActive ? 'border-resume-800' : 'border-resume-200'
         }`}
         onClick={() => {
