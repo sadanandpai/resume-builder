@@ -1,10 +1,13 @@
-import type { AppProps } from 'next/app';
-import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers';
-import { GLOBAL_MUI_THEME } from '../styles/global.theme';
-
 import '../styles/globals.css';
+
+import { StyledEngineProvider, ThemeProvider } from '@mui/material/styles';
+
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+// eslint-disable-next-line import/no-unresolved
+import { Analytics } from '@vercel/analytics/react';
+import type { AppProps } from 'next/app';
+import { GLOBAL_MUI_THEME } from '../styles/global.theme';
+import { LocalizationProvider } from '@mui/x-date-pickers';
 import { useEffect } from 'react';
 
 declare global {
@@ -29,6 +32,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <ThemeProvider theme={GLOBAL_MUI_THEME}>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <Component {...pageProps} />
+          <Analytics />
         </LocalizationProvider>
       </ThemeProvider>
     </StyledEngineProvider>

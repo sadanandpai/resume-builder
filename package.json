@@ -23,6 +23,7 @@
     "@mui/material": "^5.6.1",
     "@mui/x-date-pickers": "^5.0.0-alpha.2",
     "@splidejs/splide": "^4.0.1",
+    "@vercel/analytics": "^0.1.6",
     "color": "^4.2.3",
     "dayjs": "^1.11.1",
     "export-from-json": "^1.6.0",
