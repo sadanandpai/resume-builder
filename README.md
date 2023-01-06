@@ -28,46 +28,21 @@ Here are some reasons you should utilise this resume builder:
 - No sign up needed — go straight to building!
 - Your data never leaves your device
 
-# Contributing
+> Disclaimer: In order to enhance the vision and usage, we are shadowing our user's interactions. This is solely performed to serve you better
 
-If you are a developer and would like to contribute to resume builder by creating a resume template, please follow the instructions below.
+<br>
 
-## Submitting changes
+## Contributing Guide
 
-- Fork the repo
-- Clone the forked repo
-  ```
-  $ git clone FORKED_REPO
-  ```
-- Install the dependencies
-  ```
-  $ yarn install
-  ```
-- Check out a new branch based and name it to what you intend to do:
-  ```
-  $ git checkout -b BRANCH_NAME
-  ```
-- Run the project
-  ```
-  $ yarn dev
-  ```
-- Commit your changes
-  - Please provide a git message that explains what you've done
-  - Commit to the forked repository
-    ```
-    $ git commit -am 'Add some proper message'
-    ```
-- Push to the branch
-  ```
-  $ git push origin BRANCH_NAME
-  ```
-- Make a pull request
-  - Make sure you send the PR to the <code>main</code> branch
+If you are a developer and would like to contribute to resume builder by fixing the bugs, impoving the features or creating a resume template, please refer to [Contributing Guide](./CONTRIBUTING.md).
 
-Once done, our developer will review the changes and merge to <code>main</code> branch
+<br>
 
-# Core contributors
+## Core contributors
 
 <a href="https://github.com/sadanandpai"><img src="https://avatars.githubusercontent.com/u/12962887" alt="sadanand" height="100px" width="100px" /></a> <a href="https://github.com/gopal1996"><img src="https://avatars.githubusercontent.com/u/22369081" alt="sadanand" height="100px" width="100px" /></a> <a href="https://github.com/yakshaG"><img src="https://avatars.githubusercontent.com/u/26523871" alt="sadanand" height="100px" width="100px" /></a> <a href="https://github.com/siva-kannan3"><img src="https://avatars.githubusercontent.com/u/60533560" alt="sadanand" height="100px" width="100px" /></a> <a href="https://github.com/sachinkumar579"><img src="https://avatars.githubusercontent.com/u/32408232" alt="sadanand" height="100px" width="100px" /></a>
 
-> Disclaimer: In order to enhance the vision and usage, we are shadowing our user's interactions. This is solely performed to serve you better
+<br>
+
+## License
+This repository is MIT licensed. [Read more](./LICENSE)
