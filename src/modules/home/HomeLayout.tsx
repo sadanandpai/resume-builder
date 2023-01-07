@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@mui/material';
 import { motion, useAnimation } from 'framer-motion';
+import { BsGithub } from 'react-icons/bs';
 
 import { NavBarActions, StyledButton } from '../builder/nav-bar/atoms';
 import FeatureSection from './components/Feature';
@@ -37,11 +38,20 @@ const HomeLayout = () => {
           </NavBarActions>
           <NavBarActions>
             <Link href="#contribute" passHref={true}>
-              <StyledButton variant="text">Contribute</StyledButton>
+              <StyledButton variant="text" className="max-md:hidden">
+                Contribute
+              </StyledButton>
             </Link>
             <Link href="#about-us" passHref={true}>
               <StyledButton variant="text">About us</StyledButton>
             </Link>
+            <a
+              href={'https://github.com/sadanandpai/resume-builder'}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <BsGithub className="h-6 w-6" fill="white" />
+            </a>
           </NavBarActions>
         </div>
       </nav>
