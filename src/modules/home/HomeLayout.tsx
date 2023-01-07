@@ -1,12 +1,12 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import { Button } from '@mui/material';
+import { NavBarActions, StyledButton } from '../builder/nav-bar/atoms';
 import { motion, useAnimation } from 'framer-motion';
 import { BsGithub } from 'react-icons/bs';
 
-import { NavBarActions, StyledButton } from '../builder/nav-bar/atoms';
+import { Button } from '@mui/material';
 import FeatureSection from './components/Feature';
-import PersonSection from './components/Person';
+import Image from 'next/image';
+import Link from 'next/link';
+import Person from './components/Person';
 
 const HomeLayout = () => {
   const controls = useAnimation();
@@ -179,7 +179,7 @@ const HomeLayout = () => {
           along!
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          <PersonSection />
+          <Person />
         </div>
         <p className="text-resume-400 my-8 text-center lg:text-left">
           Read our design story on&nbsp;
