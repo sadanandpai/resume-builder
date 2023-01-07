@@ -34,6 +34,7 @@
     "next": "12.1.4",
     "react": "18.0.0",
     "react-dom": "18.0.0",
+    "react-icons": "^4.7.1",
     "zustand": "^3.7.2"
   },
   "devDependencies": {

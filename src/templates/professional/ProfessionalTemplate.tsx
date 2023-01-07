@@ -5,6 +5,7 @@ import Achievements from './components/Achievements';
 import BasicIntro from './components/BasicIntro';
 import { Education } from './components/Education';
 import Involvement from './components/Involvement';
+import { Objective } from './components/Objective';
 import RatedSkills from './components/RatedSkills';
 import { Section } from './components/Section';
 import { SectionValidator } from 'src/helpers/common/components/ValidSectionRenderer';
@@ -12,7 +13,6 @@ import { StateContext } from 'src/modules/builder/resume/ResumeLayout';
 import UnratedSkills from './components/UnratedSkills';
 import Work from './components/Work';
 import styled from '@emotion/styled';
-import { Objective } from './components/Objective';
 
 const ResumeContainer = styled.div`
   display: flex;
@@ -51,7 +51,11 @@ export default function ProfessionalTemplate() {
   return (
     <ResumeContainer>
       <LeftSection>
-        <Section title={resumeData.basics?.name} titleClassname="text-xl font-bold">
+        <Section
+          title={resumeData.basics?.name}
+          profiles={resumeData.basics.profiles}
+          titleClassname="text-xl font-bold"
+        >
           <BasicIntro basics={resumeData.basics} />
         </Section>
         <SectionValidator value={resumeData.work}>
