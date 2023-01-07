@@ -1,4 +1,4 @@
-type IProfiles = {
+export type IProfiles = {
   network: string;
   username: string;
   url: string;

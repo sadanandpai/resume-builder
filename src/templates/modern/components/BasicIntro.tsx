@@ -1,8 +1,8 @@
+import { BsGlobe } from 'react-icons/bs';
 import { ProfileContact } from '../atoms/ProfileContact';
+import { ProfileImage } from 'src/helpers/common/components/ProfileImage';
 import { ProfileName } from '../atoms/ProfileName';
 import { SectionSubtitle } from '../atoms/SectionSubtitle';
-
-import { ProfileImage } from 'src/helpers/common/components/ProfileImage';
 
 export const BasicIntro = ({
   name,
@@ -29,8 +29,11 @@ export const BasicIntro = ({
         <div className="flex gap-3">
           <ProfileContact text={phone} />
           <ProfileContact text={email} />
-          <ProfileContact text={url} />
           <ProfileContact text={city} />
+          <div className="flex gap-2 ml-2 items-center">
+            <BsGlobe />
+            <ProfileContact text={url} />
+          </div>
         </div>
       </div>
       <ProfileImage src={image} height="100px" width="100px" />
