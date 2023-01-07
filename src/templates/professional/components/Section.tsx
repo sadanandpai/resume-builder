@@ -38,7 +38,7 @@ function SocialIcons({ profiles }: { profiles: IProfiles[] }) {
         return (
           Icon &&
           profile.url && (
-            <a href={profile.url} target="blank" className="ml-2" key={profile.network}>
+            <a href={profile.url} target="_blank" className="ml-2" key={profile.network}>
               <Icon className="h-5 w-5 bg-white" />
             </a>
           )
