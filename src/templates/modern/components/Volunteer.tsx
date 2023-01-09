@@ -5,10 +5,18 @@ import { SectionTitle } from '../atoms/SectionTitle';
 import { dateParser } from 'src/helpers/utils';
 import { SectionList } from '../atoms/SectionList';
 import { HTMLRenderer } from 'src/helpers/common/components/HTMLRenderer';
+import { useRef } from 'react';
+import { useVoluteeringStore } from '../../../stores/volunteering';
+import { scrollToElement } from '../../../helpers/utils/index';
 
 export const VolunteerSection = ({ volunteer }: { volunteer: IVolunteer[] }) => {
+  const volunteerRef = useRef<null | HTMLDivElement>(null);
+  useVoluteeringStore.subscribe(() => {
+    scrollToElement(volunteerRef);
+  });
+
   return (
-    <div className="mb-3">
+    <div className="mb-3" ref={volunteerRef}>
       <SectionHeading title="Volunteering" />
 
       {volunteer.map((item: IVolunteer, index: number) => {

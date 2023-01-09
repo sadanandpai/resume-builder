@@ -6,3 +6,11 @@ export const dateParser = (dateValue: string | Dayjs | null, outputFormat = 'MMM
   const dayjsDate = dayjs(dateValue);
   return dayjsDate.format(outputFormat);
 };
+
+export const scrollToElement = (ref: MutableRefObject<HTMLDivElement | null>) => {
+  ref.current?.scrollIntoView({
+    behavior: 'smooth',
+    block: 'end',
+    inline: 'nearest',
+  });
+};
