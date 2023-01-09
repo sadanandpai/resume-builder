@@ -30,10 +30,12 @@ export const BasicIntro = ({
           <ProfileContact text={phone} />
           <ProfileContact text={email} />
           <ProfileContact text={city} />
-          <div className="flex gap-2 ml-2 items-center">
-            <BsGlobe />
-            <ProfileContact text={url} />
-          </div>
+          {url && (
+            <div className="flex gap-2 ml-2 items-center">
+              <BsGlobe />
+              <ProfileContact text={url} />
+            </div>
+          )}
         </div>
       </div>
       <ProfileImage src={image} height="100px" width="100px" />
