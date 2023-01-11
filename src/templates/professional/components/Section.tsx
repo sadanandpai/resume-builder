@@ -67,8 +67,14 @@ export function Section({
 }) {
   return (
     <SectionHolder>
-      <div className="header flex justify-center items-center gap-1">
-        <span className={titleClassname ? titleClassname : ''}>{title}</span>
+      <div className="header flex justify-center items-center gap-1 max-w-[60%]" title={title}>
+        <span
+          className={`${
+            titleClassname ? titleClassname : ''
+          } whitespace-nowrap overflow-hidden overflow-ellipsis`}
+        >
+          {title}
+        </span>
       </div>
 
       {profiles && <SocialIcons profiles={profiles} />}
