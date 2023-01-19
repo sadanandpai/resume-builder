@@ -43,3 +43,15 @@
   <br>
 
 - Open the url http://localhost:3000/ on your browser
+
+<br><br><br>
+
+### Run via Docker
+
+<br>
+
+- After cloning the repo, run the below command in the terminal from within the cloned project directory
+
+  ```
+  $ docker-compose up -d
+  ```
