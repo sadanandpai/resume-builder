@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  resume-builder:
+    build: .
+    container_name: resume-builder-app
+    volumes:
+      - .:/app # bind mount (to live reflect code changes)
+      - /app/node_modules # to avoid mapping of local node_modules
+    ports:
+      - '3000:3000'
+# To run the application through docker, run the below command in terminal
+# $ docker-compose up -d
+# visit localhost:3000 (once the container is up)

@@ -32,6 +32,12 @@ Here are some reasons you should utilise this resume builder:
 
 <br>
 
+## Developer Guide
+
+If you want to run the resume builder application in your local, please refer to [Developer Guide](./DEVELOPER.md).
+
+<br>
+
 ## Contributing Guide
 
 If you are a developer and would like to contribute to resume builder by fixing the bugs, impoving the features or creating a resume template, please refer to [Contributing Guide](./CONTRIBUTING.md).
@@ -45,4 +51,5 @@ If you are a developer and would like to contribute to resume builder by fixing 
 <br>
 
 ## License
+
 This repository is MIT licensed. [Read more](./LICENSE)
