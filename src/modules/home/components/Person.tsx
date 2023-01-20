@@ -29,13 +29,6 @@ const persons = [
     github: 'https://github.com/siva-kannan3',
     linkedin: 'https://www.linkedin.com/in/siva-kannan3/',
   },
-  {
-    name: 'Sachin Kumar',
-    role: 'Web developer',
-    avatar: 'https://avatars.githubusercontent.com/u/32408232?v=4',
-    github: 'https://github.com/sachinkumar579',
-    linkedin: 'https://www.linkedin.com/in/sachuration',
-  },
 ];
 
 const PersonCard = ({ children }: { children: React.ReactNode }) => (
