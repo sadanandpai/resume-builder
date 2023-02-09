@@ -2,32 +2,11 @@ import Image from 'next/image';
 
 const persons = [
   {
-    name: 'Sadanand Pai',
-    role: 'Frontend developer',
-    avatar: 'https://avatars.githubusercontent.com/u/12962887?v=4',
-    github: 'https://github.com/sadanandpai',
-    linkedin: 'https://www.linkedin.com/in/sadanandpai/',
-  },
-  {
-    name: 'Gopalakrishnan',
-    role: 'Frontend developer',
-    avatar: 'https://avatars.githubusercontent.com/u/22369081?v=4',
-    github: 'https://github.com/gopal1996',
-    linkedin: 'https://www.linkedin.com/in/gopal1996',
-  },
-  {
-    name: 'Vivek G',
-    role: 'Product designer, half developer',
-    avatar: 'https://avatars.githubusercontent.com/u/26523871?v=4',
-    github: 'https://github.com/yakshaG',
-    linkedin: 'https://www.linkedin.com/in/vivek-g-india',
-  },
-  {
-    name: 'Siva K',
-    role: 'Frontend developer',
-    avatar: 'https://avatars.githubusercontent.com/u/60533560?v=4',
-    github: 'https://github.com/siva-kannan3',
-    linkedin: 'https://www.linkedin.com/in/siva-kannan3/',
+    name: 'Farid Sayyed',
+    role: 'FullStack developer',
+    avatar: 'https://avatars.githubusercontent.com/u/49672595?s=96&v=4',
+    github: 'https://github.com/Faribro',
+    linkedin: 'https://www.linkedin.com/in/farid-sayyed/',
   },
 ];
 
