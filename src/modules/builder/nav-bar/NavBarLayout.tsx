@@ -1,20 +1,5 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import exportFromJSON from 'export-from-json';
-import { useRef, ChangeEvent, useState, useCallback } from 'react';
-
-import { NavBarMenu, NavBarActions, StyledButton } from './atoms';
-import { Toast } from 'src/helpers/common/atoms/Toast';
-import { NavMenuItem } from './components/MenuItem';
-import { ThemeSelect } from './components/ThemeSelect';
-import { TemplateSelect } from './components/TemplateSelect';
-import { PrintResume } from './components/PrintResume';
-import DEFAULT_RESUME_JSON from 'src/helpers/constants/resume-data.json';
-import { useAwards } from 'src/stores/awards';
-import { useExperiences } from 'src/stores/experience';
-import { useEducations } from 'src/stores/education';
-import { useBasicDetails } from 'src/stores/basic';
-import { useActivity } from 'src/stores/activity';
+import { ChangeEvent, useCallback, useRef, useState } from 'react';
+import { NavBarActions, NavBarMenu, StyledButton } from './atoms';
 import {
   useDatabases,
   useFrameworks,
@@ -24,8 +9,23 @@ import {
   useTechnologies,
   useTools,
 } from 'src/stores/skills';
-import { useVoluteeringStore } from 'src/stores/volunteering';
+
 import { AVAILABLE_TEMPLATES } from 'src/helpers/constants';
+import DEFAULT_RESUME_JSON from 'src/helpers/constants/resume-data.json';
+import Image from 'next/image';
+import Link from 'next/link';
+import { NavMenuItem } from './components/MenuItem';
+import { PrintResume } from './components/PrintResume';
+import { TemplateSelect } from './components/TemplateSelect';
+import { ThemeSelect } from './components/ThemeSelect';
+import { Toast } from 'src/helpers/common/atoms/Toast';
+import exportFromJSON from 'export-from-json';
+import { useActivity } from 'src/stores/activity';
+import { useAwards } from 'src/stores/awards';
+import { useBasicDetails } from 'src/stores/basic';
+import { useEducations } from 'src/stores/education';
+import { useExperiences } from 'src/stores/experience';
+import { useVoluteeringStore } from 'src/stores/volunteering';
 
 const TOTAL_TEMPLATES_AVAILABLE = Object.keys(AVAILABLE_TEMPLATES).length;
 
@@ -121,9 +121,7 @@ const NavBarLayout = () => {
   return (
     <nav className="h-14 w-full bg-resume-800 relative flex py-2.5 pl-5 pr-4 items-center shadow-level-8dp z-20 print:hidden">
       <Link href="/">
-        <a className="flex items-center">
-          <Image src={'/icons/resume-icon.png'} alt="logo" height={'36px'} width={'36px'} />
-        </a>
+        <Image src={'/icons/resume-icon.png'} alt="logo" height="36" width="36" />
       </Link>
       <div className="flex-auto flex justify-between items-center ml-5">
         <NavBarMenu>

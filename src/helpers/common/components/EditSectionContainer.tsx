@@ -1,4 +1,5 @@
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
+
 import Image from 'next/image';
 
 const animation = {
@@ -45,8 +46,8 @@ const EditSectionContainer = ({
         <Image
           src={isEnabled ? '/icons/eye.svg' : '/icons/eye-slash.svg'}
           alt="eye"
-          height="16px"
-          width="21px"
+          height="16"
+          width="21"
           onClick={toggleVisibility}
         />
       </div>

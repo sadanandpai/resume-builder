@@ -1,12 +1,12 @@
-import Image from 'next/image';
-import { useEffect, useRef } from 'react';
-import Splide, { Splide as SplideCore } from '@splidejs/splide';
-import { Global } from '@emotion/react';
-
 // eslint-disable-next-line import/no-unresolved
 import '@splidejs/splide/css';
 
+import Splide, { Splide as SplideCore } from '@splidejs/splide';
+import { useEffect, useRef } from 'react';
+
 import { AVAILABLE_TEMPLATES } from 'src/helpers/constants';
+import { Global } from '@emotion/react';
+import Image from 'next/image';
 import { useTemplates } from 'src/stores/useTemplate';
 
 export const TemplateSlider = () => {
@@ -109,7 +109,7 @@ export const TemplateSlide = ({
 
         {isActive && (
           <div className="absolute top-1 right-1 bg-white rounded-full">
-            <Image src={'/icons/selected-tick.svg'} alt="logo" width={'24px'} height={'24px'} />
+            <Image src={'/icons/selected-tick.svg'} alt="logo" width="24" height="24" />
           </div>
         )}
       </div>

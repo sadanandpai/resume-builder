@@ -1,7 +1,7 @@
 import { NavBarActions, StyledButton } from '../builder/nav-bar/atoms';
 import { motion, useAnimation } from 'framer-motion';
-import { BsGithub } from 'react-icons/bs';
 
+import { BsGithub } from 'react-icons/bs';
 import { Button } from '@mui/material';
 import FeatureSection from './components/Feature';
 import Image from 'next/image';
@@ -26,9 +26,7 @@ const HomeLayout = () => {
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: [0, 1] }} className="scroll-smooth">
       <nav className="sticky top-0 z-20 h-14 w-full bg-resume-800 flex py-2.5 px-4 xl:px-60 items-center shadow-level-8dp">
         <Link href="/">
-          <a className="flex items-center">
-            <Image src={'/icons/resume-icon.png'} alt="logo" height={'36px'} width={'36px'} />
-          </a>
+          <Image src={'/icons/resume-icon.png'} alt="logo" height="36" width="36" />
         </Link>
         <div className="flex-auto flex justify-between items-center ml-5">
           <NavBarActions>
@@ -130,8 +128,8 @@ const HomeLayout = () => {
           style={{ fontFamily: "'Roboto Slab', serif" }}
         >
           <div className="grid grid-cols-12 items-center text-center">
-            <div className="col-span-12 lg:col-span-4 mb-4 lg:mb-0">
-              <Image src={'/icons/palette.svg'} alt="logo" height={'48px'} width={'48px'} />
+            <div className="col-span-12 lg:col-span-4 mb-4 lg:mb-0 flex flex-col items-center gap-2">
+              <Image src={'/icons/palette.svg'} alt="logo" height="48" width="48" />
               <p className="text-resume-800 text-xl mt-2">
                 Do you want to make your own <strong>template?</strong>
               </p>
@@ -139,8 +137,8 @@ const HomeLayout = () => {
             <div className="col-span-12 lg:col-span-1 mb-4 lg:mb-0 text-resume-800 text-4xl">
               <p>+</p>
             </div>
-            <div className="col-span-12 lg:col-span-2 flex-col">
-              <Image src={'/icons/terminal.svg'} alt="logo" height={'48px'} width={'48px'} />
+            <div className="col-span-12 lg:col-span-2 flex flex-col items-center gap-2">
+              <Image src={'/icons/terminal.svg'} alt="logo" height="48" width="48" />
               <p className="text-resume-800 text-xl mt-2">
                 Do you write <strong>React</strong> code?
               </p>
@@ -148,9 +146,9 @@ const HomeLayout = () => {
             <div className="invisible lg:visible lg:col-span-2 text-resume-800 text-4xl mx-6">
               <p>=</p>
             </div>
-            <div className="col-span-12 lg:col-span-3 mx-auto text-center">
+            <div className="col-span-12 lg:col-span-3 mx-auto flex flex-col items-center gap-2">
               <div className="mb-6">
-                <Image src={'/icons/wave.svg'} alt="logo" height={'48px'} width={'48px'} />
+                <Image src={'/icons/wave.svg'} alt="logo" height="48" width="48" />
               </div>
               <div>
                 <a

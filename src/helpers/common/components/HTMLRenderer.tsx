@@ -1,8 +1,8 @@
-import { useMemo } from 'react';
 import parseHtmlStringToHtml, { domToReact } from 'html-react-parser';
-import Link from 'next/link';
 
+import Link from 'next/link';
 import styles from './richtext/jodit.module.css';
+import { useMemo } from 'react';
 
 export const HTMLRenderer = ({ htmlString }: { htmlString: string }) => {
   const parsedElement = useMemo(() => {
@@ -10,11 +10,7 @@ export const HTMLRenderer = ({ htmlString }: { htmlString: string }) => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       replace: (domNode: any) => {
         if (domNode.attribs && domNode.attribs.href && domNode.name === 'a') {
-          return (
-            <Link href={domNode.attribs.href}>
-              <a>{domToReact(domNode.children)}</a>
-            </Link>
-          );
+          return <Link href={domNode.attribs.href}>{domToReact(domNode.children)}</Link>;
         } else if (domNode.name === 'script') {
           return <></>;
         }
