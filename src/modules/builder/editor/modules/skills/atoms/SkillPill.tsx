@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 
 const animation = {
   initial: { y: 25, opacity: 0 },
@@ -15,16 +16,20 @@ const SkillPill = ({
   level,
   onDelete,
   showLevel,
+  onEdit,
 }: {
   index: number;
   name: string;
-  level?: number;
+  level: number;
   onDelete: (index: number) => void;
   showLevel: boolean;
+  onEdit: ({ name, level, index }: { name: string; level: number; index: number }) => void;
 }) => {
   const { attributes, listeners, setNodeRef, transform, transition } = useSortable({
     id: name,
   });
+
+  const [showEdit, setShowEdit] = useState(false);
 
   const style = {
     transform: CSS.Transform.toString(transform),
@@ -57,7 +62,29 @@ const SkillPill = ({
         <span className="flex-1 ml-2 cursor-grab" data-testid="skill-title" {...listeners}>
           {name}
         </span>
-        {showLevel && <span className="ml-2">{level}</span>}
+        {showLevel && !showEdit && (
+          <span
+            className="ml-2"
+            onMouseEnter={() => {
+              console.log('ENTER');
+              setShowEdit(true);
+            }}
+          >
+            {level}
+          </span>
+        )}
+        {showEdit && (
+          <button
+            className="ml-2 min-w-max flex items-center"
+            onClick={() => onEdit({ name, level, index })}
+            onMouseLeave={() => {
+              console.log('LEAVE');
+              setShowEdit(false);
+            }}
+          >
+            <Image src="/icons/close.svg" width={16} height={16} alt="edit" />
+          </button>
+        )}
         <button className="ml-2 min-w-max flex items-center" onClick={() => onDelete(index)}>
           <Image src="/icons/close.svg" width={16} height={16} alt="close" />
         </button>
