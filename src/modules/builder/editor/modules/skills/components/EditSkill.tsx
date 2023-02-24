@@ -42,7 +42,10 @@ const EditSkill = ({
     const trimmedText = name.trim();
     const trimmedLowerText = trimmedText.toLowerCase();
 
-    if (items.find((item) => item.name.toLowerCase() === trimmedLowerText)) {
+    if (
+      items.find((item) => item.name.toLowerCase() === trimmedLowerText) &&
+      items[skillData.index].name !== name
+    ) {
       setErrorText('Duplicate entry');
     } else {
       setName('');
