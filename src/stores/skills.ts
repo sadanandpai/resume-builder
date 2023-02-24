@@ -20,6 +20,15 @@ const removeSkill = (set: SetState<ISkillState>) => (index: number) =>
     })
   );
 
+const editSkill =
+  (set: SetState<ISkillState>) =>
+  ({ name, level, index }: { name: string; level: number; index: number }) =>
+    set(
+      produce((state: ISkillState) => {
+        state.values[index] = { name, level: level };
+      })
+    );
+
 const setSkills = (set: SetState<ISkillState>) => (values: ISkillItem[]) => set(() => ({ values }));
 
 const getSkills = (get: GetState<ISkillState>) => () => get().isEnabled ? get().values : [];
@@ -31,6 +40,7 @@ const getMethods = (set: SetState<ISkillState>, get: GetState<ISkillState>) => (
   get: getSkills(get),
   add: addSkill(set),
   remove: removeSkill(set),
+  edit: editSkill(set),
   reset: setSkills(set),
   setIsEnabled: setIsEnabled(set),
 });
