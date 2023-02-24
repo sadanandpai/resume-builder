@@ -79,7 +79,7 @@ const EditSkill = ({
       {hasLevel && <SliderValue level={level} setLevel={setLevel} />}
       <div className="flex gap-2 mt-3">
         <OutlinedButton onClick={doneHandler} disabled={disabled}>
-          Update
+          Done
         </OutlinedButton>
         <TextButton onClick={onCancel}>Cancel</TextButton>
       </div>
