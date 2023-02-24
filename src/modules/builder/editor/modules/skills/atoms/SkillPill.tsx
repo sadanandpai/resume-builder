@@ -82,7 +82,7 @@ const SkillPill = ({
               setShowEdit(false);
             }}
           >
-            <Image src="/icons/close.svg" width={16} height={16} alt="edit" />
+            <Image src="/icons/edit.svg" width={16} height={16} alt="edit" />
           </button>
         )}
         <button className="ml-2 min-w-max flex items-center" onClick={() => onDelete(index)}>
