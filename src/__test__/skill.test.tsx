@@ -18,6 +18,12 @@ const removeItem = jest.fn((index: number) => {
   items.splice(index, 1);
 });
 
+const editItem = jest.fn(
+  ({ name, level, index }: { name: string; level: number; index: number }) => {
+    items[index] = { name, level };
+  }
+);
+
 const setItems = jest.fn((values: ISkillItem[]) => {
   items = values;
 });
@@ -28,6 +34,7 @@ it('should show the list of skills', async () => {
   render(
     <Skill
       items={items}
+      editItem={editItem}
       addItem={addItem}
       removeItem={removeItem}
       setItems={setItems}
@@ -50,6 +57,7 @@ it('should delete the skills', async () => {
   render(
     <Skill
       items={items}
+      editItem={editItem}
       addItem={addItem}
       removeItem={removeItem}
       setItems={setItems}
