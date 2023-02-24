@@ -66,7 +66,6 @@ const SkillPill = ({
           <span
             className="ml-2"
             onMouseEnter={() => {
-              console.log('ENTER');
               setShowEdit(true);
             }}
           >
@@ -78,7 +77,6 @@ const SkillPill = ({
             className="ml-2 min-w-max flex items-center"
             onClick={() => onEdit({ name, level, index })}
             onMouseLeave={() => {
-              console.log('LEAVE');
               setShowEdit(false);
             }}
           >
