@@ -47,6 +47,12 @@ const SkillPill = ({
         className="bg-custom-grey flex items-center pl-4 pr-2 py-2 rounded-full text-sm cursor-default"
         data-testid="skill-pill"
         style={style}
+        onMouseEnter={() => {
+          setShowEdit(true);
+        }}
+        onMouseLeave={() => {
+          setShowEdit(false);
+        }}
         ref={setNodeRef}
         {...attributes}
       >
@@ -62,23 +68,11 @@ const SkillPill = ({
         <span className="flex-1 ml-2 cursor-grab" data-testid="skill-title" {...listeners}>
           {name}
         </span>
-        {showLevel && !showEdit && (
-          <span
-            className="ml-2"
-            onMouseEnter={() => {
-              setShowEdit(true);
-            }}
-          >
-            {level}
-          </span>
-        )}
+        {showLevel && !showEdit && <span className="ml-2">{level}</span>}
         {showEdit && (
           <button
             className="ml-2 min-w-max flex items-center"
             onClick={() => onEdit({ name, level, index })}
-            onMouseLeave={() => {
-              setShowEdit(false);
-            }}
           >
             <Image src="/icons/edit.svg" width={16} height={16} alt="edit" />
           </button>
