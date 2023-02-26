@@ -10,6 +10,12 @@ const animation = {
   exit: { height: 0, padding: 0, opacity: 0, transition: { duration: 0.15 } },
 };
 
+const animationEditIcon = {
+  initial: { scale: 0.5, opacity: 0 },
+  animate: { scale: 1, opacity: 1 },
+  transition: { delay: 0.1 },
+};
+
 const SkillPill = ({
   index,
   name,
@@ -70,14 +76,19 @@ const SkillPill = ({
         </span>
         {showLevel && !showEdit && <span className="ml-2">{level}</span>}
         {showEdit && (
-          <button
-            className="ml-2 min-w-max flex items-center"
+          <motion.button
+            initial={animationEditIcon.initial}
+            animate={animationEditIcon.animate}
+            transition={animationEditIcon.transition}
             onClick={() => onEdit({ name, level, index })}
           >
             <Image src="/icons/edit.svg" width={16} height={16} alt="edit" />
-          </button>
+          </motion.button>
         )}
-        <button className="ml-2 min-w-max flex items-center" onClick={() => onDelete(index)}>
+        <button
+          className="ml-2 min-w-max flex items-center deleteButton"
+          onClick={() => onDelete(index)}
+        >
           <Image src="/icons/close.svg" width={16} height={16} alt="close" />
         </button>
       </div>
