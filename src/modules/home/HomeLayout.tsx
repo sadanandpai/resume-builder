@@ -44,7 +44,7 @@ const HomeLayout = () => {
               <StyledButton variant="text">About us</StyledButton>
             </Link>
             <a
-              href={'https://github.com/sadanandpai/resume-builder'}
+              href={'https://github.com/prinshukumar22/resumeX'}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -152,7 +152,7 @@ const HomeLayout = () => {
               </div>
               <div>
                 <a
-                  href="https://github.com/sadanandpai/resume-builder"
+                  href="https://github.com/prinshukumar22/resumeX"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -179,18 +179,6 @@ const HomeLayout = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           <Person />
         </div>
-        <p className="text-resume-400 my-8 text-center lg:text-left">
-          Read our design story on&nbsp;
-          <a
-            href="https://medium.com/@yakshag/e-resume-build-a-professional-resume-design-case-study-3dc02a6359ea"
-            target="_blank"
-            rel="noreferrer"
-            className="underline"
-          >
-            Medium
-          </a>
-          ↗
-        </p>
       </div>
     </motion.div>
   );

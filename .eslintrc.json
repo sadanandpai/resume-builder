@@ -8,5 +8,6 @@
     "plugin:import/typescript",
     "prettier",
     "next"
-  ]
+  ],
+  "rules": { "prettier/prettier": ["error", { "endOfLine": "auto" }] }
 }
