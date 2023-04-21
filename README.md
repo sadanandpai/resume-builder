@@ -7,9 +7,6 @@
 
 <a href="https://e-resume.vercel.app">Resume builder</a>
 
-[![](https://img.shields.io/github/stars/sadanandpai/single-page-resume-builder?style=for-the-badge)](#stars)
-[![](https://img.shields.io/github/forks/sadanandpai/single-page-resume-builder?style=for-the-badge)](#forks)
-
 [![NextJS](https://skillicons.dev/icons?i=nextjs)](https://nextjs.org/)
 [![Material React](https://skillicons.dev/icons?i=materialui)](https://mui.com/)
 [![TailwindCSS](https://skillicons.dev/icons?i=tailwind)](https://tailwindcss.com/)
@@ -28,8 +25,6 @@ Here are some reasons you should utilise this resume builder:
 - No sign up needed — go straight to building!
 - Your data never leaves your device
 
-> Disclaimer: In order to enhance the vision and usage, we are shadowing our user's interactions. This is solely performed to serve you better
-
 <br>
 
 ## Developer Guide
@@ -46,7 +41,7 @@ If you are a developer and would like to contribute to resume builder by fixing 
 
 ## Core contributors
 
-<a href="https://github.com/sadanandpai"><img src="https://avatars.githubusercontent.com/u/12962887" alt="sadanand" height="75px" width="75px" /></a> <a href="https://github.com/gopal1996"><img src="https://avatars.githubusercontent.com/u/22369081" alt="sadanand" height="75px" width="75px" /></a> <a href="https://github.com/yakshaG"><img src="https://avatars.githubusercontent.com/u/26523871" alt="sadanand" height="75px" width="75px" /></a> <a href="https://github.com/siva-kannan3"><img src="https://avatars.githubusercontent.com/u/60533560" alt="sadanand" height="75px" width="75px" /></a>
+<a href="https://github.com/prinshukumar22"><img src="https://avatars.githubusercontent.com/u/91736423?s=400&u=2e36c0a8d9ff18b24b542ba4d9ecb05ab33a6c31&v=4" alt="prinshu" height="75px" width="75px" /></a> <a href="https://github.com/iamadipurohit"><img src="https://avatars.githubusercontent.com/u/96544945?v=4" alt="aditya" height="75px" width="75px" /></a> <a href="https://github.com/CyberlordYash"><img src="https://avatars.githubusercontent.com/u/95024305?v=4" alt="yash" height="75px" width="75px" /></a>
 
 <br>
 

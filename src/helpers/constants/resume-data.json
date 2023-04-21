@@ -20,38 +20,38 @@
     "profiles": [
       {
         "network": "linkedin",
-        "username": "sadanandpai",
-        "url": "https://www.linkedin.com/in/sadanandpai/"
+        "username": "prinshu",
+        "url": "https://www.linkedin.com/in/prinshubehera22/"
       },
       {
         "network": "twitter",
-        "username": "sadanandpai",
-        "url": "https://www.twitter.com/sadanandpai/"
+        "username": "prinshu",
+        "url": "https://twitter.com/prinshu_kumar22"
       },
       {
         "network": "github",
-        "username": "sadanandpai",
-        "url": "https://github.com/sadanandpai/"
+        "username": "prinshu",
+        "url": "https://github.com/prinshukumar22"
       },
       {
         "network": "hackerrank",
-        "username": "paicube",
-        "url": "https://www.hackerrank.com/paicube/"
+        "username": "prinshu",
+        "url": "https://www.hackerrank.com/prinshu/"
       },
       {
         "network": "hackerearth",
-        "username": "sadanandpai",
-        "url": "https://www.hackerearth.com/sadanandpai/"
+        "username": "prinshu",
+        "url": "https://www.hackerearth.com/prinshu/"
       },
       {
         "network": "codechef",
-        "username": "sadanandpai",
-        "url": "https://www.codechef.com/sadanandpai/"
+        "username": "prinshu",
+        "url": "https://www.codechef.com/users/diffusemango22"
       },
       {
         "network": "leetcode",
-        "username": "paicube",
-        "url": "https://leetcode.com/paicube/"
+        "username": "prinshu",
+        "url": "https://leetcode.com/prinshu2003/"
       }
     ]
   },
