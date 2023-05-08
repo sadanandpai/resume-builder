@@ -1,11 +1,12 @@
 <div align="center">
-<h1>Resume Builder</h1>
+
+# Resume Builder
 
 ### Free and open source, fully customizable professional single page resume builder
 
-<a href="https://e-resume.vercel.app/"><img src="https://user-images.githubusercontent.com/12962887/201484876-75290af9-ccd6-4f6d-be96-6a8fb4f20c4b.png" alt="get started with resume builder" height="200" widdth="330" />
+<a href="https://e-resume.vercel.app/"><img src="https://user-images.githubusercontent.com/12962887/201484876-75290af9-ccd6-4f6d-be96-6a8fb4f20c4b.png" alt="get started with resume builder" height="200" widdth="330" /> </a>
 
-<a href="https://e-resume.vercel.app">Resume builder</a>
+https://e-resume.vercel.app
 
 [![](https://img.shields.io/github/stars/sadanandpai/single-page-resume-builder?style=for-the-badge)](#stars)
 [![](https://img.shields.io/github/forks/sadanandpai/single-page-resume-builder?style=for-the-badge)](#forks)
@@ -21,7 +22,9 @@
 
 [Resume Builder](https://e-resume.vercel.app) is an open source application where one can effectively build a single page professional resume.
 
-Here are some reasons you should utilise this resume builder:
+Visit our [User Guide](USER_GUIDE.md) to start building!
+
+Features:
 
 - Customise with templates and themes!
 - Simple interface that helps you build quicky!
@@ -30,26 +33,22 @@ Here are some reasons you should utilise this resume builder:
 
 > Disclaimer: In order to enhance the vision and usage, we are shadowing our user's interactions. This is solely performed to serve you better
 
-<br>
-
-## Developer Guide
-
-If you want to run the resume builder application in your local, please refer to [Developer Guide](./DEVELOPER.md).
-
-<br>
+Learn more about our design in the [*E-Resume — Build a professional resume: Design case study* Medium post.](https://uxplanet.org/e-resume-build-a-professional-resume-design-case-study-3dc02a6359ea)
 
 ## Contributing Guide
 
-If you are a developer and would like to contribute to resume builder by fixing the bugs, impoving the features or creating a resume template, please refer to [Contributing Guide](./CONTRIBUTING.md).
+If you are would like to contribute to resume builder by fixing the bugs, impoving the features or creating a resume template, please refer to [Contributing Guide](./CONTRIBUTING.md).
 
-<br>
+## Report Bugs and Feature Requests
 
-## Core contributors
+File a [bug report](https://github.com/sadanandpai/resume-builder/issues/new?assignees=sadanandpai&labels=&template=bug_report.md&title=) or [feature request](https://github.com/sadanandpai/resume-builder/issues/new?assignees=sadanandpai&labels=&template=feature_request.md&title=) using the [New Issues](https://github.com/sadanandpai/resume-builder/issues/new/choose) page. 
+
+[View all issues.](https://github.com/sadanandpai/resume-builder/issues)
+
+## Core Contributors
 
 <a href="https://github.com/sadanandpai"><img src="https://avatars.githubusercontent.com/u/12962887" alt="sadanand" height="75px" width="75px" /></a> <a href="https://github.com/gopal1996"><img src="https://avatars.githubusercontent.com/u/22369081" alt="sadanand" height="75px" width="75px" /></a> <a href="https://github.com/yakshaG"><img src="https://avatars.githubusercontent.com/u/26523871" alt="sadanand" height="75px" width="75px" /></a> <a href="https://github.com/siva-kannan3"><img src="https://avatars.githubusercontent.com/u/60533560" alt="sadanand" height="75px" width="75px" /></a>
 
-<br>
-
 ## License
 
-This repository is MIT licensed. [Read more](./LICENSE)
+This repository is [MIT licensed](./LICENSE).
