@@ -3,9 +3,9 @@
 Review the [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ## Where to start
-Visit https://github.com/sadanandpai/resume-builder/labels/good%20first%20issue to find good first feature requests and bugs to fix.
+View [issues tagged with the *Good First Issues* label](https://github.com/sadanandpai/resume-builder/labels/good%20first%20issue) to find good first feature requests and bugs to fix.
 
-If you're a returning visitor, visit https://github.com/sadanandpai/resume-builder/issues to view all issues.
+Visit https://github.com/sadanandpai/resume-builder/issues to view all issues.
 
 --- 
 
@@ -19,14 +19,14 @@ Run the environment locally or in Docker by following the instructions at [Runni
 
 ### Creating a template
 
-TODO(sadanandpai): Per issue https://github.com/sadanandpai/resume-builder/issues/x, add instructions for how to create a template.
+TODO(sadanandpai): Per issue https://github.com/sadanandpai/resume-builder/issues/175, add instructions for how to create a template.
 
 ---
 
 ### Submit a change
 
 1. [Fork](https://docs.github.com/en/get-started/quickstart/fork-a-repo) the repo.
-1. [Clone](https://docs.github.com/en/get-started/quickstart/fork-a-repo) the forked repo
+1. [Clone](https://docs.github.com/en/get-started/quickstart/fork-a-repo) the forked repo.
     ```
     $ git clone FORKED_REPO
     ```
@@ -55,6 +55,6 @@ TODO(sadanandpai): Per issue https://github.com/sadanandpai/resume-builder/issue
         ```
         $ git push origin BRANCH_NAME
         ```
-    1. Make a [pull request](https://github.com/git-guides/git-pull) (PR). Ensuer you send the PR to the <code>main</code> branch
+    1. Make a [pull request](https://github.com/git-guides/git-pull) (PR). Ensure you send the PR to the `main` branch
 
-    Once done, our developer will review the changes and merge to <code>main</code> branch.
+    Once done, our developer will review the changes and merge to `main` branch.

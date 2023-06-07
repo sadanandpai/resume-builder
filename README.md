@@ -37,7 +37,7 @@ Learn more about our design in the [*E-Resume — Build a professional resume: D
 
 ## Contributing Guide
 
-If you are would like to contribute to resume builder by fixing the bugs, impoving the features or creating a resume template, please refer to [Contributing Guide](./CONTRIBUTING.md).
+If you are interested in contributing (fixing bugs, impoving features, or creating a resume template), please refer to [Contributing Guide](./CONTRIBUTING.md).
 
 ## Report Bugs and Feature Requests
 
