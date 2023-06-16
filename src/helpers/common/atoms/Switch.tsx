@@ -15,7 +15,7 @@ export const SwitchWidget = ({
   };
 
   return (
-    <div className="w-full flex justify-between items-center my-3 ">
+    <div className="w-full flex justify-between items-center mb-3 ">
       <span className="text-xs">{label}</span>
       <Switch checked={value} onChange={handleSwitchChange} />
     </div>
