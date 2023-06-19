@@ -15,7 +15,7 @@ export const EducationSection = ({ education }: { education: IEducation[] }) => 
             <div>
               <SectionTitle label={`${item.studyType} - ${item.area}`} textSize="md" />
               <div className="">
-                <SectionSubtitle label={item.institution} textSize="md" />
+                <SectionSubtitle label={item.institution} />
                 <div className="flex gap-3">
                   <p className="text-xs">
                     {dateParser(item.startDate)} -
