@@ -48,10 +48,12 @@ export const BasicIntro = ({
   phone: string;
   city: string;
   image: string;
-  profiles: object;
+  profiles?: IProfiles[];
 }) => {
-  let isProfileLinkAvailable =
-    profiles.some((profile) => (profile.url.length > 0 ? true : false)) && !image.length;
+  const isProfileLinkAvailable =
+    profiles &&
+    profiles.some((profile) => (profile.url.length > 0 ? true : false)) &&
+    !image.length;
   return (
     <div
       className={`flex justify-between ${
