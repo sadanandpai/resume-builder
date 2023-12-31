@@ -55,3 +55,52 @@ export const resetResumeStore = () => {
   useAwards.getState().reset(ResumeData.awards);
   useActivity.getState().reset(ResumeData.activities);
 };
+
+/**
+ * @description update all the stores
+ */
+export const updateResumeStore = (eResumeData: any) => {
+  const {
+    basics = {
+      location: {
+        address: '',
+        postalCode: '',
+        city: '',
+        countryCode: '',
+        region: '',
+      },
+    },
+    skills = {},
+    work = [],
+    education = [],
+    activities = {
+      involvements: '',
+      achievements: '',
+    },
+
+    volunteer = [],
+    awards = [],
+  } = eResumeData;
+  const {
+    languages = [],
+    frameworks = [],
+    libraries = [],
+    databases = [],
+    technologies = [],
+    practices = [],
+    tools = [],
+  } = skills;
+  useBasicDetails.getState().reset(basics);
+  useLanguages.getState().reset(languages);
+  useFrameworks.getState().reset(frameworks);
+  useLibraries.getState().reset(libraries);
+  useDatabases.getState().reset(databases);
+  useTechnologies.getState().reset(technologies);
+  usePractices.getState().reset(practices);
+  useTools.getState().reset(tools);
+  useExperiences.getState().reset(work);
+  useEducations.getState().reset(education);
+  useVoluteeringStore.getState().reset(volunteer);
+  useAwards.getState().reset(awards);
+  useActivity.getState().reset(activities);
+};

@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // output: 'export',
+
   reactStrictMode: true,
   eslint: {
     dirs: [
@@ -15,6 +17,7 @@ const nextConfig = {
   },
   images: {
     domains: ['avatars.githubusercontent.com'],
+    // unoptimized: true,
   },
   async redirects() {
     return [

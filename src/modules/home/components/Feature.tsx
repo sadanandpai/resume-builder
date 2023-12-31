@@ -9,7 +9,7 @@ function FeatureSection() {
           <Image src="/icons/style.svg" alt="style" height="56" width="56" />
         </CardPinnnedIcon>
         <p className="text-xl mr-14">
-          Customise with <strong>templates and themes</strong>!
+          Delivering a <strong>user-friendly</strong> and rapid experience!
         </p>
       </FeatureCard>
 
@@ -27,7 +27,7 @@ function FeatureSection() {
           <Image src="/icons/magic.svg" alt="magic" height="56" width="56" />
         </CardPinnnedIcon>
         <p className="text-xl mr-14">
-          No <strong>sign up </strong>needed — go straight to building!
+          Create your resume <strong>without</strong> the need for registration!
         </p>
       </FeatureCard>
 
@@ -36,7 +36,7 @@ function FeatureSection() {
           <Image src="/icons/lock.svg" alt="lock" height="56" width="56" />
         </CardPinnnedIcon>
         <p className="text-xl mr-14">
-          Your <strong>data</strong> never leaves your device
+          Your data will <strong>not be shared</strong> with any third parties.
         </p>
       </FeatureCard>
     </>

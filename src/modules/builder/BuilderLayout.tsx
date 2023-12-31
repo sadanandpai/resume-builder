@@ -4,6 +4,7 @@ import NavBarLayout from './nav-bar/NavBarLayout';
 import ResumeHeader from './resume/components/ResumeHeader';
 import { ResumeLayout } from './resume/ResumeLayout';
 import Tooltip from '@mui/material/Tooltip';
+import { resetResumeStore } from 'src/stores/useResumeStore';
 
 const BuilderLayout = () => {
   return (
@@ -26,7 +27,7 @@ const BuilderLayout = () => {
       <footer className="print:hidden">
         <Tooltip title="Share feedback">
           <a
-            href="https://forms.gle/YmpXEZLk6LYdnqet7"
+            href="https://www.facebook.com/nguyennhan09cntt"
             target="_blank"
             rel="noreferrer"
             className="fixed w-14 h-14 rounded-full bottom-4 left-4 flex justify-center items-center bg-resume-50 shadow-level-4dp"

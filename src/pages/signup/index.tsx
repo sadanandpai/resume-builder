@@ -1,8 +1,8 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import HomeLayout from 'src/modules/home/HomeLayout';
+import SignUpLayout from 'src/modules/signup/SignUpLayout';
 
-const HomePage: NextPage = () => {
+const Signup: NextPage = () => {
   return (
     <div>
       <Head>
@@ -11,9 +11,9 @@ const HomePage: NextPage = () => {
         <link rel="icon" type="image/png" href="/icons/resume-icon.png" />
       </Head>
 
-      <HomeLayout />
+      <SignUpLayout />
     </div>
   );
 };
 
-export default HomePage;
+export default Signup;
