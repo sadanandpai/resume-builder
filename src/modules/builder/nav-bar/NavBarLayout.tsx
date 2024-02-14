@@ -26,6 +26,7 @@ import { useBasicDetails } from 'src/stores/basic';
 import { useEducations } from 'src/stores/education';
 import { useExperiences } from 'src/stores/experience';
 import { useVoluteeringStore } from 'src/stores/volunteering';
+import { ResumeDocDownload } from './components/ResumeDocDownload';
 
 const TOTAL_TEMPLATES_AVAILABLE = Object.keys(AVAILABLE_TEMPLATES).length;
 
@@ -153,6 +154,7 @@ const NavBarLayout = () => {
               onChange={handleFileChange}
             />
           </StyledButton>
+          <ResumeDocDownload />
           <PrintResume />
         </NavBarActions>
       </div>
