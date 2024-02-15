@@ -63,6 +63,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-storybook": "^0.5.8",
+    "html-docx-js-typescript": "^0.1.5",
     "husky": "^7.0.0",
     "jest": "^27.5.1",
     "postcss": "^8.4.12",
