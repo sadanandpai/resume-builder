@@ -16,6 +16,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { NavMenuItem } from './components/MenuItem';
 import { PrintResume } from './components/PrintResume';
+import { DocxDownload } from './components/DocxDownload';
 import { TemplateSelect } from './components/TemplateSelect';
 import { ThemeSelect } from './components/ThemeSelect';
 import { Toast } from 'src/helpers/common/atoms/Toast';
@@ -154,6 +155,7 @@ const NavBarLayout = () => {
             />
           </StyledButton>
           <PrintResume />
+          <DocxDownload />
         </NavBarActions>
       </div>
       <Toast
