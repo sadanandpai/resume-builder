@@ -49,7 +49,7 @@ export default function ProfessionalTemplate() {
   const achievements = resumeData.activities.achievements;
 
   return (
-    <ResumeContainer>
+    <ResumeContainer id="professional_template">
       <LeftSection>
         <Section
           title={resumeData.basics?.name}
