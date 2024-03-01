@@ -2,8 +2,9 @@ import { ISkillItem } from 'src/stores/skill.interface';
 import AddSkill from './AddSkill';
 import SkillPill from '../atoms/SkillPill';
 import DragContainer from 'src/helpers/common/components/DragContainer';
-import { motion } from 'framer-motion';
-import { AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import EditSkill from './EditSkill';
+import { useState } from 'react';
 
 const animation = {
   initial: { height: '1px' },
@@ -14,15 +15,23 @@ export default function Skill({
   items,
   addItem,
   removeItem,
+  editItem,
   setItems,
   hasLevel,
 }: {
   items: ISkillItem[];
   addItem: ({ name, level }: ISkillItem) => void;
+  editItem: ({ name, level, index }: { name: string; level: number; index: number }) => void;
   removeItem: (index: number) => void;
   setItems: (name: ISkillItem[]) => void;
   hasLevel: boolean;
 }) {
+  const [editMode, setEditMode] = useState(false);
+  const [selectedSkill, setSelectedSkill] = useState<{
+    name: string;
+    level: number;
+    index: number;
+  }>();
   return (
     <>
       <motion.div
@@ -40,11 +49,27 @@ export default function Skill({
                 level={item.level}
                 onDelete={removeItem}
                 showLevel={hasLevel}
+                onEdit={(data: { name: string; level: number; index: number }) => {
+                  setEditMode(true);
+                  setSelectedSkill(data);
+                }}
               />
             ))}
           </AnimatePresence>
         </DragContainer>
       </motion.div>
+
+      {editMode && selectedSkill && (
+        <EditSkill
+          editHandler={editItem}
+          items={items}
+          hasLevel={hasLevel}
+          skillData={selectedSkill}
+          onCancel={() => {
+            setEditMode(false);
+          }}
+        />
+      )}
       <AddSkill addHandler={addItem} items={items} hasLevel={hasLevel} />
     </>
   );

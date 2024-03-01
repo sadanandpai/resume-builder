@@ -10,6 +10,7 @@ export interface ISkillState {
   isEnabled: boolean;
 
   add: ({ name, level }: { name: string; level: number }) => void;
+  edit: ({ name, level, index }: { name: string; level: number; index: number }) => void;
   remove: (index: number) => void;
   get: () => void;
   reset: (name: ISkillItem[]) => void;

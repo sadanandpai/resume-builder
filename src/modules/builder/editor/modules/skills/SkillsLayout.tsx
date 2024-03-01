@@ -43,6 +43,7 @@ const SkillsLayout = () => {
             items={state.values}
             addItem={state.add}
             removeItem={state.remove}
+            editItem={state.edit}
             setItems={state.reset}
             hasLevel={state.hasLevel}
           />
