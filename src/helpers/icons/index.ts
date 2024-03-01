@@ -5,6 +5,7 @@ import { FaHackerrank } from 'react-icons/fa';
 import { SiCodechef } from 'react-icons/si';
 import { SiHackerearth } from 'react-icons/si';
 import { SiLeetcode } from 'react-icons/si';
+import { TbSwords } from 'react-icons/tb';
 
 export const socialIcons = new Map([
   ['linkedin', AiFillLinkedin],
@@ -14,4 +15,5 @@ export const socialIcons = new Map([
   ['hackerearth', SiHackerearth],
   ['codechef', SiCodechef],
   ['leetcode', SiLeetcode],
+  ['cssbattle', TbSwords],
 ]);

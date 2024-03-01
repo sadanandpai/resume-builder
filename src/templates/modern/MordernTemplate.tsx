@@ -23,6 +23,7 @@ export default function MordernTemplate() {
         city={resumeData.basics.location.city}
         phone={resumeData.basics.phone}
         image={resumeData.basics.image}
+        profiles={resumeData.basics.profiles}
       />
       <div className="flex">
         <div className="basis-[60%] p-3">
@@ -59,13 +60,18 @@ export default function MordernTemplate() {
           <SectionValidator value={resumeData.skills.tools}>
             <SkillsSection title="Tools" list={resumeData.skills.tools} />
           </SectionValidator>
-
+          <SectionValidator value={resumeData.skills.libraries}>
+            <SkillsSection title="Libraries" list={resumeData.skills.libraries} />
+          </SectionValidator>
           <SectionValidator value={resumeData.education}>
             <EducationSection education={resumeData.education} />
           </SectionValidator>
 
           <SectionValidator value={resumeData.volunteer}>
             <VolunteerSection volunteer={resumeData.volunteer} />
+          </SectionValidator>
+          <SectionValidator value={resumeData.basics.Links}>
+            <SkillsSection title="Links" list={resumeData.basics.Links} />
           </SectionValidator>
         </div>
       </div>

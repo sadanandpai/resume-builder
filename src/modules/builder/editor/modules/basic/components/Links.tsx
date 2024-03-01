@@ -9,6 +9,7 @@ const SUPPORTED_NETWORKS = {
   hackerearth: 'hackerearth',
   codechef: 'codechef',
   leetcode: 'leetcode',
+  cssbattle: 'cssbattle',
 };
 
 interface IProfileNetwork {
@@ -54,6 +55,11 @@ const SUPPORTED_NETWORK_DEFAULT_STATE: ISupportedNtwkDefaultState = {
   },
   leetcode: {
     network: 'leetcode',
+    username: 'janedoe',
+    url: '',
+  },
+  cssbattle: {
+    network: 'cssbattle',
     username: 'janedoe',
     url: '',
   },
@@ -146,6 +152,14 @@ const Links = ({
         value={networks[SUPPORTED_NETWORKS.leetcode].url}
         onChange={(event: ChangeEvent<HTMLInputElement>) => {
           onURLChange(event.target.value, SUPPORTED_NETWORKS.leetcode);
+        }}
+      />
+      <TextField
+        label="CSSBattle"
+        variant="filled"
+        value={networks[SUPPORTED_NETWORKS.cssbattle].url}
+        onChange={(event: ChangeEvent<HTMLInputElement>) => {
+          onURLChange(event.target.value, SUPPORTED_NETWORKS.cssbattle);
         }}
       />
     </Fragment>
