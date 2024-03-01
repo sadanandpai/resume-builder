@@ -153,7 +153,8 @@ const NavBarLayout = () => {
               onChange={handleFileChange}
             />
           </StyledButton>
-          <PrintResume />
+          <PrintResume format="doc" />
+          <PrintResume format="pdf" />
         </NavBarActions>
       </div>
       <Toast

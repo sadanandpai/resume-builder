@@ -29,6 +29,7 @@ export const ResumeLayout = () => {
   return (
     <div className="mx-5 print:mx-0 mb-2 print:mb-0">
       <div
+        id="resume"
         style={{ transform: `scale(${zoom})` }}
         className="origin-top transition-all duration-300 ease-linear	print:!scale-100"
       >
