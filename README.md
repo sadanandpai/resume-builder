@@ -15,29 +15,32 @@ https://e-resume.vercel.app
 [![Material React](https://skillicons.dev/icons?i=materialui)](https://mui.com/)
 [![TailwindCSS](https://skillicons.dev/icons?i=tailwind)](https://tailwindcss.com/)
 <a href="https://github.com/pmndrs/zustand"><img src="http://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/bear-face.png" alt="" height="48" width="48" /></a>
-
 </div>
+
+
+> [!NOTE]  
+> The project is complete. We are not taking new changes as we do not have bandwidth. If you can be a maintainer, do contact us.
 
 ## About
 
-[Resume Builder](https://e-resume.vercel.app) is an open source application where one can effectively build a single page professional resume.
+[Resume Builder](https://e-resume.vercel.app) is an open-source application where one can effectively build a single-page professional resume.
 
 Visit our [User Guide](USER_GUIDE.md) to start building!
 
 Features:
 
 - Customise with templates and themes!
-- Simple interface that helps you build quicky!
-- No sign up needed — go straight to building!
+- Simple interface that helps you build quickly!
+- No sign-up needed — go straight to the building!
 - Your data never leaves your device
 
-> Disclaimer: In order to enhance the vision and usage, we are shadowing our user's interactions. This is solely performed to serve you better
+> Disclaimer: To enhance the vision and usage, we are shadowing our user's interactions. This is solely performed to serve you better
 
 Learn more about our design in the [*E-Resume — Build a professional resume: Design case study* Medium post.](https://uxplanet.org/e-resume-build-a-professional-resume-design-case-study-3dc02a6359ea)
 
 ## Contributing Guide
 
-If you are interested in contributing (fixing bugs, impoving features, or creating a resume template), please refer to [Contributing Guide](./CONTRIBUTING.md).
+If you are interested in contributing (fixing bugs, improving features, or creating a resume template), please refer to [Contributing Guide](./CONTRIBUTING.md).
 
 ## Report Bugs and Feature Requests
 
