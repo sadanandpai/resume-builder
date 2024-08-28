@@ -15,8 +15,9 @@ export const Education = ({ education }: { education: IEducation[] }) => {
                 <p className="font-normal">{item.institution}</p>
                 <div className="flex gap-3">
                   <p className="text-xs">
-                    {dateParser(item.startDate)} -
-                    {item.isStudyingHere ? 'present' : dateParser(item.endDate)}
+                    {`${dateParser(item.startDate)} - ${
+                      item.isStudyingHere ? 'present' : dateParser(item.endDate)
+                    }`}
                   </p>
                 </div>
               </div>
