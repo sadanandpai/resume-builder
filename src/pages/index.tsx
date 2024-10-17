@@ -1,8 +1,7 @@
-import type { NextPage } from 'next';
 import Head from 'next/head';
-import HomeLayout from 'src/modules/home/HomeLayout';
+import HomeLayout from '@/modules/home/HomeLayout';
 
-const HomePage: NextPage = () => {
+function HomePage() {
   return (
     <div>
       <Head>
@@ -14,6 +13,6 @@ const HomePage: NextPage = () => {
       <HomeLayout />
     </div>
   );
-};
+}
 
 export default HomePage;

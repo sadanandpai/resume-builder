@@ -1,6 +1,6 @@
 import React from 'react';
-import { RichtextEditor } from 'src/helpers/common/components/richtext';
-import { useActivity } from 'src/stores/activity';
+import { RichtextEditor } from '@/helpers/common/components/richtext';
+import { useActivity } from '@/stores/activity';
 
 const Achievements = () => {
   const activities = useActivity((state) => state.activities);

@@ -30,7 +30,7 @@ export const AVAILABLE_TEMPLATES: ITemplate = {
     id: 'modern',
     name: 'Modern Resume',
     thumbnail: '/templates/modern.png',
-    component: dynamic(() => import('src/templates/modern/MordernTemplate'), {
+    component: dynamic(() => import('@/templates/modern/MordernTemplate'), {
       ssr: false,
     }),
   },
@@ -38,7 +38,7 @@ export const AVAILABLE_TEMPLATES: ITemplate = {
     id: 'professional',
     name: 'Professional Resume',
     thumbnail: '/templates/professional.png',
-    component: dynamic(() => import('src/templates/professional/ProfessionalTemplate'), {
+    component: dynamic(() => import('@/templates/professional/ProfessionalTemplate'), {
       ssr: false,
     }),
   },

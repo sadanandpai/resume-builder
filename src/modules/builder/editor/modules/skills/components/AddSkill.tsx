@@ -1,8 +1,8 @@
 import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import { TextField } from '@mui/material';
 import SliderValue from '../atoms/SliderValue';
-import { OutlinedButton, TextButton } from 'src/helpers/common/atoms/Buttons';
-import { ISkillItem } from 'src/stores/skill.interface';
+import { OutlinedButton, TextButton } from '@/helpers/common/atoms/Buttons';
+import { ISkillItem } from '@/stores/skill.interface';
 
 const AddSkill = ({
   addHandler,

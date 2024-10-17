@@ -1,7 +1,7 @@
 {
   "basics": {
     "name": "Jane Doe",
-    "label": "Frontend Developer",
+    "label": "Frontend Engineer",
     "image": "https://randomuser.me/api/portraits/men/18.jpg",
     "email": "janedoe@email.com",
     "phone": "+91 9876543210",
@@ -25,8 +25,8 @@
       },
       {
         "network": "twitter",
-        "username": "sadanandpai",
-        "url": "https://www.twitter.com/sadanandpai/"
+        "username": "sadanand_pai",
+        "url": "https://x.com/sadanand_pai"
       },
       {
         "network": "github",
@@ -50,8 +50,8 @@
       },
       {
         "network": "leetcode",
-        "username": "paicube",
-        "url": "https://leetcode.com/paicube/"
+        "username": "sadanandpai",
+        "url": "https://leetcode.com/sadanandpai/"
       }
     ]
   },
@@ -187,18 +187,18 @@
   ],
   "awards": [
     {
+      "id": "1",
       "title": "Certificate of exceptional bug finder",
       "date": "2014-11-01",
       "awarder": "XYZ client",
-      "summary": "* Recognition zero defect delivery",
-      "id": "1"
+      "summary": "* Recognition zero defect delivery"
     },
     {
+      "id": "2",
       "title": "Certificate of best frontend developer",
       "date": "2016-11-01",
       "awarder": "XYZ client",
-      "summary": "Awarded for exceptional improvements made to improve user experience",
-      "id": "1"
+      "summary": "Awarded for exceptional improvements made to improve user experience"
     }
   ]
 }

@@ -1,9 +1,9 @@
 import { Fragment, ReactNode, useMemo } from 'react';
-import { IExperienceItem } from 'src/stores/experience.interface';
-import { IEducationItem } from 'src/stores/education.interface';
-import { IAwardItem } from 'src/stores/awards.interface';
-import { IVolunteeringItem } from 'src/stores/volunteering.interface';
-import { ISkillItem } from 'src/stores/skill.interface';
+import { IExperienceItem } from '@/stores/experience.interface';
+import { IEducationItem } from '@/stores/education.interface';
+import { IAwardItem } from '@/stores/awards.interface';
+import { IVolunteeringItem } from '@/stores/volunteering.interface';
+import { ISkillItem } from '@/stores/skill.interface';
 
 export const SectionValidator = ({
   value,

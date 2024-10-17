@@ -1,12 +1,14 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { ChangeEvent, Fragment, useCallback } from 'react';
 import TextField from '@mui/material/TextField';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
-import { useVoluteeringStore } from 'src/stores/volunteering';
-import { IVolunteeringItem } from 'src/stores/volunteering.interface';
-import { SwitchWidget } from 'src/helpers/common/atoms/Switch';
-import { RichtextEditor } from 'src/helpers/common/components/richtext';
-import { DATE_PICKER_FORMAT } from 'src/helpers/constants';
+import { useVoluteeringStore } from '@/stores/volunteering';
+import { IVolunteeringItem } from '@/stores/volunteering.interface';
+import { SwitchWidget } from '@/helpers/common/atoms/Switch';
+import { RichtextEditor } from '@/helpers/common/components/richtext';
+import { DATE_PICKER_FORMAT } from '@/helpers/constants';
+import dayjs from 'dayjs';
 
 interface IVolunteerProps {
   volunteeringInfo: IVolunteeringItem;
@@ -87,14 +89,14 @@ const Volunteer: React.FC<IVolunteerProps> = ({ volunteeringInfo, currentIndex }
       />
       <DatePicker
         label="Start date"
-        value={volunteeringInfo.startDate}
+        value={dayjs(volunteeringInfo.startDate)}
         onChange={(newDate) => {
           onChangeHandler('startDate', newDate);
         }}
-        inputFormat={DATE_PICKER_FORMAT}
-        renderInput={(params) => (
-          <TextField {...params} variant="filled" autoComplete="off" fullWidth required />
-        )}
+        format={DATE_PICKER_FORMAT}
+        slotProps={{
+          textField: { variant: 'filled', autoComplete: 'off', fullWidth: true, required: true },
+        }}
       />
       <SwitchWidget
         label={'I currently volunteer here'}
@@ -105,21 +107,20 @@ const Volunteer: React.FC<IVolunteerProps> = ({ volunteeringInfo, currentIndex }
       />
       <DatePicker
         label="End date"
-        value={volunteeringInfo.isVolunteeringNow ? null : volunteeringInfo.endDate}
+        value={volunteeringInfo.isVolunteeringNow ? null : dayjs(volunteeringInfo.endDate)}
         onChange={(newDate) => {
           onChangeHandler('endDate', newDate);
         }}
-        inputFormat={DATE_PICKER_FORMAT}
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            variant="filled"
-            autoComplete="off"
-            fullWidth
-            required
-            sx={{ marginBottom: '26px' }}
-          />
-        )}
+        format={DATE_PICKER_FORMAT}
+        slotProps={{
+          textField: {
+            variant: 'filled',
+            autoComplete: 'off',
+            fullWidth: true,
+            required: true,
+            sx: { marginBottom: '26px' },
+          },
+        }}
         disabled={volunteeringInfo.isVolunteeringNow}
       />
       <RichtextEditor

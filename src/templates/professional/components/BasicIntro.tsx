@@ -1,4 +1,4 @@
-import { IBasics } from 'src/stores/index.interface';
+import { IBasics } from '@/stores/index.interface';
 import styled from '@emotion/styled';
 import Color from 'color';
 import Image from 'next/image';

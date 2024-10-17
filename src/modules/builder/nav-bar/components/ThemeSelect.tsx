@@ -1,9 +1,9 @@
 import { ColorBox, ColorBoxWrapper } from '../atoms';
 
-import { IThemeColor } from 'src/helpers/constants/index.interface';
+import { IThemeColor } from '@/helpers/constants/index.interface';
 import Image from 'next/image';
-import { SYSTEM_COLORS } from 'src/helpers/constants/index';
-import { useThemes } from 'src/stores/themes';
+import { SYSTEM_COLORS } from '@/helpers/constants/index';
+import { useThemes } from '@/stores/themes';
 
 export const ThemeSelect = () => {
   const activeTheme = useThemes((state) => state.selectedTheme);

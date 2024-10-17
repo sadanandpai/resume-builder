@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
-import { OutlinedButton } from 'src/helpers/common/atoms/Buttons';
-import { useExperiences } from 'src/stores/experience';
-import { IExperienceItem } from 'src/stores/experience.interface';
+import { OutlinedButton } from '@/helpers/common/atoms/Buttons';
+import { useExperiences } from '@/stores/experience';
+import { IExperienceItem } from '@/stores/experience.interface';
 
 const NEW_EXPERIENCE: IExperienceItem = {
   name: '',

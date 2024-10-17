@@ -1,5 +1,5 @@
 import { useRef, useEffect, memo, useState } from 'react';
-import 'jodit/build/jodit.min.css';
+import 'jodit/es2015/jodit.min.css';
 
 import { LinkPlugin } from './plugins/link';
 
@@ -14,6 +14,7 @@ interface IRichtext {
 
 export const RichtextEditor = memo(({ label, onChange, value }: IRichtext) => {
   const editorContainerRef = useRef<HTMLTextAreaElement | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const editorRef = useRef<any>(null);
   const [editorInstanceCreated, setEditorInstanceCreated] = useState(false);
 

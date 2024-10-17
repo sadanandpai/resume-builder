@@ -4,9 +4,9 @@ import TimelineSeparator from '@mui/lab/TimelineSeparator';
 import TimelineConnector from '@mui/lab/TimelineConnector';
 import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineDot from '@mui/lab/TimelineDot';
-import { HTMLRenderer } from 'src/helpers/common/components/HTMLRenderer';
-import { dateParser } from 'src/helpers/utils';
-import { IExperienceItem } from 'src/stores/experience.interface';
+import { HTMLRenderer } from '@/helpers/common/components/HTMLRenderer';
+import { dateParser } from '@/helpers/utils';
+import { IExperienceItem } from '@/stores/experience.interface';
 
 export default function Work({ work }: { work: IExperienceItem[] }) {
   return (
@@ -33,7 +33,7 @@ function ExperienceHeader({ work }: { work: IExperienceItem }) {
   return (
     <>
       <div className="flex justify-between items-end">
-        <div className="font-medium">{work.name}</div>
+        <div className="text-medium">{work.name}</div>
         <div className="italic text-xs">
           {dateParser(work.startDate)} - {work.isWorkingHere ? 'present' : dateParser(work.endDate)}
         </div>

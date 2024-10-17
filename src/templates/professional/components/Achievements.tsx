@@ -1,4 +1,4 @@
-import { HTMLRenderer } from 'src/helpers/common/components/HTMLRenderer';
+import { HTMLRenderer } from '@/helpers/common/components/HTMLRenderer';
 
 export default function Achievements({ data }: { data: string }) {
   return (

@@ -4,10 +4,10 @@ import '@splidejs/splide/css';
 import Splide, { Splide as SplideCore } from '@splidejs/splide';
 import { useEffect, useRef } from 'react';
 
-import { AVAILABLE_TEMPLATES } from 'src/helpers/constants';
+import { AVAILABLE_TEMPLATES } from '@/helpers/constants';
 import { Global } from '@emotion/react';
 import Image from 'next/image';
-import { useTemplates } from 'src/stores/useTemplate';
+import { useTemplates } from '@/stores/useTemplate';
 
 export const TemplateSlider = () => {
   const templateIndex = useTemplates((state) => state.activeTemplate.id);
@@ -31,7 +31,7 @@ export const TemplateSlider = () => {
     }
 
     return () => {
-      splideInstanceRef.current && splideInstanceRef.current.destroy();
+      splideInstanceRef.current?.destroy();
     };
   }, []);
 

@@ -1,11 +1,11 @@
 import { Context, createContext, useEffect } from 'react';
 
-import { AVAILABLE_TEMPLATES } from 'src/helpers/constants';
+import { AVAILABLE_TEMPLATES } from '@/helpers/constants';
 import { ThemeProvider } from '@mui/material/styles';
-import { useResumeStore } from 'src/stores/useResumeStore';
-import { useTemplates } from 'src/stores/useTemplate';
-import { useThemes } from 'src/stores/themes';
-import { useZoom } from 'src/stores/useZoom';
+import { useResumeStore } from '@/stores/useResumeStore';
+import { useTemplates } from '@/stores/useTemplate';
+import { useThemes } from '@/stores/themes';
+import { useZoom } from '@/stores/useZoom';
 
 // TODO: need to define types
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

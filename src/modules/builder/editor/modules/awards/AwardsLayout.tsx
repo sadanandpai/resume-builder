@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { useAwards } from 'src/stores/awards';
+import { useAwards } from '@/stores/awards';
 import AddAward from './components/AddAward';
 import AwardComponent from './components/Award';
 
-import MoveEditSection from 'src/helpers/common/components/MoveEditSectionContainer';
+import MoveEditSection from '@/helpers/common/components/MoveEditSectionContainer';
 
 const AwardsLayout = () => {
   const allAwards = useAwards((state) => state.awards);

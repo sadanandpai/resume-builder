@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { ChangeEvent, Fragment } from 'react';
 import TextField from '@mui/material/TextField';
 

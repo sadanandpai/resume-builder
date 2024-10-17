@@ -1,10 +1,10 @@
-import BasicLayout from 'src/modules/builder/editor/modules/basic/BasicLayout';
-import SkillsLayout from 'src/modules/builder/editor/modules/skills/SkillsLayout';
-import EducationLayout from 'src/modules/builder/editor/modules/education/EducationLayout';
-import ExperienceLayout from 'src/modules/builder/editor/modules/experience/ExperienceLayout';
-import ActivitiesLayout from 'src/modules/builder/editor/modules/activities/ActivitiesLayout';
-import VolunteeringLayout from 'src/modules/builder/editor/modules/volunteering/VolunteeringLayout';
-import AwardsLayout from 'src/modules/builder/editor/modules/awards/AwardsLayout';
+import BasicLayout from '@/modules/builder/editor/modules/basic/BasicLayout';
+import SkillsLayout from '@/modules/builder/editor/modules/skills/SkillsLayout';
+import EducationLayout from '@/modules/builder/editor/modules/education/EducationLayout';
+import ExperienceLayout from '@/modules/builder/editor/modules/experience/ExperienceLayout';
+import ActivitiesLayout from '@/modules/builder/editor/modules/activities/ActivitiesLayout';
+import VolunteeringLayout from '@/modules/builder/editor/modules/volunteering/VolunteeringLayout';
+import AwardsLayout from '@/modules/builder/editor/modules/awards/AwardsLayout';
 
 export const headers: {
   [key: string]: { title: string; component: () => JSX.Element };

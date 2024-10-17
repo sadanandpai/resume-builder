@@ -1,4 +1,4 @@
-import { ISkillItem } from 'src/stores/skill.interface';
+import { ISkillItem } from '@/stores/skill.interface';
 import styled from '@emotion/styled';
 
 const ProgressBar = styled.div`

@@ -8,24 +8,24 @@ import {
   usePractices,
   useTechnologies,
   useTools,
-} from 'src/stores/skills';
+} from '@/stores/skills';
 
-import { AVAILABLE_TEMPLATES } from 'src/helpers/constants';
-import DEFAULT_RESUME_JSON from 'src/helpers/constants/resume-data.json';
+import { AVAILABLE_TEMPLATES } from '@/helpers/constants';
+import DEFAULT_RESUME_JSON from '@/helpers/constants/resume-data.json';
 import Image from 'next/image';
 import Link from 'next/link';
 import { NavMenuItem } from './components/MenuItem';
 import { PrintResume } from './components/PrintResume';
 import { TemplateSelect } from './components/TemplateSelect';
 import { ThemeSelect } from './components/ThemeSelect';
-import { Toast } from 'src/helpers/common/atoms/Toast';
+import { Toast } from '@/helpers/common/atoms/Toast';
 import exportFromJSON from 'export-from-json';
-import { useActivity } from 'src/stores/activity';
-import { useAwards } from 'src/stores/awards';
-import { useBasicDetails } from 'src/stores/basic';
-import { useEducations } from 'src/stores/education';
-import { useExperiences } from 'src/stores/experience';
-import { useVoluteeringStore } from 'src/stores/volunteering';
+import { useActivity } from '@/stores/activity';
+import { useAwards } from '@/stores/awards';
+import { useBasicDetails } from '@/stores/basic';
+import { useEducations } from '@/stores/education';
+import { useExperiences } from '@/stores/experience';
+import { useVoluteeringStore } from '@/stores/volunteering';
 
 const TOTAL_TEMPLATES_AVAILABLE = Object.keys(AVAILABLE_TEMPLATES).length;
 

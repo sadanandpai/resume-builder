@@ -1,4 +1,4 @@
-import { IItem } from 'src/stores/index.interface';
+import { IItem } from '@/stores/index.interface';
 import { SectionHeading } from '../atoms/SectionHeading';
 import { useRef } from 'react';
 import {

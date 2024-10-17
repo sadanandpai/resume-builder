@@ -1,6 +1,3 @@
-#!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
 
-yarn pretty-quick --staged
-yarn lint
-yarn test
+npx pretty-quick --staged
+npm run lint

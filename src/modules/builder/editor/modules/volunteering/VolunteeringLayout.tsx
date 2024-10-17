@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { useVoluteeringStore } from 'src/stores/volunteering';
+import { useVoluteeringStore } from '@/stores/volunteering';
 import AddVolunteeringExp from './components/AddVolunteering';
 import Volunteering from './components/Volunteer';
 
-import MoveEditSection from 'src/helpers/common/components/MoveEditSectionContainer';
+import MoveEditSection from '@/helpers/common/components/MoveEditSectionContainer';
 
 const VolunteeringLayout = () => {
   const allVolunteeringExps = useVoluteeringStore((state) => state.volunteeredExps);

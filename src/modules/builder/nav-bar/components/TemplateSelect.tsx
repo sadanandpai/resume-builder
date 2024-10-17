@@ -1,6 +1,6 @@
 import { Divider, styled, alpha } from '@mui/material';
 import Link from '@mui/material/Link';
-import { OutlinedButton } from 'src/helpers/common/atoms/Buttons';
+import { OutlinedButton } from '@/helpers/common/atoms/Buttons';
 
 import { TemplateSlider } from './TemplatesSlider';
 

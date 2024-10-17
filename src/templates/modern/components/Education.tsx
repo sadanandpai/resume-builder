@@ -1,8 +1,8 @@
-import { IEducation } from 'src/stores/index.interface';
+import { IEducation } from '@/stores/index.interface';
 import { SectionHeading } from '../atoms/SectionHeading';
 import { SectionSubtitle } from '../atoms/SectionSubtitle';
 import { SectionTitle } from '../atoms/SectionTitle';
-import { dateParser } from 'src/helpers/utils';
+import { dateParser } from '@/helpers/utils';
 import { useRef } from 'react';
 import { useEducations } from '../../../stores/education';
 import { scrollToElement } from '../../../helpers/utils/index';

@@ -1,10 +1,10 @@
-import { HTMLRenderer } from 'src/helpers/common/components/HTMLRenderer';
-import { IAwards } from 'src/stores/index.interface';
+import { HTMLRenderer } from '@/helpers/common/components/HTMLRenderer';
+import { IAwards } from '@/stores/index.interface';
 import { SectionHeading } from '../atoms/SectionHeading';
 import { SectionList } from '../atoms/SectionList';
 import { SectionSubtitle } from '../atoms/SectionSubtitle';
 import { SectionTitle } from '../atoms/SectionTitle';
-import { dateParser } from 'src/helpers/utils';
+import { dateParser } from '@/helpers/utils';
 import { useRef } from 'react';
 import { useAwards } from '../../../stores/awards';
 import { scrollToElement } from '../../../helpers/utils/index';

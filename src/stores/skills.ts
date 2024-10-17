@@ -2,7 +2,7 @@ import create, { GetState, SetState } from 'zustand';
 import { persist } from 'zustand/middleware';
 import produce from 'immer';
 import { ISkillItem, ISkillState } from './skill.interface';
-import resumeData from 'src/helpers/constants/resume-data.json';
+import resumeData from '@/helpers/constants/resume-data.json';
 
 const addSkill =
   (set: SetState<ISkillState>) =>
@@ -31,7 +31,7 @@ const editSkill =
 
 const setSkills = (set: SetState<ISkillState>) => (values: ISkillItem[]) => set(() => ({ values }));
 
-const getSkills = (get: GetState<ISkillState>) => () => get().isEnabled ? get().values : [];
+const getSkills = (get: GetState<ISkillState>) => () => (get().isEnabled ? get().values : []);
 
 const setIsEnabled = (set: SetState<ISkillState>) => (isEnabled: boolean) =>
   set(() => ({ isEnabled }));

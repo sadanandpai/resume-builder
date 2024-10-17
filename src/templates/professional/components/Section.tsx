@@ -1,7 +1,7 @@
 import Color from 'color';
-import { IProfiles } from 'src/stores/basic.interface';
+import { IProfiles } from '@/stores/basic.interface';
 import React from 'react';
-import { socialIcons } from 'src/helpers/icons';
+import { socialIcons } from '@/helpers/icons';
 import styled from '@emotion/styled';
 
 const SectionHolder = styled.div`

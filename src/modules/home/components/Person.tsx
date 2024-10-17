@@ -3,28 +3,28 @@ import Image from 'next/image';
 const persons = [
   {
     name: 'Sadanand Pai',
-    role: 'Frontend developer',
+    role: 'Frontend Engineer',
     avatar: 'https://avatars.githubusercontent.com/u/12962887?v=4',
     github: 'https://github.com/sadanandpai',
     linkedin: 'https://www.linkedin.com/in/sadanandpai/',
   },
   {
     name: 'Gopalakrishnan',
-    role: 'Frontend developer',
+    role: 'Frontend Engineer',
     avatar: 'https://avatars.githubusercontent.com/u/22369081?v=4',
     github: 'https://github.com/gopal1996',
     linkedin: 'https://www.linkedin.com/in/gopal1996',
   },
   {
     name: 'Vivek G',
-    role: 'Product designer, half developer',
+    role: 'Product designer, UI developer',
     avatar: 'https://avatars.githubusercontent.com/u/26523871?v=4',
     github: 'https://github.com/yakshaG',
     linkedin: 'https://www.linkedin.com/in/vivek-g-india',
   },
   {
     name: 'Siva K',
-    role: 'Frontend developer',
+    role: 'Frontend Engineer',
     avatar: 'https://avatars.githubusercontent.com/u/60533560?v=4',
     github: 'https://github.com/siva-kannan3',
     linkedin: 'https://www.linkedin.com/in/siva-kannan3/',
