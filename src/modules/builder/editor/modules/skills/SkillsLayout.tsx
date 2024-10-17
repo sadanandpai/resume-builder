@@ -7,8 +7,8 @@ import {
   usePractices,
   useTechnologies,
   useTools,
-} from 'src/stores/skills';
-import EditSectionContainer from 'src/helpers/common/components/EditSectionContainer';
+} from '@/stores/skills';
+import EditSectionContainer from '@/helpers/common/components/EditSectionContainer';
 import Skill from './components/Skill';
 
 const SkillsLayout = () => {

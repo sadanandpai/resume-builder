@@ -1,4 +1,4 @@
-import { HTMLRenderer } from 'src/helpers/common/components/HTMLRenderer';
+import { HTMLRenderer } from '@/helpers/common/components/HTMLRenderer';
 
 export default function Involvement({ data }: { data: string }) {
   return (

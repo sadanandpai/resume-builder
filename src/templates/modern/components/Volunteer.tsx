@@ -1,10 +1,10 @@
-import { IVolunteer } from 'src/stores/index.interface';
+import { IVolunteer } from '@/stores/index.interface';
 import { SectionHeading } from '../atoms/SectionHeading';
 import { SectionSubtitle } from '../atoms/SectionSubtitle';
 import { SectionTitle } from '../atoms/SectionTitle';
-import { dateParser } from 'src/helpers/utils';
+import { dateParser } from '@/helpers/utils';
 import { SectionList } from '../atoms/SectionList';
-import { HTMLRenderer } from 'src/helpers/common/components/HTMLRenderer';
+import { HTMLRenderer } from '@/helpers/common/components/HTMLRenderer';
 import { useRef } from 'react';
 import { useVoluteeringStore } from '../../../stores/volunteering';
 import { scrollToElement } from '../../../helpers/utils/index';

@@ -1,6 +1,6 @@
-import { dateParser } from 'src/helpers/utils';
-import { HTMLRenderer } from 'src/helpers/common/components/HTMLRenderer';
-import { IWorkIntrf } from 'src/stores/index.interface';
+import { dateParser } from '@/helpers/utils';
+import { HTMLRenderer } from '@/helpers/common/components/HTMLRenderer';
+import { IWorkIntrf } from '@/stores/index.interface';
 import { SectionHeading } from '../atoms/SectionHeading';
 import { SectionList } from '../atoms/SectionList';
 import { SectionSubtitle } from '../atoms/SectionSubtitle';

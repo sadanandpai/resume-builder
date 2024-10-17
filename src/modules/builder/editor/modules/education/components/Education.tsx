@@ -1,11 +1,11 @@
 import React, { ChangeEvent, Fragment, useCallback } from 'react';
 import TextField from '@mui/material/TextField';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-
-import { useEducations } from 'src/stores/education';
-import { IEducationItem } from 'src/stores/education.interface';
-import { SwitchWidget } from 'src/helpers/common/atoms/Switch';
-import { DATE_PICKER_FORMAT } from 'src/helpers/constants';
+import dayjs from 'dayjs';
+import { useEducations } from '@/stores/education';
+import { IEducationItem } from '@/stores/education.interface';
+import { SwitchWidget } from '@/helpers/common/atoms/Switch';
+import { DATE_PICKER_FORMAT } from '@/helpers/constants';
 
 interface IEducationProps {
   educationInfo: IEducationItem;
@@ -14,6 +14,7 @@ interface IEducationProps {
 
 const Education: React.FC<IEducationProps> = ({ educationInfo, currentIndex }) => {
   const onChangeHandler = useCallback(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (name: string, value: any) => {
       const currentExpInfo = { ...educationInfo };
       switch (name) {
@@ -108,14 +109,14 @@ const Education: React.FC<IEducationProps> = ({ educationInfo, currentIndex }) =
       />
       <DatePicker
         label="Start date"
-        value={educationInfo.startDate}
+        format={DATE_PICKER_FORMAT}
+        value={dayjs(educationInfo.startDate)}
         onChange={(newDate) => {
           onChangeHandler('startDate', newDate);
         }}
-        inputFormat={DATE_PICKER_FORMAT}
-        renderInput={(params) => (
-          <TextField {...params} variant="filled" autoComplete="off" fullWidth required />
-        )}
+        slotProps={{
+          textField: { variant: 'filled', autoComplete: 'off', fullWidth: true, required: true },
+        }}
       />
       <SwitchWidget
         label={'I currently study here'}
@@ -125,22 +126,21 @@ const Education: React.FC<IEducationProps> = ({ educationInfo, currentIndex }) =
         }}
       />
       <DatePicker
-        label="End date"
-        value={educationInfo.isStudyingHere ? null : educationInfo.endDate}
+        label="Start date"
+        format={DATE_PICKER_FORMAT}
+        value={educationInfo.isStudyingHere ? null : dayjs(educationInfo.endDate)}
         onChange={(newDate) => {
           onChangeHandler('endDate', newDate);
         }}
-        inputFormat={DATE_PICKER_FORMAT}
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            variant="filled"
-            autoComplete="off"
-            fullWidth
-            required
-            sx={{ marginBottom: '26px' }}
-          />
-        )}
+        slotProps={{
+          textField: {
+            variant: 'filled',
+            autoComplete: 'off',
+            fullWidth: true,
+            required: true,
+            sx: { marginBottom: '26px' },
+          },
+        }}
         disabled={educationInfo.isStudyingHere}
       />
     </Fragment>

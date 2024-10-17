@@ -1,7 +1,7 @@
 import create, { SetState } from 'zustand';
 import { persist } from 'zustand/middleware';
 import produce from 'immer';
-import resumeData from 'src/helpers/constants/resume-data.json';
+import resumeData from '@/helpers/constants/resume-data.json';
 import { IActivityStore, IActivity } from './activity.interface';
 
 const setAllAwards = (set: SetState<IActivityStore>) => (activityItem: IActivity) => {

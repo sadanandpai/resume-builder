@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { useBasicDetails } from 'src/stores/basic';
+import { useBasicDetails } from '@/stores/basic';
 import BasicHeader from './components/BasicHeader';
 import BasicPanel from './components/BasicPanel';
 

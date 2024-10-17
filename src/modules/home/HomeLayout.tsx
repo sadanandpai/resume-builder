@@ -1,5 +1,5 @@
 import { NavBarActions, StyledButton } from '../builder/nav-bar/atoms';
-import { motion, useAnimation } from 'framer-motion';
+import { AnimationGeneratorType, motion, useAnimation } from 'framer-motion';
 
 import { BsGithub } from 'react-icons/bs';
 import { Button } from '@mui/material';
@@ -16,8 +16,8 @@ const HomeLayout = () => {
     scale: [0.9, 1],
     opacity: [0, 1],
   };
-  const transtionEffects = {
-    type: 'spring',
+  const transitionEffects = {
+    type: 'spring' as AnimationGeneratorType,
     stiffness: 400,
     damping: 17,
   };
@@ -64,7 +64,7 @@ const HomeLayout = () => {
             className="grid grid-cols-12 pt-12 md:pt-24"
             initial={{ opacity: 0 }}
             animate={animationEffectsFirstLoad}
-            transition={transtionEffects}
+            transition={transitionEffects}
           >
             <div className="col-span-12 sm:col-span-4">
               <motion.img
@@ -73,10 +73,10 @@ const HomeLayout = () => {
                 alt="resume-3d"
                 className="w-6/12 sm:w-9/12"
                 onMouseEnter={() => {
-                  controls.start(animationEffectsHoverEnter, transtionEffects);
+                  controls.start(animationEffectsHoverEnter, transitionEffects);
                 }}
                 onMouseLeave={() => {
-                  controls.start(animationEffectsHoverLeave, transtionEffects);
+                  controls.start(animationEffectsHoverLeave, transitionEffects);
                 }}
                 animate={controls}
               />
@@ -114,7 +114,7 @@ const HomeLayout = () => {
         style={{ fontFamily: "'Roboto Slab', serif" }}
         initial={{ opacity: 0 }}
         animate={animationEffectsFirstLoad}
-        transition={transtionEffects}
+        transition={transitionEffects}
       >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <FeatureSection />

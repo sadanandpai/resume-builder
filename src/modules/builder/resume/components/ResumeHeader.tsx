@@ -1,5 +1,5 @@
-import { useTemplates } from 'src/stores/useTemplate';
-import { useZoom } from 'src/stores/useZoom';
+import { useTemplates } from '@/stores/useTemplate';
+import { useZoom } from '@/stores/useZoom';
 import ResumeController from '../atoms/ResumeController';
 import { ResumeTitle } from '../atoms/ResumeTitle';
 

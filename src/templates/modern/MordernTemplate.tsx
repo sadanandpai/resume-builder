@@ -7,8 +7,8 @@ import { SummarySection } from './components/Summary';
 import { WorkSection } from './components/Work';
 import { AwardSection } from './components/Awards';
 import { useContext } from 'react';
-import { StateContext } from 'src/modules/builder/resume/ResumeLayout';
-import { SectionValidator } from 'src/helpers/common/components/ValidSectionRenderer';
+import { StateContext } from '@/modules/builder/resume/ResumeLayout';
+import { SectionValidator } from '@/helpers/common/components/ValidSectionRenderer';
 
 export default function MordernTemplate() {
   const resumeData = useContext(StateContext);
@@ -54,24 +54,22 @@ export default function MordernTemplate() {
           </SectionValidator>
 
           <SectionValidator value={resumeData.skills.frameworks}>
-            <SkillsSection title="Frameworks" list={resumeData.skills.frameworks} />
+            <SkillsSection
+              title="Frameworks & Libraries"
+              list={resumeData.skills.frameworks.concat(resumeData.skills.libraries)}
+            />
           </SectionValidator>
 
           <SectionValidator value={resumeData.skills.tools}>
             <SkillsSection title="Tools" list={resumeData.skills.tools} />
           </SectionValidator>
-          <SectionValidator value={resumeData.skills.libraries}>
-            <SkillsSection title="Libraries" list={resumeData.skills.libraries} />
-          </SectionValidator>
+
           <SectionValidator value={resumeData.education}>
             <EducationSection education={resumeData.education} />
           </SectionValidator>
 
           <SectionValidator value={resumeData.volunteer}>
             <VolunteerSection volunteer={resumeData.volunteer} />
-          </SectionValidator>
-          <SectionValidator value={resumeData.basics.Links}>
-            <SkillsSection title="Links" list={resumeData.basics.Links} />
           </SectionValidator>
         </div>
       </div>

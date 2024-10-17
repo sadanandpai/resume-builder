@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { useEducations } from 'src/stores/education';
+import { useEducations } from '@/stores/education';
 import AddEducation from './components/AddEducation';
 import Education from './components/Education';
 
-import MoveEditSection from 'src/helpers/common/components/MoveEditSectionContainer';
+import MoveEditSection from '@/helpers/common/components/MoveEditSectionContainer';
 
 const EducationLayout = () => {
   const allAcademics = useEducations((state) => state.academics);

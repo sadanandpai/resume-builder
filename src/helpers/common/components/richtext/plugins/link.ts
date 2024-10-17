@@ -27,11 +27,11 @@ const linkFormOverride = (editor: IJodit) => {
   </label>
   <div class="${styles.jodit_buttons}">
      <button ref="unlink" class="${styles.jodit_button} ${
-    styles.jodit_unlink_button
-  }" type="button">${i18n('Unlink')}</button>
+       styles.jodit_unlink_button
+     }" type="button">${i18n('Unlink')}</button>
      <button ref="insert" class="${styles.jodit_button} ${
-    styles.jodit_link_insert_button
-  }" type="submit">${i18n('Insert')}</button>
+       styles.jodit_link_insert_button
+     }" type="submit">${i18n('Insert')}</button>
   </div>
   <form/>`;
 };

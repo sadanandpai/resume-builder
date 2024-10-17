@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
-import { OutlinedButton } from 'src/helpers/common/atoms/Buttons';
-import { useEducations } from 'src/stores/education';
-import { IEducationItem } from 'src/stores/education.interface';
+import { OutlinedButton } from '@/helpers/common/atoms/Buttons';
+import { useEducations } from '@/stores/education';
+import { IEducationItem } from '@/stores/education.interface';
 
 const NEW_EDUCATION: IEducationItem = {
   institution: '',

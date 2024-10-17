@@ -1,7 +1,7 @@
-import { ISkillItem } from 'src/stores/skill.interface';
+import { ISkillItem } from '@/stores/skill.interface';
 import AddSkill from './AddSkill';
 import SkillPill from '../atoms/SkillPill';
-import DragContainer from 'src/helpers/common/components/DragContainer';
+import DragContainer from '@/helpers/common/components/DragContainer';
 import { motion, AnimatePresence } from 'framer-motion';
 import EditSkill from './EditSkill';
 import { useState } from 'react';

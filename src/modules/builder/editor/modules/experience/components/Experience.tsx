@@ -1,12 +1,12 @@
 import React, { ChangeEvent, Fragment, useCallback } from 'react';
 import TextField from '@mui/material/TextField';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-
-import { useExperiences } from 'src/stores/experience';
-import { IExperienceItem } from 'src/stores/experience.interface';
-import { SwitchWidget } from 'src/helpers/common/atoms/Switch';
-import { RichtextEditor } from 'src/helpers/common/components/richtext';
-import { DATE_PICKER_FORMAT } from 'src/helpers/constants';
+import dayjs from 'dayjs';
+import { useExperiences } from '@/stores/experience';
+import { IExperienceItem } from '@/stores/experience.interface';
+import { SwitchWidget } from '@/helpers/common/atoms/Switch';
+import { RichtextEditor } from '@/helpers/common/components/richtext';
+import { DATE_PICKER_FORMAT } from '@/helpers/constants';
 
 interface IExperienceProps {
   experienceInfo: IExperienceItem;
@@ -15,6 +15,7 @@ interface IExperienceProps {
 
 const Experience: React.FC<IExperienceProps> = ({ experienceInfo, currentIndex }) => {
   const onChangeHandler = useCallback(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (name: string, value: any) => {
       const currentExpInfo = { ...experienceInfo };
       const updateExperience = useExperiences.getState().updateExperience;
@@ -90,14 +91,14 @@ const Experience: React.FC<IExperienceProps> = ({ experienceInfo, currentIndex }
       />
       <DatePicker
         label="Start date"
-        value={experienceInfo.startDate}
+        format={DATE_PICKER_FORMAT}
+        value={dayjs(experienceInfo.startDate)}
         onChange={(newDate) => {
           onChangeHandler('startDate', newDate);
         }}
-        inputFormat={DATE_PICKER_FORMAT}
-        renderInput={(params) => (
-          <TextField {...params} variant="filled" autoComplete="off" fullWidth required />
-        )}
+        slotProps={{
+          textField: { variant: 'filled', autoComplete: 'off', fullWidth: true, required: true },
+        }}
       />
       <SwitchWidget
         label={'I currently work here'}
@@ -108,21 +109,20 @@ const Experience: React.FC<IExperienceProps> = ({ experienceInfo, currentIndex }
       />
       <DatePicker
         label="End date"
-        value={experienceInfo.isWorkingHere ? null : experienceInfo.endDate}
+        format={DATE_PICKER_FORMAT}
+        value={experienceInfo.isWorkingHere ? null : dayjs(experienceInfo.endDate)}
         onChange={(newDate) => {
           onChangeHandler('endDate', newDate);
         }}
-        inputFormat={DATE_PICKER_FORMAT}
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            variant="filled"
-            autoComplete="off"
-            fullWidth
-            required
-            sx={{ marginBottom: '26px' }}
-          />
-        )}
+        slotProps={{
+          textField: {
+            variant: 'filled',
+            autoComplete: 'off',
+            fullWidth: true,
+            required: true,
+            sx: { marginBottom: '26px' },
+          },
+        }}
         disabled={experienceInfo.isWorkingHere}
       />
       <TextField

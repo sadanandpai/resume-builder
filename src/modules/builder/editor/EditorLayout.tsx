@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 
 import DataHeaders from './components/EditHeaders';
 import EditSection from './components/EditSection';
-import ErrorBoundary from 'src/helpers/common/components/ErrorBoundary';
-import { OutlinedButton } from 'src/helpers/common/atoms/Buttons';
-import { headers } from 'src/helpers/constants/editor-data';
-import { resetResumeStore } from 'src/stores/useResumeStore';
+import ErrorBoundary from '@/helpers/common/components/ErrorBoundary';
+import { OutlinedButton } from '@/helpers/common/atoms/Buttons';
+import { headers } from '@/helpers/constants/editor-data';
+import { resetResumeStore } from '@/stores/useResumeStore';
 
 const EditorLayout = () => {
   const [link, setLink] = useState('');
