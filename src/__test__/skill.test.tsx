@@ -1,6 +1,6 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import { ISkillItem } from 'src/stores/skill.interface';
 import Skill from 'src/modules/builder/editor/modules/skills/components/Skill';
 
@@ -18,6 +18,12 @@ const removeItem = jest.fn((index: number) => {
   items.splice(index, 1);
 });
 
+const editItem = jest.fn(
+  ({ name, level, index }: { name: string; level: number; index: number }) => {
+    items[index] = { name, level };
+  }
+);
+
 const setItems = jest.fn((values: ISkillItem[]) => {
   items = values;
 });
@@ -28,6 +34,7 @@ it('should show the list of skills', async () => {
   render(
     <Skill
       items={items}
+      editItem={editItem}
       addItem={addItem}
       removeItem={removeItem}
       setItems={setItems}
@@ -50,6 +57,7 @@ it('should delete the skills', async () => {
   render(
     <Skill
       items={items}
+      editItem={editItem}
       addItem={addItem}
       removeItem={removeItem}
       setItems={setItems}
@@ -60,16 +68,18 @@ it('should delete the skills', async () => {
   const skillPillEls = screen.queryAllByTestId('skill-pill');
   const user = userEvent.setup();
 
-  for (let index = 0; index < skillPillEls.length; index++) {
+  for (const skillPill of skillPillEls) {
     const randomIndex = Math.floor(Math.random() * items.length);
-    const deleteEl = skillPillEls[randomIndex].querySelector('button');
+    const deleteEl = skillPillEls[randomIndex].querySelector('.deleteButton');
 
     if (deleteEl) {
-      await user.click(deleteEl);
+      user.click(deleteEl);
     }
-
-    expect(removeItem).toHaveBeenCalledWith(randomIndex);
+    await waitFor(() => {
+      expect(removeItem).toHaveBeenCalledWith(randomIndex);
+    });
   }
-
-  expect(items.length).toBe(0);
+  await waitFor(() => {
+    expect(items.length).toBe(0);
+  });
 });

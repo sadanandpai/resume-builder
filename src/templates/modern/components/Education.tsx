@@ -21,15 +21,15 @@ export const EducationSection = ({ education }: { education: IEducation[] }) => 
         return (
           <div key={index} className="py-2">
             <div>
-              <SectionTitle label={`${item.studyType} - ${item.area}`} />
-              <div className="flex justify-between items-center">
+              <SectionTitle label={`${item.studyType} - ${item.area}`} textSize="md" />
+              <div className="">
                 <SectionSubtitle label={item.institution} />
                 <div className="flex gap-3">
                   <p className="text-xs">
-                    {dateParser(item.startDate)} -
-                    {item.isStudyingHere ? 'present' : dateParser(item.endDate)}
+                    {`${dateParser(item.startDate)} - ${
+                      item.isStudyingHere ? 'present' : dateParser(item.endDate)
+                    }`}
                   </p>
-                  {/* <p className="text-xs">60%</p> */}
                 </div>
               </div>
             </div>

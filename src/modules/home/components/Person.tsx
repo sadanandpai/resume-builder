@@ -29,13 +29,6 @@ const persons = [
     github: 'https://github.com/siva-kannan3',
     linkedin: 'https://www.linkedin.com/in/siva-kannan3/',
   },
-  {
-    name: 'Sachin Kumar',
-    role: 'Web developer',
-    avatar: 'https://avatars.githubusercontent.com/u/32408232?v=4',
-    github: 'https://github.com/sachinkumar579',
-    linkedin: 'https://www.linkedin.com/in/sachuration',
-  },
 ];
 
 const PersonCard = ({ children }: { children: React.ReactNode }) => (
@@ -47,10 +40,10 @@ const PersonCard = ({ children }: { children: React.ReactNode }) => (
 const ProfileSocial = ({ github, linkedin }: { github: string; linkedin: string }) => (
   <div className="flex gap-4">
     <a href={github} target="_blank" rel="noreferrer">
-      <Image src="/icons/github.svg" alt="github" width="24px" height="24px" />
+      <Image src="/icons/github.svg" alt="github" width="24" height="24" />
     </a>
     <a href={linkedin} target="_blank" rel="noreferrer">
-      <Image src="/icons/linkedin.svg" alt="linkedin" width="24px" height="24px" />
+      <Image src="/icons/linkedin.svg" alt="linkedin" width="24" height="24" />
     </a>
   </div>
 );
@@ -64,8 +57,8 @@ export default function Person() {
             src={person.avatar}
             alt={person.name}
             className="rounded-full"
-            height="96px"
-            width="96px"
+            height="96"
+            width="96"
           />
           <p className="text-resume-800 mt-4 font-bold">{person.name}</p>
           <p className="text-resume-400 mb-6">{person.role}</p>

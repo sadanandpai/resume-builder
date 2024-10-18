@@ -8,15 +8,16 @@ export const Education = ({ education }: { education: IEducation[] }) => {
         return (
           <div key={index} className="mt-3">
             <div>
-              <p className="font-normal">
+              <p className="font-normal text-md">
                 {item.studyType} - {item.area}
               </p>
-              <div className="flex justify-between items-center">
+              <div>
                 <p className="font-normal">{item.institution}</p>
                 <div className="flex gap-3">
                   <p className="text-xs">
-                    {dateParser(item.startDate)} -
-                    {item.isStudyingHere ? 'present' : dateParser(item.endDate)}
+                    {`${dateParser(item.startDate)} - ${
+                      item.isStudyingHere ? 'present' : dateParser(item.endDate)
+                    }`}
                   </p>
                 </div>
               </div>
