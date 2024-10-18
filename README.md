@@ -17,10 +17,6 @@ https://e-resume.vercel.app
 <a href="https://github.com/pmndrs/zustand"><img src="http://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/bear-face.png" alt="" height="48" width="48" /></a>
 </div>
 
-
-> [!NOTE]  
-> The project is complete. We are not taking new changes as we do not have bandwidth. If you can be a maintainer, do contact us.
-
 ## About
 
 [Resume Builder](https://e-resume.vercel.app) is an open-source application where one can effectively build a single-page professional resume.
