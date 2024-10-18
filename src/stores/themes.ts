@@ -1,4 +1,4 @@
-import create from 'zustand';
+import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
 import { SYSTEM_COLORS, CUSTOM_THEME_COLOR } from '@/helpers/constants/index';
@@ -10,7 +10,7 @@ interface IThemeStore {
   chooseTheme: (theme: IThemeColor) => void;
 }
 
-export const useThemes = create<IThemeStore>(
+export const useThemes = create<IThemeStore>()(
   persist(
     (set) => ({
       selectedTheme: SYSTEM_COLORS[0],

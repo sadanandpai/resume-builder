@@ -1,6 +1,7 @@
-import create, { SetState, GetState } from 'zustand';
+import { create } from 'zustand';
+import { GetState, SetState } from './store.interface';
 import { persist } from 'zustand/middleware';
-import produce from 'immer';
+import { produce } from 'immer';
 import resumeData from '@/helpers/constants/resume-data.json';
 import { IExperienceItem, IExperienceStore } from './experience.interface';
 
@@ -84,7 +85,7 @@ const onMoveDown = (set: SetState<IExperienceStore>) => (index: number) => {
   );
 };
 
-export const useExperiences = create<IExperienceStore>(
+export const useExperiences = create<IExperienceStore>()(
   persist(
     (set, get) => ({
       experiences: resumeData.work,

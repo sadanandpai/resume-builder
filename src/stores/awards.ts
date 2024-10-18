@@ -1,8 +1,9 @@
-import create, { SetState, GetState } from 'zustand';
+import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import produce from 'immer';
+import { produce } from 'immer';
 import resumeData from '@/helpers/constants/resume-data.json';
 import { IAwardItem, IAwardsStore } from './awards.interface';
+import { GetState, SetState } from './store.interface';
 
 const addAward =
   (set: SetState<IAwardsStore>) =>
@@ -66,7 +67,7 @@ const updateAward = (set: SetState<IAwardsStore>) => (index: number, updatedInfo
   );
 };
 
-export const useAwards = create<IAwardsStore>(
+export const useAwards = create<IAwardsStore>()(
   persist(
     (set, get) => ({
       awards: resumeData.awards,

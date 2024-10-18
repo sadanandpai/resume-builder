@@ -1,6 +1,7 @@
-import create, { SetState, GetState } from 'zustand';
+import { create } from 'zustand';
+import { GetState, SetState } from './store.interface';
 import { persist } from 'zustand/middleware';
-import produce from 'immer';
+import { produce } from 'immer';
 import resumeData from '@/helpers/constants/resume-data.json';
 import { IVolunteeringItem, IVolunteeringStore } from './volunteering.interface';
 
@@ -85,7 +86,7 @@ const onMoveDown = (set: SetState<IVolunteeringStore>) => (index: number) => {
   );
 };
 
-export const useVoluteeringStore = create<IVolunteeringStore>(
+export const useVoluteeringStore = create<IVolunteeringStore>()(
   persist(
     (set, get) => ({
       volunteeredExps: resumeData.volunteer,
