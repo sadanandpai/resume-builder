@@ -1,6 +1,6 @@
+import { create } from 'zustand';
 import { AVAILABLE_TEMPLATES } from '@/helpers/constants';
 import { ITemplate, ITemplateContent } from '@/helpers/constants/index.interface';
-import create from 'zustand';
 
 interface ITemplateStore {
   availableTemplate: ITemplate;
