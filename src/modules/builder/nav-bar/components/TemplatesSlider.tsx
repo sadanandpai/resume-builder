@@ -60,7 +60,7 @@ export const TemplateSlider = () => {
           },
         }}
       />
-      <section className="splide mt-[26px] mb-[32px] px-[40px]" ref={targetElementRef}>
+      <section className="splide mt-[26px] mb-[32px] md:px-[40px]" ref={targetElementRef}>
         <div className="splide__track">
           <ul className="splide__list">
             {Object.keys(AVAILABLE_TEMPLATES).map((templateKey) => {

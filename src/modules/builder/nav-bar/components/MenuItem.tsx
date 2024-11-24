@@ -20,8 +20,10 @@ export const NavMenuItem = ({ caption, popoverChildren }: INavMenuItemProps) => 
     <Fragment>
       <StyledButton
         variant="text"
+        size="small"
         onClick={handleClick}
         aria-describedby={'mark'}
+        sx={{ fontSize: { xs: '10px', lg: '13px' } }}
         endIcon={
           <Image
             src={'/icons/dropdown-arrow.svg'}

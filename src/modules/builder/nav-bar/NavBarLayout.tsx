@@ -26,12 +26,22 @@ import { useBasicDetails } from '@/stores/basic';
 import { useEducations } from '@/stores/education';
 import { useExperiences } from '@/stores/experience';
 import { useVoluteeringStore } from '@/stores/volunteering';
+import { Menu, MenuItem } from '@mui/material';
 
 const TOTAL_TEMPLATES_AVAILABLE = Object.keys(AVAILABLE_TEMPLATES).length;
 
 const NavBarLayout = () => {
   const [openToast, setOpenToast] = useState(false);
+  const [menuAnchor, setMenuAnchor] = useState<null | HTMLElement>(null);
   const fileInputRef = useRef(null);
+
+  const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setMenuAnchor(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setMenuAnchor(null);
+  };
 
   const exportResumeData = useCallback(() => {
     const updatedResumeJson = {
@@ -119,11 +129,11 @@ const NavBarLayout = () => {
   }, []);
 
   return (
-    <nav className="h-14 w-full bg-resume-800 relative flex py-2.5 pl-5 pr-4 items-center shadow-level-8dp z-20 print:hidden">
+    <nav className="h-14 w-full bg-resume-800 relative flex py-2.5 pl-2 md:pl-5 pr-1 nd:pr-4 items-center shadow-level-8dp z-20 print:hidden">
       <Link href="/">
         <Image src={'/icons/resume-icon.png'} alt="logo" height="36" width="36" />
       </Link>
-      <div className="flex-auto flex justify-between items-center ml-5">
+      <div className="flex-auto flex justify-between items-center xs:ml-3 md:ml-5">
         <NavBarMenu>
           <NavMenuItem
             caption={`Templates (${TOTAL_TEMPLATES_AVAILABLE})`}
@@ -131,31 +141,74 @@ const NavBarLayout = () => {
           />
           <NavMenuItem caption="Colours" popoverChildren={<ThemeSelect />} />
         </NavBarMenu>
-        <NavBarActions>
-          <StyledButton variant="text" onClick={exportResumeData}>
-            Export
-          </StyledButton>
-          <StyledButton
-            variant="text"
-            onClick={() => {
-              if (fileInputRef.current) {
-                const fileElement = fileInputRef.current as HTMLInputElement;
-                fileElement.click();
-              }
-            }}
-          >
-            Import{' '}
-            <input
-              type="file"
-              hidden
-              ref={fileInputRef}
-              accept="application/json"
-              onChange={handleFileChange}
-            />
-          </StyledButton>
-          <PrintResume />
-        </NavBarActions>
+        <div className="hidden md:flex">
+          <NavBarActions>
+            <StyledButton variant="text" onClick={exportResumeData}>
+              Export
+            </StyledButton>
+            <StyledButton
+              variant="text"
+              onClick={() => {
+                if (fileInputRef.current) {
+                  const fileElement = fileInputRef.current as HTMLInputElement;
+                  fileElement.click();
+                }
+              }}
+            >
+              Import{' '}
+              <input
+                type="file"
+                hidden
+                ref={fileInputRef}
+                accept="application/json"
+                onChange={handleFileChange}
+              />
+            </StyledButton>
+            <PrintResume />
+          </NavBarActions>
+        </div>
+        <button
+          className="flex md:hidden text-white"
+          onClick={handleMenuOpen}
+          aria-label="Open menu"
+        >
+          <Image src="/icons/more-horizontal.svg" alt="back" width={25} height={25} />
+        </button>
       </div>
+      <Menu
+        anchorEl={menuAnchor}
+        open={Boolean(menuAnchor)}
+        onClose={handleMenuClose}
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+      >
+        <MenuItem onClick={exportResumeData}>Export</MenuItem>
+        <MenuItem
+          onClick={() => {
+            if (fileInputRef.current) {
+              const fileElement = fileInputRef.current as HTMLInputElement;
+              fileElement.click();
+            }
+            handleMenuClose();
+          }}
+        >
+          Import
+          <input
+            type="file"
+            hidden
+            ref={fileInputRef}
+            accept="application/json"
+            onChange={handleFileChange}
+          />
+        </MenuItem>
+        <PrintResume isMenuButton />
+      </Menu>
       <Toast
         open={openToast}
         onClose={() => {
