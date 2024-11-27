@@ -12,14 +12,18 @@ export default function BasicIntro({ basics }: { basics: IBasics }) {
     <div className="flex justify-between">
       <div className="flex flex-col gap-2">
         <Role className="text-sm">{basics.label}</Role>
-        <span className="text-xs">
-          Relevant experience:&nbsp;
-          <strong>{basics.relExp}</strong>
-        </span>
-        <span className="text-xs">Total experience:&nbsp;{basics.totalExp}</span>
+        {basics.relExp && (
+          <span className="text-xs">
+            Relevant experience:&nbsp;<span className="font-medium">{basics.relExp}</span>
+          </span>
+        )}
+
+        {basics.totalExp && (
+          <span className="text-xs">Total experience:&nbsp;{basics.totalExp}</span>
+        )}
       </div>
 
-      <div className="flex flex-col justify-end gap-2">
+      <div className="flex flex-col justify-end items-end gap-2">
         <div className="flex gap-2">
           <Image src={'/icons/phone.svg'} alt="Phone" width={12} height={12} />
           {/* <span className="text-sm">{basics.phone}</span> */}
@@ -33,10 +37,12 @@ export default function BasicIntro({ basics }: { basics: IBasics }) {
             {basics.email}
           </a>
         </div>
-        <div className="flex gap-2">
-          <Image src={'/icons/location.svg'} alt="Location" width={12} height={12} />
-          <span className="text-xs">{basics.location.city}</span>
-        </div>
+        {basics.location.city && (
+          <div className="flex gap-2">
+            <Image src={'/icons/location.svg'} alt="Location" width={12} height={12} />
+            <span className="text-xs">{basics.location.city}</span>
+          </div>
+        )}
       </div>
     </div>
   );

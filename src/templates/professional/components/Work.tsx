@@ -18,7 +18,7 @@ export default function Work({ work }: { work: IExperienceItem[] }) {
               <TimelineDot variant="outlined" color="primary" />
               {index !== work.length - 1 && <TimelineConnector />}
             </TimelineSeparator>
-            <TimelineContent>
+            <TimelineContent className="pr-0">
               <ExperienceHeader work={company} />
               <HTMLRenderer htmlString={company.summary} />
             </TimelineContent>

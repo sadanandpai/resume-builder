@@ -1,7 +1,8 @@
+import React from 'react';
 import Color from 'color';
 import { IProfiles } from '@/stores/basic.interface';
-import React from 'react';
 import { socialIcons } from '@/helpers/icons';
+import { BsGlobe } from 'react-icons/bs';
 import styled from '@emotion/styled';
 
 const SectionHolder = styled.div`
@@ -16,7 +17,7 @@ const SectionHolder = styled.div`
     transform: translate(0, -50%);
     background: white;
     padding: 0 5px;
-    font-weight: bold;
+    font-weight: 500;
     color: ${(props) => props.theme.titleColor};
   }
 
@@ -29,7 +30,7 @@ const SectionHolder = styled.div`
   }
 `;
 
-function SocialIcons({ profiles }: { profiles: IProfiles[] }) {
+function SocialIcons({ profiles, portfolioUrl }: { profiles: IProfiles[]; portfolioUrl?: string }) {
   return (
     <div className="social-icons flex">
       {profiles.map((profile) => {
@@ -50,6 +51,12 @@ function SocialIcons({ profiles }: { profiles: IProfiles[] }) {
           )
         );
       })}
+
+      {portfolioUrl && (
+        <a href={portfolioUrl} target="_blank" rel="noopener noreferrer" className="ml-2">
+          <BsGlobe />
+        </a>
+      )}
     </div>
   );
 }
@@ -59,11 +66,13 @@ export function Section({
   children,
   titleClassname,
   profiles,
+  portfolioUrl,
 }: {
   title: string;
   children: React.ReactNode;
   titleClassname?: string;
   profiles?: IProfiles[];
+  portfolioUrl?: string;
 }) {
   return (
     <SectionHolder>
@@ -77,7 +86,7 @@ export function Section({
         </span>
       </div>
 
-      {profiles && <SocialIcons profiles={profiles} />}
+      {profiles && <SocialIcons profiles={profiles} portfolioUrl={portfolioUrl} />}
 
       {children}
     </SectionHolder>

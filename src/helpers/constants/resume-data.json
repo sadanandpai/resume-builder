@@ -5,7 +5,7 @@
     "image": "https://randomuser.me/api/portraits/men/18.jpg",
     "email": "janedoe@email.com",
     "phone": "+91 9876543210",
-    "url": "www.e-resume.vercel.app",
+    "url": "https://e-resume.vercel.app",
     "summary": "I am a web developer having expertise in frontend development and exposure to back- end development. I design and develop web applications using the latest technologies to deliver the product with quality code.",
     "location": {
       "address": "",
@@ -120,7 +120,7 @@
       "highlights": [
         "* Worked on a team of 5 developers to develop a web application for a client"
       ],
-      "summary": "<ul><li>Develop web applications based on Sharepoint, Drupal 8 and Episerver</li><li>Lead a team of 10 front end developers, giving support to the client's multi-cultural team, providing feedback, clarifying requirements and helping with technical questions</li><li>Keep the Project Manager and the IT Leads updated on the overall progress of the projects and manage the tasks distributed to the team</li><li>Keep the code and the features implemented by the other developers in accordance to the requirements</li></ul>",
+      "summary": "<ul><li>Develop web applications based on Sharepoint, Drupal 8, Salesforce and Episerver</li><li>Lead a team of 10 front end developers, giving support to the client's multi-cultural team, providing feedback, clarifying requirements and helping with technical questions</li><li>Keep the Project Manager and the IT Leads updated on the overall progress of the projects and manage the tasks distributed to the team</li><li>Keep the code and the features implemented by the other developers in accordance to the requirements</li></ul>",
       "years": "2 years"
     },
     {

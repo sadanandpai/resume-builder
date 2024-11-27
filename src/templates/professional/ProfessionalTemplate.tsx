@@ -54,6 +54,7 @@ export default function ProfessionalTemplate() {
         <Section
           title={resumeData.basics?.name}
           profiles={resumeData.basics.profiles}
+          portfolioUrl={resumeData.basics.url}
           titleClassname="text-xl font-medium"
         >
           <BasicIntro basics={resumeData.basics} />
