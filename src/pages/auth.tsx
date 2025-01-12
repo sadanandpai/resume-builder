@@ -11,8 +11,8 @@ const Auth: React.FC = () => {
 
   const handleGoogleLogin = async () => {
     try {
-      await signInWithGoogle(); // Authenticate the user
-      router.push(redirectTo); // Redirect to the original page
+      await signInWithGoogle();
+      router.push(redirectTo);
     } catch (error) {
       alert(`Google Login failed: ${(error as Error).message}`);
     }
@@ -20,8 +20,8 @@ const Auth: React.FC = () => {
 
   const handleLogin = async () => {
     try {
-      await login(email, password); // Authenticate the user
-      router.push(redirectTo); // Redirect to the original page
+      await login(email, password);
+      router.push(redirectTo);
     } catch (error) {
       alert(`Login failed: ${(error as Error).message}`);
     }

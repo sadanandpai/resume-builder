@@ -9,7 +9,7 @@ const BuilderPage: NextPage = () => {
   const user = useAuth();
   const router = useRouter();
 
-  // Redirect to login if user is not logged in
+  // Redirecting to login if user is not logged in
   useEffect(() => {
     if (user === null) {
       const redirectPath = encodeURIComponent(router.asPath);
@@ -17,7 +17,7 @@ const BuilderPage: NextPage = () => {
     }
   }, [user, router]);
 
-  // Show loading state while user auth status is being determined
+  // Showing loading state while user auth status is being determined
   if (user === undefined) {
     return <p>Loading...</p>;
   }

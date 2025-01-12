@@ -8,9 +8,9 @@ const useAuth = (): User | null | undefined => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
-      setUser(firebaseUser); // `null` if logged out, `User` object if logged in
+      setUser(firebaseUser);
     });
-    return unsubscribe; // Cleanup listener on unmount
+    return unsubscribe;
   }, []);
 
   return user;
