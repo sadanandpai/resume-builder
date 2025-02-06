@@ -19,8 +19,8 @@ const persons = [
     name: 'Vivek G',
     role: 'Product designer, UI developer',
     avatar: 'https://avatars.githubusercontent.com/u/26523871?v=4',
-    github: 'https://github.com/yakshaG',
-    linkedin: 'https://www.linkedin.com/in/vivek-g-india',
+    github: 'https://github.com/vivek-nexus',
+    linkedin: 'https://www.linkedin.com/in/vivek-nexus',
   },
   {
     name: 'Siva K',
