@@ -80,7 +80,7 @@ export function Section({
         <span
           className={`${
             titleClassname ? titleClassname : ''
-          } whitespace-nowrap overflow-hidden overflow-ellipsis`}
+          } whitespace-nowrap overflow-hidden text-ellipsis`}
         >
           {title}
         </span>

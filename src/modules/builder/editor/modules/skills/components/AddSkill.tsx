@@ -1,8 +1,9 @@
 import { ChangeEvent, useEffect, useRef, useState } from 'react';
-import { TextField } from '@mui/material';
-import SliderValue from '../atoms/SliderValue';
 import { OutlinedButton, TextButton } from '@/helpers/common/atoms/Buttons';
+
 import { ISkillItem } from '@/stores/skill.interface';
+import SliderValue from '../atoms/SliderValue';
+import { TextField } from '@mui/material';
 
 const AddSkill = ({
   addHandler,
@@ -18,7 +19,7 @@ const AddSkill = ({
   const [level, setLevel] = useState(0);
   const [disabled, setDisabled] = useState(true);
   const [errorText, setErrorText] = useState('');
-  const inputRef = useRef<HTMLInputElement>();
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const toggleForm = () => {
     setShowForm(!showForm);

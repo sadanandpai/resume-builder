@@ -1,6 +1,13 @@
-import { Html, Head, Main, NextScript } from 'next/document';
+import { DocumentContext, DocumentProps, Head, Html, Main, NextScript } from 'next/document';
+import {
+  DocumentHeadTags,
+  DocumentHeadTagsProps,
+  documentGetInitialProps,
+} from '@mui/material-nextjs/v15-pagesRouter';
 
-export default function Document() {
+import { createEmotionCache } from '@mui/material-nextjs/v15-pagesRouter';
+
+export default function Document(props: DocumentProps & DocumentHeadTagsProps) {
   return (
     <Html lang="en" className="scroll-smooth">
       <Head>
@@ -14,6 +21,7 @@ export default function Document() {
           href="https://fonts.googleapis.com/css2?family=Kalam&family=Roboto+Condensed:wght@700&family=Roboto+Slab&display=swap"
           rel="stylesheet"
         />
+        <DocumentHeadTags {...props} />
       </Head>
       <body>
         <Main />
@@ -22,3 +30,11 @@ export default function Document() {
     </Html>
   );
 }
+
+Document.getInitialProps = async (ctx: DocumentContext) => {
+  const finalProps = await documentGetInitialProps(ctx, {
+    emotionCache: createEmotionCache({ enableCssLayer: true, key: 'css' }),
+  });
+
+  return finalProps;
+};

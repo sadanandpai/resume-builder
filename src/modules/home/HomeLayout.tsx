@@ -1,5 +1,5 @@
-import { NavBarActions, StyledButton } from '../builder/nav-bar/atoms';
 import { AnimationGeneratorType, motion, useAnimation } from 'framer-motion';
+import { NavBarActions, StyledButton } from '../builder/nav-bar/atoms';
 
 import { BsGithub } from 'react-icons/bs';
 import { Button } from '@mui/material';
@@ -35,10 +35,8 @@ const HomeLayout = () => {
             </Link>
           </NavBarActions>
           <NavBarActions>
-            <Link href="#contribute" passHref={true}>
-              <StyledButton variant="text" className="max-md:hidden">
-                Contribute
-              </StyledButton>
+            <Link href="#contribute" passHref={true} className="max-md:hidden">
+              <StyledButton variant="text">Contribute</StyledButton>
             </Link>
             <Link href="#about-us" passHref={true}>
               <StyledButton variant="text">About us</StyledButton>
@@ -110,7 +108,7 @@ const HomeLayout = () => {
       </div>
 
       <motion.div
-        className="mx-6 md:mx-40 xl:mx-60 my-32 w-75"
+        className="mx-6 md:mx-40 xl:mx-60 my-32"
         style={{ fontFamily: "'Roboto Slab', serif" }}
         initial={{ opacity: 0 }}
         animate={animationEffectsFirstLoad}

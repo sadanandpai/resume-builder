@@ -1,6 +1,7 @@
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
+import { Fragment, ReactNode } from 'react';
+
 import Image from 'next/image';
-import { Fragment } from 'react';
 
 const animation = {
   exit: {
@@ -25,7 +26,7 @@ const MoveEditSection = ({
   title: string;
   expanded: boolean;
   clickHandler: () => void;
-  children: JSX.Element;
+  children: ReactNode;
   length: number;
   index: number;
   onMoveUp: (index: number) => void;
@@ -40,7 +41,7 @@ const MoveEditSection = ({
         } relative flex items-center justify-between pl-4 pr-5 text-resume-800 font-bold text-lg select-none cursor-pointer z-10`}
         onClick={clickHandler}
       >
-        <span className="w-[15rem] overflow-hidden text-ellipsis whitespace-nowrap" title={title}>
+        <span className="w-60 overflow-hidden text-ellipsis whitespace-nowrap" title={title}>
           {title}
         </span>
         <div className="flex gap-3">

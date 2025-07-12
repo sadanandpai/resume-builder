@@ -1,20 +1,22 @@
 import {
   DndContext,
-  closestCenter,
+  DragEndEvent,
   KeyboardSensor,
   PointerSensor,
+  closestCenter,
   useSensor,
   useSensors,
-  DragEndEvent,
 } from '@dnd-kit/core';
 import {
-  arrayMove,
   SortableContext,
+  arrayMove,
   sortableKeyboardCoordinates,
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
-import { restrictToVerticalAxis } from '@dnd-kit/modifiers';
+
 import { ISkillItem } from '@/stores/skill.interface';
+import { ReactNode } from 'react';
+import { restrictToVerticalAxis } from '@dnd-kit/modifiers';
 
 export default function DragContainer({
   items,
@@ -23,7 +25,7 @@ export default function DragContainer({
 }: {
   items: ISkillItem[];
   setItems: (v: ISkillItem[]) => void;
-  children: JSX.Element | JSX.Element[];
+  children: ReactNode;
 }) {
   const sensors = useSensors(
     useSensor(PointerSensor),

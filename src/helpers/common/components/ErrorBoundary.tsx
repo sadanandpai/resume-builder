@@ -2,7 +2,7 @@ import React, { Component, ErrorInfo, ReactNode } from 'react';
 
 interface IErrorProps {
   children: ReactNode;
-  fallbackComponent?: () => JSX.Element;
+  fallbackComponent?: () => ReactNode;
 }
 
 interface IErrorState {

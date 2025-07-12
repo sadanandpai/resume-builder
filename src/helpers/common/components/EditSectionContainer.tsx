@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
 
 import Image from 'next/image';
+import { ReactNode } from 'react';
 
 const animation = {
   exit: {
@@ -27,7 +28,7 @@ const EditSectionContainer = ({
   clickHandler: () => void;
   isEnabled: boolean;
   setIsEnabled: (enabled: boolean) => void;
-  children: JSX.Element;
+  children: ReactNode;
 }) => {
   const toggleVisibility = (e: React.MouseEvent) => {
     setIsEnabled(!isEnabled);

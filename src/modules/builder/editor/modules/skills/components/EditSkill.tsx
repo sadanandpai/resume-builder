@@ -1,8 +1,9 @@
 import { ChangeEvent, useEffect, useRef, useState } from 'react';
-import { TextField } from '@mui/material';
-import SliderValue from '../atoms/SliderValue';
 import { OutlinedButton, TextButton } from 'src/helpers/common/atoms/Buttons';
+
 import { ISkillItem } from 'src/stores/skill.interface';
+import SliderValue from '../atoms/SliderValue';
+import { TextField } from '@mui/material';
 
 const EditSkill = ({
   editHandler,
@@ -21,7 +22,7 @@ const EditSkill = ({
   const [level, setLevel] = useState(skillData.level);
   const [disabled, setDisabled] = useState(true);
   const [errorText, setErrorText] = useState('');
-  const inputRef = useRef<HTMLInputElement>();
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     setName(skillData.name);
