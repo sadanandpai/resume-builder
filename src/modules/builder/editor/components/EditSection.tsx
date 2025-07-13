@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { ReactNode } from 'react';
 import { motion } from 'framer-motion';
 
 const animation = {
@@ -9,7 +10,7 @@ const animation = {
 interface IEditSection {
   section: {
     title: string;
-    component: () => JSX.Element;
+    component: () => ReactNode;
   };
   onLinkClick: (link: string) => void;
 }

@@ -1,13 +1,15 @@
-import { Fragment, useState, SyntheticEvent } from 'react';
+import { Fragment, SyntheticEvent, useState } from 'react';
+
+import Achievements from './components/Achievements';
 import BasicHeader from './components/BasicHeader';
 import BasicPanel from './components/BasicPanel';
-import Achievements from './components/Achievements';
 import Involvements from './components/Involvements';
+import { ReactNode } from 'react';
 
 export interface IActivityTab {
   key: string;
   label: string;
-  component: () => JSX.Element;
+  component: () => ReactNode;
 }
 
 export interface IAllActivityTabs {
