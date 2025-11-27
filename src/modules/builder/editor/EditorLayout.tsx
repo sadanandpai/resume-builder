@@ -15,10 +15,7 @@ const ConfirmationBox = ({
   handleModalCloseAction: () => void;
 }) => {
   return (
-    <div
-      id="modalBg"
-      className="fixed inset-0 bg-zinc-500 bg-opacity-03 flex items-center justify-center"
-    >
+    <div className="fixed inset-0 bg-black/30 flex items-center justify-center z-50">
       <div className="bg-purple-50 w-80 p-6 rounded shadow-lg relative animate-[fadeIn_.3s]">
         <h2 className="text-xl font-semibold mb-3">Reset All Changes</h2>
         <p className="text-gray-600 mb-4 text-center">
