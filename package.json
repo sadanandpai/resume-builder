@@ -30,7 +30,7 @@
     "html-react-parser": "^5.2.5",
     "immer": "^10.1.1",
     "jodit": "^4.6.2",
-    "next": "^15.3.5",
+    "next": "^16.1.5",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-icons": "^5.5.0",
