@@ -46,7 +46,7 @@ export const RichtextEditor = memo(({ label, onChange, value }: IRichtext) => {
   }, []);
 
   useEffect(() => {
-    if (editorRef.current && editorInstanceCreated) {
+    if (editorRef.current && editorInstanceCreated && editorRef.current.value !== value) {
       editorRef.current.value = value;
     }
   }, [value, editorInstanceCreated]);
