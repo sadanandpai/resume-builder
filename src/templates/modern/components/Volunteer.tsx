@@ -5,15 +5,17 @@ import { SectionTitle } from '../atoms/SectionTitle';
 import { dateParser } from '@/helpers/utils';
 import { SectionList } from '../atoms/SectionList';
 import { HTMLRenderer } from '@/helpers/common/components/HTMLRenderer';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useVoluteeringStore } from '../../../stores/volunteering';
 import { scrollToElement } from '../../../helpers/utils/index';
 
 export const VolunteerSection = ({ volunteer }: { volunteer: IVolunteer[] }) => {
   const volunteerRef = useRef<null | HTMLDivElement>(null);
-  useVoluteeringStore.subscribe(() => {
-    scrollToElement(volunteerRef);
-  });
+  useEffect(() => {
+    return useVoluteeringStore.subscribe(() => {
+      scrollToElement(volunteerRef);
+    });
+  }, []);
 
   return (
     <div className="mb-3" ref={volunteerRef}>

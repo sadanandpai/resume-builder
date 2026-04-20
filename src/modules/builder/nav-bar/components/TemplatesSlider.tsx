@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-unresolved
 import '@splidejs/splide/css';
 
 import Splide, { Splide as SplideCore } from '@splidejs/splide';
