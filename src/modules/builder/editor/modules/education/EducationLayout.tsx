@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useEducations } from '@/stores/education';
 import AddEducation from './components/AddEducation';
 import Education from './components/Education';
@@ -11,12 +11,7 @@ const EducationLayout = () => {
   const onMoveUp = useEducations.getState().onmoveup;
   const onMoveDown = useEducations.getState().onmovedown;
 
-  const [expanded, setExpanded] = useState<string | false>(false);
-
-  useEffect(() => {
-    setExpanded(allAcademics[0]?.id);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const [expanded, setExpanded] = useState<string | false>(allAcademics[0]?.id ?? false);
 
   const handleChange = (panel: string, isExpanded: boolean) => {
     setExpanded(isExpanded ? panel : false);

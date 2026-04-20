@@ -95,7 +95,7 @@ const Volunteer: React.FC<IVolunteerProps> = ({ volunteeringInfo, currentIndex }
         }}
         format={DATE_PICKER_FORMAT}
         slotProps={{
-          textField: { variant: 'filled', autoComplete: 'off', fullWidth: true, required: true },
+          textField: { variant: 'filled', fullWidth: true, required: true },
         }}
       />
       <SwitchWidget
@@ -115,7 +115,6 @@ const Volunteer: React.FC<IVolunteerProps> = ({ volunteeringInfo, currentIndex }
         slotProps={{
           textField: {
             variant: 'filled',
-            autoComplete: 'off',
             fullWidth: true,
             required: true,
             sx: { marginBottom: '26px' },

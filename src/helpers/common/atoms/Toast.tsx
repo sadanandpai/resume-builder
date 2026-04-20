@@ -25,7 +25,7 @@ export const Toast = ({
       }
       onClose();
     }}
-    TransitionComponent={TransitionUp}
+    slots={{ transition: TransitionUp }}
   >
     <div className="bg-resume-900 rounded py-[10px] px-4">
       <span className="text-white text-sm">{content}</span>

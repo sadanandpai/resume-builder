@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useVoluteeringStore } from '@/stores/volunteering';
 import AddVolunteeringExp from './components/AddVolunteering';
 import Volunteering from './components/Volunteer';
@@ -11,12 +11,7 @@ const VolunteeringLayout = () => {
   const onMoveUp = useVoluteeringStore.getState().onmoveup;
   const onMoveDown = useVoluteeringStore.getState().onmovedown;
 
-  const [expanded, setExpanded] = useState<string | false>(false);
-
-  useEffect(() => {
-    setExpanded(allVolunteeringExps[0]?.id);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const [expanded, setExpanded] = useState<string | false>(allVolunteeringExps[0]?.id ?? false);
 
   const handleChange = (panel: string, isExpanded: boolean) => {
     setExpanded(isExpanded ? panel : false);

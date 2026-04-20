@@ -86,7 +86,6 @@ const AwardComp: React.FC<IAwardComp> = ({ awardInfo, currentIndex }) => {
         slotProps={{
           textField: {
             variant: 'filled',
-            autoComplete: 'off',
             fullWidth: true,
             required: true,
             sx: { marginBottom: '26px' },

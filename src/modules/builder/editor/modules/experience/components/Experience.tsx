@@ -97,7 +97,7 @@ const Experience: React.FC<IExperienceProps> = ({ experienceInfo, currentIndex }
           onChangeHandler('startDate', newDate);
         }}
         slotProps={{
-          textField: { variant: 'filled', autoComplete: 'off', fullWidth: true, required: true },
+          textField: { variant: 'filled', fullWidth: true, required: true },
         }}
       />
       <SwitchWidget
@@ -117,7 +117,6 @@ const Experience: React.FC<IExperienceProps> = ({ experienceInfo, currentIndex }
         slotProps={{
           textField: {
             variant: 'filled',
-            autoComplete: 'off',
             fullWidth: true,
             required: true,
             sx: { marginBottom: '26px' },

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useAwards } from '@/stores/awards';
 import AddAward from './components/AddAward';
 import AwardComponent from './components/Award';
@@ -11,12 +11,7 @@ const AwardsLayout = () => {
   const onMoveUp = useAwards.getState().onmoveup;
   const onMoveDown = useAwards.getState().onmovedown;
 
-  const [expanded, setExpanded] = useState<string | false>(false);
-
-  useEffect(() => {
-    setExpanded(allAwards[0]?.id);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const [expanded, setExpanded] = useState<string | false>(allAwards[0]?.id ?? false);
 
   const handleChange = (panel: string, isExpanded: boolean) => {
     setExpanded(isExpanded ? panel : false);

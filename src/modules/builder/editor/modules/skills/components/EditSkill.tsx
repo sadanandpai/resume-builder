@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useRef, useState } from 'react';
+import { ChangeEvent, useRef, useState } from 'react';
 import { OutlinedButton, TextButton } from 'src/helpers/common/atoms/Buttons';
 
 import { ISkillItem } from 'src/stores/skill.interface';
@@ -20,14 +20,8 @@ const EditSkill = ({
 }) => {
   const [name, setName] = useState(skillData.name);
   const [level, setLevel] = useState(skillData.level);
-  const [disabled, setDisabled] = useState(true);
   const [errorText, setErrorText] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    setName(skillData.name);
-    setLevel(skillData.level);
-  }, [skillData]);
 
   const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
@@ -57,13 +51,7 @@ const EditSkill = ({
     }
   };
 
-  useEffect(() => {
-    if (name.length > 0) {
-      setDisabled(false);
-    } else {
-      setDisabled(true);
-    }
-  }, [name]);
+  const disabled = name.length === 0;
 
   return (
     <form className="mb-4" onSubmit={submitHandler}>
