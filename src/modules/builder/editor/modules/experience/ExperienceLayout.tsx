@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useExperiences } from '@/stores/experience';
 import AddExperience from './components/AddExperience';
 import Experience from './components/Experience';
@@ -11,12 +11,7 @@ const ExperienceLayout = () => {
   const onMoveUp = useExperiences.getState().onmoveup;
   const onMoveDown = useExperiences.getState().onmovedown;
 
-  const [expanded, setExpanded] = useState<string | false>(false);
-
-  useEffect(() => {
-    setExpanded(allWorks[0]?.id);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const [expanded, setExpanded] = useState<string | false>(allWorks[0]?.id ?? false);
 
   const handleChange = (panel: string, isExpanded: boolean) => {
     setExpanded(isExpanded ? panel : false);

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { ChangeEvent, Fragment, useEffect, useState } from 'react';
+import { ChangeEvent, Fragment, useEffect } from 'react';
 import TextField from '@mui/material/TextField';
 
 const SUPPORTED_NETWORKS = {
@@ -73,20 +73,18 @@ const Links = ({
   basicTabs: any;
   onChangeHandler: (value: any, key: string) => void;
 }) => {
-  const [networks, setNetworks] = useState(SUPPORTED_NETWORK_DEFAULT_STATE);
+  const networks = { ...SUPPORTED_NETWORK_DEFAULT_STATE };
+  Object.keys(SUPPORTED_NETWORKS).forEach((ntwk) => {
+    const matchedNetwork = basicTabs.profiles.find(
+      (profile: IProfileNetwork) => profile.network === ntwk
+    );
+    if (matchedNetwork) {
+      networks[ntwk] = matchedNetwork;
+    }
+  });
 
   useEffect(() => {
-    const defaultNetworks = { ...SUPPORTED_NETWORK_DEFAULT_STATE };
-    Object.keys(SUPPORTED_NETWORKS).forEach((ntwk) => {
-      const matchedNetwork = basicTabs.profiles.find(
-        (profile: IProfileNetwork) => profile.network === ntwk
-      );
-      if (matchedNetwork) {
-        defaultNetworks[ntwk] = matchedNetwork;
-      }
-    });
-    setNetworks(defaultNetworks);
-    onChangeHandler(Object.values(defaultNetworks), 'profiles');
+    onChangeHandler(Object.values(networks), 'profiles');
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
