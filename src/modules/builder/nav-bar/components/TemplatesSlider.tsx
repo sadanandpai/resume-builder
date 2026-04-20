@@ -8,6 +8,12 @@ import { Global } from '@emotion/react';
 import Image from 'next/image';
 import { useTemplates } from '@/stores/useTemplate';
 
+const TILE_W = 170;
+const TILE_H = 240;
+
+/** Used until each template has its own PNG under `public/templates/` */
+const THUMBNAIL_PLACEHOLDER = '/icons/resume-icon.svg';
+
 export const TemplateSlider = () => {
   const templateIndex = useTemplates((state) => state.activeTemplate.id);
 
@@ -18,12 +24,17 @@ export const TemplateSlider = () => {
     const targetElement = targetElementRef.current;
     if (targetElement) {
       splideInstanceRef.current = new SplideCore(targetElement, {
-        perPage: 2,
+        perPage: 3,
         pagination: false,
-        gap: '0px',
+        gap: '12px',
         width: '100%',
         autoHeight: true,
         perMove: 1,
+        breakpoints: {
+          900: { perPage: 3 },
+          640: { perPage: 2 },
+          480: { perPage: 1 },
+        },
       });
 
       splideInstanceRef.current.mount();
@@ -59,7 +70,7 @@ export const TemplateSlider = () => {
           },
         }}
       />
-      <section className="splide mt-[26px] mb-[32px] md:px-[40px]" ref={targetElementRef}>
+      <section className="splide mt-[22px] mb-[36px] md:px-[36px]" ref={targetElementRef}>
         <div className="splide__track">
           <ul className="splide__list">
             {Object.keys(AVAILABLE_TEMPLATES).map((templateKey) => {
@@ -69,7 +80,9 @@ export const TemplateSlider = () => {
                 <TemplateSlide
                   key={template.id}
                   isActive={isActive}
-                  {...template}
+                  id={template.id}
+                  name={template.name}
+                  thumbnail={template.thumbnail}
                   onChangeTemplate={onChangeTemplate}
                 />
               );
@@ -94,23 +107,42 @@ export const TemplateSlide = ({
   thumbnail: string;
   onChangeTemplate: (id: string) => void;
 }) => {
+  const src = thumbnail || THUMBNAIL_PLACEHOLDER;
+  const isPlaceholder = !thumbnail;
+
   return (
-    <li className="splide__slide flex justify-center">
+    <li className="splide__slide flex flex-col items-center">
       <div
-        className={`h-[255px] w-[180px] rounded border hover:cursor-pointer overflow-hidden relative ${
-          isActive ? 'border-resume-800' : 'border-resume-200'
-        }`}
+        className={`rounded border hover:cursor-pointer overflow-hidden relative transition-shadow hover:shadow-lg ${
+          isActive ? 'border-resume-800 ring-2 ring-resume-800' : 'border-resume-200'
+        } ${isPlaceholder ? 'bg-resume-50' : 'bg-white'}`}
+        style={{ width: TILE_W, height: TILE_H }}
         onClick={() => {
           onChangeTemplate(id);
         }}
       >
-        <Image src={thumbnail} alt={name} layout="fill" />
+        <Image
+          src={src}
+          alt={name}
+          fill
+          className={isPlaceholder ? 'object-contain p-8' : 'object-cover'}
+          sizes={`${TILE_W}px`}
+          unoptimized={isPlaceholder}
+        />
 
         {isActive && (
           <div className="absolute top-1 right-1 bg-white rounded-full">
             <Image src={'/icons/selected-tick.svg'} alt="logo" width="24" height="24" />
           </div>
         )}
+      </div>
+      <div
+        className={`mt-2 text-xs text-center px-1 leading-tight ${
+          isActive ? 'text-resume-800 font-semibold' : 'text-resume-600'
+        }`}
+        style={{ width: TILE_W }}
+      >
+        {name}
       </div>
     </li>
   );
