@@ -11,31 +11,22 @@ import {
 import { IItem } from '@/stores/index.interface';
 import { SectionHeading } from '../atoms/SectionHeading';
 import { scrollToElement } from '../../../helpers/utils/index';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 export const SkillsSection = ({ title, list }: { title: string; list: IItem[] }) => {
   const skillRef = useRef<null | HTMLDivElement>(null);
-  useLanguages.subscribe(() => {
-    scrollToElement(skillRef);
-  });
-  useFrameworks.subscribe(() => {
-    scrollToElement(skillRef);
-  });
-  useLibraries.subscribe(() => {
-    scrollToElement(skillRef);
-  });
-  usePractices.subscribe(() => {
-    scrollToElement(skillRef);
-  });
-  useDatabases.subscribe(() => {
-    scrollToElement(skillRef);
-  });
-  useTechnologies.subscribe(() => {
-    scrollToElement(skillRef);
-  });
-  useTools.subscribe(() => {
-    scrollToElement(skillRef);
-  });
+  useEffect(() => {
+    const unsubs = [
+      useLanguages,
+      useFrameworks,
+      useLibraries,
+      usePractices,
+      useDatabases,
+      useTechnologies,
+      useTools,
+    ].map((store) => store.subscribe(() => scrollToElement(skillRef)));
+    return () => unsubs.forEach((unsub) => unsub());
+  }, []);
 
   return (
     <div className="my-3" ref={skillRef}>

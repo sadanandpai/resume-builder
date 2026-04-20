@@ -5,15 +5,17 @@ import { SectionHeading } from '../atoms/SectionHeading';
 import { SectionList } from '../atoms/SectionList';
 import { SectionSubtitle } from '../atoms/SectionSubtitle';
 import { SectionTitle } from '../atoms/SectionTitle';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useExperiences } from '../../../stores/experience';
 import { scrollToElement } from '../../../helpers/utils/index';
 
 export const WorkSection = ({ experience }: { experience: IWorkIntrf[] }) => {
   const experienceRef = useRef<null | HTMLDivElement>(null);
-  useExperiences.subscribe(() => {
-    scrollToElement(experienceRef);
-  });
+  useEffect(() => {
+    return useExperiences.subscribe(() => {
+      scrollToElement(experienceRef);
+    });
+  }, []);
 
   return (
     <div className="mb-3" ref={experienceRef}>

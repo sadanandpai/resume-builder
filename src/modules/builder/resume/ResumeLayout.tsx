@@ -9,7 +9,7 @@ import { useZoom } from '@/stores/useZoom';
 
 // TODO: need to define types
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export let StateContext: Context<any> = createContext(null);
+export const StateContext: Context<any> = createContext(null);
 
 export const ResumeLayout = () => {
   const resumeData = useResumeStore();
@@ -18,7 +18,6 @@ export const ResumeLayout = () => {
   const templateId = useTemplates((state) => state.activeTemplate.id);
   const Template = AVAILABLE_TEMPLATES[templateId].component;
   const selectedTheme = useThemes((state) => state.selectedTheme);
-  StateContext = createContext(resumeData);
 
   useEffect(() => {
     const selectedTemplateId =

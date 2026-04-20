@@ -5,15 +5,17 @@ import { SectionList } from '../atoms/SectionList';
 import { SectionSubtitle } from '../atoms/SectionSubtitle';
 import { SectionTitle } from '../atoms/SectionTitle';
 import { dateParser } from '@/helpers/utils';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useAwards } from '../../../stores/awards';
 import { scrollToElement } from '../../../helpers/utils/index';
 
 export const AwardSection = ({ awardsReceived }: { awardsReceived: IAwards[] }) => {
   const awardsRef = useRef<null | HTMLDivElement>(null);
-  useAwards.subscribe(() => {
-    scrollToElement(awardsRef);
-  });
+  useEffect(() => {
+    return useAwards.subscribe(() => {
+      scrollToElement(awardsRef);
+    });
+  }, []);
 
   return (
     <div className="mb-2" ref={awardsRef}>
