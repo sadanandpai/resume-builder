@@ -78,6 +78,12 @@ const NavBarLayout = () => {
     };
   }, [router, router.isReady, router.pathname, importUrlFromQuery]);
 
+  useEffect(() => {
+    const closeMobileMenu = () => setMenuAnchor(null);
+    globalThis.addEventListener('beforeprint', closeMobileMenu);
+    return () => globalThis.removeEventListener('beforeprint', closeMobileMenu);
+  }, []);
+
   const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setMenuAnchor(event.currentTarget);
   };
