@@ -15,4 +15,12 @@ module.exports = [
       'prettier/prettier': 'error',
     },
   },
+  {
+    files: ['src/templates/**/*.{ts,tsx}'],
+    rules: {
+      // Duplicated per-template helpers use `any` for resume context; `<img>` for print-friendly avatars.
+      '@typescript-eslint/no-explicit-any': 'off',
+      '@next/next/no-img-element': 'off',
+    },
+  },
 ];

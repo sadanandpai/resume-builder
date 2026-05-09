@@ -1,5 +1,10 @@
 import { useContext } from 'react';
 import { SectionValidator } from '@/helpers/common/components/ValidSectionRenderer';
+import {
+  SortableRegion,
+  SortableTemplateSection,
+  useSectionLayoutRuntime,
+} from '@/helpers/section-layout';
 import { StateContext } from '@/modules/builder/resume/ResumeLayout';
 import {
   ContactBlock,
@@ -14,11 +19,79 @@ import { useResumePalette, withAlpha } from './resumePalette';
 
 export default function InspiredTemplate() {
   const data = useContext(StateContext);
-  const p = useResumePalette();
-  const b = data.basics;
+  const { regions } = useSectionLayoutRuntime();
+  const resumePalette = useResumePalette();
+  const basics = data.basics;
+
+  const renderMain = (sectionId: string) => {
+    switch (sectionId) {
+      case 'work':
+        return (
+          <SectionValidator value={data.work}>
+            <section style={{ marginBottom: 14 }}>
+              <SectionHeading title="Professional Experience" p={resumePalette} variant="bar" />
+              {data.work.map((w: any) => (
+                <div key={w.id} style={{ marginBottom: 10 }}>
+                  <JobHeader
+                    position={w.position}
+                    company={w.name}
+                    date={formatDateRange(w.startDate, w.endDate, w.isWorkingHere)}
+                    p={resumePalette}
+                  />
+                  <RichText html={w.summary} p={resumePalette} />
+                </div>
+              ))}
+            </section>
+          </SectionValidator>
+        );
+      case 'education':
+        return (
+          <SectionValidator value={data.education}>
+            <section>
+              <SectionHeading title="Education" p={resumePalette} variant="bar" />
+              {data.education.map((e: any) => (
+                <div key={e.id} style={{ fontSize: 10.5, marginBottom: 6 }}>
+                  <strong>{e.studyType}</strong> — {e.area}
+                  <div style={{ color: resumePalette.muted }}>{e.institution}</div>
+                </div>
+              ))}
+            </section>
+          </SectionValidator>
+        );
+      default:
+        return null;
+    }
+  };
+
+  const renderSidebar = (sectionId: string) => {
+    switch (sectionId) {
+      case 'summary':
+        return (
+          <SectionValidator value={basics.summary}>
+            <section style={{ marginBottom: 14 }}>
+              <SectionHeading title="Summary" p={resumePalette} variant="bar" />
+              <RichText html={basics.summary} p={resumePalette} />
+            </section>
+          </SectionValidator>
+        );
+      case 'skills':
+        return (
+          <SectionValidator value={data.skills.languages.concat(data.skills.frameworks)}>
+            <section>
+              <SectionHeading title="Key Skills" p={resumePalette} variant="bar" />
+              {data.skills.languages.concat(data.skills.frameworks).map((s: any, i: number) => (
+                <SkillBar key={i} name={s.name} level={s.level} p={resumePalette} />
+              ))}
+            </section>
+          </SectionValidator>
+        );
+      default:
+        return null;
+    }
+  };
 
   return (
-    <div style={{ ...pageStyle(p), position: 'relative', overflow: 'hidden' }}>
+    <div style={{ ...pageStyle(resumePalette), position: 'relative', overflow: 'hidden' }}>
       <div
         style={{
           position: 'absolute',
@@ -26,7 +99,7 @@ export default function InspiredTemplate() {
           left: 0,
           width: 220,
           height: 200,
-          background: withAlpha(p.primary, 0.18),
+          background: withAlpha(resumePalette.primary, 0.18),
           borderBottomRightRadius: '100%',
         }}
       />
@@ -39,26 +112,26 @@ export default function InspiredTemplate() {
           padding: '28px 32px 16px',
         }}
       >
-        <ProfileAvatar src={b.image} size={84} border={`4px solid ${p.primary}`} />
+        <ProfileAvatar src={basics.image} size={84} border={`4px solid ${resumePalette.primary}`} />
         <div
           style={{
             flex: 1,
-            background: p.primary,
+            background: resumePalette.primary,
             color: '#fff',
             padding: '16px 20px',
             borderRadius: 8,
           }}
         >
-          <H1 p={p} size={24} color="#fff">
-            {b.name}
+          <H1 p={resumePalette} size={24} color="#fff">
+            {basics.name}
           </H1>
-          <div style={{ fontSize: 11, opacity: 0.95, marginTop: 4 }}>{b.label}</div>
+          <div style={{ fontSize: 11, opacity: 0.95, marginTop: 4 }}>{basics.label}</div>
           <div style={{ marginTop: 10, fontSize: 10 }}>
             <ContactBlock
-              email={b.email}
-              phone={b.phone}
-              city={b.location?.city}
-              url={b.url}
+              email={basics.email}
+              phone={basics.phone}
+              city={basics.location?.city}
+              url={basics.url}
               inline
               color="#fff"
             />
@@ -75,49 +148,28 @@ export default function InspiredTemplate() {
         }}
       >
         <div>
-          <SectionValidator value={data.work}>
-            <section style={{ marginBottom: 14 }}>
-              <SectionHeading title="Professional Experience" p={p} variant="bar" />
-              {data.work.map((w: any) => (
-                <div key={w.id} style={{ marginBottom: 10 }}>
-                  <JobHeader
-                    position={w.position}
-                    company={w.name}
-                    date={formatDateRange(w.startDate, w.endDate, w.isWorkingHere)}
-                    p={p}
-                  />
-                  <RichText html={w.summary} p={p} />
-                </div>
-              ))}
-            </section>
-          </SectionValidator>
-          <SectionValidator value={data.education}>
-            <section>
-              <SectionHeading title="Education" p={p} variant="bar" />
-              {data.education.map((e: any) => (
-                <div key={e.id} style={{ fontSize: 10.5, marginBottom: 6 }}>
-                  <strong>{e.studyType}</strong> — {e.area}
-                  <div style={{ color: p.muted }}>{e.institution}</div>
-                </div>
-              ))}
-            </section>
-          </SectionValidator>
+          <SortableRegion regionId="main" items={regions.main}>
+            {(id) => (
+              <SortableTemplateSection key={id} id={id}>
+                {renderMain(id) ?? renderSidebar(id)}
+              </SortableTemplateSection>
+            )}
+          </SortableRegion>
         </div>
-        <aside style={{ background: withAlpha(p.primary, 0.08), padding: 16, borderRadius: 10 }}>
-          <SectionValidator value={b.summary}>
-            <section style={{ marginBottom: 14 }}>
-              <SectionHeading title="Summary" p={p} variant="bar" />
-              <RichText html={b.summary} p={p} />
-            </section>
-          </SectionValidator>
-          <SectionValidator value={data.skills.languages.concat(data.skills.frameworks)}>
-            <section>
-              <SectionHeading title="Key Skills" p={p} variant="bar" />
-              {data.skills.languages.concat(data.skills.frameworks).map((s: any, i: number) => (
-                <SkillBar key={i} name={s.name} level={s.level} p={p} />
-              ))}
-            </section>
-          </SectionValidator>
+        <aside
+          style={{
+            background: withAlpha(resumePalette.primary, 0.08),
+            padding: 16,
+            borderRadius: 10,
+          }}
+        >
+          <SortableRegion regionId="sidebar" items={regions.sidebar}>
+            {(id) => (
+              <SortableTemplateSection key={id} id={id}>
+                {renderSidebar(id) ?? renderMain(id)}
+              </SortableTemplateSection>
+            )}
+          </SortableRegion>
         </aside>
       </div>
     </div>
