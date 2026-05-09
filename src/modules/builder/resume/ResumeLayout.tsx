@@ -1,4 +1,12 @@
-import { Context, createContext, useEffect, useMemo, useState, type ReactNode } from 'react';
+import {
+  Context,
+  createContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type ReactNode,
+} from 'react';
 
 import { AVAILABLE_TEMPLATES } from '@/helpers/constants';
 import { getAllowedSectionIdsForTemplate } from '@/helpers/section-layout/allowedSections';
@@ -9,7 +17,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import { useResumeStore } from '@/stores/useResumeStore';
 import { useTemplates } from '@/stores/useTemplate';
 import { useThemes } from '@/stores/themes';
-import { useZoom } from '@/stores/useZoom';
+import { useZoom, ZOOM_MIN } from '@/stores/useZoom';
 import { useSectionLayoutStore } from '@/stores/useSectionLayoutStore';
 
 // TODO: need to define types
@@ -49,9 +57,14 @@ function ResumeSectionLayoutShell({
   );
 }
 
-export const ResumeLayout = () => {
+/** ~210mm at 96dpi — matches resume preview width used for scale-to-fit on small screens. */
+const RESUME_PAGE_WIDTH_PX = 794;
+
+export const ResumeLayout = ({ pauseFitToWidth = false }: { pauseFitToWidth?: boolean }) => {
   const resumeData = useResumeStore();
   const zoom = useZoom((state) => state.zoom);
+  const setZoom = useZoom((state) => state.setZoom);
+  const fitContainerRef = useRef<HTMLDivElement>(null);
 
   const templateId = useTemplates((state) => state.activeTemplate.id);
   const Template = AVAILABLE_TEMPLATES[templateId].component;
@@ -63,11 +76,43 @@ export const ResumeLayout = () => {
     useTemplates.getState().setTemplate(AVAILABLE_TEMPLATES[selectedTemplateId]);
   }, []);
 
+  useEffect(() => {
+    const el = fitContainerRef.current;
+    if (!el || typeof ResizeObserver === 'undefined') return;
+
+    const mq = window.matchMedia('(min-width: 1024px)');
+    let timeoutId: number | undefined;
+
+    const applyFit = () => {
+      if (mq.matches || pauseFitToWidth) return;
+      const w = el.clientWidth;
+      if (w <= 0) return;
+      const fit = Math.min(1, Math.max(ZOOM_MIN, w / RESUME_PAGE_WIDTH_PX));
+      setZoom(fit);
+    };
+
+    const schedule = () => {
+      if (timeoutId !== undefined) window.clearTimeout(timeoutId);
+      timeoutId = window.setTimeout(applyFit, 120);
+    };
+
+    const ro = new ResizeObserver(schedule);
+    ro.observe(el);
+    mq.addEventListener('change', schedule);
+    schedule();
+
+    return () => {
+      if (timeoutId !== undefined) window.clearTimeout(timeoutId);
+      ro.disconnect();
+      mq.removeEventListener('change', schedule);
+    };
+  }, [setZoom, pauseFitToWidth]);
+
   return (
-    <div className="mx-5 print:mx-0 mb-2 print:mb-0">
+    <div ref={fitContainerRef} className="mx-5 print:mx-0 mb-2 print:mb-0">
       <div
         style={{ transform: `scale(${zoom})` }}
-        className="origin-top transition-all duration-300 ease-linear	print:scale-100!"
+        className="resume-print-scale-wrap origin-top transition-all duration-300 ease-linear"
       >
         <div className="w-[210mm] h-[296mm] bg-white my-0 mx-auto">
           <StateContext.Provider value={resumeData}>

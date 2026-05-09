@@ -17,7 +17,7 @@ const ResumeHeader = () => {
   );
 
   return (
-    <div className="flex items-center justify-between">
+    <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between w-full min-w-0">
       <ResumeTitle title={activeTemplate.name} />
       <ResumeController
         zoomIn={zoomIn}

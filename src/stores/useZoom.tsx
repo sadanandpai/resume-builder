@@ -1,6 +1,9 @@
 import { create } from 'zustand';
 import { GetState, SetState } from './store.interface';
 
+/** Minimum zoom for fitting the A4 preview on narrow viewports (builder only; print uses scale 1). */
+export const ZOOM_MIN = 0.35;
+
 interface IZoomStore {
   zoom: number;
   zoomIn: () => void;
@@ -16,8 +19,8 @@ const handleZoomOut = (get: GetState<IZoomStore>) => () => get().setZoom(get().z
 const handleSetZoom = (set: SetState<IZoomStore>) => (zoom: number) =>
   set(() => {
     if (zoom > 1.5) return { zoom: 1.5 };
-    if (zoom < 0.9) return { zoom: 0.9 };
-    return { zoom: +zoom.toFixed(1) };
+    if (zoom < ZOOM_MIN) return { zoom: ZOOM_MIN };
+    return { zoom: +zoom.toFixed(2) };
   });
 
 const handleResetZoom = (set: SetState<IZoomStore>) => () => {
