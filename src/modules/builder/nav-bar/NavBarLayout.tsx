@@ -1,4 +1,5 @@
-import { ChangeEvent, useCallback, useRef, useState } from 'react';
+import { ChangeEvent, useCallback, useEffect, useRef, useState } from 'react';
+import { useRouter } from 'next/router';
 import { NavBarActions, NavBarMenu, StyledButton } from './atoms';
 import {
   useDatabases,
@@ -27,13 +28,55 @@ import { useEducations } from '@/stores/education';
 import { useExperiences } from '@/stores/experience';
 import { useVoluteeringStore } from '@/stores/volunteering';
 import { Menu, MenuItem } from '@mui/material';
+import { applyImportedResumeJson } from './applyImportedResume';
+import { fetchAndApplyResumeFromUrl, formatImportUrlError } from './fetchResumeFromUrl';
 
 const TOTAL_TEMPLATES_AVAILABLE = Object.keys(AVAILABLE_TEMPLATES).length;
 
 const NavBarLayout = () => {
+  const router = useRouter();
+  const importUrlFromQuery = router.query.importUrl;
   const [openToast, setOpenToast] = useState(false);
+  const [toastContent, setToastContent] = useState('');
   const [menuAnchor, setMenuAnchor] = useState<null | HTMLElement>(null);
   const fileInputRef = useRef(null);
+
+  /** Auto-import when opening `/builder?importUrl=<encoded JSON URL>` (param removed after attempt). */
+  useEffect(() => {
+    if (!router.isReady) return;
+    const param =
+      typeof importUrlFromQuery === 'string'
+        ? importUrlFromQuery
+        : Array.isArray(importUrlFromQuery)
+          ? importUrlFromQuery[0]
+          : undefined;
+    if (!param) return;
+
+    let active = true;
+
+    void (async () => {
+      try {
+        await fetchAndApplyResumeFromUrl(param);
+        if (!active) return;
+        setToastContent('Resume data was successfully imported.');
+        setOpenToast(true);
+      } catch (e) {
+        if (!active) return;
+        setToastContent(formatImportUrlError(e));
+        setOpenToast(true);
+      }
+      if (!active) return;
+      const nextQuery = { ...router.query };
+      delete nextQuery.importUrl;
+      void router.replace({ pathname: router.pathname, query: nextQuery }, undefined, {
+        shallow: true,
+      });
+    })();
+
+    return () => {
+      active = false;
+    };
+  }, [router, router.isReady, router.pathname, importUrlFromQuery]);
 
   const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setMenuAnchor(event.currentTarget);
@@ -87,42 +130,14 @@ const NavBarLayout = () => {
     event.target.value = ''; // To read the same file
 
     reader.onload = (e) => {
-      if (typeof e.target?.result === 'string') {
-        const uploadedResumeJSON = JSON.parse(e.target?.result);
-        const {
-          basics = {},
-          skills = {},
-          work = [],
-          education = [],
-          activities = {
-            involvements: '',
-            achievements: '',
-          },
-          volunteer = [],
-          awards = [],
-        } = uploadedResumeJSON;
-        const {
-          languages = [],
-          frameworks = [],
-          libraries = [],
-          databases = [],
-          technologies = [],
-          practices = [],
-          tools = [],
-        } = skills;
-        useBasicDetails.getState().reset(basics);
-        useLanguages.getState().reset(languages);
-        useFrameworks.getState().reset(frameworks);
-        useLibraries.getState().reset(libraries);
-        useDatabases.getState().reset(databases);
-        useTechnologies.getState().reset(technologies);
-        usePractices.getState().reset(practices);
-        useTools.getState().reset(tools);
-        useExperiences.getState().reset(work);
-        useEducations.getState().reset(education);
-        useVoluteeringStore.getState().reset(volunteer);
-        useAwards.getState().reset(awards);
-        useActivity.getState().reset(activities);
+      try {
+        if (typeof e.target?.result === 'string') {
+          applyImportedResumeJson(JSON.parse(e.target.result));
+          setToastContent('Resume data was successfully imported.');
+          setOpenToast(true);
+        }
+      } catch {
+        setToastContent('Could not read resume JSON from file.');
         setOpenToast(true);
       }
     };
@@ -214,7 +229,7 @@ const NavBarLayout = () => {
         onClose={() => {
           setOpenToast(false);
         }}
-        content={'Resume data was successfully imported.'}
+        content={toastContent}
       />
     </nav>
   );

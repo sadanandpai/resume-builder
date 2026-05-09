@@ -8,6 +8,9 @@ import { Global } from '@emotion/react';
 import Image from 'next/image';
 import { useTemplates } from '@/stores/useTemplate';
 
+const TILE_W = 170;
+const TILE_H = 240;
+
 export const TemplateSlider = () => {
   const templateIndex = useTemplates((state) => state.activeTemplate.id);
 
@@ -18,12 +21,17 @@ export const TemplateSlider = () => {
     const targetElement = targetElementRef.current;
     if (targetElement) {
       splideInstanceRef.current = new SplideCore(targetElement, {
-        perPage: 2,
+        perPage: 3,
         pagination: false,
-        gap: '0px',
+        gap: '8px',
         width: '100%',
         autoHeight: true,
         perMove: 1,
+        breakpoints: {
+          900: { perPage: 3 },
+          640: { perPage: 2 },
+          480: { perPage: 1 },
+        },
       });
 
       splideInstanceRef.current.mount();
@@ -100,11 +108,12 @@ export const TemplateSlide = ({
         className={`h-[255px] w-[180px] rounded border hover:cursor-pointer overflow-hidden relative ${
           isActive ? 'border-resume-800' : 'border-resume-200'
         }`}
+        style={{ width: TILE_W, height: TILE_H }}
         onClick={() => {
           onChangeTemplate(id);
         }}
       >
-        <Image src={thumbnail} alt={name} layout="fill" />
+        <Image src={thumbnail} alt={name} fill className="object-cover" sizes={`${TILE_W}px`} />
 
         {isActive && (
           <div className="absolute top-1 right-1 bg-white rounded-full">
