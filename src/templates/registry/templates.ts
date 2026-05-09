@@ -92,7 +92,7 @@ export const TEMPLATE_REGISTRY: Record<string, TemplateRegistryEntry> = {
   classic: {
     id: 'classic',
     name: 'Classic',
-    thumbnail: '',
+    thumbnail: '/templates/classic.png',
     sectionLayout: {
       regionKeys: [REGION_IDS.main],
       defaults: {
@@ -116,7 +116,7 @@ export const TEMPLATE_REGISTRY: Record<string, TemplateRegistryEntry> = {
   'sidebar-left': {
     id: 'sidebar-left',
     name: 'Sidebar Left',
-    thumbnail: '',
+    thumbnail: '/templates/sidebarleft.png',
     sectionLayout: {
       regionKeys: [REGION_IDS.sidebar, REGION_IDS.main],
       defaults: {
@@ -137,7 +137,7 @@ export const TEMPLATE_REGISTRY: Record<string, TemplateRegistryEntry> = {
   'sidebar-right': {
     id: 'sidebar-right',
     name: 'Sidebar Right',
-    thumbnail: '',
+    thumbnail: '/templates/sidebarright.png',
     sectionLayout: {
       regionKeys: [REGION_IDS.main, REGION_IDS.sidebar],
       defaults: {
@@ -158,7 +158,7 @@ export const TEMPLATE_REGISTRY: Record<string, TemplateRegistryEntry> = {
   'header-band': {
     id: 'header-band',
     name: 'Header Band',
-    thumbnail: '',
+    thumbnail: '/templates/headerband.png',
     sectionLayout: {
       regionKeys: [REGION_IDS.main, REGION_IDS.sidebar],
       defaults: {
@@ -179,7 +179,7 @@ export const TEMPLATE_REGISTRY: Record<string, TemplateRegistryEntry> = {
   creative: {
     id: 'creative',
     name: 'Creative',
-    thumbnail: '',
+    thumbnail: '/templates/creative.png',
     sectionLayout: {
       regionKeys: [REGION_IDS.sidebar, REGION_IDS.main],
       defaults: {
@@ -199,7 +199,7 @@ export const TEMPLATE_REGISTRY: Record<string, TemplateRegistryEntry> = {
   technical: {
     id: 'technical',
     name: 'Technical',
-    thumbnail: '',
+    thumbnail: '/templates/technical.png',
     sectionLayout: {
       regionKeys: [REGION_IDS.main, REGION_IDS.sidebar],
       defaults: {
@@ -227,7 +227,7 @@ export const TEMPLATE_REGISTRY: Record<string, TemplateRegistryEntry> = {
   inspired: {
     id: 'inspired',
     name: 'Inspired',
-    thumbnail: '',
+    thumbnail: '/templates/inspired.png',
     sectionLayout: {
       regionKeys: [REGION_IDS.main, REGION_IDS.sidebar],
       defaults: {
@@ -247,7 +247,7 @@ export const TEMPLATE_REGISTRY: Record<string, TemplateRegistryEntry> = {
   plain: {
     id: 'plain',
     name: 'Plain',
-    thumbnail: '',
+    thumbnail: '/templates/plain.png',
     sectionLayout: {
       regionKeys: [REGION_IDS.main],
       defaults: {
@@ -265,7 +265,7 @@ export const TEMPLATE_REGISTRY: Record<string, TemplateRegistryEntry> = {
   straightforward: {
     id: 'straightforward',
     name: 'Straightforward',
-    thumbnail: '',
+    thumbnail: '/templates/straightforward.png',
     sectionLayout: {
       regionKeys: [REGION_IDS.sidebar, REGION_IDS.main],
       defaults: {
