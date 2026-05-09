@@ -2,7 +2,11 @@
  * -----------------------------------------------------------------------------
  * CONTRIBUTING: add a new resume template
  * -----------------------------------------------------------------------------
- * 1. Create `src/templates/<your-slug>/YourTemplate.tsx` (default export).
+ * 1. Create `src/templates/<your-slug>/<Slug>Template.tsx` (default export), keep it thin,
+ *    and put section UI in `components/` using short filenames (`Skills.tsx`, `Strip.tsx`, … —
+ *    no template-name prefix; see `modern/`, `professional/`, `classic/`).
+ *    Palette-based layouts should import primitives from `@/templates/common/palette-ui`
+ *    and `useResumePalette` / `ResumePalette` from `@/templates/common/resumePalette`.
  * 2. If you introduce a new section id, add it to `sectionIds.ts` (`SECTION_IDS`).
  * 3. Append one entry to `TEMPLATE_REGISTRY` below (copy an existing block).
  *    — Use `REGION_IDS` + `SECTION_IDS` for every id string (avoids typos).
@@ -256,5 +260,27 @@ export const TEMPLATE_REGISTRY: Record<string, TemplateRegistryEntry> = {
       { sectionId: SECTION_IDS.awards, when: has.awards },
     ],
     loadComponent: () => import('@/templates/plain/PlainTemplate'),
+  },
+
+  straightforward: {
+    id: 'straightforward',
+    name: 'Straightforward',
+    thumbnail: '',
+    sectionLayout: {
+      regionKeys: [REGION_IDS.sidebar, REGION_IDS.main],
+      defaults: {
+        [REGION_IDS.sidebar]: [SECTION_IDS.education, SECTION_IDS.skillsMerged, SECTION_IDS.awards],
+        [REGION_IDS.main]: [SECTION_IDS.summary, SECTION_IDS.work, SECTION_IDS.involvements],
+      },
+    },
+    sectionRules: [
+      { sectionId: SECTION_IDS.education, when: has.education },
+      { sectionId: SECTION_IDS.skillsMerged, when: has.skillsMerged },
+      { sectionId: SECTION_IDS.awards, when: has.awards },
+      { sectionId: SECTION_IDS.summary, when: has.basicsSummary },
+      { sectionId: SECTION_IDS.work, when: has.work },
+      { sectionId: SECTION_IDS.involvements, when: has.involvement },
+    ],
+    loadComponent: () => import('@/templates/straightforward/StraightforwardTemplate'),
   },
 };
