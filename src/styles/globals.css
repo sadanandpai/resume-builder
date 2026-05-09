@@ -23,6 +23,20 @@ body {
     -webkit-print-color-adjust: exact !important; /* Chrome, Safari, Edge */
     print-color-adjust: exact !important; /*Firefox*/
   }
+
+  /* MUI menus/popovers/modals render in a portal under body, so print:hidden on nav does not hide them */
+  .MuiModal-root,
+  .MuiPopover-root,
+  .MuiMenu-root,
+  .MuiBackdrop-root,
+  .MuiSnackbar-root {
+    display: none !important;
+  }
+
+  /* Inline preview zoom (transform: scale) must not carry into print — inline styles beat most utilities */
+  .resume-print-scale-wrap {
+    transform: none !important;
+  }
 }
 
 @page {

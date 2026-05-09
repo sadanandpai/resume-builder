@@ -18,7 +18,7 @@ const ResumeController = ({
   onResetLayout: () => void;
 }) => {
   return (
-    <div className="flex">
+    <div className="hidden lg:flex">
       <div className="flex items-center gap-5">
         <button
           type="button"
