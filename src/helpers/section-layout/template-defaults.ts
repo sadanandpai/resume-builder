@@ -51,25 +51,6 @@ export const TEMPLATE_SECTION_LAYOUTS: Record<string, TemplateSectionLayoutConfi
     regionKeys: ['main', 'sidebar'],
     defaults: { main: ['summary', 'work'], sidebar: ['skills', 'tools', 'education'] },
   },
-  minimal: {
-    regionKeys: ['main'],
-    defaults: { main: ['summary', 'work', 'education', 'skills'] },
-  },
-  timeline: {
-    regionKeys: ['main'],
-    defaults: { main: ['summary', 'work', 'education', 'skills'] },
-  },
-  compact: {
-    regionKeys: ['left', 'right'],
-    defaults: {
-      left: ['summary', 'work'],
-      right: ['skills_rated', 'tools', 'education'],
-    },
-  },
-  executive: {
-    regionKeys: ['main'],
-    defaults: { main: ['summary', 'work', 'education', 'skills'] },
-  },
   creative: {
     regionKeys: ['sidebar', 'main'],
     defaults: { sidebar: ['skills', 'education'], main: ['summary', 'work'] },
@@ -80,18 +61,6 @@ export const TEMPLATE_SECTION_LAYOUTS: Record<string, TemplateSectionLayoutConfi
       main: ['summary', 'work', 'projects'],
       sidebar: ['languages', 'frameworks_libs', 'stack', 'education'],
     },
-  },
-  playful: {
-    regionKeys: ['main'],
-    defaults: { main: ['summary', 'work', 'education', 'skills', 'awards'] },
-  },
-  artistic: {
-    regionKeys: ['main', 'sidebar'],
-    defaults: { main: ['summary', 'work', 'education'], sidebar: ['skills'] },
-  },
-  inspired: {
-    regionKeys: ['main', 'sidebar'],
-    defaults: { main: ['work', 'education'], sidebar: ['summary', 'skills'] },
   },
   versatile: {
     regionKeys: ['main'],
@@ -111,58 +80,6 @@ export const TEMPLATE_SECTION_LAYOUTS: Record<string, TemplateSectionLayoutConfi
   plain: {
     regionKeys: ['main'],
     defaults: { main: ['work', 'education', 'awards'] },
-  },
-  instinctive: {
-    regionKeys: ['main'],
-    defaults: { main: ['work', 'education', 'skills'] },
-  },
-  elegant: {
-    regionKeys: ['sidebar', 'main'],
-    defaults: { sidebar: ['skills_key', 'tools'], main: ['work', 'education'] },
-  },
-  modernized: {
-    regionKeys: ['main', 'sidebar'],
-    defaults: { main: ['work', 'education', 'awards'], sidebar: ['summary', 'skills'] },
-  },
-  sleek: {
-    regionKeys: ['main', 'sidebar'],
-    defaults: { main: ['work', 'education'], sidebar: ['summary', 'contact_info', 'skills'] },
-  },
-  classy: {
-    regionKeys: ['main'],
-    defaults: { main: ['work', 'education', 'skills'] },
-  },
-  distinguished: {
-    regionKeys: ['main'],
-    defaults: { main: ['work', 'education', 'skills'] },
-  },
-  expressive: {
-    regionKeys: ['sidebar', 'main'],
-    defaults: { sidebar: ['education', 'skills_merged', 'awards'], main: ['work'] },
-  },
-  'simple-ats': {
-    regionKeys: ['main'],
-    defaults: { main: ['summary', 'work', 'education', 'skills_grid'] },
-  },
-  corporate: {
-    regionKeys: ['sidebar', 'main'],
-    defaults: { sidebar: ['skills_merged'], main: ['summary', 'work', 'education'] },
-  },
-  'split-header': {
-    regionKeys: ['sidebar', 'main'],
-    defaults: { sidebar: ['skills_rated', 'practices'], main: ['summary', 'work', 'education'] },
-  },
-  'precision-ats': {
-    regionKeys: ['main'],
-    defaults: { main: ['summary', 'work', 'education', 'skills_line'] },
-  },
-  'asymmetric-ats': {
-    regionKeys: ['main', 'sidebar'],
-    defaults: { main: ['summary', 'work', 'education'], sidebar: ['skills_list'] },
-  },
-  balanced: {
-    regionKeys: ['main', 'sidebar'],
-    defaults: { main: ['summary', 'work', 'education'], sidebar: ['skills'] },
   },
 };
 
