@@ -114,7 +114,7 @@ export const TemplateSlide = ({
     <li className="splide__slide flex flex-col items-center">
       <div
         className={`rounded border hover:cursor-pointer overflow-hidden relative transition-shadow hover:shadow-lg ${
-          isActive ? 'border-resume-800 ring-2 ring-resume-800' : 'border-resume-200'
+          isActive ? 'border-[#1890ff] ring-2 ring-[#1890ff]/35' : 'border-resume-200'
         } ${isPlaceholder ? 'bg-resume-50' : 'bg-white'}`}
         style={{ width: TILE_W, height: TILE_H }}
         onClick={() => {
