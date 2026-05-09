@@ -14,7 +14,10 @@ import {
 } from '@dnd-kit/core';
 import { sortableKeyboardCoordinates } from '@dnd-kit/sortable';
 import { ReactNode, useCallback, useLayoutEffect, useRef } from 'react';
-import { computeRegionsAfterDrag } from '@/helpers/section-layout/computeRegionsAfterDrag';
+import {
+  computeRegionsAfterDrag,
+  regionLayoutsEqual,
+} from '@/helpers/section-layout/computeRegionsAfterDrag';
 
 type Props = {
   regionKeys: string[];
@@ -84,6 +87,22 @@ export function ResumeSectionDndProvider({
         overSortableRegionId
       );
       if (!next) return;
+
+      const prevProjected = projectedRef.current;
+      const persisted = regionsRef.current;
+
+      if (prevProjected && regionLayoutsEqual(prevProjected, next, regionKeys)) {
+        return;
+      }
+      if (!prevProjected && regionLayoutsEqual(persisted, next, regionKeys)) {
+        return;
+      }
+      if (regionLayoutsEqual(persisted, next, regionKeys)) {
+        projectedRef.current = null;
+        onDragOverRegions?.(null);
+        return;
+      }
+
       projectedRef.current = next;
       onDragOverRegions?.(next);
     },
