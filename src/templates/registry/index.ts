@@ -3,6 +3,7 @@ export type {
   TemplateSectionLayoutConfig,
   TemplateSectionRule,
 } from './types';
+export { REGION_IDS, SECTION_IDS, type RegionId, type SectionId } from './sectionIds';
 export { TEMPLATE_REGISTRY } from './templates';
 export * as templatePredicates from './predicates';
 
