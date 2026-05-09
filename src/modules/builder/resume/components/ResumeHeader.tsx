@@ -1,15 +1,20 @@
 import { useTemplates } from '@/stores/useTemplate';
 import { useSectionLayoutStore } from '@/stores/useSectionLayoutStore';
 import { useZoom } from '@/stores/useZoom';
+import { useShallow } from 'zustand/react/shallow';
 import ResumeController from '../atoms/ResumeController';
 import { ResumeTitle } from '../atoms/ResumeTitle';
 
 const ResumeHeader = () => {
   const { zoomIn, zoomOut, resetZoom } = useZoom.getState();
   const activeTemplate = useTemplates((state) => state.activeTemplate);
-  const isReorderMode = useSectionLayoutStore((state) => state.isReorderMode);
-  const toggleReorderMode = useSectionLayoutStore((state) => state.toggleReorderMode);
-  const resetTemplateLayout = useSectionLayoutStore((state) => state.resetTemplate);
+  const { isReorderMode, toggleReorderMode, resetTemplateLayout } = useSectionLayoutStore(
+    useShallow((state) => ({
+      isReorderMode: state.isReorderMode,
+      toggleReorderMode: state.toggleReorderMode,
+      resetTemplateLayout: state.resetTemplate,
+    }))
+  );
 
   return (
     <div className="flex items-center justify-between">
