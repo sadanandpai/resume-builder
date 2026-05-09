@@ -2,6 +2,23 @@ import { arrayMove } from '@dnd-kit/sortable';
 
 export const REGION_DROP_PREFIX = '__resume_drop__';
 
+/** Avoids spurious React updates during drag when collision jitter repeats the same layout. */
+export function regionLayoutsEqual(
+  a: Record<string, string[]>,
+  b: Record<string, string[]>,
+  regionKeys: string[]
+): boolean {
+  for (const k of regionKeys) {
+    const aa = a[k] ?? [];
+    const bb = b[k] ?? [];
+    if (aa.length !== bb.length) return false;
+    for (let i = 0; i < aa.length; i++) {
+      if (aa[i] !== bb[i]) return false;
+    }
+  }
+  return true;
+}
+
 export function isRegionDropId(id: string): boolean {
   return id.startsWith(REGION_DROP_PREFIX);
 }
