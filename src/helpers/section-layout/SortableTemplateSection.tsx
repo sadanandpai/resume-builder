@@ -30,23 +30,27 @@ export function SortableTemplateSection({ id, children }: { id: string; children
   }
 
   return (
-    <div ref={setNodeRef} style={style} className="print:hidden group relative my-2">
-      <button
-        type="button"
-        className={`w-full cursor-grab touch-none rounded-md border border-[#1890ff]/35 bg-[#1890ff]/8 px-3 py-3 text-left text-sm font-medium text-resume-700 transition-colors hover:border-[#1890ff] hover:bg-[#1890ff]/12 active:cursor-grabbing ${
-          isDragging
-            ? 'border-dashed border-[#1890ff]/70 bg-[#1890ff]/12 text-resume-500'
-            : 'shadow-sm'
-        }`}
-        aria-label={`Drag to reorder ${sectionName}`}
-        {...attributes}
-        {...listeners}
-      >
-        <span className="flex items-center gap-2">
-          <RxDragHandleDots2 size={16} aria-hidden />
-          {sectionName}
-        </span>
-      </button>
+    <div ref={setNodeRef} style={style} className="group relative my-2">
+      <div className="print:hidden">
+        <button
+          type="button"
+          className={`w-full cursor-grab touch-none rounded-md border border-[#1890ff]/35 bg-[#1890ff]/8 px-3 py-3 text-left text-sm font-medium text-resume-700 transition-colors hover:border-[#1890ff] hover:bg-[#1890ff]/12 active:cursor-grabbing ${
+            isDragging
+              ? 'border-dashed border-[#1890ff]/70 bg-[#1890ff]/12 text-resume-500'
+              : 'shadow-sm'
+          }`}
+          aria-label={`Drag to reorder ${sectionName}`}
+          {...attributes}
+          {...listeners}
+        >
+          <span className="flex items-center gap-2">
+            <RxDragHandleDots2 size={16} aria-hidden />
+            {sectionName}
+          </span>
+        </button>
+      </div>
+      {/* If print runs before reorder state flips off, still output real section content */}
+      <div className="hidden print:block relative">{children}</div>
     </div>
   );
 }
