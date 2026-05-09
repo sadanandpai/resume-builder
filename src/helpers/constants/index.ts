@@ -1,4 +1,5 @@
 import dynamic from 'next/dynamic';
+import { TEMPLATE_REGISTRY } from '@/templates/registry';
 import { IThemeColor, ITemplate } from './index.interface';
 
 export const SYSTEM_COLORS: IThemeColor[] = [
@@ -25,76 +26,18 @@ export const SYSTEM_COLORS: IThemeColor[] = [
   },
 ];
 
-export const AVAILABLE_TEMPLATES: ITemplate = {
-  modern: {
-    id: 'modern',
-    name: 'Modern Resume',
-    thumbnail: '/templates/modern.png',
-    component: dynamic(() => import('@/templates/modern/MordernTemplate'), {
-      ssr: false,
-    }),
-  },
-  professional: {
-    id: 'professional',
-    name: 'Professional Resume',
-    thumbnail: '/templates/professional.png',
-    component: dynamic(() => import('@/templates/professional/ProfessionalTemplate'), {
-      ssr: false,
-    }),
-  },
-  classic: {
-    id: 'classic',
-    name: 'Classic',
-    thumbnail: '',
-    component: dynamic(() => import('@/templates/classic/ClassicTemplate'), { ssr: false }),
-  },
-  'sidebar-left': {
-    id: 'sidebar-left',
-    name: 'Sidebar Left',
-    thumbnail: '',
-    component: dynamic(() => import('@/templates/sidebar-left/SidebarLeftTemplate'), {
-      ssr: false,
-    }),
-  },
-  'sidebar-right': {
-    id: 'sidebar-right',
-    name: 'Sidebar Right',
-    thumbnail: '',
-    component: dynamic(() => import('@/templates/sidebar-right/SidebarRightTemplate'), {
-      ssr: false,
-    }),
-  },
-  'header-band': {
-    id: 'header-band',
-    name: 'Header Band',
-    thumbnail: '',
-    component: dynamic(() => import('@/templates/header-band/HeaderBandTemplate'), { ssr: false }),
-  },
-  creative: {
-    id: 'creative',
-    name: 'Creative',
-    thumbnail: '',
-    component: dynamic(() => import('@/templates/creative/CreativeTemplate'), { ssr: false }),
-  },
-  technical: {
-    id: 'technical',
-    name: 'Technical',
-    thumbnail: '',
-    component: dynamic(() => import('@/templates/technical/TechnicalTemplate'), { ssr: false }),
-  },
-  inspired: {
-    id: 'inspired',
-    name: 'Inspired',
-    thumbnail: '',
-    component: dynamic(() => import('@/templates/inspired/InspiredTemplate'), { ssr: false }),
-  },
-  plain: {
-    id: 'plain',
-    name: 'Plain',
-    thumbnail: '',
-    component: dynamic(() => import('@/templates/plain/PlainTemplate'), { ssr: false }),
-  },
-};
+/** Built from `src/templates/registry/templates.ts` — add templates there. */
+export const AVAILABLE_TEMPLATES: ITemplate = Object.fromEntries(
+  Object.entries(TEMPLATE_REGISTRY).map(([key, entry]) => [
+    key,
+    {
+      id: entry.id,
+      name: entry.name,
+      thumbnail: entry.thumbnail,
+      component: dynamic(entry.loadComponent, { ssr: false }),
+    },
+  ])
+) as ITemplate;
 
 export const CUSTOM_THEME_COLOR: IThemeColor = {
   backgroundColor: 'white',
