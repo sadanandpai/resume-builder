@@ -14,7 +14,7 @@ interface IEducationProps {
 
 const Education: React.FC<IEducationProps> = ({ educationInfo, currentIndex }) => {
   const onChangeHandler = useCallback(
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // oxlint-disable-next-line typescript/no-explicit-any
     (name: string, value: any) => {
       const currentExpInfo = { ...educationInfo };
       switch (name) {

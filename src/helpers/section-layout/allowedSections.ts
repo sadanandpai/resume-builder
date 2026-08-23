@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/* oxlint-disable typescript/no-explicit-any */
 import { getRegistryEntryByTemplateId } from '@/templates/registry';
 
 /** Uses registry rules so templates stay in sync with SectionValidator “has content” checks. */

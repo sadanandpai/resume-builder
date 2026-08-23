@@ -15,7 +15,7 @@ interface IExperienceProps {
 
 const Experience: React.FC<IExperienceProps> = ({ experienceInfo, currentIndex }) => {
   const onChangeHandler = useCallback(
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // oxlint-disable-next-line typescript/no-explicit-any
     (name: string, value: any) => {
       const currentExpInfo = { ...experienceInfo };
       const updateExperience = useExperiences.getState().updateExperience;

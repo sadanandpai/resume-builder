@@ -14,7 +14,7 @@ interface IRichtext {
 
 export const RichtextEditor = memo(({ label, onChange, value }: IRichtext) => {
   const editorContainerRef = useRef<HTMLTextAreaElement | null>(null);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // oxlint-disable-next-line typescript/no-explicit-any
   const editorRef = useRef<any>(null);
   const [editorInstanceCreated, setEditorInstanceCreated] = useState(false);
 
@@ -42,7 +42,7 @@ export const RichtextEditor = memo(({ label, onChange, value }: IRichtext) => {
       };
       initEditor();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // oxlint-disable-next-line react/exhaustive-deps
   }, []);
 
   useEffect(() => {

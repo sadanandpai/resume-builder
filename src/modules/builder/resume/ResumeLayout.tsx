@@ -21,7 +21,7 @@ import { useZoom, ZOOM_MIN } from '@/stores/useZoom';
 import { useSectionLayoutStore } from '@/stores/useSectionLayoutStore';
 
 // TODO: need to define types
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// oxlint-disable-next-line typescript/no-explicit-any
 export const StateContext: Context<any> = createContext(null);
 
 function ResumeSectionLayoutShell({

@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/* oxlint-disable typescript/no-explicit-any */
 import React, { Fragment } from 'react';
 import Box from '@mui/material/Box';
 import Contacts from './Contacts';

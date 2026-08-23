@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/* oxlint-disable typescript/no-explicit-any */
 import { ChangeEvent, Fragment, useEffect } from 'react';
 import TextField from '@mui/material/TextField';
 
@@ -85,7 +85,7 @@ const Links = ({
 
   useEffect(() => {
     onChangeHandler(Object.values(networks), 'profiles');
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // oxlint-disable-next-line react/exhaustive-deps
   }, []);
 
   const onURLChange = (value: string, network: string) => {

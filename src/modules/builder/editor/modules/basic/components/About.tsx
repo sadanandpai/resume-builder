@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/* oxlint-disable typescript/no-explicit-any */
 import React, { Fragment } from 'react';
 import { RichtextEditor } from '@/helpers/common/components/richtext';
 

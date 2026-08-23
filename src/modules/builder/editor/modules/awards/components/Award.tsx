@@ -15,7 +15,7 @@ interface IAwardComp {
 
 const AwardComp: React.FC<IAwardComp> = ({ awardInfo, currentIndex }) => {
   const onChangeHandler = useCallback(
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // oxlint-disable-next-line typescript/no-explicit-any
     (name: string, value: any) => {
       const currentAwardInfo = { ...awardInfo };
       const updateAward = useAwards.getState().updateAward;

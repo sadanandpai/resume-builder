@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint src/",
+    "lint": "oxlint src",
     "prepare": "husky"
   },
   "dependencies": {
@@ -42,12 +42,8 @@
     "@types/node": "^25.9.5",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
-    "@typescript-eslint/eslint-plugin": "^8.67.0",
-    "eslint": "^9.39.5",
-    "eslint-config-next": "^16.3.2",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-prettier": "^5.5.6",
     "husky": "^9.1.7",
+    "oxlint": "^1.79.0",
     "postcss": "^8.5.26",
     "prettier": "^3.9.6",
     "pretty-quick": "^4.2.2",
