@@ -1,7 +1,7 @@
 import { Fragment, useState } from 'react';
 
 import { INavMenuItemProps } from './MenuItem.interface';
-import Image from 'next/image';
+import Image from '@/helpers/common/components/Image';
 import { NavMenuPopover } from './NavMenuPopover';
 import { StyledButton } from '../atoms';
 

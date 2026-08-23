@@ -1,4 +1,3 @@
-import React from 'react';
 import { RichtextEditor } from '@/helpers/common/components/richtext';
 import { useActivity } from '@/stores/activity';
 

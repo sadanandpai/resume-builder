@@ -1,7 +1,7 @@
 import { ColorBox, ColorBoxWrapper } from '../atoms';
 
 import { IThemeColor } from '@/helpers/constants/index.interface';
-import Image from 'next/image';
+import Image from '@/helpers/common/components/Image';
 import { SYSTEM_COLORS } from '@/helpers/constants/index';
 import { useThemes } from '@/stores/themes';
 

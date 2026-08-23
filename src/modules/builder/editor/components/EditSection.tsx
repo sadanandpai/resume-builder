@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from '@/helpers/common/components/Image';
 import { ReactNode } from 'react';
 import { motion } from 'framer-motion';
 

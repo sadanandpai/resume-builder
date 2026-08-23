@@ -4,7 +4,7 @@ import { NavBarActions, StyledButton } from '../builder/nav-bar/atoms';
 import { BsGithub } from 'react-icons/bs';
 import { Button } from '@mui/material';
 import FeatureSection from './components/Feature';
-import Image from 'next/image';
+import Image from '@/helpers/common/components/Image';
 import Link from 'next/link';
 import Person from './components/Person';
 

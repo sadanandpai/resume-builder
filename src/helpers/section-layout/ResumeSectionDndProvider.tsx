@@ -75,8 +75,7 @@ export function ResumeSectionDndProvider({
         return;
       }
       const overData = over.data.current as
-        | { resumeRegion?: string; regionId?: string }
-        | undefined;
+        { resumeRegion?: string; regionId?: string } | undefined;
       const overSortableRegionId = overData?.resumeRegion ?? overData?.regionId;
       const base = projectedRef.current ?? regionsRef.current;
       const next = computeRegionsAfterDrag(
@@ -117,9 +116,7 @@ export function ResumeSectionDndProvider({
       onDragOverRegions?.(null);
       if (!dragEnabled || !over) return;
       const latest = projected ?? regionsRef.current;
-      const overData = over.data.current as
-        | { resumeRegion?: string; regionId?: string }
-        | undefined;
+      const overData = over.data.current;
       const overSortableRegionId = overData?.resumeRegion ?? overData?.regionId;
       const next = computeRegionsAfterDrag(
         latest,

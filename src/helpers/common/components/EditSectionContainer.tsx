@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion';
 
-import Image from 'next/image';
+import Image from '@/helpers/common/components/Image';
 import { ReactNode } from 'react';
 
 const animation = {

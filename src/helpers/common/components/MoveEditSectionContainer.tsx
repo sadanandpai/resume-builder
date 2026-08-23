@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { Fragment, ReactNode } from 'react';
 
-import Image from 'next/image';
+import Image from '@/helpers/common/components/Image';
 
 const animation = {
   exit: {

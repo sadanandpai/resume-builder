@@ -1,7 +1,7 @@
 'use client';
 
 import EditorLayout from './editor/EditorLayout';
-import Image from 'next/image';
+import Image from '@/helpers/common/components/Image';
 import { useState } from 'react';
 import NavBarLayout from './nav-bar/NavBarLayout';
 import ResumeHeader from './resume/components/ResumeHeader';

@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from '@/helpers/common/components/Image';
 
 const persons = [
   {
@@ -40,10 +40,10 @@ const PersonCard = ({ children }: { children: React.ReactNode }) => (
 const ProfileSocial = ({ github, linkedin }: { github: string; linkedin: string }) => (
   <div className="flex gap-4">
     <a href={github} target="_blank" rel="noreferrer">
-      <Image src="/icons/github.svg" alt="github" width="24" height="24" />
+      <Image src="/icons/github.svg" alt="github" width="24" height="24" className="w-auto" />
     </a>
     <a href={linkedin} target="_blank" rel="noreferrer">
-      <Image src="/icons/linkedin.svg" alt="linkedin" width="24" height="24" />
+      <Image src="/icons/linkedin.svg" alt="linkedin" width="24" height="24" className="w-auto" />
     </a>
   </div>
 );

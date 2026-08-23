@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from '@/helpers/common/components/Image';
 import Link from 'next/link';
 
 function FeatureSection() {

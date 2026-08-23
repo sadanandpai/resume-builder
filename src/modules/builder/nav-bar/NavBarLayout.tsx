@@ -13,7 +13,7 @@ import {
 
 import { AVAILABLE_TEMPLATES } from '@/helpers/constants';
 import DEFAULT_RESUME_JSON from '@/helpers/constants/resume-data.json';
-import Image from 'next/image';
+import Image from '@/helpers/common/components/Image';
 import Link from 'next/link';
 import { NavMenuItem } from './components/MenuItem';
 import { PrintResume } from './components/PrintResume';

@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from '@/helpers/common/components/Image';
 import { ReactNode } from 'react';
 import Tooltip from '@mui/material/Tooltip';
 
@@ -39,8 +39,8 @@ const ResumeController = ({
             src="/icons/zoom-out.svg"
             className="cursor-pointer"
             alt="Zoom out"
-            width="24"
-            height="24"
+            width={24}
+            height={24}
             onClick={zoomOut}
           />
         </TooltipRenderer>
@@ -49,8 +49,8 @@ const ResumeController = ({
             src="/icons/zoom-in.svg"
             className="cursor-pointer"
             alt="Zoom in"
-            width="24"
-            height="24"
+            width={24}
+            height={24}
             onClick={zoomIn}
           />
         </TooltipRenderer>
@@ -59,8 +59,8 @@ const ResumeController = ({
             src="/icons/reset-zoom.svg"
             className="cursor-pointer"
             alt="Reset zoom"
-            width="24"
-            height="24"
+            width={24}
+            height={24}
             onClick={resetZoom}
           />
         </TooltipRenderer>

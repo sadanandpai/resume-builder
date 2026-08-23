@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from '@/helpers/common/components/Image';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { motion } from 'framer-motion';

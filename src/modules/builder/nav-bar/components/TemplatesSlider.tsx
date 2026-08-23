@@ -5,7 +5,7 @@ import { useEffect, useRef } from 'react';
 
 import { AVAILABLE_TEMPLATES } from '@/helpers/constants';
 import { Global } from '@emotion/react';
-import Image from 'next/image';
+import Image from '@/helpers/common/components/Image';
 import { useTemplates } from '@/stores/useTemplate';
 
 const TILE_W = 170;
