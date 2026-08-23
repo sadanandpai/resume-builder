@@ -26,7 +26,7 @@
     "color": "^5.0.3",
     "dayjs": "^1.11.23",
     "export-from-json": "^1.8.1",
-    "framer-motion": "^12.43.0",
+    "framer-motion": "^13.1.1",
     "html-react-parser": "^6.1.7",
     "immer": "^11.1.18",
     "jodit": "^4.13.23",
@@ -48,6 +48,6 @@
     "prettier": "^3.9.6",
     "pretty-quick": "^4.2.2",
     "tailwindcss": "^4.3.3",
-    "typescript": "^6.0.3"
+    "typescript": "^7.0.2"
   }
 }
