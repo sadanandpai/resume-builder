@@ -3,7 +3,7 @@ import { createJSONStorage, persist } from 'zustand/middleware';
 
 const STORAGE_KEY = 'resumeSectionLayouts';
 
-export type SectionLayoutByTemplate = Record<string, Record<string, string[]>>;
+type SectionLayoutByTemplate = Record<string, Record<string, string[]>>;
 
 type SectionLayoutState = {
   layouts: SectionLayoutByTemplate;

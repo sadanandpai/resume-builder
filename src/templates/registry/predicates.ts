@@ -1,5 +1,5 @@
 /** Shared “has content” checks for resume sections (aligned with SectionValidator usage). */
-export const hasLen = (v: unknown) =>
+const hasLen = (v: unknown) =>
   !!(v && (typeof v === 'string' ? v.length : (v as any[]).length));
 
 export const basicsSummary = (r: any) => hasLen(r.basics?.summary);

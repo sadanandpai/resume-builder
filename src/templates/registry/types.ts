@@ -7,7 +7,7 @@ export type TemplateSectionLayoutConfig = {
 };
 
 /** One section id + when it should appear (must mirror SectionValidator “has content” in the template). */
-export type TemplateSectionRule = {
+type TemplateSectionRule = {
   sectionId: string;
 
   when: (resumeData: any) => boolean;

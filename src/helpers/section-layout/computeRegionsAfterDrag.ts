@@ -19,11 +19,11 @@ export function regionLayoutsEqual(
   return true;
 }
 
-export function isRegionDropId(id: string): boolean {
+function isRegionDropId(id: string): boolean {
   return id.startsWith(REGION_DROP_PREFIX);
 }
 
-export function regionIdFromDropId(id: string): string {
+function regionIdFromDropId(id: string): string {
   return id.slice(REGION_DROP_PREFIX.length);
 }
 

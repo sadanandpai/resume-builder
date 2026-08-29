@@ -10,13 +10,5 @@ export { SectionHeading } from './SectionHeading';
 export { RichText } from './RichText';
 export { ContactLine, ContactBlock, SocialIconsRow } from './Contact';
 export { ProfileAvatar } from './ProfileAvatar';
-export {
-  SkillBar,
-  SkillDots,
-  ChipList,
-  SkillBarThick,
-  SkillStars,
-  SkillDotGrid,
-} from './SkillWidgets';
-export { SectionRule } from './SectionRule';
+export { SkillBar, SkillDots, ChipList } from './SkillWidgets';
 export { pageStyle, H1, Label, JobHeader } from './layoutPrimitives';

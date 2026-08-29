@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-export interface ILocation {
+interface ILocation {
   address: string;
   postalCode: string;
   city: string;
@@ -31,16 +31,6 @@ export interface IBasics {
 export interface IItem {
   name: string;
   level: number;
-}
-
-export interface ISkillsIntrf {
-  languages: IItem[];
-  frameworks: IItem[];
-  technologies: IItem[];
-  libraries: IItem[];
-  databases: IItem[];
-  tools: IItem[];
-  practices: IItem[];
 }
 
 export interface IWorkIntrf {
@@ -89,11 +79,4 @@ export interface IAwards {
   awarder: string;
   date: dayjs.Dayjs;
   summary: string;
-}
-
-export interface IResume {
-  basics: IBasics;
-  skills: ISkillsIntrf;
-  work: IWorkIntrf[];
-  education: IEducation[];
 }

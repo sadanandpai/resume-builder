@@ -1,9 +1,7 @@
 import { TEMPLATE_REGISTRY } from '@/templates/registry';
 import type { TemplateSectionLayoutConfig } from '@/templates/registry/types';
 
-export type { TemplateSectionLayoutConfig } from '@/templates/registry/types';
-
-export const TEMPLATE_SECTION_LAYOUTS: Record<string, TemplateSectionLayoutConfig> =
+const TEMPLATE_SECTION_LAYOUTS: Record<string, TemplateSectionLayoutConfig> =
   Object.fromEntries(
     Object.values(TEMPLATE_REGISTRY).map((entry) => [entry.id, entry.sectionLayout])
   );

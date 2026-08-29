@@ -1,6 +1,6 @@
 import { applyImportedResumeJson } from './applyImportedResume';
 
-export function assertFetchableHttpUrl(raw: string): URL {
+function assertFetchableHttpUrl(raw: string): URL {
   const trimmed = raw.trim();
   if (!trimmed) {
     throw new Error('Enter a URL to your resume JSON file.');

@@ -89,7 +89,7 @@ export const TemplateSlider = () => {
   );
 };
 
-export const TemplateSlide = ({
+const TemplateSlide = ({
   isActive,
   id,
   name,
