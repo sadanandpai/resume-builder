@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "oxlint src",
+    "test": "vitest run",
     "prepare": "husky"
   },
   "dependencies": {
@@ -37,15 +38,20 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.3",
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^14.6.6",
     "@types/node": "^25.9.5",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
     "husky": "^9.1.7",
+    "jsdom": "^29.1.1",
     "oxlint": "^1.79.0",
     "postcss": "^8.5.26",
     "prettier": "^3.9.6",
     "pretty-quick": "^4.2.2",
     "tailwindcss": "^4.3.3",
-    "typescript": "^7.0.2"
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.11"
   }
 }
