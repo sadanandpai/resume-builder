@@ -18,6 +18,20 @@ Run the environment locally or in Docker by following the instructions at [Runni
 
 ---
 
+### Quality checks
+
+Before submitting a change, run the same core checks used by the project:
+
+```sh
+npm run lint
+npm test
+npm run build
+```
+
+Add or update tests when changing resume data, import/export, templates, persistence, or local analysis behavior.
+
+---
+
 ### Creating a template
 
 TODO(sadanandpai): Per issue https://github.com/sadanandpai/resume-builder/issues/175, add instructions for how to create a template.
