@@ -29,6 +29,7 @@ describe('SectionHeading', () => {
   it('applies the requested alignment and caps treatment', () => {
     render(<SectionHeading title="Experience" p={palette} variant="caps" align="center" />);
 
+    expect(screen.queryByRole('heading', { name: 'Projects' })).not.toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Experience' })).toHaveStyle({
       textAlign: 'center',
       textTransform: 'uppercase',
