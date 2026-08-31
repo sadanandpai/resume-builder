@@ -2,9 +2,11 @@ name: Continuous Integration with Build and Test
 
 on:
   push:
-
-permissions:
-  contents: read
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   build-and-test:
