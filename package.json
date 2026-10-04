@@ -23,6 +23,7 @@
     "@mui/material-nextjs": "^9.4.0",
     "@mui/x-date-pickers": "^9.14.0",
     "@splidejs/splide": "^4.1.4",
+    "@vercel/analytics": "^2.0.1",
     "color": "^5.0.3",
     "dayjs": "^1.11.23",
     "export-from-json": "^1.8.1",

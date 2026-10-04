@@ -3,6 +3,7 @@ import '@/styles/globals.css';
 import { AppCacheProvider, createEmotionCache } from '@mui/material-nextjs/v15-pagesRouter';
 
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { Analytics } from '@vercel/analytics/next';
 import type { AppProps } from 'next/app';
 import { EmotionCache } from '@emotion/cache';
 import Head from 'next/head';
@@ -27,6 +28,7 @@ export default function App(props: AppProps & { emotionCache?: EmotionCache }) {
           <Component {...pageProps} />
         </LocalizationProvider>
       </ThemeProvider>
+      <Analytics />
     </AppCacheProvider>
   );
 }
