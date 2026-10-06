@@ -17,9 +17,9 @@ const BuilderLayout = () => {
   const [mobileTab, setMobileTab] = useState<MobileTab>('preview');
 
   return (
-    <div className="flex flex-col h-screen min-h-0">
+    <div className="flex flex-col h-screen min-h-0 print:h-auto print:block">
       <NavBarLayout />
-      <main className="flex flex-1 flex-col lg:flex-row min-h-0 max-h-[calc(100vh-3.5rem)] print:max-h-fit">
+      <main className="flex flex-1 flex-col lg:flex-row min-h-0 max-h-[calc(100vh-3.5rem)] print:max-h-none print:block">
         <div className="builder-mobile-tabs print:hidden lg:hidden shrink-0 border-b border-resume-200 bg-custom-grey100 px-3 py-1.5">
           <div
             className="flex w-full gap-0.5 rounded-[4px] border border-resume-200 bg-resume-50 p-0.5 shadow-level-4dp"
@@ -58,14 +58,14 @@ const BuilderLayout = () => {
         </div>
 
         <div
-          className={`flex flex-col flex-1 min-h-0 min-w-0 bg-custom-grey100 print:bg-white ${
+          className={`flex flex-col flex-1 min-h-0 min-w-0 bg-custom-grey100 print:bg-white print:block ${
             mobileTab === 'preview' ? 'flex' : 'hidden'
           } lg:flex`}
         >
           <header className="w-full max-w-[210mm] mt-3 lg:mt-5 mb-2 lg:mb-3 mx-auto px-3 lg:px-0 print:hidden shrink-0">
             <ResumeHeader />
           </header>
-          <div className="flex-1 min-h-0 overflow-auto no-scrollbar">
+          <div className="flex-1 min-h-0 overflow-auto no-scrollbar print:overflow-visible print:block">
             <ResumeLayout pauseFitToWidth={mobileTab === 'edit'} />
           </div>
         </div>

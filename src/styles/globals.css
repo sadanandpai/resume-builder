@@ -43,3 +43,32 @@ body {
   size: A4 !important;
   margin: 0 !important;
 }
+
+/* One A4 page with the same content boundary in preview and print. */
+.resume-pages {
+  width: 210mm;
+  margin: 0 auto;
+}
+.resume-a4-page {
+  width: 210mm;
+  height: 297mm;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 1px 6px #0002;
+  margin-bottom: 20px;
+}
+.resume-page-content {
+  width: 100%;
+  height: 100%;
+  display: flow-root;
+}
+@media print {
+  .resume-a4-page {
+    margin: 0;
+    box-shadow: none;
+    break-inside: avoid;
+  }
+  .resume-print-scale-wrap {
+    transition: none !important;
+  }
+}

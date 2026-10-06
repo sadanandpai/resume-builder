@@ -8,6 +8,8 @@ import {
   type ReactNode,
 } from 'react';
 
+import { PagedResume } from './PagedResume';
+
 import { AVAILABLE_TEMPLATES } from '@/helpers/constants';
 import { getAllowedSectionIdsForTemplate } from '@/helpers/section-layout/allowedSections';
 import { ResumeSectionDndProvider } from '@/helpers/section-layout/ResumeSectionDndProvider';
@@ -114,7 +116,7 @@ export const ResumeLayout = ({ pauseFitToWidth = false }: { pauseFitToWidth?: bo
         style={{ transform: `scale(${zoom})` }}
         className="resume-print-scale-wrap origin-top transition-all duration-300 ease-linear"
       >
-        <div className="w-[210mm] h-[296mm] bg-white my-0 mx-auto">
+        <PagedResume>
           <StateContext.Provider value={resumeData}>
             <ThemeProvider theme={selectedTheme}>
               <ResumeSectionLayoutShell templateId={templateId} resumeData={resumeData}>
@@ -122,7 +124,7 @@ export const ResumeLayout = ({ pauseFitToWidth = false }: { pauseFitToWidth?: bo
               </ResumeSectionLayoutShell>
             </ThemeProvider>
           </StateContext.Provider>
-        </div>
+        </PagedResume>
       </div>
     </div>
   );
