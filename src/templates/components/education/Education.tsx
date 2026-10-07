@@ -15,7 +15,10 @@ function Education({
   return (
     <SectionFrame title={title} density={density}>
       {items.map((item, index) => (
-        <div key={item.id || index} style={{ marginBottom: design === 'compact' ? 6 : 10 }}>
+        <div
+          key={item.id || index}
+          style={{ marginBottom: index === items.length - 1 ? 0 : design === 'compact' ? 10 : 14 }}
+        >
           <div style={{ fontWeight: design === 'standard' ? 400 : 600 }}>
             {[item.studyType, item.area].filter(Boolean).join(' — ')}
           </div>

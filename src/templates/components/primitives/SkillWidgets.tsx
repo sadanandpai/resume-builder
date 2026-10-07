@@ -80,7 +80,7 @@ export const ChipList = ({
     <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
       {items.map((item, idx) => {
         const base: CSSProperties = {
-          fontSize: 10.5,
+          fontSize: 'inherit',
           padding: '2px 8px',
           borderRadius: 999,
           lineHeight: 1.4,
