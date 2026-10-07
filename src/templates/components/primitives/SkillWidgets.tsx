@@ -1,3 +1,4 @@
+import { bodySize, lineHeight, spacing } from '@/helpers/resume-style/styles';
 import React, { CSSProperties } from 'react';
 
 import type { ResumePalette } from '@/templates/components/theme/resumePalette';
@@ -6,13 +7,13 @@ import { withAlpha } from '@/templates/components/theme/resumePalette';
 export const SkillBar = ({ name, level, p }: { name: string; level: number; p: ResumePalette }) => {
   const pct = Math.max(0, Math.min(100, level > 5 ? level : (level / 5) * 100));
   return (
-    <div style={{ marginBottom: 8 }}>
+    <div style={{ marginBottom: spacing('entry', 8) }}>
       <div
         style={{
           display: 'flex',
           justifyContent: 'space-between',
           gap: 8,
-          fontSize: 10.5,
+          fontSize: bodySize(10.5),
           marginBottom: 3,
         }}
       >
@@ -44,8 +45,8 @@ export const SkillDots = ({
         justifyContent: 'space-between',
         gap: 8,
         alignItems: 'center',
-        fontSize: 10.5,
-        marginBottom: 4,
+        fontSize: bodySize(10.5),
+        marginBottom: spacing('entry', 4),
       }}
     >
       <span>{name}</span>
@@ -77,13 +78,13 @@ export const ChipList = ({
   variant?: 'outline' | 'filled' | 'soft';
 }) => {
   return (
-    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: spacing('entry', 8) }}>
       {items.map((item, idx) => {
         const base: CSSProperties = {
           fontSize: 'inherit',
           padding: '2px 8px',
           borderRadius: 999,
-          lineHeight: 1.4,
+          lineHeight: lineHeight(1.4),
           maxWidth: '100%',
           overflowWrap: 'anywhere',
         };

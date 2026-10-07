@@ -1,3 +1,4 @@
+import { bodySize } from '@/helpers/resume-style/styles';
 import { ContactList } from '../contact';
 import { SocialIconsRow } from '../primitives/Contact';
 import { SectionFrame } from '../primitives/SectionFrame';
@@ -21,11 +22,13 @@ export function ExperienceProfile({ basics }: { basics: ProfileBasics }) {
           justifyContent: 'space-between',
           gap: 14,
           flexWrap: 'wrap',
-          fontSize: 12,
+          fontSize: bodySize(12),
         }}
       >
         <div style={{ minWidth: 0, display: 'flex', flexDirection: 'column', gap: 6 }}>
-          <div style={{ color: p.primary, fontSize: 14, fontWeight: 500 }}>{basics.label}</div>
+          <div style={{ color: p.primary, fontSize: bodySize(14), fontWeight: 500 }}>
+            {basics.label}
+          </div>
           {basics.relExp && <div>Relevant experience: {basics.relExp}</div>}
           {basics.totalExp && <div>Total experience: {basics.totalExp}</div>}
         </div>

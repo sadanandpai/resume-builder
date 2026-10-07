@@ -17,5 +17,17 @@ export const HTMLRenderer = ({ htmlString }: { htmlString: string }) => {
       },
     });
   }, [htmlString]);
-  return <div className={`${styles.richtextRuntimeWrapper} text-xs`}>{parsedElement}</div>;
+  return (
+    <div
+      className={`${styles.richtextRuntimeWrapper} text-xs`}
+      style={{
+        // Keep the existing uncustomized text-xs geometry, but let the resume's
+        // global controls reach the wrapper instead of stopping at its parent.
+        fontSize: 'var(--resume-body, 0.75rem)',
+        lineHeight: 'var(--resume-line-height, calc(1rem * var(--resume-line-factor, 1)))',
+      }}
+    >
+      {parsedElement}
+    </div>
+  );
 };

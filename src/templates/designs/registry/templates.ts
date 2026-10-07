@@ -23,6 +23,17 @@ import { REGION_IDS, SECTION_IDS } from './sectionIds';
 export const TEMPLATE_REGISTRY: Record<string, TemplateRegistryEntry> = {
   modern: {
     id: 'modern',
+    style: {
+      padding: [16, 16, 16, 16],
+      section: 16,
+      entry: 12,
+      column: 24,
+      body: 11,
+      heading: 11,
+      name: 26,
+      lineHeight: 1.5,
+      secondaryColumnPercent: 40,
+    },
     name: 'Modern Resume',
     thumbnail: '/templates/modern.png',
     sectionLayout: {
@@ -57,6 +68,17 @@ export const TEMPLATE_REGISTRY: Record<string, TemplateRegistryEntry> = {
 
   professional: {
     id: 'professional',
+    style: {
+      padding: [40, 25, 40, 25],
+      section: 16,
+      entry: 12,
+      column: 14,
+      body: 11,
+      heading: 12,
+      name: 20,
+      lineHeight: 1.5,
+      secondaryColumnPercent: 33.333333333333336,
+    },
     name: 'Professional Resume',
     thumbnail: '/templates/professional.png',
     sectionLayout: {
@@ -91,6 +113,16 @@ export const TEMPLATE_REGISTRY: Record<string, TemplateRegistryEntry> = {
 
   classic: {
     id: 'classic',
+    style: {
+      padding: [40, 48, 40, 48],
+      section: 16,
+      entry: 12,
+      column: 0,
+      body: 11,
+      heading: 11,
+      name: 26,
+      lineHeight: 1.5,
+    },
     name: 'Classic',
     thumbnail: '/templates/classic.png',
     sectionLayout: {
@@ -115,6 +147,17 @@ export const TEMPLATE_REGISTRY: Record<string, TemplateRegistryEntry> = {
 
   'sidebar-left': {
     id: 'sidebar-left',
+    style: {
+      padding: [32, 22, 32, 22],
+      section: 16,
+      entry: 12,
+      column: 0,
+      body: 11,
+      heading: 11,
+      name: 26,
+      lineHeight: 1.5,
+      secondaryColumnPercent: 34,
+    },
     name: 'Sidebar Left',
     thumbnail: '/templates/sidebarleft.png',
     sectionLayout: {
@@ -136,6 +179,17 @@ export const TEMPLATE_REGISTRY: Record<string, TemplateRegistryEntry> = {
 
   'sidebar-right': {
     id: 'sidebar-right',
+    style: {
+      padding: [34, 22, 34, 22],
+      section: 16,
+      entry: 12,
+      column: 0,
+      body: 11,
+      heading: 11,
+      name: 26,
+      lineHeight: 1.5,
+      secondaryColumnPercent: 32,
+    },
     name: 'Sidebar Right',
     thumbnail: '/templates/sidebarright.png',
     sectionLayout: {
@@ -157,6 +211,17 @@ export const TEMPLATE_REGISTRY: Record<string, TemplateRegistryEntry> = {
 
   'header-band': {
     id: 'header-band',
+    style: {
+      padding: [26, 36, 26, 36],
+      section: 16,
+      entry: 12,
+      column: 26,
+      body: 11,
+      heading: 11,
+      name: 26,
+      lineHeight: 1.5,
+      secondaryColumnPercent: 38,
+    },
     name: 'Header Band',
     thumbnail: '/templates/headerband.png',
     sectionLayout: {
@@ -178,6 +243,17 @@ export const TEMPLATE_REGISTRY: Record<string, TemplateRegistryEntry> = {
 
   creative: {
     id: 'creative',
+    style: {
+      padding: [0, 36, 30, 36],
+      section: 16,
+      entry: 12,
+      column: 24,
+      body: 11,
+      heading: 11,
+      name: 26,
+      lineHeight: 1.5,
+      secondaryColumnPercent: 38,
+    },
     name: 'Creative',
     thumbnail: '/templates/creative.png',
     sectionLayout: {
@@ -198,6 +274,17 @@ export const TEMPLATE_REGISTRY: Record<string, TemplateRegistryEntry> = {
 
   technical: {
     id: 'technical',
+    style: {
+      padding: [34, 40, 34, 40],
+      section: 16,
+      entry: 12,
+      column: 22,
+      body: 11,
+      heading: 12,
+      name: 26,
+      lineHeight: 1.5,
+      secondaryColumnPercent: 38,
+    },
     name: 'Technical',
     thumbnail: '/templates/technical.png',
     sectionLayout: {
@@ -226,6 +313,17 @@ export const TEMPLATE_REGISTRY: Record<string, TemplateRegistryEntry> = {
 
   inspired: {
     id: 'inspired',
+    style: {
+      padding: [8, 32, 28, 32],
+      section: 16,
+      entry: 12,
+      column: 20,
+      body: 11,
+      heading: 11,
+      name: 26,
+      lineHeight: 1.5,
+      secondaryColumnPercent: 36,
+    },
     name: 'Inspired',
     thumbnail: '/templates/inspired.png',
     sectionLayout: {
@@ -246,6 +344,16 @@ export const TEMPLATE_REGISTRY: Record<string, TemplateRegistryEntry> = {
 
   plain: {
     id: 'plain',
+    style: {
+      padding: [40, 48, 40, 48],
+      section: 16,
+      entry: 12,
+      column: 0,
+      body: 11,
+      heading: 11,
+      name: 32,
+      lineHeight: 1.5,
+    },
     name: 'Plain',
     thumbnail: '/templates/plain.png',
     sectionLayout: {
@@ -264,6 +372,17 @@ export const TEMPLATE_REGISTRY: Record<string, TemplateRegistryEntry> = {
 
   straightforward: {
     id: 'straightforward',
+    style: {
+      padding: [28, 20, 28, 20],
+      section: 16,
+      entry: 12,
+      column: 0,
+      body: 11,
+      heading: 11,
+      name: 32,
+      lineHeight: 1.5,
+      secondaryColumnPercent: 32,
+    },
     name: 'Straightforward',
     thumbnail: '/templates/straightforward.png',
     sectionLayout: {

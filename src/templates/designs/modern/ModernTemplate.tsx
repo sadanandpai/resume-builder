@@ -1,3 +1,5 @@
+import { columns, padding, spacing } from '@/helpers/resume-style/styles';
+import { useResumeStyleStore } from '@/stores/useResumeStyleStore';
 import { useContext } from 'react';
 import { useSectionLayoutRuntime } from '@/helpers/section-layout';
 import { StateContext } from '@/modules/builder/resume/ResumeLayout';
@@ -14,6 +16,7 @@ import { VolunteerSection } from '@/templates/components/volunteer';
 import { EditScrollSection } from '@/templates/designs/integration/EditScrollSection';
 
 export default function ModernTemplate() {
+  const secondaryPercent = useResumeStyleStore((state) => state.settings.secondaryColumnPercent);
   const data = useContext(StateContext);
   const { regions } = useSectionLayoutRuntime();
   const resumePalette = useResumePalette();
@@ -81,10 +84,14 @@ export default function ModernTemplate() {
   };
   return (
     <ResumePresentation value="stacked">
-      <div style={{ ...pageStyle(resumePalette), padding: 16 }}>
+      <div style={{ ...pageStyle(resumePalette), padding: padding(16) }}>
         <InlineProfile basics={basics} />
         <div
-          style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 3fr) minmax(0, 2fr)', gap: 24 }}
+          style={{
+            display: 'grid',
+            gridTemplateColumns: columns('minmax(0, 3fr) minmax(0, 2fr)', false, secondaryPercent),
+            gap: spacing('column', 24),
+          }}
         >
           <TemplateRegion regionId="left" items={regions.left} renderSection={renderSection} />
           <TemplateRegion regionId="right" items={regions.right} renderSection={renderSection} />

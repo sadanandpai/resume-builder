@@ -21,6 +21,17 @@ export type TemplateRegistryEntry = {
   id: string;
   name: string;
   thumbnail: string;
+  style: {
+    secondaryColumnPercent?: number;
+    padding: [number, number, number, number];
+    section: number;
+    entry: number;
+    column: number;
+    body: number;
+    heading: number;
+    name: number;
+    lineHeight: number;
+  };
   sectionLayout: TemplateSectionLayoutConfig;
   sectionRules: TemplateSectionRule[];
   loadComponent: () => Promise<{ default: ComponentType<unknown> }>;

@@ -1,3 +1,5 @@
+import { columns, padding, spacing } from '@/helpers/resume-style/styles';
+import { useResumeStyleStore } from '@/stores/useResumeStyleStore';
 import { useContext } from 'react';
 import { useSectionLayoutRuntime } from '@/helpers/section-layout';
 import { StateContext } from '@/modules/builder/resume/ResumeLayout';
@@ -13,6 +15,7 @@ import { ListSkills } from '@/templates/components/skills';
 import { TextSection } from '@/templates/components/text';
 
 export default function StraightforwardTemplate() {
+  const secondaryPercent = useResumeStyleStore((state) => state.settings.secondaryColumnPercent);
   const data = useContext(StateContext);
   const { regions } = useSectionLayoutRuntime();
   const resumePalette = useResumePalette();
@@ -46,13 +49,14 @@ export default function StraightforwardTemplate() {
         style={{
           ...pageStyle(resumePalette),
           display: 'grid',
-          gridTemplateColumns: '32% minmax(0, 1fr)',
+          gridTemplateColumns: columns('32% minmax(0, 1fr)', true, secondaryPercent),
+          columnGap: spacing('column', 0),
         }}
       >
         <aside
           style={{
             background: withAlpha(resumePalette.accent, 0.12),
-            padding: '28px 20px',
+            padding: padding('28px 20px'),
             borderRight: `1px solid ${resumePalette.divider}`,
           }}
         >
@@ -63,7 +67,7 @@ export default function StraightforwardTemplate() {
             renderSection={renderSection}
           />
         </aside>
-        <main style={{ minWidth: 0, padding: '28px 32px' }}>
+        <main style={{ minWidth: 0, padding: padding('28px 32px') }}>
           <EditorialProfile basics={basics} />
           <TemplateRegion regionId="main" items={regions.main} renderSection={renderSection} />
         </main>

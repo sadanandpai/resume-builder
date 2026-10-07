@@ -1,3 +1,4 @@
+import { font, bodySize, roleSize, lineHeight } from '@/helpers/resume-style/styles';
 import React, { CSSProperties } from 'react';
 
 import type { ResumePalette } from '@/templates/components/theme/resumePalette';
@@ -7,9 +8,9 @@ export const pageStyle = (p: ResumePalette): CSSProperties => ({
   height: '100%',
   background: p.bg,
   color: p.text,
-  fontFamily: p.bodyFont,
-  fontSize: 11,
-  lineHeight: 1.45,
+  fontFamily: font(p.bodyFont),
+  fontSize: bodySize(11),
+  lineHeight: lineHeight(1.45),
   boxSizing: 'border-box',
 });
 
@@ -27,8 +28,8 @@ export const H1 = ({
   <h1
     style={{
       margin: 0,
-      fontFamily: p.headingFont,
-      fontSize: size,
+      fontFamily: font(p.headingFont),
+      fontSize: roleSize('name', size),
       fontWeight: 700,
       letterSpacing: '0.01em',
       color: color || p.primary,
@@ -49,7 +50,7 @@ export const Label = ({
 }) => (
   <div
     style={{
-      fontSize: 12,
+      fontSize: bodySize(12),
       color: color || p.muted,
       letterSpacing: '0.08em',
       textTransform: 'uppercase',
@@ -84,9 +85,11 @@ export const JobHeader = ({
     }}
   >
     <div>
-      <div style={{ fontWeight: 600, fontSize: compact ? 11 : 12, color: p.text }}>{position}</div>
-      <div style={{ fontSize: 11, color: p.primary, fontWeight: 500 }}>{company}</div>
+      <div style={{ fontWeight: 600, fontSize: bodySize(compact ? 11 : 12), color: p.text }}>
+        {position}
+      </div>
+      <div style={{ fontSize: bodySize(11), color: p.primary, fontWeight: 500 }}>{company}</div>
     </div>
-    <div style={{ fontSize: 10, color: p.muted, overflowWrap: 'anywhere' }}>{date}</div>
+    <div style={{ fontSize: bodySize(10), color: p.muted, overflowWrap: 'anywhere' }}>{date}</div>
   </div>
 );

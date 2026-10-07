@@ -1,3 +1,4 @@
+import { font, bodySize, spacing } from '@/helpers/resume-style/styles';
 import { JobHeader } from '../primitives/layoutPrimitives';
 import { RichText } from '../primitives/RichText';
 import { SectionFrame } from '../primitives/SectionFrame';
@@ -20,13 +21,13 @@ function Experience({
         <div
           key={item.id || index}
           style={{
-            marginBottom: design === 'timeline' ? 0 : 12,
+            marginBottom: design === 'timeline' ? 0 : spacing('entry', 12),
             minWidth: 0,
             ...(design === 'timeline'
               ? {
                   position: 'relative',
                   paddingLeft: 20,
-                  paddingBottom: index === items.length - 1 ? 0 : 12,
+                  paddingBottom: index === items.length - 1 ? 0 : spacing('entry', 12),
                   marginLeft: 5,
                 }
               : {}),
@@ -83,7 +84,9 @@ function Experience({
               }}
             >
               <div style={{ minWidth: 0 }}>
-                <div style={{ fontWeight: 600, fontSize: design === 'stacked' ? 15 : 12 }}>
+                <div
+                  style={{ fontWeight: 600, fontSize: bodySize(design === 'stacked' ? 15 : 12) }}
+                >
                   {design === 'technical' ? (
                     <>
                       {item.position} <span style={{ color: p.accent }}>@</span> {item.name}
@@ -97,8 +100,8 @@ function Experience({
               <div
                 style={{
                   color: p.muted,
-                  fontSize: 10,
-                  ...(design === 'technical' ? { fontFamily: MONO_FONT } : {}),
+                  fontSize: bodySize(10),
+                  ...(design === 'technical' ? { fontFamily: font(MONO_FONT) } : {}),
                 }}
               >
                 {formatDateRange(item.startDate, item.endDate, item.isWorkingHere)}

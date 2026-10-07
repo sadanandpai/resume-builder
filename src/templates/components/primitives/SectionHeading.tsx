@@ -1,3 +1,4 @@
+import { font, roleSize } from '@/helpers/resume-style/styles';
 import { CSSProperties } from 'react';
 
 import type { ResumePalette } from '@/templates/components/theme/resumePalette';
@@ -15,11 +16,11 @@ export const SectionHeading = ({
 }) => {
   const baseStyle: CSSProperties = {
     color: p.primary,
-    fontFamily: p.headingFont,
+    fontFamily: font(p.headingFont),
     fontWeight: 700,
     letterSpacing: variant === 'caps' ? '0.14em' : '0.04em',
     textTransform: variant === 'caps' ? 'uppercase' : 'none',
-    fontSize: variant === 'caps' ? 11 : 13,
+    fontSize: roleSize('heading', variant === 'caps' ? 11 : 13),
     margin: '0 0 8px 0',
     textAlign: align,
   };
@@ -34,7 +35,7 @@ export const SectionHeading = ({
             margin: 0,
             textTransform: 'uppercase',
             letterSpacing: '0.12em',
-            fontSize: 11,
+            fontSize: roleSize('heading', 11),
           }}
         >
           {title}
@@ -50,7 +51,7 @@ export const SectionHeading = ({
           borderBottom: `2px solid ${p.accent}`,
           paddingBottom: 3,
           textTransform: 'uppercase',
-          fontSize: 11,
+          fontSize: roleSize('heading', 11),
         }}
       >
         {title}
@@ -67,7 +68,7 @@ export const SectionHeading = ({
           color: '#fff',
           padding: '3px 10px',
           borderRadius: 999,
-          fontSize: 10,
+          fontSize: roleSize('heading', 10),
           textTransform: 'uppercase',
           letterSpacing: '0.14em',
         }}
@@ -87,7 +88,7 @@ export const SectionHeading = ({
             overflowWrap: 'anywhere',
             textTransform: 'uppercase',
             letterSpacing: '0.14em',
-            fontSize: 11,
+            fontSize: roleSize('heading', 11),
           }}
         >
           {title}

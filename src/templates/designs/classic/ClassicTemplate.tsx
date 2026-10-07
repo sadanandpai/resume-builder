@@ -1,3 +1,4 @@
+import { padding } from '@/helpers/resume-style/styles';
 import { useContext } from 'react';
 import { useSectionLayoutRuntime } from '@/helpers/section-layout';
 import { StateContext } from '@/modules/builder/resume/ResumeLayout';
@@ -35,7 +36,7 @@ export default function ClassicTemplate() {
   };
   return (
     <ResumePresentation value="underlined">
-      <div style={{ ...pageStyle(resumePalette), padding: '40px 48px' }}>
+      <div style={{ ...pageStyle(resumePalette), padding: padding('40px 48px') }}>
         <CenteredProfile basics={basics} />
         <TemplateRegion regionId="main" items={regions.main} renderSection={renderSection} />
       </div>

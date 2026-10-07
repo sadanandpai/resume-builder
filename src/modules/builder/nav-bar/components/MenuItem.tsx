@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react';
+import { Fragment, useState, useId } from 'react';
 
 import { INavMenuItemProps } from './MenuItem.interface';
 import Image from '@/helpers/common/components/Image';
@@ -6,6 +6,7 @@ import { NavMenuPopover } from './NavMenuPopover';
 import { StyledButton } from '../atoms';
 
 export const NavMenuItem = ({ caption, popoverChildren }: INavMenuItemProps) => {
+  const id = useId();
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -13,6 +14,7 @@ export const NavMenuItem = ({ caption, popoverChildren }: INavMenuItemProps) => 
   };
 
   const handleClose = () => {
+    if (document.activeElement instanceof HTMLElement) document.activeElement.blur();
     setAnchorEl(null);
   };
 
@@ -22,7 +24,10 @@ export const NavMenuItem = ({ caption, popoverChildren }: INavMenuItemProps) => 
         variant="text"
         size="small"
         onClick={handleClick}
-        aria-describedby={'mark'}
+        id={`${id}-trigger`}
+        aria-controls={anchorEl ? `${id}-panel` : undefined}
+        aria-expanded={!!anchorEl}
+        aria-haspopup="dialog"
         sx={{ fontSize: { xs: '10px', lg: '13px' } }}
         endIcon={
           <Image
@@ -36,7 +41,12 @@ export const NavMenuItem = ({ caption, popoverChildren }: INavMenuItemProps) => 
       >
         {caption}
       </StyledButton>
-      <NavMenuPopover isOpen={!!anchorEl} anchorElement={anchorEl} id="mark" onClose={handleClose}>
+      <NavMenuPopover
+        isOpen={!!anchorEl}
+        anchorElement={anchorEl}
+        id={`${id}-panel`}
+        onClose={handleClose}
+      >
         {popoverChildren}
       </NavMenuPopover>
     </Fragment>

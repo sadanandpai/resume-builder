@@ -1,3 +1,4 @@
+import { bodySize, lineHeight } from '@/helpers/resume-style/styles';
 import React, { ReactNode } from 'react';
 import { BsEnvelope, BsGeoAlt, BsGlobe, BsTelephone } from 'react-icons/bs';
 
@@ -23,8 +24,8 @@ export const ContactLine = ({
         display: 'inline-flex',
         alignItems: 'center',
         gap: 6,
-        fontSize: density === 'comfortable' ? 12 : 10.5,
-        lineHeight: 1.4,
+        fontSize: bodySize(density === 'comfortable' ? 12 : 10.5),
+        lineHeight: lineHeight(1.4),
         overflowWrap: 'anywhere',
       }}
     >

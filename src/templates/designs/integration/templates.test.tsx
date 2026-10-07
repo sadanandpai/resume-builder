@@ -1,6 +1,6 @@
 import { createContext, type ReactNode } from 'react';
 import { render, screen, within } from '@testing-library/react';
-import { describe, expect, it, vi } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import ResumeData from '@/helpers/constants/resume-data.json';
 import { TEMPLATE_REGISTRY } from '@/templates/designs/registry/templates';
@@ -27,6 +27,8 @@ vi.mock('@/helpers/section-layout', () => ({
     <div data-testid={`section-${id}`}>{children}</div>
   ),
 }));
+import { useResumeStyleStore } from '@/stores/useResumeStyleStore';
+import { styleVariables } from '@/helpers/resume-style/styles';
 import { StateContext } from '@/modules/builder/resume/ResumeLayout';
 
 const coverage: Record<string, Record<string, string[]>> = {
@@ -198,4 +200,51 @@ describe('template coverage and destination placement', () => {
       view.unmount();
     }
   });
+});
+
+describe('template style integration', () => {
+  beforeEach(() =>
+    useResumeStyleStore.setState({ settings: {}, past: [], future: [], baseline: null })
+  );
+  for (const [id, entry] of Object.entries(TEMPLATE_REGISTRY)) {
+    it(`${id} retains fallback styles and accepts the same global settings`, async () => {
+      runtime.regions = entry.sectionLayout.defaults;
+      const { default: Template } = await entry.loadComponent();
+      const view = render(
+        <StateContext.Provider value={data}>
+          <ThemeProvider theme={theme}>
+            <div data-testid="styles" style={styleVariables({})}>
+              <Template />
+            </div>
+          </ThemeProvider>
+        </StateContext.Provider>
+      );
+      const wrapper = screen.getByTestId('styles');
+      expect(wrapper.style.getPropertyValue('--resume-body')).toBe('');
+      expect(wrapper.querySelector('[style*="--resume-padding"]')).not.toBeNull();
+      const settings = {
+        typography: { body: 14, heading: 18, name: 35, family: 'mono' as const },
+        contentPadding: { top: 5, right: 8, bottom: 10, left: 12 },
+        spacing: { section: 9, entry: 7, column: 12 },
+        secondaryColumnPercent: 25,
+      };
+      useResumeStyleStore.setState({ settings });
+      view.rerender(
+        <StateContext.Provider value={data}>
+          <ThemeProvider theme={theme}>
+            <div data-testid="styles" style={styleVariables(settings)}>
+              <Template />
+            </div>
+          </ThemeProvider>
+        </StateContext.Provider>
+      );
+      expect(wrapper.style.getPropertyValue('--resume-body')).toBe('14px');
+      expect(wrapper.style.getPropertyValue('--resume-padding')).toBe('5px 8px 10px 12px');
+      expect(wrapper.querySelector('[style*="--resume-name"]')).not.toBeNull();
+      expect(wrapper.querySelector('[style*="--resume-heading"]')).not.toBeNull();
+      if (entry.style.secondaryColumnPercent !== undefined)
+        expect(wrapper.querySelector('[style*="25fr"]')).not.toBeNull();
+      expect(useResumeStyleStore.getState().settings).toEqual(settings);
+    });
+  }
 });

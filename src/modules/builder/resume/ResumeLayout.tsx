@@ -8,6 +8,7 @@ import {
   type ReactNode,
 } from 'react';
 
+import { useResumeStyleStore } from '@/stores/useResumeStyleStore';
 import { PagedResume } from './PagedResume';
 
 import { AVAILABLE_TEMPLATES } from '@/helpers/constants';
@@ -64,6 +65,7 @@ const RESUME_PAGE_WIDTH_PX = 794;
 
 export const ResumeLayout = ({ pauseFitToWidth = false }: { pauseFitToWidth?: boolean }) => {
   const resumeData = useResumeStore();
+  useEffect(() => useResumeStyleStore.getState().hydrate(), []);
   const zoom = useZoom((state) => state.zoom);
   const setZoom = useZoom((state) => state.setZoom);
   const fitContainerRef = useRef<HTMLDivElement>(null);

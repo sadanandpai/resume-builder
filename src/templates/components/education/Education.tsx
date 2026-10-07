@@ -1,3 +1,4 @@
+import { font, bodySize, spacing } from '@/helpers/resume-style/styles';
 import { SectionFrame } from '../primitives/SectionFrame';
 import { formatDateRange } from '../primitives/formatDateRange';
 import { useSurfacePalette, MONO_FONT } from '../theme';
@@ -17,7 +18,10 @@ function Education({
       {items.map((item, index) => (
         <div
           key={item.id || index}
-          style={{ marginBottom: index === items.length - 1 ? 0 : design === 'compact' ? 10 : 14 }}
+          style={{
+            marginBottom:
+              index === items.length - 1 ? 0 : spacing('entry', design === 'compact' ? 10 : 14),
+          }}
         >
           <div style={{ fontWeight: design === 'standard' ? 400 : 600 }}>
             {[item.studyType, item.area].filter(Boolean).join(' — ')}
@@ -29,9 +33,9 @@ function Education({
               gap: 6,
               flexWrap: 'wrap',
               color: p.muted,
-              fontSize: 10.5,
+              fontSize: bodySize(10.5),
               ...(design === 'compact' ? { flexDirection: 'column', gap: 0 } : {}),
-              ...(design === 'technical' ? { fontFamily: MONO_FONT } : {}),
+              ...(design === 'technical' ? { fontFamily: font(MONO_FONT) } : {}),
             }}
           >
             <span style={{ fontWeight: 400 }}>{item.institution}</span>

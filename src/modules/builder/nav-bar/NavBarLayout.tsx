@@ -18,6 +18,7 @@ import Link from 'next/link';
 import { NavMenuItem } from './components/MenuItem';
 import { PrintResume } from './components/PrintResume';
 import { TemplateSelect } from './components/TemplateSelect';
+import { LayoutSelect } from './components/LayoutSelect';
 import { ThemeSelect } from './components/ThemeSelect';
 import { Toast } from '@/helpers/common/atoms/Toast';
 import exportFromJSON from 'export-from-json';
@@ -161,6 +162,9 @@ const NavBarLayout = () => {
             popoverChildren={<TemplateSelect />}
           />
           <NavMenuItem caption="Colours" popoverChildren={<ThemeSelect />} />
+          <div className="hidden lg:block">
+            <NavMenuItem caption="Layout" popoverChildren={<LayoutSelect />} />
+          </div>
         </NavBarMenu>
         <div className="hidden md:flex">
           <NavBarActions>

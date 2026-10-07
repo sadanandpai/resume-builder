@@ -1,3 +1,4 @@
+import { spacing } from '@/helpers/resume-style/styles';
 import { SectionFrame } from '../primitives/SectionFrame';
 import { ChipList, SkillBar, SkillDots } from '../primitives/SkillWidgets';
 import { useSurfacePalette } from '../theme';
@@ -19,7 +20,9 @@ function Skills({
       ) : design === 'list' ? (
         <ul style={{ margin: 0, paddingLeft: 16 }}>
           {items.map((item, i) => (
-            <li key={i}>{item.name}</li>
+            <li key={i} style={{ marginBottom: i === items.length - 1 ? 0 : spacing('entry', 0) }}>
+              {item.name}
+            </li>
           ))}
         </ul>
       ) : (

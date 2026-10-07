@@ -1,3 +1,4 @@
+import { font, bodySize, roleSize, lineHeight, spacing } from '@/helpers/resume-style/styles';
 import type { ReactNode } from 'react';
 import { SectionHeading } from './SectionHeading';
 import { usePresentation, useSurfacePalette, MONO_FONT, EDITORIAL_FONT } from '../theme';
@@ -27,10 +28,10 @@ export function SectionFrame({
         maxWidth: '100%',
         overflowWrap: 'anywhere',
         color: p.text,
-        fontFamily: p.bodyFont,
-        fontSize: 11,
-        lineHeight: 1.5,
-        marginBottom: density === 'compact' ? 10 : 16,
+        fontFamily: font(p.bodyFont),
+        fontSize: bodySize(11),
+        lineHeight: lineHeight(1.5),
+        marginBottom: spacing('section', density === 'compact' ? 10 : 16),
         ...(boxed
           ? {
               border: `1px solid ${p.divider}`,
@@ -57,11 +58,14 @@ export function SectionFrame({
               margin: 0,
               minWidth: 0,
               flex: '1 1 0',
-              fontSize: heading === 'profile' ? 20 : 12,
-              lineHeight: heading === 'profile' ? 1.2 : undefined,
+              fontSize: roleSize(
+                heading === 'profile' ? 'name' : 'heading',
+                heading === 'profile' ? 20 : 12
+              ),
+              lineHeight: heading === 'profile' ? lineHeight(1.2) : undefined,
               fontWeight: heading === 'profile' ? 600 : undefined,
               color: p.primary,
-              fontFamily: p.headingFont,
+              fontFamily: font(p.headingFont),
             }}
           >
             <span style={{ background: p.bg, padding: '0 5px', boxDecorationBreak: 'clone' }}>
@@ -78,8 +82,8 @@ export function SectionFrame({
         <h3
           style={{
             margin: '0 0 10px',
-            fontFamily: EDITORIAL_FONT,
-            fontSize: 11,
+            fontFamily: font(EDITORIAL_FONT),
+            fontSize: roleSize('heading', 11),
             letterSpacing: '0.15em',
             textTransform: 'uppercase',
             borderBottom: `1px solid ${p.divider}`,
@@ -93,9 +97,9 @@ export function SectionFrame({
         <h3
           style={{
             margin: '0 0 8px',
-            fontSize: 12,
+            fontSize: roleSize('heading', 12),
             color: p.primary,
-            fontFamily: MONO_FONT,
+            fontFamily: font(MONO_FONT),
           }}
         >
           {title.startsWith('//') ? title : `// ${title.toLowerCase()}`}

@@ -1,3 +1,4 @@
+import { spacing } from '@/helpers/resume-style/styles';
 import { SectionFrame } from '../primitives/SectionFrame';
 import { JobHeader } from '../primitives/layoutPrimitives';
 import { RichText } from '../primitives/RichText';
@@ -14,7 +15,7 @@ export function VolunteerSection({
   return (
     <SectionFrame title={title} density={density}>
       {items.map((item, i) => (
-        <div key={item.id || i} style={{ marginBottom: 10 }}>
+        <div key={item.id || i} style={{ marginBottom: spacing('entry', 10) }}>
           <JobHeader
             position={item.organization}
             company={item.position}

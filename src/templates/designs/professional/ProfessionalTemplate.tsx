@@ -1,3 +1,5 @@
+import { columns, padding, spacing } from '@/helpers/resume-style/styles';
+import { useResumeStyleStore } from '@/stores/useResumeStyleStore';
 import { useContext } from 'react';
 import { useSectionLayoutRuntime } from '@/helpers/section-layout';
 import { StateContext } from '@/modules/builder/resume/ResumeLayout';
@@ -13,6 +15,7 @@ import { BarSkills, ChipSkills } from '@/templates/components/skills';
 import { ProfileSummarySection, TextSection } from '@/templates/components/text';
 
 export default function ProfessionalTemplate() {
+  const secondaryPercent = useResumeStyleStore((state) => state.settings.secondaryColumnPercent);
   const data = useContext(StateContext);
   const { regions } = useSectionLayoutRuntime();
   const resumePalette = useResumePalette();
@@ -68,10 +71,10 @@ export default function ProfessionalTemplate() {
       <div
         style={{
           ...pageStyle(resumePalette),
-          padding: '40px 25px',
+          padding: padding('40px 25px'),
           display: 'grid',
-          gridTemplateColumns: 'minmax(0, 2fr) minmax(0, 1fr)',
-          gap: 14,
+          gridTemplateColumns: columns('minmax(0, 2fr) minmax(0, 1fr)', false, secondaryPercent),
+          gap: spacing('column', 14),
         }}
       >
         <div style={{ minWidth: 0 }}>

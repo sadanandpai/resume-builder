@@ -1,3 +1,4 @@
+import { font, roleSize, spacing, padding } from '@/helpers/resume-style/styles';
 import { InlineContacts, ContactList } from '../contact';
 import { H1, Label } from '../primitives/layoutPrimitives';
 import { ProfileAvatar } from '../primitives/ProfileAvatar';
@@ -17,7 +18,7 @@ function Identity({ basics }: Props) {
 export function InlineProfile({ basics }: Props) {
   const p = useSurfacePalette();
   return (
-    <header style={{ marginBottom: 18, minWidth: 0 }}>
+    <header style={{ marginBottom: spacing('section', 18), minWidth: 0 }}>
       <div
         style={{
           display: 'flex',
@@ -43,7 +44,7 @@ export function CenteredProfile({ basics }: Props) {
         textAlign: 'center',
         borderBottom: `2px solid ${p.primary}`,
         paddingBottom: 14,
-        marginBottom: 18,
+        marginBottom: spacing('section', 18),
       }}
     >
       <Identity basics={basics} />
@@ -56,7 +57,13 @@ export function CenteredProfile({ basics }: Props) {
 export function SidebarProfile({ basics }: Props) {
   return (
     <header
-      style={{ display: 'flex', flexDirection: 'column', gap: 14, marginBottom: 18, minWidth: 0 }}
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 14,
+        marginBottom: spacing('section', 18),
+        minWidth: 0,
+      }}
     >
       <ProfileAvatar src={basics.image} size={90} />
       <ContactList basics={basics} />
@@ -70,7 +77,7 @@ function BandContents({ basics }: Props) {
       style={{
         background: p.bg,
         color: p.text,
-        padding: '28px 36px',
+        padding: padding('28px 36px'),
         display: 'flex',
         alignItems: 'center',
         flexWrap: 'wrap',
@@ -93,7 +100,9 @@ export const BandProfile = (props: Props) => (
 export function DecorativeProfile({ basics }: Props) {
   const p = useSurfacePalette();
   return (
-    <header style={{ position: 'relative', padding: '36px 36px 22px', overflow: 'hidden' }}>
+    <header
+      style={{ position: 'relative', padding: padding('36px 36px 22px'), overflow: 'hidden' }}
+    >
       <span
         aria-hidden
         style={{
@@ -155,7 +164,7 @@ export function CardProfile(props: Props) {
         flexWrap: 'wrap',
         alignItems: 'center',
         gap: 18,
-        padding: '28px 32px 16px',
+        padding: padding('28px 32px 16px'),
         position: 'relative',
       }}
     >
@@ -182,10 +191,10 @@ export function TechnicalProfile({ basics }: Props) {
       }}
     >
       <div style={{ minWidth: 0 }}>
-        <div style={{ fontFamily: MONO_FONT, color: p.accent }}>&lt;hello /&gt;</div>
+        <div style={{ fontFamily: font(MONO_FONT), color: p.accent }}>&lt;hello /&gt;</div>
         <Identity basics={basics} />
       </div>
-      <div style={{ fontFamily: MONO_FONT, minWidth: 0 }}>
+      <div style={{ fontFamily: font(MONO_FONT), minWidth: 0 }}>
         <ContactList basics={basics} />
       </div>
     </header>
@@ -199,11 +208,18 @@ export function EditorialProfile({ basics }: Props) {
         textAlign: 'center',
         borderBottom: `1px solid ${p.divider}`,
         paddingBottom: 16,
-        marginBottom: 20,
+        marginBottom: spacing('section', 20),
         overflowWrap: 'anywhere',
       }}
     >
-      <h1 style={{ fontFamily: EDITORIAL_FONT, fontSize: 32, margin: 0, color: p.text }}>
+      <h1
+        style={{
+          fontFamily: font(EDITORIAL_FONT),
+          fontSize: roleSize('name', 32),
+          margin: 0,
+          color: p.text,
+        }}
+      >
         {basics.name}
       </h1>
       <Label p={p}>{basics.label}</Label>

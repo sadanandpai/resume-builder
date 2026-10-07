@@ -1,3 +1,4 @@
+import { padding } from '@/helpers/resume-style/styles';
 import { useContext } from 'react';
 import { useSectionLayoutRuntime } from '@/helpers/section-layout';
 import { StateContext } from '@/modules/builder/resume/ResumeLayout';
@@ -28,7 +29,7 @@ export default function PlainTemplate() {
   };
   return (
     <ResumePresentation value="editorial">
-      <div style={{ ...pageStyle(resumePalette), padding: '40px 48px' }}>
+      <div style={{ ...pageStyle(resumePalette), padding: padding('40px 48px') }}>
         <EditorialProfile basics={basics} />
         <TemplateRegion regionId="main" items={regions.main} renderSection={renderSection} />
       </div>

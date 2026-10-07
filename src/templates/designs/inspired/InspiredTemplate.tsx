@@ -1,3 +1,5 @@
+import { columns, padding, spacing } from '@/helpers/resume-style/styles';
+import { useResumeStyleStore } from '@/stores/useResumeStyleStore';
 import { useContext } from 'react';
 import { useSectionLayoutRuntime } from '@/helpers/section-layout';
 import { StateContext } from '@/modules/builder/resume/ResumeLayout';
@@ -11,6 +13,7 @@ import { BarSkills } from '@/templates/components/skills';
 import { TextSection } from '@/templates/components/text';
 
 export default function InspiredTemplate() {
+  const secondaryPercent = useResumeStyleStore((state) => state.settings.secondaryColumnPercent);
   const data = useContext(StateContext);
   const { regions } = useSectionLayoutRuntime();
   const resumePalette = useResumePalette();
@@ -41,9 +44,9 @@ export default function InspiredTemplate() {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'minmax(0, 1fr) 36%',
-            gap: 20,
-            padding: '8px 32px 28px',
+            gridTemplateColumns: columns('minmax(0, 1fr) 36%', false, secondaryPercent),
+            gap: spacing('column', 20),
+            padding: padding('8px 32px 28px'),
             position: 'relative',
           }}
         >

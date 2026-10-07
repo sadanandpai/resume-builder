@@ -23,6 +23,9 @@ export const NavMenuPopover = ({
       }}
       id={id}
       onClose={onClose}
+      slotProps={{
+        paper: { role: 'dialog', 'aria-labelledby': id.replace(/-panel$/, '-trigger') },
+      }}
     >
       {children}
     </Popover>

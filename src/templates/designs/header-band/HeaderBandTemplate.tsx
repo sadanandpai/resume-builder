@@ -1,3 +1,5 @@
+import { columns, padding, spacing } from '@/helpers/resume-style/styles';
+import { useResumeStyleStore } from '@/stores/useResumeStyleStore';
 import { useContext } from 'react';
 import { useSectionLayoutRuntime } from '@/helpers/section-layout';
 import { StateContext } from '@/modules/builder/resume/ResumeLayout';
@@ -11,6 +13,7 @@ import { BarSkills, ChipSkills } from '@/templates/components/skills';
 import { TextSection } from '@/templates/components/text';
 
 export default function HeaderBandTemplate() {
+  const secondaryPercent = useResumeStyleStore((state) => state.settings.secondaryColumnPercent);
   const data = useContext(StateContext);
   const { regions } = useSectionLayoutRuntime();
   const resumePalette = useResumePalette();
@@ -38,9 +41,9 @@ export default function HeaderBandTemplate() {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'minmax(0, 1fr) 38%',
-            padding: '26px 36px',
-            gap: 26,
+            gridTemplateColumns: columns('minmax(0, 1fr) 38%', false, secondaryPercent),
+            padding: padding('26px 36px'),
+            gap: spacing('column', 26),
           }}
         >
           <div style={{ minWidth: 0 }}>

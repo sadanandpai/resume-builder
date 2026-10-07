@@ -1,3 +1,4 @@
+import { spacing } from '@/helpers/resume-style/styles';
 import { SectionFrame } from '../primitives/SectionFrame';
 import { RichText } from '../primitives/RichText';
 import { formatDate } from '../primitives/formatDateRange';
@@ -9,7 +10,7 @@ export function AwardsSection({ items, title = 'Awards', density }: ItemsProps<A
   return (
     <SectionFrame title={title} density={density}>
       {items.map((item, i) => (
-        <div key={item.id || i} style={{ marginBottom: 10 }}>
+        <div key={item.id || i} style={{ marginBottom: spacing('entry', 10) }}>
           <div style={{ fontWeight: 600 }}>{item.title}</div>
           <div
             style={{
