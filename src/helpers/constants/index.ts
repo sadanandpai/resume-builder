@@ -26,10 +26,10 @@ export const AVAILABLE_TEMPLATES: ITemplate = Object.fromEntries(
 ) as ITemplate;
 
 export const CUSTOM_THEME_COLOR: IThemeColor = {
-  backgroundColor: 'white',
-  fontColor: 'black',
-  titleColor: 'green',
-  highlighterColor: '#ff7875',
+  backgroundColor: '#ffffff',
+  fontColor: '#1f2937',
+  titleColor: '#1e3a5f',
+  highlighterColor: '#0f766e',
   id: 4,
 };
 
