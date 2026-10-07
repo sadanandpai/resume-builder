@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import DataHeaders from './components/EditHeaders';
 import EditSection from './components/EditSection';

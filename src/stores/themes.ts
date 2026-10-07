@@ -8,6 +8,7 @@ interface IThemeStore {
   selectedTheme: IThemeColor;
   customTheme: IThemeColor;
   chooseTheme: (theme: IThemeColor) => void;
+  updateCustomTheme: (colors: Partial<Omit<IThemeColor, 'id'>>) => void;
 }
 
 export const useThemes = create<IThemeStore>()(
@@ -18,7 +19,23 @@ export const useThemes = create<IThemeStore>()(
       chooseTheme: (theme: IThemeColor) => {
         set(() => ({ selectedTheme: theme }));
       },
+      updateCustomTheme: (colors) => {
+        set((state) => {
+          const customTheme = { ...state.customTheme, ...colors, id: CUSTOM_THEME_COLOR.id };
+          return { customTheme, selectedTheme: customTheme };
+        });
+      },
     }),
-    { name: 'themes' }
+    {
+      name: 'themes',
+      version: 1,
+      migrate: (persistedState) => {
+        const state = persistedState as Partial<IThemeStore>;
+        if (state.selectedTheme?.id === 2 || state.selectedTheme?.id === 3) {
+          return { ...state, selectedTheme: SYSTEM_COLORS[0] };
+        }
+        return state;
+      },
+    }
   )
 );

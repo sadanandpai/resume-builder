@@ -1,5 +1,5 @@
 import { bodySize, lineHeight, spacing } from '@/helpers/resume-style/styles';
-import React, { CSSProperties } from 'react';
+import { CSSProperties } from 'react';
 
 import type { ResumePalette } from '@/templates/components/theme/resumePalette';
 import { withAlpha } from '@/templates/components/theme/resumePalette';

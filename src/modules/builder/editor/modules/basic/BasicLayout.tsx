@@ -10,7 +10,7 @@ const BasicLayout = () => {
   const basicTabs = useBasicDetails((state) => state.values);
   const onChangeText = useBasicDetails.getState().reset;
 
-  const changeActiveTab = (event: React.SyntheticEvent, activeTab: number) => {
+  const changeActiveTab = (_event: React.SyntheticEvent, activeTab: number) => {
     setActiveTab(activeTab);
   };
 

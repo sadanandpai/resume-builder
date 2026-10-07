@@ -1,5 +1,5 @@
 /* oxlint-disable typescript/no-explicit-any */
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 import Box from '@mui/material/Box';
 import Contacts from './Contacts';
 import Links from './Links';

@@ -10,20 +10,6 @@ export const SYSTEM_COLORS: IThemeColor[] = [
     highlighterColor: 'yellowgreen',
     id: 1,
   },
-  {
-    backgroundColor: 'white',
-    fontColor: '#780650',
-    titleColor: '#254000',
-    highlighterColor: 'burlywood',
-    id: 2,
-  },
-  {
-    backgroundColor: '#FFFFFF',
-    fontColor: '#000000',
-    titleColor: '#217503',
-    highlighterColor: '#F556E5',
-    id: 3,
-  },
 ];
 
 /** Built from `src/templates/designs/registry/templates.ts` — add templates there. */

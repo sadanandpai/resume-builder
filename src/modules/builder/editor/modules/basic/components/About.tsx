@@ -1,5 +1,5 @@
 /* oxlint-disable typescript/no-explicit-any */
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 import { RichtextEditor } from '@/helpers/common/components/richtext';
 
 const About = ({

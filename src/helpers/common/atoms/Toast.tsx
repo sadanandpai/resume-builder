@@ -19,7 +19,7 @@ export const Toast = ({
   <Snackbar
     open={open}
     autoHideDuration={4000}
-    onClose={(event, reason) => {
+    onClose={(_event, reason) => {
       if (reason === 'clickaway') {
         return;
       }

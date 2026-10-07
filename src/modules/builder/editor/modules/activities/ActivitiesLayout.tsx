@@ -32,7 +32,7 @@ const allActivityTabs: IAllActivityTabs = {
 const ActivitiesLayout = () => {
   const [activeTab, setActiveTab] = useState(allActivityTabs['involvements']);
 
-  const changeActiveTab = (event: SyntheticEvent, key: string) => {
+  const changeActiveTab = (_event: SyntheticEvent, key: string) => {
     const selectedTab = allActivityTabs[key];
     if (selectedTab) {
       setActiveTab(selectedTab);

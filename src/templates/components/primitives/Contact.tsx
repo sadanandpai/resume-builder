@@ -1,5 +1,5 @@
 import { bodySize, lineHeight } from '@/helpers/resume-style/styles';
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { BsEnvelope, BsGeoAlt, BsGlobe, BsTelephone } from 'react-icons/bs';
 
 import type { SectionProps } from '../types';
