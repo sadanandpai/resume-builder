@@ -32,6 +32,7 @@ import { styleVariables } from '@/helpers/resume-style/styles';
 import { StateContext } from '@/modules/builder/resume/ResumeLayout';
 
 const coverage: Record<string, Record<string, string[]>> = {
+  spotlight: { main: ['work'], sidebar: ['skills', 'methodology', 'tools', 'education', 'awards'] },
   modern: {
     left: ['summary', 'work', 'awards'],
     right: [

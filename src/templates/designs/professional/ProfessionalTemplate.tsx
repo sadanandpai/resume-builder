@@ -57,7 +57,7 @@ export default function ProfessionalTemplate() {
           />
         );
       case 'methodology':
-        return <ChipSkills items={data.skills.practices} title="Methodology/Approach" />;
+        return <ChipSkills items={data.skills.practices} title="Practices" />;
       case 'tools':
         return <ChipSkills items={data.skills.tools} title="Tools" />;
       case 'education':

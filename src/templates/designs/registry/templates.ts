@@ -12,7 +12,7 @@
  *    — Use `REGION_IDS` + `SECTION_IDS` for every id string (avoids typos).
  *    — `sectionLayout` must match `<SortableRegion regionId={…}>` usage.
  *    — `sectionRules` must mirror the data passed to shared designs.
- * 4. Optional: add `public/templates/<slug>.png` and set `thumbnail`.
+ * 4. Optional: add `public/templates/<slug>.webp` and set `thumbnail`.
  *
  * -----------------------------------------------------------------------------
  */
@@ -35,7 +35,7 @@ export const TEMPLATE_REGISTRY: Record<string, TemplateRegistryEntry> = {
       secondaryColumnPercent: 40,
     },
     name: 'Modern Resume',
-    thumbnail: '/templates/modern.png',
+    thumbnail: '/templates/modern.webp',
     sectionLayout: {
       regionKeys: [REGION_IDS.left, REGION_IDS.right],
       defaults: {
@@ -80,7 +80,7 @@ export const TEMPLATE_REGISTRY: Record<string, TemplateRegistryEntry> = {
       secondaryColumnPercent: 33.333333333333336,
     },
     name: 'Professional Resume',
-    thumbnail: '/templates/professional.png',
+    thumbnail: '/templates/professional.webp',
     sectionLayout: {
       regionKeys: [REGION_IDS.left, REGION_IDS.right],
       defaults: {
@@ -111,6 +111,45 @@ export const TEMPLATE_REGISTRY: Record<string, TemplateRegistryEntry> = {
     loadComponent: () => import('@/templates/designs/professional/ProfessionalTemplate'),
   },
 
+  spotlight: {
+    id: 'spotlight',
+    style: {
+      padding: [22, 25, 32, 25],
+      section: 32,
+      entry: 22,
+      column: 36,
+      body: 11,
+      heading: 16,
+      name: 28,
+      lineHeight: 1.5,
+      secondaryColumnPercent: 38,
+    },
+    name: 'Spotlight',
+    thumbnail: '/templates/spotlight.webp',
+    sectionLayout: {
+      regionKeys: [REGION_IDS.main, REGION_IDS.sidebar],
+      defaults: {
+        [REGION_IDS.main]: [SECTION_IDS.work],
+        [REGION_IDS.sidebar]: [
+          SECTION_IDS.skills,
+          SECTION_IDS.methodology,
+          SECTION_IDS.tools,
+          SECTION_IDS.education,
+          SECTION_IDS.awards,
+        ],
+      },
+    },
+    sectionRules: [
+      { sectionId: SECTION_IDS.work, when: has.work },
+      { sectionId: SECTION_IDS.education, when: has.education },
+      { sectionId: SECTION_IDS.skills, when: has.skillsLangFrameworks },
+      { sectionId: SECTION_IDS.awards, when: has.awards },
+      { sectionId: SECTION_IDS.methodology, when: has.practices },
+      { sectionId: SECTION_IDS.tools, when: has.tools },
+    ],
+    loadComponent: () => import('@/templates/designs/spotlight/SpotlightTemplate'),
+  },
+
   classic: {
     id: 'classic',
     style: {
@@ -124,7 +163,7 @@ export const TEMPLATE_REGISTRY: Record<string, TemplateRegistryEntry> = {
       lineHeight: 1.5,
     },
     name: 'Classic',
-    thumbnail: '/templates/classic.png',
+    thumbnail: '/templates/classic.webp',
     sectionLayout: {
       regionKeys: [REGION_IDS.main],
       defaults: {
@@ -159,7 +198,7 @@ export const TEMPLATE_REGISTRY: Record<string, TemplateRegistryEntry> = {
       secondaryColumnPercent: 34,
     },
     name: 'Sidebar Left',
-    thumbnail: '/templates/sidebarleft.png',
+    thumbnail: '/templates/sidebarleft.webp',
     sectionLayout: {
       regionKeys: [REGION_IDS.sidebar, REGION_IDS.main],
       defaults: {
@@ -191,7 +230,7 @@ export const TEMPLATE_REGISTRY: Record<string, TemplateRegistryEntry> = {
       secondaryColumnPercent: 32,
     },
     name: 'Sidebar Right',
-    thumbnail: '/templates/sidebarright.png',
+    thumbnail: '/templates/sidebarright.webp',
     sectionLayout: {
       regionKeys: [REGION_IDS.main, REGION_IDS.sidebar],
       defaults: {
@@ -223,7 +262,7 @@ export const TEMPLATE_REGISTRY: Record<string, TemplateRegistryEntry> = {
       secondaryColumnPercent: 38,
     },
     name: 'Header Band',
-    thumbnail: '/templates/headerband.png',
+    thumbnail: '/templates/headerband.webp',
     sectionLayout: {
       regionKeys: [REGION_IDS.main, REGION_IDS.sidebar],
       defaults: {
@@ -255,7 +294,7 @@ export const TEMPLATE_REGISTRY: Record<string, TemplateRegistryEntry> = {
       secondaryColumnPercent: 38,
     },
     name: 'Creative',
-    thumbnail: '/templates/creative.png',
+    thumbnail: '/templates/creative.webp',
     sectionLayout: {
       regionKeys: [REGION_IDS.sidebar, REGION_IDS.main],
       defaults: {
@@ -286,7 +325,7 @@ export const TEMPLATE_REGISTRY: Record<string, TemplateRegistryEntry> = {
       secondaryColumnPercent: 38,
     },
     name: 'Technical',
-    thumbnail: '/templates/technical.png',
+    thumbnail: '/templates/technical.webp',
     sectionLayout: {
       regionKeys: [REGION_IDS.main, REGION_IDS.sidebar],
       defaults: {
@@ -325,7 +364,7 @@ export const TEMPLATE_REGISTRY: Record<string, TemplateRegistryEntry> = {
       secondaryColumnPercent: 36,
     },
     name: 'Inspired',
-    thumbnail: '/templates/inspired.png',
+    thumbnail: '/templates/inspired.webp',
     sectionLayout: {
       regionKeys: [REGION_IDS.main, REGION_IDS.sidebar],
       defaults: {
@@ -355,7 +394,7 @@ export const TEMPLATE_REGISTRY: Record<string, TemplateRegistryEntry> = {
       lineHeight: 1.5,
     },
     name: 'Plain',
-    thumbnail: '/templates/plain.png',
+    thumbnail: '/templates/plain.webp',
     sectionLayout: {
       regionKeys: [REGION_IDS.main],
       defaults: {
@@ -384,7 +423,7 @@ export const TEMPLATE_REGISTRY: Record<string, TemplateRegistryEntry> = {
       secondaryColumnPercent: 32,
     },
     name: 'Straightforward',
-    thumbnail: '/templates/straightforward.png',
+    thumbnail: '/templates/straightforward.webp',
     sectionLayout: {
       regionKeys: [REGION_IDS.sidebar, REGION_IDS.main],
       defaults: {

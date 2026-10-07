@@ -9,3 +9,5 @@ export {
   EditorialProfile,
 } from './Profiles';
 export { ExperienceProfile } from './ExperienceProfile';
+
+export { SpotlightProfile } from './SpotlightProfile';

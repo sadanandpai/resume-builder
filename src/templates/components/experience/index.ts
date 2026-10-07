@@ -4,3 +4,5 @@ export {
   TimelineExperience,
   TechnicalExperience,
 } from './Experience';
+
+export { SpotlightExperience } from './SpotlightExperience';
