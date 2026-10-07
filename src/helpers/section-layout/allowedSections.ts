@@ -1,5 +1,5 @@
 /* oxlint-disable typescript/no-explicit-any */
-import { getRegistryEntryByTemplateId } from '@/templates/registry';
+import { getRegistryEntryByTemplateId } from '@/templates/designs/registry';
 
 /** Uses registry rules so templates stay in sync with SectionValidator “has content” checks. */
 export function getAllowedSectionIdsForTemplate(templateId: string, resumeData: any): Set<string> {

@@ -16,26 +16,52 @@ import { useBasicDetails } from './basic';
 import { useEducations } from './education';
 import { useExperiences } from './experience';
 import { useVoluteeringStore } from './volunteering';
+import { useMemo } from 'react';
 
 export const useResumeStore = () => {
-  return {
-    ...ResumeData,
-    basics: useBasicDetails((state) => state.values),
-    work: useExperiences((state) => state.experiences),
-    education: useEducations((state) => state.academics),
-    awards: useAwards((state) => state.awards),
-    volunteer: useVoluteeringStore((state) => state.volunteeredExps),
-    skills: {
-      languages: useLanguages((state) => state.values),
-      frameworks: useFrameworks((state) => state.values),
-      technologies: useTechnologies((state) => state.values),
-      libraries: useLibraries((state) => state.values),
-      databases: useDatabases((state) => state.values),
-      practices: usePractices((state) => state.values),
-      tools: useTools((state) => state.values),
-    },
-    activities: useActivity((state) => state.get()),
-  };
+  const basics = useBasicDetails((state) => state.values);
+  const work = useExperiences((state) => state.experiences);
+  const education = useEducations((state) => state.academics);
+  const awards = useAwards((state) => state.awards);
+  const volunteer = useVoluteeringStore((state) => state.volunteeredExps);
+  // Use each skill store's visibility-aware getter so hidden skills are
+  // excluded from the resume preview as well as the editor.
+  const languages = useLanguages((state) => state.get());
+  const frameworks = useFrameworks((state) => state.get());
+  const technologies = useTechnologies((state) => state.get());
+  const libraries = useLibraries((state) => state.get());
+  const databases = useDatabases((state) => state.get());
+  const practices = usePractices((state) => state.get());
+  const tools = useTools((state) => state.get());
+  const activities = useActivity((state) => state.get());
+
+  return useMemo(
+    () => ({
+      ...ResumeData,
+      basics,
+      work,
+      education,
+      awards,
+      volunteer,
+      skills: { languages, frameworks, technologies, libraries, databases, practices, tools },
+      activities,
+    }),
+    [
+      basics,
+      work,
+      education,
+      awards,
+      volunteer,
+      languages,
+      frameworks,
+      technologies,
+      libraries,
+      databases,
+      practices,
+      tools,
+      activities,
+    ]
+  );
 };
 
 /**

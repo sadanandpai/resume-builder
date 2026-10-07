@@ -32,7 +32,10 @@ const editSkill =
 
 const setSkills = (set: SetState<ISkillState>) => (values: ISkillItem[]) => set(() => ({ values }));
 
-const getSkills = (get: GetState<ISkillState>) => () => (get().isEnabled ? get().values : []);
+// Store snapshots must retain their identity between updates, including when hidden.
+const EMPTY_SKILLS: ISkillItem[] = [];
+const getSkills = (get: GetState<ISkillState>) => () =>
+  get().isEnabled ? get().values : EMPTY_SKILLS;
 
 const setIsEnabled = (set: SetState<ISkillState>) => (isEnabled: boolean) =>
   set(() => ({ isEnabled }));

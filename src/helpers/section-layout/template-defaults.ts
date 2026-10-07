@@ -1,10 +1,9 @@
-import { TEMPLATE_REGISTRY } from '@/templates/registry';
-import type { TemplateSectionLayoutConfig } from '@/templates/registry/types';
+import { TEMPLATE_REGISTRY } from '@/templates/designs/registry';
+import type { TemplateSectionLayoutConfig } from '@/templates/designs/registry/types';
 
-const TEMPLATE_SECTION_LAYOUTS: Record<string, TemplateSectionLayoutConfig> =
-  Object.fromEntries(
-    Object.values(TEMPLATE_REGISTRY).map((entry) => [entry.id, entry.sectionLayout])
-  );
+const TEMPLATE_SECTION_LAYOUTS: Record<string, TemplateSectionLayoutConfig> = Object.fromEntries(
+  Object.values(TEMPLATE_REGISTRY).map((entry) => [entry.id, entry.sectionLayout])
+);
 
 export function getTemplateSectionLayoutConfig(templateId: string): TemplateSectionLayoutConfig {
   return (

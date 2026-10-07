@@ -34,7 +34,23 @@ Add or update tests when changing resume data, import/export, templates, persist
 
 ### Creating a template
 
-TODO(sadanandpai): Per issue https://github.com/sadanandpai/resume-builder/issues/175, add instructions for how to create a template.
+Create `src/templates/<slug>/<Name>Template.tsx` as a thin page composition. Select named designs from the shared families in `src/templates/components/`, pass typed section data, and keep data selection local to the template:
+
+```tsx
+import { StandardExperience } from '@/templates/components/experience';
+import { CompactEducation } from '@/templates/components/education';
+
+<StandardExperience items={data.work} />
+<CompactEducation items={data.education} />
+```
+
+Use `ResumePresentation` once for semantic heading/frame treatment (`standard`, `underlined`, `boxed`, `editorial`, `technical`, or `stacked`). Use `TemplateRegion` from `src/templates/designs/integration/` for each sortable region with one section renderer reused by all regions. Its `surface` declares the actual destination background (`page`, `sidebar`, `tinted`, or `accentTint`); colored profile bands/cards establish their own internal surface.
+
+Add metadata, lazy loading, section rules, and persisted default regions to `src/templates/designs/registry/templates.ts`. Predicates must match the data passed to each design. Add a thumbnail under `public/templates/` as needed. Preserve existing section IDs and use the registry constants when adding a new one.
+
+To add a reusable design, place it in its family (`profile`, `contact`, `text`, `experience`, `education`, `skills`, `projects`, `awards`, or `volunteer`) and export it from that family's `index.ts`. Reuse collection primitives and `useSurfacePalette()`; keep spacing, headings, borders, empty handling, and width adaptation inside the design. Use existing structural data types or narrow compatible props, with no runtime store or builder context dependencies. Store subscriptions belong in integration adapters. Avoid template-local component/atom folders and universal component barrels.
+
+Check populated and empty data, long content and narrow columns, theme/surface changes, sections moved between regions, and browser print output. Run type checking with `npx tsc --noEmit` in addition to the core checks above. See [the refactor plan and actual design inventory](RESUME_TEMPLATE_REFACTOR_PLAN.md) for the current template mappings and verification limits.
 
 ---
 

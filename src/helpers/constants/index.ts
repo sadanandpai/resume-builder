@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic';
-import { TEMPLATE_REGISTRY } from '@/templates/registry';
+import { TEMPLATE_REGISTRY } from '@/templates/designs/registry';
 import { IThemeColor, ITemplate } from './index.interface';
 
 export const SYSTEM_COLORS: IThemeColor[] = [
@@ -26,7 +26,7 @@ export const SYSTEM_COLORS: IThemeColor[] = [
   },
 ];
 
-/** Built from `src/templates/registry/templates.ts` — add templates there. */
+/** Built from `src/templates/designs/registry/templates.ts` — add templates there. */
 export const AVAILABLE_TEMPLATES: ITemplate = Object.fromEntries(
   Object.entries(TEMPLATE_REGISTRY).map(([key, entry]) => [
     key,
