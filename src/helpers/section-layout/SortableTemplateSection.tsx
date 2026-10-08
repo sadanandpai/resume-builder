@@ -1,5 +1,6 @@
 'use client';
 
+import { EditableResumeSection } from '@/helpers/common/components/EditableResumeSection';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { ReactNode, useContext } from 'react';
@@ -26,7 +27,7 @@ export function SortableTemplateSection({ id, children }: { id: string; children
   };
 
   if (!isReorderMode) {
-    return <div className="relative">{children}</div>;
+    return <EditableResumeSection id={id}>{children}</EditableResumeSection>;
   }
 
   return (

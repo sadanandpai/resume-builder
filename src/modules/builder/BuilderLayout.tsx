@@ -2,7 +2,8 @@
 
 import EditorLayout from './editor/EditorLayout';
 import Image from '@/helpers/common/components/Image';
-import { useState } from 'react';
+import { useEditorStore } from '@/stores/useEditorStore';
+import { useEffect, useState } from 'react';
 import NavBarLayout from './nav-bar/NavBarLayout';
 import ResumeHeader from './resume/components/ResumeHeader';
 import { ResumeLayout } from './resume/ResumeLayout';
@@ -15,6 +16,14 @@ const segmentBtn =
 
 const BuilderLayout = () => {
   const [mobileTab, setMobileTab] = useState<MobileTab>('preview');
+
+  useEffect(
+    () =>
+      useEditorStore.subscribe((state, previous) => {
+        if (state.revision !== previous.revision && state.target.section) setMobileTab('edit');
+      }),
+    []
+  );
 
   return (
     <div className="flex flex-col h-screen min-h-0 print:h-auto print:block">

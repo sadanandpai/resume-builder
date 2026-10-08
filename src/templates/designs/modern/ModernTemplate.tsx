@@ -1,3 +1,4 @@
+import { EditableResumeSection } from '@/helpers/common/components/EditableResumeSection';
 import { columns, padding, spacing } from '@/helpers/resume-style/styles';
 import { useResumeStyleStore } from '@/stores/useResumeStyleStore';
 import { useContext } from 'react';
@@ -85,7 +86,9 @@ export default function ModernTemplate() {
   return (
     <ResumePresentation value="stacked">
       <div style={{ ...pageStyle(resumePalette), padding: padding(16) }}>
-        <InlineProfile basics={basics} />
+        <EditableResumeSection id="basics">
+          <InlineProfile basics={basics} />
+        </EditableResumeSection>
         <div
           style={{
             display: 'grid',

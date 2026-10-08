@@ -1,3 +1,4 @@
+import { useEditorStore } from '@/stores/useEditorStore';
 import { useState } from 'react';
 import {
   useDatabases,
@@ -22,7 +23,9 @@ const SkillsLayout = () => {
     useTools(),
   ];
 
-  const [expanded, setExpanded] = useState<string | false>('Languages');
+  const [expanded, setExpanded] = useState<string | false>(
+    useEditorStore.getState().target.panel ?? 'Languages'
+  );
 
   const handleChange = (panel: string, isExpanded: boolean) => {
     setExpanded(isExpanded ? panel : false);

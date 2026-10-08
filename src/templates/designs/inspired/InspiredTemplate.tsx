@@ -1,3 +1,4 @@
+import { EditableResumeSection } from '@/helpers/common/components/EditableResumeSection';
 import { columns, padding, spacing } from '@/helpers/resume-style/styles';
 import { useResumeStyleStore } from '@/stores/useResumeStyleStore';
 import { useContext } from 'react';
@@ -40,7 +41,9 @@ export default function InspiredTemplate() {
   return (
     <ResumePresentation value="standard">
       <div style={{ ...pageStyle(resumePalette), position: 'relative', overflow: 'hidden' }}>
-        <CardProfile basics={basics} />
+        <EditableResumeSection id="basics">
+          <CardProfile basics={basics} />
+        </EditableResumeSection>
         <div
           style={{
             display: 'grid',

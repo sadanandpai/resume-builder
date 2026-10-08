@@ -1,3 +1,4 @@
+import { EditableResumeSection } from '@/helpers/common/components/EditableResumeSection';
 import { columns, padding, spacing } from '@/helpers/resume-style/styles';
 import { useResumeStyleStore } from '@/stores/useResumeStyleStore';
 import { useContext } from 'react';
@@ -68,7 +69,9 @@ export default function StraightforwardTemplate() {
           />
         </aside>
         <main style={{ minWidth: 0, padding: padding('28px 32px') }}>
-          <EditorialProfile basics={basics} />
+          <EditableResumeSection id="basics">
+            <EditorialProfile basics={basics} />
+          </EditableResumeSection>
           <TemplateRegion regionId="main" items={regions.main} renderSection={renderSection} />
         </main>
       </div>

@@ -1,3 +1,4 @@
+import { EditableResumeSection } from '@/helpers/common/components/EditableResumeSection';
 import { columns, padding, spacing } from '@/helpers/resume-style/styles';
 import { useResumeStyleStore } from '@/stores/useResumeStyleStore';
 import { useContext } from 'react';
@@ -59,7 +60,9 @@ export default function SidebarLeftTemplate() {
           }}
         >
           <ResumeSurface surface="sidebar">
-            <SidebarProfile basics={basics} />
+            <EditableResumeSection id="basics">
+              <SidebarProfile basics={basics} />
+            </EditableResumeSection>
           </ResumeSurface>
           <TemplateRegion
             surface="sidebar"
@@ -69,7 +72,9 @@ export default function SidebarLeftTemplate() {
           />
         </aside>
         <main style={{ minWidth: 0, padding: padding('32px 28px') }}>
-          <InlineProfile basics={{ name: basics.name, label: basics.label }} />
+          <EditableResumeSection id="basics">
+            <InlineProfile basics={{ name: basics.name, label: basics.label }} />
+          </EditableResumeSection>
           <TemplateRegion regionId="main" items={regions.main} renderSection={renderSection} />
         </main>
       </div>

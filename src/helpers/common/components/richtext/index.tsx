@@ -1,6 +1,7 @@
 import { useRef, useEffect, memo, useState } from 'react';
 import 'jodit/es2015/jodit.min.css';
 
+import type { Jodit as JoditInstance } from 'jodit';
 import { LinkPlugin } from './plugins/link';
 
 import styles from './jodit.module.css';
@@ -14,15 +15,18 @@ interface IRichtext {
 
 export const RichtextEditor = memo(({ label, onChange, value }: IRichtext) => {
   const editorContainerRef = useRef<HTMLTextAreaElement | null>(null);
-  // oxlint-disable-next-line typescript/no-explicit-any
-  const editorRef = useRef<any>(null);
+  const editorRef = useRef<JoditInstance | null>(null);
   const [editorInstanceCreated, setEditorInstanceCreated] = useState(false);
 
   useEffect(() => {
-    if (editorContainerRef.current) {
+    const container = editorContainerRef.current;
+    let cancelled = false;
+    let instance: JoditInstance | null = null;
+    if (container) {
       const initEditor = async () => {
         const { Jodit } = await import('jodit');
-        const editor = Jodit.make(editorContainerRef.current as HTMLTextAreaElement, {
+        if (cancelled) return;
+        const editor = Jodit.make(container, {
           showCharsCounter: false,
           showWordsCounter: false,
           showXPathInStatusbar: false,
@@ -36,12 +40,18 @@ export const RichtextEditor = memo(({ label, onChange, value }: IRichtext) => {
           maxHeight: 200,
           link: LinkPlugin,
         });
+        instance = editor;
         editor.value = value;
         editorRef.current = editor;
         setEditorInstanceCreated(true);
       };
       initEditor();
     }
+    return () => {
+      cancelled = true;
+      instance?.destruct();
+      editorRef.current = null;
+    };
     // oxlint-disable-next-line react/exhaustive-deps
   }, []);
 
@@ -53,7 +63,11 @@ export const RichtextEditor = memo(({ label, onChange, value }: IRichtext) => {
 
   useEffect(() => {
     if (editorRef.current && editorInstanceCreated) {
-      editorRef.current.events.on('change', onChange);
+      const editor = editorRef.current;
+      editor.events.on('change', onChange);
+      return () => {
+        if (!editor.isDestructed) editor.events.off('change', onChange);
+      };
     }
   }, [onChange, editorInstanceCreated]);
 

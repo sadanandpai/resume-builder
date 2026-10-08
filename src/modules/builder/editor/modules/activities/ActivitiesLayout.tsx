@@ -1,3 +1,4 @@
+import { useEditorStore } from '@/stores/useEditorStore';
 import { Fragment, SyntheticEvent, useState } from 'react';
 
 import Achievements from './components/Achievements';
@@ -30,7 +31,9 @@ const allActivityTabs: IAllActivityTabs = {
 };
 
 const ActivitiesLayout = () => {
-  const [activeTab, setActiveTab] = useState(allActivityTabs['involvements']);
+  const [activeTab, setActiveTab] = useState(
+    allActivityTabs[useEditorStore.getState().target.panel ?? 'involvements']
+  );
 
   const changeActiveTab = (_event: SyntheticEvent, key: string) => {
     const selectedTab = allActivityTabs[key];

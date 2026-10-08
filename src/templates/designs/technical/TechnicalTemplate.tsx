@@ -1,3 +1,4 @@
+import { EditableResumeSection } from '@/helpers/common/components/EditableResumeSection';
 import { columns, padding, spacing } from '@/helpers/resume-style/styles';
 import { useResumeStyleStore } from '@/stores/useResumeStyleStore';
 import { useContext } from 'react';
@@ -52,7 +53,9 @@ export default function TechnicalTemplate() {
   return (
     <ResumePresentation value="technical">
       <div style={{ ...pageStyle(resumePalette), padding: padding('34px 40px') }}>
-        <TechnicalProfile basics={basics} />
+        <EditableResumeSection id="basics">
+          <TechnicalProfile basics={basics} />
+        </EditableResumeSection>
         <div
           style={{
             display: 'grid',

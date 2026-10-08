@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useEditorStore } from '@/stores/useEditorStore';
+import { useEffect, useRef, useState } from 'react';
 
 import DataHeaders from './components/EditHeaders';
 import EditSection from './components/EditSection';
@@ -42,12 +43,17 @@ const ConfirmationBox = ({
 };
 
 const EditorLayout = () => {
-  const [link, setLink] = useState('');
+  const { target, revision, openEditor } = useEditorStore();
+  const link = target.section;
+  const editorRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (editorRef.current) editorRef.current.scrollTop = 0;
+  }, [revision]);
   const [shouldOpenModal, setShouldOpenModal] = useState(false);
   const section = headers[link];
 
   const linkClickHandler = (link: string) => {
-    setLink(link);
+    openEditor({ section: link });
   };
 
   const confirmationModalHandler = () => {
@@ -60,14 +66,17 @@ const EditorLayout = () => {
   };
 
   const displayElement = link ? (
-    <EditSection section={section} onLinkClick={linkClickHandler} />
+    <EditSection key={revision} section={section} onLinkClick={linkClickHandler} />
   ) : (
     <DataHeaders onLinkClick={linkClickHandler} />
   );
 
   return (
     <ErrorBoundary>
-      <div className="bg-resume-50 h-full text-resume-800 p-6 overflow-auto relative no-scrollbar shadow-level-4dp">
+      <div
+        ref={editorRef}
+        className="bg-resume-50 h-full text-resume-800 p-6 overflow-auto relative no-scrollbar shadow-level-4dp"
+      >
         {displayElement}
 
         <div className="mt-8">

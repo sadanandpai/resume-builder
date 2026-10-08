@@ -1,3 +1,4 @@
+import { EditableResumeSection } from '@/helpers/common/components/EditableResumeSection';
 import { columns, padding, spacing } from '@/helpers/resume-style/styles';
 import { useResumeStyleStore } from '@/stores/useResumeStyleStore';
 import { useContext } from 'react';
@@ -39,7 +40,9 @@ export default function SpotlightTemplate() {
   return (
     <ResumePresentation value="standard">
       <div style={pageStyle(palette)}>
-        <SpotlightProfile basics={basics} />
+        <EditableResumeSection id="basics">
+          <SpotlightProfile basics={basics} />
+        </EditableResumeSection>
         <div
           style={{
             display: 'grid',

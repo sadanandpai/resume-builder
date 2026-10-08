@@ -41,6 +41,7 @@ const NavBarLayout = () => {
   const [toastContent, setToastContent] = useState('');
   const [menuAnchor, setMenuAnchor] = useState<null | HTMLElement>(null);
   const fileInputRef = useRef(null);
+  const importControllerRef = useRef<AbortController | null>(null);
 
   /** Auto-import when opening `/builder?importUrl=<encoded JSON URL>` (param removed after attempt). */
   useEffect(() => {
@@ -54,19 +55,22 @@ const NavBarLayout = () => {
     if (!param) return;
 
     let active = true;
+    const controller = new AbortController();
+    importControllerRef.current?.abort();
+    importControllerRef.current = controller;
 
     void (async () => {
       try {
-        await fetchAndApplyResumeFromUrl(param);
-        if (!active) return;
+        await fetchAndApplyResumeFromUrl(param, controller.signal);
+        if (!active || controller.signal.aborted) return;
         setToastContent('Resume data was successfully imported.');
         setOpenToast(true);
       } catch (e) {
-        if (!active) return;
+        if (!active || controller.signal.aborted) return;
         setToastContent(formatImportUrlError(e));
         setOpenToast(true);
       }
-      if (!active) return;
+      if (!active || controller.signal.aborted) return;
       const nextQuery = { ...router.query };
       delete nextQuery.importUrl;
       void router.replace({ pathname: router.pathname, query: nextQuery }, undefined, {
@@ -76,6 +80,7 @@ const NavBarLayout = () => {
 
     return () => {
       active = false;
+      controller.abort();
     };
   }, [router, router.isReady, router.pathname, importUrlFromQuery]);
 
@@ -130,6 +135,7 @@ const NavBarLayout = () => {
       return;
     }
 
+    importControllerRef.current?.abort();
     const reader = new FileReader();
 
     reader.readAsText(fileObj);

@@ -13,7 +13,25 @@ export const useTemplates = create<ITemplateStore>((set) => ({
   activeTemplate: AVAILABLE_TEMPLATES['modern'],
 
   setTemplate: (template: ITemplateContent) => {
-    localStorage.setItem('selectedTemplateId', template.id);
+    try {
+      localStorage.setItem('selectedTemplateId', template.id);
+    } catch {
+      // Template selection still works when browser storage is unavailable.
+    }
     set({ activeTemplate: template });
   },
 }));
+
+export function restoreSavedTemplate(): void {
+  let savedId: string | null = null;
+  try {
+    savedId = localStorage.getItem('selectedTemplateId');
+  } catch {
+    // Use the default when storage access is blocked.
+  }
+  const template =
+    savedId && Object.hasOwn(AVAILABLE_TEMPLATES, savedId)
+      ? AVAILABLE_TEMPLATES[savedId]
+      : AVAILABLE_TEMPLATES.modern;
+  useTemplates.getState().setTemplate(template);
+}

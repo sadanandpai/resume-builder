@@ -1,3 +1,4 @@
+import { EditableResumeSection } from '@/helpers/common/components/EditableResumeSection';
 import { padding } from '@/helpers/resume-style/styles';
 import { useContext } from 'react';
 import { useSectionLayoutRuntime } from '@/helpers/section-layout';
@@ -37,7 +38,9 @@ export default function ClassicTemplate() {
   return (
     <ResumePresentation value="underlined">
       <div style={{ ...pageStyle(resumePalette), padding: padding('40px 48px') }}>
-        <CenteredProfile basics={basics} />
+        <EditableResumeSection id="basics">
+          <CenteredProfile basics={basics} />
+        </EditableResumeSection>
         <TemplateRegion regionId="main" items={regions.main} renderSection={renderSection} />
       </div>
     </ResumePresentation>

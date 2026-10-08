@@ -17,11 +17,15 @@ function assertFetchableHttpUrl(raw: string): URL {
   return url;
 }
 
-export async function fetchAndApplyResumeFromUrl(urlString: string): Promise<void> {
+export async function fetchAndApplyResumeFromUrl(
+  urlString: string,
+  signal?: AbortSignal
+): Promise<void> {
   const fetchUrl = assertFetchableHttpUrl(urlString);
   const response = await fetch(fetchUrl.toString(), {
     credentials: 'omit',
     mode: 'cors',
+    signal,
   });
   if (!response.ok) {
     const detail = response.statusText ? ` ${response.statusText}` : '';
@@ -36,6 +40,7 @@ export async function fetchAndApplyResumeFromUrl(urlString: string): Promise<voi
       'The response was not valid JSON. The URL may point to an error page or non-JSON content.'
     );
   }
+  signal?.throwIfAborted();
   applyImportedResumeJson(data);
 }
 

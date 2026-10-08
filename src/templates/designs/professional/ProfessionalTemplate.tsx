@@ -1,3 +1,4 @@
+import { EditableResumeSection } from '@/helpers/common/components/EditableResumeSection';
 import { columns, padding, spacing } from '@/helpers/resume-style/styles';
 import { useResumeStyleStore } from '@/stores/useResumeStyleStore';
 import { useContext } from 'react';
@@ -78,7 +79,9 @@ export default function ProfessionalTemplate() {
         }}
       >
         <div style={{ minWidth: 0 }}>
-          <ExperienceProfile basics={basics} />
+          <EditableResumeSection id="basics">
+            <ExperienceProfile basics={basics} />
+          </EditableResumeSection>
           <TemplateRegion regionId="left" items={regions.left} renderSection={renderSection} />
         </div>
         <TemplateRegion regionId="right" items={regions.right} renderSection={renderSection} />
