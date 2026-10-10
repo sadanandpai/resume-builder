@@ -32,7 +32,7 @@ export function ModernProfile({ basics }: { basics: ProfileBasics }) {
         }}
       >
         <div style={{ minWidth: 0, display: 'flex', flexDirection: 'column', gap: 6 }}>
-          <div style={{ color: p.primary, fontSize: bodySize(14), fontWeight: 500 }}>
+          <div style={{ color: p.accent, fontSize: bodySize(14), fontWeight: 500 }}>
             {basics.label}
           </div>
           {basics.totalExp && <div>Experience: {basics.totalExp}</div>}

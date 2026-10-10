@@ -152,7 +152,7 @@
 }
 
 .richtextRuntimeWrapper a {
-  color: #007bff;
+  color: inherit;
   text-decoration: underline;
 }
 

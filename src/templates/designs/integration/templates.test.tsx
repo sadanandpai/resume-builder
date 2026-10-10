@@ -101,6 +101,37 @@ Object.assign(theme, {
 });
 
 describe('template coverage and destination placement', () => {
+  it('Modern updates highlights independently from title colors', async () => {
+    runtime.regions = coverage.modern;
+    const { default: Template } = await TEMPLATE_REGISTRY.modern.loadComponent();
+    const renderWithHighlight = (highlight: string) => {
+      const customTheme = createTheme();
+      Object.assign(customTheme, { ...theme, highlighterColor: highlight });
+      return (
+        <StateContext.Provider value={data}>
+          <ThemeProvider theme={customTheme}>
+            <Template />
+          </ThemeProvider>
+        </StateContext.Provider>
+      );
+    };
+    const view = render(renderWithHighlight('#aa3344'));
+    const subtitle = screen.getByText(data.basics.label);
+    const heading = screen.getByRole('heading', { name: data.basics.name });
+    const work = screen.getByTestId('section-work');
+    const marker = Array.from(work.querySelectorAll<HTMLElement>('span[aria-hidden]')).find(
+      (element) => element.style.borderRadius === '50%'
+    )!;
+    expect(subtitle).toHaveStyle({ color: '#aa3344' });
+    expect(marker.style.border).toContain('rgb(170, 51, 68)');
+    expect(heading).toHaveStyle({ color: '#123456' });
+    expect(heading.parentElement!.style.borderBottom).toContain('170, 51, 68');
+    view.rerender(renderWithHighlight('#228855'));
+    expect(subtitle).toHaveStyle({ color: '#228855' });
+    expect(marker.style.border).toContain('rgb(34, 136, 85)');
+    expect(heading).toHaveStyle({ color: '#123456' });
+    expect(heading.parentElement!.style.borderBottom).toContain('34, 136, 85');
+  });
   it('exposes only the four supported designs', () => {
     expect(Object.keys(TEMPLATE_REGISTRY).sort()).toEqual([
       'classic',

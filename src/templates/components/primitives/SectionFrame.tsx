@@ -52,7 +52,7 @@ export function SectionFrame({
             flexWrap: 'wrap',
             margin: heading === 'profile' ? '0 0 12px' : '0 0 10px',
             paddingBottom: heading === 'profile' ? 8 : 5,
-            borderBottom: `1px solid ${withAlpha(p.primary, heading === 'profile' ? 0.4 : 0.24)}`,
+            borderBottom: `1px solid ${withAlpha(p.accent, heading === 'profile' ? 0.4 : 0.24)}`,
           }}
         >
           <Heading

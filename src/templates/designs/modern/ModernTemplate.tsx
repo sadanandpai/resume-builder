@@ -31,7 +31,7 @@ export default function ModernTemplate() {
             entrySpacing={20}
             summarySpacing={6}
             companyWeight={500}
-            markerColor="primary"
+            markerColor="accent"
             items={data.work}
             title={titles.work}
           />
