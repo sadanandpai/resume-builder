@@ -6,13 +6,10 @@ Rendering uses inherited custom properties with explicit fallbacks in actual com
 
 ## Padding mapping
 
-| Templates                                       | Override containers                                                                      |
-| ----------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| Modern, Professional, Classic, Technical, Plain | Root content wrapper                                                                     |
-| Sidebar Left, Sidebar Right, Straightforward    | Main and sidebar wrappers; never the parent grid                                         |
-| Header Band                                     | Background header and body grid                                                          |
-| Creative                                        | Decorative background header and body grid                                               |
-| Inspired                                        | Outer profile header and body grid; inner identity/sidebar cards keep decorative padding |
+| Templates                     | Override containers                |
+| ----------------------------- | ---------------------------------- |
+| Modern, Professional, Classic | Root content wrapper               |
+| Spotlight                     | Body grid below the profile header |
 
 Section boxes retain their decorative padding. A global override replaces each designated container's complete four-side padding rather than adding another wrapper. Metadata describes primary content defaults; individual original fallbacks remain in components, because defaults can differ within the same template.
 

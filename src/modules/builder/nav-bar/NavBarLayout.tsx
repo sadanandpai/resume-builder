@@ -18,6 +18,7 @@ import Link from 'next/link';
 import { NavMenuItem } from './components/MenuItem';
 import { PrintResume } from './components/PrintResume';
 import { TemplateSelect } from './components/TemplateSelect';
+import { TitlesSelect } from './components/TitlesSelect';
 import { LayoutSelect } from './components/LayoutSelect';
 import { ThemeSelect } from './components/ThemeSelect';
 import { Toast } from '@/helpers/common/atoms/Toast';
@@ -171,6 +172,7 @@ const NavBarLayout = () => {
           <div className="hidden lg:block">
             <NavMenuItem caption="Layout" popoverChildren={<LayoutSelect />} />
           </div>
+          <NavMenuItem caption="Titles" popoverChildren={<TitlesSelect />} />
         </NavBarMenu>
         <div className="hidden md:flex">
           <NavBarActions>

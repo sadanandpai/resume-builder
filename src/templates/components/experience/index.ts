@@ -1,8 +1,3 @@
-export {
-  StandardExperience,
-  StackedExperience,
-  TimelineExperience,
-  TechnicalExperience,
-} from './Experience';
+export { StandardExperience, TimelineExperience } from './Experience';
 
 export { SpotlightExperience } from './SpotlightExperience';

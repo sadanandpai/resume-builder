@@ -1,8 +1,8 @@
 import { createContext, type ReactNode } from 'react';
-import { render, screen, within } from '@testing-library/react';
+import { act, render, screen, within } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import ResumeData from '@/helpers/constants/resume-data.json';
+import ResumeData from '@/templates/test-fixtures/resume-data.json';
 import { TEMPLATE_REGISTRY } from '@/templates/designs/registry/templates';
 
 const runtime = vi.hoisted(() => ({ regions: {} as Record<string, string[]> }));
@@ -33,18 +33,6 @@ import { StateContext } from '@/modules/builder/resume/ResumeLayout';
 
 const coverage: Record<string, Record<string, string[]>> = {
   spotlight: { main: ['work'], sidebar: ['skills', 'methodology', 'tools', 'education', 'awards'] },
-  modern: {
-    left: ['summary', 'work', 'awards'],
-    right: [
-      'objective',
-      'languages',
-      'technologies',
-      'frameworks_libs',
-      'tools',
-      'education',
-      'volunteer',
-    ],
-  },
   professional: {
     left: ['work', 'involvement', 'achievements'],
     right: [
@@ -57,43 +45,47 @@ const coverage: Record<string, Record<string, string[]>> = {
       'education',
     ],
   },
-  classic: { main: ['summary', 'work', 'education', 'skills'] },
-  'sidebar-left': { sidebar: ['skills', 'education'], main: ['summary', 'work', 'awards'] },
-  'sidebar-right': { main: ['summary', 'work', 'projects'], sidebar: ['skills', 'education'] },
-  'header-band': { main: ['summary', 'work'], sidebar: ['skills', 'tools', 'education'] },
-  creative: { sidebar: ['skills', 'education'], main: ['summary', 'work'] },
-  technical: {
-    main: ['summary', 'work', 'projects'],
-    sidebar: ['languages', 'frameworks_libs', 'stack', 'education'],
+  modern: {
+    left: ['work', 'involvement', 'achievements'],
+    right: [
+      'summary',
+      'objective',
+      'tech_expertise',
+      'frameworks',
+      'skills_exposure',
+      'tools',
+      'methodology',
+      'education',
+    ],
   },
-  inspired: { main: ['work', 'education'], sidebar: ['summary', 'skills'] },
-  plain: { main: ['work', 'education', 'awards'] },
-  straightforward: {
-    sidebar: ['education', 'skills_merged', 'awards'],
-    main: ['summary', 'work', 'involvements'],
+  classic: {
+    main: [
+      'summary',
+      'objective',
+      'work',
+      'involvement',
+      'skills',
+      'achievements',
+      'awards',
+      'education',
+    ],
   },
 };
 const markers: Record<string, string> = {
   summary: 'summary-marker',
   objective: 'objective-marker',
   work: 'Company 1',
+  volunteer: 'Company XYZ',
   awards: 'Certificate of exceptional bug finder',
   education: 'MIT, University',
-  volunteer: 'Company XYZ',
   skills: 'JavaScript',
-  skills_merged: 'JavaScript',
-  languages: 'JavaScript',
-  technologies: 'Algorithms',
-  frameworks_libs: 'jQuery',
   tools: 'Git',
-  projects: 'projects-marker',
-  involvements: 'projects-marker',
   involvement: 'projects-marker',
   achievements: 'achievements-marker',
   tech_expertise: 'JavaScript',
+  frameworks: 'React',
   skills_exposure: 'Firebase',
   methodology: 'Agile methodology',
-  stack: 'Firebase',
 };
 const data = {
   ...ResumeData,
@@ -109,6 +101,14 @@ Object.assign(theme, {
 });
 
 describe('template coverage and destination placement', () => {
+  it('exposes only the four supported designs', () => {
+    expect(Object.keys(TEMPLATE_REGISTRY).sort()).toEqual([
+      'classic',
+      'modern',
+      'professional',
+      'spotlight',
+    ]);
+  });
   for (const [id, defaults] of Object.entries(coverage)) {
     const entry = TEMPLATE_REGISTRY[id];
     it(`${id} preserves its persisted defaults and renders all default sections`, async () => {
@@ -130,11 +130,7 @@ describe('template coverage and destination placement', () => {
           const section = within(screen.getByTestId(`region-${region}`)).getByTestId(
             `section-${sectionId}`
           );
-          expect(section).toHaveTextContent(
-            id === 'sidebar-left' && sectionId === 'awards'
-              ? 'achievements-marker'
-              : markers[sectionId]
-          );
+          expect(section).toHaveTextContent(markers[sectionId]);
         }
       }
     });
@@ -155,16 +151,7 @@ describe('template coverage and destination placement', () => {
         const target = screen.getByTestId(`region-${destination}`);
         for (const sectionId of ids) {
           const section = within(target).getByTestId(`section-${sectionId}`);
-          expect(section).toHaveTextContent(
-            id === 'sidebar-left' && sectionId === 'awards'
-              ? 'achievements-marker'
-              : markers[sectionId]
-          );
-          if (id === 'sidebar-left') {
-            expect(within(section).getByRole('heading')).toHaveStyle({
-              color: destination === 'sidebar' ? '#ffffff' : '#123456',
-            });
-          }
+          expect(section).toHaveTextContent(markers[sectionId]);
         }
         expect([...target.children].map((child) => child.getAttribute('data-testid'))).toEqual(
           ids.map((sectionId) => `section-${sectionId}`)
@@ -172,12 +159,9 @@ describe('template coverage and destination placement', () => {
       });
     }
   }
-  it('shows libraries-only Modern frameworks/libraries and tools-only Classic skills', async () => {
+  it('shows tools-only Classic skills', async () => {
     const skills = Object.fromEntries(Object.keys(data.skills).map((key) => [key, []]));
-    for (const [id, sectionId, key, marker] of [
-      ['modern', 'frameworks_libs', 'libraries', 'jQuery'],
-      ['classic', 'skills', 'tools', 'Git'],
-    ]) {
+    for (const [id, sectionId, key, marker] of [['classic', 'skills', 'tools', 'Git']]) {
       const only = {
         ...data,
         skills: { ...skills, [key]: data.skills[key as keyof typeof data.skills] },
@@ -248,4 +232,52 @@ describe('template style integration', () => {
       expect(useResumeStyleStore.getState().settings).toEqual(settings);
     });
   }
+});
+
+describe('Classic page fitting', () => {
+  it('fits overflowing content and restores full size after content shrinks', async () => {
+    let measure: () => void = () => {};
+    let contentHeight = 1600;
+    const height = vi
+      .spyOn(HTMLElement.prototype, 'offsetHeight', 'get')
+      .mockImplementation(() => contentHeight);
+    const available = vi.spyOn(HTMLElement.prototype, 'clientHeight', 'get').mockReturnValue(1000);
+    vi.stubGlobal(
+      'ResizeObserver',
+      class {
+        constructor(callback: () => void) {
+          measure = callback;
+        }
+        observe() {}
+        disconnect() {}
+      }
+    );
+    try {
+      runtime.regions = TEMPLATE_REGISTRY.classic.sectionLayout.defaults;
+      const { default: Template } = await TEMPLATE_REGISTRY.classic.loadComponent();
+      const view = render(
+        <StateContext.Provider value={data}>
+          <ThemeProvider theme={theme}>
+            <div className="resume-page-content">
+              <Template />
+            </div>
+          </ThemeProvider>
+        </StateContext.Provider>
+      );
+      const paper = view.container.querySelector('[style*="transform-origin"]') as HTMLElement;
+      const scale = Number(paper.style.transform.slice(6, -1));
+      expect(scale).toBeCloseTo(0.624375, 4);
+      expect(parseFloat(paper.style.width) * scale).toBeCloseTo(100, 4);
+      expect(parseFloat(paper.parentElement!.style.height)).toBeLessThanOrEqual(999);
+      contentHeight = 800;
+      act(() => measure());
+      expect(paper.style.transform).toBe('scale(1)');
+      expect(paper.parentElement?.style.height).toBe('800px');
+      view.unmount();
+    } finally {
+      height.mockRestore();
+      available.mockRestore();
+      vi.unstubAllGlobals();
+    }
+  });
 });

@@ -12,24 +12,18 @@ export const REGION_IDS = {
 } as const;
 
 export const SECTION_IDS = {
+  volunteer: 'volunteer',
   summary: 'summary',
   work: 'work',
   awards: 'awards',
   objective: 'objective',
-  languages: 'languages',
-  technologies: 'technologies',
-  frameworksLibs: 'frameworks_libs',
+  frameworks: 'frameworks',
   tools: 'tools',
   education: 'education',
-  volunteer: 'volunteer',
   involvement: 'involvement',
   achievements: 'achievements',
   techExpertise: 'tech_expertise',
   skillsExposure: 'skills_exposure',
   methodology: 'methodology',
   skills: 'skills',
-  projects: 'projects',
-  stack: 'stack',
-  skillsMerged: 'skills_merged',
-  involvements: 'involvements',
 } as const;

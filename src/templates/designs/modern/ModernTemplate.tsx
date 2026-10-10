@@ -1,3 +1,4 @@
+import { useTemplateTitles } from '@/stores/useSectionTitleStore';
 import { EditableResumeSection } from '@/helpers/common/components/EditableResumeSection';
 import { columns, padding, spacing } from '@/helpers/resume-style/styles';
 import { useResumeStyleStore } from '@/stores/useResumeStyleStore';
@@ -7,98 +8,111 @@ import { StateContext } from '@/modules/builder/resume/ResumeLayout';
 import { pageStyle } from '@/templates/components/primitives/layoutPrimitives';
 import { ResumePresentation, useResumePalette } from '@/templates/components/theme';
 import { TemplateRegion } from '@/templates/designs/integration/TemplateRegion';
-import { AwardsSection } from '@/templates/components/awards';
+import { AchievementsSection } from '@/templates/components/awards';
 import { StandardEducation } from '@/templates/components/education';
-import { StackedExperience } from '@/templates/components/experience';
-import { InlineProfile } from '@/templates/components/profile';
+import { TimelineExperience } from '@/templates/components/experience';
+import { ModernProfile } from '@/templates/components/profile';
+import { ProjectsSection } from '@/templates/components/projects';
 import { ChipSkills } from '@/templates/components/skills';
-import { TextSection } from '@/templates/components/text';
-import { VolunteerSection } from '@/templates/components/volunteer';
-import { EditScrollSection } from '@/templates/designs/integration/EditScrollSection';
+import { ProfileSummarySection, TextSection } from '@/templates/components/text';
 
 export default function ModernTemplate() {
   const secondaryPercent = useResumeStyleStore((state) => state.settings.secondaryColumnPercent);
+  const titles = useTemplateTitles('modern');
   const data = useContext(StateContext);
   const { regions } = useSectionLayoutRuntime();
   const resumePalette = useResumePalette();
   const basics = data.basics;
   const renderSection = (id: string) => {
     switch (id) {
-      case 'summary':
-        return <TextSection html={basics.summary} />;
       case 'work':
         return (
-          <EditScrollSection source="work">
-            <StackedExperience items={data.work} />
-          </EditScrollSection>
+          <TimelineExperience
+            entrySpacing={20}
+            summarySpacing={6}
+            companyWeight={500}
+            markerColor="primary"
+            items={data.work}
+            title={titles.work}
+          />
         );
-      case 'awards':
+      case 'involvement':
+        return <ProjectsSection html={data.activities.involvements} title={titles.involvement} />;
+      case 'achievements':
         return (
-          <EditScrollSection source="awards">
-            <AwardsSection items={data.awards} />
-          </EditScrollSection>
+          <AchievementsSection html={data.activities.achievements} title={titles.achievements} />
+        );
+      case 'summary':
+        return (
+          <ProfileSummarySection
+            title={titles.summary}
+            indentParagraphs
+            html={basics.summary}
+            image={basics.image}
+          />
         );
       case 'objective':
-        return <TextSection html={basics.objective} title="Objective" />;
-      case 'languages':
+        return <TextSection html={basics.objective} title={titles.objective} />;
+      case 'tech_expertise':
         return (
-          <EditScrollSection source="skills">
-            <ChipSkills items={data.skills.languages} title="Languages" />
-          </EditScrollSection>
+          <ChipSkills
+            chipVariant="neutral"
+            items={data.skills.languages}
+            title={titles.tech_expertise}
+          />
         );
-      case 'technologies':
+      case 'frameworks':
         return (
-          <EditScrollSection source="skills">
-            <ChipSkills items={data.skills.technologies} title="Technologies" />
-          </EditScrollSection>
+          <ChipSkills
+            chipVariant="neutral"
+            items={data.skills.frameworks}
+            title={titles.frameworks}
+          />
         );
-      case 'frameworks_libs':
+      case 'skills_exposure':
         return (
-          <EditScrollSection source="skills">
-            <ChipSkills
-              items={data.skills.frameworks.concat(data.skills.libraries)}
-              title="Frameworks & Libraries"
-            />
-          </EditScrollSection>
+          <ChipSkills
+            chipVariant="neutral"
+            items={data.skills.technologies.concat(data.skills.libraries, data.skills.databases)}
+            title={titles.skills_exposure}
+          />
         );
       case 'tools':
+        return <ChipSkills chipVariant="neutral" items={data.skills.tools} title={titles.tools} />;
+      case 'methodology':
         return (
-          <EditScrollSection source="skills">
-            <ChipSkills items={data.skills.tools} title="Tools" />
-          </EditScrollSection>
+          <ChipSkills
+            chipVariant="neutral"
+            items={data.skills.practices}
+            title={titles.methodology}
+          />
         );
       case 'education':
-        return (
-          <EditScrollSection source="education">
-            <StandardEducation items={data.education} />
-          </EditScrollSection>
-        );
-      case 'volunteer':
-        return (
-          <EditScrollSection source="volunteer">
-            <VolunteerSection items={data.volunteer} />
-          </EditScrollSection>
-        );
+        return <StandardEducation title={titles.education} items={data.education} />;
       default:
         return null;
     }
   };
   return (
-    <ResumePresentation value="stacked">
-      <div style={{ ...pageStyle(resumePalette), padding: padding(16) }}>
-        <EditableResumeSection id="basics">
-          <InlineProfile basics={basics} />
-        </EditableResumeSection>
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: columns('minmax(0, 3fr) minmax(0, 2fr)', false, secondaryPercent),
-            gap: spacing('column', 24),
-          }}
-        >
-          <TemplateRegion regionId="left" items={regions.left} renderSection={renderSection} />
-          <TemplateRegion regionId="right" items={regions.right} renderSection={renderSection} />
+    <ResumePresentation value="ruled">
+      <div
+        style={{
+          ...pageStyle(resumePalette),
+          padding: padding('40px 25px'),
+          display: 'grid',
+          gridTemplateColumns: columns('minmax(0, 2fr) minmax(0, 1fr)', false, secondaryPercent),
+          columnGap: spacing('column', 22),
+        }}
+      >
+        <div style={{ minWidth: 0, gridColumn: '1 / -1' }}>
+          <EditableResumeSection id="basics">
+            <ModernProfile basics={basics} />
+          </EditableResumeSection>
         </div>
+        <div style={{ minWidth: 0 }}>
+          <TemplateRegion regionId="left" items={regions.left} renderSection={renderSection} />
+        </div>
+        <TemplateRegion regionId="right" items={regions.right} renderSection={renderSection} />
       </div>
     </ResumePresentation>
   );

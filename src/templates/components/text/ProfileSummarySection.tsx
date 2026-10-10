@@ -1,20 +1,34 @@
-import { RichText } from '../primitives/RichText';
-import { SectionFrame } from '../primitives/SectionFrame';
-import { hasContent } from '../primitives/content';
-import { useSurfacePalette } from '../theme';
-import type { TextProps } from '../types';
+import styled from '@emotion/styled';
+import { RichText } from '@/templates/components/primitives/RichText';
+import { SectionFrame } from '@/templates/components/primitives/SectionFrame';
+import { hasContent } from '@/templates/components/primitives/content';
+import { useSurfacePalette } from '@/templates/components/theme';
+import type { TextProps } from '@/templates/components/types';
+
+const SummaryContent = styled.div`
+  display: flow-root;
+
+  &[data-indent] p {
+    text-indent: 2em;
+  }
+
+  &[data-indent] li p {
+    text-indent: 0;
+  }
+`;
 
 export function ProfileSummarySection({
   html,
   image,
   title = 'Summary',
   density,
-}: TextProps & { image?: string }) {
+  indentParagraphs = false,
+}: TextProps & { image?: string; indentParagraphs?: boolean }) {
   const p = useSurfacePalette();
   if (!hasContent(html)) return null;
   return (
     <SectionFrame title={title} density={density}>
-      <div style={{ display: 'flow-root' }}>
+      <SummaryContent data-indent={indentParagraphs || undefined}>
         {image && (
           <img
             src={image}
@@ -32,7 +46,7 @@ export function ProfileSummarySection({
           />
         )}
         <RichText html={html!} p={p} />
-      </div>
+      </SummaryContent>
     </SectionFrame>
   );
 }

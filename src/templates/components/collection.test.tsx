@@ -3,16 +3,14 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import dayjs from 'dayjs';
 import Color from 'color';
 import { describe, expect, it } from 'vitest';
-import ResumeData from '@/helpers/constants/resume-data.json';
+import ResumeData from '@/templates/test-fixtures/resume-data.json';
 import { StandardExperience, TimelineExperience } from './experience';
 import { StandardEducation } from './education';
-import { BarSkills, ChipSkills, DotSkills, ListSkills } from './skills';
-import { AwardsSection, AchievementsSection } from './awards';
+import { BarSkills, ChipSkills } from './skills';
+import { SpotlightAwards, AchievementsSection } from './awards';
 import { TextSection, ProfileSummarySection } from './text';
 import { ProjectsSection } from './projects';
-import { VolunteerSection } from './volunteer';
-import { InlineProfile, BandProfile, CardProfile, ExperienceProfile } from './profile';
-import { ContactCard } from './contact';
+import { ExperienceProfile, ModernProfile } from './profile';
 import { ResumeSurface, ResumePresentation, paletteForSurface } from './theme';
 import { formatDateRange } from './primitives/formatDateRange';
 import type { ResumePalette } from './theme';
@@ -39,6 +37,45 @@ const palette: ResumePalette = {
 };
 
 describe('shared resume collection', () => {
+  it('uses ruled headings only when requested and retains the original boxed frames', () => {
+    const view = render(
+      <ResumePresentation value="ruled">
+        <TextSection html="Summary content" title="Summary" />
+      </ResumePresentation>
+    );
+    const heading = screen.getByRole('heading', { name: 'Summary' });
+    expect(heading).toHaveStyle({ fontWeight: 500 });
+    expect(heading.parentElement?.style.borderBottom).not.toBe('');
+    expect(heading.closest('section')?.style.border).toBe('');
+    view.rerender(
+      <ResumePresentation value="boxed">
+        <TextSection html="Summary content" title="Summary" />
+      </ResumePresentation>
+    );
+    const boxedHeading = screen.getByRole('heading', { name: 'Summary' });
+    expect(boxedHeading.closest('section')?.style.border).not.toBe('');
+    expect(boxedHeading.parentElement?.style.borderBottom).toBe('');
+    expect(boxedHeading.style.fontWeight).toBe('');
+  });
+
+  it('keeps the existing profile intact and omits relevant experience from the modern profile', () => {
+    const view = render(<ExperienceProfile basics={ResumeData.basics} />);
+    const originalWebsite = screen.getByRole('link', { name: ResumeData.basics.url });
+    expect(originalWebsite.style.textDecoration).toBe('');
+    expect(screen.getByText('Total experience: 6 Years')).toBeInTheDocument();
+    expect(screen.getByText('Relevant experience: 4 years')).toBeInTheDocument();
+    view.rerender(<ModernProfile basics={ResumeData.basics} />);
+    const website = screen.getByRole('link', {
+      name: ResumeData.basics.url.replace(/^https?:\/\//i, '').replace(/\/$/, ''),
+    });
+    expect(website).toHaveAttribute('href', ResumeData.basics.url);
+    expect(website).toHaveStyle({ textDecoration: 'none' });
+    expect(website.parentElement).toHaveTextContent('Experience: 6 Years');
+    expect(screen.queryByText('Total experience: 6 Years')).not.toBeInTheDocument();
+    expect(screen.queryByText(/Relevant experience/)).not.toBeInTheDocument();
+    expect(screen.queryByText('4 years')).not.toBeInTheDocument();
+  });
+
   it('renders typed experience data with defaults, without a resume or editor context', () => {
     render(<StandardExperience items={ResumeData.work} />);
     expect(screen.getByRole('heading', { name: 'Experience' })).toBeInTheDocument();
@@ -52,7 +89,6 @@ describe('shared resume collection', () => {
       <>
         <StandardExperience items={ResumeData.work} />
         <BarSkills items={[{ name: 'React', level: 70 }]} />
-        <DotSkills items={[{ name: 'TypeScript', level: 80 }]} />
       </>
     );
     const view = render(
@@ -70,9 +106,6 @@ describe('shared resume collection', () => {
     expect(
       screen.getByText('React').parentElement?.nextElementSibling?.firstElementChild
     ).toHaveStyle({ background: '#ffffff' });
-    expect(screen.getByText('TypeScript').nextElementSibling?.firstElementChild).toHaveStyle({
-      background: '#ffffff',
-    });
     expect(screen.getByText('Senior Software Developer')).toHaveStyle({ color: '#ffffff' });
   });
 
@@ -94,13 +127,9 @@ describe('shared resume collection', () => {
         <StandardEducation items={[]} />
         <BarSkills items={[]} />
         <ChipSkills items={[]} />
-        <DotSkills items={[]} />
-        <ListSkills items={[]} />
-        <AwardsSection items={[]} />
+        <SpotlightAwards items={[]} />
         <AchievementsSection html="" />
         <ProjectsSection />
-        <VolunteerSection items={[]} />
-        <ContactCard basics={{}} />
       </>
     );
     expect(container).toBeEmptyDOMElement();
@@ -109,12 +138,13 @@ describe('shared resume collection', () => {
   it('keeps structured awards separate from rich text achievements', () => {
     render(
       <>
-        <AwardsSection items={ResumeData.awards} />
+        <SpotlightAwards items={ResumeData.awards} />
         <AchievementsSection html="<ul><li>Rich achievement</li></ul>" />
       </>
     );
-    expect(screen.getByText('Certificate of best frontend developer')).toBeInTheDocument();
-    expect(screen.getByText('Nov 2016')).toBeInTheDocument();
+    expect(
+      screen.getByText('Certificate of best frontend developer – Nov 2016')
+    ).toBeInTheDocument();
     expect(screen.getByText('Rich achievement').tagName).toBe('LI');
   });
 
@@ -132,11 +162,7 @@ describe('shared resume collection', () => {
   });
 
   it('retains profile photos, social and contact links, and experience information', () => {
-    const view = render(<InlineProfile basics={ResumeData.basics} />);
-    expect(screen.getByRole('img', { name: 'avatar' })).toHaveAttribute(
-      'src',
-      ResumeData.basics.image
-    );
+    const view = render(<ModernProfile basics={ResumeData.basics} />);
     expect(screen.getByRole('link', { name: 'github' })).toHaveAttribute(
       'href',
       ResumeData.basics.profiles[2].url
@@ -152,17 +178,6 @@ describe('shared resume collection', () => {
     );
     expect(screen.getByText('Relevant experience: 4 years')).toBeInTheDocument();
     expect(screen.getByText('Total experience: 6 Years')).toBeInTheDocument();
-  });
-
-  it('establishes internal contrasting surfaces for colored profiles', () => {
-    render(
-      <ThemeProvider theme={theme}>
-        <BandProfile basics={ResumeData.basics} />
-        <CardProfile basics={{ name: 'Second Person' }} />
-      </ThemeProvider>
-    );
-    for (const heading of screen.getAllByRole('heading', { level: 1 }))
-      expect(heading).toHaveStyle({ color: '#ffffff' });
   });
 
   it('keeps timeline duration and profile-summary image flow', () => {

@@ -1,3 +1,4 @@
+import { useTemplateTitles } from '@/stores/useSectionTitleStore';
 import { EditableResumeSection } from '@/helpers/common/components/EditableResumeSection';
 import { columns, padding, spacing } from '@/helpers/resume-style/styles';
 import { useResumeStyleStore } from '@/stores/useResumeStyleStore';
@@ -17,6 +18,7 @@ import { ProfileSummarySection, TextSection } from '@/templates/components/text'
 
 export default function ProfessionalTemplate() {
   const secondaryPercent = useResumeStyleStore((state) => state.settings.secondaryColumnPercent);
+  const titles = useTemplateTitles('professional');
   const data = useContext(StateContext);
   const { regions } = useSectionLayoutRuntime();
   const resumePalette = useResumePalette();
@@ -24,45 +26,43 @@ export default function ProfessionalTemplate() {
   const renderSection = (id: string) => {
     switch (id) {
       case 'work':
-        return <TimelineExperience items={data.work} title="Work Experience" />;
+        return <TimelineExperience items={data.work} title={titles.work} />;
       case 'involvement':
-        return (
-          <ProjectsSection
-            html={data.activities.involvements}
-            title="Key Projects / Involvements"
-          />
-        );
+        return <ProjectsSection html={data.activities.involvements} title={titles.involvement} />;
       case 'achievements':
         return (
-          <AchievementsSection
-            html={data.activities.achievements}
-            title="Certificates and Awards"
-          />
+          <AchievementsSection html={data.activities.achievements} title={titles.achievements} />
         );
       case 'summary':
-        return <ProfileSummarySection html={basics.summary} image={basics.image} />;
+        return (
+          <ProfileSummarySection
+            title={titles.summary}
+            html={basics.summary}
+            image={basics.image}
+          />
+        );
       case 'objective':
-        return <TextSection html={basics.objective} title="Career Objective" />;
+        return <TextSection html={basics.objective} title={titles.objective} />;
       case 'tech_expertise':
         return (
           <BarSkills
             items={data.skills.languages.concat(data.skills.frameworks)}
-            title="Technical expertise"
+            title={titles.tech_expertise}
           />
         );
       case 'skills_exposure':
         return (
           <ChipSkills
             items={data.skills.technologies.concat(data.skills.libraries, data.skills.databases)}
-            title="Skills / Exposure"
+            title={titles.skills_exposure}
           />
         );
       case 'methodology':
-        return <ChipSkills items={data.skills.practices} title="Practices" />;
+        return <ChipSkills items={data.skills.practices} title={titles.methodology} />;
       case 'tools':
-        return <ChipSkills items={data.skills.tools} title="Tools" />;
+        return <ChipSkills items={data.skills.tools} title={titles.tools} />;
       case 'education':
-        return <StandardEducation items={data.education} />;
+        return <StandardEducation title={titles.education} items={data.education} />;
       default:
         return null;
     }

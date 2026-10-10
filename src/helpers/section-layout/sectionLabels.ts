@@ -5,6 +5,7 @@ const SECTION_LABELS: Record<string, string> = {
   objective: 'Objective',
   languages: 'Languages',
   technologies: 'Technologies',
+  frameworks: 'Frameworks & Libraries',
   frameworks_libs: 'Frameworks & Libraries',
   tools: 'Tools',
   education: 'Education',

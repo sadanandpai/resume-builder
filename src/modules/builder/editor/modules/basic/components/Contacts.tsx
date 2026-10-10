@@ -77,7 +77,7 @@ const Contacts = ({
         }}
       />
       <TextField
-        label="Total Experience"
+        label="Experience"
         variant="filled"
         value={basicTabs.totalExp}
         onChange={(event: ChangeEvent<HTMLInputElement>) => {

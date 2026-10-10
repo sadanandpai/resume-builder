@@ -3,12 +3,9 @@ import Color from 'color';
 import { useResumePalette, withAlpha, type ResumePalette } from './resumePalette';
 
 export type Surface = 'page' | 'sidebar' | 'tinted' | 'accentTint';
-export type Presentation =
-  'standard' | 'underlined' | 'boxed' | 'editorial' | 'technical' | 'stacked';
+export type Presentation = 'standard' | 'underlined' | 'boxed' | 'ruled';
 const SurfaceContext = createContext<ResumePalette | null>(null);
 const PresentationContext = createContext<Presentation>('standard');
-export const EDITORIAL_FONT = 'Georgia, serif';
-export const MONO_FONT = "'SFMono-Regular', Consolas, monospace";
 
 function contrastColor(background: string, preferred: string) {
   try {

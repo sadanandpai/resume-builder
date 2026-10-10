@@ -1,7 +1,7 @@
 import { font, bodySize, roleSize, lineHeight, spacing } from '@/helpers/resume-style/styles';
 import type { ReactNode } from 'react';
 import { SectionHeading } from './SectionHeading';
-import { usePresentation, useSurfacePalette, MONO_FONT, EDITORIAL_FONT } from '../theme';
+import { usePresentation, useSurfacePalette, withAlpha } from '../theme';
 import type { SectionProps } from '../types';
 
 export function SectionFrame({
@@ -19,8 +19,8 @@ export function SectionFrame({
   const p = useSurfacePalette();
   const presentation = usePresentation();
   const boxed = presentation === 'boxed';
+  const ruled = presentation === 'ruled';
   const Heading = heading === 'profile' ? 'h1' : 'h3';
-  const editorial = presentation === 'editorial';
   return (
     <section
       style={{
@@ -30,8 +30,8 @@ export function SectionFrame({
         color: p.text,
         fontFamily: font(p.bodyFont),
         fontSize: bodySize(11),
-        lineHeight: lineHeight(1.5),
-        marginBottom: spacing('section', density === 'compact' ? 10 : 16),
+        lineHeight: `var(--resume-section-line-height, ${lineHeight(1.5)})`,
+        marginBottom: `var(--resume-section-margin-bottom, ${spacing('section', density === 'compact' ? 10 : 16)})`,
         ...(boxed
           ? {
               border: `1px solid ${p.divider}`,
@@ -42,7 +42,40 @@ export function SectionFrame({
           : {}),
       }}
     >
-      {boxed ? (
+      {ruled ? (
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: 8,
+            flexWrap: 'wrap',
+            margin: heading === 'profile' ? '0 0 12px' : '0 0 10px',
+            paddingBottom: heading === 'profile' ? 8 : 5,
+            borderBottom: `1px solid ${withAlpha(p.primary, heading === 'profile' ? 0.4 : 0.24)}`,
+          }}
+        >
+          <Heading
+            style={{
+              margin: 0,
+              minWidth: 0,
+              flex: '1 1 0',
+              fontSize: roleSize(
+                heading === 'profile' ? 'name' : 'heading',
+                heading === 'profile' ? 24 : 12
+              ),
+              lineHeight: heading === 'profile' ? lineHeight(1.2) : undefined,
+              fontWeight: 500,
+              letterSpacing: heading === 'profile' ? '-0.02em' : '0.04em',
+              color: p.primary,
+              fontFamily: font(p.headingFont),
+            }}
+          >
+            {title}
+          </Heading>
+          {headerActions && <div style={{ maxWidth: '100%' }}>{headerActions}</div>}
+        </div>
+      ) : boxed ? (
         <div
           style={{
             display: 'flex',
@@ -78,42 +111,14 @@ export function SectionFrame({
             </div>
           )}
         </div>
-      ) : editorial ? (
-        <h3
-          style={{
-            margin: '0 0 10px',
-            fontFamily: font(EDITORIAL_FONT),
-            fontSize: roleSize('heading', 11),
-            letterSpacing: '0.15em',
-            textTransform: 'uppercase',
-            borderBottom: `1px solid ${p.divider}`,
-            paddingBottom: 4,
-            color: p.primary,
-          }}
-        >
-          {title}
-        </h3>
-      ) : presentation === 'technical' ? (
-        <h3
-          style={{
-            margin: '0 0 8px',
-            fontSize: roleSize('heading', 12),
-            color: p.primary,
-            fontFamily: font(MONO_FONT),
-          }}
-        >
-          {title.startsWith('//') ? title : `// ${title.toLowerCase()}`}
-        </h3>
       ) : (
         <SectionHeading
           title={title}
           p={p}
-          variant={
-            presentation === 'underlined' || presentation === 'stacked' ? 'underline' : 'bar'
-          }
+          variant={presentation === 'underlined' ? 'underline' : 'bar'}
         />
       )}
-      {!boxed && headerActions}
+      {!boxed && !ruled && headerActions}
       {children}
     </section>
   );

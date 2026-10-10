@@ -48,7 +48,8 @@ export const SectionHeading = ({
       <h3
         style={{
           ...baseStyle,
-          borderBottom: `2px solid ${p.accent}`,
+          borderBottom: `var(--resume-heading-border-width, 2px) solid ${p.accent}`,
+          marginBottom: 'var(--resume-heading-margin-bottom, 8px)',
           paddingBottom: 3,
           textTransform: 'uppercase',
           fontSize: roleSize('heading', 11),

@@ -1,3 +1,4 @@
+import { useTemplateTitles } from '@/stores/useSectionTitleStore';
 import { EditableResumeSection } from '@/helpers/common/components/EditableResumeSection';
 import { columns, padding, spacing } from '@/helpers/resume-style/styles';
 import { useResumeStyleStore } from '@/stores/useResumeStyleStore';
@@ -14,6 +15,7 @@ import { SpotlightAwards } from '@/templates/components/awards';
 import { SpotlightProfile } from '@/templates/components/profile';
 
 export default function SpotlightTemplate() {
+  const titles = useTemplateTitles('spotlight');
   const data = useContext(StateContext);
   const { regions } = useSectionLayoutRuntime();
   const secondaryPercent = useResumeStyleStore((state) => state.settings.secondaryColumnPercent);
@@ -22,17 +24,22 @@ export default function SpotlightTemplate() {
   const renderSection = (id: string) => {
     switch (id) {
       case 'work':
-        return <SpotlightExperience items={data.work} />;
+        return <SpotlightExperience title={titles.work} items={data.work} />;
       case 'awards':
-        return <SpotlightAwards items={data.awards} />;
+        return <SpotlightAwards title={titles.awards} items={data.awards} />;
       case 'methodology':
-        return <SpotlightSkills items={data.skills.practices} title="Practices" />;
+        return <SpotlightSkills items={data.skills.practices} title={titles.methodology} />;
       case 'tools':
-        return <SpotlightSkills items={data.skills.tools} title="Tools" />;
+        return <SpotlightSkills items={data.skills.tools} title={titles.tools} />;
       case 'education':
-        return <SpotlightEducation items={data.education} />;
+        return <SpotlightEducation title={titles.education} items={data.education} />;
       case 'skills':
-        return <SpotlightSkills items={data.skills.languages.concat(data.skills.frameworks)} />;
+        return (
+          <SpotlightSkills
+            title={titles.skills}
+            items={data.skills.languages.concat(data.skills.frameworks)}
+          />
+        );
       default:
         return null;
     }

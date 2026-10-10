@@ -1,3 +1,3 @@
-export { ListSkills, ChipSkills, BarSkills, DotSkills } from './Skills';
+export { ChipSkills, BarSkills } from './Skills';
 
 export { SpotlightSkills } from './SpotlightSkills';

@@ -1,3 +1,3 @@
-export { StandardEducation, CompactEducation, TechnicalEducation } from './Education';
+export { StandardEducation } from './Education';
 
 export { SpotlightEducation } from './SpotlightEducation';

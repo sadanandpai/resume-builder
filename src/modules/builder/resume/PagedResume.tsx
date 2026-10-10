@@ -17,7 +17,7 @@ export function PagedResume({ children }: { children: ReactNode }) {
     Object.assign(variables, {
       '--resume-column-tracks': columns(
         '',
-        ['sidebar-left', 'creative', 'straightforward'].includes(templateId),
+        false,
         settings.secondaryColumnPercent ?? secondaryDefault
       ),
     });

@@ -1,18 +1,27 @@
-import { font, bodySize, spacing } from '@/helpers/resume-style/styles';
+import { bodySize, spacing } from '@/helpers/resume-style/styles';
 import { JobHeader } from '../primitives/layoutPrimitives';
 import { RichText } from '../primitives/RichText';
 import { SectionFrame } from '../primitives/SectionFrame';
 import { formatDateRange } from '../primitives/formatDateRange';
-import { useSurfacePalette, MONO_FONT } from '../theme';
+import { useSurfacePalette } from '../theme';
 import type { ExperienceItem, ItemsProps } from '../types';
 
-type Props = ItemsProps<ExperienceItem>;
+type Props = ItemsProps<ExperienceItem> & {
+  entrySpacing?: number;
+  summarySpacing?: number;
+  companyWeight?: number;
+  markerColor?: 'primary' | 'accent';
+};
 function Experience({
   items,
   title = 'Experience',
   density,
   design,
-}: Props & { design: 'standard' | 'stacked' | 'timeline' | 'technical' }) {
+  entrySpacing = 12,
+  summarySpacing = 0,
+  companyWeight = 600,
+  markerColor = 'accent',
+}: Props & { design: 'standard' | 'timeline' }) {
   const p = useSurfacePalette();
   if (!items.length) return null;
   return (
@@ -21,13 +30,13 @@ function Experience({
         <div
           key={item.id || index}
           style={{
-            marginBottom: design === 'timeline' ? 0 : spacing('entry', 12),
+            marginBottom: design === 'timeline' ? 0 : spacing('entry', entrySpacing),
             minWidth: 0,
             ...(design === 'timeline'
               ? {
                   position: 'relative',
                   paddingLeft: 20,
-                  paddingBottom: index === items.length - 1 ? 0 : spacing('entry', 12),
+                  paddingBottom: index === items.length - 1 ? 0 : spacing('entry', entrySpacing),
                   marginLeft: 5,
                 }
               : {}),
@@ -59,7 +68,7 @@ function Experience({
                 zIndex: 1,
                 width: 9,
                 height: 9,
-                border: `2px solid ${p.accent}`,
+                border: `2px solid ${p[markerColor]}`,
                 borderRadius: '50%',
                 background: p.bg,
               }}
@@ -85,23 +94,19 @@ function Experience({
             >
               <div style={{ minWidth: 0 }}>
                 <div
-                  style={{ fontWeight: 600, fontSize: bodySize(design === 'stacked' ? 15 : 12) }}
+                  style={{
+                    fontWeight: companyWeight,
+                    fontSize: bodySize(12),
+                  }}
                 >
-                  {design === 'technical' ? (
-                    <>
-                      {item.position} <span style={{ color: p.accent }}>@</span> {item.name}
-                    </>
-                  ) : (
-                    item.name
-                  )}
+                  {item.name}
                 </div>
-                {design !== 'technical' && <div style={{ color: p.primary }}>{item.position}</div>}
+                <div style={{ color: p.primary }}>{item.position}</div>
               </div>
               <div
                 style={{
                   color: p.muted,
                   fontSize: bodySize(10),
-                  ...(design === 'technical' ? { fontFamily: font(MONO_FONT) } : {}),
                 }}
               >
                 {formatDateRange(item.startDate, item.endDate, item.isWorkingHere)}
@@ -111,13 +116,17 @@ function Experience({
               </div>
             </div>
           )}
-          <RichText html={item.summary} p={p} />
+          {summarySpacing ? (
+            <div style={{ paddingTop: summarySpacing }}>
+              <RichText html={item.summary} p={p} />
+            </div>
+          ) : (
+            <RichText html={item.summary} p={p} />
+          )}
         </div>
       ))}
     </SectionFrame>
   );
 }
 export const StandardExperience = (props: Props) => <Experience {...props} design="standard" />;
-export const StackedExperience = (props: Props) => <Experience {...props} design="stacked" />;
 export const TimelineExperience = (props: Props) => <Experience {...props} design="timeline" />;
-export const TechnicalExperience = (props: Props) => <Experience {...props} design="technical" />;

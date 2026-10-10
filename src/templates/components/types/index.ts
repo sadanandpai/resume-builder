@@ -3,7 +3,6 @@ import type { IBasicDetailsItem } from '@/stores/basic.interface';
 import type { IExperienceItem } from '@/stores/experience.interface';
 import type { IEducationItem } from '@/stores/education.interface';
 import type { IAwardItem } from '@/stores/awards.interface';
-import type { IVolunteeringItem } from '@/stores/volunteering.interface';
 import type { ISkillItem } from '@/stores/skill.interface';
 
 export type ResumeDate = string | Dayjs | null | undefined;
@@ -16,7 +15,6 @@ export type EducationItem = Omit<IEducationItem, 'startDate' | 'endDate'> & {
   endDate: ResumeDate;
 };
 export type AwardItem = Omit<IAwardItem, 'date'> & { date: ResumeDate };
-export type VolunteerItem = IVolunteeringItem;
 export type SkillItem = ISkillItem;
 export type ProfileBasics = Partial<Omit<IBasicDetailsItem, 'location'>> & {
   location?: { city?: string };

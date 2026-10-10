@@ -13,7 +13,7 @@ describe('rich text layout customization', () => {
     const wrapper = screen.getByText('Resume description').parentElement!;
     expect(wrapper.style.fontSize).toBe('var(--resume-body, 0.75rem)');
     expect(wrapper.style.lineHeight).toBe(
-      'var(--resume-line-height, calc(1rem * var(--resume-line-factor, 1)))'
+      'var(--resume-line-height, var(--resume-richtext-line-height, calc(1rem * var(--resume-line-factor, 1))))'
     );
     expect(wrapper.parentElement!.style.getPropertyValue('--resume-body')).toBe('16px');
     view.rerender(

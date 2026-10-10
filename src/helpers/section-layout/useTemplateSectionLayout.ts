@@ -8,10 +8,14 @@ export function useTemplateSectionLayout(templateId: string, allowed: Set<string
   const setLayout = useSectionLayoutStore((s) => s.setLayout);
   const config = getTemplateSectionLayoutConfig(templateId);
 
-  const regions = useMemo(
-    () => normalizeRegionLayout(stored, allowed, config.defaults, config.regionKeys),
-    [stored, allowed, config.defaults, config.regionKeys]
-  );
+  const regions = useMemo(() => {
+    const normalized = normalizeRegionLayout(stored, allowed, config.defaults, config.regionKeys);
+    // Keep Classic education as the closing section, including saved layouts.
+    if (templateId === 'classic' && normalized.main?.includes('education')) {
+      normalized.main = normalized.main.filter((id) => id !== 'education').concat('education');
+    }
+    return normalized;
+  }, [templateId, stored, allowed, config.defaults, config.regionKeys]);
 
   const setRegions = useCallback(
     (next: Record<string, string[]>) => {

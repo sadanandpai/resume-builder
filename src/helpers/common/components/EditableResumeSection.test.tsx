@@ -55,14 +55,4 @@ describe('preview editor navigation', () => {
     fireEvent.click(screen.getByText('Work'));
     expect(useEditorStore.getState().revision).toBe(0);
   });
-
-  it('opens activities for Sidebar Left awards sourced from achievements', () => {
-    useTemplates.setState({ activeTemplate: AVAILABLE_TEMPLATES['sidebar-left'] });
-    render(<EditableResumeSection id="awards">Awards</EditableResumeSection>);
-    fireEvent.click(screen.getByText('Awards'));
-    expect(useEditorStore.getState().target).toEqual({
-      section: 'activities',
-      panel: 'achievements',
-    });
-  });
 });

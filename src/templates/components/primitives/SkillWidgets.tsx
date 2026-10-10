@@ -26,48 +26,6 @@ export const SkillBar = ({ name, level, p }: { name: string; level: number; p: R
   );
 };
 
-export const SkillDots = ({
-  name,
-  level,
-  p,
-  total = 5,
-}: {
-  name: string;
-  level: number;
-  p: ResumePalette;
-  total?: number;
-}) => {
-  const norm = level > 5 ? Math.round((level / 100) * total) : level;
-  return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        gap: 8,
-        alignItems: 'center',
-        fontSize: bodySize(10.5),
-        marginBottom: spacing('entry', 4),
-      }}
-    >
-      <span>{name}</span>
-      <span style={{ display: 'inline-flex', gap: 3, flexShrink: 0 }}>
-        {Array.from({ length: total }).map((_, i) => (
-          <span
-            key={i}
-            style={{
-              width: 6,
-              height: 6,
-              borderRadius: '50%',
-              background: i < norm ? p.accent : p.divider,
-              display: 'inline-block',
-            }}
-          />
-        ))}
-      </span>
-    </div>
-  );
-};
-
 export const ChipList = ({
   items,
   p,
@@ -75,7 +33,7 @@ export const ChipList = ({
 }: {
   items: { name: string }[];
   p: ResumePalette;
-  variant?: 'outline' | 'filled' | 'soft';
+  variant?: 'outline' | 'filled' | 'soft' | 'neutral';
 }) => {
   return (
     <div style={{ display: 'flex', flexWrap: 'wrap', gap: spacing('entry', 8) }}>
@@ -90,6 +48,8 @@ export const ChipList = ({
         };
         let style: CSSProperties = { ...base };
         if (variant === 'filled') style = { ...base, background: p.primary, color: '#fff' };
+        else if (variant === 'neutral')
+          style = { ...base, background: withAlpha(p.text, 0.05), color: p.text };
         else if (variant === 'soft')
           style = { ...base, background: withAlpha(p.accent, 0.18), color: p.primaryDark };
         else style = { ...base, border: `1px solid ${p.divider}`, color: p.text };

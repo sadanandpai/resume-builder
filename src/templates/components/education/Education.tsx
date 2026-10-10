@@ -1,16 +1,11 @@
-import { font, bodySize, spacing } from '@/helpers/resume-style/styles';
+import { bodySize, spacing } from '@/helpers/resume-style/styles';
 import { SectionFrame } from '../primitives/SectionFrame';
 import { formatDateRange } from '../primitives/formatDateRange';
-import { useSurfacePalette, MONO_FONT } from '../theme';
+import { useSurfacePalette } from '../theme';
 import type { EducationItem, ItemsProps } from '../types';
 
 type Props = ItemsProps<EducationItem>;
-function Education({
-  items,
-  title = 'Education',
-  density,
-  design,
-}: Props & { design: 'standard' | 'compact' | 'technical' }) {
+export function StandardEducation({ items, title = 'Education', density }: Props) {
   const p = useSurfacePalette();
   if (!items.length) return null;
   return (
@@ -19,11 +14,10 @@ function Education({
         <div
           key={item.id || index}
           style={{
-            marginBottom:
-              index === items.length - 1 ? 0 : spacing('entry', design === 'compact' ? 10 : 14),
+            marginBottom: index === items.length - 1 ? 0 : spacing('entry', 14),
           }}
         >
-          <div style={{ fontWeight: design === 'standard' ? 400 : 600 }}>
+          <div style={{ fontWeight: 400 }}>
             {[item.studyType, item.area].filter(Boolean).join(' — ')}
           </div>
           <div
@@ -34,8 +28,6 @@ function Education({
               flexWrap: 'wrap',
               color: p.muted,
               fontSize: bodySize(10.5),
-              ...(design === 'compact' ? { flexDirection: 'column', gap: 0 } : {}),
-              ...(design === 'technical' ? { fontFamily: font(MONO_FONT) } : {}),
             }}
           >
             <span style={{ fontWeight: 400 }}>{item.institution}</span>
@@ -46,6 +38,3 @@ function Education({
     </SectionFrame>
   );
 }
-export const StandardEducation = (props: Props) => <Education {...props} design="standard" />;
-export const CompactEducation = (props: Props) => <Education {...props} design="compact" />;
-export const TechnicalEducation = (props: Props) => <Education {...props} design="technical" />;
