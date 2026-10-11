@@ -12,7 +12,7 @@ export function ExperienceProfile({ basics }: { basics: ProfileBasics }) {
       heading="profile"
       headerActions={
         basics.profiles?.some((profile) => profile.url) ? (
-          <SocialIconsRow profiles={basics.profiles} color={p.primary} />
+          <SocialIconsRow profiles={basics.profiles} color={p.primary} size={18} />
         ) : undefined
       }
     >

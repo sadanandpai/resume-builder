@@ -30,7 +30,7 @@ export const CUSTOM_THEME_COLOR: IThemeColor = {
   fontColor: '#1f2937',
   titleColor: '#1e3a5f',
   highlighterColor: '#0f766e',
-  id: 4,
+  id: 2,
 };
 
 export const DATE_PICKER_FORMAT = 'DD/MM/YYYY';

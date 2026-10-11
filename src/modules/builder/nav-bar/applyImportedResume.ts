@@ -14,12 +14,17 @@ import {
   useTools,
 } from '@/stores/skills';
 
+import { applyResumeMetadata, normalizeResumeMetadata } from './resumeMetadata';
+
 import { normalizeImportedResume } from './normalizeImportedResume';
 
 export function applyImportedResumeJson(uploadedResumeJSON: unknown): void {
   // Validate every section before touching any persisted store.
   const { basics, skills, work, education, volunteer, awards, activities } =
     normalizeImportedResume(uploadedResumeJSON);
+  const metadata = normalizeResumeMetadata(
+    (uploadedResumeJSON as Record<string, unknown>).__metadata
+  );
   useBasicDetails.getState().reset(basics);
   useLanguages.getState().reset(skills.languages);
   useFrameworks.getState().reset(skills.frameworks);
@@ -33,4 +38,5 @@ export function applyImportedResumeJson(uploadedResumeJSON: unknown): void {
   useVoluteeringStore.getState().reset(volunteer);
   useAwards.getState().reset(awards);
   useActivity.getState().reset(activities);
+  if (metadata) applyResumeMetadata(metadata);
 }

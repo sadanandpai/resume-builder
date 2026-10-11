@@ -31,6 +31,7 @@ import { useExperiences } from '@/stores/experience';
 import { useVoluteeringStore } from '@/stores/volunteering';
 import { Menu, MenuItem } from '@mui/material';
 import { applyImportedResumeJson } from './applyImportedResume';
+import { exportResumeMetadata } from './resumeMetadata';
 
 const TOTAL_TEMPLATES_AVAILABLE = Object.keys(AVAILABLE_TEMPLATES).length;
 
@@ -63,6 +64,7 @@ const NavBarLayout = () => {
   const exportResumeData = useCallback(() => {
     const updatedResumeJson = {
       ...DEFAULT_RESUME_JSON,
+      __metadata: exportResumeMetadata(),
       basics: {
         ...DEFAULT_RESUME_JSON.basics,
         ...useBasicDetails.getState().values,

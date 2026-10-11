@@ -34,10 +34,14 @@ export const useThemes = create<IThemeStore>()(
       version: 1,
       migrate: (persistedState) => {
         const state = persistedState as Partial<IThemeStore>;
-        if (state.selectedTheme?.id === 2 || state.selectedTheme?.id === 3) {
-          return { ...state, selectedTheme: SYSTEM_COLORS[0] };
-        }
-        return state;
+        const customTheme = {
+          ...CUSTOM_THEME_COLOR,
+          ...state.customTheme,
+          id: CUSTOM_THEME_COLOR.id,
+        };
+        // Previous storage versions may reference removed presets.
+        const selectedTheme = SYSTEM_COLORS[0];
+        return { ...state, selectedTheme, customTheme };
       },
     }
   )
