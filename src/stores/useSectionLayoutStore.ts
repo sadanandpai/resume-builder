@@ -1,5 +1,6 @@
+import { browserResumeStorage } from './browserResumeStorage';
 import { create } from 'zustand';
-import { createJSONStorage, persist } from 'zustand/middleware';
+import { persist } from 'zustand/middleware';
 
 const STORAGE_KEY = 'resumeSectionLayouts';
 
@@ -35,8 +36,9 @@ export const useSectionLayoutStore = create<SectionLayoutState>()(
       resetAll: () => set({ layouts: {}, isReorderMode: false }),
     }),
     {
+      skipHydration: true,
+      storage: browserResumeStorage,
       name: STORAGE_KEY,
-      storage: createJSONStorage(() => localStorage),
       partialize: (state) => ({ layouts: state.layouts, isReorderMode: state.isReorderMode }),
     }
   )

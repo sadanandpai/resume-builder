@@ -1,3 +1,4 @@
+import { browserResumeStorage } from './browserResumeStorage';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { produce } from 'immer';
@@ -79,6 +80,6 @@ export const useAwards = create<IAwardsStore>()(
       onmovedown: onMoveDown(set),
       updateAward: updateAward(set),
     }),
-    { name: 'awards' }
+    { skipHydration: true, storage: browserResumeStorage, name: 'awards' }
   )
 );

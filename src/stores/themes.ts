@@ -1,3 +1,4 @@
+import { browserResumeStorage } from './browserResumeStorage';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
@@ -27,6 +28,8 @@ export const useThemes = create<IThemeStore>()(
       },
     }),
     {
+      skipHydration: true,
+      storage: browserResumeStorage,
       name: 'themes',
       version: 1,
       migrate: (persistedState) => {

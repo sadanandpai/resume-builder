@@ -1,3 +1,5 @@
+'use client';
+
 import { AnimationGeneratorType, motion, useAnimation } from 'framer-motion';
 import { NavBarActions, StyledButton } from '../builder/nav-bar/atoms';
 

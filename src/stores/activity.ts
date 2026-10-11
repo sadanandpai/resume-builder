@@ -1,3 +1,4 @@
+import { browserResumeStorage } from './browserResumeStorage';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { produce } from 'immer';
@@ -37,6 +38,6 @@ export const useActivity = create<IActivityStore>()(
       updateAchievements: updateAchievements(set),
       updateInvolvements: updateInvolvements(set),
     }),
-    { name: 'activities' }
+    { skipHydration: true, storage: browserResumeStorage, name: 'activities' }
   )
 );

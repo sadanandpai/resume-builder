@@ -28,6 +28,20 @@ npm test
 npm run build
 ```
 
+The App Router shell lives in `src/app`; route files and the root layout remain Server Components. Providers and the interactive home/builder trees have explicit client boundaries. Builder persistence restores once after mount before URL imports run.
+
+Run browser checks against a production build:
+
+```sh
+npx playwright install chromium
+npm run build
+npm run test:browser
+```
+
+The browser script starts and stops its own server on port 3001. Set `BROWSER_BASE_URL` to test an already running server, `BROWSER_ARTIFACTS` to choose the screenshot/PDF output directory (default `/tmp/resume-builder-browser`), and `PLAYWRIGHT_EXECUTABLE_PATH` only to use an existing Chromium installation. Use `BROWSER_CHECK_FILTER` to run groups whose names contain the supplied text. Fixtures contain synthetic data.
+
+Run `BROWSER_BASE_URL=http://localhost:3001 npm run test:parity:capture` against each production router with identical browser versions and fixtures. Set a different `BROWSER_ARTIFACTS` directory for each capture, then compare screenshots and rendered PDFs; a successful capture alone does not establish parity.
+
 Add or update tests when changing resume data, import/export, templates, persistence, or local analysis behavior.
 
 ---

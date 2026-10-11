@@ -1,5 +1,5 @@
-import { ChangeEvent, useCallback, useEffect, useRef, useState } from 'react';
-import { useRouter } from 'next/router';
+import { ChangeEvent, Suspense, useCallback, useEffect, useRef, useState } from 'react';
+import { ImportResumeFromQuery } from './ImportResumeFromQuery';
 import { NavBarActions, NavBarMenu, StyledButton } from './atoms';
 import {
   useDatabases,
@@ -31,59 +31,20 @@ import { useExperiences } from '@/stores/experience';
 import { useVoluteeringStore } from '@/stores/volunteering';
 import { Menu, MenuItem } from '@mui/material';
 import { applyImportedResumeJson } from './applyImportedResume';
-import { fetchAndApplyResumeFromUrl, formatImportUrlError } from './fetchResumeFromUrl';
 
 const TOTAL_TEMPLATES_AVAILABLE = Object.keys(AVAILABLE_TEMPLATES).length;
 
 const NavBarLayout = () => {
-  const router = useRouter();
-  const importUrlFromQuery = router.query.importUrl;
   const [openToast, setOpenToast] = useState(false);
   const [toastContent, setToastContent] = useState('');
   const [menuAnchor, setMenuAnchor] = useState<null | HTMLElement>(null);
   const fileInputRef = useRef(null);
   const importControllerRef = useRef<AbortController | null>(null);
 
-  /** Auto-import when opening `/builder?importUrl=<encoded JSON URL>` (param removed after attempt). */
-  useEffect(() => {
-    if (!router.isReady) return;
-    const param =
-      typeof importUrlFromQuery === 'string'
-        ? importUrlFromQuery
-        : Array.isArray(importUrlFromQuery)
-          ? importUrlFromQuery[0]
-          : undefined;
-    if (!param) return;
-
-    let active = true;
-    const controller = new AbortController();
-    importControllerRef.current?.abort();
-    importControllerRef.current = controller;
-
-    void (async () => {
-      try {
-        await fetchAndApplyResumeFromUrl(param, controller.signal);
-        if (!active || controller.signal.aborted) return;
-        setToastContent('Resume data was successfully imported.');
-        setOpenToast(true);
-      } catch (e) {
-        if (!active || controller.signal.aborted) return;
-        setToastContent(formatImportUrlError(e));
-        setOpenToast(true);
-      }
-      if (!active || controller.signal.aborted) return;
-      const nextQuery = { ...router.query };
-      delete nextQuery.importUrl;
-      void router.replace({ pathname: router.pathname, query: nextQuery }, undefined, {
-        shallow: true,
-      });
-    })();
-
-    return () => {
-      active = false;
-      controller.abort();
-    };
-  }, [router, router.isReady, router.pathname, importUrlFromQuery]);
+  const showImportResult = useCallback((message: string) => {
+    setToastContent(message);
+    setOpenToast(true);
+  }, []);
 
   useEffect(() => {
     const closeMobileMenu = () => setMenuAnchor(null);
@@ -159,6 +120,9 @@ const NavBarLayout = () => {
 
   return (
     <nav className="h-14 w-full bg-resume-800 relative flex py-2.5 pl-2 md:pl-5 pr-1 nd:pr-4 items-center shadow-level-8dp z-20 print:hidden">
+      <Suspense fallback={null}>
+        <ImportResumeFromQuery controllerRef={importControllerRef} onResult={showImportResult} />
+      </Suspense>
       <Link href="/">
         <Image src={'/icons/resume-icon.png'} alt="logo" height="36" width="36" />
       </Link>

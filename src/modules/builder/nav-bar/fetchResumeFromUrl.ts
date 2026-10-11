@@ -19,7 +19,8 @@ function assertFetchableHttpUrl(raw: string): URL {
 
 export async function fetchAndApplyResumeFromUrl(
   urlString: string,
-  signal?: AbortSignal
+  signal?: AbortSignal,
+  isCurrent: () => boolean = () => true
 ): Promise<void> {
   const fetchUrl = assertFetchableHttpUrl(urlString);
   const response = await fetch(fetchUrl.toString(), {
@@ -41,7 +42,7 @@ export async function fetchAndApplyResumeFromUrl(
     );
   }
   signal?.throwIfAborted();
-  applyImportedResumeJson(data);
+  if (isCurrent()) applyImportedResumeJson(data);
 }
 
 export function formatImportUrlError(e: unknown): string {

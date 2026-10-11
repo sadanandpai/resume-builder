@@ -1,3 +1,4 @@
+import { browserResumeStorage } from './browserResumeStorage';
 import { create } from 'zustand';
 import { GetState, SetState } from './store.interface';
 import { persist } from 'zustand/middleware';
@@ -97,6 +98,6 @@ export const useExperiences = create<IExperienceStore>()(
       onmovedown: onMoveDown(set),
       updateExperience: updateExperience(set),
     }),
-    { name: 'experience' }
+    { skipHydration: true, storage: browserResumeStorage, name: 'experience' }
   )
 );

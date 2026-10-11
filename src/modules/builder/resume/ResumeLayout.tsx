@@ -18,7 +18,7 @@ import { SectionLayoutRuntimeContext } from '@/helpers/section-layout/SectionLay
 import { useTemplateSectionLayout } from '@/helpers/section-layout/useTemplateSectionLayout';
 import { ThemeProvider } from '@mui/material/styles';
 import { useResumeStore } from '@/stores/useResumeStore';
-import { restoreSavedTemplate, useTemplates } from '@/stores/useTemplate';
+import { useTemplates } from '@/stores/useTemplate';
 import { useThemes } from '@/stores/themes';
 import { useZoom, ZOOM_MIN } from '@/stores/useZoom';
 import { useSectionLayoutStore } from '@/stores/useSectionLayoutStore';
@@ -73,10 +73,6 @@ export const ResumeLayout = ({ pauseFitToWidth = false }: { pauseFitToWidth?: bo
   const templateId = useTemplates((state) => state.activeTemplate.id);
   const Template = AVAILABLE_TEMPLATES[templateId].component;
   const selectedTheme = useThemes((state) => state.selectedTheme);
-
-  useEffect(() => {
-    restoreSavedTemplate();
-  }, []);
 
   useEffect(() => {
     const el = fitContainerRef.current;

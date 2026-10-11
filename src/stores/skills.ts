@@ -1,3 +1,4 @@
+import { browserResumeStorage } from './browserResumeStorage';
 import { create } from 'zustand';
 import { GetState, SetState } from './store.interface';
 import { persist } from 'zustand/middleware';
@@ -26,7 +27,7 @@ const editSkill =
   ({ name, level, index }: { name: string; level: number; index: number }) =>
     set(
       produce((state: ISkillState) => {
-        state.values[index] = { name, level: level };
+        state.values[index] = { name, level };
       })
     );
 
@@ -59,7 +60,7 @@ export const useLanguages = create<ISkillState>()(
 
       ...getMethods(set, get),
     }),
-    { name: 'languages' }
+    { skipHydration: true, storage: browserResumeStorage, name: 'languages' }
   )
 );
 
@@ -73,7 +74,7 @@ export const useFrameworks = create<ISkillState>()(
 
       ...getMethods(set, get),
     }),
-    { name: 'frameworks' }
+    { skipHydration: true, storage: browserResumeStorage, name: 'frameworks' }
   )
 );
 
@@ -87,7 +88,7 @@ export const useTechnologies = create<ISkillState>()(
 
       ...getMethods(set, get),
     }),
-    { name: 'technologies' }
+    { skipHydration: true, storage: browserResumeStorage, name: 'technologies' }
   )
 );
 
@@ -101,7 +102,7 @@ export const useLibraries = create<ISkillState>()(
 
       ...getMethods(set, get),
     }),
-    { name: 'libraries' }
+    { skipHydration: true, storage: browserResumeStorage, name: 'libraries' }
   )
 );
 
@@ -115,7 +116,7 @@ export const useDatabases = create<ISkillState>()(
 
       ...getMethods(set, get),
     }),
-    { name: 'databases' }
+    { skipHydration: true, storage: browserResumeStorage, name: 'databases' }
   )
 );
 
@@ -129,7 +130,7 @@ export const usePractices = create<ISkillState>()(
 
       ...getMethods(set, get),
     }),
-    { name: 'practices' }
+    { skipHydration: true, storage: browserResumeStorage, name: 'practices' }
   )
 );
 
@@ -143,6 +144,6 @@ export const useTools = create<ISkillState>()(
 
       ...getMethods(set, get),
     }),
-    { name: 'tools' }
+    { skipHydration: true, storage: browserResumeStorage, name: 'tools' }
   )
 );

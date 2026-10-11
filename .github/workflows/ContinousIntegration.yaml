@@ -30,3 +30,9 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Install browser
+        run: npx playwright install --with-deps chromium
+
+      - name: Browser regression checks
+        run: npm run test:browser

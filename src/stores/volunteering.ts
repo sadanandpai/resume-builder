@@ -1,3 +1,4 @@
+import { browserResumeStorage } from './browserResumeStorage';
 import { create } from 'zustand';
 import { GetState, SetState } from './store.interface';
 import { persist } from 'zustand/middleware';
@@ -98,6 +99,6 @@ export const useVoluteeringStore = create<IVolunteeringStore>()(
       onmovedown: onMoveDown(set),
       updatedVolunteeringExp: updatedVolunteeringExp(set),
     }),
-    { name: 'volunteering' }
+    { skipHydration: true, storage: browserResumeStorage, name: 'volunteering' }
   )
 );

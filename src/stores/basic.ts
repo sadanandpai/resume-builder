@@ -1,3 +1,4 @@
+import { browserResumeStorage } from './browserResumeStorage';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { SetState } from './store.interface';
@@ -13,6 +14,6 @@ export const useBasicDetails = create<IBasicDetailsStore>()(
       values: resumeData.basics,
       reset: onChangeText(set),
     }),
-    { name: 'basic' }
+    { skipHydration: true, storage: browserResumeStorage, name: 'basic' }
   )
 );
