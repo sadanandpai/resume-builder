@@ -5,6 +5,7 @@ import { BsEnvelope, BsGeoAlt, BsGlobe, BsTelephone } from 'react-icons/bs';
 import type { SectionProps } from '@/templates/components/types';
 import { socialIcons } from '@/helpers/icons';
 import type { IProfile } from '@/stores/index.interface';
+import { useSurfacePalette } from '@/templates/components/theme';
 
 export const ContactLine = ({
   icon,
@@ -12,7 +13,7 @@ export const ContactLine = ({
   href,
   density = 'compact',
   size,
-  underlineLinks = true,
+  underlineLinks = false,
 }: {
   icon: ReactNode;
   text: string;
@@ -21,6 +22,7 @@ export const ContactLine = ({
   size?: number;
   underlineLinks?: boolean;
 }) => {
+  const palette = useSurfacePalette();
   if (!text) return null;
   const body = (
     <span
@@ -45,7 +47,10 @@ export const ContactLine = ({
         href={href}
         target="_blank"
         rel="noreferrer"
-        style={{ color: 'inherit', textDecoration: underlineLinks ? undefined : 'none' }}
+        style={{
+          color: /^(mailto:|tel:)/i.test(href) ? 'inherit' : palette.accent,
+          textDecoration: underlineLinks ? undefined : 'none',
+        }}
       >
         {body}
       </a>
@@ -63,7 +68,7 @@ export const ContactBlock = ({
   color,
   density,
   size,
-  underlineLinks = true,
+  underlineLinks = false,
   align = 'left',
 }: {
   email?: string;
@@ -133,10 +138,9 @@ export const ContactBlock = ({
 
 export const SocialIconsRow = ({
   profiles,
-  color,
   size = 13,
   align = 'left',
-  underlineLinks = true,
+  underlineLinks = false,
 }: {
   profiles?: IProfile[];
   align?: 'left' | 'center' | 'right';
@@ -144,6 +148,7 @@ export const SocialIconsRow = ({
   size?: number;
   underlineLinks?: boolean;
 }) => {
+  const palette = useSurfacePalette();
   if (!profiles?.length) return null;
   return (
     <div
@@ -165,7 +170,7 @@ export const SocialIconsRow = ({
             target="_blank"
             rel="noreferrer"
             style={{
-              color: color || 'inherit',
+              color: palette.accent,
               display: 'inline-flex',
               textDecoration: underlineLinks ? undefined : 'none',
             }}

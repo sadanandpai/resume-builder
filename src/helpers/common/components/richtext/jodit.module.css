@@ -152,8 +152,8 @@
 }
 
 .richtextRuntimeWrapper a {
-  color: inherit;
-  text-decoration: underline;
+  color: var(--resume-link-color, inherit);
+  text-decoration: none;
 }
 
 .richtextRuntimeWrapper ul,
@@ -162,7 +162,7 @@
   margin-block-end: 0;
   margin-inline-start: 0px;
   margin-inline-end: 0px;
-  padding-inline-start: 20px;
+  padding-inline-start: 12px;
 }
 
 .richtextRuntimeWrapper ul {

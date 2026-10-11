@@ -61,7 +61,7 @@ describe('shared resume collection', () => {
   it('keeps the existing profile intact and omits relevant experience from the modern profile', () => {
     const view = render(<ExperienceProfile basics={ResumeData.basics} />);
     const originalWebsite = screen.getByRole('link', { name: ResumeData.basics.url });
-    expect(originalWebsite.style.textDecoration).toBe('');
+    expect(originalWebsite.style.textDecoration).toBe('none');
     expect(screen.getByText('Total experience: 6 Years')).toBeInTheDocument();
     expect(screen.getByText('Relevant experience: 4 years')).toBeInTheDocument();
     view.rerender(<ModernProfile basics={ResumeData.basics} />);

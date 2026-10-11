@@ -4,10 +4,10 @@ import { IThemeColor, ITemplate } from './index.interface';
 
 export const SYSTEM_COLORS: IThemeColor[] = [
   {
-    backgroundColor: 'white',
-    fontColor: 'black',
-    titleColor: '#1890ff',
-    highlighterColor: 'yellowgreen',
+    backgroundColor: '#fffdf7',
+    fontColor: '#292524',
+    titleColor: '#1e3a8a',
+    highlighterColor: '#b45309',
     id: 1,
   },
 ];

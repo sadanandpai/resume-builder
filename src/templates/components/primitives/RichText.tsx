@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import { HTMLRenderer } from '@/helpers/common/components/HTMLRenderer';
 import { usePresentation } from '@/templates/components/theme';
 import type { ResumePalette } from '@/templates/components/theme/resumePalette';
+import type { CSSProperties } from 'react';
 
 const Content = styled.div`
   min-width: 0;
@@ -15,7 +16,8 @@ const Content = styled.div`
     margin-top: 3px;
   }
   & a {
-    color: inherit;
+    color: var(--resume-link-color, inherit);
+    text-decoration: none;
   }
   &[data-spacious] > div a {
     text-decoration: none;
@@ -40,12 +42,15 @@ export const RichText = ({ html, p }: { html: string; p: ResumePalette }) => {
   return (
     <Content
       data-spacious={presentation === 'ruled' || undefined}
-      style={{
-        color: p.text,
-        fontSize: bodySize(11),
-        lineHeight: `var(--resume-section-line-height, ${lineHeight(1.5)})`,
-        fontFamily: font(p.bodyFont),
-      }}
+      style={
+        {
+          '--resume-link-color': p.accent,
+          color: p.text,
+          fontSize: bodySize(11),
+          lineHeight: `var(--resume-section-line-height, ${lineHeight(1.5)})`,
+          fontFamily: font(p.bodyFont),
+        } as CSSProperties
+      }
     >
       <HTMLRenderer htmlString={html} />
     </Content>

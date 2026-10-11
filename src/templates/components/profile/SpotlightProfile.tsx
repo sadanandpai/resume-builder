@@ -1,6 +1,6 @@
 import type { ProfileBasics } from '../types';
 import { bodySize, font, padding, roleSize, spacing } from '@/helpers/resume-style/styles';
-import { useResumePalette, paletteForSurface } from '../theme';
+import { useResumePalette, paletteForSurface, ResumeSurface } from '../theme';
 import { RichText } from '../primitives/RichText';
 import { ContactLine } from '../primitives/Contact';
 import { BsEnvelopeFill, BsGeoAltFill, BsGlobe, BsPhoneFill } from 'react-icons/bs';
@@ -54,7 +54,7 @@ export function SpotlightProfile({ basics }: { basics: ProfileBasics }) {
             {basics.name}
           </h1>
           {basics.label && (
-            <div style={{ color: base.accent, fontSize: bodySize(14), marginTop: 7 }}>
+            <div style={{ color: p.accent, fontSize: bodySize(14), marginTop: 7 }}>
               {basics.label}
             </div>
           )}
@@ -74,7 +74,7 @@ export function SpotlightProfile({ basics }: { basics: ProfileBasics }) {
               flexShrink: 0,
               objectFit: 'cover',
               borderRadius: '50%',
-              border: `4px solid ${base.accent}`,
+              border: `4px solid ${p.accent}`,
             }}
           />
         )}
@@ -90,11 +90,13 @@ export function SpotlightProfile({ basics }: { basics: ProfileBasics }) {
             color: paletteForSurface({ ...base, sidebarBg: base.primaryDark }, 'sidebar').text,
           }}
         >
-          {contacts.map((item, index) => (
-            <div key={`${item.text}-${index}`} style={{ minWidth: 0 }}>
-              <ContactLine text={item.text!} href={item.href} icon={item.icon} />
-            </div>
-          ))}
+          <ResumeSurface surface="sidebar">
+            {contacts.map((item, index) => (
+              <div key={`${item.text}-${index}`} style={{ minWidth: 0 }}>
+                <ContactLine text={item.text!} href={item.href} icon={item.icon} />
+              </div>
+            ))}
+          </ResumeSurface>
         </div>
       )}
     </header>
