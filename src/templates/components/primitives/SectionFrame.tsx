@@ -101,7 +101,14 @@ export function SectionFrame({
               fontFamily: font(p.headingFont),
             }}
           >
-            <span style={{ background: p.bg, padding: '0 5px', boxDecorationBreak: 'clone' }}>
+            <span
+              style={{
+                background: p.bg,
+                padding: '0 5px',
+                marginLeft: heading === 'profile' ? -5 : undefined,
+                boxDecorationBreak: 'clone',
+              }}
+            >
               {title}
             </span>
           </Heading>
