@@ -1,6 +1,6 @@
 'use client';
 
-import { BuilderStateHydration } from './BuilderStateHydration';
+import { BuilderStateHydration, type SavedResume } from './BuilderStateHydration';
 import EditorLayout from './editor/EditorLayout';
 import Image from '@/helpers/common/components/Image';
 import { useEditorStore } from '@/stores/useEditorStore';
@@ -15,7 +15,7 @@ type MobileTab = 'preview' | 'edit';
 const segmentBtn =
   'flex-1 min-h-9 rounded-[4px] px-3 py-1.5 text-sm font-medium tracking-normal transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-resume-500 focus-visible:ring-offset-2 focus-visible:ring-offset-custom-grey100';
 
-const BuilderLayout = () => {
+const BuilderLayout = ({ savedResume }: { savedResume?: SavedResume }) => {
   const [mobileTab, setMobileTab] = useState<MobileTab>('preview');
 
   useEffect(
@@ -27,7 +27,7 @@ const BuilderLayout = () => {
   );
 
   return (
-    <BuilderStateHydration>
+    <BuilderStateHydration savedResume={savedResume}>
       <div className="flex flex-col h-screen min-h-0 print:h-auto print:block">
         <NavBarLayout />
         <main className="flex flex-1 flex-col lg:flex-row min-h-0 max-h-[calc(100vh-3.5rem)] print:max-h-none print:block">

@@ -1,3 +1,4 @@
+import { useCloudResumeStore } from '@/stores/useCloudResumeStore';
 import { ChangeEvent, Suspense, useCallback, useEffect, useRef, useState } from 'react';
 import { ImportResumeFromQuery } from './ImportResumeFromQuery';
 import { NavBarActions, NavBarMenu, StyledButton } from './atoms';
@@ -16,6 +17,7 @@ import DEFAULT_RESUME_JSON from '@/helpers/constants/resume-data.json';
 import Image from '@/helpers/common/components/Image';
 import Link from 'next/link';
 import { NavMenuItem } from './components/MenuItem';
+import { ExportSelect } from './components/ExportSelect';
 import { PrintResume } from './components/PrintResume';
 import { TemplateSelect } from './components/TemplateSelect';
 import { TitlesSelect } from './components/TitlesSelect';
@@ -29,7 +31,17 @@ import { useBasicDetails } from '@/stores/basic';
 import { useEducations } from '@/stores/education';
 import { useExperiences } from '@/stores/experience';
 import { useVoluteeringStore } from '@/stores/volunteering';
-import { Menu, MenuItem } from '@mui/material';
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  InputAdornment,
+  Menu,
+  MenuItem,
+  TextField,
+} from '@mui/material';
 import { applyImportedResumeJson } from './applyImportedResume';
 import { exportResumeMetadata } from './resumeMetadata';
 
@@ -37,6 +49,10 @@ const TOTAL_TEMPLATES_AVAILABLE = Object.keys(AVAILABLE_TEMPLATES).length;
 
 const NavBarLayout = () => {
   const [openToast, setOpenToast] = useState(false);
+  const [isExporting, setIsExporting] = useState(false);
+  const [savedId, setSavedId] = useState<string | null>(null);
+  const savedUrl = savedId ? new URL(`/builder/${savedId}`, window.location.origin).href : '';
+  const exportInProgress = useRef(false);
   const [toastContent, setToastContent] = useState('');
   const [menuAnchor, setMenuAnchor] = useState<null | HTMLElement>(null);
   const fileInputRef = useRef(null);
@@ -61,36 +77,65 @@ const NavBarLayout = () => {
     setMenuAnchor(null);
   };
 
-  const exportResumeData = useCallback(() => {
-    const updatedResumeJson = {
-      ...DEFAULT_RESUME_JSON,
-      __metadata: exportResumeMetadata(),
-      basics: {
-        ...DEFAULT_RESUME_JSON.basics,
-        ...useBasicDetails.getState().values,
-      },
-      work: useExperiences.getState().experiences,
-      education: useEducations.getState().academics,
-      awards: useAwards.getState().awards,
-      volunteer: useVoluteeringStore.getState().volunteeredExps,
-      skills: {
-        languages: useLanguages.getState().get(),
-        frameworks: useFrameworks.getState().get(),
-        technologies: useTechnologies.getState().get(),
-        libraries: useLibraries.getState().get(),
-        databases: useDatabases.getState().get(),
-        practices: usePractices.getState().get(),
-        tools: useTools.getState().get(),
-      },
-      activities: useActivity.getState().activities,
-    };
-    const fileName = updatedResumeJson.basics.name + '_' + new Date().toLocaleString();
-    const exportType = exportFromJSON.types.json;
-    exportFromJSON({
-      data: updatedResumeJson,
-      fileName,
-      exportType,
-    });
+  const exportResumeData = useCallback(async (destination: 'download' | 'cloud') => {
+    if (exportInProgress.current) return;
+    const cloudRevision = useCloudResumeStore.getState().revision;
+    exportInProgress.current = true;
+    setIsExporting(true);
+    try {
+      const updatedResumeJson = {
+        ...DEFAULT_RESUME_JSON,
+        __metadata: exportResumeMetadata(),
+        basics: {
+          ...DEFAULT_RESUME_JSON.basics,
+          ...useBasicDetails.getState().values,
+        },
+        work: useExperiences.getState().experiences,
+        education: useEducations.getState().academics,
+        awards: useAwards.getState().awards,
+        volunteer: useVoluteeringStore.getState().volunteeredExps,
+        skills: {
+          languages: useLanguages.getState().get(),
+          frameworks: useFrameworks.getState().get(),
+          technologies: useTechnologies.getState().get(),
+          libraries: useLibraries.getState().get(),
+          databases: useDatabases.getState().get(),
+          practices: usePractices.getState().get(),
+          tools: useTools.getState().get(),
+        },
+        activities: useActivity.getState().activities,
+      };
+      if (destination === 'cloud') {
+        const activeId = useCloudResumeStore.getState().id;
+        const response = await fetch(
+          activeId ? `/api/resumes?id=${encodeURIComponent(activeId)}` : '/api/resumes',
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(updatedResumeJson),
+          }
+        );
+        const result = await response.json();
+        if (useCloudResumeStore.getState().revision !== cloudRevision) return;
+        if (!response.ok) throw new Error(result.error || 'Could not save resume.');
+        useCloudResumeStore.getState().setId(result.id);
+        setSavedId(result.id);
+      } else {
+        const fileName = updatedResumeJson.basics.name + '_' + new Date().toLocaleString();
+        exportFromJSON({
+          data: updatedResumeJson,
+          fileName,
+          exportType: exportFromJSON.types.json,
+        });
+      }
+      handleMenuClose();
+    } catch (error) {
+      setToastContent(error instanceof Error ? error.message : 'Could not export resume.');
+      setOpenToast(true);
+    } finally {
+      exportInProgress.current = false;
+      setIsExporting(false);
+    }
   }, []);
 
   const handleFileChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
@@ -142,9 +187,7 @@ const NavBarLayout = () => {
         </NavBarMenu>
         <div className="hidden md:flex">
           <NavBarActions>
-            <StyledButton variant="text" onClick={exportResumeData}>
-              Export
-            </StyledButton>
+            <ExportSelect onExport={exportResumeData} isExporting={isExporting} />
             <StyledButton
               variant="text"
               onClick={() => {
@@ -187,7 +230,7 @@ const NavBarLayout = () => {
           horizontal: 'right',
         }}
       >
-        <MenuItem onClick={exportResumeData}>Export</MenuItem>
+        <ExportSelect onExport={exportResumeData} isExporting={isExporting} isMenuButton />
         <MenuItem
           onClick={() => {
             if (fileInputRef.current) {
@@ -208,6 +251,58 @@ const NavBarLayout = () => {
         </MenuItem>
         <PrintResume isMenuButton />
       </Menu>
+      <Dialog
+        open={Boolean(savedId)}
+        onClose={() => setSavedId(null)}
+        fullWidth
+        maxWidth="sm"
+        aria-labelledby="resume-saved-title"
+      >
+        <DialogTitle id="resume-saved-title">Resume saved successfully</DialogTitle>
+        <DialogContent>
+          <TextField
+            label="Resume link"
+            sx={{ mt: 1 }}
+            value={savedUrl}
+            fullWidth
+            slotProps={{
+              input: {
+                readOnly: true,
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <Button
+                      aria-label="Copy resume link"
+                      onClick={async () => {
+                        try {
+                          await navigator.clipboard.writeText(savedUrl);
+                          setToastContent('Resume link copied.');
+                        } catch {
+                          setToastContent(
+                            'Could not copy the link. Please select and copy it manually.'
+                          );
+                        }
+                        setOpenToast(true);
+                      }}
+                    >
+                      Copy
+                    </Button>
+                  </InputAdornment>
+                ),
+              },
+            }}
+          />
+          <p className="mt-4 text-sm">
+            Keep this link to return and edit your resume in the future.
+          </p>
+          <p className="mt-2 text-sm">
+            Anyone with this link can access and even edit your resume. Share it only with people
+            you trust.
+          </p>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setSavedId(null)}>Close</Button>
+        </DialogActions>
+      </Dialog>
       <Toast
         open={openToast}
         onClose={() => {

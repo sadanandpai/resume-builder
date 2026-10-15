@@ -1,3 +1,4 @@
+import { useCloudResumeStore } from './useCloudResumeStore';
 import {
   useDatabases,
   useFrameworks,
@@ -68,6 +69,7 @@ export const useResumeStore = () => {
  * @description Reset all the stores
  */
 export const resetResumeStore = () => {
+  useCloudResumeStore.getState().setId(null);
   useBasicDetails.getState().reset(ResumeData.basics);
   useLanguages.getState().reset(ResumeData.skills.languages);
   useFrameworks.getState().reset(ResumeData.skills.frameworks);

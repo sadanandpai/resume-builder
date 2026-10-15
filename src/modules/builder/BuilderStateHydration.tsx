@@ -21,6 +21,12 @@ import { useSectionLayoutStore } from '@/stores/useSectionLayoutStore';
 import { useResumeStyleStore } from '@/stores/useResumeStyleStore';
 import { useSectionTitleStore } from '@/stores/useSectionTitleStore';
 import { restoreSavedTemplate } from '@/stores/useTemplate';
+import { ResumeLoading } from './ResumeLoading';
+
+import { applyImportedResumeJson } from './nav-bar/applyImportedResume';
+import { useCloudResumeStore } from '@/stores/useCloudResumeStore';
+
+export type SavedResume = { id: string; data?: unknown; error?: string };
 
 const ReadyContext = createContext(false);
 let hydration: Promise<void> | undefined;
@@ -60,16 +66,46 @@ export function useBuilderStateReady() {
   return useContext(ReadyContext);
 }
 
-export function BuilderStateHydration({ children }: { children: ReactNode }) {
-  const [ready, setReady] = useState(false);
+export function BuilderStateHydration({
+  children,
+  savedResume,
+}: {
+  children: ReactNode;
+  savedResume?: SavedResume;
+}) {
+  const [loaded, setLoaded] = useState<{ source: SavedResume | undefined }>();
+  const [failure, setFailure] = useState<{ source: SavedResume | undefined; message: string }>();
+  const error = failure?.source === savedResume ? failure?.message : undefined;
+  const ready = loaded !== undefined && loaded.source === savedResume;
   useEffect(() => {
     let active = true;
     void hydrateBuilderState().then(() => {
-      if (active) setReady(true);
+      if (!active) return;
+      try {
+        if (savedResume?.error) throw new Error(savedResume.error);
+        if (savedResume) {
+          applyImportedResumeJson(savedResume.data);
+          useCloudResumeStore.getState().setId(savedResume.id);
+        }
+        setLoaded({ source: savedResume });
+      } catch (cause) {
+        setFailure({
+          source: savedResume,
+          message: cause instanceof Error ? cause.message : 'Could not load resume.',
+        });
+      }
     });
     return () => {
       active = false;
     };
-  }, []);
+  }, [savedResume]);
+  if (!ready) {
+    if (!error) return <ResumeLoading />;
+    return (
+      <div role="alert" className="flex min-h-screen items-center justify-center">
+        {error}
+      </div>
+    );
+  }
   return <ReadyContext.Provider value={ready}>{children}</ReadyContext.Provider>;
 }

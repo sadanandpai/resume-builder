@@ -112,3 +112,44 @@ it.each(['malformed', 'blocked'])(
     expect(useBasicDetails.getState().values.name).toBe('Still editable');
   }
 );
+
+it('keeps old data hidden until server data is applied, including navigation to another ID', async () => {
+  const { BuilderStateHydration } = await import('./BuilderStateHydration');
+  const { useBasicDetails } = await import('@/stores/basic');
+  useBasicDetails.getState().reset({ ...useBasicDetails.getState().values, name: 'Old resume' });
+  const rendered: string[] = [];
+  function Preview() {
+    const name = useBasicDetails((state) => state.values.name);
+    rendered.push(name);
+    return <div>{name}</div>;
+  }
+  const view = render(
+    <BuilderStateHydration savedResume={{ id: 'first', data: { basics: { name: 'First saved' } } }}>
+      <Preview />
+    </BuilderStateHydration>
+  );
+  expect(screen.queryByText('Old resume')).not.toBeInTheDocument();
+  await screen.findByText('First saved');
+  expect(rendered).not.toContain('Old resume');
+  rendered.length = 0;
+  view.rerender(
+    <BuilderStateHydration
+      savedResume={{ id: 'second', data: { basics: { name: 'Second saved' } } }}
+    >
+      <Preview />
+    </BuilderStateHydration>
+  );
+  await screen.findByText('Second saved');
+  expect(rendered).not.toContain('First saved');
+});
+
+it('shows a load error without mounting the previous resume', async () => {
+  const { BuilderStateHydration } = await import('./BuilderStateHydration');
+  render(
+    <BuilderStateHydration savedResume={{ id: 'missing', error: 'Resume not found.' }}>
+      <div>Previous resume</div>
+    </BuilderStateHydration>
+  );
+  expect(await screen.findByRole('alert')).toHaveTextContent('Resume not found.');
+  expect(screen.queryByText('Previous resume')).not.toBeInTheDocument();
+});

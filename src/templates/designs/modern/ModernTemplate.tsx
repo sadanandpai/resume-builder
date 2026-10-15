@@ -46,7 +46,6 @@ export default function ModernTemplate() {
         return (
           <ProfileSummarySection
             title={titles.summary}
-            indentParagraphs
             html={basics.summary}
             image={basics.image}
           />
