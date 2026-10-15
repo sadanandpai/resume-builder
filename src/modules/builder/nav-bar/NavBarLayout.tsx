@@ -1,6 +1,5 @@
 import { useCloudResumeStore } from '@/stores/useCloudResumeStore';
-import { ChangeEvent, Suspense, useCallback, useEffect, useRef, useState } from 'react';
-import { ImportResumeFromQuery } from './ImportResumeFromQuery';
+import { ChangeEvent, type RefObject, useCallback, useEffect, useRef, useState } from 'react';
 import { NavBarActions, NavBarMenu, StyledButton } from './atoms';
 import {
   useDatabases,
@@ -47,21 +46,21 @@ import { exportResumeMetadata } from './resumeMetadata';
 
 const TOTAL_TEMPLATES_AVAILABLE = Object.keys(AVAILABLE_TEMPLATES).length;
 
-const NavBarLayout = () => {
+const NavBarLayout = ({
+  importControllerRef,
+}: {
+  importControllerRef: RefObject<AbortController | null>;
+}) => {
   const [openToast, setOpenToast] = useState(false);
   const [isExporting, setIsExporting] = useState(false);
   const [savedId, setSavedId] = useState<string | null>(null);
-  const savedUrl = savedId ? new URL(`/builder/${savedId}`, window.location.origin).href : '';
+  const savedUrl = savedId
+    ? new URL(`/builder/${savedId}?view=true`, window.location.origin).href
+    : '';
   const exportInProgress = useRef(false);
   const [toastContent, setToastContent] = useState('');
   const [menuAnchor, setMenuAnchor] = useState<null | HTMLElement>(null);
   const fileInputRef = useRef(null);
-  const importControllerRef = useRef<AbortController | null>(null);
-
-  const showImportResult = useCallback((message: string) => {
-    setToastContent(message);
-    setOpenToast(true);
-  }, []);
 
   useEffect(() => {
     const closeMobileMenu = () => setMenuAnchor(null);
@@ -138,38 +137,38 @@ const NavBarLayout = () => {
     }
   }, []);
 
-  const handleFileChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
-    const fileObj = event.target.files && event.target.files[0];
-    if (!fileObj) {
-      return;
-    }
+  const handleFileChange = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      const fileObj = event.target.files && event.target.files[0];
+      if (!fileObj) {
+        return;
+      }
 
-    importControllerRef.current?.abort();
-    const reader = new FileReader();
+      importControllerRef.current?.abort();
+      const reader = new FileReader();
 
-    reader.readAsText(fileObj);
+      reader.readAsText(fileObj);
 
-    event.target.value = ''; // To read the same file
+      event.target.value = ''; // To read the same file
 
-    reader.onload = (e) => {
-      try {
-        if (typeof e.target?.result === 'string') {
-          applyImportedResumeJson(JSON.parse(e.target.result));
-          setToastContent('Resume data was successfully imported.');
+      reader.onload = (e) => {
+        try {
+          if (typeof e.target?.result === 'string') {
+            applyImportedResumeJson(JSON.parse(e.target.result));
+            setToastContent('Resume data was successfully imported.');
+            setOpenToast(true);
+          }
+        } catch {
+          setToastContent('Could not read resume JSON from file.');
           setOpenToast(true);
         }
-      } catch {
-        setToastContent('Could not read resume JSON from file.');
-        setOpenToast(true);
-      }
-    };
-  }, []);
+      };
+    },
+    [importControllerRef]
+  );
 
   return (
     <nav className="h-14 w-full bg-resume-800 relative flex py-2.5 pl-2 md:pl-5 pr-1 nd:pr-4 items-center shadow-level-8dp z-20 print:hidden">
-      <Suspense fallback={null}>
-        <ImportResumeFromQuery controllerRef={importControllerRef} onResult={showImportResult} />
-      </Suspense>
       <Link href="/">
         <Image src={'/icons/resume-icon.png'} alt="logo" height="36" width="36" />
       </Link>
@@ -180,9 +179,7 @@ const NavBarLayout = () => {
             popoverChildren={<TemplateSelect />}
           />
           <NavMenuItem caption="Colours" popoverChildren={<ThemeSelect />} />
-          <div className="hidden lg:block">
-            <NavMenuItem caption="Layout" popoverChildren={<LayoutSelect />} />
-          </div>
+          <NavMenuItem caption="Layout" popoverChildren={<LayoutSelect />} />
           <NavMenuItem caption="Titles" popoverChildren={<TitlesSelect />} />
         </NavBarMenu>
         <div className="hidden md:flex">

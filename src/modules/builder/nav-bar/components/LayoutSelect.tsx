@@ -173,10 +173,11 @@ export function LayoutSelect() {
       className="bg-white shadow-2xl"
       style={{
         width: 475,
-        maxWidth: '100vw',
+        maxWidth: 'calc(100vw - 32px)',
+        boxSizing: 'border-box',
         maxHeight: 'calc(100dvh - 90px)',
         overflowY: 'auto',
-        padding: '24px 36px',
+        padding: '24px clamp(12px, 4vw, 36px)',
       }}
     >
       <h2 className="text-resume-800 font-bold text-lg">Customize resume layout</h2>
@@ -207,8 +208,8 @@ export function LayoutSelect() {
       <p className="text-xs text-gray-600 mt-3">
         Page margins leave blank paper outside the template background. Internal padding adds space
         inside the template around its content. Unchanged controls use template defaults. Where
-        defaults vary by content area, displayed values represent the primary content; editing
-        applies globally.
+        defaults vary by content area, displayed values represent the primary content. Entry spacing
+        scales proportionally across areas; other edits apply globally.
       </p>
       {group('Page margins', 'pageMargins', sides('pageMargins'))}
       {group('Internal padding', 'contentPadding', sides('contentPadding'))}

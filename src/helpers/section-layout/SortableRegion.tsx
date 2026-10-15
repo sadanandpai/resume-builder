@@ -1,8 +1,10 @@
 'use client';
 
+import { ResumeReadOnlyContext } from '@/modules/builder/resume/ResumeReadOnlyContext';
+
 import { useDroppable } from '@dnd-kit/core';
 import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable';
-import { createContext, ReactNode } from 'react';
+import { createContext, useContext, ReactNode } from 'react';
 import { REGION_DROP_PREFIX } from '@/helpers/section-layout/computeRegionsAfterDrag';
 import { useSectionLayoutStore } from '@/stores/useSectionLayoutStore';
 
@@ -22,7 +24,8 @@ export function SortableRegion({
   style?: React.CSSProperties;
   children: (sectionId: string) => ReactNode;
 }) {
-  const isReorderMode = useSectionLayoutStore((state) => state.isReorderMode);
+  const readOnly = useContext(ResumeReadOnlyContext);
+  const isReorderMode = useSectionLayoutStore((state) => state.isReorderMode) && !readOnly;
   const { setNodeRef, isOver } = useDroppable({
     id: `${REGION_DROP_PREFIX}${regionId}`,
     data: { type: 'ResumeSectionRegion', regionId, resumeRegion: regionId },

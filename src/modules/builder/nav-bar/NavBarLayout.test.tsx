@@ -12,7 +12,6 @@ vi.mock('export-from-json', () => ({
   default: Object.assign(vi.fn(), { types: { json: 'json' } }),
 }));
 vi.mock('./ImportSavedResume', () => ({ ImportSavedResume: () => null }));
-vi.mock('./ImportResumeFromQuery', () => ({ ImportResumeFromQuery: () => null }));
 vi.mock('./components/TemplateSelect', () => ({ TemplateSelect: () => null }));
 vi.mock('./components/ThemeSelect', () => ({ ThemeSelect: () => null }));
 vi.mock('./components/LayoutSelect', () => ({ LayoutSelect: () => null }));
@@ -34,7 +33,7 @@ describe('Export options', () => {
   it('opens the popover without saving and downloads locally only when selected', async () => {
     render(
       <ThemeProvider theme={GLOBAL_MUI_THEME}>
-        <NavBarLayout />
+        <NavBarLayout importControllerRef={{ current: null }} />
       </ThemeProvider>
     );
     fireEvent.click(await screen.findByRole('button', { name: /Export/ }));
@@ -52,14 +51,14 @@ describe('Export options', () => {
   it('saves to cloud and displays the ID without downloading', async () => {
     render(
       <ThemeProvider theme={GLOBAL_MUI_THEME}>
-        <NavBarLayout />
+        <NavBarLayout importControllerRef={{ current: null }} />
       </ThemeProvider>
     );
     fireEvent.click(await screen.findByRole('button', { name: /Export/ }));
     fireEvent.click(screen.getByRole('button', { name: 'Save to cloud' }));
     expect(
       await screen.findByDisplayValue(
-        new URL('/builder/saved-resume-id', window.location.origin).href
+        new URL('/builder/saved-resume-id?view=true', window.location.origin).href
       )
     ).toBeInTheDocument();
     expect(fetch).toHaveBeenCalledWith('/api/resumes', expect.objectContaining({ method: 'POST' }));
@@ -76,7 +75,7 @@ it('shows a loader and prevents repeated exports while saving', async () => {
   );
   render(
     <ThemeProvider theme={GLOBAL_MUI_THEME}>
-      <NavBarLayout />
+      <NavBarLayout importControllerRef={{ current: null }} />
     </ThemeProvider>
   );
   fireEvent.click(await screen.findByRole('button', { name: /Export/ }));
@@ -97,7 +96,7 @@ it('copies the full resume link', async () => {
   Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText } });
   render(
     <ThemeProvider theme={GLOBAL_MUI_THEME}>
-      <NavBarLayout />
+      <NavBarLayout importControllerRef={{ current: null }} />
     </ThemeProvider>
   );
   fireEvent.click(await screen.findByRole('button', { name: /Export/ }));
@@ -105,7 +104,7 @@ it('copies the full resume link', async () => {
   fireEvent.click(await screen.findByRole('button', { name: 'Copy resume link' }));
   await waitFor(() =>
     expect(writeText).toHaveBeenCalledWith(
-      new URL('/builder/saved-resume-id', window.location.origin).href
+      new URL('/builder/saved-resume-id?view=true', window.location.origin).href
     )
   );
   expect(await screen.findByText('Resume link copied.')).toBeInTheDocument();
@@ -114,7 +113,7 @@ it('copies the full resume link', async () => {
 it('updates the saved ID and lets Reset ID create a separate copy', async () => {
   render(
     <ThemeProvider theme={GLOBAL_MUI_THEME}>
-      <NavBarLayout />
+      <NavBarLayout importControllerRef={{ current: null }} />
     </ThemeProvider>
   );
   fireEvent.click(await screen.findByRole('button', { name: /Export/ }));
@@ -144,7 +143,7 @@ it('saves and updates cloud resumes in production', async () => {
   vi.stubEnv('NODE_ENV', 'production');
   render(
     <ThemeProvider theme={GLOBAL_MUI_THEME}>
-      <NavBarLayout />
+      <NavBarLayout importControllerRef={{ current: null }} />
     </ThemeProvider>
   );
   fireEvent.click(await screen.findByRole('button', { name: /Export/ }));
@@ -169,7 +168,7 @@ it.each(['reset', 'import'])('ignores a save completed after a resume %s', async
   );
   render(
     <ThemeProvider theme={GLOBAL_MUI_THEME}>
-      <NavBarLayout />
+      <NavBarLayout importControllerRef={{ current: null }} />
     </ThemeProvider>
   );
   fireEvent.click(await screen.findByRole('button', { name: /Export/ }));

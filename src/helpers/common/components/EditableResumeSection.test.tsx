@@ -1,3 +1,4 @@
+import { ResumeReadOnlyContext } from '@/modules/builder/resume/ResumeReadOnlyContext';
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { EditableResumeSection } from './EditableResumeSection';
@@ -55,4 +56,18 @@ describe('preview editor navigation', () => {
     fireEvent.click(screen.getByText('Work'));
     expect(useEditorStore.getState().revision).toBe(0);
   });
+});
+
+it('keeps resume sections passive in resume-only view', () => {
+  render(
+    <ResumeReadOnlyContext.Provider value={true}>
+      <EditableResumeSection id="basics">
+        <a href="mailto:test@example.com">Email</a>
+      </EditableResumeSection>
+    </ResumeReadOnlyContext.Provider>
+  );
+  expect(screen.queryByRole('button')).not.toBeInTheDocument();
+  expect(screen.getByRole('link')).toHaveAttribute('href', 'mailto:test@example.com');
+  fireEvent.click(screen.getByRole('link'));
+  expect(useEditorStore.getState().revision).toBe(0);
 });

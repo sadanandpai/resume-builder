@@ -1,14 +1,17 @@
 import {
   Context,
   createContext,
+  useContext,
   useEffect,
   useMemo,
   useRef,
   useState,
   type ReactNode,
+  type CSSProperties,
 } from 'react';
 
 import { useResumeStyleStore } from '@/stores/useResumeStyleStore';
+import { ResumeReadOnlyContext } from './ResumeReadOnlyContext';
 import { PagedResume } from './PagedResume';
 
 import { AVAILABLE_TEMPLATES } from '@/helpers/constants';
@@ -36,6 +39,7 @@ function ResumeSectionLayoutShell({
   resumeData: ReturnType<typeof useResumeStore>;
   children: ReactNode;
 }) {
+  const readOnly = useContext(ResumeReadOnlyContext);
   const allowed = useMemo(
     () => getAllowedSectionIdsForTemplate(templateId, resumeData),
     [templateId, resumeData]
@@ -43,13 +47,14 @@ function ResumeSectionLayoutShell({
   const { regions, setRegions, regionKeys } = useTemplateSectionLayout(templateId, allowed);
   const isReorderMode = useSectionLayoutStore((state) => state.isReorderMode);
   const [projectedRegions, setProjectedRegions] = useState<Record<string, string[]> | null>(null);
-  const effectiveRegions = isReorderMode && projectedRegions ? projectedRegions : regions;
+  const effectiveRegions =
+    !readOnly && isReorderMode && projectedRegions ? projectedRegions : regions;
 
   return (
     <ResumeSectionDndProvider
       regionKeys={regionKeys}
       regions={regions}
-      dragEnabled={isReorderMode}
+      dragEnabled={!readOnly && isReorderMode}
       onDragOverRegions={setProjectedRegions}
       onDragEndRegions={setRegions}
     >
@@ -63,9 +68,16 @@ function ResumeSectionLayoutShell({
 /** ~210mm at 96dpi — matches resume preview width used for scale-to-fit on small screens. */
 const RESUME_PAGE_WIDTH_PX = 794;
 
-export const ResumeLayout = ({ pauseFitToWidth = false }: { pauseFitToWidth?: boolean }) => {
+export const ResumeLayout = ({
+  pauseFitToWidth = false,
+  readOnly = false,
+}: {
+  pauseFitToWidth?: boolean;
+  readOnly?: boolean;
+}) => {
   const resumeData = useResumeStore();
   useEffect(() => useResumeStyleStore.getState().hydrate(), []);
+  const [viewZoom, setViewZoom] = useState(1);
   const zoom = useZoom((state) => state.zoom);
   const setZoom = useZoom((state) => state.setZoom);
   const fitContainerRef = useRef<HTMLDivElement>(null);
@@ -82,11 +94,12 @@ export const ResumeLayout = ({ pauseFitToWidth = false }: { pauseFitToWidth?: bo
     let timeoutId: number | undefined;
 
     const applyFit = () => {
-      if (mq.matches || pauseFitToWidth) return;
+      if ((!readOnly && mq.matches) || pauseFitToWidth) return;
       const w = el.clientWidth;
       if (w <= 0) return;
-      const fit = Math.min(1, Math.max(ZOOM_MIN, w / RESUME_PAGE_WIDTH_PX));
-      setZoom(fit);
+      const fit = Math.min(1, w / RESUME_PAGE_WIDTH_PX);
+      setViewZoom(fit);
+      if (!readOnly) setZoom(Math.max(ZOOM_MIN, fit));
     };
 
     const schedule = () => {
@@ -97,20 +110,24 @@ export const ResumeLayout = ({ pauseFitToWidth = false }: { pauseFitToWidth?: bo
     const ro = new ResizeObserver(schedule);
     ro.observe(el);
     mq.addEventListener('change', schedule);
-    schedule();
+    applyFit();
 
     return () => {
       if (timeoutId !== undefined) window.clearTimeout(timeoutId);
       ro.disconnect();
       mq.removeEventListener('change', schedule);
     };
-  }, [setZoom, pauseFitToWidth]);
+  }, [setZoom, pauseFitToWidth, readOnly]);
 
   return (
     <div ref={fitContainerRef} className="mx-5 print:mx-0 mb-2 print:mb-0">
       <div
-        style={{ transform: `scale(${zoom})` }}
-        className="resume-print-scale-wrap origin-top transition-all duration-300 ease-linear"
+        style={
+          readOnly
+            ? { zoom: viewZoom, width: '210mm' }
+            : ({ transform: `scale(${zoom})`, '--resume-mobile-zoom': viewZoom } as CSSProperties)
+        }
+        className={`resume-print-scale-wrap ${readOnly ? 'resume-view-scale-wrap' : 'resume-editor-scale-wrap origin-top transition-all duration-300 ease-linear'}`}
       >
         <PagedResume>
           <StateContext.Provider value={resumeData}>

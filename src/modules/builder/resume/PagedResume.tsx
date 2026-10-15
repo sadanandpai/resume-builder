@@ -9,7 +9,10 @@ export function PagedResume({ children }: { children: ReactNode }) {
   const settings = useResumeStyleStore((state) => state.settings);
   const templateId = useTemplates((state) => state.activeTemplate.id);
   const secondaryDefault = TEMPLATE_REGISTRY[templateId]?.style.secondaryColumnPercent;
-  const variables = styleVariables(settings);
+  const variables = styleVariables(settings, {
+    value: (TEMPLATE_REGISTRY[templateId] ?? TEMPLATE_REGISTRY.modern).style.entry,
+    density: templateId === 'modern' ? 0.8 : 1,
+  });
   // Modern's balanced baseline uses the former compact spacing and line height.
   // Explicit spacing and line-height overrides still take precedence.
   if (templateId === 'modern') {

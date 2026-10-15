@@ -28,7 +28,12 @@ export const NavMenuItem = ({ caption, popoverChildren }: INavMenuItemProps) => 
         aria-controls={anchorEl ? `${id}-panel` : undefined}
         aria-expanded={!!anchorEl}
         aria-haspopup="dialog"
-        sx={{ fontSize: { xs: '10px', lg: '13px' } }}
+        sx={{
+          fontSize: { xs: '10px', lg: '13px' },
+          minWidth: 0,
+          px: { xs: 0.5, lg: 1 },
+          '& .MuiButton-endIcon': { ml: { xs: 0, lg: 1 } },
+        }}
         endIcon={
           <Image
             src={'/icons/dropdown-arrow.svg'}

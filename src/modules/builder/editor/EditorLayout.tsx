@@ -7,6 +7,7 @@ import ErrorBoundary from '@/helpers/common/components/ErrorBoundary';
 import { OutlinedButton } from '@/helpers/common/atoms/Buttons';
 import { headers } from '@/helpers/constants/editor-data';
 import { resetResumeStore } from '@/stores/useResumeStore';
+import { Button } from '@mui/material';
 
 const ConfirmationBox = ({
   handleModalCloseAction,
@@ -42,7 +43,7 @@ const ConfirmationBox = ({
   );
 };
 
-const EditorLayout = () => {
+const EditorLayout = ({ onViewResume }: { onViewResume: () => void }) => {
   const { target, revision, openEditor } = useEditorStore();
   const link = target.section;
   const editorRef = useRef<HTMLDivElement>(null);
@@ -50,6 +51,17 @@ const EditorLayout = () => {
     if (editorRef.current) editorRef.current.scrollTop = 0;
   }, [revision]);
   const [shouldOpenModal, setShouldOpenModal] = useState(false);
+  useEffect(() => {
+    if (!shouldOpenModal) return;
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        setShouldOpenModal(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [shouldOpenModal]);
   const section = headers[link];
 
   const linkClickHandler = (link: string) => {
@@ -79,8 +91,11 @@ const EditorLayout = () => {
       >
         {displayElement}
 
-        <div className="mt-8">
-          <OutlinedButton onClick={confirmationModalHandler}>Reset all edits</OutlinedButton>
+        <div className="mt-8 flex flex-col items-start gap-3">
+          <OutlinedButton onClick={onViewResume}>View Resume</OutlinedButton>
+          <Button variant="outlined" color="error" onClick={confirmationModalHandler}>
+            Reset all edits
+          </Button>
         </div>
       </div>
       {shouldOpenModal && (

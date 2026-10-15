@@ -10,6 +10,21 @@ body {
   display: none;
 }
 
+@media screen and (max-width: 1023px) {
+  .resume-editor-scale-wrap {
+    transform: none !important;
+    zoom: var(--resume-mobile-zoom, 1);
+    width: 210mm;
+    transition: none;
+  }
+}
+
+@media (hover: none) {
+  .resume-edit-button {
+    opacity: 1;
+  }
+}
+
 /* Hide scrollbar for IE, Edge and Firefox */
 .no-scrollbar {
   -ms-overflow-style: none; /* IE and Edge */
@@ -31,6 +46,10 @@ body {
   .MuiBackdrop-root,
   .MuiSnackbar-root {
     display: none !important;
+  }
+
+  .resume-view-scale-wrap {
+    zoom: 1 !important;
   }
 
   /* Inline preview zoom (transform: scale) must not carry into print — inline styles beat most utilities */
