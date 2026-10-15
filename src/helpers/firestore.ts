@@ -5,13 +5,24 @@ let firestore: Firestore | undefined;
 
 export async function getResumeFirestore(): Promise<Firestore> {
   if (firestore) return firestore;
-  if (!process.env.GOOGLE_CLOUD_PROJECT || !process.env.GOOGLE_APPLICATION_CREDENTIALS) {
+  const inlineCredentials = process.env.GOOGLE_SERVICE_ACCOUNT_JSON?.trim();
+  const credentialSource = inlineCredentials || process.env.GOOGLE_APPLICATION_CREDENTIALS?.trim();
+  if (!process.env.GOOGLE_CLOUD_PROJECT || !credentialSource) {
     throw new Error('Firestore credentials are not configured.');
   }
-  const credentials = JSON.parse(
-    await readFile(process.env.GOOGLE_APPLICATION_CREDENTIALS, 'utf8')
-  );
+  let credentials;
+  try {
+    credentials = JSON.parse(
+      inlineCredentials || credentialSource.startsWith('{')
+        ? credentialSource
+        : await readFile(credentialSource, 'utf8')
+    );
+  } catch {
+    // Do not expose credential contents or paths in API logs.
+    throw new Error('Could not read service account credentials.');
+  }
   if (
+    !credentials ||
     credentials.type !== 'service_account' ||
     typeof credentials.client_email !== 'string' ||
     typeof credentials.private_key !== 'string'

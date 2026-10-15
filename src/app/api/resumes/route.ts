@@ -44,7 +44,7 @@ export async function POST(request: Request) {
     );
   }
 
-  if (!process.env.GOOGLE_APPLICATION_CREDENTIALS) {
+  if (!process.env.GOOGLE_APPLICATION_CREDENTIALS && !process.env.GOOGLE_SERVICE_ACCOUNT_JSON) {
     return Response.json(
       {
         error: 'Could not save your resume. Please try again later.',
