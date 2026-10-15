@@ -36,8 +36,18 @@ afterEach(() => {
 });
 
 describe('resume-only view', () => {
+  it('hides editing controls and ignores Escape in view mode', () => {
+    window.history.replaceState(null, '', '/builder?mode=view');
+    render(<BuilderLayout />);
+    expect(screen.getByRole('region', { name: 'Resume' })).toHaveAttribute('data-readonly', 'true');
+    expect(screen.queryByRole('button', { name: 'Edit Resume' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('navigation')).not.toBeInTheDocument();
+    fireEvent.keyDown(window, { key: 'Escape' });
+    expect(window.location.search).toBe('?mode=view');
+  });
+
   it('returns to editing with Escape and preserves URL context', () => {
-    window.history.replaceState(null, '', '/builder/saved-id?other=keep&view=true#resume');
+    window.history.replaceState(null, '', '/builder/saved-id?other=keep&mode=edit#resume');
     const { rerender } = render(<BuilderLayout />);
     fireEvent.keyDown(window, { key: 'Escape' });
     rerender(<BuilderLayout />);
@@ -52,7 +62,7 @@ describe('resume-only view', () => {
     window.history.replaceState(null, '', `${path}?other=keep#resume`);
     const { rerender } = render(<BuilderLayout />);
     fireEvent.click(screen.getByRole('button', { name: 'View Resume' }));
-    expect(window.location.search).toBe('?other=keep&view=true');
+    expect(window.location.search).toBe('?other=keep&mode=edit');
     rerender(<BuilderLayout />);
     expect(screen.queryByRole('navigation')).not.toBeInTheDocument();
     expect(screen.queryByText('Preview controls')).not.toBeInTheDocument();
@@ -65,7 +75,7 @@ describe('resume-only view', () => {
     );
   });
 
-  it.each(['?view', '?view=true'])('opens directly with %s', (query) => {
+  it.each(['?mode=edit'])('opens directly with %s', (query) => {
     window.history.replaceState(null, '', `/builder${query}`);
     render(<BuilderLayout />);
     expect(screen.queryByRole('navigation')).not.toBeInTheDocument();
@@ -78,7 +88,7 @@ describe('URL imports across views', () => {
     window.history.replaceState(
       null,
       '',
-      `/builder?importUrl=https%3A%2F%2Fexample.com%2Fresume.json&other=keep${viewOnly ? '&view=true' : ''}#resume`
+      `/builder?importUrl=https%3A%2F%2Fexample.com%2Fresume.json&other=keep${viewOnly ? '&mode=edit' : ''}#resume`
     );
     let finish!: (response: Response) => void;
     const fetchMock = vi.fn().mockReturnValue(
@@ -98,7 +108,7 @@ describe('URL imports across views', () => {
     await act(async () => finish(Response.json(data)));
     await waitFor(() => expect(applyImportedResumeJson).toHaveBeenCalledWith(data));
     expect(applyImportedResumeJson).toHaveBeenCalledTimes(1);
-    expect(window.location.search).toBe(viewOnly ? '?other=keep' : '?other=keep&view=true');
+    expect(window.location.search).toBe(viewOnly ? '?other=keep' : '?other=keep&mode=edit');
     expect(window.location.hash).toBe('#resume');
     expect(await screen.findByText('Resume data was successfully imported.')).toBeInTheDocument();
   });

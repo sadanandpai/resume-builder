@@ -58,7 +58,7 @@ describe('Export options', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Save to cloud' }));
     expect(
       await screen.findByDisplayValue(
-        new URL('/builder/saved-resume-id?view=true', window.location.origin).href
+        new URL('/builder/saved-resume-id?mode=view', window.location.origin).href
       )
     ).toBeInTheDocument();
     expect(fetch).toHaveBeenCalledWith('/api/resumes', expect.objectContaining({ method: 'POST' }));
@@ -91,7 +91,7 @@ it('shows a loader and prevents repeated exports while saving', async () => {
   expect(screen.queryByRole('progressbar')).not.toBeInTheDocument();
 });
 
-it('copies the full resume link', async () => {
+it.each(['view', 'edit'])('copies the selected %s resume link', async (mode) => {
   const writeText = vi.fn().mockResolvedValue(undefined);
   Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText } });
   render(
@@ -101,10 +101,17 @@ it('copies the full resume link', async () => {
   );
   fireEvent.click(await screen.findByRole('button', { name: /Export/ }));
   fireEvent.click(screen.getByRole('button', { name: 'Save to cloud' }));
-  fireEvent.click(await screen.findByRole('button', { name: 'Copy resume link' }));
+  await screen.findByRole('button', { name: 'Copy resume link' });
+  fireEvent.click(
+    screen.getByRole('radio', {
+      name:
+        mode === 'view' ? 'View only — for sharing' : 'With edit option — for returning to edit',
+    })
+  );
+  fireEvent.click(screen.getByRole('button', { name: 'Copy resume link' }));
   await waitFor(() =>
     expect(writeText).toHaveBeenCalledWith(
-      new URL('/builder/saved-resume-id?view=true', window.location.origin).href
+      new URL(`/builder/saved-resume-id?mode=${mode}`, window.location.origin).href
     )
   );
   expect(await screen.findByText('Resume link copied.')).toBeInTheDocument();

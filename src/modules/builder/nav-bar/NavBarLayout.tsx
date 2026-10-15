@@ -37,6 +37,11 @@ import {
   DialogContent,
   DialogTitle,
   InputAdornment,
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  Radio,
+  RadioGroup,
   Menu,
   MenuItem,
   TextField,
@@ -54,8 +59,9 @@ const NavBarLayout = ({
   const [openToast, setOpenToast] = useState(false);
   const [isExporting, setIsExporting] = useState(false);
   const [savedId, setSavedId] = useState<string | null>(null);
+  const [linkMode, setLinkMode] = useState<'view' | 'edit'>('view');
   const savedUrl = savedId
-    ? new URL(`/builder/${savedId}?view=true`, window.location.origin).href
+    ? new URL(`/builder/${savedId}?mode=${linkMode}`, window.location.origin).href
     : '';
   const exportInProgress = useRef(false);
   const [toastContent, setToastContent] = useState('');
@@ -118,6 +124,7 @@ const NavBarLayout = ({
         if (useCloudResumeStore.getState().revision !== cloudRevision) return;
         if (!response.ok) throw new Error(result.error || 'Could not save resume.');
         useCloudResumeStore.getState().setId(result.id);
+        setLinkMode('view');
         setSavedId(result.id);
       } else {
         const fileName = updatedResumeJson.basics.name + '_' + new Date().toLocaleString();
@@ -257,6 +264,26 @@ const NavBarLayout = ({
       >
         <DialogTitle id="resume-saved-title">Resume saved successfully</DialogTitle>
         <DialogContent>
+          <FormControl sx={{ mt: 1 }}>
+            <FormLabel id="resume-link-mode-label">Choose a link to copy</FormLabel>
+            <RadioGroup
+              aria-labelledby="resume-link-mode-label"
+              value={linkMode}
+              onChange={(_, value) => setLinkMode(value as 'view' | 'edit')}
+            >
+              <FormControlLabel value="view" control={<Radio />} label="View only — for sharing" />
+              <FormControlLabel
+                value="edit"
+                control={<Radio />}
+                label="With edit option — for returning to edit"
+              />
+            </RadioGroup>
+          </FormControl>
+          <p className="mb-3 text-sm text-resume-600">
+            {linkMode === 'view'
+              ? 'Shows only your resume, without an Edit Resume button.'
+              : 'Shows an Edit Resume button on hover on desktop and below the resume on mobile.'}
+          </p>
           <TextField
             label="Resume link"
             sx={{ mt: 1 }}
@@ -289,11 +316,12 @@ const NavBarLayout = ({
             }}
           />
           <p className="mt-4 text-sm">
-            Keep this link to return and edit your resume in the future.
+            Keep the link with the edit option to return and edit your resume in the future.
           </p>
           <p className="mt-2 text-sm">
-            Anyone with this link can access and even edit your resume. Share it only with people
-            you trust.
+            These modes control how the resume is displayed, not who can edit it.{' '}
+            <strong>Anyone with either link can change the URL to access editing.</strong> Share
+            only with people you trust.
           </p>
         </DialogContent>
         <DialogActions>
