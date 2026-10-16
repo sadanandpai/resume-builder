@@ -10,7 +10,11 @@ export const HTMLRenderer = ({ htmlString }: { htmlString: string }) => {
       // oxlint-disable-next-line typescript/no-explicit-any
       replace: (domNode: any) => {
         if (domNode.attribs && domNode.attribs.href && domNode.name === 'a') {
-          return <Link href={domNode.attribs.href}>{domToReact(domNode.children)}</Link>;
+          return (
+            <Link href={domNode.attribs.href} target="_blank" rel="noopener noreferrer">
+              {domToReact(domNode.children)}
+            </Link>
+          );
         } else if (domNode.name === 'script') {
           return <></>;
         }
