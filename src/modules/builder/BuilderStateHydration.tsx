@@ -26,7 +26,7 @@ import { ResumeLoading } from './ResumeLoading';
 import { applyImportedResumeJson } from './nav-bar/applyImportedResume';
 import { useCloudResumeStore } from '@/stores/useCloudResumeStore';
 
-export type SavedResume = { id: string; data?: unknown; error?: string };
+export type SavedResume = { id: string; data?: unknown; error?: string; code?: string | null };
 
 const ReadyContext = createContext(false);
 let hydration: Promise<void> | undefined;
@@ -85,7 +85,7 @@ export function BuilderStateHydration({
         if (savedResume?.error) throw new Error(savedResume.error);
         if (savedResume) {
           applyImportedResumeJson(savedResume.data);
-          useCloudResumeStore.getState().setId(savedResume.id);
+          useCloudResumeStore.getState().setId(savedResume.id, savedResume.code);
         }
         setLoaded({ source: savedResume });
       } catch (cause) {

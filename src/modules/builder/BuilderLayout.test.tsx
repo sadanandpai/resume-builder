@@ -2,7 +2,11 @@ import { act, fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import type { ReactNode } from 'react';
 import BuilderLayout from './BuilderLayout';
+import { useCloudResumeStore } from '@/stores/useCloudResumeStore';
 import { applyImportedResumeJson } from './nav-bar/applyImportedResume';
+
+// URL synchronization is covered separately; these tests bypass saved-resume hydration.
+vi.mock('./ActiveResumeUrl', () => ({ ActiveResumeUrl: () => null }));
 
 vi.mock('next/navigation', () => ({
   useSearchParams: () => new URLSearchParams(window.location.search),
@@ -30,6 +34,7 @@ vi.mock('./resume/ResumeLayout', () => ({
 vi.mock('./nav-bar/applyImportedResume', () => ({ applyImportedResumeJson: vi.fn() }));
 
 afterEach(() => {
+  useCloudResumeStore.getState().setId(null);
   window.history.replaceState(null, '', '/');
   vi.unstubAllGlobals();
   vi.clearAllMocks();
@@ -112,4 +117,29 @@ describe('URL imports across views', () => {
     expect(window.location.hash).toBe('#resume');
     expect(await screen.findByText('Resume data was successfully imported.')).toBeInTheDocument();
   });
+});
+
+it.each(['', '?mode=edit', '?mode=view', '?code=bad1'])(
+  'keeps a saved resume view-only without verified access: %s',
+  (query) => {
+    useCloudResumeStore.getState().setId('saved-id');
+    window.history.replaceState(null, '', `/builder/saved-id${query}`);
+    const { rerender } = render(<BuilderLayout />);
+    expect(screen.queryByRole('navigation')).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'Edit Resume' })).not.toBeInTheDocument();
+    fireEvent.keyDown(window, { key: 'Escape' });
+    expect(useCloudResumeStore.getState().id).toBe('saved-id');
+    fireEvent.click(screen.getByRole('button', { name: 'Create a copy' }));
+    rerender(<BuilderLayout />);
+    expect(useCloudResumeStore.getState().id).toBeNull();
+    expect(useCloudResumeStore.getState().code).toBeNull();
+    expect(screen.getByRole('navigation')).toBeInTheDocument();
+  }
+);
+
+it('allows editing a saved resume with server-verified access', () => {
+  useCloudResumeStore.getState().setId('saved-id', 'a7B2');
+  window.history.replaceState(null, '', '/builder/saved-id?code=a7B2');
+  render(<BuilderLayout />);
+  expect(screen.getByRole('navigation')).toBeInTheDocument();
 });

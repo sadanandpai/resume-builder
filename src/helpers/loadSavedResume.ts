@@ -1,3 +1,4 @@
+import { FieldValue } from '@google-cloud/firestore';
 import { getResumeFirestore } from '@/helpers/firestore';
 
 export async function loadSavedResume(id: string): Promise<Response> {
@@ -9,12 +10,16 @@ export async function loadSavedResume(id: string): Promise<Response> {
   }
   try {
     const firestore = await getResumeFirestore();
-    const document = await firestore
-      .collection('resume')
-      .doc(isLegacyId ? id.toLowerCase() : id)
-      .get();
+    const reference = firestore.collection('resume').doc(isLegacyId ? id.toLowerCase() : id);
+    const document = await reference.get();
     if (!document.exists) {
       return Response.json({ error: 'Resume not found.' }, { status: 404 });
+    }
+    // Analytics must not prevent an otherwise successful resume load.
+    try {
+      await reference.update({ viewCount: FieldValue.increment(1) });
+    } catch (error) {
+      console.error('Could not count resume view:', error);
     }
     return Response.json(document.data()?.json, { headers: { 'Cache-Control': 'no-store' } });
   } catch (error) {

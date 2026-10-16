@@ -59,10 +59,54 @@ const NavBarLayout = ({
   const [openToast, setOpenToast] = useState(false);
   const [isExporting, setIsExporting] = useState(false);
   const [savedId, setSavedId] = useState<string | null>(null);
+  const [showEditReminder, setShowEditReminder] = useState(false);
+  const [isCopying, setIsCopying] = useState(false);
   const [linkMode, setLinkMode] = useState<'view' | 'edit'>('view');
-  const savedUrl = savedId
-    ? new URL(`/builder/${savedId}?mode=${linkMode}`, window.location.origin).href
-    : '';
+  const cloudCode = useCloudResumeStore((state) => state.code);
+  let savedUrl = '';
+  if (savedId) {
+    const url = new URL(window.location.href);
+    url.pathname = `/builder/${savedId}`;
+    url.searchParams.delete('importUrl');
+    url.searchParams.set('mode', linkMode);
+    if (linkMode === 'edit' && cloudCode) url.searchParams.set('code', cloudCode);
+    else url.searchParams.delete('code');
+    savedUrl = url.href;
+  }
+  const closeSavedDialog = () => {
+    const copiedCode = savedId ? useCloudResumeStore.getState().copiedEditCodes[savedId] : null;
+    if (!showEditReminder && cloudCode && copiedCode !== cloudCode) {
+      setShowEditReminder(true);
+    } else {
+      setSavedId(null);
+    }
+  };
+  const copyResumeLink = async (edit: boolean, closeAfterCopy = false) => {
+    if (!savedId || isCopying) return;
+    const id = savedId;
+    const code = cloudCode;
+    const url = new URL(savedUrl);
+    if (edit && code) {
+      url.searchParams.set('mode', 'edit');
+      url.searchParams.set('code', code);
+    }
+    setIsCopying(true);
+    try {
+      await navigator.clipboard.writeText(url.href);
+      if (edit && code) useCloudResumeStore.getState().markEditLinkCopied(id, code);
+      setToastContent('Resume link copied.');
+      if (closeAfterCopy) setSavedId((current) => (current === id ? null : current));
+    } catch {
+      if (closeAfterCopy) {
+        setLinkMode('edit');
+        setShowEditReminder(false);
+      }
+      setToastContent('Could not copy the link. Please select and copy it manually.');
+    } finally {
+      setIsCopying(false);
+      setOpenToast(true);
+    }
+  };
   const exportInProgress = useRef(false);
   const [toastContent, setToastContent] = useState('');
   const [menuAnchor, setMenuAnchor] = useState<null | HTMLElement>(null);
@@ -111,19 +155,23 @@ const NavBarLayout = ({
         activities: useActivity.getState().activities,
       };
       if (destination === 'cloud') {
-        const activeId = useCloudResumeStore.getState().id;
+        const { id: activeId, code: activeCode } = useCloudResumeStore.getState();
         const response = await fetch(
           activeId ? `/api/resumes?id=${encodeURIComponent(activeId)}` : '/api/resumes',
           {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+              'Content-Type': 'application/json',
+              ...(activeCode ? { 'X-Resume-Code': activeCode } : {}),
+            },
             body: JSON.stringify(updatedResumeJson),
           }
         );
         const result = await response.json();
         if (useCloudResumeStore.getState().revision !== cloudRevision) return;
         if (!response.ok) throw new Error(result.error || 'Could not save resume.');
-        useCloudResumeStore.getState().setId(result.id);
+        useCloudResumeStore.getState().setId(result.id, activeId ? activeCode : result.code);
+        setShowEditReminder(false);
         setLinkMode('view');
         setSavedId(result.id);
       } else {
@@ -257,75 +305,93 @@ const NavBarLayout = ({
       </Menu>
       <Dialog
         open={Boolean(savedId)}
-        onClose={() => setSavedId(null)}
+        onClose={closeSavedDialog}
         fullWidth
         maxWidth="sm"
         aria-labelledby="resume-saved-title"
       >
-        <DialogTitle id="resume-saved-title">Resume saved successfully</DialogTitle>
+        <DialogTitle id="resume-saved-title">
+          {showEditReminder ? 'Keep your edit link' : 'Resume saved successfully'}
+        </DialogTitle>
         <DialogContent>
-          <FormControl sx={{ mt: 1 }}>
-            <FormLabel id="resume-link-mode-label">Choose a link to copy</FormLabel>
-            <RadioGroup
-              aria-labelledby="resume-link-mode-label"
-              value={linkMode}
-              onChange={(_, value) => setLinkMode(value as 'view' | 'edit')}
-            >
-              <FormControlLabel value="view" control={<Radio />} label="View only — for sharing" />
-              <FormControlLabel
-                value="edit"
-                control={<Radio />}
-                label="With edit option — for returning to edit"
+          {showEditReminder ? (
+            <p className="text-sm">Save this link so you can edit your resume later.</p>
+          ) : (
+            <>
+              <FormControl sx={{ mt: 1 }}>
+                <FormLabel id="resume-link-mode-label">Choose a link to copy</FormLabel>
+                <RadioGroup
+                  aria-labelledby="resume-link-mode-label"
+                  value={linkMode}
+                  onChange={(_, value) => setLinkMode(value as 'view' | 'edit')}
+                >
+                  <FormControlLabel
+                    value="view"
+                    control={<Radio />}
+                    label="View only — for sharing"
+                  />
+                  <FormControlLabel
+                    value="edit"
+                    control={<Radio />}
+                    label="With edit option — for returning to edit"
+                  />
+                </RadioGroup>
+              </FormControl>
+              <p className="mb-3 text-sm text-resume-600">
+                {linkMode === 'view'
+                  ? 'Allows viewing only. The edit code is excluded.'
+                  : 'Allows anyone with this link to edit and update this resume.'}
+              </p>
+              <TextField
+                label="Resume link"
+                sx={{ mt: 1 }}
+                value={savedUrl}
+                fullWidth
+                slotProps={{
+                  input: {
+                    readOnly: true,
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <Button
+                          aria-label="Copy resume link"
+                          disabled={isCopying}
+                          onClick={() => void copyResumeLink(linkMode === 'edit')}
+                        >
+                          Copy
+                        </Button>
+                      </InputAdornment>
+                    ),
+                  },
+                }}
               />
-            </RadioGroup>
-          </FormControl>
-          <p className="mb-3 text-sm text-resume-600">
-            {linkMode === 'view'
-              ? 'Shows only your resume, without an Edit Resume button.'
-              : 'Shows an Edit Resume button on hover on desktop and below the resume on mobile.'}
-          </p>
-          <TextField
-            label="Resume link"
-            sx={{ mt: 1 }}
-            value={savedUrl}
-            fullWidth
-            slotProps={{
-              input: {
-                readOnly: true,
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <Button
-                      aria-label="Copy resume link"
-                      onClick={async () => {
-                        try {
-                          await navigator.clipboard.writeText(savedUrl);
-                          setToastContent('Resume link copied.');
-                        } catch {
-                          setToastContent(
-                            'Could not copy the link. Please select and copy it manually.'
-                          );
-                        }
-                        setOpenToast(true);
-                      }}
-                    >
-                      Copy
-                    </Button>
-                  </InputAdornment>
-                ),
-              },
-            }}
-          />
-          <p className="mt-4 text-sm">
-            Keep the link with the edit option to return and edit your resume in the future.
-          </p>
-          <p className="mt-2 text-sm">
-            These modes control how the resume is displayed, not who can edit it.{' '}
-            <strong>Anyone with either link can change the URL to access editing.</strong> Share
-            only with people you trust.
-          </p>
+              <p className="mt-4 text-sm">
+                {linkMode === 'view' ? (
+                  'This link is for viewing your resume. You can share it with anybody.'
+                ) : (
+                  <>
+                    Keep this link only for editing your resume in the future.{' '}
+                    <strong>Do not share it with anybody else.</strong>
+                  </>
+                )}
+              </p>
+            </>
+          )}
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => setSavedId(null)}>Close</Button>
+          {showEditReminder ? (
+            <>
+              <Button onClick={() => setSavedId(null)}>Close anyway</Button>
+              <Button
+                variant="contained"
+                disabled={isCopying}
+                onClick={() => void copyResumeLink(true, true)}
+              >
+                Copy edit link &amp; close
+              </Button>
+            </>
+          ) : (
+            <Button onClick={closeSavedDialog}>Close</Button>
+          )}
         </DialogActions>
       </Dialog>
       <Toast

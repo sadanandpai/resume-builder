@@ -15,13 +15,17 @@ const mocks = vi.hoisted(() => ({
   update: vi.fn(),
   doc: vi.fn(),
   collection: vi.fn(),
+  runTransaction: vi.fn(),
 }));
 vi.mock('@google-cloud/firestore', () => ({
+  FieldValue: { increment: (value: number) => ({ increment: value }) },
   Firestore: class {
     collection = mocks.collection;
+    runTransaction = mocks.runTransaction;
   },
 }));
 import { POST } from './route';
+import { hashResumeCode } from '@/helpers/resumeEditAccess';
 
 const request = (body: string) =>
   new Request('http://localhost/api/resumes', { method: 'POST', body });
@@ -47,11 +51,18 @@ describe('resume export storage', () => {
       const resume = { basics: { name: 'Sadanand' }, work: [], __metadata: { template: 'modern' } };
       const response = await POST(request(JSON.stringify(resume)));
       expect(response.status).toBe(201);
-      const { id } = await response.json();
+      const { id, code } = await response.json();
+      expect(code).toMatch(/^[A-Za-z0-9]{4}$/);
+      expect(response.headers.get('Cache-Control')).toBe('no-store');
       expect(id).toMatch(/^[A-Za-z0-9_-]{21}$/);
       expect(mocks.collection).toHaveBeenCalledWith('resume');
       expect(mocks.doc).toHaveBeenCalledWith(id);
-      expect(mocks.create).toHaveBeenCalledWith({ json: resume });
+      expect(mocks.create).toHaveBeenCalledWith({
+        json: resume,
+        viewCount: 0,
+        editCount: 0,
+        codeHash: hashResumeCode(id, code),
+      });
     }
   );
 
@@ -95,19 +106,31 @@ it.each(['development', 'production'])(
     vi.stubEnv('GOOGLE_APPLICATION_CREDENTIALS', '/test/credentials.json');
     mocks.collection.mockReturnValue({ doc: mocks.doc });
     mocks.doc.mockReturnValue({ update: mocks.update });
-    mocks.update.mockResolvedValue(undefined);
+    mocks.runTransaction.mockImplementation(async (callback) =>
+      callback({
+        get: vi
+          .fn()
+          .mockResolvedValueOnce({
+            exists: true,
+            data: () => ({ codeHash: hashResumeCode('abcdefghijklmnopqrstu', 'a7B2') }),
+          })
+          .mockResolvedValueOnce({ data: () => undefined }),
+        update: (_document: unknown, data: unknown) => mocks.update(data),
+      })
+    );
     const id = 'abcdefghijklmnopqrstu';
     const resume = { basics: { name: 'Updated' } };
     const response = await POST(
       new Request(`http://localhost/api/resumes?id=${id}`, {
         method: 'POST',
+        headers: { 'X-Resume-Code': 'a7B2' },
         body: JSON.stringify(resume),
       })
     );
     expect(response.status).toBe(200);
     expect(await response.json()).toEqual({ id });
     expect(mocks.doc).toHaveBeenCalledWith(id);
-    expect(mocks.update).toHaveBeenCalledWith({ json: resume });
+    expect(mocks.update).toHaveBeenCalledWith({ json: resume, editCount: { increment: 1 } });
     vi.unstubAllEnvs();
   }
 );

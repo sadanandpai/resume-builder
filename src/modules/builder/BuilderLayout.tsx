@@ -15,6 +15,8 @@ import { ResumeLayout } from './resume/ResumeLayout';
 import Tooltip from '@mui/material/Tooltip';
 import { ImportResumeFromQuery } from './nav-bar/ImportResumeFromQuery';
 import { Toast } from '@/helpers/common/atoms/Toast';
+import { ActiveResumeUrl } from './ActiveResumeUrl';
+import { useCloudResumeStore } from '@/stores/useCloudResumeStore';
 
 type MobileTab = 'preview' | 'edit';
 
@@ -24,8 +26,11 @@ const segmentBtn =
 const BuilderContent = ({ savedResume }: { savedResume?: SavedResume }) => {
   const searchParams = useSearchParams();
   const mode = searchParams.get('mode');
-  const view = mode === 'view' || mode === 'edit';
-  const canEdit = mode === 'edit';
+  const cloudId = useCloudResumeStore((state) => state.id);
+  const cloudCode = useCloudResumeStore((state) => state.code);
+  const readOnly = !!cloudId && !cloudCode;
+  const view = readOnly || mode === 'view' || mode === 'edit';
+  const canEdit = !readOnly && mode === 'edit';
   const [mobileTab, setMobileTab] = useState<MobileTab>('preview');
   const editResume = useCallback(() => {
     setMobileTab('edit');
@@ -61,6 +66,7 @@ const BuilderContent = ({ savedResume }: { savedResume?: SavedResume }) => {
 
   return (
     <BuilderStateHydration savedResume={savedResume}>
+      <ActiveResumeUrl />
       <ImportResumeFromQuery controllerRef={importControllerRef} onResult={onImportResult} />
       <Toast
         open={showImportToast}
@@ -69,15 +75,27 @@ const BuilderContent = ({ savedResume }: { savedResume?: SavedResume }) => {
       />
       {view ? (
         <main className="resume-only-view min-h-screen bg-custom-grey100 py-4 print:bg-white print:py-0">
-          <div className="group relative mx-auto max-w-[834px]">
+          <div className="mx-auto max-w-[834px]">
             <ResumeReadOnlyContext.Provider value={true}>
               <ResumeLayout readOnly />
             </ResumeReadOnlyContext.Provider>
+            {readOnly && (
+              <button
+                type="button"
+                onClick={() => {
+                  useCloudResumeStore.getState().setId(null);
+                  editResume();
+                }}
+                className="mx-auto mt-4 block rounded border border-resume-200 px-4 py-2 text-sm text-resume-800 print:hidden"
+              >
+                Create a copy
+              </button>
+            )}
             {canEdit && (
               <button
                 type="button"
                 onClick={editResume}
-                className="resume-edit-button mx-auto mt-4 block cursor-pointer rounded border border-resume-200 bg-transparent px-4 py-2 text-sm font-medium text-resume-500 opacity-100 transition-opacity hover:text-resume-800 focus-visible:outline-2 focus-visible:outline-resume-500 lg:absolute lg:right-6 lg:top-3 lg:z-10 lg:m-0 lg:border-resume-300 lg:bg-resume-50 lg:text-resume-800 lg:shadow-sm lg:opacity-0 lg:group-hover:opacity-100 lg:group-focus-within:opacity-100 print:hidden"
+                className="resume-edit-button mx-auto mt-4 block cursor-pointer rounded border border-resume-200 bg-transparent px-4 py-2 text-sm font-medium text-resume-500 hover:text-resume-800 focus-visible:outline-2 focus-visible:outline-resume-500 print:hidden"
               >
                 Edit Resume
               </button>

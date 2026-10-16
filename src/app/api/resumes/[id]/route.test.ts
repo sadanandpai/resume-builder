@@ -1,6 +1,6 @@
 // @vitest-environment node
 import { afterEach, beforeEach, expect, it, vi } from 'vitest';
-const mocks = vi.hoisted(() => ({ get: vi.fn(), doc: vi.fn() }));
+const mocks = vi.hoisted(() => ({ get: vi.fn(), update: vi.fn(), doc: vi.fn() }));
 vi.mock('@/helpers/firestore', () => ({
   getResumeFirestore: async () => ({ collection: () => ({ doc: mocks.doc }) }),
 }));
@@ -11,7 +11,8 @@ const load = (key = id) =>
 beforeEach(() => {
   vi.stubEnv('NODE_ENV', 'development');
   mocks.get.mockReset();
-  mocks.doc.mockReset().mockReturnValue({ get: mocks.get });
+  mocks.update.mockReset().mockResolvedValue(undefined);
+  mocks.doc.mockReset().mockReturnValue({ get: mocks.get, update: mocks.update });
 });
 afterEach(() => vi.unstubAllEnvs());
 it.each(['development', 'production'])(
@@ -19,9 +20,19 @@ it.each(['development', 'production'])(
   async (environment) => {
     vi.stubEnv('NODE_ENV', environment);
     const json = { basics: { name: 'Sadanand' }, __metadata: { template: 'modern' } };
-    mocks.get.mockResolvedValue({ exists: true, data: () => ({ json }) });
+    mocks.get.mockResolvedValue({
+      exists: true,
+      data: () => ({
+        json,
+        codeHash: 'private-hash',
+        code: 'private-code',
+        viewCount: 42,
+        editCount: 5,
+      }),
+    });
     const response = await load();
     expect(await response.json()).toEqual(json);
+    expect(mocks.update).toHaveBeenCalledTimes(1);
     expect(response.headers.get('Cache-Control')).toBe('no-store');
   }
 );
@@ -32,6 +43,7 @@ it('rejects invalid IDs before querying', async () => {
 it('returns 404 for missing resumes', async () => {
   mocks.get.mockResolvedValue({ exists: false });
   expect((await load()).status).toBe(404);
+  expect(mocks.update).not.toHaveBeenCalled();
 });
 it('handles database failure', async () => {
   mocks.get.mockRejectedValue(new Error('database unavailable'));
@@ -45,7 +57,16 @@ it('handles database failure', async () => {
 it('preserves case when loading a Nano ID', async () => {
   const nanoId = 'V1StGXR8_Z5jdHi6B-myT';
   const json = { basics: { name: 'Sadanand' } };
-  mocks.get.mockResolvedValue({ exists: true, data: () => ({ json }) });
+  mocks.get.mockResolvedValue({
+    exists: true,
+    data: () => ({
+      json,
+      codeHash: 'private-hash',
+      code: 'private-code',
+      viewCount: 42,
+      editCount: 5,
+    }),
+  });
   const response = await load(nanoId);
   expect(response.status).toBe(200);
   expect(await response.json()).toEqual(json);
@@ -65,3 +86,12 @@ it.each(['a'.repeat(20), 'a'.repeat(22), 'a'.repeat(20) + '!'])(
     expect(mocks.doc).not.toHaveBeenCalled();
   }
 );
+
+it('serves resume JSON even when the view counter write fails', async () => {
+  const json = { basics: {} };
+  mocks.get.mockResolvedValue({ exists: true, data: () => ({ json }) });
+  mocks.update.mockRejectedValue(new Error('counter unavailable'));
+  const response = await load();
+  expect(response.status).toBe(200);
+  expect(await response.json()).toEqual(json);
+});

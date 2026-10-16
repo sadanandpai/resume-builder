@@ -2,10 +2,18 @@ import { create } from 'zustand';
 
 export const useCloudResumeStore = create<{
   id: string | null;
+  code: string | null;
   revision: number;
-  setId: (id: string | null) => void;
+  copiedEditCodes: Record<string, string>;
+  markEditLinkCopied: (id: string, code: string) => void;
+  setId: (id: string | null, code?: string | null) => void;
 }>((set) => ({
   id: null,
+  code: null,
   revision: 0,
-  setId: (id) => set((state) => ({ id, revision: state.revision + 1 })),
+  copiedEditCodes: {},
+  markEditLinkCopied: (id, code) =>
+    set((state) => ({ copiedEditCodes: { ...state.copiedEditCodes, [id]: code } })),
+  setId: (id, code = null) =>
+    set((state) => ({ id, code: id ? code : null, revision: state.revision + 1 })),
 }));
