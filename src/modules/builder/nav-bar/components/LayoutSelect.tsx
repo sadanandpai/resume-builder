@@ -206,10 +206,10 @@ export function LayoutSelect() {
         </MenuItem>
       </TextField>
       <p className="text-xs text-gray-600 mt-3">
-        Page margins leave blank paper outside the template background. Internal padding adds space
-        inside the template around its content. Unchanged controls use template defaults. Where
-        defaults vary by content area, displayed values represent the primary content. Entry spacing
-        scales proportionally across areas; other edits apply globally.
+        Page margins inset the template while preserving the page background. Internal padding adds
+        space inside the template around its content. Unchanged controls use template defaults.
+        Where defaults vary by content area, displayed values represent the primary content. Entry
+        spacing scales proportionally across areas; other edits apply globally.
       </p>
       {group('Page margins', 'pageMargins', sides('pageMargins'))}
       {group('Internal padding', 'contentPadding', sides('contentPadding'))}

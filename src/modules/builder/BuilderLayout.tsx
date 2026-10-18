@@ -86,7 +86,7 @@ const BuilderContent = ({ savedResume }: { savedResume?: SavedResume }) => {
                   useCloudResumeStore.getState().setId(null);
                   editResume();
                 }}
-                className="mx-auto mt-4 block rounded border border-resume-200 px-4 py-2 text-sm text-resume-800 print:hidden"
+                className="mx-auto mt-4 block cursor-pointer rounded border border-resume-200 px-4 py-2 text-sm text-resume-800 print:hidden"
               >
                 Create a copy
               </button>

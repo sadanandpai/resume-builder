@@ -5,8 +5,40 @@ import { useTemplates } from '@/stores/useTemplate';
 import { useResumeStyleStore } from '@/stores/useResumeStyleStore';
 import { TEMPLATE_REGISTRY } from '@/templates/designs/registry/templates';
 import { spacing } from '@/helpers/resume-style/styles';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 afterEach(cleanup);
+
+describe('page margin backgrounds', () => {
+  for (const templateId of Object.keys(TEMPLATE_REGISTRY)) {
+    it(`preserves the selected background around ${templateId} and follows theme changes`, () => {
+      useTemplates.setState({
+        activeTemplate: { ...useTemplates.getState().activeTemplate, id: templateId },
+      });
+      useResumeStyleStore.setState({
+        settings: { pageMargins: { top: 5, right: 10, bottom: 15, left: 20 } },
+      });
+      const pageWithBackground = (backgroundColor: string) => (
+        <ThemeProvider theme={{ ...createTheme(), backgroundColor }}>
+          <PagedResume>
+            <div>Resume content</div>
+          </PagedResume>
+        </ThemeProvider>
+      );
+      const { getByRole, rerender } = render(pageWithBackground('#e8f0fe'));
+      const page = getByRole('region', { name: 'Resume page 1' });
+      expect(page).toHaveStyle({
+        background: '#e8f0fe',
+        padding: '5mm 10mm 15mm 20mm',
+      });
+      rerender(pageWithBackground('#263238'));
+      expect(page).toHaveStyle({
+        background: '#263238',
+        padding: '5mm 10mm 15mm 20mm',
+      });
+    });
+  }
+});
 
 describe('entry spacing round trips', () => {
   for (const templateId of Object.keys(TEMPLATE_REGISTRY)) {

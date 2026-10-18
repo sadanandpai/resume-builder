@@ -3,9 +3,11 @@ import { columns, sideString, styleVariables } from '@/helpers/resume-style/styl
 import { useTemplates } from '@/stores/useTemplate';
 import { TEMPLATE_REGISTRY } from '@/templates/designs/registry/templates';
 import { useResumeStyleStore } from '@/stores/useResumeStyleStore';
+import { useResumePalette } from '@/templates/components/theme';
 
 /** One fixed A4 page. Insets reduce its usable border-box, identically in print. */
 export function PagedResume({ children }: { children: ReactNode }) {
+  const palette = useResumePalette();
   const settings = useResumeStyleStore((state) => state.settings);
   const templateId = useTemplates((state) => state.activeTemplate.id);
   const secondaryDefault = TEMPLATE_REGISTRY[templateId]?.style.secondaryColumnPercent;
@@ -43,6 +45,7 @@ export function PagedResume({ children }: { children: ReactNode }) {
         aria-label="Resume page 1"
         style={{
           boxSizing: 'border-box',
+          background: palette.bg,
           padding: settings.pageMargins ? sideString(settings.pageMargins, 'mm') : undefined,
         }}
       >

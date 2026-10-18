@@ -129,15 +129,15 @@ export const ResumeLayout = ({
         }
         className={`resume-print-scale-wrap ${readOnly ? 'resume-view-scale-wrap' : 'resume-editor-scale-wrap origin-top transition-all duration-300 ease-linear'}`}
       >
-        <PagedResume>
-          <StateContext.Provider value={resumeData}>
-            <ThemeProvider theme={selectedTheme}>
+        <ThemeProvider theme={selectedTheme}>
+          <PagedResume>
+            <StateContext.Provider value={resumeData}>
               <ResumeSectionLayoutShell templateId={templateId} resumeData={resumeData}>
                 {Template && <Template />}
               </ResumeSectionLayoutShell>
-            </ThemeProvider>
-          </StateContext.Provider>
-        </PagedResume>
+            </StateContext.Provider>
+          </PagedResume>
+        </ThemeProvider>
       </div>
     </div>
   );

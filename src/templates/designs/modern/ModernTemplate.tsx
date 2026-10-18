@@ -99,6 +99,7 @@ export default function ModernTemplate() {
           ...pageStyle(resumePalette),
           padding: padding('40px 25px'),
           display: 'grid',
+          alignContent: 'start',
           gridTemplateColumns: columns('minmax(0, 2fr) minmax(0, 1fr)', false, secondaryPercent),
           columnGap: spacing('column', 22),
         }}
