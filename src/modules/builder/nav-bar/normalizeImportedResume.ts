@@ -6,9 +6,9 @@ import type { IVolunteeringItem } from '@/stores/volunteering.interface';
 import type { IActivity } from '@/stores/activity.interface';
 import type { ISkillItem } from '@/stores/skill.interface';
 
-type Schema = string | number | boolean | null | Schema[] | { [key: string]: Schema };
+export type Schema = string | number | boolean | null | Schema[] | { [key: string]: Schema };
 const skill = { name: '', level: 0 };
-const schema = {
+export const RESUME_SHAPE = {
   basics: {
     name: '',
     label: '',
@@ -77,9 +77,9 @@ const schema = {
   activities: { involvements: '', achievements: '' },
 } satisfies Schema;
 
-interface ImportedResume {
+export interface Resume {
   basics: IBasicDetailsItem;
-  skills: Record<keyof typeof schema.skills, ISkillItem[]>;
+  skills: Record<keyof typeof RESUME_SHAPE.skills, ISkillItem[]>;
   work: IExperienceItem[];
   education: IEducationItem[];
   volunteer: IVolunteeringItem[];
@@ -122,17 +122,17 @@ function normalize(value: unknown, shape: Schema, path: string): unknown {
   return value;
 }
 
-export function normalizeImportedResume(value: unknown): ImportedResume {
+export function normalizeImportedResume(value: unknown): Resume {
   if (
     value === null ||
     typeof value !== 'object' ||
     Array.isArray(value) ||
-    !Object.keys(schema).some((key) => Object.hasOwn(value, key))
+    !Object.keys(RESUME_SHAPE).some((key) => Object.hasOwn(value, key))
   ) {
     throw new Error('Resume JSON must be an object containing resume sections.');
   }
   // Missing fields get empty defaults; unknown fields cannot enter persisted state.
-  const resume = normalize(value, schema, 'resume') as ImportedResume;
+  const resume = normalize(value, RESUME_SHAPE, 'resume') as Resume;
   for (const section of ['work', 'education', 'volunteer', 'awards'] as const) {
     const ids = new Set<string>();
     for (const item of resume[section]) {

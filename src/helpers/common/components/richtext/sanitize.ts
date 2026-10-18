@@ -1,18 +1,11 @@
+import { ALLOWED_TAGS, DISCARD_TAGS, ALLOWED_LINK_SCHEMES } from './sanitizeConfig';
+
 // Keep the same formatting vocabulary as the editor toolbar. Run only in the browser.
 export function sanitizeRichText(html: string | null | undefined): string {
   const root = document.createElement('template');
   root.innerHTML = html ?? '';
-  const allowed = new Set(['P', 'DIV', 'BR', 'B', 'STRONG', 'I', 'EM', 'UL', 'OL', 'LI', 'A']);
-  const discard = new Set([
-    'SCRIPT',
-    'STYLE',
-    'IFRAME',
-    'OBJECT',
-    'EMBED',
-    'SVG',
-    'MATH',
-    'TEMPLATE',
-  ]);
+  const allowed = new Set(ALLOWED_TAGS);
+  const discard = new Set(DISCARD_TAGS);
 
   const clean = (parent: Node) => {
     for (const child of Array.from(parent.childNodes)) {
@@ -43,11 +36,7 @@ export function sanitizeRichText(html: string | null | undefined): string {
           const href = child.getAttribute('href');
           if (href) {
             try {
-              if (
-                !['http:', 'https:', 'mailto:', 'tel:'].includes(
-                  new URL(href, location.href).protocol
-                )
-              ) {
+              if (!ALLOWED_LINK_SCHEMES.includes(new URL(href, location.href).protocol)) {
                 child.removeAttribute('href');
               }
             } catch {

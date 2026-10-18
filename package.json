@@ -33,11 +33,14 @@
     "html-react-parser": "^6.1.8",
     "immer": "^11.1.21",
     "jodit": "^4.17.3",
+    "marked": "^18.1.1",
     "nanoid": "^6.0.2",
     "next": "^16.4.0",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
     "react-icons": "^5.7.0",
+    "turndown": "^7.2.4",
+    "zod": "^4.6.7",
     "zustand": "^5.0.15"
   },
   "devDependencies": {
@@ -48,6 +51,7 @@
     "@types/node": "^25.9.5",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
+    "@types/turndown": "^5.0.6",
     "husky": "^9.1.7",
     "jsdom": "^29.1.1",
     "oxlint": "^1.86.0",
