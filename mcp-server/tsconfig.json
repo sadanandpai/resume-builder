@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    // "dom" is needed only so transitively-reached (never-called) browser
+    // helpers in the main app's Zustand stores type-check; this package
+    // never runs in a browser.
+    "lib": ["ES2022", "dom"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "paths": {
+      "@/*": ["../src/*"]
+    },
+    "types": ["node"]
+  },
+  "include": ["api/**/*.ts", "lib/**/*.ts"],
+  "exclude": ["node_modules"]
+  // Known gap: `tsc --noEmit` still errors on the main app's real .tsx
+  // template files (TS6142, "--jsx is not set"), reached transitively via
+  // resumeSchema -> resumeMetadata.ts -> TEMPLATE_REGISTRY. That registry's
+  // loadComponent() dynamic imports are never called anywhere in this
+  // package (only .id/.name are read), so this is a type-check-only gap,
+  // not a runtime risk -- confirmed by the passing resumeSchema.test.ts
+  // __metadata tests. Fixing it fully would mean installing next/@types/react
+  // as devDependencies and duplicating the main app's ambient declaration
+  // files here, which isn't worth it for a path this package never executes.
+}

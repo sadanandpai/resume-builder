@@ -1,4 +1,4 @@
-import { AVAILABLE_TEMPLATES } from '@/helpers/constants';
+import { TEMPLATE_REGISTRY } from '@/templates/designs/registry';
 import type { IThemeColor } from '@/helpers/constants/index.interface';
 import { validateStyles, type StyleSettings } from '@/helpers/resume-style/styles';
 import { TEMPLATE_SECTION_TITLES } from '@/helpers/section-layout/sectionTitles';
@@ -64,7 +64,7 @@ export function normalizeResumeMetadata(input: unknown): ResumeMetadata | undefi
   if (
     source.version !== 1 ||
     typeof template.id !== 'string' ||
-    !Object.hasOwn(AVAILABLE_TEMPLATES, template.id)
+    !Object.hasOwn(TEMPLATE_REGISTRY, template.id)
   ) {
     throw new Error('Unsupported resume metadata or template');
   }
@@ -90,23 +90,10 @@ export function normalizeResumeMetadata(input: unknown): ResumeMetadata | undefi
   const colors = record(source.colors);
   return {
     version: 1,
-    template: { id: template.id, name: AVAILABLE_TEMPLATES[template.id].name },
+    template: { id: template.id, name: TEMPLATE_REGISTRY[template.id].name },
     titles,
     layout,
     colors: { selectedTheme: theme(colors.selectedTheme), customTheme: theme(colors.customTheme) },
     styles: validateStyles(record(source.styles)),
   };
-}
-
-export function applyResumeMetadata(metadata: ResumeMetadata): void {
-  const id = metadata.template.id;
-  const titles = useSectionTitleStore.getState();
-  titles.resetTemplate(id);
-  for (const [section, title] of Object.entries(metadata.titles))
-    titles.setTitle(id, section, title);
-  useSectionLayoutStore.getState().setLayout(id, metadata.layout);
-  useThemes.setState(metadata.colors);
-  useResumeStyleStore.getState().hydrate();
-  useResumeStyleStore.getState().commit(metadata.styles);
-  useTemplates.getState().setTemplate(AVAILABLE_TEMPLATES[id]);
 }

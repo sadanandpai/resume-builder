@@ -73,7 +73,7 @@ const awardItemSchema = z.object({
   summary: z.string().default('').describe('Markdown. Rendered as rich text.'),
 });
 
-const basicsSchema = z.object({
+export const basicsSchema = z.object({
   name: z.string().min(1, 'basics.name is required.'),
   label: z.string().default(''),
   image: z.string().default(''),
@@ -96,42 +96,54 @@ const basicsSchema = z.object({
   profiles: z.array(profileSchema).default([]),
 });
 
-const skillsSchema = z
-  .object({
-    languages: z.array(skillItemSchema).default([]),
-    frameworks: z.array(skillItemSchema).default([]),
-    libraries: z.array(skillItemSchema).default([]),
-    databases: z.array(skillItemSchema).default([]),
-    technologies: z.array(skillItemSchema).default([]),
-    practices: z.array(skillItemSchema).default([]),
-    tools: z.array(skillItemSchema).default([]),
-  })
-  .default({
-    languages: [],
-    frameworks: [],
-    libraries: [],
-    databases: [],
-    technologies: [],
-    practices: [],
-    tools: [],
-  });
+// Bare (default-less) building blocks, exported so a "patch" schema (partial
+// update -- see mcp-server/lib/tools/updateResume.ts) can wrap them in plain
+// `.optional()` instead of `.partial()`. In zod v4, `.partial()`/`.optional()`
+// do NOT stop a field's own `.default(...)` from firing when the field is
+// omitted -- the default still applies -- so a schema built from
+// already-defaulted fields can't distinguish "omitted" from "explicitly
+// empty" after parsing. These bare versions have no such default to misfire.
+export const skillsObjectSchema = z.object({
+  languages: z.array(skillItemSchema).default([]),
+  frameworks: z.array(skillItemSchema).default([]),
+  libraries: z.array(skillItemSchema).default([]),
+  databases: z.array(skillItemSchema).default([]),
+  technologies: z.array(skillItemSchema).default([]),
+  practices: z.array(skillItemSchema).default([]),
+  tools: z.array(skillItemSchema).default([]),
+});
 
-const activitiesSchema = z
-  .object({
-    involvements: z.string().default('').describe('Markdown. Rendered as rich text.'),
-    achievements: z.string().default('').describe('Markdown. Rendered as rich text.'),
-  })
-  .default({ involvements: '', achievements: '' });
+export const activitiesObjectSchema = z.object({
+  involvements: z.string().default('').describe('Markdown. Rendered as rich text.'),
+  achievements: z.string().default('').describe('Markdown. Rendered as rich text.'),
+});
+
+export const workArraySchema = z.array(workItemSchema);
+export const educationArraySchema = z.array(educationItemSchema);
+export const volunteerArraySchema = z.array(volunteerItemSchema);
+export const awardsArraySchema = z.array(awardItemSchema);
+
+const skillsSchema = skillsObjectSchema.default({
+  languages: [],
+  frameworks: [],
+  libraries: [],
+  databases: [],
+  technologies: [],
+  practices: [],
+  tools: [],
+});
+
+const activitiesSchema = activitiesObjectSchema.default({ involvements: '', achievements: '' });
 
 // The AI-facing, defaulted/loose schema. Mirrors RESUME_SHAPE field-by-field.
 // Only basics.name has no sensible default; everything else fills in empty.
 export const ResumeInputSchema = z.object({
   basics: basicsSchema,
   skills: skillsSchema,
-  work: z.array(workItemSchema).default([]),
-  education: z.array(educationItemSchema).default([]),
-  volunteer: z.array(volunteerItemSchema).default([]),
-  awards: z.array(awardItemSchema).default([]),
+  work: workArraySchema.default([]),
+  education: educationArraySchema.default([]),
+  volunteer: volunteerArraySchema.default([]),
+  awards: awardsArraySchema.default([]),
   activities: activitiesSchema,
   // Template/colours/layout/titles. Validated separately by normalizeResumeMetadata
   // (see resumeMetadata.ts) -- left untyped here since its shape depends on the
@@ -163,5 +175,15 @@ export function parseResumeInput(data: unknown): ParsedResumeInput {
   const input = ResumeInputSchema.parse(data);
   const resume = normalizeImportedResume(input);
   const metadata = normalizeResumeMetadata(input.__metadata);
+  return metadata ? { ...resume, __metadata: metadata } : resume;
+}
+
+// For reading an already-saved resume (e.g. an MCP get_resume call), not for
+// validating AI-supplied input. Skips ResumeInputSchema's basics.name
+// requirement -- that's a write-time constraint, not something a read of an
+// existing, already-saved document should enforce.
+export function normalizeStoredResume(data: unknown): ParsedResumeInput {
+  const resume = normalizeImportedResume(data);
+  const metadata = normalizeResumeMetadata((data as Record<string, unknown> | null)?.__metadata);
   return metadata ? { ...resume, __metadata: metadata } : resume;
 }

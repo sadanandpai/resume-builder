@@ -1,6 +1,11 @@
 import { describe, expect, it } from 'vitest';
 import { RESUME_SHAPE } from '@/modules/builder/nav-bar/normalizeImportedResume';
-import { assertResumeShapeParity, parseResumeInput, ResumeInputSchema } from './resumeSchema';
+import {
+  assertResumeShapeParity,
+  normalizeStoredResume,
+  parseResumeInput,
+  ResumeInputSchema,
+} from './resumeSchema';
 
 describe('parseResumeInput', () => {
   it('fills in defaults for a minimal resume', () => {
@@ -60,6 +65,11 @@ describe('parseResumeInput', () => {
         ],
       })
     ).toThrow(/duplicate/i);
+  });
+
+  it('allows missing basics.name on read, unlike the stricter write-time schema', () => {
+    expect(() => parseResumeInput({ basics: { name: '' } })).toThrow();
+    expect(normalizeStoredResume({ basics: { name: '' } }).basics.name).toBe('');
   });
 
   it('keeps ResumeInputSchema in sync with RESUME_SHAPE', () => {
