@@ -123,9 +123,9 @@ try {
       assert.equal(await page.evaluate(() => window.browserNavigationMarker), 'same-document');
       // If hydration reruns on re-entry, this unrelated storage change would replace live data.
       await page.evaluate(() => {
-        const basic = JSON.parse(localStorage.getItem('basic'));
-        basic.state.values.name = 'Stored change';
-        localStorage.setItem('basic', JSON.stringify(basic));
+        const draft = JSON.parse(localStorage.getItem('resume-draft'));
+        draft.data.basic.state.values.name = 'Stored change';
+        localStorage.setItem('resume-draft', JSON.stringify(draft));
       });
       await page.locator('nav a[href="/"]').click();
       await page.waitForURL(base + '/');
@@ -235,7 +235,12 @@ try {
       const { page, context } = await pageWithSeed(1440, { selectedTemplateId: id });
       await page.goto(base + '/builder');
       await settled(page);
-      assert.equal(await page.evaluate(() => localStorage.getItem('selectedTemplateId')), id);
+      assert.equal(
+        await page.evaluate(
+          () => JSON.parse(localStorage.getItem('resume-draft')).data.selectedTemplateId
+        ),
+        id
+      );
       await page.screenshot({
         path: `${artifacts}/template-${id}.png`,
         fullPage: true,
@@ -280,12 +285,14 @@ try {
       await page.keyboard.press('ControlOrMeta+A');
       await page.keyboard.type('Edited rich text', { delay: 20 });
       await page.waitForFunction(() =>
-        JSON.parse(localStorage.getItem('basic')).state.values.summary.includes('Edited rich text')
+        JSON.parse(localStorage.getItem('resume-draft')).data.basic.state.values.summary.includes(
+          'Edited rich text'
+        )
       );
       await page.getByRole('tab', { name: 'Contacts', exact: true }).click();
       assert.ok(
         await page.evaluate(() =>
-          JSON.parse(localStorage.getItem('basic')).state.values.summary.includes(
+          JSON.parse(localStorage.getItem('resume-draft')).data.basic.state.values.summary.includes(
             'Edited rich text'
           )
         )
@@ -303,7 +310,9 @@ try {
       await page.keyboard.press('Escape');
       assert.equal(
         await page.evaluate(
-          () => JSON.parse(localStorage.getItem('themes')).state.selectedTheme.titleColor
+          () =>
+            JSON.parse(localStorage.getItem('resume-draft')).data.themes.state.selectedTheme
+              .titleColor
         ),
         '#123456'
       );
@@ -312,7 +321,9 @@ try {
       await page.getByLabel('Body size value', { exact: true }).press('Tab');
       assert.equal(
         await page.evaluate(
-          () => JSON.parse(localStorage.getItem('resumeStyles')).settings.typography.body
+          () =>
+            JSON.parse(localStorage.getItem('resume-draft')).data.resumeStyles.settings.typography
+              .body
         ),
         12
       );
@@ -320,7 +331,9 @@ try {
       await page.getByRole('button', { name: 'Redo', exact: true }).click();
       await page.getByRole('button', { name: 'Reset styling', exact: true }).click();
       assert.deepEqual(
-        await page.evaluate(() => JSON.parse(localStorage.getItem('resumeStyles')).settings),
+        await page.evaluate(
+          () => JSON.parse(localStorage.getItem('resume-draft')).data.resumeStyles.settings
+        ),
         {}
       );
       await page.keyboard.press('Escape');
@@ -329,7 +342,9 @@ try {
       await page.locator('.splide').getByAltText('Classic', { exact: true }).click();
       await page.keyboard.press('Escape');
       assert.equal(
-        await page.evaluate(() => localStorage.getItem('selectedTemplateId')),
+        await page.evaluate(
+          () => JSON.parse(localStorage.getItem('resume-draft')).data.selectedTemplateId
+        ),
         'classic'
       );
       await page.getByRole('button', { name: 'Enable section reorder', exact: true }).click();
@@ -346,7 +361,9 @@ try {
       await page.waitForURL(base + '/builder');
       await page.locator('.resume-page-content').getByText('Edited Example').waitFor();
       assert.equal(
-        await page.evaluate(() => localStorage.getItem('selectedTemplateId')),
+        await page.evaluate(
+          () => JSON.parse(localStorage.getItem('resume-draft')).data.selectedTemplateId
+        ),
         'classic'
       );
       await context.close();

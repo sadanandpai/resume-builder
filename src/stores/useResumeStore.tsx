@@ -1,3 +1,11 @@
+import { detachDraft, restoreDraftBaseline } from './resumeDraftStorage';
+import { hydrateBuilderState } from '@/modules/builder/BuilderStateHydration';
+import { useResumeStyleStore } from './useResumeStyleStore';
+import { useSectionTitleStore } from './useSectionTitleStore';
+import { useTemplates } from './useTemplate';
+import { useThemes } from './themes';
+import { AVAILABLE_TEMPLATES, SYSTEM_COLORS, CUSTOM_THEME_COLOR } from '@/helpers/constants';
+
 import { useCloudResumeStore } from './useCloudResumeStore';
 import {
   useDatabases,
@@ -18,6 +26,13 @@ import { useEducations } from './education';
 import { useExperiences } from './experience';
 import { useVoluteeringStore } from './volunteering';
 import { useMemo } from 'react';
+
+export async function resetDraftChanges() {
+  const id = useCloudResumeStore.getState().id;
+  if (id && restoreDraftBaseline(id)) {
+    await hydrateBuilderState(true);
+  }
+}
 
 export const useResumeStore = () => {
   const basics = useBasicDetails((state) => state.values);
@@ -69,6 +84,12 @@ export const useResumeStore = () => {
  * @description Reset all the stores
  */
 export const resetResumeStore = () => {
+  resetResumeDefaults();
+};
+
+/** Start a default draft and discard the active cloud association and local baseline. */
+export const resetResumeDefaults = () => {
+  detachDraft();
   useCloudResumeStore.getState().setId(null);
   useBasicDetails.getState().reset(ResumeData.basics);
   useLanguages.getState().reset(ResumeData.skills.languages);
@@ -84,4 +105,20 @@ export const resetResumeStore = () => {
   useAwards.getState().reset(ResumeData.awards);
   useActivity.getState().reset(ResumeData.activities);
   useSectionLayoutStore.getState().resetAll();
+  for (const store of [
+    useLanguages,
+    useFrameworks,
+    useLibraries,
+    useDatabases,
+    useTechnologies,
+    usePractices,
+    useTools,
+  ])
+    store.getState().setIsEnabled(true);
+  useResumeStyleStore.getState().reset();
+  useResumeStyleStore.setState({ past: [], future: [], baseline: null });
+  for (const id of Object.keys(AVAILABLE_TEMPLATES))
+    useSectionTitleStore.getState().resetTemplate(id);
+  useTemplates.getState().setTemplate(AVAILABLE_TEMPLATES.modern);
+  useThemes.setState({ selectedTheme: SYSTEM_COLORS[0], customTheme: CUSTOM_THEME_COLOR });
 };

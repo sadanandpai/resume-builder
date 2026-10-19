@@ -1,3 +1,4 @@
+import { detachDraft } from '@/stores/resumeDraftStorage';
 import { useCloudResumeStore } from '@/stores/useCloudResumeStore';
 import { useActivity } from '@/stores/activity';
 import { useAwards } from '@/stores/awards';
@@ -26,6 +27,7 @@ export function applyImportedResumeJson(uploadedResumeJSON: unknown): void {
   const metadata = normalizeResumeMetadata(
     (uploadedResumeJSON as Record<string, unknown>).__metadata
   );
+  detachDraft();
   useCloudResumeStore.getState().setId(null);
   useBasicDetails.getState().reset(basics);
   useLanguages.getState().reset(skills.languages);

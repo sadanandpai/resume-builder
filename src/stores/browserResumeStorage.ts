@@ -1,3 +1,4 @@
+import { draftStorage } from './resumeDraftStorage';
 import { createJSONStorage, type StateStorage } from 'zustand/middleware';
 
 // Resolve storage at use time: server rendering and blocked browser storage both
@@ -5,21 +6,21 @@ import { createJSONStorage, type StateStorage } from 'zustand/middleware';
 const storage: StateStorage = {
   getItem: (name) => {
     try {
-      return localStorage.getItem(name);
+      return draftStorage.getItem(name);
     } catch {
       return null;
     }
   },
   setItem: (name, value) => {
     try {
-      localStorage.setItem(name, value);
+      draftStorage.setItem(name, value);
     } catch {
       // Keep in-memory edits when storage is unavailable.
     }
   },
   removeItem: (name) => {
     try {
-      localStorage.removeItem(name);
+      draftStorage.removeItem(name);
     } catch {
       // Storage may be unavailable.
     }

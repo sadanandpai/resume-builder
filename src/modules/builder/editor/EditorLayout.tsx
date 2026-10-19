@@ -6,22 +6,29 @@ import EditSection from './components/EditSection';
 import ErrorBoundary from '@/helpers/common/components/ErrorBoundary';
 import { OutlinedButton } from '@/helpers/common/atoms/Buttons';
 import { headers } from '@/helpers/constants/editor-data';
-import { resetResumeStore } from '@/stores/useResumeStore';
+import { useCloudResumeStore } from '@/stores/useCloudResumeStore';
+import { resetDraftChanges, resetResumeDefaults } from '@/stores/useResumeStore';
 import { Button } from '@mui/material';
 
 const ConfirmationBox = ({
+  action,
   handleModalCloseAction,
   handleModalConfirmation,
 }: {
+  action: 'defaults' | 'changes';
   handleModalConfirmation: () => void;
   handleModalCloseAction: () => void;
 }) => {
   return (
     <div className="fixed inset-0 bg-black/30 flex items-center justify-center z-50">
       <div className="bg-purple-50 w-80 p-6 rounded shadow-lg relative animate-[fadeIn_.3s]">
-        <h2 className="text-xl font-semibold mb-3">Reset All Changes</h2>
+        <h2 className="text-xl font-semibold mb-3">
+          {action === 'defaults' ? 'Reset defaults' : 'Reset changes'}
+        </h2>
         <p className="text-gray-600 mb-4 text-center">
-          Are you sure to reset all the changes you have done?
+          {action === 'defaults'
+            ? 'This will replace all resume content and appearance settings with the complete default resume and clear the current resume ID and URL parameters. Your saved cloud resume will remain unchanged. Continue?'
+            : 'Discard your edits and restore the last cloud-saved version?'}
         </p>
 
         <div className="flex justify-between">
@@ -44,37 +51,39 @@ const ConfirmationBox = ({
 };
 
 const EditorLayout = ({ onViewResume }: { onViewResume: () => void }) => {
+  const cloudId = useCloudResumeStore((state) => state.id);
   const { target, revision, openEditor } = useEditorStore();
   const link = target.section;
   const editorRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (editorRef.current) editorRef.current.scrollTop = 0;
   }, [revision]);
-  const [shouldOpenModal, setShouldOpenModal] = useState(false);
+  const [resetAction, setResetAction] = useState<'defaults' | 'changes' | null>(null);
   useEffect(() => {
-    if (!shouldOpenModal) return;
+    if (!resetAction) return;
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         event.preventDefault();
-        setShouldOpenModal(false);
+        setResetAction(null);
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [shouldOpenModal]);
+  }, [resetAction]);
   const section = headers[link];
 
   const linkClickHandler = (link: string) => {
     openEditor({ section: link });
   };
 
-  const confirmationModalHandler = () => {
-    setShouldOpenModal((prev) => !prev);
-  };
+  const closeConfirmation = () => setResetAction(null);
 
   const handleConfirmationAction = () => {
-    resetResumeStore();
-    confirmationModalHandler();
+    if (resetAction === 'defaults') {
+      resetResumeDefaults();
+      window.history.replaceState(null, '', '/builder');
+    } else if (resetAction === 'changes') void resetDraftChanges();
+    closeConfirmation();
   };
 
   const displayElement = link ? (
@@ -93,14 +102,22 @@ const EditorLayout = ({ onViewResume }: { onViewResume: () => void }) => {
 
         <div className="mt-8 flex flex-col items-start gap-3">
           <OutlinedButton onClick={onViewResume}>View Resume</OutlinedButton>
-          <Button variant="outlined" color="error" onClick={confirmationModalHandler}>
-            Reset all edits
-          </Button>
+          <div className="flex flex-wrap gap-3">
+            <Button variant="outlined" color="error" onClick={() => setResetAction('defaults')}>
+              Reset defaults
+            </Button>
+            {cloudId && (
+              <Button variant="outlined" color="error" onClick={() => setResetAction('changes')}>
+                Reset changes
+              </Button>
+            )}
+          </div>
         </div>
       </div>
-      {shouldOpenModal && (
+      {resetAction && (
         <ConfirmationBox
-          handleModalCloseAction={confirmationModalHandler}
+          action={resetAction}
+          handleModalCloseAction={closeConfirmation}
           handleModalConfirmation={handleConfirmationAction}
         />
       )}

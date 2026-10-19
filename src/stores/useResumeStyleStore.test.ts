@@ -1,3 +1,4 @@
+import { draftStorage } from '@/stores/resumeDraftStorage';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { useResumeStyleStore as store } from './useResumeStyleStore';
 import { columns, styleVariables, validateStyles } from '@/helpers/resume-style/styles';
@@ -40,18 +41,18 @@ describe('global resume styling', () => {
   it('persists only versioned settings, hydrates safely and limits history', () => {
     for (let i = 0; i < 60; i++) store.getState().commit({ spacing: { section: i % 40 } });
     expect(store.getState().past).toHaveLength(50);
-    expect(Object.keys(JSON.parse(localStorage.getItem('resumeStyles')!))).toEqual([
+    expect(Object.keys(JSON.parse(draftStorage.getItem('resumeStyles')!))).toEqual([
       'version',
       'settings',
     ]);
     store.setState({ settings: {}, hydrated: false });
     store.getState().hydrate();
     expect(store.getState().settings.spacing?.section).toBe(19);
-    localStorage.setItem('resumeStyles', 'invalid');
+    draftStorage.setItem('resumeStyles', 'invalid');
     store.setState({ hydrated: false });
     store.getState().hydrate();
     expect(store.getState().settings).toEqual({});
-    localStorage.setItem(
+    draftStorage.setItem(
       'resumeStyles',
       JSON.stringify({ version: 99, settings: { density: 'compact' } })
     );

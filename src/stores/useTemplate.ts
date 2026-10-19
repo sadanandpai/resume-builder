@@ -1,3 +1,4 @@
+import { draftStorage } from './resumeDraftStorage';
 import { create } from 'zustand';
 import { AVAILABLE_TEMPLATES } from '@/helpers/constants';
 import { ITemplate, ITemplateContent } from '@/helpers/constants/index.interface';
@@ -14,7 +15,7 @@ export const useTemplates = create<ITemplateStore>((set) => ({
 
   setTemplate: (template: ITemplateContent) => {
     try {
-      localStorage.setItem('selectedTemplateId', template.id);
+      draftStorage.setItem('selectedTemplateId', template.id);
     } catch {
       // Template selection still works when browser storage is unavailable.
     }
@@ -25,7 +26,7 @@ export const useTemplates = create<ITemplateStore>((set) => ({
 export function restoreSavedTemplate(): void {
   let savedId: string | null = null;
   try {
-    savedId = localStorage.getItem('selectedTemplateId');
+    savedId = draftStorage.getItem('selectedTemplateId');
   } catch {
     // Use the default when storage access is blocked.
   }

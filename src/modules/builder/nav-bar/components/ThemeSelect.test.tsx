@@ -1,3 +1,4 @@
+import { draftStorage } from '@/stores/resumeDraftStorage';
 import { beforeEach, expect, it } from 'vitest';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { CUSTOM_THEME_COLOR, SYSTEM_COLORS } from '@/helpers/constants';
@@ -21,9 +22,9 @@ it('applies custom colours and retains them across preset switches and rehydrati
   fireEvent.click(screen.getByRole('button', { name: 'Custom colours' }));
   expect(screen.getByLabelText('Headings colour')).toHaveValue('#123456');
 
-  const savedTheme = localStorage.getItem('themes');
+  const savedTheme = draftStorage.getItem('themes');
   useThemes.setState({ selectedTheme: SYSTEM_COLORS[0], customTheme: CUSTOM_THEME_COLOR });
-  localStorage.setItem('themes', savedTheme!);
+  draftStorage.setItem('themes', savedTheme!);
   await useThemes.persist.rehydrate();
   expect(useThemes.getState().selectedTheme.titleColor).toBe('#123456');
   expect(useThemes.getState().customTheme.titleColor).toBe('#123456');
@@ -31,7 +32,7 @@ it('applies custom colours and retains them across preset switches and rehydrati
 
 it.each([2, 3])('replaces saved preset %s with the first palette', async (id) => {
   const customTheme = { ...CUSTOM_THEME_COLOR, titleColor: '#123456' };
-  localStorage.setItem(
+  draftStorage.setItem(
     'themes',
     JSON.stringify({
       state: { selectedTheme: { ...SYSTEM_COLORS[0], id }, customTheme },

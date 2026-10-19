@@ -74,8 +74,9 @@ it('restores every middleware store and manual settings once, including Strict M
   expect(useThemes.getState().selectedTheme.id).toBe(1);
   for (const store of stores.filter((s) => s !== useThemes))
     expect(store.getState()).toHaveProperty('testMarker', store.persist.getOptions().name);
-  const reads = read.mock.calls.length;
+
   useBasicDetails.getState().reset({ ...useBasicDetails.getState().values, name: 'Live edit' });
+  const reads = read.mock.calls.length;
   view.unmount();
   render(
     <BuilderStateHydration>

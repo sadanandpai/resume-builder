@@ -1,3 +1,4 @@
+import { draftStorage } from './resumeDraftStorage';
 import { create } from 'zustand';
 import { validateStyles, type StyleSettings, type StyleGroup } from '@/helpers/resume-style/styles';
 
@@ -5,7 +6,7 @@ const STORAGE_KEY = 'resumeStyles';
 const equal = (a: StyleSettings, b: StyleSettings) => JSON.stringify(a) === JSON.stringify(b);
 function persist(settings: StyleSettings) {
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify({ version: 1, settings }));
+    draftStorage.setItem(STORAGE_KEY, JSON.stringify({ version: 1, settings }));
   } catch {
     /* Storage may be unavailable or full. */
   }
@@ -35,7 +36,7 @@ export const useResumeStyleStore = create<State>((set, get) => ({
     if (get().hydrated || typeof window === 'undefined') return;
     let settings: StyleSettings = {};
     try {
-      const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
+      const saved = JSON.parse(draftStorage.getItem(STORAGE_KEY) || 'null');
       if (saved?.version === 1) settings = validateStyles(saved.settings);
     } catch {
       /* Ignore malformed storage. */

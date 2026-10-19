@@ -1,5 +1,13 @@
 'use client';
 
+import {
+  draftStorage,
+  readDraft,
+  readDraftBaseline,
+  replaceDraftCurrent,
+  saveDraftBaseline,
+} from '@/stores/resumeDraftStorage';
+
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
 import { useBasicDetails } from '@/stores/basic';
 import { useExperiences } from '@/stores/experience';
@@ -33,8 +41,13 @@ let hydration: Promise<void> | undefined;
 
 // Shared across mounts and Strict Mode replay. Re-entering the builder must not
 // restore old storage over live edits. None of this runs during server rendering.
-export function hydrateBuilderState(): Promise<void> {
+export function hydrateBuilderState(force = false): Promise<void> {
   if (typeof window === 'undefined') return Promise.resolve();
+  if (force) {
+    hydration = undefined;
+    useResumeStyleStore.setState({ hydrated: false, past: [], future: [], baseline: null });
+    useSectionTitleStore.setState({ hydrated: false });
+  }
   if (!hydration) {
     const stores = [
       useBasicDetails,
@@ -57,6 +70,16 @@ export function hydrateBuilderState(): Promise<void> {
       useResumeStyleStore.getState().hydrate();
       useSectionTitleStore.getState().hydrate();
       restoreSavedTemplate();
+      // Include unchanged defaults too, so the document is a complete draft.
+      for (const store of stores) (store.setState as (partial: object) => unknown)({});
+      draftStorage.setItem(
+        'resumeStyles',
+        JSON.stringify({ version: 1, settings: useResumeStyleStore.getState().settings })
+      );
+      draftStorage.setItem(
+        'resumeSectionTitles',
+        JSON.stringify({ version: 1, titles: useSectionTitleStore.getState().titles })
+      );
     });
   }
   return hydration;
@@ -79,12 +102,25 @@ export function BuilderStateHydration({
   const ready = loaded !== undefined && loaded.source === savedResume;
   useEffect(() => {
     let active = true;
-    void hydrateBuilderState().then(() => {
+    void hydrateBuilderState().then(async () => {
       if (!active) return;
       try {
         if (savedResume?.error) throw new Error(savedResume.error);
         if (savedResume) {
+          const draft = readDraft();
+          const baseline = readDraftBaseline(savedResume.id);
+          const hasLocalEdits =
+            !!savedResume.code &&
+            draft.resumeId === savedResume.id &&
+            !!baseline &&
+            JSON.stringify(draft.current) !== JSON.stringify(baseline);
+          // Refresh the reset target even when an unsaved local draft is kept.
           applyImportedResumeJson(savedResume.data);
+          saveDraftBaseline(savedResume.id);
+          if (hasLocalEdits && replaceDraftCurrent(savedResume.id, draft.current)) {
+            await hydrateBuilderState(true);
+          }
+          if (!active) return;
           useCloudResumeStore.getState().setId(savedResume.id, savedResume.code);
         }
         setLoaded({ source: savedResume });

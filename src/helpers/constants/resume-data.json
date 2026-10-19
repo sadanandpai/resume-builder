@@ -78,7 +78,7 @@
     ],
     "databases": [{ "name": "Firebase", "level": 3 }],
     "practices": [
-      { "name": "Component based architecture", "level": 3 },
+      { "name": "Applied AI Engineering", "level": 3 },
       { "name": "Agile methodology", "level": 3 },
       { "name": "Design Patterns", "level": 3 },
       { "name": "Test Driven Development", "level": 3 },

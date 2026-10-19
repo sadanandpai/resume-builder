@@ -1,3 +1,4 @@
+import { draftStorage } from './resumeDraftStorage';
 import { useEffect } from 'react';
 import { create } from 'zustand';
 import { TEMPLATE_SECTION_TITLES } from '@/helpers/section-layout/sectionTitles';
@@ -13,7 +14,7 @@ type State = {
 };
 function persist(titles: Titles) {
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify({ version: 1, titles }));
+    draftStorage.setItem(STORAGE_KEY, JSON.stringify({ version: 1, titles }));
   } catch {
     // Editing still works when browser storage is unavailable.
   }
@@ -25,7 +26,7 @@ export const useSectionTitleStore = create<State>((set, get) => ({
     if (get().hydrated || typeof window === 'undefined') return;
     const titles: Titles = {};
     try {
-      const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
+      const saved = JSON.parse(draftStorage.getItem(STORAGE_KEY) || 'null');
       if (saved?.version === 1) {
         for (const [templateId, defaults] of Object.entries(TEMPLATE_SECTION_TITLES)) {
           for (const sectionId of Object.keys(defaults)) {

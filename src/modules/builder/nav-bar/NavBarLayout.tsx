@@ -1,3 +1,4 @@
+import { readDraft, saveDraftBaseline } from '@/stores/resumeDraftStorage';
 import { useCloudResumeStore } from '@/stores/useCloudResumeStore';
 import { ChangeEvent, type RefObject, useCallback, useEffect, useRef, useState } from 'react';
 import { NavBarActions, NavBarMenu, StyledButton } from './atoms';
@@ -156,6 +157,7 @@ const NavBarLayout = ({
       };
       if (destination === 'cloud') {
         const { id: activeId, code: activeCode } = useCloudResumeStore.getState();
+        const savedDraft = readDraft().current;
         const response = await fetch(
           activeId ? `/api/resumes?id=${encodeURIComponent(activeId)}` : '/api/resumes',
           {
@@ -171,6 +173,7 @@ const NavBarLayout = ({
         if (useCloudResumeStore.getState().revision !== cloudRevision) return;
         if (!response.ok) throw new Error(result.error || 'Could not save resume.');
         useCloudResumeStore.getState().setId(result.id, activeId ? activeCode : result.code);
+        saveDraftBaseline(result.id, savedDraft);
         setShowEditReminder(false);
         setLinkMode('view');
         setSavedId(result.id);
