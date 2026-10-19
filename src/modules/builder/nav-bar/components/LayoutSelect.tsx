@@ -7,6 +7,7 @@ import {
   Stack,
   FormControlLabel,
   Switch,
+  Checkbox,
 } from '@mui/material';
 import {
   bounds,
@@ -290,13 +291,29 @@ export function LayoutSelect() {
         group(
           'Columns',
           'secondaryColumnPercent',
-          numeric(
-            'Secondary column',
-            'secondaryColumnPercent',
-            settings.secondaryColumnPercent ?? defaults.secondaryColumnPercent,
-            (n) => ({ ...useResumeStyleStore.getState().settings, secondaryColumnPercent: n }),
-            '%'
-          )
+          <>
+            <FormControlLabel
+              label="Switch columns"
+              control={
+                <Checkbox
+                  checked={settings.switchColumns === true}
+                  onChange={(_, checked) =>
+                    store.commit({
+                      ...useResumeStyleStore.getState().settings,
+                      switchColumns: checked,
+                    })
+                  }
+                />
+              }
+            />
+            {numeric(
+              'Secondary column',
+              'secondaryColumnPercent',
+              settings.secondaryColumnPercent ?? defaults.secondaryColumnPercent,
+              (n) => ({ ...useResumeStyleStore.getState().settings, secondaryColumnPercent: n }),
+              '%'
+            )}
+          </>
         )}
     </div>
   );

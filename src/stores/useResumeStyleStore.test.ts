@@ -87,3 +87,17 @@ describe('global resume styling', () => {
     expect(columns('original', false, 30)).toBe('minmax(0, 70fr) minmax(0, 30fr)');
   });
 });
+
+describe('column switching', () => {
+  it('reverses tracks while preserving column widths', () => {
+    expect(columns('minmax(0, 2fr) minmax(0, 1fr)', false, undefined, true)).toBe(
+      'var(--resume-column-tracks-switched, minmax(0, 1fr) minmax(0, 2fr))'
+    );
+    expect(columns('minmax(0, 1fr) 42%', false, undefined, true)).toBe(
+      'var(--resume-column-tracks-switched, 42% minmax(0, 1fr))'
+    );
+    expect(columns('', false, 27, true)).toBe('minmax(0, 27fr) minmax(0, 73fr)');
+    expect(validateStyles({ switchColumns: true })).toEqual({ switchColumns: true });
+    expect(validateStyles({ switchColumns: 'true' })).toEqual({});
+  });
+});

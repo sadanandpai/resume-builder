@@ -5,6 +5,30 @@ import { SectionFrame } from '../primitives/SectionFrame';
 import { formatDateRange } from '../primitives/formatDateRange';
 import { useSurfacePalette } from '../theme';
 import type { ExperienceItem, ItemsProps } from '../types';
+import styled from '@emotion/styled';
+
+// Align first-level bullet centers with the company and position titles.
+// Native outside markers use font-dependent spacing that varies when scaled.
+const TimelineSummary = styled.div`
+  & > div > div > ul {
+    padding-inline-start: 12px !important;
+    list-style: none !important;
+  }
+  & > div > div > ul > li {
+    position: relative;
+  }
+  & > div > div > ul > li::before {
+    content: '';
+    position: absolute;
+    left: -12px;
+    top: 0.5lh;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: currentColor;
+    transform: translate(0, -50%);
+  }
+`;
 
 type Props = ItemsProps<ExperienceItem> & {
   entrySpacing?: number;
@@ -116,7 +140,11 @@ function Experience({
               </div>
             </div>
           )}
-          {summarySpacing ? (
+          {design === 'timeline' ? (
+            <TimelineSummary style={{ paddingTop: summarySpacing }}>
+              <RichText html={item.summary} p={p} />
+            </TimelineSummary>
+          ) : summarySpacing ? (
             <div style={{ paddingTop: summarySpacing }}>
               <RichText html={item.summary} p={p} />
             </div>

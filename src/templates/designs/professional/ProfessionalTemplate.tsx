@@ -17,6 +17,7 @@ import { BarSkills, ChipSkills } from '@/templates/components/skills';
 import { ProfileSummarySection, TextSection } from '@/templates/components/text';
 
 export default function ProfessionalTemplate() {
+  const switched = useResumeStyleStore((state) => state.settings.switchColumns === true);
   const secondaryPercent = useResumeStyleStore((state) => state.settings.secondaryColumnPercent);
   const titles = useTemplateTitles('professional');
   const data = useContext(StateContext);
@@ -74,11 +75,16 @@ export default function ProfessionalTemplate() {
           ...pageStyle(resumePalette),
           padding: padding('40px 25px'),
           display: 'grid',
-          gridTemplateColumns: columns('minmax(0, 2fr) minmax(0, 1fr)', false, secondaryPercent),
+          gridTemplateColumns: columns(
+            'minmax(0, 2fr) minmax(0, 1fr)',
+            false,
+            secondaryPercent,
+            switched
+          ),
           gap: spacing('column', 14),
         }}
       >
-        <div style={{ minWidth: 0 }}>
+        <div style={{ minWidth: 0, order: switched ? 1 : undefined }}>
           <EditableResumeSection id="basics">
             <ExperienceProfile basics={basics} />
           </EditableResumeSection>

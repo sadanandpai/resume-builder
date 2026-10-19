@@ -243,6 +243,7 @@ describe('template style integration', () => {
         contentPadding: { top: 5, right: 8, bottom: 10, left: 12 },
         spacing: { section: 9, entry: 7, column: 12 },
         secondaryColumnPercent: 25,
+        switchColumns: true,
       };
       useResumeStyleStore.setState({ settings });
       view.rerender(
@@ -258,8 +259,13 @@ describe('template style integration', () => {
       expect(wrapper.style.getPropertyValue('--resume-padding')).toBe('5px 8px 10px 12px');
       expect(wrapper.querySelector('[style*="--resume-name"]')).not.toBeNull();
       expect(wrapper.querySelector('[style*="--resume-heading"]')).not.toBeNull();
-      if (entry.style.secondaryColumnPercent !== undefined)
-        expect(wrapper.querySelector('[style*="25fr"]')).not.toBeNull();
+      if (entry.style.secondaryColumnPercent !== undefined) {
+        const grid = wrapper.querySelector('[style*="25fr"]') as HTMLElement;
+        expect(grid.style.gridTemplateColumns).toBe('minmax(0, 25fr) minmax(0, 75fr)');
+        expect(grid.querySelector('[style*="order: 1"]')).not.toBeNull();
+      } else {
+        expect(wrapper.querySelector('[style*="order: 1"]')).toBeNull();
+      }
       expect(useResumeStyleStore.getState().settings).toEqual(settings);
     });
   }

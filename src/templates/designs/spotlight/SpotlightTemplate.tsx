@@ -18,6 +18,7 @@ export default function SpotlightTemplate() {
   const titles = useTemplateTitles('spotlight');
   const data = useContext(StateContext);
   const { regions } = useSectionLayoutRuntime();
+  const switched = useResumeStyleStore((state) => state.settings.switchColumns === true);
   const secondaryPercent = useResumeStyleStore((state) => state.settings.secondaryColumnPercent);
   const palette = useResumePalette();
   const basics = data.basics;
@@ -53,12 +54,12 @@ export default function SpotlightTemplate() {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: columns('minmax(0, 1fr) 42%', false, secondaryPercent),
+            gridTemplateColumns: columns('minmax(0, 1fr) 42%', false, secondaryPercent, switched),
             padding: padding('22px 25px 32px'),
             gap: spacing('column', 36),
           }}
         >
-          <main style={{ minWidth: 0 }}>
+          <main style={{ minWidth: 0, order: switched ? 1 : undefined }}>
             <TemplateRegion regionId="main" items={regions.main} renderSection={renderSection} />
           </main>
           <aside style={{ minWidth: 0 }}>

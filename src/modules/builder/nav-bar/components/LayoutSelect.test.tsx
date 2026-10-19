@@ -58,11 +58,22 @@ describe('Layout controls', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Undo' }));
     expect(useResumeStyleStore.getState().settings.pageMargins?.right).toBe(10);
   });
+  it('switches columns without changing other settings and supports undo', () => {
+    const settings = { secondaryColumnPercent: 27, spacing: { column: 18 } };
+    useResumeStyleStore.setState({ settings });
+    render(<LayoutSelect />);
+    fireEvent.click(screen.getByRole('checkbox', { name: 'Switch columns' }));
+    expect(useResumeStyleStore.getState().settings).toEqual({ ...settings, switchColumns: true });
+    fireEvent.click(screen.getByRole('button', { name: 'Undo' }));
+    expect(useResumeStyleStore.getState().settings).toEqual(settings);
+    expect(screen.getByRole('checkbox', { name: 'Switch columns' })).not.toBeChecked();
+  });
   it('hides columns for single-column templates while retaining the global override', () => {
-    useResumeStyleStore.setState({ settings: { secondaryColumnPercent: 25 } });
+    useResumeStyleStore.setState({ settings: { secondaryColumnPercent: 25, switchColumns: true } });
     useTemplates.getState().setTemplate(AVAILABLE_TEMPLATES.classic);
     render(<LayoutSelect />);
     expect(screen.queryByRole('textbox', { name: 'Secondary column value' })).toBeNull();
+    expect(screen.queryByRole('checkbox', { name: 'Switch columns' })).toBeNull();
     expect(useResumeStyleStore.getState().settings.secondaryColumnPercent).toBe(25);
   });
 });

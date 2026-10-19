@@ -25,6 +25,7 @@ export type StyleSettings = {
     lineHeight?: number;
   };
   secondaryColumnPercent?: number;
+  switchColumns?: boolean;
   density?: 'compact' | 'spacious';
 };
 export type StyleGroup = keyof StyleSettings;
@@ -65,6 +66,7 @@ export function validateStyles(input: unknown): StyleSettings {
       resolved.family = source.family;
     if (Object.keys(resolved).length) result[group] = resolved;
   }
+  if (typeof v.switchColumns === 'boolean') result.switchColumns = v.switchColumns;
   const width = normalize(v.secondaryColumnPercent, 'secondaryColumnPercent');
   if (width !== undefined) result.secondaryColumnPercent = width;
   if (v.density === 'compact' || v.density === 'spacious') result.density = v.density;
@@ -116,8 +118,22 @@ export function styleVariables(
   }
   return vars as CSSProperties;
 }
-export function columns(original: string, secondaryLeft: boolean, percent?: number) {
-  if (percent === undefined) return `var(--resume-column-tracks, ${original})`;
+export function columns(
+  original: string,
+  secondaryLeft: boolean,
+  percent?: number,
+  switched = false
+) {
+  if (percent === undefined) {
+    const fallback = switched
+      ? original
+          .split(/\s+(?![^(]*\))/)
+          .reverse()
+          .join(' ')
+      : original;
+    return `var(--resume-column-tracks${switched ? '-switched' : ''}, ${fallback})`;
+  }
+  secondaryLeft = secondaryLeft !== switched;
   const secondary = `minmax(0, ${percent}fr)`;
   const main = `minmax(0, ${100 - percent}fr)`;
   return secondaryLeft ? `${secondary} ${main}` : `${main} ${secondary}`;

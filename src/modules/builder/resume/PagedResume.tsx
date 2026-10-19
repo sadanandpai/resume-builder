@@ -30,6 +30,12 @@ export function PagedResume({ children }: { children: ReactNode }) {
     (settings.spacing?.column !== undefined || settings.density)
   ) {
     Object.assign(variables, {
+      '--resume-column-tracks-switched': columns(
+        '',
+        false,
+        settings.secondaryColumnPercent ?? secondaryDefault,
+        true
+      ),
       '--resume-column-tracks': columns(
         '',
         false,

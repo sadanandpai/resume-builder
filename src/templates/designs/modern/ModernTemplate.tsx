@@ -17,6 +17,7 @@ import { ChipSkills } from '@/templates/components/skills';
 import { ProfileSummarySection, TextSection } from '@/templates/components/text';
 
 export default function ModernTemplate() {
+  const switched = useResumeStyleStore((state) => state.settings.switchColumns === true);
   const secondaryPercent = useResumeStyleStore((state) => state.settings.secondaryColumnPercent);
   const titles = useTemplateTitles('modern');
   const data = useContext(StateContext);
@@ -100,16 +101,21 @@ export default function ModernTemplate() {
           padding: padding('40px 25px'),
           display: 'grid',
           alignContent: 'start',
-          gridTemplateColumns: columns('minmax(0, 2fr) minmax(0, 1fr)', false, secondaryPercent),
+          gridTemplateColumns: columns(
+            'minmax(0, 2fr) minmax(0, 1fr)',
+            false,
+            secondaryPercent,
+            switched
+          ),
           columnGap: spacing('column', 22),
         }}
       >
-        <div style={{ minWidth: 0, gridColumn: '1 / -1' }}>
+        <div style={{ minWidth: 0, gridColumn: '1 / -1', order: -1 }}>
           <EditableResumeSection id="basics">
             <ModernProfile basics={basics} />
           </EditableResumeSection>
         </div>
-        <div style={{ minWidth: 0 }}>
+        <div style={{ minWidth: 0, order: switched ? 1 : undefined }}>
           <TemplateRegion regionId="left" items={regions.left} renderSection={renderSection} />
         </div>
         <TemplateRegion regionId="right" items={regions.right} renderSection={renderSection} />
