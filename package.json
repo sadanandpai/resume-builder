@@ -23,7 +23,7 @@
     "@mui/lab": "^9.0.0-beta.2",
     "@mui/material": "^9.5.0",
     "@mui/material-nextjs": "^9.5.0",
-    "@mui/x-date-pickers": "^9.15.0",
+    "@mui/x-date-pickers": "^9.17.0",
     "@splidejs/splide": "^4.1.4",
     "@vercel/analytics": "^2.0.1",
     "color": "^5.0.3",
@@ -34,9 +34,9 @@
     "immer": "^11.1.21",
     "jodit": "^4.17.3",
     "nanoid": "^6.0.2",
-    "next": "^16.4.0",
-    "react": "^19.3.0",
-    "react-dom": "^19.3.0",
+    "next": "^16.4.4",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
     "react-icons": "^5.7.0",
     "zustand": "^5.0.15"
   },
@@ -50,13 +50,13 @@
     "@types/react-dom": "^19.3.0",
     "husky": "^9.1.7",
     "jsdom": "^29.1.1",
-    "oxlint": "^1.86.0",
-    "playwright": "1.62.1",
-    "postcss": "^8.5.26",
-    "prettier": "^3.9.9",
+    "oxlint": "^1.90.0",
+    "playwright": "1.64.1",
+    "postcss": "^8.5.32",
+    "prettier": "^3.9.10",
     "pretty-quick": "^4.2.2",
     "tailwindcss": "^4.3.3",
     "typescript": "^7.0.2",
-    "vitest": "^5.0.3"
+    "vitest": "^5.1.0"
   }
 }

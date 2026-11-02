@@ -1,3 +1,4 @@
+import { normalizeResumeMetadata } from '@/helpers/resumeMetadata';
 import { nanoid } from 'nanoid';
 import {
   authorizeResumeEdit,
@@ -41,6 +42,13 @@ export async function POST(request: Request) {
       { error: 'Expected a resume object with basic details.' },
       { status: 400 }
     );
+  }
+
+  try {
+    const metadata = normalizeResumeMetadata(resume.__metadata);
+    if (metadata) resume.__metadata = metadata;
+  } catch {
+    return Response.json({ error: 'Invalid resume metadata.' }, { status: 400 });
   }
 
   if (!process.env.GOOGLE_CLOUD_PROJECT) {

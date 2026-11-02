@@ -8,7 +8,8 @@
  *    Use `ResumePresentation` once and `TemplateRegion` for destination surface propagation.
  *    Add reusable designs to the shared collection, never template-local components/ or atoms/.
  * 2. If you introduce a new section id, add it to `sectionIds.ts` (`SECTION_IDS`).
- * 3. Append one entry to `TEMPLATE_REGISTRY` below (copy an existing block).
+ * 3. Add the template id/name to `metadata.ts`, then append one entry to
+ *    `TEMPLATE_REGISTRY` below (copy an existing block).
  *    — Use `REGION_IDS` + `SECTION_IDS` for every id string (avoids typos).
  *    — `sectionLayout` must match `<SortableRegion regionId={…}>` usage.
  *    — `sectionRules` must mirror the data passed to shared designs.
@@ -17,12 +18,13 @@
  * -----------------------------------------------------------------------------
  */
 import type { TemplateRegistryEntry } from './types';
+import { TEMPLATE_METADATA } from './metadata';
 import * as has from './predicates';
 import { REGION_IDS, SECTION_IDS } from './sectionIds';
 
 export const TEMPLATE_REGISTRY: Record<string, TemplateRegistryEntry> = {
   modern: {
-    id: 'modern',
+    ...TEMPLATE_METADATA.modern,
     style: {
       padding: [40, 25, 40, 25],
       section: 12.8,
@@ -34,7 +36,6 @@ export const TEMPLATE_REGISTRY: Record<string, TemplateRegistryEntry> = {
       lineHeight: 1.425,
       secondaryColumnPercent: 33.333333333333336,
     },
-    name: 'Modern',
     thumbnail: '/templates/modern.webp',
     sectionLayout: {
       regionKeys: [REGION_IDS.left, REGION_IDS.right],
@@ -69,7 +70,7 @@ export const TEMPLATE_REGISTRY: Record<string, TemplateRegistryEntry> = {
   },
 
   classic: {
-    id: 'classic',
+    ...TEMPLATE_METADATA.classic,
     style: {
       padding: [28, 28, 28, 28],
       section: 14,
@@ -80,7 +81,6 @@ export const TEMPLATE_REGISTRY: Record<string, TemplateRegistryEntry> = {
       name: 26,
       lineHeight: 1.3,
     },
-    name: 'Classic',
     thumbnail: '/templates/classic.webp',
     sectionLayout: {
       regionKeys: [REGION_IDS.main],
@@ -111,7 +111,7 @@ export const TEMPLATE_REGISTRY: Record<string, TemplateRegistryEntry> = {
   },
 
   spotlight: {
-    id: 'spotlight',
+    ...TEMPLATE_METADATA.spotlight,
     style: {
       padding: [22, 25, 32, 25],
       section: 32,
@@ -123,7 +123,6 @@ export const TEMPLATE_REGISTRY: Record<string, TemplateRegistryEntry> = {
       lineHeight: 1.5,
       secondaryColumnPercent: 38,
     },
-    name: 'Spotlight',
     thumbnail: '/templates/spotlight.webp',
     sectionLayout: {
       regionKeys: [REGION_IDS.main, REGION_IDS.sidebar],
@@ -150,7 +149,7 @@ export const TEMPLATE_REGISTRY: Record<string, TemplateRegistryEntry> = {
   },
 
   professional: {
-    id: 'professional',
+    ...TEMPLATE_METADATA.professional,
     style: {
       padding: [40, 25, 40, 25],
       section: 16,
@@ -162,7 +161,6 @@ export const TEMPLATE_REGISTRY: Record<string, TemplateRegistryEntry> = {
       lineHeight: 1.5,
       secondaryColumnPercent: 33.333333333333336,
     },
-    name: 'Professional',
     thumbnail: '/templates/professional.webp',
     sectionLayout: {
       regionKeys: [REGION_IDS.left, REGION_IDS.right],

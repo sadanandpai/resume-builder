@@ -27,6 +27,30 @@ vi.mock('@google-cloud/firestore', () => ({
 import { POST } from './route';
 import { hashResumeCode } from '@/helpers/resumeEditAccess';
 
+const legacyMetadata = {
+  version: 1,
+  template: { id: 'professional', name: 'Professional' },
+  titles: {},
+  layout: {},
+  styles: {},
+  colors: {
+    selectedTheme: {
+      id: 1,
+      backgroundColor: '#fffdf7',
+      fontColor: '#292524',
+      titleColor: '#1e3a8a',
+      highlighterColor: '#b45309',
+    },
+    customTheme: {
+      id: 2,
+      backgroundColor: 'white',
+      fontColor: 'black',
+      titleColor: 'green',
+      highlighterColor: '#ff7875',
+    },
+  },
+};
+
 const request = (body: string) =>
   new Request('http://localhost/api/resumes', { method: 'POST', body });
 
@@ -48,7 +72,22 @@ describe('resume export storage', () => {
     'stores the complete JSON using a Nano ID in %s',
     async (environment) => {
       vi.stubEnv('NODE_ENV', environment);
-      const resume = { basics: { name: 'Sadanand' }, work: [], __metadata: { template: 'modern' } };
+      const resume = {
+        basics: { name: 'Sadanand' },
+        work: [],
+        __metadata: {
+          ...legacyMetadata,
+          colors: {
+            ...legacyMetadata.colors,
+            customTheme: {
+              ...legacyMetadata.colors.customTheme,
+              backgroundColor: '#ffffff',
+              fontColor: '#000000',
+              titleColor: '#008000',
+            },
+          },
+        },
+      };
       const response = await POST(request(JSON.stringify(resume)));
       expect(response.status).toBe(201);
       const { id, code } = await response.json();
@@ -72,6 +111,46 @@ describe('resume export storage', () => {
     expect((await POST(request('x'.repeat(900_001)))).status).toBe(413);
     expect(mocks.create).not.toHaveBeenCalled();
   });
+
+  it('normalizes legacy theme colors before saving', async () => {
+    const response = await POST(
+      request(JSON.stringify({ basics: {}, __metadata: legacyMetadata }))
+    );
+    expect(response.status).toBe(201);
+    expect(mocks.create.mock.calls[0][0].json.__metadata.colors.customTheme).toEqual({
+      id: 2,
+      backgroundColor: '#ffffff',
+      fontColor: '#000000',
+      titleColor: '#008000',
+      highlighterColor: '#ff7875',
+    });
+  });
+
+  it.each(['', '?id=abcdefghijklmnopqrstu'])(
+    'rejects invalid metadata without creating or updating a resume (%s)',
+    async (query) => {
+      const response = await POST(
+        new Request(`http://localhost/api/resumes${query}`, {
+          method: 'POST',
+          headers: { 'X-Resume-Code': 'a7B2' },
+          body: JSON.stringify({
+            basics: {},
+            __metadata: {
+              ...legacyMetadata,
+              colors: {
+                ...legacyMetadata.colors,
+                customTheme: { ...legacyMetadata.colors.customTheme, backgroundColor: 'invalid' },
+              },
+            },
+          }),
+        })
+      );
+      expect(response.status).toBe(400);
+      expect(await response.json()).toEqual({ error: 'Invalid resume metadata.' });
+      expect(mocks.create).not.toHaveBeenCalled();
+      expect(mocks.runTransaction).not.toHaveBeenCalled();
+    }
+  );
 
   it('reports credential or database failures', async () => {
     mocks.create.mockRejectedValue(new Error('credentials unavailable'));

@@ -8,7 +8,7 @@ import { useSectionLayoutStore } from '@/stores/useSectionLayoutStore';
 import { useResumeStyleStore } from '@/stores/useResumeStyleStore';
 import { useBasicDetails } from '@/stores/basic';
 import { applyImportedResumeJson } from './applyImportedResume';
-import { exportResumeMetadata } from './resumeMetadata';
+import { exportResumeMetadata, normalizeResumeMetadata } from './resumeMetadata';
 
 describe('resume metadata', () => {
   it('round trips template, titles, colors, layout and styles through JSON', () => {
@@ -48,3 +48,56 @@ describe('resume metadata', () => {
     expect(exportResumeMetadata()).toEqual(before);
   });
 });
+
+it('loads legacy names in both themes and exports canonical hex colors', () => {
+  const legacyTheme = {
+    id: 2,
+    backgroundColor: 'white',
+    fontColor: 'black',
+    titleColor: 'green',
+    highlighterColor: 'yellowgreen',
+  };
+  const metadata = {
+    ...exportResumeMetadata(),
+    template: { id: 'professional', name: 'Professional' },
+    titles: {},
+    layout: {},
+    styles: {},
+    colors: { selectedTheme: legacyTheme, customTheme: legacyTheme },
+  };
+  applyImportedResumeJson({ basics: { name: 'Legacy theme' }, __metadata: metadata });
+  const expected = {
+    id: 2,
+    backgroundColor: '#ffffff',
+    fontColor: '#000000',
+    titleColor: '#008000',
+    highlighterColor: '#9acd32',
+  };
+  const exported = exportResumeMetadata();
+  expect(exported.colors).toEqual({ selectedTheme: expected, customTheme: expected });
+  expect(useBasicDetails.getState().values.name).toBe('Legacy theme');
+  expect(normalizeResumeMetadata(exported)).toEqual(exported);
+  expect(metadata.colors.customTheme.backgroundColor).toBe('white');
+});
+
+it.each(['not-a-color', 'url(https://example.com/image)', '', null, 123])(
+  'rejects invalid custom color %s before changing the draft',
+  (color) => {
+    const before = exportResumeMetadata();
+    const name = useBasicDetails.getState().values.name;
+    expect(() =>
+      applyImportedResumeJson({
+        basics: { name: 'Should not apply' },
+        __metadata: {
+          ...before,
+          colors: {
+            ...before.colors,
+            customTheme: { ...before.colors.customTheme, backgroundColor: color },
+          },
+        },
+      })
+    ).toThrow('Invalid theme color');
+    expect(useBasicDetails.getState().values.name).toBe(name);
+    expect(exportResumeMetadata()).toEqual(before);
+  }
+);
