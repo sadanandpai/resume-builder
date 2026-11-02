@@ -191,9 +191,11 @@ try {
       await page.waitForTimeout(200);
       assert.equal(await page.locator('.resume-page-content').getByText('Stale URL').count(), 0);
       await page.locator('input[type=file]').first().setInputFiles(file);
-      const downloadPromise = page.waitForEvent('download');
-      await page.getByRole('button', { name: 'Export', exact: true }).click();
-      const download = await downloadPromise;
+      await page.getByRole('button', { name: /^Export\b/ }).click();
+      const [download] = await Promise.all([
+        page.waitForEvent('download'),
+        page.getByRole('button', { name: 'Download to device', exact: true }).click(),
+      ]);
       const stream = await download.createReadStream();
       const chunks = [];
       for await (const chunk of stream) chunks.push(chunk);
