@@ -58,5 +58,13 @@
     "tailwindcss": "^4.3.3",
     "typescript": "^7.0.2",
     "vitest": "^5.1.0"
+  },
+  "overrides": {
+    "rimraf": {
+      "glob": "^14.0.2"
+    },
+    "glob": {
+      "minimatch": "^11.0.1"
+    }
   }
 }
