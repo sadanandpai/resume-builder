@@ -1,6 +1,7 @@
 /* oxlint-disable typescript/no-explicit-any */
 import { ChangeEvent, Fragment, useEffect } from 'react';
 import TextField from '@mui/material/TextField';
+import { FormControlLabel, FormHelperText, Switch } from '@mui/material';
 
 const SUPPORTED_NETWORKS = {
   linkedin: 'linkedin',
@@ -10,7 +11,11 @@ const SUPPORTED_NETWORKS = {
   hackerearth: 'hackerearth',
   codechef: 'codechef',
   leetcode: 'leetcode',
-  cssbattle: 'cssbattle',
+  blog: 'blog',
+  behance: 'behance',
+  dribbble: 'dribbble',
+  youtube: 'youtube',
+  instagram: 'instagram',
 };
 
 interface IProfileNetwork {
@@ -59,8 +64,28 @@ const SUPPORTED_NETWORK_DEFAULT_STATE: ISupportedNtwkDefaultState = {
     username: 'janedoe',
     url: '',
   },
-  cssbattle: {
-    network: 'cssbattle',
+  blog: {
+    network: 'blog',
+    username: 'janedoe',
+    url: '',
+  },
+  behance: {
+    network: 'behance',
+    username: 'janedoe',
+    url: '',
+  },
+  dribbble: {
+    network: 'dribbble',
+    username: 'janedoe',
+    url: '',
+  },
+  youtube: {
+    network: 'youtube',
+    username: 'janedoe',
+    url: '',
+  },
+  instagram: {
+    network: 'instagram',
     username: 'janedoe',
     url: '',
   },
@@ -154,13 +179,61 @@ const Links = ({
         }}
       />
       <TextField
-        label="CSSBattle"
+        label="Blog"
         variant="filled"
-        value={networks[SUPPORTED_NETWORKS.cssbattle].url}
+        value={networks[SUPPORTED_NETWORKS.blog].url}
         onChange={(event: ChangeEvent<HTMLInputElement>) => {
-          onURLChange(event.target.value, SUPPORTED_NETWORKS.cssbattle);
+          onURLChange(event.target.value, SUPPORTED_NETWORKS.blog);
         }}
       />
+      <TextField
+        label="Behance"
+        variant="filled"
+        value={networks[SUPPORTED_NETWORKS.behance].url}
+        onChange={(event: ChangeEvent<HTMLInputElement>) => {
+          onURLChange(event.target.value, SUPPORTED_NETWORKS.behance);
+        }}
+      />
+      <TextField
+        label="Dribbble"
+        variant="filled"
+        value={networks[SUPPORTED_NETWORKS.dribbble].url}
+        onChange={(event: ChangeEvent<HTMLInputElement>) => {
+          onURLChange(event.target.value, SUPPORTED_NETWORKS.dribbble);
+        }}
+      />
+      <TextField
+        label="YouTube"
+        variant="filled"
+        value={networks[SUPPORTED_NETWORKS.youtube].url}
+        onChange={(event: ChangeEvent<HTMLInputElement>) => {
+          onURLChange(event.target.value, SUPPORTED_NETWORKS.youtube);
+        }}
+      />
+      <TextField
+        label="Instagram"
+        variant="filled"
+        value={networks[SUPPORTED_NETWORKS.instagram].url}
+        onChange={(event: ChangeEvent<HTMLInputElement>) => {
+          onURLChange(event.target.value, SUPPORTED_NETWORKS.instagram);
+        }}
+      />
+      <div>
+        <FormControlLabel
+          control={
+            <Switch
+              checked={basicTabs.socialLinksDisplay === 'icons-and-url'}
+              onChange={(_event, checked) =>
+                onChangeHandler(checked ? 'icons-and-url' : 'icons', 'socialLinksDisplay')
+              }
+            />
+          }
+          label="Show URLs beside social icons"
+        />
+        <FormHelperText>
+          Display readable URLs on your resume, including printed copies.
+        </FormHelperText>
+      </div>
     </Fragment>
   );
 };

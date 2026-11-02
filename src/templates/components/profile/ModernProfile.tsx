@@ -12,6 +12,7 @@ export function ModernProfile({ basics }: { basics: ProfileBasics }) {
       title={basics.name || 'Profile'}
       heading="profile"
       headerActions={
+        basics.socialLinksDisplay !== 'icons-and-url' &&
         basics.profiles?.some((profile) => profile.url) ? (
           <SocialIconsRow
             profiles={basics.profiles}
@@ -59,6 +60,11 @@ export function ModernProfile({ basics }: { basics: ProfileBasics }) {
           />
         </div>
       </div>
+      {basics.socialLinksDisplay === 'icons-and-url' && (
+        <div style={{ marginTop: 6, minWidth: 0 }}>
+          <SocialIconsRow profiles={basics.profiles} display="icons-and-url" />
+        </div>
+      )}
     </SectionFrame>
   );
 }

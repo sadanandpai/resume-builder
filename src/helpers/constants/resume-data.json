@@ -1,12 +1,12 @@
 {
   "basics": {
     "name": "Jane Doe",
-    "label": "Frontend Engineer",
+    "label": "AI Engineer",
     "image": "https://randomuser.me/api/portraits/men/18.jpg",
     "email": "janedoe@email.com",
     "phone": "+91 9876543210",
     "url": "https://e-resume.vercel.app",
-    "summary": "I am a web developer having expertise in frontend development and exposure to back- end development. I design and develop web applications using the latest technologies to deliver the product with quality code.",
+    "summary": "I am a web developer having expertise in full stack development and exposure to AI engineering. I design and develop web applications using the latest technologies to deliver the product with quality code.",
     "location": {
       "address": "",
       "postalCode": "",
@@ -37,16 +37,6 @@
         "network": "hackerrank",
         "username": "paicube",
         "url": "https://www.hackerrank.com/paicube/"
-      },
-      {
-        "network": "hackerearth",
-        "username": "sadanandpai",
-        "url": "https://www.hackerearth.com/sadanandpai/"
-      },
-      {
-        "network": "codechef",
-        "username": "sadanandpai",
-        "url": "https://www.codechef.com/sadanandpai/"
       },
       {
         "network": "leetcode",

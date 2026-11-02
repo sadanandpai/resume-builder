@@ -24,6 +24,7 @@ export interface IBasicDetailsItem {
   relExp: string;
   totalExp: string;
   objective: string;
+  socialLinksDisplay?: 'icons' | 'icons-and-url';
   profiles: IProfiles[];
 }
 

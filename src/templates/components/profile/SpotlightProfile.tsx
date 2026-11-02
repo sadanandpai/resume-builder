@@ -2,7 +2,7 @@ import type { ProfileBasics } from '../types';
 import { bodySize, font, padding, roleSize, spacing } from '@/helpers/resume-style/styles';
 import { useResumePalette, paletteForSurface, ResumeSurface } from '../theme';
 import { RichText } from '../primitives/RichText';
-import { ContactLine } from '../primitives/Contact';
+import { ContactLine, SocialIconsRow } from '../primitives/Contact';
 import { BsEnvelopeFill, BsGeoAltFill, BsGlobe, BsPhoneFill } from 'react-icons/bs';
 import { socialIcons } from '@/helpers/icons';
 
@@ -22,14 +22,16 @@ export function SpotlightProfile({ basics }: { basics: ProfileBasics }) {
     },
     { text: basics.location?.city, icon: <BsGeoAltFill /> },
     { text: basics.url, href: basics.url, icon: <BsGlobe /> },
-    ...(basics.profiles ?? [])
-      .filter((profile) =>
-        ['linkedin', 'twitter', 'github'].includes(profile.network.toLowerCase())
-      )
-      .map((profile) => {
+    ...(basics.socialLinksDisplay === 'icons-and-url' ? (basics.profiles ?? []) : []).map(
+      (profile) => {
         const Icon = socialIcons.get(profile.network.toLowerCase());
-        return { text: profile.url, href: profile.url, icon: Icon ? <Icon /> : <BsGlobe /> };
-      }),
+        return {
+          text: profile.url.replace(/^https?:\/\//i, '').replace(/\/$/, ''),
+          href: profile.url,
+          icon: Icon ? <Icon /> : <BsGlobe />,
+        };
+      }
+    ),
   ].filter((item) => item.text);
   return (
     <header style={{ background: p.bg, color: p.text, fontFamily: font(p.bodyFont) }}>
@@ -79,7 +81,7 @@ export function SpotlightProfile({ basics }: { basics: ProfileBasics }) {
           />
         )}
       </div>
-      {contacts.length > 0 && (
+      {(contacts.length > 0 || basics.profiles?.some((profile) => profile.url)) && (
         <div
           style={{
             background: base.primaryDark,
@@ -96,6 +98,11 @@ export function SpotlightProfile({ basics }: { basics: ProfileBasics }) {
                 <ContactLine text={item.text!} href={item.href} icon={item.icon} />
               </div>
             ))}
+            {basics.socialLinksDisplay !== 'icons-and-url' && (
+              <div style={{ gridColumn: '1 / -1' }}>
+                <SocialIconsRow profiles={basics.profiles} />
+              </div>
+            )}
           </ResumeSurface>
         </div>
       )}

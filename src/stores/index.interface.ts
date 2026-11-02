@@ -25,6 +25,7 @@ export interface IBasics {
   location: ILocation;
   relExp: string;
   totalExp: string;
+  socialLinksDisplay?: 'icons' | 'icons-and-url';
   profiles: IProfile[];
 }
 

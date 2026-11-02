@@ -37,6 +37,7 @@ function Contacts({
       />
       <SocialIconsRow
         profiles={basics.profiles}
+        display={basics.socialLinksDisplay}
         color={p.primary}
         align={align}
         underlineLinks={underlineLinks}

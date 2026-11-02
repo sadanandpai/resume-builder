@@ -54,3 +54,22 @@ it('does not apply a stale response even if fetch ignores cancellation', async (
   await expect(pending).rejects.toMatchObject({ name: 'AbortError' });
   expect(useBasicDetails.getState().values).toBe(before);
 });
+
+it.each(['icons', 'icons-and-url'] as const)(
+  'persists the %s display preference through import and reload',
+  async (display) => {
+    const input = { ...sample, basics: { ...sample.basics, socialLinksDisplay: display } };
+    expect(normalizeImportedResume(input)).toEqual(input);
+    applyImportedResumeJson(input);
+    expect(useBasicDetails.getState().values.socialLinksDisplay).toBe(display);
+    await useBasicDetails.persist.rehydrate();
+    expect(useBasicDetails.getState().values.socialLinksDisplay).toBe(display);
+  }
+);
+
+it('keeps legacy imports without a display preference and rejects invalid modes', () => {
+  expect(normalizeImportedResume(sample).basics.socialLinksDisplay).toBeUndefined();
+  expect(() => normalizeImportedResume({ basics: { socialLinksDisplay: 'invalid' } })).toThrow(
+    'socialLinksDisplay'
+  );
+});

@@ -1,11 +1,17 @@
 import { AiFillGithub } from 'react-icons/ai';
 import { AiFillLinkedin } from 'react-icons/ai';
 import { AiOutlineTwitter } from 'react-icons/ai';
-import { FaHackerrank } from 'react-icons/fa';
+import {
+  FaBehance,
+  FaBlog,
+  FaDribbble,
+  FaHackerrank,
+  FaInstagram,
+  FaYoutube,
+} from 'react-icons/fa';
 import { SiCodechef } from 'react-icons/si';
 import { SiHackerearth } from 'react-icons/si';
 import { SiLeetcode } from 'react-icons/si';
-import { TbSwords } from 'react-icons/tb';
 
 export const socialIcons = new Map([
   ['linkedin', AiFillLinkedin],
@@ -15,5 +21,9 @@ export const socialIcons = new Map([
   ['hackerearth', SiHackerearth],
   ['codechef', SiCodechef],
   ['leetcode', SiLeetcode],
-  ['cssbattle', TbSwords],
+  ['blog', FaBlog],
+  ['behance', FaBehance],
+  ['dribbble', FaDribbble],
+  ['youtube', FaYoutube],
+  ['instagram', FaInstagram],
 ]);

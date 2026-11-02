@@ -133,6 +133,14 @@ export function normalizeImportedResume(value: unknown): ImportedResume {
   }
   // Missing fields get empty defaults; unknown fields cannot enter persisted state.
   const resume = normalize(value, schema, 'resume') as ImportedResume;
+  const basics = (value as { basics?: Record<string, unknown> }).basics;
+  if (basics && Object.hasOwn(basics, 'socialLinksDisplay')) {
+    const display = basics.socialLinksDisplay;
+    if (display !== 'icons' && display !== 'icons-and-url') {
+      throw new Error('resume.basics.socialLinksDisplay must be icons or icons-and-url.');
+    }
+    resume.basics.socialLinksDisplay = display;
+  }
   for (const section of ['work', 'education', 'volunteer', 'awards'] as const) {
     const ids = new Set<string>();
     for (const item of resume[section]) {

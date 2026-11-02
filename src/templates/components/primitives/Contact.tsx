@@ -35,10 +35,10 @@ export const ContactLine = ({
         overflowWrap: 'anywhere',
       }}
     >
-      <span aria-hidden style={{ display: 'inline-flex', width: 12, height: 12 }}>
+      <span aria-hidden style={{ display: 'inline-flex', width: 12, height: 12, flexShrink: 0 }}>
         {icon}
       </span>
-      <span>{text}</span>
+      <span style={{ minWidth: 0 }}>{text}</span>
     </span>
   );
   if (href) {
@@ -139,13 +139,17 @@ export const ContactBlock = ({
 export const SocialIconsRow = ({
   profiles,
   size = 13,
+  fontSize = 11,
   align = 'left',
   underlineLinks = false,
+  display = 'icons',
 }: {
   profiles?: IProfile[];
-  align?: 'left' | 'center' | 'right';
+  display?: 'icons' | 'icons-and-url';
+  align?: 'left' | 'center' | 'right' | 'space-between';
   color?: string;
   size?: number;
+  fontSize?: number;
   underlineLinks?: boolean;
 }) => {
   const palette = useSurfacePalette();
@@ -156,29 +160,53 @@ export const SocialIconsRow = ({
         display: 'flex',
         gap: 8,
         flexWrap: 'wrap',
-        justifyContent: align === 'center' ? 'center' : align === 'right' ? 'flex-end' : undefined,
+        justifyContent:
+          align === 'center'
+            ? 'center'
+            : align === 'right'
+              ? 'flex-end'
+              : align === 'space-between'
+                ? 'space-between'
+                : undefined,
       }}
     >
       {profiles.map((p) => {
-        const Icon = socialIcons.get(p.network);
+        const Icon = socialIcons.get(p.network.toLowerCase());
         if (!p.url) return null;
         return (
           <a
             key={p.network + p.username}
-            aria-label={p.network || p.username || p.url}
+            aria-label={display === 'icons' ? p.network || p.username || p.url : undefined}
             href={p.url}
             target="_blank"
             rel="noreferrer"
             style={{
               color: palette.accent,
               display: 'inline-flex',
+              alignItems: 'center',
+              gap: 6,
+              minWidth: 0,
+              maxWidth: '100%',
+              fontSize: bodySize(fontSize),
+              overflowWrap: 'anywhere',
               textDecoration: underlineLinks ? undefined : 'none',
             }}
           >
             {Icon ? (
-              <Icon size={size} aria-hidden />
+              <Icon size={size} aria-hidden style={{ flexShrink: 0 }} />
             ) : (
-              <span>{p.network || p.username || p.url}</span>
+              <span>
+                {display === 'icons-and-url' ? (
+                  <BsGlobe aria-hidden />
+                ) : (
+                  p.network || p.username || p.url
+                )}
+              </span>
+            )}
+            {display === 'icons-and-url' && (
+              <span style={{ minWidth: 0 }}>
+                {p.url.replace(/^https?:\/\//i, '').replace(/\/$/, '')}
+              </span>
             )}
           </a>
         );
