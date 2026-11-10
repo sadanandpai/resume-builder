@@ -1,0 +1,43 @@
+name: Versioncam
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  # On a pull request: record every clip, and fail with a comment if one broke.
+  check:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      pull-requests: write # to comment when a clip breaks
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.19.0
+          cache: npm
+      - run: npm ci
+      - uses: versioncam/action@v1
+
+  # On main: record every clip, then publish the recordings to version.cam.
+  publish:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      id-token: write # GitHub's token for version.cam, so no secret is stored
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.19.0
+          cache: npm
+      - run: npm ci
+      - uses: versioncam/action@v1
+      - uses: versioncam/action@v1
+        if: ${{ !cancelled() }} # a clip that broke is published as broken
+        with:
+          mode: publish
